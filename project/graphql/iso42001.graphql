@@ -1,0 +1,1416 @@
+# metamodel_version: 1.11.0
+# version: 1.0.0
+enum AIControlFamily
+  {
+    ai_policies
+    internal_organization
+    ai_resources
+    impact_assessment
+    ai_system_lifecycle
+    data_for_ai
+    information_for_parties
+    use_of_ai
+    third_party_relationships
+  }
+
+enum AIIncidentCategory
+  {
+    data_poisoning
+    model_stealing
+    model_inversion
+    membership_inference
+    prompt_injection
+    hallucination
+    model_drift
+    bias_incident
+    safety_incident
+    privacy_breach
+    security_breach
+    misuse
+    adverse_societal_impact
+    other
+  }
+
+enum AIObjectiveCategory
+  {
+    accountability
+    ai_expertise
+    data_quality
+    environmental_impact
+    fairness
+    maintainability
+    privacy
+    robustness
+    safety
+    security
+    transparency
+    explainability
+    reliability
+    accessibility
+    availability_of_training_data
+  }
+
+enum AIOrganizationalRole
+  {
+    ai_provider
+    ai_producer
+    ai_customer
+    ai_partner
+    ai_subject
+    relevant_authority
+  }
+
+enum AIRiskSourceCategory
+  {
+    complexity_of_environment
+    lack_of_transparency_or_explainability
+    level_of_automation
+    machine_learning_specific
+    hardware
+    lifecycle
+    technology_readiness
+  }
+
+enum AISystemLifecycleStage
+  {
+    inception
+    design
+    data_collection_and_preparation
+    development
+    verification_and_validation
+    deployment
+    operation_and_monitoring
+    continuous_validation
+    re_evaluation
+    decommissioning
+  }
+
+enum AnnexAControlId
+  {
+    a_2_2
+    a_2_3
+    a_2_4
+    a_3_2
+    a_3_3
+    a_4_2
+    a_4_3
+    a_4_4
+    a_4_5
+    a_4_6
+    a_5_2
+    a_5_3
+    a_5_4
+    a_5_5
+    a_6_1_2
+    a_6_1_3
+    a_6_2_2
+    a_6_2_3
+    a_6_2_4
+    a_6_2_5
+    a_6_2_6
+    a_6_2_7
+    a_6_2_8
+    a_7_2
+    a_7_3
+    a_7_4
+    a_7_5
+    a_7_6
+    a_8_2
+    a_8_3
+    a_8_4
+    a_8_5
+    a_9_2
+    a_9_3
+    a_9_4
+    a_10_2
+    a_10_3
+    a_10_4
+  }
+
+enum AuditFindingType
+  {
+    major_nonconformity
+    minor_nonconformity
+    observation
+    positive_finding
+  }
+
+enum AuditType
+  {
+    internal
+    external_second_party
+    external_third_party
+    surveillance
+    recertification
+    combined
+  }
+
+enum DataPreparationMethod
+  {
+    statistical_exploration
+    cleaning
+    imputation
+    normalization
+    scaling
+    labelling
+    encoding
+    augmentation
+    deduplication
+    anonymization
+    other
+  }
+
+enum DataResourceCategory
+  {
+    training
+    validation
+    test
+    production
+    reference
+  }
+
+enum DocumentType
+  {
+    policy
+    procedure
+    standard
+    guideline
+    record
+    plan
+    report
+    technical_documentation
+  }
+
+enum GovernanceRoleType
+  {
+    governing_body
+    top_management
+    designated_management
+    chief_ai_officer
+    ai_risk_owner
+    ai_policy_owner
+    ai_oversight_committee
+    data_steward
+    model_validator
+    human_oversight_reviewer
+    ai_developer
+    ai_operator
+    ai_impact_assessor
+    auditor
+    other
+  }
+
+enum ImpactAssessmentDimension
+  {
+    individual
+    group
+    societal
+    fairness
+    transparency
+    explainability
+    accountability
+    accessibility
+    human_rights
+    financial
+    health
+    environmental
+    economic
+    government
+    cultural_norms
+    safety
+    privacy
+    security
+  }
+
+enum ImpactRating
+  {
+    negligible
+    minor
+    moderate
+    major
+    severe
+  }
+
+enum ImplementationStatus
+  {
+    not_started
+    planned
+    in_progress
+    implemented
+    not_applicable
+  }
+
+enum LearningParadigm
+  {
+    static
+    periodic_retraining
+    continuous_learning
+    online_learning
+    transfer_learning
+    reinforcement_learning
+    hybrid
+    not_applicable
+  }
+
+enum LikelihoodRating
+  {
+    rare
+    unlikely
+    possible
+    likely
+    almost_certain
+  }
+
+enum MLApproach
+  {
+    supervised
+    unsupervised
+    semi_supervised
+    self_supervised
+    reinforcement
+    transfer
+    federated
+    generative
+    symbolic
+    hybrid
+    not_applicable
+  }
+
+enum RelatedManagementSystem
+  {
+    iso_iec_27001
+    iso_iec_27701
+    iso_9001
+    iso_22000
+    iso_13485
+    iec_62304
+    iso_iec_5338
+    iso_iec_5259
+    iso_iec_22989
+    iso_iec_23894
+    iso_iec_38507
+    iso_iec_27000
+    iso_iec_29100
+    iso_31000
+    iso_iec_25024
+    iso_iec_25059
+    iso_19011
+    iso_37002
+    other
+  }
+
+enum RiskLevel
+  {
+    very_low
+    low
+    medium
+    high
+    critical
+  }
+
+enum RiskTreatmentOption
+  {
+    modify
+    accept
+    avoid
+    share
+  }
+
+enum SectorDomain
+  {
+    health
+    defence
+    transport
+    finance
+    employment
+    energy
+    public_sector
+    education
+    manufacturing
+    agriculture
+    telecommunications
+    retail
+    other
+  }
+
+type AIIncident
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    incidentDatetime: String
+    incidentCategory: AIIncidentCategory
+    severity: RiskLevel
+    affectedAiSystems: [AISystem]
+    affectedDimensions: [ImpactAssessmentDimension]
+    incidentDescription: String
+    detectionMethod: String
+    responseActions: [String]
+    containmentActions: [String]
+    recoveryActions: [String]
+    rootCause: String
+    lessonsLearned: [String]
+    evidenceCollected: [String]
+    notificationRequired: Boolean
+    notificationsMade: [String]
+    externalReports: [String]
+    communicationPlan: CommunicationPlan
+    linkedCorrectiveActions: [CorrectiveAction]
+    closureDatetime: String
+    postIncidentReview: String
+  }
+
+type AIManagementSystem
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    organization: Organization
+    scopeStatement: String
+    scopeBoundaries: [String]
+    scopeExclusions: [String]
+    contextInternalIssues: [String]
+    contextExternalIssues: [String]
+    organizationalRolesWithAi: [AIOrganizationalRole]
+    integratedManagementSystems: [RelatedManagementSystem]
+    topManagement: String
+    governingBody: String
+    leadershipCommitmentEvidence: [String]
+    plannedChanges: [String]
+    interestedParties: [InterestedParty]
+    aiPolicy: AIPolicy
+    aiObjectives: [AIObjective]
+    aiRiskAssessmentProcess: AIRiskAssessmentProcess
+    aiRiskTreatmentProcess: AIRiskTreatmentProcess
+    aiSystemImpactAssessmentProcess: AISystemImpactAssessmentProcess
+    statementOfApplicability: StatementOfApplicability
+    referenceControls: [AIReferenceControl]
+    aiSystems: [AISystem]
+    roles: [Role]
+    resources: [Resource]
+    competenceRecords: [CompetenceRecord]
+    awarenessProgram: AwarenessProgram
+    communicationPlan: CommunicationPlan
+    documentedInformationRegister: [DocumentedInformation]
+    operationalProcedures: [OperationalProcedure]
+    aiRiskAssessments: [AIRiskAssessment]
+    aiRiskTreatmentPlans: [AIRiskTreatmentPlan]
+    aiSystemImpactAssessments: [AISystemImpactAssessment]
+    monitoringProgram: MonitoringProgram
+    internalAudits: [InternalAudit]
+    managementReviews: [ManagementReview]
+    nonconformities: [Nonconformity]
+    correctiveActions: [CorrectiveAction]
+    improvements: [ImprovementOpportunity]
+    thirdPartyRelationships: [ThirdPartyRelationship]
+    certificationStatus: String
+    certificationBody: String
+    certificationDate: String
+    recertificationDate: String
+    aiSystemEvents: [AISystemEvent]
+    aiIncidents: [AIIncident]
+    concernReports: [ConcernReport]
+  }
+
+type AIObjective
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    objectiveStatement: String
+    objectiveCategory: AIObjectiveCategory
+    targetValue: String
+    currentValue: String
+    metricDefinition: String
+    measurementMethod: String
+    measurementFrequency: String
+    responsibleRole: Role
+    resourcesRequired: String
+    targetDate: String
+    achievementStatus: String
+    relatedRisks: [AIRisk]
+    relatedControls: [AIReferenceControl]
+    actionPlan: String
+  }
+
+type AIPolicy
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    policyStatement: String
+    policyObjectivesFramework: String
+    commitmentStatements: [String]
+    applicabilityStatement: String
+    communicationDate: String
+    acknowledgmentRequired: Boolean
+    relatedTopicPolicies: [TopicSpecificPolicy]
+    lastPolicyReviewDate: String
+    nextPolicyReviewDate: String
+  }
+
+type AIReferenceControl
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    controlId: String
+    controlTitle: String
+    controlFamily: AIControlFamily
+    controlText: String
+    implementationGuidance: String
+    relatedControls: [AIReferenceControl]
+    applicableRiskSources: [AIRiskSourceCategory]
+    applicableObjectives: [AIObjectiveCategory]
+    controlOwner: String
+    implementationStatus: ImplementationStatus
+    implementationDate: String
+    effectivenessRating: String
+    lastTestDate: String
+    evidenceReferences: [String]
+  }
+
+type AIRisk
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    riskSourceCategory: AIRiskSourceCategory
+    riskSourceDescription: String
+    affectedAiSystems: [AISystem]
+    affectedDimensions: [ImpactAssessmentDimension]
+    riskOwner: String
+    likelihood: LikelihoodRating
+    impact: ImpactRating
+    inherentRiskLevel: RiskLevel
+    existingControls: [AIReferenceControl]
+    residualRiskLevel: RiskLevel
+    riskTreatmentOption: RiskTreatmentOption
+    treatmentPriority: String
+    relatedTreatmentPlan: AIRiskTreatmentPlan
+    relatedImpactAssessment: AISystemImpactAssessment
+  }
+
+type AIRiskAssessment
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    assessmentScope: String
+    aiSystemsAssessed: [AISystem]
+    assessmentDate: String
+    assessor: String
+    methodologyUsed: String
+    risksIdentified: [AIRisk]
+    linkedImpactAssessment: AISystemImpactAssessment
+    summaryFindings: String
+    recommendations: [String]
+    nextAssessmentDate: String
+  }
+
+type AIRiskAssessmentProcess
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    riskAcceptanceCriteria: String
+    assessmentCriteria: String
+    assessmentMethodology: String
+    likelihoodScale: String
+    impactScale: String
+    riskMatrix: String
+    assessmentFrequency: String
+    triggerEvents: [String]
+    alignmentWithAiPolicy: String
+  }
+
+type AIRiskTreatmentPlan
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    planScope: String
+    risksAddressed: [AIRisk]
+    treatmentActions: [String]
+    controlsToImplement: [AIReferenceControl]
+    resourcesRequired: String
+    responsibleParties: [String]
+    implementationTimeline: String
+    riskOwnerApproval: String
+    approvedDate: String
+    residualRiskAcceptance: String
+    implementationStatus: ImplementationStatus
+    completionDate: String
+  }
+
+type AIRiskTreatmentProcess
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    treatmentOptionsGuidance: String
+    controlSelectionCriteria: String
+    soaTemplate: String
+    approvalWorkflow: String
+  }
+
+type AISystem
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    aiSystemPurpose: String
+    intendedUses: [String]
+    foreseeableMisuse: [String]
+    applicationDomain: String
+    deploymentContext: String
+    lifecycleStage: AISystemLifecycleStage
+    organizationRole: AIOrganizationalRole
+    autonomyLevel: String
+    mlApproach: MLApproach
+    humanOversightRequired: Boolean
+    humanOversightDescription: String
+    humanOversightStages: [AISystemLifecycleStage]
+    learningMode: LearningParadigm
+    dataResources: [DataResource]
+    toolingResources: [ToolingResource]
+    computingResources: [ComputingResource]
+    humanResources: [HumanResource]
+    technicalDocumentation: [String]
+    eventLogPolicy: String
+    applicableControls: [AIReferenceControl]
+    relatedImpactAssessments: [AISystemImpactAssessment]
+    supplierRelationships: [SupplierRelationship]
+    customerRelationships: [CustomerRelationship]
+  }
+
+type AISystemEvent
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    eventDatetime: String
+    reporter: String
+    reporterPartyType: String
+    eventSource: String
+    eventDescription: String
+    affectedAiSystems: [AISystem]
+    initialAssessment: String
+    categorizedAsIncident: Boolean
+    linkedIncident: AIIncident
+  }
+
+type AISystemImpactAssessment
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    assessmentScope: String
+    aiSystemsAssessed: [AISystem]
+    assessmentDate: String
+    assessor: String
+    technicalContext: String
+    societalContext: String
+    applicableJurisdictions: [String]
+    dimensionsAssessed: [ImpactAssessmentDimension]
+    identifiedConsequences: [String]
+    mitigations: [String]
+    sharedWithParties: [String]
+    nextAssessmentDate: String
+  }
+
+type AISystemImpactAssessmentProcess
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    assessmentCriteria: String
+    assessmentMethodology: String
+    dimensionsInScope: [ImpactAssessmentDimension]
+    assessmentFrequency: String
+    triggerEvents: [String]
+    linkageToRiskAssessment: String
+  }
+
+type AuditFinding
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    findingType: AuditFindingType
+    clauseReference: String
+    controlReference: AIReferenceControl
+    findingDescription: String
+    objectiveEvidence: String
+    rootCauseAnalysis: String
+    riskImplication: String
+    recommendedAction: String
+    auditeeResponse: String
+    linkedCorrectiveAction: CorrectiveAction
+    closureStatus: String
+    closureDate: String
+  }
+
+type AuditProgramme
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    programmePeriod: String
+    plannedAudits: [InternalAudit]
+    auditFrequencyRationale: String
+    resourceRequirements: String
+    auditorQualifications: String
+    programmeStatus: String
+  }
+
+type AwarenessProgram
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    awarenessTopics: [String]
+    deliveryMethods: [String]
+    targetAudience: String
+    frequency: String
+    completionTracking: String
+    effectivenessMeasures: String
+  }
+
+type CommunicationItem
+  {
+    subject: String
+    purpose: String
+    audience: String
+    frequency: String
+    method: String
+    responsibleParty: String
+    recordsRequired: String
+  }
+
+type CommunicationPlan
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    communicationItems: [CommunicationItem]
+  }
+
+type CompetenceRecord
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    personName: String
+    personRole: String
+    requiredCompetencies: [String]
+    educationRecords: [String]
+    trainingRecords: [String]
+    experienceRecords: [String]
+    competencyAssessmentDate: String
+    competencyGaps: [String]
+    developmentActions: [String]
+  }
+
+type ComputingResource
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    resourceClass: String
+    quantity: String
+    location: String
+    environmentType: String
+    cost: String
+  }
+
+type ConcernReport
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    reportedDate: String
+    reporter: String
+    reporterPartyType: String
+    reporterAnonymous: Boolean
+    confidentialityLevel: String
+    reportingChannel: String
+    concernDescription: String
+    concernAiSystems: [AISystem]
+    concernLifecycleStage: [AISystemLifecycleStage]
+    severity: RiskLevel
+    investigator: String
+    investigationStatus: String
+    investigationFindings: String
+    escalationStatus: String
+    responseDueDate: String
+    responseProvidedDate: String
+    resolution: String
+    reprisalProtectionActions: [String]
+    relatedIncidents: [AIIncident]
+    relatedNonconformities: [Nonconformity]
+    closureDatetime: String
+  }
+
+type CorrectiveAction
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    linkedNonconformity: Nonconformity
+    actionDescription: String
+    rootCauseAddressed: String
+    responsibleParty: String
+    targetCompletionDate: String
+    actualCompletionDate: String
+    resourcesRequired: String
+    effectivenessCriteria: String
+    effectivenessReviewDate: String
+    effectivenessVerified: Boolean
+    aimsChangesRequired: Boolean
+    status: String
+  }
+
+type CustomerRelationship
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    partyType: String
+    partyName: String
+    contractualBasis: String
+    allocatedResponsibilities: [String]
+    dataProcessingRole: String
+    aiSystemsInvolved: [AISystem]
+    lifecycleStagesInvolved: [AISystemLifecycleStage]
+    assuranceEvidence: [String]
+    reviewFrequency: String
+    customerExpectations: [String]
+    usageAgreementReference: String
+    communicatedLimitations: [String]
+  }
+
+type DataResource
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    dataResourceCategory: DataResourceCategory
+    source: String
+    acquisitionMethod: String
+    dataQualityRequirements: [String]
+    dataQualityMetrics: [String]
+    dataProvenance: String
+    labellingProcess: String
+    dataPreparationMethods: [DataPreparationMethod]
+    lastUpdatedDate: String
+    knownBiasIssues: [String]
+    retentionPolicy: String
+    dataClassification: String
+  }
+
+interface DocumentedInformation
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+  }
+
+type HumanResource
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    requiredCompetencies: [String]
+    assignedTo: [String]
+    lifecycleResponsibilities: [String]
+  }
+
+type ImprovementOpportunity
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    improvementSource: String
+    identificationDate: String
+    identifiedBy: String
+    improvementDescription: String
+    expectedBenefit: String
+    priority: RiskLevel
+    implementationPlan: String
+    responsibleParty: String
+    targetDate: String
+    actualCompletionDate: String
+    outcomeAssessment: String
+    status: String
+  }
+
+type InterestedParty
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    partyType: String
+    relationship: String
+    requirements: [String]
+    communicationNeeds: String
+    contactInformation: String
+  }
+
+type InternalAudit
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    auditReference: String
+    auditType: AuditType
+    auditScope: String
+    auditCriteria: String
+    auditObjectives: String
+    auditPeriodStart: String
+    auditPeriodEnd: String
+    leadAuditor: String
+    auditTeam: [String]
+    auditeeRepresentatives: [String]
+    auditPlan: String
+    findings: [AuditFinding]
+    positiveObservations: [String]
+    auditConclusion: String
+    reportDate: String
+    reportDistribution: [String]
+  }
+
+type ManagementReview
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    reviewDate: String
+    attendees: [String]
+    previousActionsStatus: String
+    contextChanges: [String]
+    interestedPartyChanges: [String]
+    performanceTrends: String
+    auditResultsSummary: String
+    riskAssessmentResults: String
+    impactAssessmentResults: String
+    improvementOpportunities: [ImprovementOpportunity]
+    decisions: [String]
+    actionItems: [String]
+    nextReviewDate: String
+  }
+
+type MonitoringItem
+  {
+    metricName: String
+    metricDescription: String
+    measurementMethod: String
+    measurementFrequency: String
+    responsibleParty: String
+    analysisFrequency: String
+    analyst: String
+    targetThreshold: String
+    alertThreshold: String
+    currentValue: String
+    trend: String
+  }
+
+type MonitoringProgram
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    monitoringItems: [MonitoringItem]
+  }
+
+interface NamedEntity
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+  }
+
+type Nonconformity
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    nonconformitySource: String
+    detectionDate: String
+    detectedBy: String
+    requirementViolated: String
+    nonconformityDescription: String
+    immediateActions: [String]
+    consequencesAddressed: String
+    rootCause: String
+    similarNonconformitiesCheck: String
+    linkedCorrectiveActions: [CorrectiveAction]
+    status: String
+    closureDate: String
+    closureEvidence: String
+  }
+
+type OperationalProcedure
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    procedureScope: String
+    processCriteria: String
+    controlMeasures: [String]
+    responsibleRoles: [Role]
+    relatedControls: [AIReferenceControl]
+    changeControlRequirements: String
+  }
+
+type Organization
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    legalName: String
+    tradingNames: [String]
+    organizationType: String
+    industrySector: String
+    sectorDomains: [SectorDomain]
+    sizeCategory: String
+    employeeCount: PositiveIntegerType
+    geographicLocations: [String]
+    regulatoryJurisdictions: [String]
+    parentOrganization: String
+    subsidiaries: [String]
+    aiRoles: [AIOrganizationalRole]
+    climateChangeRelevant: Boolean
+  }
+
+type Resource
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    resourceType: String
+    quantity: String
+    allocationDate: String
+    allocatedTo: String
+    cost: String
+    availabilityStatus: String
+  }
+
+type Role
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    roleType: String
+    responsibilities: [String]
+    authorities: [String]
+    accountability: String
+    assignedTo: [String]
+    delegationRules: String
+    reportingLine: String
+  }
+
+type SoAEntry
+  {
+    controlReference: AIReferenceControl
+    isApplicable: Boolean
+    inclusionJustification: String
+    exclusionJustification: String
+    implementationStatus: ImplementationStatus
+    implementationEvidence: String
+    responsibleRole: Role
+    targetImplementationDate: String
+  }
+
+type StatementOfApplicability
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    soaEntries: [SoAEntry]
+    totalControls: UnsignedShortType
+    implementedCount: UnsignedShortType
+    plannedCount: UnsignedShortType
+    notApplicableCount: UnsignedShortType
+    lastReviewDate: String
+    approvedBy: String
+  }
+
+type SupplierRelationship
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    partyType: String
+    partyName: String
+    contractualBasis: String
+    allocatedResponsibilities: [String]
+    dataProcessingRole: String
+    aiSystemsInvolved: [AISystem]
+    lifecycleStagesInvolved: [AISystemLifecycleStage]
+    assuranceEvidence: [String]
+    reviewFrequency: String
+    supplierAssessmentCriteria: [String]
+    monitoringMethod: String
+    correctiveActionsRequired: [String]
+  }
+
+type ThirdPartyRelationship
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    partyType: String
+    partyName: String
+    contractualBasis: String
+    allocatedResponsibilities: [String]
+    dataProcessingRole: String
+    aiSystemsInvolved: [AISystem]
+    lifecycleStagesInvolved: [AISystemLifecycleStage]
+    assuranceEvidence: [String]
+    reviewFrequency: String
+  }
+
+type ToolingResource
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    toolCategory: String
+    toolVersion: String
+    vendor: String
+    licenseTerms: String
+    usagePurpose: String
+  }
+
+type TopicSpecificPolicy
+  {
+    id: String!
+    name: String!
+    description: String
+    createdDate: String
+    modifiedDate: String
+    version: String
+    documentType: DocumentType
+    documentReference: String
+    author: String
+    owner: String
+    approvedBy: String
+    approvedDate: String
+    effectiveDate: String
+    reviewDate: String
+    status: String
+    classification: String
+    retentionPeriod: DurationType
+    topicArea: String
+    parentPolicy: AIPolicy
+    applicableControls: [AIReferenceControl]
+    targetAudience: String
+  }

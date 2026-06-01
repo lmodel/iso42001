@@ -4,6 +4,8 @@
 
 ISO 42001 / AI Management System - LinkML Schema
 
+See [solution description](./docs/about.md) and [NOTICE](./NOTICE).
+
 ## Documentation Website
 
 [https://lmodel.github.io/iso42001](https://lmodel.github.io/iso42001)

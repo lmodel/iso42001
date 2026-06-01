@@ -272,9 +272,9 @@ enums:
         description: >-
           Control excluded from scope with documented justification per
           Clause 6.1.3 f).
-
     exact_mappings:
       - iso27001:ImplementationStatus
+
   RiskTreatmentOption:
     description: >-
       Standard risk treatment options drawn from ISO 31000 and adapted for
@@ -313,7 +313,6 @@ enums:
           contractual transfer to a supplier or partner).
         aliases:
           - transfer
-
         exact_mappings:
           - nist_ai_100_1:TRANSFERRING
     exact_mappings:
@@ -340,9 +339,9 @@ enums:
         description: >-
           Severe AI risk threatening organizational objectives, individuals,
           or societies; requires immediate executive action.
-
     exact_mappings:
       - iso27001:RiskLevel
+
   LikelihoodRating:
     description: Qualitative likelihood scale for AI risk assessment.
     in_subset:
@@ -368,9 +367,9 @@ enums:
         description: Expected to occur in most circumstances (> 80% probability).
         annotations:
           numeric_value: "5"
-
     exact_mappings:
       - iso27001:LikelihoodRating
+
   ImpactRating:
     description: >-
       Qualitative consequence scale for AI risk assessment, covering impact
@@ -402,9 +401,9 @@ enums:
           societal harm, or fundamental rights of affected individuals.
         annotations:
           numeric_value: "5"
-
     exact_mappings:
       - iso27001:ImpactRating
+
   AISystemLifecycleStage:
     description: >-
       Stages of the AI system life cycle referenced throughout Annex A.6 and
@@ -591,10 +590,10 @@ enums:
         description: >-
           Sufficient availability and quality of training, validation, and
           test data needed to train and verify AI systems (Annex C.2.3).
-
     close_mappings:
       - iso29100:PrivacyPrinciple
       - nist_ai_100_1:TrustworthinessCharacteristic
+
   AIRiskSourceCategory:
     description: >-
       Categories of AI risk sources, paraphrased from Annex C of
@@ -639,10 +638,10 @@ enums:
         description: >-
           Risks from immature technology with unknown limitations as well as
           mature technology subject to technology complacency.
-
     close_mappings:
       - nist_ai_100_1:RiskMeasurementChallengeEnum
       - nist_ai_600_1:GaiRiskSourceEnum
+
   DocumentType:
     description: >-
       Categories of documented information referenced in or required by
@@ -674,9 +673,9 @@ enums:
           AI system technical documentation provided to users, partners,
           supervisory authorities, and other interested parties per A.6.2.7
           and A.8.2.
-
     exact_mappings:
       - iso27001:DocumentType
+
   AuditFindingType:
     description: Classification of internal audit findings for the AIMS.
     in_subset:
@@ -699,9 +698,9 @@ enums:
       positive_finding:
         description: >-
           Evidence of effective implementation exceeding requirements.
-
     exact_mappings:
       - iso27001:AuditFindingType
+
   ImpactAssessmentDimension:
     description: >-
       Dimensions evaluated during an AI system impact assessment per
@@ -1050,11 +1049,11 @@ enums:
           - nist_ai_600_1:ENVIRONMENTAL_IMPACTS
       other:
         description: Other AI incident category not enumerated above.
-
     close_mappings:
       - iso27001:SecurityIncidentCategory
       - nist_ai_100_1:HarmCategoryEnum
       - nist_ai_600_1:GaiRiskCategoryEnum
+
   AuditType:
     description: >-
       Type of audit conducted against the AIMS per Clause 9.2 and the
@@ -1074,9 +1073,9 @@ enums:
         description: Audit performed to renew certification.
       combined:
         description: Combined audit covering two or more management system disciplines.
-
     exact_mappings:
       - iso27001:AuditType
+
   MLApproach:
     description: >-
       Machine-learning approach used by the AI system, capturing the
@@ -1185,9 +1184,9 @@ enums:
         description: Whistleblowing management systems (informs A.3.3 concern reporting).
       other:
         description: Other management system standard not enumerated above.
-
     exact_mappings:
       - iso27001:RelatedManagementSystem
+
   GovernanceRoleType:
     description: >-
       Governance role types within the AIMS, paraphrased from Clause 3.3
@@ -1261,9 +1260,9 @@ classes:
         identifier: true
         required: true
         description: Unique identifier for this entity instance.
-
     exact_mappings:
       - iso27001:NamedEntity
+
   DocumentedInformation:
     is_a: NamedEntity
     abstract: true
@@ -1291,13 +1290,13 @@ classes:
       - status
       - classification
       - retention_period
+    close_mappings:
+      - nist_ai_100_1:PlaybookEntry
 
     # ---------------------
     # Core AIMS Classes (Clauses 4-10)
     # ---------------------
 
-    close_mappings:
-      - nist_ai_100_1:PlaybookEntry
   AIManagementSystem:
     is_a: NamedEntity
     description: >-
@@ -1360,13 +1359,13 @@ classes:
       - ai_system_events
       - ai_incidents
       - concern_reports
-
     close_mappings:
       - iso27001:InformationSecurityManagementSystem
       - nist_ai_100_1:AiRmfFramework
     related_mappings:
       - iso29100:PrivacyFramework
       - nist_ai_600_1:GaiProfile
+
   Organization:
     is_a: NamedEntity
     description: >-
@@ -1397,12 +1396,12 @@ classes:
       - subsidiaries
       - ai_roles
       - climate_change_relevant
-
     close_mappings:
       - iso29100:PIIController
       - nist_ai_100_1:AiActor
     related_mappings:
       - iso29100:PIIProcessor
+
   InterestedParty:
     is_a: NamedEntity
     description: >-
@@ -1426,14 +1425,14 @@ classes:
       - requirements
       - communication_needs
       - contact_information
+    close_mappings:
+      - iso29100:PrivacyStakeholder
+      - nist_ai_100_1:AiActor
 
     # ---------------------
     # Leadership and Governance (Clause 5)
     # ---------------------
 
-    close_mappings:
-      - iso29100:PrivacyStakeholder
-      - nist_ai_100_1:AiActor
   AIPolicy:
     is_a: DocumentedInformation
     description: >-
@@ -1460,10 +1459,10 @@ classes:
       - related_topic_policies
       - last_policy_review_date
       - next_policy_review_date
-
     close_mappings:
       - iso27001:InformationSecurityPolicy
       - iso29100:PrivacyPolicy
+
   TopicSpecificPolicy:
     is_a: DocumentedInformation
     description: >-
@@ -1482,9 +1481,9 @@ classes:
       - parent_policy
       - applicable_controls
       - target_audience
-
     exact_mappings:
       - iso27001:TopicSpecificPolicy
+
   Role:
     is_a: NamedEntity
     description: >-
@@ -1510,13 +1509,13 @@ classes:
       - assigned_to
       - delegation_rules
       - reporting_line
+    close_mappings:
+      - nist_ai_100_1:AiActorTask
 
     # ---------------------
     # Planning (Clause 6)
     # ---------------------
 
-    close_mappings:
-      - nist_ai_100_1:AiActorTask
   AIObjective:
     is_a: NamedEntity
     description: >-
@@ -1544,9 +1543,9 @@ classes:
       - related_risks
       - related_controls
       - action_plan
-
     close_mappings:
       - iso27001:InformationSecurityObjective
+
   AIRiskAssessmentProcess:
     is_a: DocumentedInformation
     description: >-
@@ -1575,10 +1574,10 @@ classes:
       - assessment_frequency
       - trigger_events
       - alignment_with_ai_policy
-
     close_mappings:
       - iso27001:RiskAssessmentProcess
       - nist_ai_100_1:Function
+
   AIRiskAssessment:
     is_a: DocumentedInformation
     description: >-
@@ -1603,9 +1602,9 @@ classes:
       - summary_findings
       - recommendations
       - next_assessment_date
-
     close_mappings:
       - iso27001:RiskAssessment
+
   AIRisk:
     is_a: NamedEntity
     description: >-
@@ -1636,7 +1635,6 @@ classes:
       - treatment_priority
       - related_treatment_plan
       - related_impact_assessment
-
     close_mappings:
       - iso27001:Risk
       - nist_ai_100_1:Risk
@@ -1646,6 +1644,7 @@ classes:
     narrow_mappings:
       - nist_ai_100_1:AiSpecificRisk
       - nist_ai_600_1:GaiRisk
+
   AIRiskTreatmentProcess:
     is_a: DocumentedInformation
     description: >-
@@ -1669,9 +1668,9 @@ classes:
       - control_selection_criteria
       - soa_template
       - approval_workflow
-
     close_mappings:
       - iso27001:RiskTreatmentProcess
+
   AIRiskTreatmentPlan:
     is_a: DocumentedInformation
     description: >-
@@ -1699,13 +1698,13 @@ classes:
       - residual_risk_acceptance
       - implementation_status
       - completion_date
-
     close_mappings:
       - iso27001:RiskTreatmentPlan
     related_mappings:
       - iso29100:PrivacySafeguardingRequirement
       - nist_ai_100_1:RiskTolerance
       - nist_ai_600_1:SuggestedAction
+
   AISystemImpactAssessmentProcess:
     is_a: DocumentedInformation
     description: >-
@@ -1730,9 +1729,9 @@ classes:
       - assessment_frequency
       - trigger_events
       - linkage_to_risk_assessment
-
     related_mappings:
       - iso27001:RiskAssessmentProcess
+
   AISystemImpactAssessment:
     is_a: DocumentedInformation
     description: >-
@@ -1762,13 +1761,13 @@ classes:
       - mitigations
       - shared_with_parties
       - next_assessment_date
-
     close_mappings:
       - iso29100:PrivacyImpactAssessment
       - nist_ai_100_1:Impact
       - nist_ai_600_1:PrimaryGaiConsideration
     related_mappings:
       - iso27001:RiskAssessment
+
   StatementOfApplicability:
     is_a: DocumentedInformation
     description: >-
@@ -1815,13 +1814,13 @@ classes:
       - implementation_evidence
       - responsible_role
       - target_implementation_date
+    exact_mappings:
+      - iso27001:SoAEntry
 
     # ---------------------
     # Annex A AI Reference Controls
     # ---------------------
 
-    exact_mappings:
-      - iso27001:SoAEntry
   AIReferenceControl:
     is_a: NamedEntity
     description: >-
@@ -1855,17 +1854,17 @@ classes:
       - effectiveness_rating
       - last_test_date
       - evidence_references
-
-    # ---------------------
-    # AI System and Life Cycle (Clause 8 / Annex A.6, A.7)
-    # ---------------------
-
     close_mappings:
       - iso27001:SecurityControl
       - iso29100:PrivacyControl
       - nist_ai_100_1:Subcategory
     related_mappings:
       - nist_ai_600_1:SuggestedAction
+
+    # ---------------------
+    # AI System and Life Cycle (Clause 8 / Annex A.6, A.7)
+    # ---------------------
+
   AISystem:
     is_a: NamedEntity
     description: >-
@@ -1908,10 +1907,10 @@ classes:
       - related_impact_assessments
       - supplier_relationships
       - customer_relationships
-
     related_mappings:
       - iso27001:Asset
       - nist_ai_600_1:GaiProfile
+
   DataResource:
     is_a: NamedEntity
     description: >-
@@ -1937,11 +1936,11 @@ classes:
       - known_bias_issues
       - retention_policy
       - data_classification
-
     close_mappings:
       - iso29100:PersonallyIdentifiableInformation
     narrow_mappings:
       - iso27001:Asset
+
   ToolingResource:
     is_a: NamedEntity
     description: >-
@@ -1961,9 +1960,9 @@ classes:
       - vendor
       - license_terms
       - usage_purpose
-
     narrow_mappings:
       - iso27001:Asset
+
   ComputingResource:
     is_a: NamedEntity
     description: >-
@@ -1982,9 +1981,9 @@ classes:
       - location
       - environment_type
       - cost
-
     narrow_mappings:
       - iso27001:Asset
+
   HumanResource:
     is_a: NamedEntity
     description: >-
@@ -2002,13 +2001,13 @@ classes:
       - required_competencies
       - assigned_to
       - lifecycle_responsibilities
+    narrow_mappings:
+      - iso27001:Asset
 
     # ---------------------
     # Support (Clause 7)
     # ---------------------
 
-    narrow_mappings:
-      - iso27001:Asset
   Resource:
     is_a: NamedEntity
     description: >-
@@ -2030,9 +2029,9 @@ classes:
       - allocated_to
       - cost
       - availability_status
-
     exact_mappings:
       - iso27001:Resource
+
   CompetenceRecord:
     is_a: DocumentedInformation
     description: >-
@@ -2056,9 +2055,9 @@ classes:
       - competency_assessment_date
       - competency_gaps
       - development_actions
-
     exact_mappings:
       - iso27001:CompetenceRecord
+
   AwarenessProgram:
     is_a: DocumentedInformation
     description: >-
@@ -2078,9 +2077,9 @@ classes:
       - frequency
       - completion_tracking
       - effectiveness_measures
-
     exact_mappings:
       - iso27001:AwarenessProgram
+
   CommunicationPlan:
     is_a: DocumentedInformation
     description: >-
@@ -2096,9 +2095,9 @@ classes:
       iso42001_clause: "7.4"
     slots:
       - communication_items
-
     exact_mappings:
       - iso27001:CommunicationPlan
+
   CommunicationItem:
     description: >-
       A single communication requirement within the AIMS communication
@@ -2118,13 +2117,13 @@ classes:
       - method
       - responsible_party
       - records_required
+    exact_mappings:
+      - iso27001:CommunicationItem
 
     # ---------------------
     # Operation (Clause 8)
     # ---------------------
 
-    exact_mappings:
-      - iso27001:CommunicationItem
   OperationalProcedure:
     is_a: DocumentedInformation
     description: >-
@@ -2145,15 +2144,15 @@ classes:
       - responsible_roles
       - related_controls
       - change_control_requirements
+    exact_mappings:
+      - iso27001:OperationalProcedure
+    related_mappings:
+      - iso29100:PIIProcessingActivity
 
     # ---------------------
     # Performance Evaluation (Clause 9)
     # ---------------------
 
-    exact_mappings:
-      - iso27001:OperationalProcedure
-    related_mappings:
-      - iso29100:PIIProcessingActivity
   MonitoringProgram:
     is_a: DocumentedInformation
     description: >-
@@ -2169,9 +2168,9 @@ classes:
       iso42001_clause: "9.1"
     slots:
       - monitoring_items
-
     exact_mappings:
       - iso27001:MonitoringProgram
+
   MonitoringItem:
     description: >-
       A single item to be monitored and measured per Clause 9.1.
@@ -2194,9 +2193,9 @@ classes:
       - alert_threshold
       - current_value
       - trend
-
     exact_mappings:
       - iso27001:MonitoringItem
+
   InternalAudit:
     is_a: DocumentedInformation
     description: >-
@@ -2252,9 +2251,9 @@ classes:
       - resource_requirements
       - auditor_qualifications
       - programme_status
-
     exact_mappings:
       - iso27001:AuditProgramme
+
   AuditFinding:
     is_a: NamedEntity
     description: >-
@@ -2280,9 +2279,9 @@ classes:
       - linked_corrective_action
       - closure_status
       - closure_date
-
     exact_mappings:
       - iso27001:AuditFinding
+
   ManagementReview:
     is_a: DocumentedInformation
     description: >-
@@ -2373,9 +2372,9 @@ classes:
       - effectiveness_verified
       - aims_changes_required
       - status
-
     close_mappings:
       - nist_ai_600_1:SuggestedAction
+
   ImprovementOpportunity:
     is_a: NamedEntity
     description: >-
@@ -2401,13 +2400,13 @@ classes:
       - actual_completion_date
       - outcome_assessment
       - status
+    exact_mappings:
+      - iso27001:ImprovementOpportunity
 
     # ---------------------
     # Third-Party and Customer Relationships (Annex A.10)
     # ---------------------
 
-    exact_mappings:
-      - iso27001:ImprovementOpportunity
   ThirdPartyRelationship:
     is_a: NamedEntity
     description: >-
@@ -2430,9 +2429,9 @@ classes:
       - lifecycle_stages_involved
       - assurance_evidence
       - review_frequency
-
     related_mappings:
       - iso27001:InterestedParty
+
   SupplierRelationship:
     is_a: ThirdPartyRelationship
     description: >-
@@ -2450,9 +2449,9 @@ classes:
       - supplier_assessment_criteria
       - monitoring_method
       - corrective_actions_required
-
     related_mappings:
       - iso27001:InterestedParty
+
   CustomerRelationship:
     is_a: ThirdPartyRelationship
     description: >-
@@ -2469,13 +2468,13 @@ classes:
       - customer_expectations
       - usage_agreement_reference
       - communicated_limitations
+    related_mappings:
+      - iso27001:InterestedParty
 
     # ---------------------
     # Incident Management (Annex A.8.3 / A.8.4)
     # ---------------------
 
-    related_mappings:
-      - iso27001:InterestedParty
   AISystemEvent:
     is_a: NamedEntity
     description: >-
@@ -2503,9 +2502,9 @@ classes:
       - initial_assessment
       - categorized_as_incident
       - linked_incident
-
     close_mappings:
       - iso27001:InformationSecurityEvent
+
   AIIncident:
     is_a: NamedEntity
     description: >-
@@ -2548,12 +2547,12 @@ classes:
       - linked_corrective_actions
       - closure_datetime
       - post_incident_review
-
     close_mappings:
       - iso27001:InformationSecurityIncident
       - iso29100:PrivacyBreach
       - nist_ai_100_1:Harm
       - nist_ai_600_1:GaiRisk
+
   ConcernReport:
     is_a: NamedEntity
     description: >-
@@ -2595,15 +2594,15 @@ classes:
       - related_incidents
       - related_nonconformities
       - closure_datetime
-
-    # ==============================================================================
-    # SLOTS
-    # ==============================================================================
-
     related_mappings:
       - iso27001:Nonconformity
       - nist_ai_100_1:Harm
       - nist_ai_600_1:StructuredPublicFeedback
+      
+    # ==============================================================================
+    # SLOTS
+    # ==============================================================================
+
 slots:
   # ---------------------
   # Common Identification Slots
@@ -2617,31 +2616,31 @@ slots:
     examples:
       - value: "iso42001:ai-risk-001"
       - value: "iso42001:control-A.6.2.4"
-
     exact_mappings:
       - iso27001:id
+
   name:
     description: Human-readable name or title.
     range: string
     required: true
-
     exact_mappings:
       - iso27001:name
+
   description:
     description: Detailed description of the entity.
     range: string
-
     exact_mappings:
       - iso27001:description
+
   version:
     description: Version identifier for the entity.
     range: string
     examples:
       - value: "1.0"
       - value: "2.3.1"
-
     exact_mappings:
       - iso27001:version
+
   created_date:
     description: Date when the entity was created.
     range: date
@@ -2718,9 +2717,9 @@ slots:
   organization:
     description: Reference to the organization operating the AIMS.
     range: Organization
-
     exact_mappings:
       - iso27001:organization
+
   legal_name:
     description: Legal registered name of the organization.
     range: string
@@ -2790,9 +2789,9 @@ slots:
     multivalued: true
     annotations:
       iso42001_clause: "4.1"
-
     close_mappings:
       - iso27001:roles
+
   organizational_roles_with_ai:
     description: >-
       Documented set of roles the organization plays in the AI ecosystem
@@ -2805,37 +2804,37 @@ slots:
     range: string
     annotations:
       iso42001_clause: "4.3"
-
     exact_mappings:
       - iso27001:scope_statement
+
   scope_boundaries:
     description: Defined boundaries of the AIMS scope.
     range: string
     multivalued: true
-
     exact_mappings:
       - iso27001:scope_boundaries
+
   scope_exclusions:
     description: Any exclusions from scope with justification.
     range: string
     multivalued: true
-
     exact_mappings:
       - iso27001:scope_exclusions
+
   context_internal_issues:
     description: Internal issues relevant to the AIMS per Clause 4.1.
     range: string
     multivalued: true
-
     exact_mappings:
       - iso27001:context_internal_issues
+
   context_external_issues:
     description: External issues relevant to the AIMS per Clause 4.1.
     range: string
     multivalued: true
-
     exact_mappings:
       - iso27001:context_external_issues
+
   climate_change_relevant:
     description: >-
       Whether climate change has been determined to be a relevant issue
@@ -2843,18 +2842,18 @@ slots:
     range: boolean
     annotations:
       iso42001_clause: "4.1"
-
     exact_mappings:
       - iso27001:climate_change_relevant
+
   interested_parties:
     description: Stakeholders relevant to the AIMS.
     range: InterestedParty
     multivalued: true
     annotations:
       iso42001_clause: "4.2"
-
     exact_mappings:
       - iso27001:interested_parties
+
   party_type:
     description: Category of party.
     range: string
@@ -2892,9 +2891,9 @@ slots:
     range: AIPolicy
     annotations:
       iso42001_clause: "5.2"
-
     close_mappings:
       - iso27001:information_security_policy
+
   policy_statement:
     description: The core policy statement text.
     range: string
@@ -2924,25 +2923,25 @@ slots:
     description: Topic-specific policies supporting this policy.
     range: TopicSpecificPolicy
     multivalued: true
-
     exact_mappings:
       - iso27001:related_topic_policies
+
   last_policy_review_date:
     description: Date of the most recent AI policy review.
     range: date
     annotations:
       annex_a_reference: "A.2.4"
-
     exact_mappings:
       - iso27001:last_policy_review_date
+
   next_policy_review_date:
     description: Planned date of the next AI policy review.
     range: date
     annotations:
       annex_a_reference: "A.2.4"
-
     exact_mappings:
       - iso27001:next_policy_review_date
+
   topic_area:
     description: The specific topic addressed by the policy.
     range: string
@@ -3003,11 +3002,11 @@ slots:
   accountability:
     description: What the role is accountable for.
     range: string
-
     exact_mappings:
       - iso29100:accountability
     close_mappings:
       - nist_ai_100_1:TrustworthinessCharacteristic
+
   assigned_to:
     description: Person(s) assigned to this role or resource.
     range: string
@@ -3029,9 +3028,9 @@ slots:
     description: AI objectives established by the organization.
     range: AIObjective
     multivalued: true
-
     close_mappings:
       - iso27001:objectives
+
   objective_statement:
     description: Clear statement of the objective.
     range: string
@@ -3084,9 +3083,9 @@ slots:
   ai_risk_assessment_process:
     description: Reference to the AI risk assessment process.
     range: AIRiskAssessmentProcess
-
     close_mappings:
       - iso27001:risk_assessment_process
+
   alignment_with_ai_policy:
     description: Statement of how the process aligns with the AI policy.
     range: string
@@ -3134,9 +3133,9 @@ slots:
     description: AI risk assessment instances.
     range: AIRiskAssessment
     multivalued: true
-
     close_mappings:
       - iso27001:risk_assessments
+
   assessment_scope:
     description: Scope of the assessment.
     range: string
@@ -3162,10 +3161,10 @@ slots:
     description: Risks identified in this assessment.
     range: AIRisk
     multivalued: true
-
     close_mappings:
       - iso29100:privacy_risks
       - nist_ai_100_1:risks
+
   linked_impact_assessment:
     description: AI system impact assessment linked to this risk assessment.
     range: AISystemImpactAssessment
@@ -3204,11 +3203,11 @@ slots:
     description: AI systems affected by this risk.
     range: AISystem
     multivalued: true
-
     close_mappings:
       - iso27001:affected_assets
     related_mappings:
       - nist_ai_600_1:risk_scope
+
   affected_dimensions:
     description: >-
       Dimensions of impact affected by the risk (individual, group,
@@ -3221,9 +3220,9 @@ slots:
     range: string
     annotations:
       iso42001_clause: "6.1.2"
-
     close_mappings:
       - iso29100:pii_controller
+
   likelihood:
     description: Assessed likelihood of risk occurrence.
     range: LikelihoodRating
@@ -3252,9 +3251,9 @@ slots:
   risk_treatment_option:
     description: Selected treatment option for the AI risk.
     range: RiskTreatmentOption
-
     close_mappings:
       - nist_ai_100_1:risk_response
+      
   treatment_priority:
     description: Priority for treating this risk.
     range: string
@@ -3274,9 +3273,9 @@ slots:
   ai_risk_treatment_process:
     description: Reference to the AI risk treatment process.
     range: AIRiskTreatmentProcess
-
     close_mappings:
       - iso27001:risk_treatment_process
+
   treatment_options_guidance:
     description: Guidance on selecting AI risk treatment options.
     range: string
@@ -3297,9 +3296,9 @@ slots:
     description: AI risk treatment plans.
     range: AIRiskTreatmentPlan
     multivalued: true
-
     close_mappings:
       - iso27001:risk_treatment_plans
+
   plan_scope:
     description: Scope of the treatment plan.
     range: string
@@ -3343,9 +3342,9 @@ slots:
     range: string
     annotations:
       iso42001_clause: "6.1.3"
-
     close_mappings:
       - nist_ai_100_1:residual_risk
+
   implementation_status:
     description: Current implementation status.
     range: ImplementationStatus
@@ -3418,9 +3417,9 @@ slots:
   statement_of_applicability:
     description: Reference to the AIMS Statement of Applicability.
     range: StatementOfApplicability
-
     exact_mappings:
       - iso27001:statement_of_applicability
+
   soa_entries:
     description: Individual control entries in the SoA.
     range: SoAEntry
@@ -3565,27 +3564,27 @@ slots:
   ai_system_purpose:
     description: Purpose of the AI system.
     range: string
-
     close_mappings:
       - nist_ai_100_1:application_domain
+
   intended_uses:
     description: Documented intended uses of the AI system.
     range: string
     multivalued: true
     annotations:
       annex_a_reference: "A.9.4"
-
     close_mappings:
       - nist_ai_100_1:intended_use
+
   foreseeable_misuse:
     description: Reasonably foreseeable misuse of the AI system.
     range: string
     multivalued: true
     annotations:
       annex_a_reference: "A.5"
-
     close_mappings:
       - nist_ai_100_1:potential_misuse
+
   application_domain:
     description: Domain in which the AI system is applied (e.g., health, finance).
     range: string
@@ -3597,9 +3596,9 @@ slots:
   lifecycle_stage:
     description: Current life cycle stage of the AI system.
     range: AISystemLifecycleStage
-
     exact_mappings:
       - nist_ai_100_1:lifecycle_stage
+
   organization_role:
     description: >-
       The organization's role with respect to this AI system
@@ -3785,9 +3784,9 @@ slots:
     description: Resources provided for the AIMS.
     range: Resource
     multivalued: true
-
     exact_mappings:
       - iso27001:resources
+
   resource_type:
     description: Type of resource.
     range: string
@@ -3823,9 +3822,9 @@ slots:
     description: Competence records for personnel.
     range: CompetenceRecord
     multivalued: true
-
     exact_mappings:
       - iso27001:competence_records
+
   person_name:
     description: Name of the person.
     range: string
@@ -3871,9 +3870,9 @@ slots:
   awareness_program:
     description: Reference to the awareness program.
     range: AwarenessProgram
-
     exact_mappings:
       - iso27001:awareness_program
+
   awareness_topics:
     description: Topics covered in the awareness program.
     range: string
@@ -3899,9 +3898,9 @@ slots:
   communication_plan:
     description: Reference to the communication plan.
     range: CommunicationPlan
-
     exact_mappings:
       - iso27001:communication_plan
+
   communication_items:
     description: Communication items in the plan.
     range: CommunicationItem
@@ -3937,20 +3936,20 @@ slots:
     multivalued: true
     annotations:
       iso42001_clause: "7.5"
+    exact_mappings:
+      - iso27001:documented_information_register
 
     # ---------------------
     # Operation Slots (Clause 8)
     # ---------------------
 
-    exact_mappings:
-      - iso27001:documented_information_register
   operational_procedures:
     description: Operational procedures of the AIMS.
     range: OperationalProcedure
     multivalued: true
-
     exact_mappings:
       - iso27001:operational_procedures
+
   procedure_scope:
     description: Scope of the procedure.
     range: string
@@ -3980,9 +3979,9 @@ slots:
   monitoring_program:
     description: Reference to the monitoring program.
     range: MonitoringProgram
-
     exact_mappings:
       - iso27001:monitoring_program
+
   monitoring_items:
     description: Items to be monitored.
     range: MonitoringItem
@@ -4020,9 +4019,9 @@ slots:
     description: Internal audits conducted.
     range: InternalAudit
     multivalued: true
-
     exact_mappings:
       - iso27001:internal_audits
+
   audit_reference:
     description: Unique reference identifier for the audit.
     range: string
@@ -4167,9 +4166,9 @@ slots:
     description: Management reviews of the AIMS.
     range: ManagementReview
     multivalued: true
-
     exact_mappings:
       - iso27001:management_reviews
+
   attendees:
     description: Attendees of the review.
     range: string
@@ -4232,9 +4231,9 @@ slots:
     description: Nonconformities identified.
     range: Nonconformity
     multivalued: true
-
     exact_mappings:
       - iso27001:nonconformities
+
   nonconformity_source:
     description: Source from which the nonconformity was identified.
     range: string
@@ -4285,9 +4284,9 @@ slots:
     description: Corrective actions taken.
     range: CorrectiveAction
     multivalued: true
-
     exact_mappings:
       - iso27001:corrective_actions
+
   linked_nonconformity:
     description: Linked nonconformity.
     range: Nonconformity
@@ -4323,16 +4322,16 @@ slots:
   aims_changes_required:
     description: Whether AIMS changes are required as a result of the action.
     range: boolean
-
     close_mappings:
       - iso27001:isms_changes_required
+
   improvements:
     description: Improvement opportunities being tracked.
     range: ImprovementOpportunity
     multivalued: true
-
     exact_mappings:
       - iso27001:improvements
+
   improvement_source:
     description: Source of the improvement opportunity.
     range: string
@@ -4456,40 +4455,40 @@ slots:
   certification_status:
     description: Current certification status of the AIMS.
     range: string
-
     exact_mappings:
       - iso27001:certification_status
+
   certification_body:
     description: Body that issued the certification.
     range: string
-
     exact_mappings:
       - iso27001:certification_body
+
   certification_date:
     description: Date the AIMS was certified.
     range: date
-
     exact_mappings:
       - iso27001:certification_date
+
   recertification_date:
     description: Date when recertification is due.
     range: date
+    exact_mappings:
+      - iso27001:recertification_date
 
     # ---------------------
     # Incident / Event Slots (Annex A.6.2.8, A.8.3, A.8.4)
     # ---------------------
 
-    exact_mappings:
-      - iso27001:recertification_date
   ai_system_events:
     description: AI system events recorded under the AIMS.
     range: AISystemEvent
     multivalued: true
     annotations:
       annex_a_reference: "A.6.2.8"
-
     related_mappings:
       - nist_ai_100_1:harms
+
   ai_incidents:
     description: AI incidents managed under the AIMS.
     range: AIIncident
@@ -4617,9 +4616,9 @@ slots:
       management system standards, Annex D).
     range: RelatedManagementSystem
     multivalued: true
-
     exact_mappings:
       - iso27001:integrated_management_systems
+
   top_management:
     description: >-
       Reference to the person or group exercising top management
@@ -4627,9 +4626,9 @@ slots:
     range: string
     annotations:
       iso42001_clause: "3.3"
-
     exact_mappings:
       - iso27001:top_management
+
   governing_body:
     description: >-
       Reference to the governing body to which top management is
@@ -4637,9 +4636,9 @@ slots:
     range: string
     annotations:
       iso42001_clause: "3.22"
-
     exact_mappings:
       - iso27001:governing_body
+
   leadership_commitment_evidence:
     description: >-
       Records or references demonstrating top-management leadership and
@@ -4648,9 +4647,9 @@ slots:
     multivalued: true
     annotations:
       iso42001_clause: "5.1"
-
     exact_mappings:
       - iso27001:leadership_commitment_evidence
+
   planned_changes:
     description: >-
       Records of planned changes to the AIMS, including purpose,
@@ -4660,13 +4659,13 @@ slots:
     multivalued: true
     annotations:
       iso42001_clause: "6.3"
+    exact_mappings:
+      - iso27001:planned_changes
 
     # ---------------------
     # AI System Oversight & Approach Slots
     # ---------------------
 
-    exact_mappings:
-      - iso27001:planned_changes
   ml_approach:
     description: >-
       Machine-learning approach used by the AI system, capturing the
@@ -4682,9 +4681,9 @@ slots:
     range: boolean
     annotations:
       annex_a_reference: "A.9"
-
     close_mappings:
       - nist_ai_100_1:human_ai_configuration
+
   human_oversight_description:
     description: >-
       Description of human-oversight arrangements, including review

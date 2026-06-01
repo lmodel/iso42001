@@ -1,0 +1,1055 @@
+ syntax="proto3";
+ package
+// metamodel_version: 1.11.0
+// version: 1.0.0
+// An AI incident, i.e., an AI system event determined to require response, escalation, or external communication. Captures triage, response lifecycle, and communications to users and other interested parties per A.8.4 and A.8.3.
+message AIIncident
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  datetime incidentDatetime = 0
+  aIIncidentCategory incidentCategory = 0
+  riskLevel severity = 0
+ repeated  aISystem affectedAiSystems = 0
+ repeated  impactAssessmentDimension affectedDimensions = 0
+  string incidentDescription = 0
+  string detectionMethod = 0
+ repeated  string responseActions = 0
+ repeated  string containmentActions = 0
+ repeated  string recoveryActions = 0
+  string rootCause = 0
+ repeated  string lessonsLearned = 0
+ repeated  string evidenceCollected = 0
+  boolean notificationRequired = 0
+ repeated  string notificationsMade = 0
+ repeated  string externalReports = 0
+  communicationPlan communicationPlan = 0
+ repeated  correctiveAction linkedCorrectiveActions = 0
+  datetime closureDatetime = 0
+  string postIncidentReview = 0
+ }
+// Top-level container representing an organization's complete AI Management System (AIMS) per ISO/IEC 42001:2023. Aggregates all components required to support the AIMS lifecycle.
+message AIManagementSystem
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  organization organization = 0
+  string scopeStatement = 0
+ repeated  string scopeBoundaries = 0
+ repeated  string scopeExclusions = 0
+ repeated  string contextInternalIssues = 0
+ repeated  string contextExternalIssues = 0
+ repeated  aIOrganizationalRole organizationalRolesWithAi = 0
+ repeated  relatedManagementSystem integratedManagementSystems = 0
+  string topManagement = 0
+  string governingBody = 0
+ repeated  string leadershipCommitmentEvidence = 0
+ repeated  string plannedChanges = 0
+ repeated  interestedParty interestedParties = 0
+  aIPolicy aiPolicy = 0
+ repeated  aIObjective aiObjectives = 0
+  aIRiskAssessmentProcess aiRiskAssessmentProcess = 0
+  aIRiskTreatmentProcess aiRiskTreatmentProcess = 0
+  aISystemImpactAssessmentProcess aiSystemImpactAssessmentProcess = 0
+  statementOfApplicability statementOfApplicability = 0
+ repeated  aIReferenceControl referenceControls = 0
+ repeated  aISystem aiSystems = 0
+ repeated  role roles = 0
+ repeated  resource resources = 0
+ repeated  competenceRecord competenceRecords = 0
+  awarenessProgram awarenessProgram = 0
+  communicationPlan communicationPlan = 0
+ repeated  documentedInformation documentedInformationRegister = 0
+ repeated  operationalProcedure operationalProcedures = 0
+ repeated  aIRiskAssessment aiRiskAssessments = 0
+ repeated  aIRiskTreatmentPlan aiRiskTreatmentPlans = 0
+ repeated  aISystemImpactAssessment aiSystemImpactAssessments = 0
+  monitoringProgram monitoringProgram = 0
+ repeated  internalAudit internalAudits = 0
+ repeated  managementReview managementReviews = 0
+ repeated  nonconformity nonconformities = 0
+ repeated  correctiveAction correctiveActions = 0
+ repeated  improvementOpportunity improvements = 0
+ repeated  thirdPartyRelationship thirdPartyRelationships = 0
+  string certificationStatus = 0
+  string certificationBody = 0
+  date certificationDate = 0
+  date recertificationDate = 0
+ repeated  aISystemEvent aiSystemEvents = 0
+ repeated  aIIncident aiIncidents = 0
+ repeated  concernReport concernReports = 0
+ }
+// A measurable AI objective per Clause 6.2, established at relevant functions and levels and aligned with the AI policy.
+message AIObjective
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string objectiveStatement = 0
+  aIObjectiveCategory objectiveCategory = 0
+  string targetValue = 0
+  string currentValue = 0
+  string metricDefinition = 0
+  string measurementMethod = 0
+  string measurementFrequency = 0
+  role responsibleRole = 0
+  string resourcesRequired = 0
+  date targetDate = 0
+  string achievementStatus = 0
+ repeated  aIRisk relatedRisks = 0
+ repeated  aIReferenceControl relatedControls = 0
+  string actionPlan = 0
+ }
+// The AI policy established by top management per Clause 5.2. Provides a framework for setting AI objectives and demonstrates commitment to responsible AI.
+message AIPolicy
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string policyStatement = 0
+  string policyObjectivesFramework = 0
+ repeated  string commitmentStatements = 0
+  string applicabilityStatement = 0
+  date communicationDate = 0
+  boolean acknowledgmentRequired = 0
+ repeated  topicSpecificPolicy relatedTopicPolicies = 0
+  date lastPolicyReviewDate = 0
+  date nextPolicyReviewDate = 0
+ }
+// A reference control from Annex A of ISO/IEC 42001:2023. Controls are grouped into nine families (A.2 through A.10) and supported by implementation guidance in Annex B.
+message AIReferenceControl
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string controlId = 0
+  string controlTitle = 0
+  aIControlFamily controlFamily = 0
+  string controlText = 0
+  string implementationGuidance = 0
+ repeated  aIReferenceControl relatedControls = 0
+ repeated  aIRiskSourceCategory applicableRiskSources = 0
+ repeated  aIObjectiveCategory applicableObjectives = 0
+  string controlOwner = 0
+  implementationStatus implementationStatus = 0
+  date implementationDate = 0
+  string effectivenessRating = 0
+  date lastTestDate = 0
+ repeated  string evidenceReferences = 0
+ }
+// An identified AI risk that may affect achievement of AI objectives, individuals, groups, or societies within the AIMS scope.
+message AIRisk
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  aIRiskSourceCategory riskSourceCategory = 0
+  string riskSourceDescription = 0
+ repeated  aISystem affectedAiSystems = 0
+ repeated  impactAssessmentDimension affectedDimensions = 0
+  string riskOwner = 0
+  likelihoodRating likelihood = 0
+  impactRating impact = 0
+  riskLevel inherentRiskLevel = 0
+ repeated  aIReferenceControl existingControls = 0
+  riskLevel residualRiskLevel = 0
+  riskTreatmentOption riskTreatmentOption = 0
+  string treatmentPriority = 0
+  aIRiskTreatmentPlan relatedTreatmentPlan = 0
+  aISystemImpactAssessment relatedImpactAssessment = 0
+ }
+// An instance of AI risk assessment performed per Clause 8.2, identifying and evaluating AI risks at planned intervals or following significant change.
+message AIRiskAssessment
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string assessmentScope = 0
+ repeated  aISystem aiSystemsAssessed = 0
+  date assessmentDate = 0
+  string assessor = 0
+  string methodologyUsed = 0
+ repeated  aIRisk risksIdentified = 0
+  aISystemImpactAssessment linkedImpactAssessment = 0
+  string summaryFindings = 0
+ repeated  string recommendations = 0
+  date nextAssessmentDate = 0
+ }
+// The documented AI risk assessment process per Clause 6.1.2, defining criteria and methodology for identifying, analysing, and evaluating AI risks. Aligned with ISO/IEC 23894.
+message AIRiskAssessmentProcess
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string riskAcceptanceCriteria = 0
+  string assessmentCriteria = 0
+  string assessmentMethodology = 0
+  string likelihoodScale = 0
+  string impactScale = 0
+  string riskMatrix = 0
+  string assessmentFrequency = 0
+ repeated  string triggerEvents = 0
+  string alignmentWithAiPolicy = 0
+ }
+// A plan documenting planned actions to address identified AI risks through selected controls. Requires approval by designated management per Clause 6.1.3.
+message AIRiskTreatmentPlan
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string planScope = 0
+ repeated  aIRisk risksAddressed = 0
+ repeated  string treatmentActions = 0
+ repeated  aIReferenceControl controlsToImplement = 0
+  string resourcesRequired = 0
+ repeated  string responsibleParties = 0
+  string implementationTimeline = 0
+  string riskOwnerApproval = 0
+  date approvedDate = 0
+  string residualRiskAcceptance = 0
+  implementationStatus implementationStatus = 0
+  date completionDate = 0
+ }
+// The documented AI risk treatment process per Clause 6.1.3, defining how treatment options are selected, how Annex A controls are considered, and how the Statement of Applicability is produced.
+message AIRiskTreatmentProcess
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string treatmentOptionsGuidance = 0
+  string controlSelectionCriteria = 0
+  string soaTemplate = 0
+  string approvalWorkflow = 0
+ }
+// An AI system within the AIMS scope. Captures life cycle stage, intended use, applicable domains, and references to data and tooling resources, technical documentation, and impact assessments.
+message AISystem
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string aiSystemPurpose = 0
+ repeated  string intendedUses = 0
+ repeated  string foreseeableMisuse = 0
+  string applicationDomain = 0
+  string deploymentContext = 0
+  aISystemLifecycleStage lifecycleStage = 0
+  aIOrganizationalRole organizationRole = 0
+  string autonomyLevel = 0
+  mLApproach mlApproach = 0
+  boolean humanOversightRequired = 0
+  string humanOversightDescription = 0
+ repeated  aISystemLifecycleStage humanOversightStages = 0
+  learningParadigm learningMode = 0
+ repeated  dataResource dataResources = 0
+ repeated  toolingResource toolingResources = 0
+ repeated  computingResource computingResources = 0
+ repeated  humanResource humanResources = 0
+ repeated  string technicalDocumentation = 0
+  string eventLogPolicy = 0
+ repeated  aIReferenceControl applicableControls = 0
+ repeated  aISystemImpactAssessment relatedImpactAssessments = 0
+ repeated  supplierRelationship supplierRelationships = 0
+ repeated  customerRelationship customerRelationships = 0
+ }
+// An AI system event detected by monitoring, users, or external reporting channels. Events may or may not be subsequently classified as incidents. Supports A.6.2.8 event log capture and A.8.3 external reporting workflows.
+message AISystemEvent
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  datetime eventDatetime = 0
+  string reporter = 0
+  string reporterPartyType = 0
+  string eventSource = 0
+  string eventDescription = 0
+ repeated  aISystem affectedAiSystems = 0
+  string initialAssessment = 0
+  boolean categorizedAsIncident = 0
+  aIIncident linkedIncident = 0
+ }
+// An instance of an AI system impact assessment performed per Clause 6.1.4 and Clause 8.4. Documents consequences of deployment, intended use, and foreseeable misuse on individuals, groups, and societies.
+message AISystemImpactAssessment
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string assessmentScope = 0
+ repeated  aISystem aiSystemsAssessed = 0
+  date assessmentDate = 0
+  string assessor = 0
+  string technicalContext = 0
+  string societalContext = 0
+ repeated  string applicableJurisdictions = 0
+ repeated  impactAssessmentDimension dimensionsAssessed = 0
+ repeated  string identifiedConsequences = 0
+ repeated  string mitigations = 0
+ repeated  string sharedWithParties = 0
+  date nextAssessmentDate = 0
+ }
+// The documented process for assessing the potential consequences for individuals, groups, and societies arising from the development, provision, or use of AI systems per Clause 6.1.4.
+message AISystemImpactAssessmentProcess
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string assessmentCriteria = 0
+  string assessmentMethodology = 0
+ repeated  impactAssessmentDimension dimensionsInScope = 0
+  string assessmentFrequency = 0
+ repeated  string triggerEvents = 0
+  string linkageToRiskAssessment = 0
+ }
+// A finding from an AIMS internal audit, including nonconformities, observations, and positive findings.
+message AuditFinding
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  auditFindingType findingType = 0
+  string clauseReference = 0
+  aIReferenceControl controlReference = 0
+  string findingDescription = 0
+  string objectiveEvidence = 0
+  string rootCauseAnalysis = 0
+  string riskImplication = 0
+  string recommendedAction = 0
+  string auditeeResponse = 0
+  correctiveAction linkedCorrectiveAction = 0
+  string closureStatus = 0
+  date closureDate = 0
+ }
+// The internal audit programme per Clause 9.2.2, planning AIMS audit activities over a defined period.
+message AuditProgramme
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string programmePeriod = 0
+ repeated  internalAudit plannedAudits = 0
+  string auditFrequencyRationale = 0
+  string resourceRequirements = 0
+  string auditorQualifications = 0
+  string programmeStatus = 0
+ }
+// The awareness program ensuring personnel understand their AI-related responsibilities per Clause 7.3.
+message AwarenessProgram
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+ repeated  string awarenessTopics = 0
+ repeated  string deliveryMethods = 0
+  string targetAudience = 0
+  string frequency = 0
+  string completionTracking = 0
+  string effectivenessMeasures = 0
+ }
+// A single communication requirement within the AIMS communication plan.
+message CommunicationItem
+ {
+  string subject = 0
+  string purpose = 0
+  string audience = 0
+  string frequency = 0
+  string method = 0
+  string responsibleParty = 0
+  string recordsRequired = 0
+ }
+// Plan for internal and external communications relevant to the AIMS per Clause 7.4.
+message CommunicationPlan
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+ repeated  communicationItem communicationItems = 0
+ }
+// Evidence of competence for personnel affecting AIMS performance per Clause 7.2.
+message CompetenceRecord
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string personName = 0
+  string personRole = 0
+ repeated  string requiredCompetencies = 0
+ repeated  string educationRecords = 0
+ repeated  string trainingRecords = 0
+ repeated  string experienceRecords = 0
+  date competencyAssessmentDate = 0
+ repeated  string competencyGaps = 0
+ repeated  string developmentActions = 0
+ }
+// A system or computing resource used in the development or operation of an AI system per A.4.5.
+message ComputingResource
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string resourceClass = 0
+  string quantity = 0
+  string location = 0
+  string environmentType = 0
+  string cost = 0
+ }
+// A concern raised by employees, contractors, users, or other interested parties about the organization's role with respect to an AI system. Operationalises Annex A.3.3 (Reporting of concerns). Confidentiality, anonymity, anti-reprisal protection, escalation, and timely response are core attributes; informed by ISO 37002.
+message ConcernReport
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  date reportedDate = 0
+  string reporter = 0
+  string reporterPartyType = 0
+  boolean reporterAnonymous = 0
+  string confidentialityLevel = 0
+  string reportingChannel = 0
+  string concernDescription = 0
+ repeated  aISystem concernAiSystems = 0
+ repeated  aISystemLifecycleStage concernLifecycleStage = 0
+  riskLevel severity = 0
+  string investigator = 0
+  string investigationStatus = 0
+  string investigationFindings = 0
+  string escalationStatus = 0
+  date responseDueDate = 0
+  date responseProvidedDate = 0
+  string resolution = 0
+ repeated  string reprisalProtectionActions = 0
+ repeated  aIIncident relatedIncidents = 0
+ repeated  nonconformity relatedNonconformities = 0
+  datetime closureDatetime = 0
+ }
+// A corrective action per Clause 10.2 to address the root cause of an AIMS nonconformity and reduce the likelihood of recurrence.
+message CorrectiveAction
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  nonconformity linkedNonconformity = 0
+  string actionDescription = 0
+  string rootCauseAddressed = 0
+  string responsibleParty = 0
+  date targetCompletionDate = 0
+  date actualCompletionDate = 0
+  string resourcesRequired = 0
+  string effectivenessCriteria = 0
+  date effectivenessReviewDate = 0
+  boolean effectivenessVerified = 0
+  boolean aimsChangesRequired = 0
+  string status = 0
+ }
+// A customer relationship for an AI product or service supplied by the organization per A.10.4.
+message CustomerRelationship
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string partyType = 0
+  string partyName = 0
+  string contractualBasis = 0
+ repeated  string allocatedResponsibilities = 0
+  string dataProcessingRole = 0
+ repeated  aISystem aiSystemsInvolved = 0
+ repeated  aISystemLifecycleStage lifecycleStagesInvolved = 0
+ repeated  string assuranceEvidence = 0
+  string reviewFrequency = 0
+ repeated  string customerExpectations = 0
+  string usageAgreementReference = 0
+ repeated  string communicatedLimitations = 0
+ }
+// A data resource used by an AI system per Annex A.7. Includes data acquisition, quality, provenance, and preparation metadata.
+message DataResource
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  dataResourceCategory dataResourceCategory = 0
+  string source = 0
+  string acquisitionMethod = 0
+ repeated  string dataQualityRequirements = 0
+ repeated  string dataQualityMetrics = 0
+  string dataProvenance = 0
+  string labellingProcess = 0
+ repeated  dataPreparationMethod dataPreparationMethods = 0
+  date lastUpdatedDate = 0
+ repeated  string knownBiasIssues = 0
+  string retentionPolicy = 0
+  string dataClassification = 0
+ }
+// A human resource (role, expertise area) involved in development, deployment, operation, maintenance, or oversight of an AI system per A.4.6.
+message HumanResource
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+ repeated  string requiredCompetencies = 0
+ repeated  string assignedTo = 0
+ repeated  string lifecycleResponsibilities = 0
+ }
+// An opportunity for continual improvement of the AIMS per Clause 10.1.
+message ImprovementOpportunity
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string improvementSource = 0
+  date identificationDate = 0
+  string identifiedBy = 0
+  string improvementDescription = 0
+  string expectedBenefit = 0
+  riskLevel priority = 0
+  string implementationPlan = 0
+  string responsibleParty = 0
+  date targetDate = 0
+  date actualCompletionDate = 0
+  string outcomeAssessment = 0
+  string status = 0
+ }
+// A stakeholder whose needs and expectations are relevant to the AIMS per Clause 4.2. Includes internal and external parties such as users, regulators, partners, suppliers, customers, AI subjects, and relevant authorities.
+message InterestedParty
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string partyType = 0
+  string relationship = 0
+ repeated  string requirements = 0
+  string communicationNeeds = 0
+  string contactInformation = 0
+ }
+// An internal audit instance per Clause 9.2 assessing AIMS conformance and effectiveness.
+message InternalAudit
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string auditReference = 0
+  auditType auditType = 0
+  string auditScope = 0
+  string auditCriteria = 0
+  string auditObjectives = 0
+  date auditPeriodStart = 0
+  date auditPeriodEnd = 0
+  string leadAuditor = 0
+ repeated  string auditTeam = 0
+ repeated  string auditeeRepresentatives = 0
+  string auditPlan = 0
+ repeated  auditFinding findings = 0
+ repeated  string positiveObservations = 0
+  string auditConclusion = 0
+  date reportDate = 0
+ repeated  string reportDistribution = 0
+ }
+// A management review per Clause 9.3, conducted by top management to evaluate ongoing AIMS suitability, adequacy, and effectiveness.
+message ManagementReview
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  date reviewDate = 0
+ repeated  string attendees = 0
+  string previousActionsStatus = 0
+ repeated  string contextChanges = 0
+ repeated  string interestedPartyChanges = 0
+  string performanceTrends = 0
+  string auditResultsSummary = 0
+  string riskAssessmentResults = 0
+  string impactAssessmentResults = 0
+ repeated  improvementOpportunity improvementOpportunities = 0
+ repeated  string decisions = 0
+ repeated  string actionItems = 0
+  date nextReviewDate = 0
+ }
+// A single item to be monitored and measured per Clause 9.1.
+message MonitoringItem
+ {
+  string metricName = 0
+  string metricDescription = 0
+  string measurementMethod = 0
+  string measurementFrequency = 0
+  string responsibleParty = 0
+  string analysisFrequency = 0
+  string analyst = 0
+  string targetThreshold = 0
+  string alertThreshold = 0
+  string currentValue = 0
+  string trend = 0
+ }
+// The program for monitoring, measurement, analysis, and evaluation of AIMS performance per Clause 9.1.
+message MonitoringProgram
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+ repeated  monitoringItem monitoringItems = 0
+ }
+// A nonconformity identified per Clause 10.2 representing failure to fulfill an AIMS requirement.
+message Nonconformity
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string nonconformitySource = 0
+  date detectionDate = 0
+  string detectedBy = 0
+  string requirementViolated = 0
+  string nonconformityDescription = 0
+ repeated  string immediateActions = 0
+  string consequencesAddressed = 0
+  string rootCause = 0
+  string similarNonconformitiesCheck = 0
+ repeated  correctiveAction linkedCorrectiveActions = 0
+  string status = 0
+  date closureDate = 0
+  string closureEvidence = 0
+ }
+// A documented procedure for operational planning and control of AIMS processes per Clause 8.1, including AI system life cycle related controls.
+message OperationalProcedure
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string procedureScope = 0
+  string processCriteria = 0
+ repeated  string controlMeasures = 0
+ repeated  role responsibleRoles = 0
+ repeated  aIReferenceControl relatedControls = 0
+  string changeControlRequirements = 0
+ }
+// The organization establishing and operating the AIMS. Captures the context required by Clause 4.1, including the organization's role(s) with respect to AI systems.
+message Organization
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string legalName = 0
+ repeated  string tradingNames = 0
+  string organizationType = 0
+  string industrySector = 0
+ repeated  sectorDomain sectorDomains = 0
+  string sizeCategory = 0
+  positiveIntegerType employeeCount = 0
+ repeated  string geographicLocations = 0
+ repeated  string regulatoryJurisdictions = 0
+  string parentOrganization = 0
+ repeated  string subsidiaries = 0
+ repeated  aIOrganizationalRole aiRoles = 0
+  boolean climateChangeRelevant = 0
+ }
+// A resource provided for the AIMS per Clause 7.1.
+message Resource
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string resourceType = 0
+  string quantity = 0
+  date allocationDate = 0
+  string allocatedTo = 0
+  string cost = 0
+  string availabilityStatus = 0
+ }
+// An AI-related role with defined responsibilities and authorities per Clause 5.3 and Annex A.3.2.
+message Role
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string roleType = 0
+ repeated  string responsibilities = 0
+ repeated  string authorities = 0
+  string accountability = 0
+ repeated  string assignedTo = 0
+  string delegationRules = 0
+  string reportingLine = 0
+ }
+// A single entry in the AIMS Statement of Applicability documenting the applicability and implementation status of one reference control.
+message SoAEntry
+ {
+  aIReferenceControl controlReference = 0
+  boolean isApplicable = 0
+  string inclusionJustification = 0
+  string exclusionJustification = 0
+  implementationStatus implementationStatus = 0
+  string implementationEvidence = 0
+  role responsibleRole = 0
+  date targetImplementationDate = 0
+ }
+// The Statement of Applicability (SoA) for the AIMS recording which Annex A controls apply, justification for inclusion or exclusion, and current implementation state per Clause 6.1.3 f).
+message StatementOfApplicability
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+ repeated  soAEntry soaEntries = 0
+  unsignedShortType totalControls = 0
+  unsignedShortType implementedCount = 0
+  unsignedShortType plannedCount = 0
+  unsignedShortType notApplicableCount = 0
+  date lastReviewDate = 0
+  string approvedBy = 0
+ }
+// A supplier relationship covering services, products, or materials (e.g., datasets, models, libraries, full AI systems) provided to the organization per A.10.3.
+message SupplierRelationship
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string partyType = 0
+  string partyName = 0
+  string contractualBasis = 0
+ repeated  string allocatedResponsibilities = 0
+  string dataProcessingRole = 0
+ repeated  aISystem aiSystemsInvolved = 0
+ repeated  aISystemLifecycleStage lifecycleStagesInvolved = 0
+ repeated  string assuranceEvidence = 0
+  string reviewFrequency = 0
+ repeated  string supplierAssessmentCriteria = 0
+  string monitoringMethod = 0
+ repeated  string correctiveActionsRequired = 0
+ }
+// A documented relationship with a third party (supplier, partner, or customer) involved in the AI system life cycle per A.10.
+message ThirdPartyRelationship
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string partyType = 0
+  string partyName = 0
+  string contractualBasis = 0
+ repeated  string allocatedResponsibilities = 0
+  string dataProcessingRole = 0
+ repeated  aISystem aiSystemsInvolved = 0
+ repeated  aISystemLifecycleStage lifecycleStagesInvolved = 0
+ repeated  string assuranceEvidence = 0
+  string reviewFrequency = 0
+ }
+// A tooling resource (algorithm, framework, model, library) used in an AI system per A.4.4.
+message ToolingResource
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  string toolCategory = 0
+  string toolVersion = 0
+  string vendor = 0
+  string licenseTerms = 0
+  string usagePurpose = 0
+ }
+// A topic-specific policy supporting the overarching AI policy, for example covering data governance, fairness, transparency, supplier use, or human oversight of AI systems.
+message TopicSpecificPolicy
+ {
+  uriorcurie id = 0
+  string name = 0
+  string description = 0
+  date createdDate = 0
+  date modifiedDate = 0
+  string version = 0
+  documentType documentType = 0
+  string documentReference = 0
+  string author = 0
+  string owner = 0
+  string approvedBy = 0
+  date approvedDate = 0
+  date effectiveDate = 0
+  date reviewDate = 0
+  string status = 0
+  string classification = 0
+  durationType retentionPeriod = 0
+  string topicArea = 0
+  aIPolicy parentPolicy = 0
+ repeated  aIReferenceControl applicableControls = 0
+  string targetAudience = 0
+ }

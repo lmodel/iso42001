@@ -1,0 +1,1649 @@
+{
+   "@context": {
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "dcterms": "http://purl.org/dc/terms/",
+      "iso22989": "https://w3id.org/lmodel/iso22989/",
+      "iso23894": "https://w3id.org/lmodel/iso23894/",
+      "iso27001": "https://w3id.org/lmodel/iso27001/",
+      "iso29100": "https://w3id.org/lmodel/iso29100/",
+      "iso42001": "https://w3id.org/lmodel/iso42001/",
+      "linkml": "https://w3id.org/linkml/",
+      "nist_ai_100_1": "https://w3id.org/lmodel/nist-ai-100-1/",
+      "nist_ai_600_1": "https://w3id.org/lmodel/nist-ai-600-1/",
+      "nist_ai_rmf": "https://www.nist.gov/itl/ai-risk-management-framework/",
+      "prov": "http://www.w3.org/ns/prov#",
+      "schema": "http://schema.org/",
+      "skos": "http://www.w3.org/2004/02/skos/core#",
+      "@vocab": "https://w3id.org/lmodel/iso42001/",
+      "accountability": {
+         "@id": "accountability"
+      },
+      "achievement_status": {
+         "@id": "achievement_status"
+      },
+      "acknowledgment_required": {
+         "@type": "xsd:boolean",
+         "@id": "acknowledgment_required"
+      },
+      "acquisition_method": {
+         "@id": "acquisition_method"
+      },
+      "action_description": {
+         "@id": "action_description"
+      },
+      "action_items": {
+         "@id": "action_items"
+      },
+      "action_plan": {
+         "@id": "action_plan"
+      },
+      "actual_completion_date": {
+         "@type": "xsd:date",
+         "@id": "actual_completion_date"
+      },
+      "affected_ai_systems": {
+         "@type": "@id",
+         "@id": "affected_ai_systems"
+      },
+      "affected_dimensions": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "affected_dimensions"
+      },
+      "ai_incidents": {
+         "@type": "@id",
+         "@id": "ai_incidents"
+      },
+      "ai_objectives": {
+         "@type": "@id",
+         "@id": "ai_objectives"
+      },
+      "ai_policy": {
+         "@type": "@id",
+         "@id": "ai_policy"
+      },
+      "ai_risk_assessment_process": {
+         "@type": "@id",
+         "@id": "ai_risk_assessment_process"
+      },
+      "ai_risk_assessments": {
+         "@type": "@id",
+         "@id": "ai_risk_assessments"
+      },
+      "ai_risk_treatment_plans": {
+         "@type": "@id",
+         "@id": "ai_risk_treatment_plans"
+      },
+      "ai_risk_treatment_process": {
+         "@type": "@id",
+         "@id": "ai_risk_treatment_process"
+      },
+      "ai_roles": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "ai_roles"
+      },
+      "ai_system_events": {
+         "@type": "@id",
+         "@id": "ai_system_events"
+      },
+      "ai_system_impact_assessment_process": {
+         "@type": "@id",
+         "@id": "ai_system_impact_assessment_process"
+      },
+      "ai_system_impact_assessments": {
+         "@type": "@id",
+         "@id": "ai_system_impact_assessments"
+      },
+      "ai_system_purpose": {
+         "@id": "ai_system_purpose"
+      },
+      "ai_systems": {
+         "@type": "@id",
+         "@id": "ai_systems"
+      },
+      "ai_systems_assessed": {
+         "@type": "@id",
+         "@id": "ai_systems_assessed"
+      },
+      "ai_systems_involved": {
+         "@type": "@id",
+         "@id": "ai_systems_involved"
+      },
+      "aims_changes_required": {
+         "@type": "xsd:boolean",
+         "@id": "aims_changes_required"
+      },
+      "alert_threshold": {
+         "@id": "alert_threshold"
+      },
+      "alignment_with_ai_policy": {
+         "@id": "alignment_with_ai_policy"
+      },
+      "allocated_responsibilities": {
+         "@id": "allocated_responsibilities"
+      },
+      "allocated_to": {
+         "@id": "allocated_to"
+      },
+      "allocation_date": {
+         "@type": "xsd:date",
+         "@id": "allocation_date"
+      },
+      "analysis_frequency": {
+         "@id": "analysis_frequency"
+      },
+      "analyst": {
+         "@id": "analyst"
+      },
+      "applicability_statement": {
+         "@id": "applicability_statement"
+      },
+      "applicable_controls": {
+         "@type": "@id",
+         "@id": "applicable_controls"
+      },
+      "applicable_jurisdictions": {
+         "@id": "applicable_jurisdictions"
+      },
+      "applicable_objectives": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "applicable_objectives"
+      },
+      "applicable_risk_sources": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "applicable_risk_sources"
+      },
+      "application_domain": {
+         "@id": "application_domain"
+      },
+      "approval_workflow": {
+         "@id": "approval_workflow"
+      },
+      "approved_by": {
+         "@id": "approved_by"
+      },
+      "approved_date": {
+         "@type": "xsd:date",
+         "@id": "approved_date"
+      },
+      "assessment_criteria": {
+         "@id": "assessment_criteria"
+      },
+      "assessment_date": {
+         "@type": "xsd:date",
+         "@id": "assessment_date"
+      },
+      "assessment_frequency": {
+         "@id": "assessment_frequency"
+      },
+      "assessment_methodology": {
+         "@id": "assessment_methodology"
+      },
+      "assessment_scope": {
+         "@id": "assessment_scope"
+      },
+      "assessor": {
+         "@id": "assessor"
+      },
+      "assigned_to": {
+         "@id": "assigned_to"
+      },
+      "assurance_evidence": {
+         "@id": "assurance_evidence"
+      },
+      "attendees": {
+         "@id": "attendees"
+      },
+      "audience": {
+         "@id": "audience"
+      },
+      "audit_conclusion": {
+         "@id": "audit_conclusion"
+      },
+      "audit_criteria": {
+         "@id": "audit_criteria"
+      },
+      "audit_frequency_rationale": {
+         "@id": "audit_frequency_rationale"
+      },
+      "audit_objectives": {
+         "@id": "audit_objectives"
+      },
+      "audit_period_end": {
+         "@type": "xsd:date",
+         "@id": "audit_period_end"
+      },
+      "audit_period_start": {
+         "@type": "xsd:date",
+         "@id": "audit_period_start"
+      },
+      "audit_plan": {
+         "@id": "audit_plan"
+      },
+      "audit_reference": {
+         "@id": "audit_reference"
+      },
+      "audit_results_summary": {
+         "@id": "audit_results_summary"
+      },
+      "audit_scope": {
+         "@id": "audit_scope"
+      },
+      "audit_team": {
+         "@id": "audit_team"
+      },
+      "audit_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "audit_type"
+      },
+      "auditee_representatives": {
+         "@id": "auditee_representatives"
+      },
+      "auditee_response": {
+         "@id": "auditee_response"
+      },
+      "auditor_qualifications": {
+         "@id": "auditor_qualifications"
+      },
+      "author": {
+         "@id": "author"
+      },
+      "authorities": {
+         "@id": "authorities"
+      },
+      "autonomy_level": {
+         "@id": "autonomy_level"
+      },
+      "availability_status": {
+         "@id": "availability_status"
+      },
+      "awareness_program": {
+         "@type": "@id",
+         "@id": "awareness_program"
+      },
+      "awareness_topics": {
+         "@id": "awareness_topics"
+      },
+      "categorized_as_incident": {
+         "@type": "xsd:boolean",
+         "@id": "categorized_as_incident"
+      },
+      "certification_body": {
+         "@id": "certification_body"
+      },
+      "certification_date": {
+         "@type": "xsd:date",
+         "@id": "certification_date"
+      },
+      "certification_status": {
+         "@id": "certification_status"
+      },
+      "change_control_requirements": {
+         "@id": "change_control_requirements"
+      },
+      "classification": {
+         "@id": "classification"
+      },
+      "clause_reference": {
+         "@id": "clause_reference"
+      },
+      "climate_change_relevant": {
+         "@type": "xsd:boolean",
+         "@id": "climate_change_relevant"
+      },
+      "closure_date": {
+         "@type": "xsd:date",
+         "@id": "closure_date"
+      },
+      "closure_datetime": {
+         "@type": "xsd:dateTime",
+         "@id": "closure_datetime"
+      },
+      "closure_evidence": {
+         "@id": "closure_evidence"
+      },
+      "closure_status": {
+         "@id": "closure_status"
+      },
+      "commitment_statements": {
+         "@id": "commitment_statements"
+      },
+      "communicated_limitations": {
+         "@id": "communicated_limitations"
+      },
+      "communication_date": {
+         "@type": "xsd:date",
+         "@id": "communication_date"
+      },
+      "communication_items": {
+         "@type": "@id",
+         "@id": "communication_items"
+      },
+      "communication_needs": {
+         "@id": "communication_needs"
+      },
+      "communication_plan": {
+         "@type": "@id",
+         "@id": "communication_plan"
+      },
+      "competence_records": {
+         "@type": "@id",
+         "@id": "competence_records"
+      },
+      "competency_assessment_date": {
+         "@type": "xsd:date",
+         "@id": "competency_assessment_date"
+      },
+      "competency_gaps": {
+         "@id": "competency_gaps"
+      },
+      "completion_date": {
+         "@type": "xsd:date",
+         "@id": "completion_date"
+      },
+      "completion_tracking": {
+         "@id": "completion_tracking"
+      },
+      "computing_resources": {
+         "@type": "@id",
+         "@id": "computing_resources"
+      },
+      "concern_ai_systems": {
+         "@type": "@id",
+         "@id": "concern_ai_systems"
+      },
+      "concern_description": {
+         "@id": "concern_description"
+      },
+      "concern_lifecycle_stage": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "concern_lifecycle_stage"
+      },
+      "concern_reports": {
+         "@type": "@id",
+         "@id": "concern_reports"
+      },
+      "confidentiality_level": {
+         "@id": "confidentiality_level"
+      },
+      "consequences_addressed": {
+         "@id": "consequences_addressed"
+      },
+      "contact_information": {
+         "@id": "contact_information"
+      },
+      "containment_actions": {
+         "@id": "containment_actions"
+      },
+      "context_changes": {
+         "@id": "context_changes"
+      },
+      "context_external_issues": {
+         "@id": "context_external_issues"
+      },
+      "context_internal_issues": {
+         "@id": "context_internal_issues"
+      },
+      "contractual_basis": {
+         "@id": "contractual_basis"
+      },
+      "control_family": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "control_family"
+      },
+      "control_id": {
+         "@id": "control_id"
+      },
+      "control_measures": {
+         "@id": "control_measures"
+      },
+      "control_owner": {
+         "@id": "control_owner"
+      },
+      "control_reference": {
+         "@type": "@id",
+         "@id": "control_reference"
+      },
+      "control_selection_criteria": {
+         "@id": "control_selection_criteria"
+      },
+      "control_text": {
+         "@id": "control_text"
+      },
+      "control_title": {
+         "@id": "control_title"
+      },
+      "controls_to_implement": {
+         "@type": "@id",
+         "@id": "controls_to_implement"
+      },
+      "corrective_actions": {
+         "@type": "@id",
+         "@id": "corrective_actions"
+      },
+      "corrective_actions_required": {
+         "@id": "corrective_actions_required"
+      },
+      "cost": {
+         "@id": "cost"
+      },
+      "created_date": {
+         "@type": "xsd:date",
+         "@id": "created_date"
+      },
+      "current_value": {
+         "@id": "current_value"
+      },
+      "customer_expectations": {
+         "@id": "customer_expectations"
+      },
+      "customer_relationships": {
+         "@type": "@id",
+         "@id": "customer_relationships"
+      },
+      "data_classification": {
+         "@id": "data_classification"
+      },
+      "data_preparation_methods": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "data_preparation_methods"
+      },
+      "data_processing_role": {
+         "@id": "data_processing_role"
+      },
+      "data_provenance": {
+         "@id": "data_provenance"
+      },
+      "data_quality_metrics": {
+         "@id": "data_quality_metrics"
+      },
+      "data_quality_requirements": {
+         "@id": "data_quality_requirements"
+      },
+      "data_resource_category": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "data_resource_category"
+      },
+      "data_resources": {
+         "@type": "@id",
+         "@id": "data_resources"
+      },
+      "decisions": {
+         "@id": "decisions"
+      },
+      "delegation_rules": {
+         "@id": "delegation_rules"
+      },
+      "delivery_methods": {
+         "@id": "delivery_methods"
+      },
+      "deployment_context": {
+         "@id": "deployment_context"
+      },
+      "description": {
+         "@id": "description"
+      },
+      "detected_by": {
+         "@id": "detected_by"
+      },
+      "detection_date": {
+         "@type": "xsd:date",
+         "@id": "detection_date"
+      },
+      "detection_method": {
+         "@id": "detection_method"
+      },
+      "development_actions": {
+         "@id": "development_actions"
+      },
+      "dimensions_assessed": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "dimensions_assessed"
+      },
+      "dimensions_in_scope": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "dimensions_in_scope"
+      },
+      "document_reference": {
+         "@id": "document_reference"
+      },
+      "document_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "document_type"
+      },
+      "documented_information_register": {
+         "@type": "@id",
+         "@id": "documented_information_register"
+      },
+      "education_records": {
+         "@id": "education_records"
+      },
+      "effective_date": {
+         "@type": "xsd:date",
+         "@id": "effective_date"
+      },
+      "effectiveness_criteria": {
+         "@id": "effectiveness_criteria"
+      },
+      "effectiveness_measures": {
+         "@id": "effectiveness_measures"
+      },
+      "effectiveness_rating": {
+         "@id": "effectiveness_rating"
+      },
+      "effectiveness_review_date": {
+         "@type": "xsd:date",
+         "@id": "effectiveness_review_date"
+      },
+      "effectiveness_verified": {
+         "@type": "xsd:boolean",
+         "@id": "effectiveness_verified"
+      },
+      "employee_count": {
+         "@type": "xsd:positiveInteger",
+         "@id": "employee_count"
+      },
+      "environment_type": {
+         "@id": "environment_type"
+      },
+      "escalation_status": {
+         "@id": "escalation_status"
+      },
+      "event_datetime": {
+         "@type": "xsd:dateTime",
+         "@id": "event_datetime"
+      },
+      "event_description": {
+         "@id": "event_description"
+      },
+      "event_log_policy": {
+         "@id": "event_log_policy"
+      },
+      "event_source": {
+         "@id": "event_source"
+      },
+      "evidence_collected": {
+         "@id": "evidence_collected"
+      },
+      "evidence_references": {
+         "@id": "evidence_references"
+      },
+      "exclusion_justification": {
+         "@id": "exclusion_justification"
+      },
+      "existing_controls": {
+         "@type": "@id",
+         "@id": "existing_controls"
+      },
+      "expected_benefit": {
+         "@id": "expected_benefit"
+      },
+      "experience_records": {
+         "@id": "experience_records"
+      },
+      "external_reports": {
+         "@id": "external_reports"
+      },
+      "finding_description": {
+         "@id": "finding_description"
+      },
+      "finding_type": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "finding_type"
+      },
+      "findings": {
+         "@type": "@id",
+         "@id": "findings"
+      },
+      "foreseeable_misuse": {
+         "@id": "foreseeable_misuse"
+      },
+      "frequency": {
+         "@id": "frequency"
+      },
+      "geographic_locations": {
+         "@id": "geographic_locations"
+      },
+      "governing_body": {
+         "@id": "governing_body"
+      },
+      "human_oversight_description": {
+         "@id": "human_oversight_description"
+      },
+      "human_oversight_required": {
+         "@type": "xsd:boolean",
+         "@id": "human_oversight_required"
+      },
+      "human_oversight_stages": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "human_oversight_stages"
+      },
+      "human_resources": {
+         "@type": "@id",
+         "@id": "human_resources"
+      },
+      "id": "@id",
+      "identification_date": {
+         "@type": "xsd:date",
+         "@id": "identification_date"
+      },
+      "identified_by": {
+         "@id": "identified_by"
+      },
+      "identified_consequences": {
+         "@id": "identified_consequences"
+      },
+      "immediate_actions": {
+         "@id": "immediate_actions"
+      },
+      "impact": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "impact"
+      },
+      "impact_assessment_results": {
+         "@id": "impact_assessment_results"
+      },
+      "impact_scale": {
+         "@id": "impact_scale"
+      },
+      "implementation_date": {
+         "@type": "xsd:date",
+         "@id": "implementation_date"
+      },
+      "implementation_evidence": {
+         "@id": "implementation_evidence"
+      },
+      "implementation_guidance": {
+         "@id": "implementation_guidance"
+      },
+      "implementation_plan": {
+         "@id": "implementation_plan"
+      },
+      "implementation_status": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "implementation_status"
+      },
+      "implementation_timeline": {
+         "@id": "implementation_timeline"
+      },
+      "implemented_count": {
+         "@type": "xsd:unsignedShort",
+         "@id": "implemented_count"
+      },
+      "improvement_description": {
+         "@id": "improvement_description"
+      },
+      "improvement_opportunities": {
+         "@type": "@id",
+         "@id": "improvement_opportunities"
+      },
+      "improvement_source": {
+         "@id": "improvement_source"
+      },
+      "improvements": {
+         "@type": "@id",
+         "@id": "improvements"
+      },
+      "incident_category": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "incident_category"
+      },
+      "incident_datetime": {
+         "@type": "xsd:dateTime",
+         "@id": "incident_datetime"
+      },
+      "incident_description": {
+         "@id": "incident_description"
+      },
+      "inclusion_justification": {
+         "@id": "inclusion_justification"
+      },
+      "industry_sector": {
+         "@id": "industry_sector"
+      },
+      "inherent_risk_level": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "inherent_risk_level"
+      },
+      "initial_assessment": {
+         "@id": "initial_assessment"
+      },
+      "integrated_management_systems": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "integrated_management_systems"
+      },
+      "intended_uses": {
+         "@id": "intended_uses"
+      },
+      "interested_parties": {
+         "@type": "@id",
+         "@id": "interested_parties"
+      },
+      "interested_party_changes": {
+         "@id": "interested_party_changes"
+      },
+      "internal_audits": {
+         "@type": "@id",
+         "@id": "internal_audits"
+      },
+      "investigation_findings": {
+         "@id": "investigation_findings"
+      },
+      "investigation_status": {
+         "@id": "investigation_status"
+      },
+      "investigator": {
+         "@id": "investigator"
+      },
+      "is_applicable": {
+         "@type": "xsd:boolean",
+         "@id": "is_applicable"
+      },
+      "known_bias_issues": {
+         "@id": "known_bias_issues"
+      },
+      "labelling_process": {
+         "@id": "labelling_process"
+      },
+      "last_policy_review_date": {
+         "@type": "xsd:date",
+         "@id": "last_policy_review_date"
+      },
+      "last_review_date": {
+         "@type": "xsd:date",
+         "@id": "last_review_date"
+      },
+      "last_test_date": {
+         "@type": "xsd:date",
+         "@id": "last_test_date"
+      },
+      "last_updated_date": {
+         "@type": "xsd:date",
+         "@id": "last_updated_date"
+      },
+      "lead_auditor": {
+         "@id": "lead_auditor"
+      },
+      "leadership_commitment_evidence": {
+         "@id": "leadership_commitment_evidence"
+      },
+      "learning_mode": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "learning_mode"
+      },
+      "legal_name": {
+         "@id": "legal_name"
+      },
+      "lessons_learned": {
+         "@id": "lessons_learned"
+      },
+      "license_terms": {
+         "@id": "license_terms"
+      },
+      "lifecycle_responsibilities": {
+         "@id": "lifecycle_responsibilities"
+      },
+      "lifecycle_stage": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "lifecycle_stage"
+      },
+      "lifecycle_stages_involved": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "lifecycle_stages_involved"
+      },
+      "likelihood": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "likelihood"
+      },
+      "likelihood_scale": {
+         "@id": "likelihood_scale"
+      },
+      "linkage_to_risk_assessment": {
+         "@id": "linkage_to_risk_assessment"
+      },
+      "linked_corrective_action": {
+         "@type": "@id",
+         "@id": "linked_corrective_action"
+      },
+      "linked_corrective_actions": {
+         "@type": "@id",
+         "@id": "linked_corrective_actions"
+      },
+      "linked_impact_assessment": {
+         "@type": "@id",
+         "@id": "linked_impact_assessment"
+      },
+      "linked_incident": {
+         "@type": "@id",
+         "@id": "linked_incident"
+      },
+      "linked_nonconformity": {
+         "@type": "@id",
+         "@id": "linked_nonconformity"
+      },
+      "location": {
+         "@id": "location"
+      },
+      "management_reviews": {
+         "@type": "@id",
+         "@id": "management_reviews"
+      },
+      "measurement_frequency": {
+         "@id": "measurement_frequency"
+      },
+      "measurement_method": {
+         "@id": "measurement_method"
+      },
+      "method": {
+         "@id": "method"
+      },
+      "methodology_used": {
+         "@id": "methodology_used"
+      },
+      "metric_definition": {
+         "@id": "metric_definition"
+      },
+      "metric_description": {
+         "@id": "metric_description"
+      },
+      "metric_name": {
+         "@id": "metric_name"
+      },
+      "mitigations": {
+         "@id": "mitigations"
+      },
+      "ml_approach": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "ml_approach"
+      },
+      "modified_date": {
+         "@type": "xsd:date",
+         "@id": "modified_date"
+      },
+      "monitoring_items": {
+         "@type": "@id",
+         "@id": "monitoring_items"
+      },
+      "monitoring_method": {
+         "@id": "monitoring_method"
+      },
+      "monitoring_program": {
+         "@type": "@id",
+         "@id": "monitoring_program"
+      },
+      "name": {
+         "@id": "name"
+      },
+      "next_assessment_date": {
+         "@type": "xsd:date",
+         "@id": "next_assessment_date"
+      },
+      "next_policy_review_date": {
+         "@type": "xsd:date",
+         "@id": "next_policy_review_date"
+      },
+      "next_review_date": {
+         "@type": "xsd:date",
+         "@id": "next_review_date"
+      },
+      "nonconformities": {
+         "@type": "@id",
+         "@id": "nonconformities"
+      },
+      "nonconformity_description": {
+         "@id": "nonconformity_description"
+      },
+      "nonconformity_source": {
+         "@id": "nonconformity_source"
+      },
+      "not_applicable_count": {
+         "@type": "xsd:unsignedShort",
+         "@id": "not_applicable_count"
+      },
+      "notification_required": {
+         "@type": "xsd:boolean",
+         "@id": "notification_required"
+      },
+      "notifications_made": {
+         "@id": "notifications_made"
+      },
+      "objective_category": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "objective_category"
+      },
+      "objective_evidence": {
+         "@id": "objective_evidence"
+      },
+      "objective_statement": {
+         "@id": "objective_statement"
+      },
+      "operational_procedures": {
+         "@type": "@id",
+         "@id": "operational_procedures"
+      },
+      "organization": {
+         "@type": "@id",
+         "@id": "organization"
+      },
+      "organization_role": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "organization_role"
+      },
+      "organization_type": {
+         "@id": "organization_type"
+      },
+      "organizational_roles_with_ai": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "organizational_roles_with_ai"
+      },
+      "outcome_assessment": {
+         "@id": "outcome_assessment"
+      },
+      "owner": {
+         "@id": "owner"
+      },
+      "parent_organization": {
+         "@id": "parent_organization"
+      },
+      "parent_policy": {
+         "@type": "@id",
+         "@id": "parent_policy"
+      },
+      "party_name": {
+         "@id": "party_name"
+      },
+      "party_type": {
+         "@id": "party_type"
+      },
+      "performance_trends": {
+         "@id": "performance_trends"
+      },
+      "person_name": {
+         "@id": "person_name"
+      },
+      "person_role": {
+         "@id": "person_role"
+      },
+      "plan_scope": {
+         "@id": "plan_scope"
+      },
+      "planned_audits": {
+         "@type": "@id",
+         "@id": "planned_audits"
+      },
+      "planned_changes": {
+         "@id": "planned_changes"
+      },
+      "planned_count": {
+         "@type": "xsd:unsignedShort",
+         "@id": "planned_count"
+      },
+      "policy_objectives_framework": {
+         "@id": "policy_objectives_framework"
+      },
+      "policy_statement": {
+         "@id": "policy_statement"
+      },
+      "positive_observations": {
+         "@id": "positive_observations"
+      },
+      "post_incident_review": {
+         "@id": "post_incident_review"
+      },
+      "previous_actions_status": {
+         "@id": "previous_actions_status"
+      },
+      "priority": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "priority"
+      },
+      "procedure_scope": {
+         "@id": "procedure_scope"
+      },
+      "process_criteria": {
+         "@id": "process_criteria"
+      },
+      "programme_period": {
+         "@id": "programme_period"
+      },
+      "programme_status": {
+         "@id": "programme_status"
+      },
+      "purpose": {
+         "@id": "purpose"
+      },
+      "quantity": {
+         "@id": "quantity"
+      },
+      "recertification_date": {
+         "@type": "xsd:date",
+         "@id": "recertification_date"
+      },
+      "recommendations": {
+         "@id": "recommendations"
+      },
+      "recommended_action": {
+         "@id": "recommended_action"
+      },
+      "records_required": {
+         "@id": "records_required"
+      },
+      "recovery_actions": {
+         "@id": "recovery_actions"
+      },
+      "reference_controls": {
+         "@type": "@id",
+         "@id": "reference_controls"
+      },
+      "regulatory_jurisdictions": {
+         "@id": "regulatory_jurisdictions"
+      },
+      "related_controls": {
+         "@type": "@id",
+         "@id": "related_controls"
+      },
+      "related_impact_assessment": {
+         "@type": "@id",
+         "@id": "related_impact_assessment"
+      },
+      "related_impact_assessments": {
+         "@type": "@id",
+         "@id": "related_impact_assessments"
+      },
+      "related_incidents": {
+         "@type": "@id",
+         "@id": "related_incidents"
+      },
+      "related_nonconformities": {
+         "@type": "@id",
+         "@id": "related_nonconformities"
+      },
+      "related_risks": {
+         "@type": "@id",
+         "@id": "related_risks"
+      },
+      "related_topic_policies": {
+         "@type": "@id",
+         "@id": "related_topic_policies"
+      },
+      "related_treatment_plan": {
+         "@type": "@id",
+         "@id": "related_treatment_plan"
+      },
+      "relationship": {
+         "@id": "relationship"
+      },
+      "report_date": {
+         "@type": "xsd:date",
+         "@id": "report_date"
+      },
+      "report_distribution": {
+         "@id": "report_distribution"
+      },
+      "reported_date": {
+         "@type": "xsd:date",
+         "@id": "reported_date"
+      },
+      "reporter": {
+         "@id": "reporter"
+      },
+      "reporter_anonymous": {
+         "@type": "xsd:boolean",
+         "@id": "reporter_anonymous"
+      },
+      "reporter_party_type": {
+         "@id": "reporter_party_type"
+      },
+      "reporting_channel": {
+         "@id": "reporting_channel"
+      },
+      "reporting_line": {
+         "@id": "reporting_line"
+      },
+      "reprisal_protection_actions": {
+         "@id": "reprisal_protection_actions"
+      },
+      "required_competencies": {
+         "@id": "required_competencies"
+      },
+      "requirement_violated": {
+         "@id": "requirement_violated"
+      },
+      "requirements": {
+         "@id": "requirements"
+      },
+      "residual_risk_acceptance": {
+         "@id": "residual_risk_acceptance"
+      },
+      "residual_risk_level": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "residual_risk_level"
+      },
+      "resolution": {
+         "@id": "resolution"
+      },
+      "resource_class": {
+         "@id": "resource_class"
+      },
+      "resource_requirements": {
+         "@id": "resource_requirements"
+      },
+      "resource_type": {
+         "@id": "resource_type"
+      },
+      "resources": {
+         "@type": "@id",
+         "@id": "resources"
+      },
+      "resources_required": {
+         "@id": "resources_required"
+      },
+      "response_actions": {
+         "@id": "response_actions"
+      },
+      "response_due_date": {
+         "@type": "xsd:date",
+         "@id": "response_due_date"
+      },
+      "response_provided_date": {
+         "@type": "xsd:date",
+         "@id": "response_provided_date"
+      },
+      "responsibilities": {
+         "@id": "responsibilities"
+      },
+      "responsible_parties": {
+         "@id": "responsible_parties"
+      },
+      "responsible_party": {
+         "@id": "responsible_party"
+      },
+      "responsible_role": {
+         "@type": "@id",
+         "@id": "responsible_role"
+      },
+      "responsible_roles": {
+         "@type": "@id",
+         "@id": "responsible_roles"
+      },
+      "retention_period": {
+         "@type": "xsd:duration",
+         "@id": "retention_period"
+      },
+      "retention_policy": {
+         "@id": "retention_policy"
+      },
+      "review_date": {
+         "@type": "xsd:date",
+         "@id": "review_date"
+      },
+      "review_frequency": {
+         "@id": "review_frequency"
+      },
+      "risk_acceptance_criteria": {
+         "@id": "risk_acceptance_criteria"
+      },
+      "risk_assessment_results": {
+         "@id": "risk_assessment_results"
+      },
+      "risk_implication": {
+         "@id": "risk_implication"
+      },
+      "risk_matrix": {
+         "@id": "risk_matrix"
+      },
+      "risk_owner": {
+         "@id": "risk_owner"
+      },
+      "risk_owner_approval": {
+         "@id": "risk_owner_approval"
+      },
+      "risk_source_category": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "risk_source_category"
+      },
+      "risk_source_description": {
+         "@id": "risk_source_description"
+      },
+      "risk_treatment_option": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "risk_treatment_option"
+      },
+      "risks_addressed": {
+         "@type": "@id",
+         "@id": "risks_addressed"
+      },
+      "risks_identified": {
+         "@type": "@id",
+         "@id": "risks_identified"
+      },
+      "role_type": {
+         "@id": "role_type"
+      },
+      "roles": {
+         "@type": "@id",
+         "@id": "roles"
+      },
+      "root_cause": {
+         "@id": "root_cause"
+      },
+      "root_cause_addressed": {
+         "@id": "root_cause_addressed"
+      },
+      "root_cause_analysis": {
+         "@id": "root_cause_analysis"
+      },
+      "scope_boundaries": {
+         "@id": "scope_boundaries"
+      },
+      "scope_exclusions": {
+         "@id": "scope_exclusions"
+      },
+      "scope_statement": {
+         "@id": "scope_statement"
+      },
+      "sector_domains": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "sector_domains"
+      },
+      "severity": {
+         "@context": {
+            "text": "skos:notation",
+            "description": "skos:prefLabel",
+            "meaning": "@id"
+         },
+         "@id": "severity"
+      },
+      "shared_with_parties": {
+         "@id": "shared_with_parties"
+      },
+      "similar_nonconformities_check": {
+         "@id": "similar_nonconformities_check"
+      },
+      "size_category": {
+         "@id": "size_category"
+      },
+      "soa_entries": {
+         "@type": "@id",
+         "@id": "soa_entries"
+      },
+      "soa_template": {
+         "@id": "soa_template"
+      },
+      "societal_context": {
+         "@id": "societal_context"
+      },
+      "source": {
+         "@id": "source"
+      },
+      "statement_of_applicability": {
+         "@type": "@id",
+         "@id": "statement_of_applicability"
+      },
+      "status": {
+         "@id": "status"
+      },
+      "subject": {
+         "@id": "subject"
+      },
+      "subsidiaries": {
+         "@id": "subsidiaries"
+      },
+      "summary_findings": {
+         "@id": "summary_findings"
+      },
+      "supplier_assessment_criteria": {
+         "@id": "supplier_assessment_criteria"
+      },
+      "supplier_relationships": {
+         "@type": "@id",
+         "@id": "supplier_relationships"
+      },
+      "target_audience": {
+         "@id": "target_audience"
+      },
+      "target_completion_date": {
+         "@type": "xsd:date",
+         "@id": "target_completion_date"
+      },
+      "target_date": {
+         "@type": "xsd:date",
+         "@id": "target_date"
+      },
+      "target_implementation_date": {
+         "@type": "xsd:date",
+         "@id": "target_implementation_date"
+      },
+      "target_threshold": {
+         "@id": "target_threshold"
+      },
+      "target_value": {
+         "@id": "target_value"
+      },
+      "technical_context": {
+         "@id": "technical_context"
+      },
+      "technical_documentation": {
+         "@id": "technical_documentation"
+      },
+      "third_party_relationships": {
+         "@type": "@id",
+         "@id": "third_party_relationships"
+      },
+      "tool_category": {
+         "@id": "tool_category"
+      },
+      "tool_version": {
+         "@id": "tool_version"
+      },
+      "tooling_resources": {
+         "@type": "@id",
+         "@id": "tooling_resources"
+      },
+      "top_management": {
+         "@id": "top_management"
+      },
+      "topic_area": {
+         "@id": "topic_area"
+      },
+      "total_controls": {
+         "@type": "xsd:unsignedShort",
+         "@id": "total_controls"
+      },
+      "trading_names": {
+         "@id": "trading_names"
+      },
+      "training_records": {
+         "@id": "training_records"
+      },
+      "treatment_actions": {
+         "@id": "treatment_actions"
+      },
+      "treatment_options_guidance": {
+         "@id": "treatment_options_guidance"
+      },
+      "treatment_priority": {
+         "@id": "treatment_priority"
+      },
+      "trend": {
+         "@id": "trend"
+      },
+      "trigger_events": {
+         "@id": "trigger_events"
+      },
+      "usage_agreement_reference": {
+         "@id": "usage_agreement_reference"
+      },
+      "usage_purpose": {
+         "@id": "usage_purpose"
+      },
+      "vendor": {
+         "@id": "vendor"
+      },
+      "version": {
+         "@id": "version"
+      },
+      "AIIncident": {
+         "@id": "AIIncident"
+      },
+      "AIManagementSystem": {
+         "@id": "AIManagementSystem"
+      },
+      "AIObjective": {
+         "@id": "AIObjective"
+      },
+      "AIPolicy": {
+         "@id": "AIPolicy"
+      },
+      "AIReferenceControl": {
+         "@id": "AIReferenceControl"
+      },
+      "AIRisk": {
+         "@id": "AIRisk"
+      },
+      "AIRiskAssessment": {
+         "@id": "AIRiskAssessment"
+      },
+      "AIRiskAssessmentProcess": {
+         "@id": "AIRiskAssessmentProcess"
+      },
+      "AIRiskTreatmentPlan": {
+         "@id": "AIRiskTreatmentPlan"
+      },
+      "AIRiskTreatmentProcess": {
+         "@id": "AIRiskTreatmentProcess"
+      },
+      "AISystem": {
+         "@id": "AISystem"
+      },
+      "AISystemEvent": {
+         "@id": "AISystemEvent"
+      },
+      "AISystemImpactAssessment": {
+         "@id": "AISystemImpactAssessment"
+      },
+      "AISystemImpactAssessmentProcess": {
+         "@id": "AISystemImpactAssessmentProcess"
+      },
+      "AuditFinding": {
+         "@id": "AuditFinding"
+      },
+      "AuditProgramme": {
+         "@id": "AuditProgramme"
+      },
+      "AwarenessProgram": {
+         "@id": "AwarenessProgram"
+      },
+      "CommunicationItem": {
+         "@id": "CommunicationItem"
+      },
+      "CommunicationPlan": {
+         "@id": "CommunicationPlan"
+      },
+      "CompetenceRecord": {
+         "@id": "CompetenceRecord"
+      },
+      "ComputingResource": {
+         "@id": "ComputingResource"
+      },
+      "ConcernReport": {
+         "@id": "ConcernReport"
+      },
+      "CorrectiveAction": {
+         "@id": "CorrectiveAction"
+      },
+      "CustomerRelationship": {
+         "@id": "CustomerRelationship"
+      },
+      "DataResource": {
+         "@id": "DataResource"
+      },
+      "DocumentedInformation": {
+         "@id": "DocumentedInformation"
+      },
+      "HumanResource": {
+         "@id": "HumanResource"
+      },
+      "ImprovementOpportunity": {
+         "@id": "ImprovementOpportunity"
+      },
+      "InterestedParty": {
+         "@id": "InterestedParty"
+      },
+      "InternalAudit": {
+         "@id": "InternalAudit"
+      },
+      "ManagementReview": {
+         "@id": "ManagementReview"
+      },
+      "MonitoringItem": {
+         "@id": "MonitoringItem"
+      },
+      "MonitoringProgram": {
+         "@id": "MonitoringProgram"
+      },
+      "NamedEntity": {
+         "@id": "NamedEntity"
+      },
+      "Nonconformity": {
+         "@id": "Nonconformity"
+      },
+      "OperationalProcedure": {
+         "@id": "OperationalProcedure"
+      },
+      "Organization": {
+         "@id": "Organization"
+      },
+      "Resource": {
+         "@id": "Resource"
+      },
+      "Role": {
+         "@id": "Role"
+      },
+      "SoAEntry": {
+         "@id": "SoAEntry"
+      },
+      "StatementOfApplicability": {
+         "@id": "StatementOfApplicability"
+      },
+      "SupplierRelationship": {
+         "@id": "SupplierRelationship"
+      },
+      "ThirdPartyRelationship": {
+         "@id": "ThirdPartyRelationship"
+      },
+      "ToolingResource": {
+         "@id": "ToolingResource"
+      },
+      "TopicSpecificPolicy": {
+         "@id": "TopicSpecificPolicy"
+      }
+   }
+}

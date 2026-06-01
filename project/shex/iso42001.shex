@@ -1,0 +1,1145 @@
+# metamodel_version: 1.11.0
+# version: 1.0.0
+BASE <https://w3id.org/lmodel/iso42001/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml: <https://w3id.org/linkml/>
+
+
+<PositiveIntegerType> xsd:positiveInteger
+
+<UnsignedShortType> xsd:unsignedShort
+
+<DurationType> xsd:duration
+
+linkml:String xsd:string
+
+linkml:Integer xsd:integer
+
+linkml:Boolean xsd:boolean
+
+linkml:Float xsd:float
+
+linkml:Double xsd:double
+
+linkml:Decimal xsd:decimal
+
+linkml:Time xsd:time
+
+linkml:Date xsd:date
+
+linkml:Datetime xsd:dateTime
+
+linkml:DateOrDatetime linkml:DateOrDatetime
+
+linkml:Uriorcurie IRI
+
+linkml:Curie xsd:string
+
+linkml:Uri IRI
+
+linkml:Ncname xsd:string
+
+linkml:Objectidentifier IRI
+
+linkml:Nodeidentifier NONLITERAL
+
+linkml:Jsonpointer xsd:string
+
+linkml:Jsonpath xsd:string
+
+linkml:Sparqlpath xsd:string
+
+<AIIncident> CLOSED {
+    (  $<AIIncident_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <incident_datetime> @linkml:Datetime ? ;
+          <incident_category> [ <https://w3id.org/lmodel/iso42001/AIIncidentCategory#data_poisoning>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#model_stealing>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#model_inversion>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#membership_inference>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#prompt_injection>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#hallucination>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#model_drift>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#bias_incident>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#safety_incident>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#privacy_breach>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#security_breach>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#misuse>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#adverse_societal_impact>
+             <https://w3id.org/lmodel/iso42001/AIIncidentCategory#other> ] ? ;
+          <severity> [ <https://w3id.org/lmodel/iso42001/RiskLevel#very_low> <https://w3id.org/lmodel/iso42001/RiskLevel#low>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#medium> <https://w3id.org/lmodel/iso42001/RiskLevel#high>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#critical> ] ? ;
+          <affected_ai_systems> @<AISystem> * ;
+          <affected_dimensions> [ <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#individual>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#group>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#societal>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#fairness>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#transparency>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#explainability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accountability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accessibility>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#human_rights>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#financial>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#health>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#environmental>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#economic>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#government>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#cultural_norms>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#safety>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#privacy>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#security> ] * ;
+          <incident_description> @linkml:String ? ;
+          <detection_method> @linkml:String ? ;
+          <response_actions> @linkml:String * ;
+          <containment_actions> @linkml:String * ;
+          <recovery_actions> @linkml:String * ;
+          <root_cause> @linkml:String ? ;
+          <lessons_learned> @linkml:String * ;
+          <evidence_collected> @linkml:String * ;
+          <notification_required> @linkml:Boolean ? ;
+          <notifications_made> @linkml:String * ;
+          <external_reports> @linkml:String * ;
+          <communication_plan> @<CommunicationPlan> ? ;
+          <linked_corrective_actions> @<CorrectiveAction> * ;
+          <closure_datetime> @linkml:Datetime ? ;
+          <post_incident_review> @linkml:String ?
+       ) ;
+       rdf:type [ <AIIncident> ]
+    )
+}
+
+<AIManagementSystem> CLOSED {
+    (  $<AIManagementSystem_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <organization> @<Organization> ? ;
+          <scope_statement> @linkml:String ? ;
+          <scope_boundaries> @linkml:String * ;
+          <scope_exclusions> @linkml:String * ;
+          <context_internal_issues> @linkml:String * ;
+          <context_external_issues> @linkml:String * ;
+          <organizational_roles_with_ai> [ <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_provider>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_producer>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_customer>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_partner>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_subject>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#relevant_authority> ] * ;
+          <integrated_management_systems> [ <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_27001>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_27701>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_9001>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_22000>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_13485>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iec_62304>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_5338>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_5259>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_22989>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_23894>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_38507>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_27000>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_29100>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_31000>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_25024>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_iec_25059>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_19011>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#iso_37002>
+             <https://w3id.org/lmodel/iso42001/RelatedManagementSystem#other> ] * ;
+          <top_management> @linkml:String ? ;
+          <governing_body> @linkml:String ? ;
+          <leadership_commitment_evidence> @linkml:String * ;
+          <planned_changes> @linkml:String * ;
+          <interested_parties> @<InterestedParty> * ;
+          <ai_policy> @<AIPolicy> ? ;
+          <ai_objectives> @<AIObjective> * ;
+          <ai_risk_assessment_process> @<AIRiskAssessmentProcess> ? ;
+          <ai_risk_treatment_process> @<AIRiskTreatmentProcess> ? ;
+          <ai_system_impact_assessment_process> @<AISystemImpactAssessmentProcess> ? ;
+          <statement_of_applicability> @<StatementOfApplicability> ? ;
+          <reference_controls> @<AIReferenceControl> * ;
+          <ai_systems> @<AISystem> * ;
+          <roles> @<Role> * ;
+          <resources> @<Resource> * ;
+          <competence_records> @<CompetenceRecord> * ;
+          <awareness_program> @<AwarenessProgram> ? ;
+          <communication_plan> @<CommunicationPlan> ? ;
+          <documented_information_register> @<DocumentedInformation> * ;
+          <operational_procedures> @<OperationalProcedure> * ;
+          <ai_risk_assessments> @<AIRiskAssessment> * ;
+          <ai_risk_treatment_plans> @<AIRiskTreatmentPlan> * ;
+          <ai_system_impact_assessments> @<AISystemImpactAssessment> * ;
+          <monitoring_program> @<MonitoringProgram> ? ;
+          <internal_audits> @<InternalAudit> * ;
+          <management_reviews> @<ManagementReview> * ;
+          <nonconformities> @<Nonconformity> * ;
+          <corrective_actions> @<CorrectiveAction> * ;
+          <improvements> @<ImprovementOpportunity> * ;
+          <third_party_relationships> @<ThirdPartyRelationship> * ;
+          <certification_status> @linkml:String ? ;
+          <certification_body> @linkml:String ? ;
+          <certification_date> @linkml:Date ? ;
+          <recertification_date> @linkml:Date ? ;
+          <ai_system_events> @<AISystemEvent> * ;
+          <ai_incidents> @<AIIncident> * ;
+          <concern_reports> @<ConcernReport> *
+       ) ;
+       rdf:type [ <AIManagementSystem> ]
+    )
+}
+
+<AIObjective> CLOSED {
+    (  $<AIObjective_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <objective_statement> @linkml:String ? ;
+          <objective_category> [ <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#accountability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#ai_expertise>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#data_quality>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#environmental_impact>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#fairness>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#maintainability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#privacy>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#robustness>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#safety>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#security>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#transparency>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#explainability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#reliability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#accessibility>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#availability_of_training_data> ] ? ;
+          <target_value> @linkml:String ? ;
+          <current_value> @linkml:String ? ;
+          <metric_definition> @linkml:String ? ;
+          <measurement_method> @linkml:String ? ;
+          <measurement_frequency> @linkml:String ? ;
+          <responsible_role> @<Role> ? ;
+          <resources_required> @linkml:String ? ;
+          <target_date> @linkml:Date ? ;
+          <achievement_status> @linkml:String ? ;
+          <related_risks> @<AIRisk> * ;
+          <related_controls> @<AIReferenceControl> * ;
+          <action_plan> @linkml:String ?
+       ) ;
+       rdf:type [ <AIObjective> ]
+    )
+}
+
+<AIPolicy> CLOSED {
+    (  $<AIPolicy_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <policy_statement> @linkml:String ? ;
+          <policy_objectives_framework> @linkml:String ? ;
+          <commitment_statements> @linkml:String * ;
+          <applicability_statement> @linkml:String ? ;
+          <communication_date> @linkml:Date ? ;
+          <acknowledgment_required> @linkml:Boolean ? ;
+          <related_topic_policies> @<TopicSpecificPolicy> * ;
+          <last_policy_review_date> @linkml:Date ? ;
+          <next_policy_review_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <AIPolicy> ]
+    )
+}
+
+<AIReferenceControl> CLOSED {
+    (  $<AIReferenceControl_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <control_id> @linkml:String ? ;
+          <control_title> @linkml:String ? ;
+          <control_family> [ <https://w3id.org/lmodel/iso42001/AIControlFamily#ai_policies>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#internal_organization>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#ai_resources>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#impact_assessment>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#ai_system_lifecycle>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#data_for_ai>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#information_for_parties>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#use_of_ai>
+             <https://w3id.org/lmodel/iso42001/AIControlFamily#third_party_relationships> ] ? ;
+          <control_text> @linkml:String ? ;
+          <implementation_guidance> @linkml:String ? ;
+          <related_controls> @<AIReferenceControl> * ;
+          <applicable_risk_sources> [ <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#complexity_of_environment>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#lack_of_transparency_or_explainability>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#level_of_automation>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#machine_learning_specific>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#hardware>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#lifecycle>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#technology_readiness> ] * ;
+          <applicable_objectives> [ <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#accountability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#ai_expertise>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#data_quality>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#environmental_impact>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#fairness>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#maintainability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#privacy>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#robustness>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#safety>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#security>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#transparency>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#explainability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#reliability>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#accessibility>
+             <https://w3id.org/lmodel/iso42001/AIObjectiveCategory#availability_of_training_data> ] * ;
+          <control_owner> @linkml:String ? ;
+          <implementation_status> [ <https://w3id.org/lmodel/iso42001/ImplementationStatus#not_started>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#planned>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#in_progress>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#implemented>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#not_applicable> ] ? ;
+          <implementation_date> @linkml:Date ? ;
+          <effectiveness_rating> @linkml:String ? ;
+          <last_test_date> @linkml:Date ? ;
+          <evidence_references> @linkml:String *
+       ) ;
+       rdf:type [ <AIReferenceControl> ]
+    )
+}
+
+<AIRisk> CLOSED {
+    (  $<AIRisk_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <risk_source_category> [ <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#complexity_of_environment>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#lack_of_transparency_or_explainability>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#level_of_automation>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#machine_learning_specific>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#hardware>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#lifecycle>
+             <https://w3id.org/lmodel/iso42001/AIRiskSourceCategory#technology_readiness> ] ? ;
+          <risk_source_description> @linkml:String ? ;
+          <affected_ai_systems> @<AISystem> * ;
+          <affected_dimensions> [ <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#individual>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#group>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#societal>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#fairness>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#transparency>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#explainability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accountability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accessibility>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#human_rights>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#financial>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#health>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#environmental>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#economic>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#government>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#cultural_norms>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#safety>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#privacy>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#security> ] * ;
+          <risk_owner> @linkml:String ? ;
+          <likelihood> [ <https://w3id.org/lmodel/iso42001/LikelihoodRating#rare>
+             <https://w3id.org/lmodel/iso42001/LikelihoodRating#unlikely>
+             <https://w3id.org/lmodel/iso42001/LikelihoodRating#possible>
+             <https://w3id.org/lmodel/iso42001/LikelihoodRating#likely>
+             <https://w3id.org/lmodel/iso42001/LikelihoodRating#almost_certain> ] ? ;
+          <impact> [ <https://w3id.org/lmodel/iso42001/ImpactRating#negligible>
+             <https://w3id.org/lmodel/iso42001/ImpactRating#minor> <https://w3id.org/lmodel/iso42001/ImpactRating#moderate>
+             <https://w3id.org/lmodel/iso42001/ImpactRating#major> <https://w3id.org/lmodel/iso42001/ImpactRating#severe> ] ? ;
+          <inherent_risk_level> [ <https://w3id.org/lmodel/iso42001/RiskLevel#very_low>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#low> <https://w3id.org/lmodel/iso42001/RiskLevel#medium>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#high> <https://w3id.org/lmodel/iso42001/RiskLevel#critical> ] ? ;
+          <existing_controls> @<AIReferenceControl> * ;
+          <residual_risk_level> [ <https://w3id.org/lmodel/iso42001/RiskLevel#very_low>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#low> <https://w3id.org/lmodel/iso42001/RiskLevel#medium>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#high> <https://w3id.org/lmodel/iso42001/RiskLevel#critical> ] ? ;
+          <risk_treatment_option> [ <https://w3id.org/lmodel/iso42001/RiskTreatmentOption#modify>
+             <https://w3id.org/lmodel/iso42001/RiskTreatmentOption#accept>
+             <https://w3id.org/lmodel/iso42001/RiskTreatmentOption#avoid>
+             <https://w3id.org/lmodel/iso42001/RiskTreatmentOption#share> ] ? ;
+          <treatment_priority> @linkml:String ? ;
+          <related_treatment_plan> @<AIRiskTreatmentPlan> ? ;
+          <related_impact_assessment> @<AISystemImpactAssessment> ?
+       ) ;
+       rdf:type [ <AIRisk> ]
+    )
+}
+
+<AIRiskAssessment> CLOSED {
+    (  $<AIRiskAssessment_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <assessment_scope> @linkml:String ? ;
+          <ai_systems_assessed> @<AISystem> * ;
+          <assessment_date> @linkml:Date ? ;
+          <assessor> @linkml:String ? ;
+          <methodology_used> @linkml:String ? ;
+          <risks_identified> @<AIRisk> * ;
+          <linked_impact_assessment> @<AISystemImpactAssessment> ? ;
+          <summary_findings> @linkml:String ? ;
+          <recommendations> @linkml:String * ;
+          <next_assessment_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <AIRiskAssessment> ]
+    )
+}
+
+<AIRiskAssessmentProcess> CLOSED {
+    (  $<AIRiskAssessmentProcess_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <risk_acceptance_criteria> @linkml:String ? ;
+          <assessment_criteria> @linkml:String ? ;
+          <assessment_methodology> @linkml:String ? ;
+          <likelihood_scale> @linkml:String ? ;
+          <impact_scale> @linkml:String ? ;
+          <risk_matrix> @linkml:String ? ;
+          <assessment_frequency> @linkml:String ? ;
+          <trigger_events> @linkml:String * ;
+          <alignment_with_ai_policy> @linkml:String ?
+       ) ;
+       rdf:type [ <AIRiskAssessmentProcess> ]
+    )
+}
+
+<AIRiskTreatmentPlan> CLOSED {
+    (  $<AIRiskTreatmentPlan_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <plan_scope> @linkml:String ? ;
+          <risks_addressed> @<AIRisk> * ;
+          <treatment_actions> @linkml:String * ;
+          <controls_to_implement> @<AIReferenceControl> * ;
+          <resources_required> @linkml:String ? ;
+          <responsible_parties> @linkml:String * ;
+          <implementation_timeline> @linkml:String ? ;
+          <risk_owner_approval> @linkml:String ? ;
+          <residual_risk_acceptance> @linkml:String ? ;
+          <implementation_status> [ <https://w3id.org/lmodel/iso42001/ImplementationStatus#not_started>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#planned>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#in_progress>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#implemented>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#not_applicable> ] ? ;
+          <completion_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <AIRiskTreatmentPlan> ]
+    )
+}
+
+<AIRiskTreatmentProcess> CLOSED {
+    (  $<AIRiskTreatmentProcess_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <treatment_options_guidance> @linkml:String ? ;
+          <control_selection_criteria> @linkml:String ? ;
+          <soa_template> @linkml:String ? ;
+          <approval_workflow> @linkml:String ?
+       ) ;
+       rdf:type [ <AIRiskTreatmentProcess> ]
+    )
+}
+
+<AISystem> CLOSED {
+    (  $<AISystem_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <ai_system_purpose> @linkml:String ? ;
+          <intended_uses> @linkml:String * ;
+          <foreseeable_misuse> @linkml:String * ;
+          <application_domain> @linkml:String ? ;
+          <deployment_context> @linkml:String ? ;
+          <lifecycle_stage> [ <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#inception>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#design>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#data_collection_and_preparation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#development>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#verification_and_validation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#deployment>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#operation_and_monitoring>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#continuous_validation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#re_evaluation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#decommissioning> ] ? ;
+          <organization_role> [ <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_provider>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_producer>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_customer>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_partner>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_subject>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#relevant_authority> ] ? ;
+          <autonomy_level> @linkml:String ? ;
+          <ml_approach> [ <https://w3id.org/lmodel/iso42001/MLApproach#supervised>
+             <https://w3id.org/lmodel/iso42001/MLApproach#unsupervised>
+             <https://w3id.org/lmodel/iso42001/MLApproach#semi_supervised>
+             <https://w3id.org/lmodel/iso42001/MLApproach#self_supervised>
+             <https://w3id.org/lmodel/iso42001/MLApproach#reinforcement> <https://w3id.org/lmodel/iso42001/MLApproach#transfer>
+             <https://w3id.org/lmodel/iso42001/MLApproach#federated> <https://w3id.org/lmodel/iso42001/MLApproach#generative>
+             <https://w3id.org/lmodel/iso42001/MLApproach#symbolic> <https://w3id.org/lmodel/iso42001/MLApproach#hybrid>
+             <https://w3id.org/lmodel/iso42001/MLApproach#not_applicable> ] ? ;
+          <human_oversight_required> @linkml:Boolean ? ;
+          <human_oversight_description> @linkml:String ? ;
+          <human_oversight_stages> [ <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#inception>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#design>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#data_collection_and_preparation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#development>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#verification_and_validation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#deployment>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#operation_and_monitoring>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#continuous_validation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#re_evaluation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#decommissioning> ] * ;
+          <learning_mode> [ <https://w3id.org/lmodel/iso42001/LearningParadigm#static>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#periodic_retraining>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#continuous_learning>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#online_learning>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#transfer_learning>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#reinforcement_learning>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#hybrid>
+             <https://w3id.org/lmodel/iso42001/LearningParadigm#not_applicable> ] ? ;
+          <data_resources> @<DataResource> * ;
+          <tooling_resources> @<ToolingResource> * ;
+          <computing_resources> @<ComputingResource> * ;
+          <human_resources> @<HumanResource> * ;
+          <technical_documentation> @linkml:String * ;
+          <event_log_policy> @linkml:String ? ;
+          <applicable_controls> @<AIReferenceControl> * ;
+          <related_impact_assessments> @<AISystemImpactAssessment> * ;
+          <supplier_relationships> @<SupplierRelationship> * ;
+          <customer_relationships> @<CustomerRelationship> *
+       ) ;
+       rdf:type [ <AISystem> ]
+    )
+}
+
+<AISystemEvent> CLOSED {
+    (  $<AISystemEvent_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <event_datetime> @linkml:Datetime ? ;
+          <reporter> @linkml:String ? ;
+          <reporter_party_type> @linkml:String ? ;
+          <event_source> @linkml:String ? ;
+          <event_description> @linkml:String ? ;
+          <affected_ai_systems> @<AISystem> * ;
+          <initial_assessment> @linkml:String ? ;
+          <categorized_as_incident> @linkml:Boolean ? ;
+          <linked_incident> @<AIIncident> ?
+       ) ;
+       rdf:type [ <AISystemEvent> ]
+    )
+}
+
+<AISystemImpactAssessment> CLOSED {
+    (  $<AISystemImpactAssessment_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <assessment_scope> @linkml:String ? ;
+          <ai_systems_assessed> @<AISystem> * ;
+          <assessment_date> @linkml:Date ? ;
+          <assessor> @linkml:String ? ;
+          <technical_context> @linkml:String ? ;
+          <societal_context> @linkml:String ? ;
+          <applicable_jurisdictions> @linkml:String * ;
+          <dimensions_assessed> [ <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#individual>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#group>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#societal>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#fairness>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#transparency>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#explainability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accountability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accessibility>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#human_rights>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#financial>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#health>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#environmental>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#economic>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#government>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#cultural_norms>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#safety>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#privacy>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#security> ] * ;
+          <identified_consequences> @linkml:String * ;
+          <mitigations> @linkml:String * ;
+          <shared_with_parties> @linkml:String * ;
+          <next_assessment_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <AISystemImpactAssessment> ]
+    )
+}
+
+<AISystemImpactAssessmentProcess> CLOSED {
+    (  $<AISystemImpactAssessmentProcess_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <assessment_criteria> @linkml:String ? ;
+          <assessment_methodology> @linkml:String ? ;
+          <dimensions_in_scope> [ <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#individual>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#group>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#societal>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#fairness>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#transparency>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#explainability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accountability>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#accessibility>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#human_rights>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#financial>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#health>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#environmental>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#economic>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#government>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#cultural_norms>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#safety>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#privacy>
+             <https://w3id.org/lmodel/iso42001/ImpactAssessmentDimension#security> ] * ;
+          <assessment_frequency> @linkml:String ? ;
+          <trigger_events> @linkml:String * ;
+          <linkage_to_risk_assessment> @linkml:String ?
+       ) ;
+       rdf:type [ <AISystemImpactAssessmentProcess> ]
+    )
+}
+
+<AuditFinding> CLOSED {
+    (  $<AuditFinding_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <finding_type> [ <https://w3id.org/lmodel/iso42001/AuditFindingType#major_nonconformity>
+             <https://w3id.org/lmodel/iso42001/AuditFindingType#minor_nonconformity>
+             <https://w3id.org/lmodel/iso42001/AuditFindingType#observation>
+             <https://w3id.org/lmodel/iso42001/AuditFindingType#positive_finding> ] ? ;
+          <clause_reference> @linkml:String ? ;
+          <control_reference> @<AIReferenceControl> ? ;
+          <finding_description> @linkml:String ? ;
+          <objective_evidence> @linkml:String ? ;
+          <root_cause_analysis> @linkml:String ? ;
+          <risk_implication> @linkml:String ? ;
+          <recommended_action> @linkml:String ? ;
+          <auditee_response> @linkml:String ? ;
+          <linked_corrective_action> @<CorrectiveAction> ? ;
+          <closure_status> @linkml:String ? ;
+          <closure_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <AuditFinding> ]
+    )
+}
+
+<AuditProgramme> CLOSED {
+    (  $<AuditProgramme_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <programme_period> @linkml:String ? ;
+          <planned_audits> @<InternalAudit> * ;
+          <audit_frequency_rationale> @linkml:String ? ;
+          <resource_requirements> @linkml:String ? ;
+          <auditor_qualifications> @linkml:String ? ;
+          <programme_status> @linkml:String ?
+       ) ;
+       rdf:type [ <AuditProgramme> ]
+    )
+}
+
+<AwarenessProgram> CLOSED {
+    (  $<AwarenessProgram_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <awareness_topics> @linkml:String * ;
+          <delivery_methods> @linkml:String * ;
+          <target_audience> @linkml:String ? ;
+          <frequency> @linkml:String ? ;
+          <completion_tracking> @linkml:String ? ;
+          <effectiveness_measures> @linkml:String ?
+       ) ;
+       rdf:type [ <AwarenessProgram> ]
+    )
+}
+
+<CommunicationItem> CLOSED {
+    (  $<CommunicationItem_tes> (  <subject> @linkml:String ? ;
+          <purpose> @linkml:String ? ;
+          <audience> @linkml:String ? ;
+          <frequency> @linkml:String ? ;
+          <method> @linkml:String ? ;
+          <responsible_party> @linkml:String ? ;
+          <records_required> @linkml:String ?
+       ) ;
+       rdf:type [ <CommunicationItem> ] ?
+    )
+}
+
+<CommunicationPlan> CLOSED {
+    (  $<CommunicationPlan_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <communication_items> @<CommunicationItem> *
+       ) ;
+       rdf:type [ <CommunicationPlan> ]
+    )
+}
+
+<CompetenceRecord> CLOSED {
+    (  $<CompetenceRecord_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <person_name> @linkml:String ? ;
+          <person_role> @linkml:String ? ;
+          <required_competencies> @linkml:String * ;
+          <education_records> @linkml:String * ;
+          <training_records> @linkml:String * ;
+          <experience_records> @linkml:String * ;
+          <competency_assessment_date> @linkml:Date ? ;
+          <competency_gaps> @linkml:String * ;
+          <development_actions> @linkml:String *
+       ) ;
+       rdf:type [ <CompetenceRecord> ]
+    )
+}
+
+<ComputingResource> CLOSED {
+    (  $<ComputingResource_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <resource_class> @linkml:String ? ;
+          <quantity> @linkml:String ? ;
+          <location> @linkml:String ? ;
+          <environment_type> @linkml:String ? ;
+          <cost> @linkml:String ?
+       ) ;
+       rdf:type [ <ComputingResource> ]
+    )
+}
+
+<ConcernReport> CLOSED {
+    (  $<ConcernReport_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <reported_date> @linkml:Date ? ;
+          <reporter> @linkml:String ? ;
+          <reporter_party_type> @linkml:String ? ;
+          <reporter_anonymous> @linkml:Boolean ? ;
+          <confidentiality_level> @linkml:String ? ;
+          <reporting_channel> @linkml:String ? ;
+          <concern_description> @linkml:String ? ;
+          <concern_ai_systems> @<AISystem> * ;
+          <concern_lifecycle_stage> [ <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#inception>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#design>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#data_collection_and_preparation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#development>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#verification_and_validation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#deployment>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#operation_and_monitoring>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#continuous_validation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#re_evaluation>
+             <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#decommissioning> ] * ;
+          <severity> [ <https://w3id.org/lmodel/iso42001/RiskLevel#very_low> <https://w3id.org/lmodel/iso42001/RiskLevel#low>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#medium> <https://w3id.org/lmodel/iso42001/RiskLevel#high>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#critical> ] ? ;
+          <investigator> @linkml:String ? ;
+          <investigation_status> @linkml:String ? ;
+          <investigation_findings> @linkml:String ? ;
+          <escalation_status> @linkml:String ? ;
+          <response_due_date> @linkml:Date ? ;
+          <response_provided_date> @linkml:Date ? ;
+          <resolution> @linkml:String ? ;
+          <reprisal_protection_actions> @linkml:String * ;
+          <related_incidents> @<AIIncident> * ;
+          <related_nonconformities> @<Nonconformity> * ;
+          <closure_datetime> @linkml:Datetime ?
+       ) ;
+       rdf:type [ <ConcernReport> ]
+    )
+}
+
+<CorrectiveAction> CLOSED {
+    (  $<CorrectiveAction_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <linked_nonconformity> @<Nonconformity> ? ;
+          <action_description> @linkml:String ? ;
+          <root_cause_addressed> @linkml:String ? ;
+          <responsible_party> @linkml:String ? ;
+          <target_completion_date> @linkml:Date ? ;
+          <actual_completion_date> @linkml:Date ? ;
+          <resources_required> @linkml:String ? ;
+          <effectiveness_criteria> @linkml:String ? ;
+          <effectiveness_review_date> @linkml:Date ? ;
+          <effectiveness_verified> @linkml:Boolean ? ;
+          <aims_changes_required> @linkml:Boolean ? ;
+          <status> @linkml:String ?
+       ) ;
+       rdf:type [ <CorrectiveAction> ]
+    )
+}
+
+<CustomerRelationship> CLOSED {
+    (  $<CustomerRelationship_tes> (  &<ThirdPartyRelationship_tes> ;
+          rdf:type [ <ThirdPartyRelationship> ] ? ;
+          <customer_expectations> @linkml:String * ;
+          <usage_agreement_reference> @linkml:String ? ;
+          <communicated_limitations> @linkml:String *
+       ) ;
+       rdf:type [ <CustomerRelationship> ]
+    )
+}
+
+<DataResource> CLOSED {
+    (  $<DataResource_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <data_resource_category> [ <https://w3id.org/lmodel/iso42001/DataResourceCategory#training>
+             <https://w3id.org/lmodel/iso42001/DataResourceCategory#validation>
+             <https://w3id.org/lmodel/iso42001/DataResourceCategory#test>
+             <https://w3id.org/lmodel/iso42001/DataResourceCategory#production>
+             <https://w3id.org/lmodel/iso42001/DataResourceCategory#reference> ] ? ;
+          <source> @linkml:String ? ;
+          <acquisition_method> @linkml:String ? ;
+          <data_quality_requirements> @linkml:String * ;
+          <data_quality_metrics> @linkml:String * ;
+          <data_provenance> @linkml:String ? ;
+          <labelling_process> @linkml:String ? ;
+          <data_preparation_methods> [ <https://w3id.org/lmodel/iso42001/DataPreparationMethod#statistical_exploration>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#cleaning>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#imputation>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#normalization>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#scaling>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#labelling>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#encoding>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#augmentation>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#deduplication>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#anonymization>
+             <https://w3id.org/lmodel/iso42001/DataPreparationMethod#other> ] * ;
+          <last_updated_date> @linkml:Date ? ;
+          <known_bias_issues> @linkml:String * ;
+          <retention_policy> @linkml:String ? ;
+          <data_classification> @linkml:String ?
+       ) ;
+       rdf:type [ <DataResource> ]
+    )
+}
+
+<DocumentedInformation>  (
+    @<AIPolicy> OR @<AIRiskAssessment> OR @<AIRiskAssessmentProcess> OR @<AIRiskTreatmentPlan> OR @<AIRiskTreatmentProcess> OR
+    @<AISystemImpactAssessment> OR @<AISystemImpactAssessmentProcess> OR @<AuditProgramme> OR @<AwarenessProgram> OR
+    @<CommunicationPlan> OR @<CompetenceRecord> OR @<InternalAudit> OR @<ManagementReview> OR @<MonitoringProgram> OR
+    @<OperationalProcedure> OR @<StatementOfApplicability> OR @<TopicSpecificPolicy>
+)
+
+<DocumentedInformation_struct> {
+    (  $<DocumentedInformation_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <document_type> [ <https://w3id.org/lmodel/iso42001/DocumentType#policy>
+             <https://w3id.org/lmodel/iso42001/DocumentType#procedure> <https://w3id.org/lmodel/iso42001/DocumentType#standard>
+             <https://w3id.org/lmodel/iso42001/DocumentType#guideline> <https://w3id.org/lmodel/iso42001/DocumentType#record>
+             <https://w3id.org/lmodel/iso42001/DocumentType#plan> <https://w3id.org/lmodel/iso42001/DocumentType#report>
+             <https://w3id.org/lmodel/iso42001/DocumentType#technical_documentation> ] ? ;
+          <document_reference> @linkml:String ? ;
+          <author> @linkml:String ? ;
+          <owner> @linkml:String ? ;
+          <approved_by> @linkml:String ? ;
+          <approved_date> @linkml:Date ? ;
+          <effective_date> @linkml:Date ? ;
+          <review_date> @linkml:Date ? ;
+          <status> @linkml:String ? ;
+          <classification> @linkml:String ? ;
+          <retention_period> @<DurationType> ?
+       ) ;
+       rdf:type [ <DocumentedInformation> ]
+    )
+}
+
+<HumanResource> CLOSED {
+    (  $<HumanResource_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <required_competencies> @linkml:String * ;
+          <assigned_to> @linkml:String * ;
+          <lifecycle_responsibilities> @linkml:String *
+       ) ;
+       rdf:type [ <HumanResource> ]
+    )
+}
+
+<ImprovementOpportunity> CLOSED {
+    (  $<ImprovementOpportunity_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <improvement_source> @linkml:String ? ;
+          <identification_date> @linkml:Date ? ;
+          <identified_by> @linkml:String ? ;
+          <improvement_description> @linkml:String ? ;
+          <expected_benefit> @linkml:String ? ;
+          <priority> [ <https://w3id.org/lmodel/iso42001/RiskLevel#very_low> <https://w3id.org/lmodel/iso42001/RiskLevel#low>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#medium> <https://w3id.org/lmodel/iso42001/RiskLevel#high>
+             <https://w3id.org/lmodel/iso42001/RiskLevel#critical> ] ? ;
+          <implementation_plan> @linkml:String ? ;
+          <responsible_party> @linkml:String ? ;
+          <target_date> @linkml:Date ? ;
+          <actual_completion_date> @linkml:Date ? ;
+          <outcome_assessment> @linkml:String ? ;
+          <status> @linkml:String ?
+       ) ;
+       rdf:type [ <ImprovementOpportunity> ]
+    )
+}
+
+<InterestedParty> CLOSED {
+    (  $<InterestedParty_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <party_type> @linkml:String ? ;
+          <relationship> @linkml:String ? ;
+          <requirements> @linkml:String * ;
+          <communication_needs> @linkml:String ? ;
+          <contact_information> @linkml:String ?
+       ) ;
+       rdf:type [ <InterestedParty> ]
+    )
+}
+
+<InternalAudit> CLOSED {
+    (  $<InternalAudit_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <audit_reference> @linkml:String ? ;
+          <audit_type> [ <https://w3id.org/lmodel/iso42001/AuditType#internal>
+             <https://w3id.org/lmodel/iso42001/AuditType#external_second_party>
+             <https://w3id.org/lmodel/iso42001/AuditType#external_third_party>
+             <https://w3id.org/lmodel/iso42001/AuditType#surveillance> <https://w3id.org/lmodel/iso42001/AuditType#recertification>
+             <https://w3id.org/lmodel/iso42001/AuditType#combined> ] ? ;
+          <audit_scope> @linkml:String ? ;
+          <audit_criteria> @linkml:String ? ;
+          <audit_objectives> @linkml:String ? ;
+          <audit_period_start> @linkml:Date ? ;
+          <audit_period_end> @linkml:Date ? ;
+          <lead_auditor> @linkml:String ? ;
+          <audit_team> @linkml:String * ;
+          <auditee_representatives> @linkml:String * ;
+          <audit_plan> @linkml:String ? ;
+          <findings> @<AuditFinding> * ;
+          <positive_observations> @linkml:String * ;
+          <audit_conclusion> @linkml:String ? ;
+          <report_date> @linkml:Date ? ;
+          <report_distribution> @linkml:String *
+       ) ;
+       rdf:type [ <InternalAudit> ]
+    )
+}
+
+<ManagementReview> CLOSED {
+    (  $<ManagementReview_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <attendees> @linkml:String * ;
+          <previous_actions_status> @linkml:String ? ;
+          <context_changes> @linkml:String * ;
+          <interested_party_changes> @linkml:String * ;
+          <performance_trends> @linkml:String ? ;
+          <audit_results_summary> @linkml:String ? ;
+          <risk_assessment_results> @linkml:String ? ;
+          <impact_assessment_results> @linkml:String ? ;
+          <improvement_opportunities> @<ImprovementOpportunity> * ;
+          <decisions> @linkml:String * ;
+          <action_items> @linkml:String * ;
+          <next_review_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <ManagementReview> ]
+    )
+}
+
+<MonitoringItem> CLOSED {
+    (  $<MonitoringItem_tes> (  <metric_name> @linkml:String ? ;
+          <metric_description> @linkml:String ? ;
+          <measurement_method> @linkml:String ? ;
+          <measurement_frequency> @linkml:String ? ;
+          <responsible_party> @linkml:String ? ;
+          <analysis_frequency> @linkml:String ? ;
+          <analyst> @linkml:String ? ;
+          <target_threshold> @linkml:String ? ;
+          <alert_threshold> @linkml:String ? ;
+          <current_value> @linkml:String ? ;
+          <trend> @linkml:String ?
+       ) ;
+       rdf:type [ <MonitoringItem> ] ?
+    )
+}
+
+<MonitoringProgram> CLOSED {
+    (  $<MonitoringProgram_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <monitoring_items> @<MonitoringItem> *
+       ) ;
+       rdf:type [ <MonitoringProgram> ]
+    )
+}
+
+<NamedEntity>  (
+    @<AIIncident> OR @<AIManagementSystem> OR @<AIObjective> OR @<AIReferenceControl> OR @<AIRisk> OR @<AISystem> OR
+    @<AISystemEvent> OR @<AuditFinding> OR @<ComputingResource> OR @<ConcernReport> OR @<CorrectiveAction> OR @<DataResource> OR
+    @<DocumentedInformation> OR @<HumanResource> OR @<ImprovementOpportunity> OR @<InterestedParty> OR @<Nonconformity> OR
+    @<Organization> OR @<Resource> OR @<Role> OR @<ThirdPartyRelationship> OR @<ToolingResource>
+)
+
+<NamedEntity_struct> {
+    (  $<NamedEntity_tes> (  <name> @linkml:String ;
+          <description> @linkml:String ? ;
+          <created_date> @linkml:Date ? ;
+          <modified_date> @linkml:Date ? ;
+          <version> @linkml:String ?
+       ) ;
+       rdf:type [ <NamedEntity> ]
+    )
+}
+
+<Nonconformity> CLOSED {
+    (  $<Nonconformity_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <nonconformity_source> @linkml:String ? ;
+          <detection_date> @linkml:Date ? ;
+          <detected_by> @linkml:String ? ;
+          <requirement_violated> @linkml:String ? ;
+          <nonconformity_description> @linkml:String ? ;
+          <immediate_actions> @linkml:String * ;
+          <consequences_addressed> @linkml:String ? ;
+          <root_cause> @linkml:String ? ;
+          <similar_nonconformities_check> @linkml:String ? ;
+          <linked_corrective_actions> @<CorrectiveAction> * ;
+          <status> @linkml:String ? ;
+          <closure_date> @linkml:Date ? ;
+          <closure_evidence> @linkml:String ?
+       ) ;
+       rdf:type [ <Nonconformity> ]
+    )
+}
+
+<OperationalProcedure> CLOSED {
+    (  $<OperationalProcedure_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <procedure_scope> @linkml:String ? ;
+          <process_criteria> @linkml:String ? ;
+          <control_measures> @linkml:String * ;
+          <responsible_roles> @<Role> * ;
+          <related_controls> @<AIReferenceControl> * ;
+          <change_control_requirements> @linkml:String ?
+       ) ;
+       rdf:type [ <OperationalProcedure> ]
+    )
+}
+
+<Organization> CLOSED {
+    (  $<Organization_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <legal_name> @linkml:String ? ;
+          <trading_names> @linkml:String * ;
+          <organization_type> @linkml:String ? ;
+          <industry_sector> @linkml:String ? ;
+          <sector_domains> [ <https://w3id.org/lmodel/iso42001/SectorDomain#health>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#defence> <https://w3id.org/lmodel/iso42001/SectorDomain#transport>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#finance> <https://w3id.org/lmodel/iso42001/SectorDomain#employment>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#energy> <https://w3id.org/lmodel/iso42001/SectorDomain#public_sector>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#education>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#manufacturing>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#agriculture>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#telecommunications>
+             <https://w3id.org/lmodel/iso42001/SectorDomain#retail> <https://w3id.org/lmodel/iso42001/SectorDomain#other> ] * ;
+          <size_category> @linkml:String ? ;
+          <employee_count> @<PositiveIntegerType> ? ;
+          <geographic_locations> @linkml:String * ;
+          <regulatory_jurisdictions> @linkml:String * ;
+          <parent_organization> @linkml:String ? ;
+          <subsidiaries> @linkml:String * ;
+          <ai_roles> [ <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_provider>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_producer>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_customer>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_partner>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#ai_subject>
+             <https://w3id.org/lmodel/iso42001/AIOrganizationalRole#relevant_authority> ] * ;
+          <climate_change_relevant> @linkml:Boolean ?
+       ) ;
+       rdf:type [ <Organization> ]
+    )
+}
+
+<Resource> CLOSED {
+    (  $<Resource_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <resource_type> @linkml:String ? ;
+          <quantity> @linkml:String ? ;
+          <allocation_date> @linkml:Date ? ;
+          <allocated_to> @linkml:String ? ;
+          <cost> @linkml:String ? ;
+          <availability_status> @linkml:String ?
+       ) ;
+       rdf:type [ <Resource> ]
+    )
+}
+
+<Role> CLOSED {
+    (  $<Role_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <role_type> @linkml:String ? ;
+          <responsibilities> @linkml:String * ;
+          <authorities> @linkml:String * ;
+          <accountability> @linkml:String ? ;
+          <assigned_to> @linkml:String * ;
+          <delegation_rules> @linkml:String ? ;
+          <reporting_line> @linkml:String ?
+       ) ;
+       rdf:type [ <Role> ]
+    )
+}
+
+<SoAEntry> CLOSED {
+    (  $<SoAEntry_tes> (  <control_reference> @<AIReferenceControl> ? ;
+          <is_applicable> @linkml:Boolean ? ;
+          <inclusion_justification> @linkml:String ? ;
+          <exclusion_justification> @linkml:String ? ;
+          <implementation_status> [ <https://w3id.org/lmodel/iso42001/ImplementationStatus#not_started>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#planned>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#in_progress>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#implemented>
+             <https://w3id.org/lmodel/iso42001/ImplementationStatus#not_applicable> ] ? ;
+          <implementation_evidence> @linkml:String ? ;
+          <responsible_role> @<Role> ? ;
+          <target_implementation_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <SoAEntry> ] ?
+    )
+}
+
+<StatementOfApplicability> CLOSED {
+    (  $<StatementOfApplicability_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <soa_entries> @<SoAEntry> * ;
+          <total_controls> @<UnsignedShortType> ? ;
+          <implemented_count> @<UnsignedShortType> ? ;
+          <planned_count> @<UnsignedShortType> ? ;
+          <not_applicable_count> @<UnsignedShortType> ? ;
+          <last_review_date> @linkml:Date ?
+       ) ;
+       rdf:type [ <StatementOfApplicability> ]
+    )
+}
+
+<SupplierRelationship> CLOSED {
+    (  $<SupplierRelationship_tes> (  &<ThirdPartyRelationship_tes> ;
+          rdf:type [ <ThirdPartyRelationship> ] ? ;
+          <supplier_assessment_criteria> @linkml:String * ;
+          <monitoring_method> @linkml:String ? ;
+          <corrective_actions_required> @linkml:String *
+       ) ;
+       rdf:type [ <SupplierRelationship> ]
+    )
+}
+
+<ThirdPartyRelationship>  (
+    CLOSED {
+       (  $<ThirdPartyRelationship_tes> (  &<NamedEntity_tes> ;
+             rdf:type [ <NamedEntity> ] ? ;
+             <party_type> @linkml:String ? ;
+             <party_name> @linkml:String ? ;
+             <contractual_basis> @linkml:String ? ;
+             <allocated_responsibilities> @linkml:String * ;
+             <data_processing_role> @linkml:String ? ;
+             <ai_systems_involved> @<AISystem> * ;
+             <lifecycle_stages_involved> [ <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#inception>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#design>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#data_collection_and_preparation>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#development>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#verification_and_validation>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#deployment>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#operation_and_monitoring>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#continuous_validation>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#re_evaluation>
+                <https://w3id.org/lmodel/iso42001/AISystemLifecycleStage#decommissioning> ] * ;
+             <assurance_evidence> @linkml:String * ;
+             <review_frequency> @linkml:String ?
+          ) ;
+          rdf:type [ <ThirdPartyRelationship> ]
+       )
+    } OR @<CustomerRelationship> OR @<SupplierRelationship>
+)
+
+<ToolingResource> CLOSED {
+    (  $<ToolingResource_tes> (  &<NamedEntity_tes> ;
+          rdf:type [ <NamedEntity> ] ? ;
+          <tool_category> @linkml:String ? ;
+          <tool_version> @linkml:String ? ;
+          <vendor> @linkml:String ? ;
+          <license_terms> @linkml:String ? ;
+          <usage_purpose> @linkml:String ?
+       ) ;
+       rdf:type [ <ToolingResource> ]
+    )
+}
+
+<TopicSpecificPolicy> CLOSED {
+    (  $<TopicSpecificPolicy_tes> (  &<DocumentedInformation_tes> ;
+          rdf:type [ <DocumentedInformation> ] ? ;
+          <topic_area> @linkml:String ? ;
+          <parent_policy> @<AIPolicy> ? ;
+          <applicable_controls> @<AIReferenceControl> * ;
+          <target_audience> @linkml:String ?
+       ) ;
+       rdf:type [ <TopicSpecificPolicy> ]
+    )
+}
