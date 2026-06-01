@@ -1,0 +1,2736 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lmodel.github.io/iso42001/elements/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Schema - iso42001</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="../assets/pymdownx-extras/material-extra-theme-2ek1P7jT.js" type="text/javascript"></script>
+<script src="../assets/pymdownx-extras/material-extra-3rdparty-BUCF4rjN.js" type="text/javascript"></script>
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+      <link rel="stylesheet" href="../assets/pymdownx-extras/extra-c6ab11540a.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iso-42001-aims-linkml-schema" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+<header class="md-header" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="header.title"
+  >
+    <a
+      href="https://lmodel.github.io/iso42001/"
+      title="iso42001"
+      class="md-header__button md-logo"
+      aria-label="iso42001"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            iso42001
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Schema
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      <div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+          <a
+            href="javascript:toggleScheme();"
+            title="Light mode"
+            class="light-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="Dark mode"
+            class="dark-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="System preference"
+            class="system-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+          </a>
+           <a
+            href="javascript:toggleScheme();"
+            title="Unknown scheme"
+            class="unknown-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+          </a>
+      </div>
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lmodel/iso42001" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="iso42001" class="md-nav__button md-logo" aria-label="iso42001" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    iso42001
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lmodel/iso42001" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enumerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsets
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+  
+  
+
+
+<h1 id="iso-42001-aims-linkml-schema">ISO 42001 / AIMS: LinkML Schema</h1>
+<p>A comprehensive LinkML schema modeling AI Management System (AIMS) entities, workflows, and traceability links aligned to ISO/IEC 42001:2023 clause and Annex references. Designed for open data publication, automated validation, and integration with AI governance, risk, and compliance platforms.
+This schema captures: - AIMS lifecycle (establish, implement, maintain, improve) - AI risk assessment, treatment, and AI system impact assessment (Clause 6.1) - Annex A reference control catalog (A.2-A.10) for responsible AI - Audit, measurement, and continual improvement artifacts - Data resources, tooling, computing, and human resources for AI systems - Third-party, supplier, and customer relationships across the AI life cycle</p>
+<p>URI: <a href="https://w3id.org/lmodel/iso42001">https://w3id.org/lmodel/iso42001</a></p>
+<p>Name: iso42001</p>
+<h2 id="classes">Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="CommunicationItem/">CommunicationItem</a></td>
+<td>A single communication requirement within the AIMS communication plan</td>
+</tr>
+<tr>
+<td><a href="MonitoringItem/">MonitoringItem</a></td>
+<td>A single item to be monitored and measured per Clause 9</td>
+</tr>
+<tr>
+<td><a href="NamedEntity/">NamedEntity</a></td>
+<td>Abstract base class for all entities with an identifier, name, and descriptio...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIIncident/">AIIncident</a></td>
+<td>An AI incident, i</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIManagementSystem/">AIManagementSystem</a></td>
+<td>Top-level container representing an organization's complete AI Management Sys...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIObjective/">AIObjective</a></td>
+<td>A measurable AI objective per Clause 6</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIReferenceControl/">AIReferenceControl</a></td>
+<td>A reference control from Annex A of ISO/IEC 42001:2023</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIRisk/">AIRisk</a></td>
+<td>An identified AI risk that may affect achievement of AI objectives, individua...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AISystem/">AISystem</a></td>
+<td>An AI system within the AIMS scope</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AISystemEvent/">AISystemEvent</a></td>
+<td>An AI system event detected by monitoring, users, or external reporting chann...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AuditFinding/">AuditFinding</a></td>
+<td>A finding from an AIMS internal audit, including nonconformities, observation...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ComputingResource/">ComputingResource</a></td>
+<td>A system or computing resource used in the development or operation of an AI ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ConcernReport/">ConcernReport</a></td>
+<td>A concern raised by employees, contractors, users, or other interested partie...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CorrectiveAction/">CorrectiveAction</a></td>
+<td>A corrective action per Clause 10</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataResource/">DataResource</a></td>
+<td>A data resource used by an AI system per Annex A</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DocumentedInformation/">DocumentedInformation</a></td>
+<td>Abstract class for documented information per Clause 7</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIPolicy/">AIPolicy</a></td>
+<td>The AI policy established by top management per Clause 5</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIRiskAssessment/">AIRiskAssessment</a></td>
+<td>An instance of AI risk assessment performed per Clause 8</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIRiskAssessmentProcess/">AIRiskAssessmentProcess</a></td>
+<td>The documented AI risk assessment process per Clause 6</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIRiskTreatmentPlan/">AIRiskTreatmentPlan</a></td>
+<td>A plan documenting planned actions to address identified AI risks through sel...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AIRiskTreatmentProcess/">AIRiskTreatmentProcess</a></td>
+<td>The documented AI risk treatment process per Clause 6</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AISystemImpactAssessment/">AISystemImpactAssessment</a></td>
+<td>An instance of an AI system impact assessment performed per Clause 6</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AISystemImpactAssessmentProcess/">AISystemImpactAssessmentProcess</a></td>
+<td>The documented process for assessing the potential consequences for individua...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AuditProgramme/">AuditProgramme</a></td>
+<td>The internal audit programme per Clause 9</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AwarenessProgram/">AwarenessProgram</a></td>
+<td>The awareness program ensuring personnel understand their AI-related responsi...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CommunicationPlan/">CommunicationPlan</a></td>
+<td>Plan for internal and external communications relevant to the AIMS per Clause...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CompetenceRecord/">CompetenceRecord</a></td>
+<td>Evidence of competence for personnel affecting AIMS performance per Clause 7</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="InternalAudit/">InternalAudit</a></td>
+<td>An internal audit instance per Clause 9</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ManagementReview/">ManagementReview</a></td>
+<td>A management review per Clause 9</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MonitoringProgram/">MonitoringProgram</a></td>
+<td>The program for monitoring, measurement, analysis, and evaluation of AIMS per...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OperationalProcedure/">OperationalProcedure</a></td>
+<td>A documented procedure for operational planning and control of AIMS processes...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StatementOfApplicability/">StatementOfApplicability</a></td>
+<td>The Statement of Applicability (SoA) for the AIMS recording which Annex A con...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TopicSpecificPolicy/">TopicSpecificPolicy</a></td>
+<td>A topic-specific policy supporting the overarching AI policy, for example cov...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HumanResource/">HumanResource</a></td>
+<td>A human resource (role, expertise area) involved in development, deployment, ...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ImprovementOpportunity/">ImprovementOpportunity</a></td>
+<td>An opportunity for continual improvement of the AIMS per Clause 10</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="InterestedParty/">InterestedParty</a></td>
+<td>A stakeholder whose needs and expectations are relevant to the AIMS per Claus...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Nonconformity/">Nonconformity</a></td>
+<td>A nonconformity identified per Clause 10</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Organization/">Organization</a></td>
+<td>The organization establishing and operating the AIMS</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Resource/">Resource</a></td>
+<td>A resource provided for the AIMS per Clause 7</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Role/">Role</a></td>
+<td>An AI-related role with defined responsibilities and authorities per Clause 5</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ThirdPartyRelationship/">ThirdPartyRelationship</a></td>
+<td>A documented relationship with a third party (supplier, partner, or customer)...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CustomerRelationship/">CustomerRelationship</a></td>
+<td>A customer relationship for an AI product or service supplied by the organiza...</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SupplierRelationship/">SupplierRelationship</a></td>
+<td>A supplier relationship covering services, products, or materials (e</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ToolingResource/">ToolingResource</a></td>
+<td>A tooling resource (algorithm, framework, model, library) used in an AI syste...</td>
+</tr>
+<tr>
+<td><a href="SoAEntry/">SoAEntry</a></td>
+<td>A single entry in the AIMS Statement of Applicability documenting the applica...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="accountability/">accountability</a></td>
+<td>What the role is accountable for</td>
+</tr>
+<tr>
+<td><a href="achievement_status/">achievement_status</a></td>
+<td>Current status of objective achievement</td>
+</tr>
+<tr>
+<td><a href="acknowledgment_required/">acknowledgment_required</a></td>
+<td>Whether acknowledgment is required from personnel</td>
+</tr>
+<tr>
+<td><a href="acquisition_method/">acquisition_method</a></td>
+<td>How the data was acquired (e</td>
+</tr>
+<tr>
+<td><a href="action_description/">action_description</a></td>
+<td>Description of the action</td>
+</tr>
+<tr>
+<td><a href="action_items/">action_items</a></td>
+<td>Action items resulting from the review</td>
+</tr>
+<tr>
+<td><a href="action_plan/">action_plan</a></td>
+<td>Plan for achieving the objective</td>
+</tr>
+<tr>
+<td><a href="actual_completion_date/">actual_completion_date</a></td>
+<td>Actual completion date</td>
+</tr>
+<tr>
+<td><a href="affected_ai_systems/">affected_ai_systems</a></td>
+<td>AI systems affected by this risk</td>
+</tr>
+<tr>
+<td><a href="affected_dimensions/">affected_dimensions</a></td>
+<td>Dimensions of impact affected by the risk (individual, group, societal, safet...</td>
+</tr>
+<tr>
+<td><a href="ai_incidents/">ai_incidents</a></td>
+<td>AI incidents managed under the AIMS</td>
+</tr>
+<tr>
+<td><a href="ai_objectives/">ai_objectives</a></td>
+<td>AI objectives established by the organization</td>
+</tr>
+<tr>
+<td><a href="ai_policy/">ai_policy</a></td>
+<td>Reference to the AI policy</td>
+</tr>
+<tr>
+<td><a href="ai_risk_assessment_process/">ai_risk_assessment_process</a></td>
+<td>Reference to the AI risk assessment process</td>
+</tr>
+<tr>
+<td><a href="ai_risk_assessments/">ai_risk_assessments</a></td>
+<td>AI risk assessment instances</td>
+</tr>
+<tr>
+<td><a href="ai_risk_treatment_plans/">ai_risk_treatment_plans</a></td>
+<td>AI risk treatment plans</td>
+</tr>
+<tr>
+<td><a href="ai_risk_treatment_process/">ai_risk_treatment_process</a></td>
+<td>Reference to the AI risk treatment process</td>
+</tr>
+<tr>
+<td><a href="ai_roles/">ai_roles</a></td>
+<td>Roles the organization takes with respect to AI systems (provider, producer, ...</td>
+</tr>
+<tr>
+<td><a href="ai_system_events/">ai_system_events</a></td>
+<td>AI system events recorded under the AIMS</td>
+</tr>
+<tr>
+<td><a href="ai_system_impact_assessment_process/">ai_system_impact_assessment_process</a></td>
+<td>Reference to the AI system impact assessment process</td>
+</tr>
+<tr>
+<td><a href="ai_system_impact_assessments/">ai_system_impact_assessments</a></td>
+<td>AI system impact assessment instances</td>
+</tr>
+<tr>
+<td><a href="ai_system_purpose/">ai_system_purpose</a></td>
+<td>Purpose of the AI system</td>
+</tr>
+<tr>
+<td><a href="ai_systems/">ai_systems</a></td>
+<td>AI systems within the AIMS scope</td>
+</tr>
+<tr>
+<td><a href="ai_systems_assessed/">ai_systems_assessed</a></td>
+<td>AI systems covered by this assessment</td>
+</tr>
+<tr>
+<td><a href="ai_systems_involved/">ai_systems_involved</a></td>
+<td>AI systems involved in the third-party relationship</td>
+</tr>
+<tr>
+<td><a href="aims_changes_required/">aims_changes_required</a></td>
+<td>Whether AIMS changes are required as a result of the action</td>
+</tr>
+<tr>
+<td><a href="alert_threshold/">alert_threshold</a></td>
+<td>Threshold that triggers an alert</td>
+</tr>
+<tr>
+<td><a href="alignment_with_ai_policy/">alignment_with_ai_policy</a></td>
+<td>Statement of how the process aligns with the AI policy</td>
+</tr>
+<tr>
+<td><a href="allocated_responsibilities/">allocated_responsibilities</a></td>
+<td>Responsibilities allocated to the third party</td>
+</tr>
+<tr>
+<td><a href="allocated_to/">allocated_to</a></td>
+<td>What the resource is allocated to</td>
+</tr>
+<tr>
+<td><a href="allocation_date/">allocation_date</a></td>
+<td>Date the resource was allocated</td>
+</tr>
+<tr>
+<td><a href="analysis_frequency/">analysis_frequency</a></td>
+<td>Frequency of analysis</td>
+</tr>
+<tr>
+<td><a href="analyst/">analyst</a></td>
+<td>Person performing the analysis</td>
+</tr>
+<tr>
+<td><a href="applicability_statement/">applicability_statement</a></td>
+<td>Statement of policy applicability</td>
+</tr>
+<tr>
+<td><a href="applicable_controls/">applicable_controls</a></td>
+<td>Reference controls related to this policy or AI system</td>
+</tr>
+<tr>
+<td><a href="applicable_jurisdictions/">applicable_jurisdictions</a></td>
+<td>Jurisdictions relevant to the assessment</td>
+</tr>
+<tr>
+<td><a href="applicable_objectives/">applicable_objectives</a></td>
+<td>AI objective categories this control supports</td>
+</tr>
+<tr>
+<td><a href="applicable_risk_sources/">applicable_risk_sources</a></td>
+<td>Categories of AI risk source this control addresses</td>
+</tr>
+<tr>
+<td><a href="application_domain/">application_domain</a></td>
+<td>Domain in which the AI system is applied (e</td>
+</tr>
+<tr>
+<td><a href="approval_workflow/">approval_workflow</a></td>
+<td>Workflow for approving AI risk treatment</td>
+</tr>
+<tr>
+<td><a href="approved_by/">approved_by</a></td>
+<td>Person who approved the document</td>
+</tr>
+<tr>
+<td><a href="approved_date/">approved_date</a></td>
+<td>Date when the document was approved</td>
+</tr>
+<tr>
+<td><a href="assessment_criteria/">assessment_criteria</a></td>
+<td>Criteria for performing AI risk or impact assessments</td>
+</tr>
+<tr>
+<td><a href="assessment_date/">assessment_date</a></td>
+<td>Date the assessment was conducted</td>
+</tr>
+<tr>
+<td><a href="assessment_frequency/">assessment_frequency</a></td>
+<td>Planned frequency of assessments</td>
+</tr>
+<tr>
+<td><a href="assessment_methodology/">assessment_methodology</a></td>
+<td>Methodology used for assessment</td>
+</tr>
+<tr>
+<td><a href="assessment_scope/">assessment_scope</a></td>
+<td>Scope of the assessment</td>
+</tr>
+<tr>
+<td><a href="assessor/">assessor</a></td>
+<td>Person or team who conducted the assessment</td>
+</tr>
+<tr>
+<td><a href="assigned_to/">assigned_to</a></td>
+<td>Person(s) assigned to this role or resource</td>
+</tr>
+<tr>
+<td><a href="assurance_evidence/">assurance_evidence</a></td>
+<td>Evidence of assurance over the third party's conformance with the organizatio...</td>
+</tr>
+<tr>
+<td><a href="attendees/">attendees</a></td>
+<td>Attendees of the review</td>
+</tr>
+<tr>
+<td><a href="audience/">audience</a></td>
+<td>Target audience</td>
+</tr>
+<tr>
+<td><a href="audit_conclusion/">audit_conclusion</a></td>
+<td>Overall conclusion of the audit</td>
+</tr>
+<tr>
+<td><a href="audit_criteria/">audit_criteria</a></td>
+<td>Criteria used for the audit</td>
+</tr>
+<tr>
+<td><a href="audit_frequency_rationale/">audit_frequency_rationale</a></td>
+<td>Rationale for the audit cadence</td>
+</tr>
+<tr>
+<td><a href="audit_objectives/">audit_objectives</a></td>
+<td>Objectives of the audit</td>
+</tr>
+<tr>
+<td><a href="audit_period_end/">audit_period_end</a></td>
+<td>End date of the audit period</td>
+</tr>
+<tr>
+<td><a href="audit_period_start/">audit_period_start</a></td>
+<td>Start date of the audit period</td>
+</tr>
+<tr>
+<td><a href="audit_plan/">audit_plan</a></td>
+<td>Reference to the audit plan</td>
+</tr>
+<tr>
+<td><a href="audit_reference/">audit_reference</a></td>
+<td>Unique reference identifier for the audit</td>
+</tr>
+<tr>
+<td><a href="audit_results_summary/">audit_results_summary</a></td>
+<td>Summary of audit results</td>
+</tr>
+<tr>
+<td><a href="audit_scope/">audit_scope</a></td>
+<td>Scope of the audit</td>
+</tr>
+<tr>
+<td><a href="audit_team/">audit_team</a></td>
+<td>Members of the audit team</td>
+</tr>
+<tr>
+<td><a href="audit_type/">audit_type</a></td>
+<td>Type of audit (internal, external second-party, external third-party, surveil...</td>
+</tr>
+<tr>
+<td><a href="auditee_representatives/">auditee_representatives</a></td>
+<td>Representatives of the auditee</td>
+</tr>
+<tr>
+<td><a href="auditee_response/">auditee_response</a></td>
+<td>Auditee's response to the finding</td>
+</tr>
+<tr>
+<td><a href="auditor_qualifications/">auditor_qualifications</a></td>
+<td>Required auditor qualifications</td>
+</tr>
+<tr>
+<td><a href="author/">author</a></td>
+<td>Person who created the document</td>
+</tr>
+<tr>
+<td><a href="authorities/">authorities</a></td>
+<td>Authorities granted to the role</td>
+</tr>
+<tr>
+<td><a href="autonomy_level/">autonomy_level</a></td>
+<td>Description of the level of autonomy and human oversight required for this AI...</td>
+</tr>
+<tr>
+<td><a href="availability_status/">availability_status</a></td>
+<td>Current availability of the resource</td>
+</tr>
+<tr>
+<td><a href="awareness_program/">awareness_program</a></td>
+<td>Reference to the awareness program</td>
+</tr>
+<tr>
+<td><a href="awareness_topics/">awareness_topics</a></td>
+<td>Topics covered in the awareness program</td>
+</tr>
+<tr>
+<td><a href="categorized_as_incident/">categorized_as_incident</a></td>
+<td>Whether the event has been categorized as an incident requiring response</td>
+</tr>
+<tr>
+<td><a href="certification_body/">certification_body</a></td>
+<td>Body that issued the certification</td>
+</tr>
+<tr>
+<td><a href="certification_date/">certification_date</a></td>
+<td>Date the AIMS was certified</td>
+</tr>
+<tr>
+<td><a href="certification_status/">certification_status</a></td>
+<td>Current certification status of the AIMS</td>
+</tr>
+<tr>
+<td><a href="change_control_requirements/">change_control_requirements</a></td>
+<td>Requirements for controlling changes to the process</td>
+</tr>
+<tr>
+<td><a href="classification/">classification</a></td>
+<td>Information classification level</td>
+</tr>
+<tr>
+<td><a href="clause_reference/">clause_reference</a></td>
+<td>ISO/IEC 42001 clause referenced by the finding</td>
+</tr>
+<tr>
+<td><a href="climate_change_relevant/">climate_change_relevant</a></td>
+<td>Whether climate change has been determined to be a relevant issue for the org...</td>
+</tr>
+<tr>
+<td><a href="closure_date/">closure_date</a></td>
+<td>Date when the item was closed</td>
+</tr>
+<tr>
+<td><a href="closure_datetime/">closure_datetime</a></td>
+<td>Date and time the incident was closed</td>
+</tr>
+<tr>
+<td><a href="closure_evidence/">closure_evidence</a></td>
+<td>Evidence of closure</td>
+</tr>
+<tr>
+<td><a href="closure_status/">closure_status</a></td>
+<td>Closure status of the finding</td>
+</tr>
+<tr>
+<td><a href="commitment_statements/">commitment_statements</a></td>
+<td>Statements of commitment included in the policy</td>
+</tr>
+<tr>
+<td><a href="communicated_limitations/">communicated_limitations</a></td>
+<td>Limitations of the AI system that are communicated to the customer</td>
+</tr>
+<tr>
+<td><a href="communication_date/">communication_date</a></td>
+<td>Date when the policy was communicated</td>
+</tr>
+<tr>
+<td><a href="communication_items/">communication_items</a></td>
+<td>Communication items in the plan</td>
+</tr>
+<tr>
+<td><a href="communication_needs/">communication_needs</a></td>
+<td>Communication requirements for this party</td>
+</tr>
+<tr>
+<td><a href="communication_plan/">communication_plan</a></td>
+<td>Reference to the communication plan</td>
+</tr>
+<tr>
+<td><a href="competence_records/">competence_records</a></td>
+<td>Competence records for personnel</td>
+</tr>
+<tr>
+<td><a href="competency_assessment_date/">competency_assessment_date</a></td>
+<td>Date of last competency assessment</td>
+</tr>
+<tr>
+<td><a href="competency_gaps/">competency_gaps</a></td>
+<td>Identified competency gaps</td>
+</tr>
+<tr>
+<td><a href="completion_date/">completion_date</a></td>
+<td>Date when implementation was completed</td>
+</tr>
+<tr>
+<td><a href="completion_tracking/">completion_tracking</a></td>
+<td>How completion is tracked</td>
+</tr>
+<tr>
+<td><a href="computing_resources/">computing_resources</a></td>
+<td>System and computing resources used by the AI system</td>
+</tr>
+<tr>
+<td><a href="concern_ai_systems/">concern_ai_systems</a></td>
+<td>AI systems referenced in the concern report</td>
+</tr>
+<tr>
+<td><a href="concern_description/">concern_description</a></td>
+<td>Paraphrased summary of the concern raised</td>
+</tr>
+<tr>
+<td><a href="concern_lifecycle_stage/">concern_lifecycle_stage</a></td>
+<td>AI system life cycle stage(s) at which the concern arose</td>
+</tr>
+<tr>
+<td><a href="concern_reports/">concern_reports</a></td>
+<td>Concern reports raised and managed under the AIMS per A</td>
+</tr>
+<tr>
+<td><a href="confidentiality_level/">confidentiality_level</a></td>
+<td>Confidentiality classification applied to the concern record (e</td>
+</tr>
+<tr>
+<td><a href="consequences_addressed/">consequences_addressed</a></td>
+<td>How consequences were addressed</td>
+</tr>
+<tr>
+<td><a href="contact_information/">contact_information</a></td>
+<td>Contact details for the party</td>
+</tr>
+<tr>
+<td><a href="containment_actions/">containment_actions</a></td>
+<td>Containment actions taken to limit incident impact</td>
+</tr>
+<tr>
+<td><a href="context_changes/">context_changes</a></td>
+<td>Changes in external or internal context</td>
+</tr>
+<tr>
+<td><a href="context_external_issues/">context_external_issues</a></td>
+<td>External issues relevant to the AIMS per Clause 4</td>
+</tr>
+<tr>
+<td><a href="context_internal_issues/">context_internal_issues</a></td>
+<td>Internal issues relevant to the AIMS per Clause 4</td>
+</tr>
+<tr>
+<td><a href="contractual_basis/">contractual_basis</a></td>
+<td>Contractual basis of the relationship</td>
+</tr>
+<tr>
+<td><a href="control_family/">control_family</a></td>
+<td>Family of the Annex A control</td>
+</tr>
+<tr>
+<td><a href="control_id/">control_id</a></td>
+<td>Control identifier from Annex A (e</td>
+</tr>
+<tr>
+<td><a href="control_measures/">control_measures</a></td>
+<td>Control measures applied</td>
+</tr>
+<tr>
+<td><a href="control_owner/">control_owner</a></td>
+<td>Person responsible for the control</td>
+</tr>
+<tr>
+<td><a href="control_reference/">control_reference</a></td>
+<td>Reference to an Annex A control (e</td>
+</tr>
+<tr>
+<td><a href="control_selection_criteria/">control_selection_criteria</a></td>
+<td>Criteria for selecting Annex A controls</td>
+</tr>
+<tr>
+<td><a href="control_text/">control_text</a></td>
+<td>Organization-authored control statement or external control summary</td>
+</tr>
+<tr>
+<td><a href="control_title/">control_title</a></td>
+<td>Title of the control</td>
+</tr>
+<tr>
+<td><a href="controls_to_implement/">controls_to_implement</a></td>
+<td>Controls to be implemented as part of treatment</td>
+</tr>
+<tr>
+<td><a href="corrective_actions/">corrective_actions</a></td>
+<td>Corrective actions taken</td>
+</tr>
+<tr>
+<td><a href="corrective_actions_required/">corrective_actions_required</a></td>
+<td>Corrective actions required of the supplier</td>
+</tr>
+<tr>
+<td><a href="cost/">cost</a></td>
+<td>Cost of the resource</td>
+</tr>
+<tr>
+<td><a href="created_date/">created_date</a></td>
+<td>Date when the entity was created</td>
+</tr>
+<tr>
+<td><a href="current_value/">current_value</a></td>
+<td>Current measured value</td>
+</tr>
+<tr>
+<td><a href="customer_expectations/">customer_expectations</a></td>
+<td>Documented customer expectations and needs</td>
+</tr>
+<tr>
+<td><a href="customer_relationships/">customer_relationships</a></td>
+<td>Customer relationships relevant to this AI system</td>
+</tr>
+<tr>
+<td><a href="data_classification/">data_classification</a></td>
+<td>Classification of the data resource</td>
+</tr>
+<tr>
+<td><a href="data_preparation_methods/">data_preparation_methods</a></td>
+<td>Data preparation methods used (e</td>
+</tr>
+<tr>
+<td><a href="data_processing_role/">data_processing_role</a></td>
+<td>Role of the third party in data processing (e</td>
+</tr>
+<tr>
+<td><a href="data_provenance/">data_provenance</a></td>
+<td>Provenance information for the data resource</td>
+</tr>
+<tr>
+<td><a href="data_quality_metrics/">data_quality_metrics</a></td>
+<td>Measured data quality metrics</td>
+</tr>
+<tr>
+<td><a href="data_quality_requirements/">data_quality_requirements</a></td>
+<td>Documented data quality requirements for the AI system</td>
+</tr>
+<tr>
+<td><a href="data_resource_category/">data_resource_category</a></td>
+<td>Category of data resource (training, validation, test, production)</td>
+</tr>
+<tr>
+<td><a href="data_resources/">data_resources</a></td>
+<td>Data resources used by the AI system</td>
+</tr>
+<tr>
+<td><a href="decisions/">decisions</a></td>
+<td>Decisions made during the review</td>
+</tr>
+<tr>
+<td><a href="delegation_rules/">delegation_rules</a></td>
+<td>Rules for delegating responsibilities</td>
+</tr>
+<tr>
+<td><a href="delivery_methods/">delivery_methods</a></td>
+<td>Methods used to deliver awareness content</td>
+</tr>
+<tr>
+<td><a href="deployment_context/">deployment_context</a></td>
+<td>Operational context in which the AI system is deployed</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>Detailed description of the entity</td>
+</tr>
+<tr>
+<td><a href="detected_by/">detected_by</a></td>
+<td>Person or process that detected the nonconformity</td>
+</tr>
+<tr>
+<td><a href="detection_date/">detection_date</a></td>
+<td>Date the nonconformity was detected</td>
+</tr>
+<tr>
+<td><a href="detection_method/">detection_method</a></td>
+<td>How the incident was detected (monitoring alert, user report, external report...</td>
+</tr>
+<tr>
+<td><a href="development_actions/">development_actions</a></td>
+<td>Actions to address competency gaps</td>
+</tr>
+<tr>
+<td><a href="dimensions_assessed/">dimensions_assessed</a></td>
+<td>Impact dimensions actually assessed in this instance</td>
+</tr>
+<tr>
+<td><a href="dimensions_in_scope/">dimensions_in_scope</a></td>
+<td>Impact dimensions evaluated by the process</td>
+</tr>
+<tr>
+<td><a href="document_reference/">document_reference</a></td>
+<td>Unique reference number for document control</td>
+</tr>
+<tr>
+<td><a href="document_type/">document_type</a></td>
+<td>Classification of the documented information</td>
+</tr>
+<tr>
+<td><a href="documented_information_register/">documented_information_register</a></td>
+<td>Register of all documented information</td>
+</tr>
+<tr>
+<td><a href="education_records/">education_records</a></td>
+<td>Education qualifications</td>
+</tr>
+<tr>
+<td><a href="effective_date/">effective_date</a></td>
+<td>Date when the document becomes effective</td>
+</tr>
+<tr>
+<td><a href="effectiveness_criteria/">effectiveness_criteria</a></td>
+<td>Criteria for assessing effectiveness</td>
+</tr>
+<tr>
+<td><a href="effectiveness_measures/">effectiveness_measures</a></td>
+<td>How effectiveness is measured</td>
+</tr>
+<tr>
+<td><a href="effectiveness_rating/">effectiveness_rating</a></td>
+<td>Rating of control effectiveness</td>
+</tr>
+<tr>
+<td><a href="effectiveness_review_date/">effectiveness_review_date</a></td>
+<td>Date when effectiveness was reviewed</td>
+</tr>
+<tr>
+<td><a href="effectiveness_verified/">effectiveness_verified</a></td>
+<td>Whether effectiveness was verified</td>
+</tr>
+<tr>
+<td><a href="employee_count/">employee_count</a></td>
+<td>Approximate number of employees</td>
+</tr>
+<tr>
+<td><a href="environment_type/">environment_type</a></td>
+<td>Type of environment (development, staging, production)</td>
+</tr>
+<tr>
+<td><a href="escalation_status/">escalation_status</a></td>
+<td>Whether and how the concern was escalated (internal management, governing bod...</td>
+</tr>
+<tr>
+<td><a href="event_datetime/">event_datetime</a></td>
+<td>Date and time the event was observed</td>
+</tr>
+<tr>
+<td><a href="event_description/">event_description</a></td>
+<td>Free-text description of the event</td>
+</tr>
+<tr>
+<td><a href="event_log_policy/">event_log_policy</a></td>
+<td>Policy for AI system event log recording across life cycle phases</td>
+</tr>
+<tr>
+<td><a href="event_source/">event_source</a></td>
+<td>Source channel through which the event was raised (monitoring, user report, e...</td>
+</tr>
+<tr>
+<td><a href="evidence_collected/">evidence_collected</a></td>
+<td>References to evidence collected during incident response</td>
+</tr>
+<tr>
+<td><a href="evidence_references/">evidence_references</a></td>
+<td>References to evidence of implementation</td>
+</tr>
+<tr>
+<td><a href="exclusion_justification/">exclusion_justification</a></td>
+<td>Justification for excluding the control</td>
+</tr>
+<tr>
+<td><a href="existing_controls/">existing_controls</a></td>
+<td>Controls currently in place affecting this risk</td>
+</tr>
+<tr>
+<td><a href="expected_benefit/">expected_benefit</a></td>
+<td>Expected benefit of the improvement</td>
+</tr>
+<tr>
+<td><a href="experience_records/">experience_records</a></td>
+<td>Relevant experience</td>
+</tr>
+<tr>
+<td><a href="external_reports/">external_reports</a></td>
+<td>External reports received or filed regarding the incident</td>
+</tr>
+<tr>
+<td><a href="finding_description/">finding_description</a></td>
+<td>Description of the finding</td>
+</tr>
+<tr>
+<td><a href="finding_type/">finding_type</a></td>
+<td>Type of audit finding</td>
+</tr>
+<tr>
+<td><a href="findings/">findings</a></td>
+<td>Findings from the audit</td>
+</tr>
+<tr>
+<td><a href="foreseeable_misuse/">foreseeable_misuse</a></td>
+<td>Reasonably foreseeable misuse of the AI system</td>
+</tr>
+<tr>
+<td><a href="frequency/">frequency</a></td>
+<td>Frequency of the activity</td>
+</tr>
+<tr>
+<td><a href="geographic_locations/">geographic_locations</a></td>
+<td>Countries or regions where the organization operates</td>
+</tr>
+<tr>
+<td><a href="governing_body/">governing_body</a></td>
+<td>Reference to the governing body to which top management is accountable (Claus...</td>
+</tr>
+<tr>
+<td><a href="human_oversight_description/">human_oversight_description</a></td>
+<td>Description of human-oversight arrangements, including review points, escalat...</td>
+</tr>
+<tr>
+<td><a href="human_oversight_required/">human_oversight_required</a></td>
+<td>Whether human oversight is required for outputs of the AI system (Annex A</td>
+</tr>
+<tr>
+<td><a href="human_oversight_stages/">human_oversight_stages</a></td>
+<td>AI system life cycle stages at which human oversight applies (Annex B</td>
+</tr>
+<tr>
+<td><a href="human_resources/">human_resources</a></td>
+<td>Human resources involved with the AI system</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td>Unique identifier for the entity</td>
+</tr>
+<tr>
+<td><a href="identification_date/">identification_date</a></td>
+<td>Date the improvement opportunity was identified</td>
+</tr>
+<tr>
+<td><a href="identified_by/">identified_by</a></td>
+<td>Person who identified the improvement opportunity</td>
+</tr>
+<tr>
+<td><a href="identified_consequences/">identified_consequences</a></td>
+<td>Identified positive or negative consequences</td>
+</tr>
+<tr>
+<td><a href="immediate_actions/">immediate_actions</a></td>
+<td>Immediate actions taken</td>
+</tr>
+<tr>
+<td><a href="impact/">impact</a></td>
+<td>Assessed consequence if the risk materializes</td>
+</tr>
+<tr>
+<td><a href="impact_assessment_results/">impact_assessment_results</a></td>
+<td>Summary of AI system impact assessment results</td>
+</tr>
+<tr>
+<td><a href="impact_scale/">impact_scale</a></td>
+<td>Scale used for impact rating</td>
+</tr>
+<tr>
+<td><a href="implementation_date/">implementation_date</a></td>
+<td>Date the control was implemented</td>
+</tr>
+<tr>
+<td><a href="implementation_evidence/">implementation_evidence</a></td>
+<td>Evidence of control implementation</td>
+</tr>
+<tr>
+<td><a href="implementation_guidance/">implementation_guidance</a></td>
+<td>Organization-authored implementation notes for the control</td>
+</tr>
+<tr>
+<td><a href="implementation_plan/">implementation_plan</a></td>
+<td>Plan for implementing the improvement</td>
+</tr>
+<tr>
+<td><a href="implementation_status/">implementation_status</a></td>
+<td>Current implementation status</td>
+</tr>
+<tr>
+<td><a href="implementation_timeline/">implementation_timeline</a></td>
+<td>Timeline for implementation</td>
+</tr>
+<tr>
+<td><a href="implemented_count/">implemented_count</a></td>
+<td>Number of implemented controls</td>
+</tr>
+<tr>
+<td><a href="improvement_description/">improvement_description</a></td>
+<td>Description of the improvement opportunity</td>
+</tr>
+<tr>
+<td><a href="improvement_opportunities/">improvement_opportunities</a></td>
+<td>Improvement opportunities identified</td>
+</tr>
+<tr>
+<td><a href="improvement_source/">improvement_source</a></td>
+<td>Source of the improvement opportunity</td>
+</tr>
+<tr>
+<td><a href="improvements/">improvements</a></td>
+<td>Improvement opportunities being tracked</td>
+</tr>
+<tr>
+<td><a href="incident_category/">incident_category</a></td>
+<td>AI-specific category of the incident</td>
+</tr>
+<tr>
+<td><a href="incident_datetime/">incident_datetime</a></td>
+<td>Date and time the incident was declared or detected</td>
+</tr>
+<tr>
+<td><a href="incident_description/">incident_description</a></td>
+<td>Free-text description of the incident</td>
+</tr>
+<tr>
+<td><a href="inclusion_justification/">inclusion_justification</a></td>
+<td>Justification for including the control</td>
+</tr>
+<tr>
+<td><a href="industry_sector/">industry_sector</a></td>
+<td>Primary industry sector of the organization (free-form label)</td>
+</tr>
+<tr>
+<td><a href="inherent_risk_level/">inherent_risk_level</a></td>
+<td>Risk level before controls are applied</td>
+</tr>
+<tr>
+<td><a href="initial_assessment/">initial_assessment</a></td>
+<td>Initial triage assessment of the event</td>
+</tr>
+<tr>
+<td><a href="integrated_management_systems/">integrated_management_systems</a></td>
+<td>Related management-system standards with which the AIMS is jointly implemente...</td>
+</tr>
+<tr>
+<td><a href="intended_uses/">intended_uses</a></td>
+<td>Documented intended uses of the AI system</td>
+</tr>
+<tr>
+<td><a href="interested_parties/">interested_parties</a></td>
+<td>Stakeholders relevant to the AIMS</td>
+</tr>
+<tr>
+<td><a href="interested_party_changes/">interested_party_changes</a></td>
+<td>Changes in interested party needs and expectations</td>
+</tr>
+<tr>
+<td><a href="internal_audits/">internal_audits</a></td>
+<td>Internal audits conducted</td>
+</tr>
+<tr>
+<td><a href="investigation_findings/">investigation_findings</a></td>
+<td>Paraphrased summary of investigation findings</td>
+</tr>
+<tr>
+<td><a href="investigation_status/">investigation_status</a></td>
+<td>Status of the investigation (e</td>
+</tr>
+<tr>
+<td><a href="investigator/">investigator</a></td>
+<td>Identifier or description of the investigator assigned to the concern</td>
+</tr>
+<tr>
+<td><a href="is_applicable/">is_applicable</a></td>
+<td>Whether the control is applicable</td>
+</tr>
+<tr>
+<td><a href="known_bias_issues/">known_bias_issues</a></td>
+<td>Known or potential bias issues in the data</td>
+</tr>
+<tr>
+<td><a href="labelling_process/">labelling_process</a></td>
+<td>Description of the data labelling process</td>
+</tr>
+<tr>
+<td><a href="last_policy_review_date/">last_policy_review_date</a></td>
+<td>Date of the most recent AI policy review</td>
+</tr>
+<tr>
+<td><a href="last_review_date/">last_review_date</a></td>
+<td>Date of last review</td>
+</tr>
+<tr>
+<td><a href="last_test_date/">last_test_date</a></td>
+<td>Date the control was last tested</td>
+</tr>
+<tr>
+<td><a href="last_updated_date/">last_updated_date</a></td>
+<td>Date the data was last updated or modified</td>
+</tr>
+<tr>
+<td><a href="lead_auditor/">lead_auditor</a></td>
+<td>Lead auditor for the audit</td>
+</tr>
+<tr>
+<td><a href="leadership_commitment_evidence/">leadership_commitment_evidence</a></td>
+<td>Records or references demonstrating top-management leadership and commitment ...</td>
+</tr>
+<tr>
+<td><a href="learning_mode/">learning_mode</a></td>
+<td>Learning paradigm of the AI system (informs Clause 6</td>
+</tr>
+<tr>
+<td><a href="legal_name/">legal_name</a></td>
+<td>Legal registered name of the organization</td>
+</tr>
+<tr>
+<td><a href="lessons_learned/">lessons_learned</a></td>
+<td>Lessons learned recorded after incident closure</td>
+</tr>
+<tr>
+<td><a href="license_terms/">license_terms</a></td>
+<td>License terms applicable to the tooling resource</td>
+</tr>
+<tr>
+<td><a href="lifecycle_responsibilities/">lifecycle_responsibilities</a></td>
+<td>Life cycle responsibilities allocated to this human resource</td>
+</tr>
+<tr>
+<td><a href="lifecycle_stage/">lifecycle_stage</a></td>
+<td>Current life cycle stage of the AI system</td>
+</tr>
+<tr>
+<td><a href="lifecycle_stages_involved/">lifecycle_stages_involved</a></td>
+<td>AI life cycle stages where the third party is involved</td>
+</tr>
+<tr>
+<td><a href="likelihood/">likelihood</a></td>
+<td>Assessed likelihood of risk occurrence</td>
+</tr>
+<tr>
+<td><a href="likelihood_scale/">likelihood_scale</a></td>
+<td>Scale used for likelihood rating</td>
+</tr>
+<tr>
+<td><a href="linkage_to_risk_assessment/">linkage_to_risk_assessment</a></td>
+<td>Description of how impact assessment results feed into AI risk assessment per...</td>
+</tr>
+<tr>
+<td><a href="linked_corrective_action/">linked_corrective_action</a></td>
+<td>Linked corrective action addressing the finding</td>
+</tr>
+<tr>
+<td><a href="linked_corrective_actions/">linked_corrective_actions</a></td>
+<td>Linked corrective actions</td>
+</tr>
+<tr>
+<td><a href="linked_impact_assessment/">linked_impact_assessment</a></td>
+<td>AI system impact assessment linked to this risk assessment</td>
+</tr>
+<tr>
+<td><a href="linked_incident/">linked_incident</a></td>
+<td>AI incident linked to the originating event</td>
+</tr>
+<tr>
+<td><a href="linked_nonconformity/">linked_nonconformity</a></td>
+<td>Linked nonconformity</td>
+</tr>
+<tr>
+<td><a href="location/">location</a></td>
+<td>Physical or logical location of the resource</td>
+</tr>
+<tr>
+<td><a href="management_reviews/">management_reviews</a></td>
+<td>Management reviews of the AIMS</td>
+</tr>
+<tr>
+<td><a href="measurement_frequency/">measurement_frequency</a></td>
+<td>How often measurement is performed</td>
+</tr>
+<tr>
+<td><a href="measurement_method/">measurement_method</a></td>
+<td>Method used to measure the metric</td>
+</tr>
+<tr>
+<td><a href="method/">method</a></td>
+<td>Method of communication</td>
+</tr>
+<tr>
+<td><a href="methodology_used/">methodology_used</a></td>
+<td>Specific methodology applied in this assessment</td>
+</tr>
+<tr>
+<td><a href="metric_definition/">metric_definition</a></td>
+<td>Definition of how the objective is measured</td>
+</tr>
+<tr>
+<td><a href="metric_description/">metric_description</a></td>
+<td>Description of the metric</td>
+</tr>
+<tr>
+<td><a href="metric_name/">metric_name</a></td>
+<td>Name of the metric</td>
+</tr>
+<tr>
+<td><a href="mitigations/">mitigations</a></td>
+<td>Mitigations to address identified consequences</td>
+</tr>
+<tr>
+<td><a href="ml_approach/">ml_approach</a></td>
+<td>Machine-learning approach used by the AI system, capturing the design-choice ...</td>
+</tr>
+<tr>
+<td><a href="modified_date/">modified_date</a></td>
+<td>Date when the entity was last modified</td>
+</tr>
+<tr>
+<td><a href="monitoring_items/">monitoring_items</a></td>
+<td>Items to be monitored</td>
+</tr>
+<tr>
+<td><a href="monitoring_method/">monitoring_method</a></td>
+<td>How the supplier or customer relationship is monitored</td>
+</tr>
+<tr>
+<td><a href="monitoring_program/">monitoring_program</a></td>
+<td>Reference to the monitoring program</td>
+</tr>
+<tr>
+<td><a href="name/">name</a></td>
+<td>Human-readable name or title</td>
+</tr>
+<tr>
+<td><a href="next_assessment_date/">next_assessment_date</a></td>
+<td>Planned date for next assessment</td>
+</tr>
+<tr>
+<td><a href="next_policy_review_date/">next_policy_review_date</a></td>
+<td>Planned date of the next AI policy review</td>
+</tr>
+<tr>
+<td><a href="next_review_date/">next_review_date</a></td>
+<td>Date of the next review</td>
+</tr>
+<tr>
+<td><a href="nonconformities/">nonconformities</a></td>
+<td>Nonconformities identified</td>
+</tr>
+<tr>
+<td><a href="nonconformity_description/">nonconformity_description</a></td>
+<td>Description of the nonconformity</td>
+</tr>
+<tr>
+<td><a href="nonconformity_source/">nonconformity_source</a></td>
+<td>Source from which the nonconformity was identified</td>
+</tr>
+<tr>
+<td><a href="not_applicable_count/">not_applicable_count</a></td>
+<td>Number of controls marked not applicable</td>
+</tr>
+<tr>
+<td><a href="notification_required/">notification_required</a></td>
+<td>Whether notification to interested parties or authorities is required</td>
+</tr>
+<tr>
+<td><a href="notifications_made/">notifications_made</a></td>
+<td>Notifications actually made (user communications, regulator filings)</td>
+</tr>
+<tr>
+<td><a href="objective_category/">objective_category</a></td>
+<td>Category of AI objective (e</td>
+</tr>
+<tr>
+<td><a href="objective_evidence/">objective_evidence</a></td>
+<td>Objective evidence supporting the finding</td>
+</tr>
+<tr>
+<td><a href="objective_statement/">objective_statement</a></td>
+<td>Clear statement of the objective</td>
+</tr>
+<tr>
+<td><a href="operational_procedures/">operational_procedures</a></td>
+<td>Operational procedures of the AIMS</td>
+</tr>
+<tr>
+<td><a href="organization/">organization</a></td>
+<td>Reference to the organization operating the AIMS</td>
+</tr>
+<tr>
+<td><a href="organization_role/">organization_role</a></td>
+<td>The organization's role with respect to this AI system (provider, producer, c...</td>
+</tr>
+<tr>
+<td><a href="organization_type/">organization_type</a></td>
+<td>Type of organization (e</td>
+</tr>
+<tr>
+<td><a href="organizational_roles_with_ai/">organizational_roles_with_ai</a></td>
+<td>Documented set of roles the organization plays in the AI ecosystem within the...</td>
+</tr>
+<tr>
+<td><a href="outcome_assessment/">outcome_assessment</a></td>
+<td>Assessment of the outcome</td>
+</tr>
+<tr>
+<td><a href="owner/">owner</a></td>
+<td>Person accountable for the document content and maintenance</td>
+</tr>
+<tr>
+<td><a href="parent_organization/">parent_organization</a></td>
+<td>Parent organization if applicable</td>
+</tr>
+<tr>
+<td><a href="parent_policy/">parent_policy</a></td>
+<td>The parent AI policy this topic-specific policy supports</td>
+</tr>
+<tr>
+<td><a href="party_name/">party_name</a></td>
+<td>Name of the third party</td>
+</tr>
+<tr>
+<td><a href="party_type/">party_type</a></td>
+<td>Category of party</td>
+</tr>
+<tr>
+<td><a href="performance_trends/">performance_trends</a></td>
+<td>Trends in AIMS performance</td>
+</tr>
+<tr>
+<td><a href="person_name/">person_name</a></td>
+<td>Name of the person</td>
+</tr>
+<tr>
+<td><a href="person_role/">person_role</a></td>
+<td>Role of the person</td>
+</tr>
+<tr>
+<td><a href="plan_scope/">plan_scope</a></td>
+<td>Scope of the treatment plan</td>
+</tr>
+<tr>
+<td><a href="planned_audits/">planned_audits</a></td>
+<td>Audits planned within the programme</td>
+</tr>
+<tr>
+<td><a href="planned_changes/">planned_changes</a></td>
+<td>Records of planned changes to the AIMS, including purpose, consequences, reso...</td>
+</tr>
+<tr>
+<td><a href="planned_count/">planned_count</a></td>
+<td>Number of controls planned for implementation</td>
+</tr>
+<tr>
+<td><a href="policy_objectives_framework/">policy_objectives_framework</a></td>
+<td>Framework for setting AI objectives</td>
+</tr>
+<tr>
+<td><a href="policy_statement/">policy_statement</a></td>
+<td>The core policy statement text</td>
+</tr>
+<tr>
+<td><a href="positive_observations/">positive_observations</a></td>
+<td>Positive observations from the audit</td>
+</tr>
+<tr>
+<td><a href="post_incident_review/">post_incident_review</a></td>
+<td>Reference to the post-incident review record</td>
+</tr>
+<tr>
+<td><a href="previous_actions_status/">previous_actions_status</a></td>
+<td>Status of actions from previous reviews</td>
+</tr>
+<tr>
+<td><a href="priority/">priority</a></td>
+<td>Priority assigned (qualitative level)</td>
+</tr>
+<tr>
+<td><a href="procedure_scope/">procedure_scope</a></td>
+<td>Scope of the procedure</td>
+</tr>
+<tr>
+<td><a href="process_criteria/">process_criteria</a></td>
+<td>Criteria for the process</td>
+</tr>
+<tr>
+<td><a href="programme_period/">programme_period</a></td>
+<td>Period covered by the audit programme</td>
+</tr>
+<tr>
+<td><a href="programme_status/">programme_status</a></td>
+<td>Status of the audit programme</td>
+</tr>
+<tr>
+<td><a href="purpose/">purpose</a></td>
+<td>Purpose of the communication</td>
+</tr>
+<tr>
+<td><a href="quantity/">quantity</a></td>
+<td>Quantity of the resource</td>
+</tr>
+<tr>
+<td><a href="recertification_date/">recertification_date</a></td>
+<td>Date when recertification is due</td>
+</tr>
+<tr>
+<td><a href="recommendations/">recommendations</a></td>
+<td>Recommendations from the assessment</td>
+</tr>
+<tr>
+<td><a href="recommended_action/">recommended_action</a></td>
+<td>Recommended action to address the finding</td>
+</tr>
+<tr>
+<td><a href="records_required/">records_required</a></td>
+<td>Records required to evidence the activity</td>
+</tr>
+<tr>
+<td><a href="recovery_actions/">recovery_actions</a></td>
+<td>Recovery actions taken to restore normal AI system operation</td>
+</tr>
+<tr>
+<td><a href="reference_controls/">reference_controls</a></td>
+<td>AI reference controls applied within the AIMS</td>
+</tr>
+<tr>
+<td><a href="regulatory_jurisdictions/">regulatory_jurisdictions</a></td>
+<td>Jurisdictions whose regulations apply to the organization</td>
+</tr>
+<tr>
+<td><a href="related_controls/">related_controls</a></td>
+<td>Other reference controls related to this one</td>
+</tr>
+<tr>
+<td><a href="related_impact_assessment/">related_impact_assessment</a></td>
+<td>AI system impact assessment associated with this risk</td>
+</tr>
+<tr>
+<td><a href="related_impact_assessments/">related_impact_assessments</a></td>
+<td>Impact assessments related to this AI system</td>
+</tr>
+<tr>
+<td><a href="related_incidents/">related_incidents</a></td>
+<td>AI incidents linked to this concern report</td>
+</tr>
+<tr>
+<td><a href="related_nonconformities/">related_nonconformities</a></td>
+<td>Nonconformities linked to this concern report</td>
+</tr>
+<tr>
+<td><a href="related_risks/">related_risks</a></td>
+<td>Associated AI risks</td>
+</tr>
+<tr>
+<td><a href="related_topic_policies/">related_topic_policies</a></td>
+<td>Topic-specific policies supporting this policy</td>
+</tr>
+<tr>
+<td><a href="related_treatment_plan/">related_treatment_plan</a></td>
+<td>Risk treatment plan addressing this risk</td>
+</tr>
+<tr>
+<td><a href="relationship/">relationship</a></td>
+<td>Nature of the relationship with the organization</td>
+</tr>
+<tr>
+<td><a href="report_date/">report_date</a></td>
+<td>Date the audit report was issued</td>
+</tr>
+<tr>
+<td><a href="report_distribution/">report_distribution</a></td>
+<td>Distribution list for the audit report</td>
+</tr>
+<tr>
+<td><a href="reported_date/">reported_date</a></td>
+<td>Date the concern was reported</td>
+</tr>
+<tr>
+<td><a href="reporter/">reporter</a></td>
+<td>Identifier or description of the person or system that reported the event</td>
+</tr>
+<tr>
+<td><a href="reporter_anonymous/">reporter_anonymous</a></td>
+<td>Whether the reporter chose to remain anonymous</td>
+</tr>
+<tr>
+<td><a href="reporter_party_type/">reporter_party_type</a></td>
+<td>Type of party that reported the event (internal user, external interested par...</td>
+</tr>
+<tr>
+<td><a href="reporting_channel/">reporting_channel</a></td>
+<td>Channel through which the concern was reported (e</td>
+</tr>
+<tr>
+<td><a href="reporting_line/">reporting_line</a></td>
+<td>To whom this role reports</td>
+</tr>
+<tr>
+<td><a href="reprisal_protection_actions/">reprisal_protection_actions</a></td>
+<td>Actions taken to protect the reporter from reprisals or detriment (informed b...</td>
+</tr>
+<tr>
+<td><a href="required_competencies/">required_competencies</a></td>
+<td>Competencies required for the role</td>
+</tr>
+<tr>
+<td><a href="requirement_violated/">requirement_violated</a></td>
+<td>Requirement that was violated</td>
+</tr>
+<tr>
+<td><a href="requirements/">requirements</a></td>
+<td>Requirements of the interested party</td>
+</tr>
+<tr>
+<td><a href="residual_risk_acceptance/">residual_risk_acceptance</a></td>
+<td>Documentation of residual AI risk acceptance</td>
+</tr>
+<tr>
+<td><a href="residual_risk_level/">residual_risk_level</a></td>
+<td>Risk level after controls are applied</td>
+</tr>
+<tr>
+<td><a href="resolution/">resolution</a></td>
+<td>Paraphrased description of the resolution provided</td>
+</tr>
+<tr>
+<td><a href="resource_class/">resource_class</a></td>
+<td>Class of computing resource (e</td>
+</tr>
+<tr>
+<td><a href="resource_requirements/">resource_requirements</a></td>
+<td>Resources required for the activity</td>
+</tr>
+<tr>
+<td><a href="resource_type/">resource_type</a></td>
+<td>Type of resource</td>
+</tr>
+<tr>
+<td><a href="resources/">resources</a></td>
+<td>Resources provided for the AIMS</td>
+</tr>
+<tr>
+<td><a href="resources_required/">resources_required</a></td>
+<td>Resources required for implementation</td>
+</tr>
+<tr>
+<td><a href="response_actions/">response_actions</a></td>
+<td>Response actions taken for the incident</td>
+</tr>
+<tr>
+<td><a href="response_due_date/">response_due_date</a></td>
+<td>Target date by which a response is owed to the reporter</td>
+</tr>
+<tr>
+<td><a href="response_provided_date/">response_provided_date</a></td>
+<td>Date a response was provided to the reporter</td>
+</tr>
+<tr>
+<td><a href="responsibilities/">responsibilities</a></td>
+<td>Responsibilities assigned to the role</td>
+</tr>
+<tr>
+<td><a href="responsible_parties/">responsible_parties</a></td>
+<td>Parties responsible for implementation</td>
+</tr>
+<tr>
+<td><a href="responsible_party/">responsible_party</a></td>
+<td>Party responsible for the activity</td>
+</tr>
+<tr>
+<td><a href="responsible_role/">responsible_role</a></td>
+<td>Role responsible for the objective or control</td>
+</tr>
+<tr>
+<td><a href="responsible_roles/">responsible_roles</a></td>
+<td>Roles responsible for the process</td>
+</tr>
+<tr>
+<td><a href="retention_period/">retention_period</a></td>
+<td>Duration for which the document is retained</td>
+</tr>
+<tr>
+<td><a href="retention_policy/">retention_policy</a></td>
+<td>Retention and disposal policy applicable to the data</td>
+</tr>
+<tr>
+<td><a href="review_date/">review_date</a></td>
+<td>Date when the document is due for review</td>
+</tr>
+<tr>
+<td><a href="review_frequency/">review_frequency</a></td>
+<td>Frequency at which the relationship is reviewed</td>
+</tr>
+<tr>
+<td><a href="risk_acceptance_criteria/">risk_acceptance_criteria</a></td>
+<td>Criteria for accepting AI risks</td>
+</tr>
+<tr>
+<td><a href="risk_assessment_results/">risk_assessment_results</a></td>
+<td>Summary of AI risk assessment results</td>
+</tr>
+<tr>
+<td><a href="risk_implication/">risk_implication</a></td>
+<td>AI risk implication of the finding</td>
+</tr>
+<tr>
+<td><a href="risk_matrix/">risk_matrix</a></td>
+<td>Risk matrix or calculation method</td>
+</tr>
+<tr>
+<td><a href="risk_owner/">risk_owner</a></td>
+<td>Person accountable for managing the AI risk</td>
+</tr>
+<tr>
+<td><a href="risk_owner_approval/">risk_owner_approval</a></td>
+<td>Risk owner who approved the plan</td>
+</tr>
+<tr>
+<td><a href="risk_source_category/">risk_source_category</a></td>
+<td>Category of AI risk source per Annex C</td>
+</tr>
+<tr>
+<td><a href="risk_source_description/">risk_source_description</a></td>
+<td>Description of the specific source of risk</td>
+</tr>
+<tr>
+<td><a href="risk_treatment_option/">risk_treatment_option</a></td>
+<td>Selected treatment option for the AI risk</td>
+</tr>
+<tr>
+<td><a href="risks_addressed/">risks_addressed</a></td>
+<td>Risks addressed by this plan</td>
+</tr>
+<tr>
+<td><a href="risks_identified/">risks_identified</a></td>
+<td>Risks identified in this assessment</td>
+</tr>
+<tr>
+<td><a href="role_type/">role_type</a></td>
+<td>Category of the role</td>
+</tr>
+<tr>
+<td><a href="roles/">roles</a></td>
+<td>AI-related roles defined in the AIMS</td>
+</tr>
+<tr>
+<td><a href="root_cause/">root_cause</a></td>
+<td>Identified root cause</td>
+</tr>
+<tr>
+<td><a href="root_cause_addressed/">root_cause_addressed</a></td>
+<td>Root cause addressed by the action</td>
+</tr>
+<tr>
+<td><a href="root_cause_analysis/">root_cause_analysis</a></td>
+<td>Analysis of the root cause</td>
+</tr>
+<tr>
+<td><a href="scope_boundaries/">scope_boundaries</a></td>
+<td>Defined boundaries of the AIMS scope</td>
+</tr>
+<tr>
+<td><a href="scope_exclusions/">scope_exclusions</a></td>
+<td>Any exclusions from scope with justification</td>
+</tr>
+<tr>
+<td><a href="scope_statement/">scope_statement</a></td>
+<td>Documented statement of AIMS scope per Clause 4</td>
+</tr>
+<tr>
+<td><a href="sector_domains/">sector_domains</a></td>
+<td>Application sectors in which the organization deploys AI systems, drawn from ...</td>
+</tr>
+<tr>
+<td><a href="severity/">severity</a></td>
+<td>Severity rating of the incident</td>
+</tr>
+<tr>
+<td><a href="shared_with_parties/">shared_with_parties</a></td>
+<td>Interested parties with whom the results have been shared</td>
+</tr>
+<tr>
+<td><a href="similar_nonconformities_check/">similar_nonconformities_check</a></td>
+<td>Check for similar nonconformities</td>
+</tr>
+<tr>
+<td><a href="size_category/">size_category</a></td>
+<td>Organization size classification</td>
+</tr>
+<tr>
+<td><a href="soa_entries/">soa_entries</a></td>
+<td>Individual control entries in the SoA</td>
+</tr>
+<tr>
+<td><a href="soa_template/">soa_template</a></td>
+<td>Template used for the Statement of Applicability</td>
+</tr>
+<tr>
+<td><a href="societal_context/">societal_context</a></td>
+<td>Societal context relevant to the impact assessment</td>
+</tr>
+<tr>
+<td><a href="source/">source</a></td>
+<td>Source from which the data was obtained</td>
+</tr>
+<tr>
+<td><a href="statement_of_applicability/">statement_of_applicability</a></td>
+<td>Reference to the AIMS Statement of Applicability</td>
+</tr>
+<tr>
+<td><a href="status/">status</a></td>
+<td>Current status of the document or entity</td>
+</tr>
+<tr>
+<td><a href="subject/">subject</a></td>
+<td>Subject of the communication</td>
+</tr>
+<tr>
+<td><a href="subsidiaries/">subsidiaries</a></td>
+<td>Subsidiary organizations if applicable</td>
+</tr>
+<tr>
+<td><a href="summary_findings/">summary_findings</a></td>
+<td>Summary of assessment findings</td>
+</tr>
+<tr>
+<td><a href="supplier_assessment_criteria/">supplier_assessment_criteria</a></td>
+<td>Criteria for assessing the supplier</td>
+</tr>
+<tr>
+<td><a href="supplier_relationships/">supplier_relationships</a></td>
+<td>Supplier relationships relevant to this AI system</td>
+</tr>
+<tr>
+<td><a href="target_audience/">target_audience</a></td>
+<td>Intended audience for the policy or document</td>
+</tr>
+<tr>
+<td><a href="target_completion_date/">target_completion_date</a></td>
+<td>Target completion date</td>
+</tr>
+<tr>
+<td><a href="target_date/">target_date</a></td>
+<td>Target date for achieving the objective</td>
+</tr>
+<tr>
+<td><a href="target_implementation_date/">target_implementation_date</a></td>
+<td>Target date for implementing the control</td>
+</tr>
+<tr>
+<td><a href="target_threshold/">target_threshold</a></td>
+<td>Target threshold for the metric</td>
+</tr>
+<tr>
+<td><a href="target_value/">target_value</a></td>
+<td>Target value for the objective metric</td>
+</tr>
+<tr>
+<td><a href="technical_context/">technical_context</a></td>
+<td>Specific technical context in which the AI system is deployed</td>
+</tr>
+<tr>
+<td><a href="technical_documentation/">technical_documentation</a></td>
+<td>Reference to AI system technical documentation</td>
+</tr>
+<tr>
+<td><a href="third_party_relationships/">third_party_relationships</a></td>
+<td>Third-party relationships within the AIMS scope</td>
+</tr>
+<tr>
+<td><a href="tool_category/">tool_category</a></td>
+<td>Category of tooling resource (algorithm, framework, model, library)</td>
+</tr>
+<tr>
+<td><a href="tool_version/">tool_version</a></td>
+<td>Version identifier for the tooling resource</td>
+</tr>
+<tr>
+<td><a href="tooling_resources/">tooling_resources</a></td>
+<td>Tooling resources used by the AI system</td>
+</tr>
+<tr>
+<td><a href="top_management/">top_management</a></td>
+<td>Reference to the person or group exercising top management direction and cont...</td>
+</tr>
+<tr>
+<td><a href="topic_area/">topic_area</a></td>
+<td>The specific topic addressed by the policy</td>
+</tr>
+<tr>
+<td><a href="total_controls/">total_controls</a></td>
+<td>Total number of controls in scope</td>
+</tr>
+<tr>
+<td><a href="trading_names/">trading_names</a></td>
+<td>Names under which the organization conducts business</td>
+</tr>
+<tr>
+<td><a href="training_records/">training_records</a></td>
+<td>Training completed</td>
+</tr>
+<tr>
+<td><a href="treatment_actions/">treatment_actions</a></td>
+<td>Actions to be taken for treatment</td>
+</tr>
+<tr>
+<td><a href="treatment_options_guidance/">treatment_options_guidance</a></td>
+<td>Guidance on selecting AI risk treatment options</td>
+</tr>
+<tr>
+<td><a href="treatment_priority/">treatment_priority</a></td>
+<td>Priority for treating this risk</td>
+</tr>
+<tr>
+<td><a href="trend/">trend</a></td>
+<td>Observed trend in the metric</td>
+</tr>
+<tr>
+<td><a href="trigger_events/">trigger_events</a></td>
+<td>Events that trigger an assessment outside the planned schedule</td>
+</tr>
+<tr>
+<td><a href="usage_agreement_reference/">usage_agreement_reference</a></td>
+<td>Reference to the usage agreement with the customer</td>
+</tr>
+<tr>
+<td><a href="usage_purpose/">usage_purpose</a></td>
+<td>Purpose for which the tooling resource is used</td>
+</tr>
+<tr>
+<td><a href="vendor/">vendor</a></td>
+<td>Vendor or origin of the tooling resource</td>
+</tr>
+<tr>
+<td><a href="version/">version</a></td>
+<td>Version identifier for the entity</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumerations">Enumerations</h2>
+<table>
+<thead>
+<tr>
+<th>Enumeration</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AIControlFamily/">AIControlFamily</a></td>
+<td>The reference control families in Annex A of ISO/IEC 42001:2023</td>
+</tr>
+<tr>
+<td><a href="AIIncidentCategory/">AIIncidentCategory</a></td>
+<td>AI-specific incident categories supplementing classical information security ...</td>
+</tr>
+<tr>
+<td><a href="AIObjectiveCategory/">AIObjectiveCategory</a></td>
+<td>Categories of organizational objectives associated with responsible developme...</td>
+</tr>
+<tr>
+<td><a href="AIOrganizationalRole/">AIOrganizationalRole</a></td>
+<td>Roles an organization may take with respect to an AI system, paraphrased from...</td>
+</tr>
+<tr>
+<td><a href="AIRiskSourceCategory/">AIRiskSourceCategory</a></td>
+<td>Categories of AI risk sources, paraphrased from Annex C of ISO/IEC 42001:2023</td>
+</tr>
+<tr>
+<td><a href="AISystemLifecycleStage/">AISystemLifecycleStage</a></td>
+<td>Stages of the AI system life cycle referenced throughout Annex A</td>
+</tr>
+<tr>
+<td><a href="AnnexAControlId/">AnnexAControlId</a></td>
+<td>Normative reference control identifiers from Annex A of ISO/IEC 42001:2023 (3...</td>
+</tr>
+<tr>
+<td><a href="AuditFindingType/">AuditFindingType</a></td>
+<td>Classification of internal audit findings for the AIMS</td>
+</tr>
+<tr>
+<td><a href="AuditType/">AuditType</a></td>
+<td>Type of audit conducted against the AIMS per Clause 9</td>
+</tr>
+<tr>
+<td><a href="DataPreparationMethod/">DataPreparationMethod</a></td>
+<td>Common data preparation and transformation methods documented per Annex A</td>
+</tr>
+<tr>
+<td><a href="DataResourceCategory/">DataResourceCategory</a></td>
+<td>Categories of data resources documented for AI systems per A</td>
+</tr>
+<tr>
+<td><a href="DocumentType/">DocumentType</a></td>
+<td>Categories of documented information referenced in or required by ISO/IEC 420...</td>
+</tr>
+<tr>
+<td><a href="GovernanceRoleType/">GovernanceRoleType</a></td>
+<td>Governance role types within the AIMS, paraphrased from Clause 3</td>
+</tr>
+<tr>
+<td><a href="ImpactAssessmentDimension/">ImpactAssessmentDimension</a></td>
+<td>Dimensions evaluated during an AI system impact assessment per Clause 6</td>
+</tr>
+<tr>
+<td><a href="ImpactRating/">ImpactRating</a></td>
+<td>Qualitative consequence scale for AI risk assessment, covering impact on the ...</td>
+</tr>
+<tr>
+<td><a href="ImplementationStatus/">ImplementationStatus</a></td>
+<td>Lifecycle status of a reference control, used in the AIMS Statement of Applic...</td>
+</tr>
+<tr>
+<td><a href="LearningParadigm/">LearningParadigm</a></td>
+<td>Learning paradigm of an AI system, informing risk considerations related to d...</td>
+</tr>
+<tr>
+<td><a href="LikelihoodRating/">LikelihoodRating</a></td>
+<td>Qualitative likelihood scale for AI risk assessment</td>
+</tr>
+<tr>
+<td><a href="MLApproach/">MLApproach</a></td>
+<td>Machine-learning approach used by the AI system, capturing the design-choice ...</td>
+</tr>
+<tr>
+<td><a href="RelatedManagementSystem/">RelatedManagementSystem</a></td>
+<td>Related management-system standards with which the AIMS may be jointly implem...</td>
+</tr>
+<tr>
+<td><a href="RiskLevel/">RiskLevel</a></td>
+<td>Qualitative AI risk rating derived from likelihood and consequence analysis</td>
+</tr>
+<tr>
+<td><a href="RiskTreatmentOption/">RiskTreatmentOption</a></td>
+<td>Standard risk treatment options drawn from ISO 31000 and adapted for AI risk ...</td>
+</tr>
+<tr>
+<td><a href="SectorDomain/">SectorDomain</a></td>
+<td>Application sectors referenced in Annex D of ISO/IEC 42001:2023 in which the ...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="types">Types</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="Boolean/">Boolean</a></td>
+<td>A binary (true or false) value</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
+</tr>
+<tr>
+<td><a href="Date/">Date</a></td>
+<td>a date (year, month and day) in an idealized calendar</td>
+</tr>
+<tr>
+<td><a href="DateOrDatetime/">DateOrDatetime</a></td>
+<td>Either a date or a datetime</td>
+</tr>
+<tr>
+<td><a href="Datetime/">Datetime</a></td>
+<td>The combination of a date and time</td>
+</tr>
+<tr>
+<td><a href="Decimal/">Decimal</a></td>
+<td>A real number with arbitrary precision that conforms to the xsd:decimal speci...</td>
+</tr>
+<tr>
+<td><a href="Double/">Double</a></td>
+<td>A real number that conforms to the xsd:double specification</td>
+</tr>
+<tr>
+<td><a href="DurationType/">DurationType</a></td>
+<td>ISO 8601 duration value such as P1Y, P30D, or PT4H</td>
+</tr>
+<tr>
+<td><a href="Float/">Float</a></td>
+<td>A real number that conforms to the xsd:float specification</td>
+</tr>
+<tr>
+<td><a href="Integer/">Integer</a></td>
+<td>An integer</td>
+</tr>
+<tr>
+<td><a href="Jsonpath/">Jsonpath</a></td>
+<td>A string encoding a JSON Path</td>
+</tr>
+<tr>
+<td><a href="Jsonpointer/">Jsonpointer</a></td>
+<td>A string encoding a JSON Pointer</td>
+</tr>
+<tr>
+<td><a href="Ncname/">Ncname</a></td>
+<td>Prefix part of CURIE</td>
+</tr>
+<tr>
+<td><a href="Nodeidentifier/">Nodeidentifier</a></td>
+<td>A URI, CURIE or BNODE that represents a node in a model</td>
+</tr>
+<tr>
+<td><a href="Objectidentifier/">Objectidentifier</a></td>
+<td>A URI or CURIE that represents an object in the model</td>
+</tr>
+<tr>
+<td><a href="PositiveIntegerType/">PositiveIntegerType</a></td>
+<td>integer greater than zero; natural number explicitly excluding zero</td>
+</tr>
+<tr>
+<td><a href="Sparqlpath/">Sparqlpath</a></td>
+<td>A string encoding a SPARQL Property Path</td>
+</tr>
+<tr>
+<td><a href="String/">String</a></td>
+<td>A character string</td>
+</tr>
+<tr>
+<td><a href="Time/">Time</a></td>
+<td>A time object represents a (local) time of day, independent of any particular...</td>
+</tr>
+<tr>
+<td><a href="UnsignedShortType/">UnsignedShortType</a></td>
+<td>data type for non-negative integers that can be represented with 16 bits</td>
+</tr>
+<tr>
+<td><a href="Uri/">Uri</a></td>
+<td>a complete URI</td>
+</tr>
+<tr>
+<td><a href="Uriorcurie/">Uriorcurie</a></td>
+<td>a URI or a CURIE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subsets">Subsets</h2>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="AiDataManagement/">AiDataManagement</a></td>
+<td>Elements covering data resources, data acquisition, data quality, data proven...</td>
+</tr>
+<tr>
+<td><a href="AiRiskManagement/">AiRiskManagement</a></td>
+<td>Elements supporting AI risk assessment (6</td>
+</tr>
+<tr>
+<td><a href="AiSystemLifecycle/">AiSystemLifecycle</a></td>
+<td>Classes representing the AI system life cycle stages (design, development, ve...</td>
+</tr>
+<tr>
+<td><a href="AimsCore/">AimsCore</a></td>
+<td>Core AIMS structural elements required for conformity with Clauses 4-10 of IS...</td>
+</tr>
+<tr>
+<td><a href="AnnexAControls/">AnnexAControls</a></td>
+<td>Classes and enumerations representing the reference controls in Annex A of IS...</td>
+</tr>
+<tr>
+<td><a href="ContinualImprovement/">ContinualImprovement</a></td>
+<td>Elements for nonconformity management, corrective actions, and improvement tr...</td>
+</tr>
+<tr>
+<td><a href="DocumentedInformation/">DocumentedInformation</a></td>
+<td>Classes representing required documented information per Clause 7</td>
+</tr>
+<tr>
+<td><a href="PerformanceEvaluation/">PerformanceEvaluation</a></td>
+<td>Classes for monitoring, measurement, internal audit, and management review pe...</td>
+</tr>
+<tr>
+<td><a href="ThirdPartyManagement/">ThirdPartyManagement</a></td>
+<td>Classes covering allocation of responsibilities to partners, suppliers, and c...</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+  
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+
+<footer class="md-footer">
+  
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label="footer.title"
+    >
+      
+        <a
+          href=".."
+          class="md-footer__link md-footer__link--prev"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        <a
+          href="../about/"
+          class="md-footer__link md-footer__link--next"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              About
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        with emoji by
+        <a href="https://github.com/twitter/twemoji" target="_blank" rel="noopener">
+          Twemoji
+        </a>
+      </div>
+      
+<div class="md-social">
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link", "header.autohide", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../assets/pymdownx-extras/extra-loader-B5CKpNQx.js"></script>
+      
+    
+  </body>
+</html>
