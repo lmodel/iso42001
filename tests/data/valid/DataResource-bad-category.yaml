@@ -1,0 +1,3 @@
+id: iso42001:data-bad-category
+name: Data Resource With Invalid Category
+data_resource_category: archived

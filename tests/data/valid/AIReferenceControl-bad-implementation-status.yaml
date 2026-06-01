@@ -1,0 +1,4 @@
+id: iso42001:control-bad-status
+name: Control With Invalid Implementation Status
+control_id: A.2.2
+implementation_status: maybe

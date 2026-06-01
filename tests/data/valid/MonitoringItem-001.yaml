@@ -1,0 +1,11 @@
+metric_name: fairness_disparity_gap
+metric_description: Demographic-parity gap on production recommender outputs.
+measurement_method: Quarterly fairness scan.
+measurement_frequency: quarterly
+responsible_party: AI Risk Manager
+analysis_frequency: quarterly
+analyst: AI Ethics Officer
+target_threshold: "< 5%"
+alert_threshold: ">= 8%"
+current_value: "6%"
+trend: improving

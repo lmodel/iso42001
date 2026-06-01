@@ -1,0 +1,7 @@
+control_reference: iso42001:control-a-2-2
+is_applicable: true
+inclusion_justification: Mandatory leadership control under Annex A.2.2.
+implementation_status: implemented
+implementation_evidence: Approved POL-AI-001 published to all staff.
+responsible_role: iso42001:role-chief-ai-officer
+target_implementation_date: "2026-04-01"

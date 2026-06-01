@@ -1,0 +1,15 @@
+id: iso42001:finding-2026-q2-001
+name: Minor Nonconformity - Evidence Gap
+description: Evidence of leadership review missing for Q1 2026.
+finding_type: minor_nonconformity
+clause_reference: "5.1"
+control_reference: iso42001:control-a-2-2
+finding_description: Q1 2026 leadership review minutes were not retained.
+objective_evidence: Records register search returned no matching entry.
+root_cause_analysis: Records workflow not yet updated for new template.
+risk_implication: Limited assurance over leadership engagement evidence.
+recommended_action: Retain leadership review minutes per records policy.
+auditee_response: Accepted; corrective action raised.
+linked_corrective_action: iso42001:ca-2026-001
+closure_status: open
+closure_date: "2026-09-30"

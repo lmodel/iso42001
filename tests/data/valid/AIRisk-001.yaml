@@ -1,0 +1,21 @@
+id: iso42001:risk-bias-2026
+name: Recommender Model Bias Risk
+description: Risk of demographic disparity in recommender outputs.
+risk_source_category: machine_learning_specific
+risk_source_description: Training data may under-represent certain subgroups.
+affected_ai_systems:
+  - iso42001:system-recommender
+affected_dimensions:
+  - fairness
+  - individual
+risk_owner: Head of ML Engineering
+likelihood: likely
+impact: major
+inherent_risk_level: high
+existing_controls:
+  - iso42001:control-a-2-2
+residual_risk_level: medium
+risk_treatment_option: modify
+treatment_priority: high
+related_treatment_plan: iso42001:rtp-bias-2026
+related_impact_assessment: iso42001:impact-recommender-2026

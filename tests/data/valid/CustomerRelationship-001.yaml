@@ -1,0 +1,21 @@
+id: iso42001:customer-retail-partner
+name: Retail Partner Customer
+description: Enterprise customer integrating the recommender via API.
+party_type: ai_customer
+party_name: Retail Partner Group
+contractual_basis: Service agreement signed 2026-01-15.
+allocated_responsibilities:
+  - Inform end-users of AI-driven recommendations.
+data_processing_role: controller
+ai_systems_involved:
+  - iso42001:system-recommender
+lifecycle_stages_involved:
+  - operation_and_monitoring
+assurance_evidence:
+  - Customer due-diligence questionnaire 2026.
+review_frequency: annual
+customer_expectations:
+  - Quarterly performance reports.
+usage_agreement_reference: USE-AGR-2026-RETAIL
+communicated_limitations:
+  - Not validated for use in regulated credit decisions.

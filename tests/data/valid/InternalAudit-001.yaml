@@ -1,0 +1,38 @@
+id: iso42001:audit-2026-q2
+name: Q2 2026 Internal Audit of AIMS
+description: Internal audit covering Annex A controls A.2-A.4.
+version: "1.0"
+document_type: report
+document_reference: AUD-2026-Q2
+author: Lead Auditor
+owner: Head of Internal Audit
+approved_by: Head of Internal Audit
+approved_date: "2026-06-25"
+effective_date: "2026-06-25"
+review_date: "2027-06-25"
+status: approved
+classification: internal
+audit_reference: AUD-2026-Q2
+audit_type: internal
+audit_scope: Annex A controls A.2, A.3, and A.4.
+audit_criteria: ISO/IEC 42001 Annex A, AcmeCorp AI policy.
+audit_objectives: Assess design and operating effectiveness of AI controls.
+audit_period_start: "2026-04-01"
+audit_period_end: "2026-06-15"
+lead_auditor: Senior Internal Auditor
+audit_team:
+  - Internal Auditor A
+  - Internal Auditor B
+auditee_representatives:
+  - Chief AI Officer
+  - AI Risk Manager
+audit_plan: See AUD-PLAN-2026-Q2 in document register.
+findings:
+  - iso42001:finding-2026-q2-001
+positive_observations:
+  - Strong leadership engagement on AI risk.
+audit_conclusion: AIMS substantially conforms with minor improvements required.
+report_date: "2026-06-25"
+report_distribution:
+  - Executive Leadership Team
+  - Audit Committee

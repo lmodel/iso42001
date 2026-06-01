@@ -1,0 +1,23 @@
+id: iso42001:supplier-foundation-model
+name: Foundation Model Vendor
+description: Supplier providing the base foundation model used by the recommender.
+party_type: ai_supplier
+party_name: ExampleAI Inc.
+contractual_basis: Master services agreement signed 2025-12-01.
+allocated_responsibilities:
+  - Provide model documentation and updates.
+data_processing_role: processor
+ai_systems_involved:
+  - iso42001:system-recommender
+lifecycle_stages_involved:
+  - design
+  - development
+assurance_evidence:
+  - SOC 2 Type II report 2025.
+  - Model card v3.2.
+review_frequency: annual
+supplier_assessment_criteria:
+  - Security posture
+  - Responsible-AI practices
+monitoring_method: Quarterly vendor scorecard.
+corrective_actions_required: []

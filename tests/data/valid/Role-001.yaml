@@ -1,0 +1,15 @@
+id: iso42001:role-chief-ai-officer
+name: Chief AI Officer
+description: Executive accountable for the AI management system.
+role_type: executive
+responsibilities:
+  - Champion AI policy across the organization.
+  - Report AIMS performance to top management.
+authorities:
+  - Approve AI risk treatment decisions.
+  - Halt deployment of non-compliant AI systems.
+accountability: Reports to CEO.
+assigned_to:
+  - Jane Doe
+delegation_rules: May delegate operational tasks to AI Risk Manager.
+reporting_line: CEO

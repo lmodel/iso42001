@@ -1,0 +1,49 @@
+# mapping_set_id: https://w3id.org/lmodel/iso42001/mappings/iso42001_to_nist_ai_rmf__nist_ai_600_1
+# mapping_set_version: 0.1.0
+# mapping_set_title: ISO/IEC 42001:2023 to NIST AI RMF (nist_ai_600_1 GenAI Profile component) Schema Mappings
+# mapping_set_description: Schema-level mappings between the ISO/IEC 42001:2023 (AI Management System) LinkML schema and the NIST AI 600-1 Generative AI Profile (loaded via the NIST AI RMF umbrella schema). The Generative AI Profile is a companion to AI RMF 1.0 and enumerates GAI-specific risks (CBRN, confabulation, data privacy, intellectual property, etc.) and suggested actions. Mappings capture the overlap between ISO 42001's AI risk, incident, and treatment classes and the GAI profile's risk-taxonomy and suggested-action structure.
+# license: https://creativecommons.org/licenses/by/4.0/
+# subject_source: https://w3id.org/lmodel/iso42001
+# object_source: https://w3id.org/lmodel/nist-ai-rmf
+# mapping_date: 2026-06-01
+# curie_map:
+#   iso42001: https://w3id.org/lmodel/iso42001/
+#   nist_ai_600_1: https://w3id.org/lmodel/nist-ai-600-1/
+#   nist_ai_rmf: https://w3id.org/lmodel/nist-ai-rmf/
+#   owl: http://www.w3.org/2002/07/owl#
+#   semapv: https://w3id.org/semapv/vocab/
+#   skos: http://www.w3.org/2004/02/skos/core#
+subject_id	subject_label	subject_category	predicate_id	predicate_label	object_id	object_label	object_category	mapping_justification	comment
+iso42001:AIManagementSystem	AIManagementSystem	owl:Class	skos:relatedMatch	related match	nist_ai_600_1:GaiProfile	GaiProfile	owl:Class	semapv:LLMBasedMatching	The GAI Profile is a NIST AI RMF artefact organisations can integrate into their AI management system; related rather than equivalent
+iso42001:AIRisk	AIRisk	owl:Class	skos:closeMatch	close match	nist_ai_600_1:GaiRisk	GaiRisk	owl:Class	semapv:LLMBasedMatching	AIRisk in ISO 42001 is the generic AI risk class; GaiRisk is the GAI-specific subset (novel to or exacerbated by Generative AI)
+iso42001:AIRisk	AIRisk	owl:Class	skos:narrowMatch	narrow match	nist_ai_600_1:GaiRisk	GaiRisk	owl:Class	semapv:LLMBasedMatching	ISO 42001 AIRisk can narrow to a GaiRisk when the underlying AI system is generative
+iso42001:CorrectiveAction	CorrectiveAction	owl:Class	skos:closeMatch	close match	nist_ai_600_1:SuggestedAction	SuggestedAction	owl:Class	semapv:LLMBasedMatching	SuggestedAction items in the GAI profile parallel ISO 42001 corrective / preventive actions
+iso42001:AIReferenceControl	AIReferenceControl	owl:Class	skos:relatedMatch	related match	nist_ai_600_1:SuggestedAction	SuggestedAction	owl:Class	semapv:LLMBasedMatching	Annex A controls and NIST GAI suggested actions both express recommended treatments
+iso42001:AIRiskTreatmentPlan	AIRiskTreatmentPlan	owl:Class	skos:relatedMatch	related match	nist_ai_600_1:SuggestedAction	SuggestedAction	owl:Class	semapv:LLMBasedMatching	A risk-treatment plan aggregates actions like the ones the GAI profile enumerates
+iso42001:AISystemImpactAssessment	AISystemImpactAssessment	owl:Class	skos:closeMatch	close match	nist_ai_600_1:PrimaryGaiConsideration	PrimaryGaiConsideration	owl:Class	semapv:LLMBasedMatching	Both surface overarching considerations such as governance, pre-deployment testing, content provenance and incident disclosure
+iso42001:AIIncident	AIIncident	owl:Class	skos:closeMatch	close match	nist_ai_600_1:GaiRisk	GaiRisk	owl:Class	semapv:LLMBasedMatching	A materialised generative-AI risk presents as an AI incident
+iso42001:ConcernReport	ConcernReport	owl:Class	skos:relatedMatch	related match	nist_ai_600_1:StructuredPublicFeedback	StructuredPublicFeedback	owl:Class	semapv:LLMBasedMatching	Structured public feedback often surfaces concerns that ISO 42001 records as ConcernReports
+iso42001:AISystem	AISystem	owl:Class	skos:relatedMatch	related match	nist_ai_600_1:GaiProfile	GaiProfile	owl:Class	semapv:LLMBasedMatching	A generative AI system is the subject of the GAI profile's scope-of-application
+iso42001:AIIncidentCategory	AIIncidentCategory	owl:Class	skos:closeMatch	close match	nist_ai_600_1:GaiRiskCategoryEnum	GaiRiskCategoryEnum	owl:Class	semapv:LLMBasedMatching	Both partition AI risk by category; ISO uses event-style incidents while NIST uses GAI risk topics
+iso42001:data_poisoning	data_poisoning	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:INFORMATION_INTEGRITY	INFORMATION_INTEGRITY	skos:Concept	semapv:LLMBasedMatching	Data poisoning is an information-integrity risk in the GAI taxonomy
+iso42001:prompt_injection	prompt_injection	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:INFORMATION_SECURITY	INFORMATION_SECURITY	skos:Concept	semapv:LLMBasedMatching	Prompt injection is treated as an information-security risk in the GAI profile
+iso42001:hallucination	hallucination	skos:Concept	skos:exactMatch	exact match	nist_ai_600_1:CONFABULATION	CONFABULATION	skos:Concept	semapv:LLMBasedMatching	NIST AI 600-1 uses "confabulation" for what ISO calls hallucination
+iso42001:bias_incident	bias_incident	skos:Concept	skos:exactMatch	exact match	nist_ai_600_1:HARMFUL_BIAS_OR_HOMOGENIZATION	HARMFUL_BIAS_OR_HOMOGENIZATION	skos:Concept	semapv:LLMBasedMatching	Bias incidents map to GAI harmful bias / homogenisation category
+iso42001:privacy_breach	privacy_breach	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:DATA_PRIVACY	DATA_PRIVACY	skos:Concept	semapv:LLMBasedMatching	Privacy breaches relate to the data-privacy GAI risk category
+iso42001:security_breach	security_breach	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:INFORMATION_SECURITY	INFORMATION_SECURITY	skos:Concept	semapv:LLMBasedMatching	Security breaches relate to the information-security GAI risk category
+iso42001:misuse	misuse	skos:Concept	skos:relatedMatch	related match	nist_ai_600_1:DANGEROUS_VIOLENT_OR_HATEFUL_CONTENT	DANGEROUS_VIOLENT_OR_HATEFUL_CONTENT	skos:Concept	semapv:LLMBasedMatching	Misuse of generative AI often surfaces as dangerous, violent or hateful content
+iso42001:adverse_societal_impact	adverse_societal_impact	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:ENVIRONMENTAL_IMPACTS	ENVIRONMENTAL_IMPACTS	skos:Concept	semapv:LLMBasedMatching	Societal-scale impacts include environmental impacts of GAI training and inference
+iso42001:AISystemLifecycleStage	AISystemLifecycleStage	owl:Class	skos:closeMatch	close match	nist_ai_600_1:GaiLifecycleStageEnum	GaiLifecycleStageEnum	owl:Class	semapv:LLMBasedMatching	GAI lifecycle stages (design, development, deployment, operation, decommissioning) are a coarser variant of ISO 42001's lifecycle enumeration
+iso42001:design	design	skos:Concept	skos:exactMatch	exact match	nist_ai_600_1:DESIGN	DESIGN	skos:Concept	semapv:LLMBasedMatching	Direct equivalent
+iso42001:development	development	skos:Concept	skos:exactMatch	exact match	nist_ai_600_1:DEVELOPMENT	DEVELOPMENT	skos:Concept	semapv:LLMBasedMatching	Direct equivalent
+iso42001:deployment	deployment	skos:Concept	skos:exactMatch	exact match	nist_ai_600_1:DEPLOYMENT	DEPLOYMENT	skos:Concept	semapv:LLMBasedMatching	Direct equivalent
+iso42001:operation_and_monitoring	operation_and_monitoring	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:OPERATION	OPERATION	skos:Concept	semapv:LLMBasedMatching	ISO operation-and-monitoring encompasses GAI operation
+iso42001:decommissioning	decommissioning	skos:Concept	skos:exactMatch	exact match	nist_ai_600_1:DECOMMISSIONING	DECOMMISSIONING	skos:Concept	semapv:LLMBasedMatching	Direct equivalent
+iso42001:AIOrganizationalRole	AIOrganizationalRole	owl:Class	skos:closeMatch	close match	nist_ai_600_1:GaiActorTaskEnum	GaiActorTaskEnum	owl:Class	semapv:LLMBasedMatching	Both partition AI ecosystem actors / actor tasks
+iso42001:ai_subject	ai_subject	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:AFFECTED_INDIVIDUALS_AND_COMMUNITIES	AFFECTED_INDIVIDUALS_AND_COMMUNITIES	skos:Concept	semapv:LLMBasedMatching	AI subjects are affected individuals or communities
+iso42001:ai_customer	ai_customer	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:END_USERS	END_USERS	skos:Concept	semapv:LLMBasedMatching	Customers map to NIST end-users
+iso42001:relevant_authority	relevant_authority	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:GOVERNANCE_AND_OVERSIGHT	GOVERNANCE_AND_OVERSIGHT	skos:Concept	semapv:LLMBasedMatching	Relevant authority maps to governance-and-oversight actor task
+iso42001:AIRiskSourceCategory	AIRiskSourceCategory	owl:Class	skos:closeMatch	close match	nist_ai_600_1:GaiRiskSourceEnum	GaiRiskSourceEnum	owl:Class	semapv:LLMBasedMatching	Both enumerations identify origins of AI risk
+iso42001:lifecycle	lifecycle	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:DESIGN	DESIGN	skos:Concept	semapv:LLMBasedMatching	Lifecycle risk source manifests across design, training and operation in GAI
+iso42001:machine_learning_specific	machine_learning_specific	skos:Concept	skos:closeMatch	close match	nist_ai_600_1:TRAINING	TRAINING	skos:Concept	semapv:LLMBasedMatching	ML-specific risk sources include training-data and training-process risks
+iso42001:affected_ai_systems	affected_ai_systems	owl:ObjectProperty	skos:relatedMatch	related match	nist_ai_600_1:risk_scope	risk_scope	owl:ObjectProperty	semapv:LLMBasedMatching	ISO tracks the specific affected systems; NIST classifies scope (model, application, ecosystem)

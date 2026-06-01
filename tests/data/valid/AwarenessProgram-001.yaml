@@ -1,0 +1,24 @@
+id: iso42001:awareness-2026
+name: AI Awareness Program 2026
+description: Organization-wide AI awareness program.
+version: "1.0"
+document_type: plan
+document_reference: AWP-2026
+author: Learning and Development
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-01-30"
+effective_date: "2026-02-01"
+review_date: "2027-02-01"
+status: approved
+classification: internal
+awareness_topics:
+  - AI policy basics
+  - Responsible use of generative AI
+delivery_methods:
+  - eLearning module
+  - Quarterly all-hands briefing
+target_audience: All employees and contractors
+frequency: annual
+completion_tracking: Tracked in the corporate LMS.
+effectiveness_measures: Post-training knowledge check, target >= 85%.

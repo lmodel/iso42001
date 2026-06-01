@@ -1,0 +1,15 @@
+id: iso42001:ca-2026-001
+name: Update Records Workflow
+description: Update records workflow to capture leadership-review minutes.
+linked_nonconformity: iso42001:nc-2026-001
+action_description: Update workflow template and retrain records owners.
+root_cause_addressed: Records workflow not updated for new template.
+responsible_party: Records Manager
+target_completion_date: "2026-09-30"
+actual_completion_date: "2026-09-15"
+resources_required: 0.2 FTE Records Manager for two weeks.
+effectiveness_criteria: Three consecutive months of complete records.
+effectiveness_review_date: "2026-12-31"
+effectiveness_verified: true
+aims_changes_required: false
+status: closed

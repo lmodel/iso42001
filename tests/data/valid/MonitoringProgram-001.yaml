@@ -1,0 +1,26 @@
+id: iso42001:monitoring-2026
+name: AIMS Monitoring Program 2026
+description: Annual program defining AIMS monitoring items and cadences.
+version: "1.0"
+document_type: plan
+document_reference: MON-2026
+author: AI Risk Manager
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-02-12"
+effective_date: "2026-03-01"
+review_date: "2027-03-01"
+status: approved
+classification: internal
+monitoring_items:
+  - metric_name: model_drift_alerts
+    metric_description: Count of drift alerts raised per model per week.
+    measurement_method: Automated drift detector.
+    measurement_frequency: weekly
+    responsible_party: MLOps Lead
+    analysis_frequency: monthly
+    analyst: AI Risk Manager
+    target_threshold: "< 3 per model per week"
+    alert_threshold: ">= 5 per model per week"
+    current_value: "2"
+    trend: stable

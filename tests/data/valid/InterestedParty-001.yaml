@@ -1,0 +1,10 @@
+id: iso42001:party-regulator-eu
+name: EU AI Regulator
+description: National competent authority overseeing AI Act compliance.
+party_type: regulator
+relationship: external oversight
+requirements:
+  - Notify of serious incidents within statutory deadline.
+  - Provide post-market monitoring evidence on request.
+communication_needs: Formal written notices via secure portal.
+contact_information: ai-supervision@example-regulator.eu

@@ -1,0 +1,19 @@
+id: iso42001:policy-acceptable-use
+name: Acceptable Use of Generative AI Policy
+description: Sets out permitted and prohibited internal uses of generative AI.
+version: "1.1"
+document_type: policy
+document_reference: POL-AI-002
+author: AI Ethics Officer
+owner: Chief AI Officer
+approved_by: CEO
+approved_date: "2026-02-10"
+effective_date: "2026-03-01"
+review_date: "2027-03-01"
+status: approved
+classification: internal
+topic_area: generative_ai_use
+parent_policy: iso42001:policy-aims
+applicable_controls:
+  - iso42001:control-a-2-2
+target_audience: All employees and contractors

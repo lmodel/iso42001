@@ -1,0 +1,9 @@
+id: iso42001:tooling-mlplatform
+name: Internal ML Platform
+description: Shared platform providing training, registry, and serving services.
+version: "4.2"
+tool_category: ml_platform
+tool_version: "4.2"
+vendor: AcmeCorp Platform Engineering
+license_terms: Internal use only.
+usage_purpose: Train, register, and serve production AI models.

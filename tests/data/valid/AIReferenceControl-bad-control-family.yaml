@@ -1,0 +1,4 @@
+id: iso42001:control-bad-family
+name: Control With Invalid Control Family
+control_id: A.2.2
+control_family: marketing

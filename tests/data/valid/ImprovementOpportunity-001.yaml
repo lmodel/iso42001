@@ -1,0 +1,15 @@
+id: iso42001:improvement-2026-001
+name: Automate Fairness Monitoring
+description: Automate fairness monitoring across production models.
+improvement_source: management_review
+identification_date: "2026-07-15"
+identified_by: Chief AI Officer
+improvement_description: Replace manual fairness scans with automated pipeline.
+expected_benefit: Faster detection and lower analyst overhead.
+priority: high
+implementation_plan: Build pipeline in Q3, roll out in Q4.
+responsible_party: Head of ML Engineering
+target_date: "2026-12-15"
+actual_completion_date: "2026-12-10"
+outcome_assessment: Pipeline live; manual scans deprecated.
+status: closed

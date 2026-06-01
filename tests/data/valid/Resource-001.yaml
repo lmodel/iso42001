@@ -1,0 +1,9 @@
+id: iso42001:resource-budget-2026
+name: AIMS Operating Budget 2026
+description: Financial resource allocated to AIMS operations.
+resource_type: financial
+quantity: "1,200,000 EUR"
+allocation_date: "2026-01-01"
+allocated_to: Chief AI Officer
+cost: "1,200,000 EUR"
+availability_status: available

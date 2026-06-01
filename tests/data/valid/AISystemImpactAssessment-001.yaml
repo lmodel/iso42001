@@ -1,0 +1,35 @@
+id: iso42001:impact-recommender-2026
+name: Recommender System Impact Assessment 2026
+description: Impact assessment for the production recommender system.
+version: "1.0"
+document_type: report
+document_reference: IA-RECO-2026
+author: AI Ethics Officer
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-03-18"
+effective_date: "2026-03-18"
+review_date: "2027-03-18"
+status: approved
+classification: internal
+assessment_scope: End-users of the consumer recommender service.
+ai_systems_assessed:
+  - iso42001:system-recommender
+assessment_date: "2026-03-10"
+assessor: AI Ethics Officer
+technical_context: Transformer-based recommender retrained monthly.
+societal_context: Service used across EU and UK consumer markets.
+applicable_jurisdictions:
+  - EU
+  - UK
+dimensions_assessed:
+  - individual
+  - group
+  - fairness
+identified_consequences:
+  - Potential disparate impact on under-represented demographic groups.
+mitigations:
+  - Activate fairness post-processing layer.
+shared_with_parties:
+  - EU AI Regulator
+next_assessment_date: "2026-09-10"

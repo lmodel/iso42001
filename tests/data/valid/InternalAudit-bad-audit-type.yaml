@@ -1,0 +1,3 @@
+id: iso42001:audit-bad-type
+name: Internal Audit With Invalid Audit Type
+audit_type: friendly_chat

@@ -1,0 +1,28 @@
+id: iso42001:org-acmecorp
+name: AcmeCorp
+description: Multinational technology vendor providing AI-enabled products.
+legal_name: AcmeCorp International PLC
+trading_names:
+  - Acme
+  - AcmeAI
+organization_type: private_company
+industry_sector: technology
+sector_domains:
+  - finance
+  - employment
+size_category: large
+employee_count: 12000
+geographic_locations:
+  - EU
+  - UK
+  - US
+regulatory_jurisdictions:
+  - EU
+  - UK
+parent_organization: AcmeCorp Holdings
+subsidiaries:
+  - AcmeAI Ltd
+ai_roles:
+  - ai_provider
+  - ai_producer
+climate_change_relevant: true

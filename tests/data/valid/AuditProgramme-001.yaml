@@ -1,0 +1,21 @@
+id: iso42001:audit-programme-2026
+name: 2026 Internal Audit Programme
+description: Annual programme of internal audits for the AIMS.
+version: "1.0"
+document_type: plan
+document_reference: AUD-PROG-2026
+author: Head of Internal Audit
+owner: Head of Internal Audit
+approved_by: Audit Committee
+approved_date: "2026-01-25"
+effective_date: "2026-02-01"
+review_date: "2027-02-01"
+status: approved
+classification: internal
+programme_period: "2026"
+planned_audits:
+  - iso42001:audit-2026-q2
+audit_frequency_rationale: Risk-based quarterly cadence.
+resource_requirements: 2 FTE internal auditors plus subject-matter experts.
+auditor_qualifications: ISO/IEC 42001 Lead Auditor or equivalent.
+programme_status: active

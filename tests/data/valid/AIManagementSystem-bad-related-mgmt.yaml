@@ -1,0 +1,4 @@
+id: iso42001:aims-bad-related
+name: AIMS With Invalid Related Management System
+integrated_management_systems:
+  - made_up_iso

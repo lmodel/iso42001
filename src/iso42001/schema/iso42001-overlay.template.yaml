@@ -1,0 +1,1523 @@
+# =============================================================================
+# iso42001-overlay.template.yaml
+#
+# Empty overlay scaffold for ISO/IEC 42001:2023. Generated from the public
+# schema. Contains NO copyrighted text and is safe to distribute.
+#
+# License owners of ISO/IEC 42001:2023 may copy this file to
+#     iso42001-overlay.yaml
+# and populate the empty `description:` / `comments:` placeholders with
+# verbatim normative text from their licensed copy of the standard.
+#
+# The populated `iso42001-overlay.yaml` is ignored by git (see .gitignore)
+# and must NOT be redistributed. Apply it locally with:
+#     just overlay-licensed-text
+#
+# Merge semantics: deep-merge over iso42001.yaml. For each element, only the
+# `description` and `comments` keys are overlaid; all structural fields
+# (slots, ranges, mappings, annotations) are preserved from the public schema.
+# =============================================================================
+
+id: https://w3id.org/lmodel/iso42001/overlay
+name: iso42001-overlay
+description: |-
+  Verbatim normative-text overlay for the iso42001 LinkML schema.
+  Not for redistribution. Requires a valid ISO/IEC 42001:2023 license.
+license: PROPRIETARY-ISO-IEC-42001-2023
+classes:
+  AIIncident:
+    description: ""
+    comments: []
+  AIManagementSystem:
+    description: ""
+    comments: []
+  AIObjective:
+    description: ""
+    comments: []
+  AIPolicy:
+    description: ""
+    comments: []
+  AIReferenceControl:
+    description: ""
+    comments: []
+  AIRisk:
+    description: ""
+    comments: []
+  AIRiskAssessment:
+    description: ""
+    comments: []
+  AIRiskAssessmentProcess:
+    description: ""
+    comments: []
+  AIRiskTreatmentPlan:
+    description: ""
+    comments: []
+  AIRiskTreatmentProcess:
+    description: ""
+    comments: []
+  AISystem:
+    description: ""
+    comments: []
+  AISystemEvent:
+    description: ""
+    comments: []
+  AISystemImpactAssessment:
+    description: ""
+    comments: []
+  AISystemImpactAssessmentProcess:
+    description: ""
+    comments: []
+  AuditFinding:
+    description: ""
+    comments: []
+  AuditProgramme:
+    description: ""
+    comments: []
+  AwarenessProgram:
+    description: ""
+    comments: []
+  CommunicationItem:
+    description: ""
+    comments: []
+  CommunicationPlan:
+    description: ""
+    comments: []
+  CompetenceRecord:
+    description: ""
+    comments: []
+  ComputingResource:
+    description: ""
+    comments: []
+  ConcernReport:
+    description: ""
+    comments: []
+  CorrectiveAction:
+    description: ""
+    comments: []
+  CustomerRelationship:
+    description: ""
+    comments: []
+  DataResource:
+    description: ""
+    comments: []
+  DocumentedInformation:
+    description: ""
+    comments: []
+  HumanResource:
+    description: ""
+    comments: []
+  ImprovementOpportunity:
+    description: ""
+    comments: []
+  InterestedParty:
+    description: ""
+    comments: []
+  InternalAudit:
+    description: ""
+    comments: []
+  ManagementReview:
+    description: ""
+    comments: []
+  MonitoringItem:
+    description: ""
+    comments: []
+  MonitoringProgram:
+    description: ""
+    comments: []
+  NamedEntity:
+    description: ""
+    comments: []
+  Nonconformity:
+    description: ""
+    comments: []
+  OperationalProcedure:
+    description: ""
+    comments: []
+  Organization:
+    description: ""
+    comments: []
+  Resource:
+    description: ""
+    comments: []
+  Role:
+    description: ""
+    comments: []
+  SoAEntry:
+    description: ""
+    comments: []
+  StatementOfApplicability:
+    description: ""
+    comments: []
+  SupplierRelationship:
+    description: ""
+    comments: []
+  ThirdPartyRelationship:
+    description: ""
+    comments: []
+  ToolingResource:
+    description: ""
+    comments: []
+  TopicSpecificPolicy:
+    description: ""
+    comments: []
+slots:
+  accountability:
+    description: ""
+  achievement_status:
+    description: ""
+  acknowledgment_required:
+    description: ""
+  acquisition_method:
+    description: ""
+  action_description:
+    description: ""
+  action_items:
+    description: ""
+  action_plan:
+    description: ""
+  actual_completion_date:
+    description: ""
+  affected_ai_systems:
+    description: ""
+  affected_dimensions:
+    description: ""
+  ai_incidents:
+    description: ""
+  ai_objectives:
+    description: ""
+  ai_policy:
+    description: ""
+  ai_risk_assessment_process:
+    description: ""
+  ai_risk_assessments:
+    description: ""
+  ai_risk_treatment_plans:
+    description: ""
+  ai_risk_treatment_process:
+    description: ""
+  ai_roles:
+    description: ""
+  ai_system_events:
+    description: ""
+  ai_system_impact_assessment_process:
+    description: ""
+  ai_system_impact_assessments:
+    description: ""
+  ai_system_purpose:
+    description: ""
+  ai_systems:
+    description: ""
+  ai_systems_assessed:
+    description: ""
+  ai_systems_involved:
+    description: ""
+  aims_changes_required:
+    description: ""
+  alert_threshold:
+    description: ""
+  alignment_with_ai_policy:
+    description: ""
+  allocated_responsibilities:
+    description: ""
+  allocated_to:
+    description: ""
+  allocation_date:
+    description: ""
+  analysis_frequency:
+    description: ""
+  analyst:
+    description: ""
+  applicability_statement:
+    description: ""
+  applicable_controls:
+    description: ""
+  applicable_jurisdictions:
+    description: ""
+  applicable_objectives:
+    description: ""
+  applicable_risk_sources:
+    description: ""
+  application_domain:
+    description: ""
+  approval_workflow:
+    description: ""
+  approved_by:
+    description: ""
+  approved_date:
+    description: ""
+  assessment_criteria:
+    description: ""
+  assessment_date:
+    description: ""
+  assessment_frequency:
+    description: ""
+  assessment_methodology:
+    description: ""
+  assessment_scope:
+    description: ""
+  assessor:
+    description: ""
+  assigned_to:
+    description: ""
+  assurance_evidence:
+    description: ""
+  attendees:
+    description: ""
+  audience:
+    description: ""
+  audit_conclusion:
+    description: ""
+  audit_criteria:
+    description: ""
+  audit_frequency_rationale:
+    description: ""
+  audit_objectives:
+    description: ""
+  audit_period_end:
+    description: ""
+  audit_period_start:
+    description: ""
+  audit_plan:
+    description: ""
+  audit_reference:
+    description: ""
+  audit_results_summary:
+    description: ""
+  audit_scope:
+    description: ""
+  audit_team:
+    description: ""
+  audit_type:
+    description: ""
+  auditee_representatives:
+    description: ""
+  auditee_response:
+    description: ""
+  auditor_qualifications:
+    description: ""
+  author:
+    description: ""
+  authorities:
+    description: ""
+  autonomy_level:
+    description: ""
+  availability_status:
+    description: ""
+  awareness_program:
+    description: ""
+  awareness_topics:
+    description: ""
+  categorized_as_incident:
+    description: ""
+  certification_body:
+    description: ""
+  certification_date:
+    description: ""
+  certification_status:
+    description: ""
+  change_control_requirements:
+    description: ""
+  classification:
+    description: ""
+  clause_reference:
+    description: ""
+  climate_change_relevant:
+    description: ""
+  closure_date:
+    description: ""
+  closure_datetime:
+    description: ""
+  closure_evidence:
+    description: ""
+  closure_status:
+    description: ""
+  commitment_statements:
+    description: ""
+  communicated_limitations:
+    description: ""
+  communication_date:
+    description: ""
+  communication_items:
+    description: ""
+  communication_needs:
+    description: ""
+  communication_plan:
+    description: ""
+  competence_records:
+    description: ""
+  competency_assessment_date:
+    description: ""
+  competency_gaps:
+    description: ""
+  completion_date:
+    description: ""
+  completion_tracking:
+    description: ""
+  computing_resources:
+    description: ""
+  concern_ai_systems:
+    description: ""
+  concern_description:
+    description: ""
+  concern_lifecycle_stage:
+    description: ""
+  concern_reports:
+    description: ""
+  confidentiality_level:
+    description: ""
+  consequences_addressed:
+    description: ""
+  contact_information:
+    description: ""
+  containment_actions:
+    description: ""
+  context_changes:
+    description: ""
+  context_external_issues:
+    description: ""
+  context_internal_issues:
+    description: ""
+  contractual_basis:
+    description: ""
+  control_family:
+    description: ""
+  control_id:
+    description: ""
+  control_measures:
+    description: ""
+  control_owner:
+    description: ""
+  control_reference:
+    description: ""
+  control_selection_criteria:
+    description: ""
+  control_text:
+    description: ""
+  control_title:
+    description: ""
+  controls_to_implement:
+    description: ""
+  corrective_actions:
+    description: ""
+  corrective_actions_required:
+    description: ""
+  cost:
+    description: ""
+  created_date:
+    description: ""
+  current_value:
+    description: ""
+  customer_expectations:
+    description: ""
+  customer_relationships:
+    description: ""
+  data_classification:
+    description: ""
+  data_preparation_methods:
+    description: ""
+  data_processing_role:
+    description: ""
+  data_provenance:
+    description: ""
+  data_quality_metrics:
+    description: ""
+  data_quality_requirements:
+    description: ""
+  data_resource_category:
+    description: ""
+  data_resources:
+    description: ""
+  decisions:
+    description: ""
+  delegation_rules:
+    description: ""
+  delivery_methods:
+    description: ""
+  deployment_context:
+    description: ""
+  description:
+    description: ""
+  detected_by:
+    description: ""
+  detection_date:
+    description: ""
+  detection_method:
+    description: ""
+  development_actions:
+    description: ""
+  dimensions_assessed:
+    description: ""
+  dimensions_in_scope:
+    description: ""
+  document_reference:
+    description: ""
+  document_type:
+    description: ""
+  documented_information_register:
+    description: ""
+  education_records:
+    description: ""
+  effective_date:
+    description: ""
+  effectiveness_criteria:
+    description: ""
+  effectiveness_measures:
+    description: ""
+  effectiveness_rating:
+    description: ""
+  effectiveness_review_date:
+    description: ""
+  effectiveness_verified:
+    description: ""
+  employee_count:
+    description: ""
+  environment_type:
+    description: ""
+  escalation_status:
+    description: ""
+  event_datetime:
+    description: ""
+  event_description:
+    description: ""
+  event_log_policy:
+    description: ""
+  event_source:
+    description: ""
+  evidence_collected:
+    description: ""
+  evidence_references:
+    description: ""
+  exclusion_justification:
+    description: ""
+  existing_controls:
+    description: ""
+  expected_benefit:
+    description: ""
+  experience_records:
+    description: ""
+  external_reports:
+    description: ""
+  finding_description:
+    description: ""
+  finding_type:
+    description: ""
+  findings:
+    description: ""
+  foreseeable_misuse:
+    description: ""
+  frequency:
+    description: ""
+  geographic_locations:
+    description: ""
+  governing_body:
+    description: ""
+  human_oversight_description:
+    description: ""
+  human_oversight_required:
+    description: ""
+  human_oversight_stages:
+    description: ""
+  human_resources:
+    description: ""
+  id:
+    description: ""
+  identification_date:
+    description: ""
+  identified_by:
+    description: ""
+  identified_consequences:
+    description: ""
+  immediate_actions:
+    description: ""
+  impact:
+    description: ""
+  impact_assessment_results:
+    description: ""
+  impact_scale:
+    description: ""
+  implementation_date:
+    description: ""
+  implementation_evidence:
+    description: ""
+  implementation_guidance:
+    description: ""
+  implementation_plan:
+    description: ""
+  implementation_status:
+    description: ""
+  implementation_timeline:
+    description: ""
+  implemented_count:
+    description: ""
+  improvement_description:
+    description: ""
+  improvement_opportunities:
+    description: ""
+  improvement_source:
+    description: ""
+  improvements:
+    description: ""
+  incident_category:
+    description: ""
+  incident_datetime:
+    description: ""
+  incident_description:
+    description: ""
+  inclusion_justification:
+    description: ""
+  industry_sector:
+    description: ""
+  inherent_risk_level:
+    description: ""
+  initial_assessment:
+    description: ""
+  integrated_management_systems:
+    description: ""
+  intended_uses:
+    description: ""
+  interested_parties:
+    description: ""
+  interested_party_changes:
+    description: ""
+  internal_audits:
+    description: ""
+  investigation_findings:
+    description: ""
+  investigation_status:
+    description: ""
+  investigator:
+    description: ""
+  is_applicable:
+    description: ""
+  known_bias_issues:
+    description: ""
+  labelling_process:
+    description: ""
+  last_policy_review_date:
+    description: ""
+  last_review_date:
+    description: ""
+  last_test_date:
+    description: ""
+  last_updated_date:
+    description: ""
+  lead_auditor:
+    description: ""
+  leadership_commitment_evidence:
+    description: ""
+  learning_mode:
+    description: ""
+  legal_name:
+    description: ""
+  lessons_learned:
+    description: ""
+  license_terms:
+    description: ""
+  lifecycle_responsibilities:
+    description: ""
+  lifecycle_stage:
+    description: ""
+  lifecycle_stages_involved:
+    description: ""
+  likelihood:
+    description: ""
+  likelihood_scale:
+    description: ""
+  linkage_to_risk_assessment:
+    description: ""
+  linked_corrective_action:
+    description: ""
+  linked_corrective_actions:
+    description: ""
+  linked_impact_assessment:
+    description: ""
+  linked_incident:
+    description: ""
+  linked_nonconformity:
+    description: ""
+  location:
+    description: ""
+  management_reviews:
+    description: ""
+  measurement_frequency:
+    description: ""
+  measurement_method:
+    description: ""
+  method:
+    description: ""
+  methodology_used:
+    description: ""
+  metric_definition:
+    description: ""
+  metric_description:
+    description: ""
+  metric_name:
+    description: ""
+  mitigations:
+    description: ""
+  ml_approach:
+    description: ""
+  modified_date:
+    description: ""
+  monitoring_items:
+    description: ""
+  monitoring_method:
+    description: ""
+  monitoring_program:
+    description: ""
+  name:
+    description: ""
+  next_assessment_date:
+    description: ""
+  next_policy_review_date:
+    description: ""
+  next_review_date:
+    description: ""
+  nonconformities:
+    description: ""
+  nonconformity_description:
+    description: ""
+  nonconformity_source:
+    description: ""
+  not_applicable_count:
+    description: ""
+  notification_required:
+    description: ""
+  notifications_made:
+    description: ""
+  objective_category:
+    description: ""
+  objective_evidence:
+    description: ""
+  objective_statement:
+    description: ""
+  operational_procedures:
+    description: ""
+  organization:
+    description: ""
+  organization_role:
+    description: ""
+  organization_type:
+    description: ""
+  organizational_roles_with_ai:
+    description: ""
+  outcome_assessment:
+    description: ""
+  owner:
+    description: ""
+  parent_organization:
+    description: ""
+  parent_policy:
+    description: ""
+  party_name:
+    description: ""
+  party_type:
+    description: ""
+  performance_trends:
+    description: ""
+  person_name:
+    description: ""
+  person_role:
+    description: ""
+  plan_scope:
+    description: ""
+  planned_audits:
+    description: ""
+  planned_changes:
+    description: ""
+  planned_count:
+    description: ""
+  policy_objectives_framework:
+    description: ""
+  policy_statement:
+    description: ""
+  positive_observations:
+    description: ""
+  post_incident_review:
+    description: ""
+  previous_actions_status:
+    description: ""
+  priority:
+    description: ""
+  procedure_scope:
+    description: ""
+  process_criteria:
+    description: ""
+  programme_period:
+    description: ""
+  programme_status:
+    description: ""
+  purpose:
+    description: ""
+  quantity:
+    description: ""
+  recertification_date:
+    description: ""
+  recommendations:
+    description: ""
+  recommended_action:
+    description: ""
+  records_required:
+    description: ""
+  recovery_actions:
+    description: ""
+  reference_controls:
+    description: ""
+  regulatory_jurisdictions:
+    description: ""
+  related_controls:
+    description: ""
+  related_impact_assessment:
+    description: ""
+  related_impact_assessments:
+    description: ""
+  related_incidents:
+    description: ""
+  related_nonconformities:
+    description: ""
+  related_risks:
+    description: ""
+  related_topic_policies:
+    description: ""
+  related_treatment_plan:
+    description: ""
+  relationship:
+    description: ""
+  report_date:
+    description: ""
+  report_distribution:
+    description: ""
+  reported_date:
+    description: ""
+  reporter:
+    description: ""
+  reporter_anonymous:
+    description: ""
+  reporter_party_type:
+    description: ""
+  reporting_channel:
+    description: ""
+  reporting_line:
+    description: ""
+  reprisal_protection_actions:
+    description: ""
+  required_competencies:
+    description: ""
+  requirement_violated:
+    description: ""
+  requirements:
+    description: ""
+  residual_risk_acceptance:
+    description: ""
+  residual_risk_level:
+    description: ""
+  resolution:
+    description: ""
+  resource_class:
+    description: ""
+  resource_requirements:
+    description: ""
+  resource_type:
+    description: ""
+  resources:
+    description: ""
+  resources_required:
+    description: ""
+  response_actions:
+    description: ""
+  response_due_date:
+    description: ""
+  response_provided_date:
+    description: ""
+  responsibilities:
+    description: ""
+  responsible_parties:
+    description: ""
+  responsible_party:
+    description: ""
+  responsible_role:
+    description: ""
+  responsible_roles:
+    description: ""
+  retention_period:
+    description: ""
+  retention_policy:
+    description: ""
+  review_date:
+    description: ""
+  review_frequency:
+    description: ""
+  risk_acceptance_criteria:
+    description: ""
+  risk_assessment_results:
+    description: ""
+  risk_implication:
+    description: ""
+  risk_matrix:
+    description: ""
+  risk_owner:
+    description: ""
+  risk_owner_approval:
+    description: ""
+  risk_source_category:
+    description: ""
+  risk_source_description:
+    description: ""
+  risk_treatment_option:
+    description: ""
+  risks_addressed:
+    description: ""
+  risks_identified:
+    description: ""
+  role_type:
+    description: ""
+  roles:
+    description: ""
+  root_cause:
+    description: ""
+  root_cause_addressed:
+    description: ""
+  root_cause_analysis:
+    description: ""
+  scope_boundaries:
+    description: ""
+  scope_exclusions:
+    description: ""
+  scope_statement:
+    description: ""
+  sector_domains:
+    description: ""
+  severity:
+    description: ""
+  shared_with_parties:
+    description: ""
+  similar_nonconformities_check:
+    description: ""
+  size_category:
+    description: ""
+  soa_entries:
+    description: ""
+  soa_template:
+    description: ""
+  societal_context:
+    description: ""
+  source:
+    description: ""
+  statement_of_applicability:
+    description: ""
+  status:
+    description: ""
+  subject:
+    description: ""
+  subsidiaries:
+    description: ""
+  summary_findings:
+    description: ""
+  supplier_assessment_criteria:
+    description: ""
+  supplier_relationships:
+    description: ""
+  target_audience:
+    description: ""
+  target_completion_date:
+    description: ""
+  target_date:
+    description: ""
+  target_implementation_date:
+    description: ""
+  target_threshold:
+    description: ""
+  target_value:
+    description: ""
+  technical_context:
+    description: ""
+  technical_documentation:
+    description: ""
+  third_party_relationships:
+    description: ""
+  tool_category:
+    description: ""
+  tool_version:
+    description: ""
+  tooling_resources:
+    description: ""
+  top_management:
+    description: ""
+  topic_area:
+    description: ""
+  total_controls:
+    description: ""
+  trading_names:
+    description: ""
+  training_records:
+    description: ""
+  treatment_actions:
+    description: ""
+  treatment_options_guidance:
+    description: ""
+  treatment_priority:
+    description: ""
+  trend:
+    description: ""
+  trigger_events:
+    description: ""
+  usage_agreement_reference:
+    description: ""
+  usage_purpose:
+    description: ""
+  vendor:
+    description: ""
+  version:
+    description: ""
+enums:
+  AIControlFamily:
+    description: ""
+    permissible_values:
+      ai_policies:
+        description: ""
+      ai_resources:
+        description: ""
+      ai_system_lifecycle:
+        description: ""
+      data_for_ai:
+        description: ""
+      impact_assessment:
+        description: ""
+      information_for_parties:
+        description: ""
+      internal_organization:
+        description: ""
+      third_party_relationships:
+        description: ""
+      use_of_ai:
+        description: ""
+  AIIncidentCategory:
+    description: ""
+    permissible_values:
+      adverse_societal_impact:
+        description: ""
+      bias_incident:
+        description: ""
+      data_poisoning:
+        description: ""
+      hallucination:
+        description: ""
+      membership_inference:
+        description: ""
+      misuse:
+        description: ""
+      model_drift:
+        description: ""
+      model_inversion:
+        description: ""
+      model_stealing:
+        description: ""
+      other:
+        description: ""
+      privacy_breach:
+        description: ""
+      prompt_injection:
+        description: ""
+      safety_incident:
+        description: ""
+      security_breach:
+        description: ""
+  AIObjectiveCategory:
+    description: ""
+    permissible_values:
+      accessibility:
+        description: ""
+      accountability:
+        description: ""
+      ai_expertise:
+        description: ""
+      availability_of_training_data:
+        description: ""
+      data_quality:
+        description: ""
+      environmental_impact:
+        description: ""
+      explainability:
+        description: ""
+      fairness:
+        description: ""
+      maintainability:
+        description: ""
+      privacy:
+        description: ""
+      reliability:
+        description: ""
+      robustness:
+        description: ""
+      safety:
+        description: ""
+      security:
+        description: ""
+      transparency:
+        description: ""
+  AIOrganizationalRole:
+    description: ""
+    permissible_values:
+      ai_customer:
+        description: ""
+      ai_partner:
+        description: ""
+      ai_producer:
+        description: ""
+      ai_provider:
+        description: ""
+      ai_subject:
+        description: ""
+      relevant_authority:
+        description: ""
+  AIRiskSourceCategory:
+    description: ""
+    permissible_values:
+      complexity_of_environment:
+        description: ""
+      hardware:
+        description: ""
+      lack_of_transparency_or_explainability:
+        description: ""
+      level_of_automation:
+        description: ""
+      lifecycle:
+        description: ""
+      machine_learning_specific:
+        description: ""
+      technology_readiness:
+        description: ""
+  AISystemLifecycleStage:
+    description: ""
+    permissible_values:
+      continuous_validation:
+        description: ""
+      data_collection_and_preparation:
+        description: ""
+      decommissioning:
+        description: ""
+      deployment:
+        description: ""
+      design:
+        description: ""
+      development:
+        description: ""
+      inception:
+        description: ""
+      operation_and_monitoring:
+        description: ""
+      re_evaluation:
+        description: ""
+      verification_and_validation:
+        description: ""
+  AnnexAControlId:
+    description: ""
+    permissible_values:
+      a_10_2:
+        description: ""
+      a_10_3:
+        description: ""
+      a_10_4:
+        description: ""
+      a_2_2:
+        description: ""
+      a_2_3:
+        description: ""
+      a_2_4:
+        description: ""
+      a_3_2:
+        description: ""
+      a_3_3:
+        description: ""
+      a_4_2:
+        description: ""
+      a_4_3:
+        description: ""
+      a_4_4:
+        description: ""
+      a_4_5:
+        description: ""
+      a_4_6:
+        description: ""
+      a_5_2:
+        description: ""
+      a_5_3:
+        description: ""
+      a_5_4:
+        description: ""
+      a_5_5:
+        description: ""
+      a_6_1_2:
+        description: ""
+      a_6_1_3:
+        description: ""
+      a_6_2_2:
+        description: ""
+      a_6_2_3:
+        description: ""
+      a_6_2_4:
+        description: ""
+      a_6_2_5:
+        description: ""
+      a_6_2_6:
+        description: ""
+      a_6_2_7:
+        description: ""
+      a_6_2_8:
+        description: ""
+      a_7_2:
+        description: ""
+      a_7_3:
+        description: ""
+      a_7_4:
+        description: ""
+      a_7_5:
+        description: ""
+      a_7_6:
+        description: ""
+      a_8_2:
+        description: ""
+      a_8_3:
+        description: ""
+      a_8_4:
+        description: ""
+      a_8_5:
+        description: ""
+      a_9_2:
+        description: ""
+      a_9_3:
+        description: ""
+      a_9_4:
+        description: ""
+  AuditFindingType:
+    description: ""
+    permissible_values:
+      major_nonconformity:
+        description: ""
+      minor_nonconformity:
+        description: ""
+      observation:
+        description: ""
+      positive_finding:
+        description: ""
+  AuditType:
+    description: ""
+    permissible_values:
+      combined:
+        description: ""
+      external_second_party:
+        description: ""
+      external_third_party:
+        description: ""
+      internal:
+        description: ""
+      recertification:
+        description: ""
+      surveillance:
+        description: ""
+  DataPreparationMethod:
+    description: ""
+    permissible_values:
+      anonymization:
+        description: ""
+      augmentation:
+        description: ""
+      cleaning:
+        description: ""
+      deduplication:
+        description: ""
+      encoding:
+        description: ""
+      imputation:
+        description: ""
+      labelling:
+        description: ""
+      normalization:
+        description: ""
+      other:
+        description: ""
+      scaling:
+        description: ""
+      statistical_exploration:
+        description: ""
+  DataResourceCategory:
+    description: ""
+    permissible_values:
+      production:
+        description: ""
+      reference:
+        description: ""
+      test:
+        description: ""
+      training:
+        description: ""
+      validation:
+        description: ""
+  DocumentType:
+    description: ""
+    permissible_values:
+      guideline:
+        description: ""
+      plan:
+        description: ""
+      policy:
+        description: ""
+      procedure:
+        description: ""
+      record:
+        description: ""
+      report:
+        description: ""
+      standard:
+        description: ""
+      technical_documentation:
+        description: ""
+  GovernanceRoleType:
+    description: ""
+    permissible_values:
+      ai_developer:
+        description: ""
+      ai_impact_assessor:
+        description: ""
+      ai_operator:
+        description: ""
+      ai_oversight_committee:
+        description: ""
+      ai_policy_owner:
+        description: ""
+      ai_risk_owner:
+        description: ""
+      auditor:
+        description: ""
+      chief_ai_officer:
+        description: ""
+      data_steward:
+        description: ""
+      designated_management:
+        description: ""
+      governing_body:
+        description: ""
+      human_oversight_reviewer:
+        description: ""
+      model_validator:
+        description: ""
+      other:
+        description: ""
+      top_management:
+        description: ""
+  ImpactAssessmentDimension:
+    description: ""
+    permissible_values:
+      accessibility:
+        description: ""
+      accountability:
+        description: ""
+      cultural_norms:
+        description: ""
+      economic:
+        description: ""
+      environmental:
+        description: ""
+      explainability:
+        description: ""
+      fairness:
+        description: ""
+      financial:
+        description: ""
+      government:
+        description: ""
+      group:
+        description: ""
+      health:
+        description: ""
+      human_rights:
+        description: ""
+      individual:
+        description: ""
+      privacy:
+        description: ""
+      safety:
+        description: ""
+      security:
+        description: ""
+      societal:
+        description: ""
+      transparency:
+        description: ""
+  ImpactRating:
+    description: ""
+    permissible_values:
+      major:
+        description: ""
+      minor:
+        description: ""
+      moderate:
+        description: ""
+      negligible:
+        description: ""
+      severe:
+        description: ""
+  ImplementationStatus:
+    description: ""
+    permissible_values:
+      implemented:
+        description: ""
+      in_progress:
+        description: ""
+      not_applicable:
+        description: ""
+      not_started:
+        description: ""
+      planned:
+        description: ""
+  LearningParadigm:
+    description: ""
+    permissible_values:
+      continuous_learning:
+        description: ""
+      hybrid:
+        description: ""
+      not_applicable:
+        description: ""
+      online_learning:
+        description: ""
+      periodic_retraining:
+        description: ""
+      reinforcement_learning:
+        description: ""
+      static:
+        description: ""
+      transfer_learning:
+        description: ""
+  LikelihoodRating:
+    description: ""
+    permissible_values:
+      almost_certain:
+        description: ""
+      likely:
+        description: ""
+      possible:
+        description: ""
+      rare:
+        description: ""
+      unlikely:
+        description: ""
+  MLApproach:
+    description: ""
+    permissible_values:
+      federated:
+        description: ""
+      generative:
+        description: ""
+      hybrid:
+        description: ""
+      not_applicable:
+        description: ""
+      reinforcement:
+        description: ""
+      self_supervised:
+        description: ""
+      semi_supervised:
+        description: ""
+      supervised:
+        description: ""
+      symbolic:
+        description: ""
+      transfer:
+        description: ""
+      unsupervised:
+        description: ""
+  RelatedManagementSystem:
+    description: ""
+    permissible_values:
+      iec_62304:
+        description: ""
+      iso_13485:
+        description: ""
+      iso_19011:
+        description: ""
+      iso_22000:
+        description: ""
+      iso_31000:
+        description: ""
+      iso_37002:
+        description: ""
+      iso_9001:
+        description: ""
+      iso_iec_22989:
+        description: ""
+      iso_iec_23894:
+        description: ""
+      iso_iec_25024:
+        description: ""
+      iso_iec_25059:
+        description: ""
+      iso_iec_27000:
+        description: ""
+      iso_iec_27001:
+        description: ""
+      iso_iec_27701:
+        description: ""
+      iso_iec_29100:
+        description: ""
+      iso_iec_38507:
+        description: ""
+      iso_iec_5259:
+        description: ""
+      iso_iec_5338:
+        description: ""
+      other:
+        description: ""
+  RiskLevel:
+    description: ""
+    permissible_values:
+      critical:
+        description: ""
+      high:
+        description: ""
+      low:
+        description: ""
+      medium:
+        description: ""
+      very_low:
+        description: ""
+  RiskTreatmentOption:
+    description: ""
+    permissible_values:
+      accept:
+        description: ""
+      avoid:
+        description: ""
+      modify:
+        description: ""
+      share:
+        description: ""
+  SectorDomain:
+    description: ""
+    permissible_values:
+      agriculture:
+        description: ""
+      defence:
+        description: ""
+      education:
+        description: ""
+      employment:
+        description: ""
+      energy:
+        description: ""
+      finance:
+        description: ""
+      health:
+        description: ""
+      manufacturing:
+        description: ""
+      other:
+        description: ""
+      public_sector:
+        description: ""
+      retail:
+        description: ""
+      telecommunications:
+        description: ""
+      transport:
+        description: ""

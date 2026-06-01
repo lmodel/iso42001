@@ -1,0 +1,39 @@
+# mapping_set_id: https://w3id.org/lmodel/iso42001/mappings/iso42001_to_iso29100
+# mapping_set_version: 0.1.0
+# mapping_set_title: ISO/IEC 42001:2023 to ISO/IEC 29100:2011 Privacy Framework Schema Mappings
+# mapping_set_description: Schema-level mappings between the ISO/IEC 42001:2023 (AI Management System) LinkML schema and the ISO/IEC 29100:2011 (Privacy Framework) LinkML schema. ISO 29100 establishes a high-level privacy framework with eleven privacy principles, PII actor roles, and supporting concepts (PII flow scenarios, safeguarding requirements, privacy controls, PIA). The mappings bridge AI-system governance with privacy governance where ISO 42001 obligations touch personal data, AI subjects, and impact assessments.
+# license: https://creativecommons.org/licenses/by/4.0/
+# subject_source: https://w3id.org/lmodel/iso42001
+# object_source: https://w3id.org/lmodel/iso29100
+# mapping_date: 2026-06-01
+# curie_map:
+#   iso42001: https://w3id.org/lmodel/iso42001/
+#   iso29100: https://w3id.org/lmodel/iso29100/
+#   owl: http://www.w3.org/2002/07/owl#
+#   semapv: https://w3id.org/semapv/vocab/
+#   skos: http://www.w3.org/2004/02/skos/core#
+subject_id	subject_label	subject_category	predicate_id	predicate_label	object_id	object_label	object_category	mapping_justification	comment
+iso42001:AIManagementSystem	AIManagementSystem	owl:Class	skos:relatedMatch	related match	iso29100:PrivacyFramework	PrivacyFramework	owl:Class	semapv:LLMBasedMatching	Both are top-level governance containers; AI management system can incorporate the ISO 29100 privacy framework where AI systems process PII
+iso42001:Organization	Organization	owl:Class	skos:closeMatch	close match	iso29100:PIIController	PIIController	owl:Class	semapv:LLMBasedMatching	An ISO 42001 organisation acting on PII is a PII controller under ISO 29100
+iso42001:Organization	Organization	owl:Class	skos:relatedMatch	related match	iso29100:PIIProcessor	PIIProcessor	owl:Class	semapv:LLMBasedMatching	An organisation may also act as a PII processor depending on the role in the PII flow
+iso42001:InterestedParty	InterestedParty	owl:Class	skos:closeMatch	close match	iso29100:PrivacyStakeholder	PrivacyStakeholder	owl:Class	semapv:LLMBasedMatching	Interested parties in ISO 42001 correspond to ISO 29100 privacy stakeholders (PII principals, controllers, processors, third parties, authorities)
+iso42001:ai_subject	ai_subject	skos:Concept	skos:closeMatch	close match	iso29100:PIIPrincipal	PIIPrincipal	skos:Concept	semapv:LLMBasedMatching	AI subjects whose personal data is processed are PII principals
+iso42001:ai_partner	ai_partner	skos:Concept	skos:closeMatch	close match	iso29100:ThirdParty	ThirdParty	skos:Concept	semapv:LLMBasedMatching	AI partners involved in PII handling are third parties in privacy terms
+iso42001:DataResource	DataResource	owl:Class	skos:closeMatch	close match	iso29100:PersonallyIdentifiableInformation	PersonallyIdentifiableInformation	owl:Class	semapv:LLMBasedMatching	Data resources used by AI systems that identify natural persons are PII
+iso42001:AIPolicy	AIPolicy	owl:Class	skos:closeMatch	close match	iso29100:PrivacyPolicy	PrivacyPolicy	owl:Class	semapv:LLMBasedMatching	An AI policy is parallel in structure to an ISO 29100 privacy policy; both express organisational commitments and obligations
+iso42001:AIReferenceControl	AIReferenceControl	owl:Class	skos:closeMatch	close match	iso29100:PrivacyControl	PrivacyControl	owl:Class	semapv:LLMBasedMatching	Annex A AI controls and ISO 29100 privacy controls are both safeguard catalogues
+iso42001:AISystemImpactAssessment	AISystemImpactAssessment	owl:Class	skos:closeMatch	close match	iso29100:PrivacyImpactAssessment	PrivacyImpactAssessment	owl:Class	semapv:LLMBasedMatching	AI-system impact assessment is methodologically parallel to a PIA; both assess impacts on individuals before/during processing
+iso42001:AIRisk	AIRisk	owl:Class	skos:relatedMatch	related match	iso29100:PrivacyRisk	PrivacyRisk	owl:Class	semapv:LLMBasedMatching	Privacy risk is a sub-category of AI risk when the AI system processes PII; not equivalent
+iso42001:AIIncident	AIIncident	owl:Class	skos:closeMatch	close match	iso29100:PrivacyBreach	PrivacyBreach	owl:Class	semapv:LLMBasedMatching	A privacy breach is a specific kind of AI incident when PII is exposed or misused
+iso42001:privacy_breach	privacy_breach	skos:Concept	skos:exactMatch	exact match	iso29100:PrivacyBreach	PrivacyBreach	skos:Concept	semapv:LLMBasedMatching	The AIIncidentCategory privacy_breach value is realised by the ISO 29100 PrivacyBreach class
+iso42001:OperationalProcedure	OperationalProcedure	owl:Class	skos:relatedMatch	related match	iso29100:PIIProcessingActivity	PIIProcessingActivity	owl:Class	semapv:LLMBasedMatching	Operational procedures over AI systems that touch PII record processing activities
+iso42001:AIObjectiveCategory	AIObjectiveCategory	owl:Class	skos:closeMatch	close match	iso29100:PrivacyPrinciple	PrivacyPrinciple	owl:Class	semapv:LLMBasedMatching	Several ISO 42001 AI objectives mirror ISO 29100 privacy principles (privacy, accountability, transparency)
+iso42001:privacy	privacy	skos:Concept	skos:exactMatch	exact match	iso29100:PrivacyPrinciple	PrivacyPrinciple	skos:Concept	semapv:LLMBasedMatching	Privacy is the umbrella principle of ISO 29100
+iso42001:accountability	accountability	skos:Concept	skos:exactMatch	exact match	iso29100:accountability	accountability	skos:Concept	semapv:LLMBasedMatching	Accountability is principle 9 of ISO 29100
+iso42001:transparency	transparency	skos:Concept	skos:closeMatch	close match	iso29100:openness_transparency_and_notice	openness_transparency_and_notice	skos:Concept	semapv:LLMBasedMatching	ISO 29100 principle 7 covers openness, transparency and notice
+iso42001:security	security	skos:Concept	skos:closeMatch	close match	iso29100:information_security	information_security	skos:Concept	semapv:LLMBasedMatching	Information security is principle 10 of ISO 29100
+iso42001:data_quality	data_quality	skos:Concept	skos:closeMatch	close match	iso29100:accuracy_and_quality	accuracy_and_quality	skos:Concept	semapv:LLMBasedMatching	Data quality aligns with ISO 29100's accuracy-and-quality principle
+iso42001:fairness	fairness	skos:Concept	skos:relatedMatch	related match	iso29100:individual_participation_and_access	individual_participation_and_access	skos:Concept	semapv:LLMBasedMatching	Fairness in AI partly relates to individual participation rights under ISO 29100
+iso42001:AIRiskTreatmentPlan	AIRiskTreatmentPlan	owl:Class	skos:relatedMatch	related match	iso29100:PrivacySafeguardingRequirement	PrivacySafeguardingRequirement	owl:Class	semapv:LLMBasedMatching	Privacy safeguarding requirements often feed into the risk-treatment plan when AI processes PII
+iso42001:risk_owner	risk_owner	owl:ObjectProperty	skos:closeMatch	close match	iso29100:pii_controller	pii_controller	owl:ObjectProperty	semapv:LLMBasedMatching	The risk owner for a privacy risk is typically the PII controller
+iso42001:risks_identified	risks_identified	owl:ObjectProperty	skos:closeMatch	close match	iso29100:privacy_risks	privacy_risks	owl:ObjectProperty	semapv:LLMBasedMatching	Identified AI risks include privacy risks

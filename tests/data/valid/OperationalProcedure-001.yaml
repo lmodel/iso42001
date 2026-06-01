@@ -1,0 +1,24 @@
+id: iso42001:procedure-model-release
+name: AI Model Release Procedure
+description: Operational procedure governing release of new AI models to production.
+version: "1.0"
+document_type: procedure
+document_reference: PROC-ML-REL-001
+author: Head of ML Engineering
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-02-05"
+effective_date: "2026-02-15"
+review_date: "2027-02-15"
+status: approved
+classification: internal
+procedure_scope: All production AI models served via the ML platform.
+process_criteria: Models must pass evaluation gates before release.
+control_measures:
+  - Pre-release evaluation gate
+  - Risk owner sign-off
+responsible_roles:
+  - iso42001:role-chief-ai-officer
+related_controls:
+  - iso42001:control-a-2-2
+change_control_requirements: All releases tracked in the change register.

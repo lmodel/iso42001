@@ -1,0 +1,4 @@
+id: iso42001:supplier-bad-stage
+name: Supplier With Invalid Lifecycle Stage
+lifecycle_stages_involved:
+  - retirement_party

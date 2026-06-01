@@ -1,0 +1,3 @@
+id: iso42001:system-bad-lifecycle
+name: AI System With Invalid Lifecycle Stage
+lifecycle_stage: retirement_party

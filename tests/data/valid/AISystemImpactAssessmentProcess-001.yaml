@@ -1,0 +1,26 @@
+id: iso42001:process-impact-assessment
+name: AI System Impact Assessment Process
+description: Defines how impacts of AI systems on individuals and society are assessed.
+version: "1.0"
+document_type: procedure
+document_reference: PROC-AI-IA-001
+author: AI Ethics Officer
+owner: Chief AI Officer
+approved_by: CEO
+approved_date: "2026-01-25"
+effective_date: "2026-02-01"
+review_date: "2027-02-01"
+status: approved
+classification: internal
+assessment_criteria: Severity x reversibility across dimensions in scope.
+assessment_methodology: Multi-disciplinary workshop with documented evidence.
+dimensions_in_scope:
+  - individual
+  - group
+  - societal
+  - fairness
+assessment_frequency: per system, prior to deployment and after major change
+trigger_events:
+  - New deployment context
+  - Material change to model
+linkage_to_risk_assessment: Outputs feed into the AI risk assessment process.

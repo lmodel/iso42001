@@ -1,0 +1,35 @@
+id: iso42001:incident-2026-001
+name: Recommender Bias Incident
+description: Detected disparate-impact incident on the recommender service.
+incident_datetime: "2026-05-20T09:30:00+00:00"
+incident_category: bias_incident
+severity: high
+affected_ai_systems:
+  - iso42001:system-recommender
+affected_dimensions:
+  - fairness
+  - group
+incident_description: Sustained fairness-gap exceedance for two weeks.
+detection_method: Automated fairness scan.
+response_actions:
+  - Triggered fairness incident response runbook.
+containment_actions:
+  - Activated post-processing fairness layer.
+recovery_actions:
+  - Retrained model with rebalanced dataset.
+root_cause: Drift in training data distribution.
+lessons_learned:
+  - Increase monitoring cadence for rebalanced subgroups.
+evidence_collected:
+  - Fairness scan reports.
+  - Incident response runbook log.
+notification_required: true
+notifications_made:
+  - EU AI Regulator notified 2026-05-21.
+external_reports:
+  - REG-NOT-2026-001
+communication_plan: iso42001:commplan-2026
+linked_corrective_actions:
+  - iso42001:ca-2026-001
+closure_datetime: "2026-06-30T17:00:00+00:00"
+post_incident_review: Reviewed at management review H1 2026.

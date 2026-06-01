@@ -1,0 +1,25 @@
+id: iso42001:process-risk-assessment
+name: AI Risk Assessment Process
+description: Defines how AI risks are identified, analyzed, and evaluated.
+version: "1.0"
+document_type: procedure
+document_reference: PROC-AI-RA-001
+author: AI Risk Manager
+owner: Chief AI Officer
+approved_by: CEO
+approved_date: "2026-01-20"
+effective_date: "2026-02-01"
+review_date: "2027-02-01"
+status: approved
+classification: internal
+risk_acceptance_criteria: Residual risks rated medium or below are acceptable.
+assessment_criteria: Likelihood x Impact scored on 5-point scales.
+assessment_methodology: Combined qualitative workshop plus quantitative scoring.
+likelihood_scale: rare / unlikely / possible / likely / almost_certain
+impact_scale: negligible / minor / moderate / major / severe
+risk_matrix: 5x5 matrix mapping likelihood-impact to RiskLevel.
+assessment_frequency: annual, plus event-driven
+trigger_events:
+  - Significant model change
+  - Regulatory change
+alignment_with_ai_policy: Implements section 4 of POL-AI-001.

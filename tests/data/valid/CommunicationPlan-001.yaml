@@ -1,0 +1,22 @@
+id: iso42001:commplan-2026
+name: AIMS Communication Plan 2026
+description: Annual communication plan for the AI management system.
+version: "1.0"
+document_type: plan
+document_reference: COMP-PLAN-2026
+author: Communications Lead
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-02-01"
+effective_date: "2026-02-15"
+review_date: "2027-02-15"
+status: approved
+classification: internal
+communication_items:
+  - subject: AI policy launch
+    purpose: Announce updated AI policy.
+    audience: All employees
+    frequency: one-off
+    method: Intranet announcement
+    responsible_party: Communications Lead
+    records_required: Distribution list and acknowledgments.

@@ -1,0 +1,4 @@
+id: iso42001:impact-bad-dim
+name: Impact Assessment With Invalid Dimension
+dimensions_assessed:
+  - market_share

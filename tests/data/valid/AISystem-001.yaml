@@ -1,0 +1,39 @@
+id: iso42001:system-recommender
+name: Consumer Recommender System
+description: Personalized recommendation engine for the consumer storefront.
+version: "3.4"
+ai_system_purpose: Suggest relevant catalogue items to consumer users.
+intended_uses:
+  - Personalized product recommendations on the storefront.
+foreseeable_misuse:
+  - Use as the sole basis for credit decisions (out of scope).
+application_domain: e-commerce
+deployment_context: Public web and mobile storefronts.
+lifecycle_stage: operation_and_monitoring
+organization_role: ai_provider
+autonomy_level: human_on_the_loop
+ml_approach: supervised
+human_oversight_required: true
+human_oversight_description: Operations team reviews drift alerts daily.
+human_oversight_stages:
+  - operation_and_monitoring
+learning_mode: periodic_retraining
+data_resources:
+  - iso42001:data-training-2026
+tooling_resources:
+  - iso42001:tooling-mlplatform
+computing_resources:
+  - iso42001:resource-gpu-cluster
+human_resources:
+  - iso42001:hr-mlops-team
+technical_documentation:
+  - Model card RECO-2026
+event_log_policy: 90-day retention of inference and drift logs.
+applicable_controls:
+  - iso42001:control-a-2-2
+related_impact_assessments:
+  - iso42001:impact-recommender-2026
+supplier_relationships:
+  - iso42001:supplier-foundation-model
+customer_relationships:
+  - iso42001:customer-retail-partner

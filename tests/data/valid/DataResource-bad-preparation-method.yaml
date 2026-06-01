@@ -1,0 +1,4 @@
+id: iso42001:data-bad-prep
+name: Data Resource With Invalid Preparation Method
+data_preparation_methods:
+  - vibes_based_cleaning

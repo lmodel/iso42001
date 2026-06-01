@@ -1,0 +1,28 @@
+id: iso42001:policy-aims
+name: AI Management Policy
+description: Top-level policy declaring AcmeCorp's commitment to responsible AI.
+version: "2.0"
+document_type: policy
+document_reference: POL-AI-001
+author: Chief AI Officer
+owner: Chief AI Officer
+approved_by: CEO
+approved_date: "2026-01-15"
+effective_date: "2026-02-01"
+review_date: "2027-02-01"
+status: approved
+classification: internal
+policy_statement: >-
+  AcmeCorp develops, deploys, and operates AI systems in a manner that is
+  lawful, ethical, and aligned with the organization's strategic objectives.
+policy_objectives_framework: Linked to corporate strategic objectives 2026-2028.
+commitment_statements:
+  - Comply with applicable AI laws and regulations.
+  - Continually improve the AI management system.
+applicability_statement: Applies to all employees, contractors, and suppliers.
+communication_date: "2026-02-02"
+acknowledgment_required: true
+related_topic_policies:
+  - iso42001:policy-acceptable-use
+last_policy_review_date: "2026-01-10"
+next_policy_review_date: "2027-01-10"

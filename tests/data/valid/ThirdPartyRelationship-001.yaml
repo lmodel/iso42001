@@ -1,0 +1,17 @@
+id: iso42001:partner-research-lab
+name: University Research Partner
+description: Joint research partnership on AI explainability.
+party_type: research_partner
+party_name: University Research Lab
+contractual_basis: Joint research agreement signed 2025-09-01.
+allocated_responsibilities:
+  - Publish anonymized research findings.
+data_processing_role: joint_controller
+ai_systems_involved:
+  - iso42001:system-recommender
+lifecycle_stages_involved:
+  - design
+  - verification_and_validation
+assurance_evidence:
+  - Ethics review approval letter.
+review_frequency: annual

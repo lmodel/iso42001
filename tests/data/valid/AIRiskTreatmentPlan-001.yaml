@@ -1,0 +1,30 @@
+id: iso42001:rtp-bias-2026
+name: Recommender Bias Treatment Plan 2026
+description: Plan to reduce demographic disparity in the recommender model.
+version: "1.0"
+document_type: plan
+document_reference: RTP-BIAS-2026
+author: AI Risk Manager
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-03-25"
+effective_date: "2026-04-01"
+review_date: "2026-12-31"
+status: approved
+classification: internal
+plan_scope: Production recommender model and its training pipeline.
+risks_addressed:
+  - iso42001:risk-bias-2026
+treatment_actions:
+  - Retrain with rebalanced dataset.
+  - Add post-processing fairness layer.
+controls_to_implement:
+  - iso42001:control-a-2-2
+resources_required: ML engineer time, additional compute budget.
+responsible_parties:
+  - Head of ML Engineering
+implementation_timeline: Q2-Q3 2026
+risk_owner_approval: Approved by Head of ML Engineering.
+residual_risk_acceptance: Residual risk accepted by Chief AI Officer.
+implementation_status: in_progress
+completion_date: "2026-09-30"

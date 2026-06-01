@@ -1,0 +1,24 @@
+id: iso42001:data-training-2026
+name: Recommender Training Dataset 2026
+description: Curated training dataset for the recommender model.
+version: "2026.03"
+data_resource_category: training
+source: Internal storefront event logs (consented).
+acquisition_method: Consented event capture with anonymization at ingest.
+data_quality_requirements:
+  - Schema conformance > 99%
+  - No personally identifying information present.
+data_quality_metrics:
+  - schema_conformance_pct
+  - pii_leakage_count
+data_provenance: Derived from anonymized storefront telemetry.
+labelling_process: Implicit feedback labels (click, purchase).
+data_preparation_methods:
+  - cleaning
+  - normalization
+  - encoding
+last_updated_date: "2026-03-01"
+known_bias_issues:
+  - Possible under-representation of low-frequency catalogue items.
+retention_policy: 24 months in cold storage.
+data_classification: internal

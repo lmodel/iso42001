@@ -1,0 +1,18 @@
+id: iso42001:process-risk-treatment
+name: AI Risk Treatment Process
+description: Defines how identified AI risks are treated and tracked to closure.
+version: "1.0"
+document_type: procedure
+document_reference: PROC-AI-RT-001
+author: AI Risk Manager
+owner: Chief AI Officer
+approved_by: CEO
+approved_date: "2026-01-22"
+effective_date: "2026-02-01"
+review_date: "2027-02-01"
+status: approved
+classification: internal
+treatment_options_guidance: Prefer modify; require justification for accept.
+control_selection_criteria: Map to AI reference controls in Annex A.
+soa_template: SOA-TEMPLATE-001
+approval_workflow: Risk owner approves, then Chief AI Officer endorses.

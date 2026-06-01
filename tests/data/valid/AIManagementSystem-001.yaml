@@ -1,0 +1,83 @@
+id: iso42001:aims-acmecorp
+name: AcmeCorp AI Management System
+description: Enterprise AIMS coordinating AI governance across product divisions.
+version: "1.0"
+organization: iso42001:org-acmecorp
+scope_statement: >-
+  Covers all customer-facing AI services and internal decision-support models
+  operated by AcmeCorp's product and platform divisions.
+scope_boundaries:
+  - Customer-facing AI assistants
+  - Internal classification models
+scope_exclusions:
+  - Research-only prototypes outside production environments
+context_internal_issues:
+  - Rapid expansion of generative-AI use cases.
+  - Shortage of AI risk specialists.
+context_external_issues:
+  - Emerging AI regulatory regimes in target jurisdictions.
+  - Increased scrutiny by enterprise customers on supply-chain assurance.
+organizational_roles_with_ai:
+  - ai_provider
+  - ai_producer
+integrated_management_systems:
+  - iso_iec_27001
+  - iso_9001
+top_management: Executive Leadership Team
+governing_body: Board of Directors
+leadership_commitment_evidence:
+  - Annual AI policy reaffirmation signed by CEO.
+planned_changes:
+  - Onboard new foundation-model vendor in Q3.
+interested_parties:
+  - iso42001:party-regulator-eu
+ai_policy: iso42001:policy-aims
+ai_objectives:
+  - iso42001:objective-fairness-2026
+ai_risk_assessment_process: iso42001:process-risk-assessment
+ai_risk_treatment_process: iso42001:process-risk-treatment
+ai_system_impact_assessment_process: iso42001:process-impact-assessment
+statement_of_applicability: iso42001:soa-2026
+reference_controls:
+  - iso42001:control-a-2-2
+ai_systems:
+  - iso42001:system-recommender
+roles:
+  - iso42001:role-chief-ai-officer
+resources:
+  - iso42001:resource-gpu-cluster
+competence_records:
+  - iso42001:competence-jane-doe
+awareness_program: iso42001:awareness-2026
+communication_plan: iso42001:commplan-2026
+operational_procedures:
+  - iso42001:procedure-model-release
+ai_risk_assessments:
+  - iso42001:risk-assessment-2026-q1
+ai_risk_treatment_plans:
+  - iso42001:rtp-bias-2026
+ai_system_impact_assessments:
+  - iso42001:impact-recommender-2026
+monitoring_program: iso42001:monitoring-2026
+internal_audits:
+  - iso42001:audit-2026-q2
+management_reviews:
+  - iso42001:mgmt-review-2026-h1
+nonconformities:
+  - iso42001:nc-2026-001
+corrective_actions:
+  - iso42001:ca-2026-001
+improvements:
+  - iso42001:improvement-2026-001
+third_party_relationships:
+  - iso42001:supplier-foundation-model
+certification_status: certified
+certification_body: Example Certification Services
+certification_date: "2026-04-01"
+recertification_date: "2029-04-01"
+ai_system_events:
+  - iso42001:event-2026-001
+ai_incidents:
+  - iso42001:incident-2026-001
+concern_reports:
+  - iso42001:concern-2026-001

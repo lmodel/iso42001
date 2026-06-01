@@ -1,0 +1,4 @@
+id: iso42001:org-bad-sector
+name: Organization With Invalid Sector Domain
+sector_domains:
+  - cryptozoology

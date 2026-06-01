@@ -1,0 +1,19 @@
+# mapping_set_id: https://w3id.org/lmodel/iso42001/mappings/iso42001_to_iso23894
+# mapping_set_version: 0.1.0
+# mapping_set_title: ISO/IEC 42001:2023 to ISO/IEC 23894:2023 Schema Mappings
+# mapping_set_description: Schema-level mappings between the ISO/IEC 42001:2023 (AI Management System) and ISO/IEC 23894:2023 (Guidance on risk management for AI) LinkML schemas. ISO/IEC 23894 provides the canonical guidance on AI-specific risk management processes referenced by ISO/IEC 42001 clause 6.1.
+# license: https://creativecommons.org/licenses/by/4.0/
+# subject_source: https://w3id.org/lmodel/iso42001
+# object_source: https://w3id.org/lmodel/iso23894
+# mapping_date: 2026-06-01
+# curie_map:
+#   iso42001: https://w3id.org/lmodel/iso42001/
+#   iso23894: https://w3id.org/lmodel/iso23894/
+#   owl: http://www.w3.org/2002/07/owl#
+#   semapv: https://w3id.org/semapv/vocab/
+#   skos: http://www.w3.org/2004/02/skos/core#
+subject_id	subject_label	subject_category	predicate_id	predicate_label	object_id	object_label	object_category	mapping_justification	comment
+iso42001:AIRisk	AIRisk	owl:Class	skos:exactMatch	exact match	iso23894:risk	risk	owl:Class	semapv:LLMBasedMatching	Both standards adopt the ISO 31000 / ISO Guide 73 definition of risk applied to the AI context.
+iso42001:AIRiskAssessmentProcess	AIRiskAssessmentProcess	owl:Class	skos:exactMatch	exact match	iso23894:risk_management_process	risk management process	owl:Class	semapv:LLMBasedMatching	ISO/IEC 42001 clause 6.1.2 references the ISO/IEC 23894 risk management process for AI risk identification, analysis, and evaluation.
+iso42001:AIRiskTreatmentProcess	AIRiskTreatmentProcess	owl:Class	skos:exactMatch	exact match	iso23894:risk_treatment_process	risk treatment process	owl:Class	semapv:LLMBasedMatching	Both standards model the same risk treatment process (option selection, control implementation, residual risk acceptance) applied to AI risks.
+iso42001:AISystemImpactAssessmentProcess	AISystemImpactAssessmentProcess	owl:Class	skos:exactMatch	exact match	iso23894:impact_assessment_process	impact assessment process	owl:Class	semapv:LLMBasedMatching	ISO/IEC 23894 introduces the AI system impact assessment process that is formalised as a normative requirement in ISO/IEC 42001 clause 6.1.4.

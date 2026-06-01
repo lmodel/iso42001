@@ -1,0 +1,28 @@
+id: iso42001:concern-2026-001
+name: Customer Concern - Recommender Fairness
+description: Customer raised concerns about recommendation fairness.
+reported_date: "2026-04-10"
+reporter: Customer Trust and Safety Team
+reporter_party_type: customer
+reporter_anonymous: false
+confidentiality_level: confidential
+reporting_channel: customer_portal
+concern_description: Customer reports systematic under-recommendation of items.
+concern_ai_systems:
+  - iso42001:system-recommender
+concern_lifecycle_stage:
+  - operation_and_monitoring
+severity: medium
+investigator: AI Ethics Officer
+investigation_status: closed
+investigation_findings: Confirmed disparity; linked to incident-2026-001.
+escalation_status: escalated
+response_due_date: "2026-05-10"
+response_provided_date: "2026-05-05"
+resolution: Mitigations deployed; customer notified.
+reprisal_protection_actions:
+  - Concern handled under non-retaliation policy.
+related_incidents:
+  - iso42001:incident-2026-001
+related_nonconformities: []
+closure_datetime: "2026-06-30T17:00:00+00:00"

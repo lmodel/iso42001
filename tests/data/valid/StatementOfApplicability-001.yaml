@@ -1,0 +1,27 @@
+id: iso42001:soa-2026
+name: Statement of Applicability 2026
+description: Records applicability and status of AI reference controls.
+version: "1.0"
+document_type: record
+document_reference: SOA-2026
+author: AI Risk Manager
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-03-30"
+effective_date: "2026-04-01"
+review_date: "2027-04-01"
+status: approved
+classification: internal
+soa_entries:
+  - control_reference: iso42001:control-a-2-2
+    is_applicable: true
+    inclusion_justification: Required to fulfil leadership commitment.
+    implementation_status: implemented
+    implementation_evidence: See policy POL-AI-001.
+    responsible_role: iso42001:role-chief-ai-officer
+    target_implementation_date: "2026-04-01"
+total_controls: 38
+implemented_count: 22
+planned_count: 14
+not_applicable_count: 2
+last_review_date: "2026-03-29"

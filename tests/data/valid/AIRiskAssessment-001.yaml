@@ -1,0 +1,27 @@
+id: iso42001:risk-assessment-2026-q1
+name: Q1 2026 AI Risk Assessment
+description: First-quarter assessment covering all production AI systems.
+version: "1.0"
+document_type: report
+document_reference: RA-2026-Q1
+author: AI Risk Manager
+owner: Chief AI Officer
+approved_by: Chief AI Officer
+approved_date: "2026-03-20"
+effective_date: "2026-03-21"
+review_date: "2026-06-30"
+status: approved
+classification: internal
+assessment_scope: All customer-facing recommender systems.
+ai_systems_assessed:
+  - iso42001:system-recommender
+assessment_date: "2026-03-15"
+assessor: AI Risk Manager
+methodology_used: Workshop with system owners plus controls walkthrough.
+risks_identified:
+  - iso42001:risk-bias-2026
+linked_impact_assessment: iso42001:impact-recommender-2026
+summary_findings: Two medium risks, three low risks identified.
+recommendations:
+  - Strengthen training-data provenance controls.
+next_assessment_date: "2026-06-15"

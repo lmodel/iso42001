@@ -1,0 +1,3 @@
+id: iso42001:concern-bad-anon
+name: Concern Report With Invalid Anonymous Flag
+reporter_anonymous: kind_of

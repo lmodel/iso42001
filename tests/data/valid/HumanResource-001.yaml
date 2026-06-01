@@ -1,0 +1,12 @@
+id: iso42001:hr-mlops-team
+name: MLOps On-Call Team
+description: Human resources providing 24x7 oversight of production AI systems.
+required_competencies:
+  - Production ML monitoring
+  - Incident response
+assigned_to:
+  - mlops-oncall@example.com
+lifecycle_responsibilities:
+  - Operate
+  - Monitor
+  - Respond to incidents

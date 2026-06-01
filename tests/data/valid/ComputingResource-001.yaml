@@ -1,0 +1,9 @@
+id: iso42001:resource-gpu-cluster
+name: Production GPU Cluster
+description: Shared GPU cluster used for model training and batch inference.
+version: "2026"
+resource_class: gpu_cluster
+quantity: "64 GPUs"
+location: EU-WEST-1
+environment_type: production
+cost: budgeted under platform-ops 2026

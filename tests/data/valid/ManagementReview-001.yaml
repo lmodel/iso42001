@@ -1,0 +1,34 @@
+id: iso42001:mgmt-review-2026-h1
+name: Management Review H1 2026
+description: Half-year management review of the AIMS.
+version: "1.0"
+document_type: record
+document_reference: MR-2026-H1
+author: Chief AI Officer
+owner: CEO
+approved_by: CEO
+approved_date: "2026-07-15"
+effective_date: "2026-07-15"
+review_date: "2027-01-15"
+status: approved
+classification: internal
+attendees:
+  - CEO
+  - Chief AI Officer
+  - Chief Risk Officer
+previous_actions_status: All prior actions on track or closed.
+context_changes:
+  - New AI regulation in target jurisdiction.
+interested_party_changes:
+  - Added new enterprise customer with strict assurance requirements.
+performance_trends: Drift alert rate stable; fairness gap improving.
+audit_results_summary: One minor nonconformity; no major findings.
+risk_assessment_results: Three medium risks; one accepted, two treated.
+impact_assessment_results: All in-scope systems reassessed; no critical changes.
+improvement_opportunities:
+  - iso42001:improvement-2026-001
+decisions:
+  - Approve increased fairness-monitoring budget.
+action_items:
+  - Update records workflow by 2026-09-30.
+next_review_date: "2027-01-15"

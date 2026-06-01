@@ -1,0 +1,3 @@
+id: iso42001:incident-bad-severity
+name: AI Incident With Invalid Severity
+severity: catastrophic

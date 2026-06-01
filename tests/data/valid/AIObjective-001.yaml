@@ -1,0 +1,20 @@
+id: iso42001:objective-fairness-2026
+name: Reduce Model Demographic Disparity
+description: Achieve measurable reduction in disparate-impact metrics by year-end.
+version: "1.0"
+objective_statement: Reduce demographic-parity gap to below 5% in production models.
+objective_category: fairness
+target_value: "< 5% disparity"
+current_value: "8% disparity"
+metric_definition: Demographic-parity difference across protected attributes.
+measurement_method: Quarterly automated fairness scan on production datasets.
+measurement_frequency: quarterly
+responsible_role: iso42001:role-chief-ai-officer
+resources_required: Fairness-evaluation toolchain and analyst time.
+target_date: "2026-12-31"
+achievement_status: in_progress
+related_risks:
+  - iso42001:risk-bias-2026
+related_controls:
+  - iso42001:control-a-2-2
+action_plan: See AI Risk Treatment Plan iso42001:rtp-bias-2026.

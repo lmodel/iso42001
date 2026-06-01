@@ -1,0 +1,31 @@
+id: iso42001:competence-jane-doe
+name: Competence Record - Jane Doe
+description: Competence record for the Chief AI Officer.
+version: "1.0"
+document_type: record
+document_reference: COMP-2026-001
+author: HR Business Partner
+owner: Chief People Officer
+approved_by: Chief People Officer
+approved_date: "2026-02-10"
+effective_date: "2026-02-10"
+review_date: "2027-02-10"
+status: approved
+classification: confidential
+person_name: Jane Doe
+person_role: Chief AI Officer
+required_competencies:
+  - AI governance
+  - Risk management
+  - Regulatory engagement
+education_records:
+  - MSc Computer Science (2008)
+training_records:
+  - ISO/IEC 42001 Lead Implementer (2025)
+experience_records:
+  - 10 years in AI engineering leadership.
+competency_assessment_date: "2026-02-05"
+competency_gaps:
+  - Sector-specific regulatory updates for healthcare.
+development_actions:
+  - Complete healthcare AI regulation course by Q4.

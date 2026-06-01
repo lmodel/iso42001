@@ -1,0 +1,12 @@
+id: iso42001:event-2026-001
+name: Recommender Drift Alert
+description: Drift alert triggered on the recommender model.
+event_datetime: "2026-05-12T03:14:00+00:00"
+reporter: MLOps On-Call
+reporter_party_type: internal
+event_source: drift_detector
+event_description: Drift detector exceeded alert threshold for two days.
+affected_ai_systems:
+  - iso42001:system-recommender
+initial_assessment: Likely seasonal traffic shift; not classified as incident.
+categorized_as_incident: false
