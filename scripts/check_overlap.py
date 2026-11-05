@@ -12,11 +12,14 @@ a clause, control or annex item whose number starts no line of the standard.
 
 Give it the standard as plain text, for example from ``pdftotext`` run on your
 own licensed copy. Keep that file outside the repository: it must never be
-committed or published. The script is not part of CI, since CI has no copy.
+committed or published. The script is not part of CI, since CI has no copy, and
+ISO's licence bars giving the text to an AI tool, so a person runs it.
 
 Usage::
 
     python scripts/check_overlap.py --source /path/outside/the/repository/iso42001.txt
+
+A run may be listed in tests/overlap_allowed.yaml with the reason it is allowed.
 """
 
 from __future__ import annotations
@@ -30,34 +33,38 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "src" / "iso42001" / "schema" / "iso42001.yaml"
+ALLOWED = ROOT / "tests" / "overlap_allowed.yaml"
 RUN = 4
 WORD = re.compile(r"[a-z0-9]+")
-
-# Word runs allowed to match, each with its reason.
-ALLOWED = {
-    "iso iec 42001 2023": "the standard's own reference",
-    "iso iec 22989 2022": "the reference the standard itself cites by this name",
-    "information technology artificial intelligence management system": (
-        "the standard's own title, which NOTICE cites"
-    ),
-    "statement of applicability": "a term the standard defines, used as its name",
-}
 
 # What holds text a person reads, and what the schema's cross-references cite.
 TEXT_KEYS = {"description", "title", "comments", "notes"}
 NUMBER_KEYS = {
-    "iso42001_clause": "",
-    "annex_a_control": "",
-    "annex_b_item": "",
-    "annex_c_item": "",
-    "annex_d_item": "",
+    "iso42001_clause",
+    "annex_a_clause",
+    "annex_a_control",
+    "annex_b_item",
+    "annex_c_item",
+    "annex_d_item",
+    "control_objective",
 }
+# A value of a number key that names no single number.
+NOT_A_NUMBER = {"Annex A"}
+
+# The Markdown this project writes, and its NOTICE.
+PROSE = (
+    "README.md",
+    "NOTICE",
+    "docs/*.md",
+    "src/iso42001/schema/*.md",
+    ".lokf/knowledge/**/*.md",
+)
 
 
 def words(text: str) -> list[str]:
     """The text's words in lower case, with a dotted number such as A.6.1.2 as one."""
     text = re.sub(r"(?<=\w)\.(?=\d)", "", text.lower())
-    return WORD.findall(text.replace("\u2019", "").replace("'", ""))
+    return WORD.findall(text.replace("’", "").replace("'", ""))
 
 
 def source_words(text: str) -> list[str]:
@@ -65,11 +72,17 @@ def source_words(text: str) -> list[str]:
     return words(re.sub(r"(\w)-\s*\n\s*(\w)", r"\1\2", text))
 
 
-def schema_texts(node, path=""):
+def shingles(tokens: list[str], size: int = RUN) -> set[tuple[str, ...]]:
+    """Every run of `size` consecutive words."""
+    return {tuple(tokens[i : i + size]) for i in range(len(tokens) - size + 1)}
+
+
+def schema_texts(node, path: str = "schema"):
     """Each string a person reads in the schema, with where it sits."""
     if isinstance(node, dict):
         for key, value in node.items():
             here = f"{path}/{key}"
+            # A slot may be named description too; its entry is a mapping.
             if key in TEXT_KEYS and isinstance(value, str):
                 yield here, value
             elif key in TEXT_KEYS and isinstance(value, list):
@@ -87,7 +100,7 @@ def schema_numbers(node):
     if isinstance(node, dict):
         for key, value in node.items():
             if key in NUMBER_KEYS and isinstance(value, str):
-                yield from value.split(", ")
+                yield from (n for n in value.split(", ") if n not in NOT_A_NUMBER)
             else:
                 yield from schema_numbers(value)
     elif isinstance(node, list):
@@ -95,36 +108,54 @@ def schema_numbers(node):
             yield from schema_numbers(item)
 
 
-def other_files() -> list[Path]:
-    """The Markdown this project writes, and its NOTICE."""
-    patterns = (
-        "README.md",
-        "NOTICE",
-        "docs/*.md",
-        "src/iso42001/schema/*.md",
-        ".lokf/knowledge/**/*.md",
-    )
-    return sorted(p for pattern in patterns for p in ROOT.glob(pattern))
+def repository_texts(root: Path = ROOT):
+    """Each (where, text) this repository writes in its own words."""
+    schema = root / SCHEMA.relative_to(ROOT)
+    yield from schema_texts(yaml.safe_load(schema.read_text(encoding="utf-8")))
+    for pattern in PROSE:
+        for path in sorted(root.glob(pattern)):
+            yield str(path.relative_to(root)), path.read_text(encoding="utf-8")
 
 
-def overlaps(text: str, shingles: set[tuple[str, ...]]) -> list[str]:
+def allowed_runs(path: Path = ALLOWED) -> dict[tuple[str, ...], str]:
+    """Each allowed run, normalized as words() leaves it, with its reason. Every
+    entry must give a reason."""
+    entries = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+    allowed = {}
+    for entry in entries:
+        if not str(entry.get("reason", "")).strip():
+            raise ValueError(f"{entry.get('run')!r} gives no reason")
+        allowed[tuple(words(str(entry["run"])))] = entry["reason"]
+    return allowed
+
+
+def overlaps(text: str, theirs: set[tuple[str, ...]], allowed) -> list[str]:
     """Each maximal run of the text's words that the source also holds, with the
     allowed runs taken out first."""
     tokens = words(text)
-    for phrase in ALLOWED:
-        allowed = phrase.split()
-        for start in range(len(tokens) - len(allowed) + 1):
-            if tokens[start : start + len(allowed)] == allowed:
-                tokens[start : start + len(allowed)] = [""] * len(allowed)
+    for phrase in allowed:
+        size = len(phrase)
+        for start in range(len(tokens) - size + 1):
+            if tuple(tokens[start : start + size]) == phrase:
+                tokens[start : start + size] = [""] * size
     found, start = [], None
     for i in range(len(tokens) - RUN + 2):
-        hit = tuple(tokens[i : i + RUN]) in shingles
+        hit = tuple(tokens[i : i + RUN]) in theirs
         if hit and start is None:
             start = i
         elif not hit and start is not None:
             found.append(" ".join(tokens[start : i + RUN - 1]))
             start = None
     return found
+
+
+def missing_numbers(numbers, raw: str) -> list[str]:
+    """Each cited number that starts no line of the source."""
+    return [
+        number
+        for number in sorted(set(numbers))
+        if not re.search(rf"^\s*{re.escape(number)}\s", raw, flags=re.M)
+    ]
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -137,24 +168,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{args.source} sits inside the repository. Move it out.")
         return 2
     raw = args.source.read_text(encoding="utf-8", errors="replace")
-    tokens = source_words(raw)
-    shingles = {tuple(tokens[i : i + RUN]) for i in range(len(tokens) - RUN + 1)}
+    theirs = shingles(source_words(raw))
+    allowed = allowed_runs()
 
-    schema = yaml.safe_load(SCHEMA.read_text(encoding="utf-8"))
     problems = []
-    for where, text in schema_texts(schema):
-        problems += [f"schema {where}: {run}" for run in overlaps(text, shingles)]
-    for path in other_files():
-        text = path.read_text(encoding="utf-8")
-        name = path.relative_to(ROOT)
-        problems += [f"{name}: {run}" for run in overlaps(text, shingles)]
-    for number in sorted(set(schema_numbers(schema))):
-        if number == "Annex A":
-            continue
-        if not re.search(rf"^\s*{re.escape(number)}\s", raw, flags=re.M):
-            problems.append(
-                f"schema cites {number}, which starts no line of the source"
-            )
+    for where, text in repository_texts():
+        problems += [f"{where}: {run}" for run in overlaps(text, theirs, allowed)]
+    schema = yaml.safe_load(SCHEMA.read_text(encoding="utf-8"))
+    problems += [
+        f"schema cites {number}, which starts no line of the source"
+        for number in missing_numbers(schema_numbers(schema), raw)
+    ]
 
     print("\n".join(problems) if problems else "OK: nothing shared, every number found")
     return 1 if problems else 0
