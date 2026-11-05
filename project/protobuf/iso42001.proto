@@ -77,12 +77,12 @@ message AimsAiSystem {
 }
 // One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
 message AimsApplicabilityEntry {
-  // The Annex A control a Statement of Applicability entry concerns.
-  AimsAnnexAControl aims_entry_annex_a_control = 1;
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 2;
   // The kind of entry, AimsIncludedControl or AimsExcludedControl.
-  string aims_entry_type = 3;
+  string aims_entry_type = 1;
+  // The Annex A control a Statement of Applicability entry concerns.
+  AimsAnnexAControl aims_entry_annex_a_control = 2;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 3;
   // Why the control is included or left out.
   string aims_entry_justification = 4;
 }
@@ -677,12 +677,12 @@ message AimsCorrectiveAction {
 }
 // A relationship with a customer of the organization's AI work: what it expects, who answers for what, and which limits it was told of.
 message AimsCustomerRelationship {
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 1;
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.
-  string aims_relationship_type = 3;
+  string aims_relationship_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 3;
   // The other party.
   string aims_relationship_party = 4;
   // The parts the other party plays towards the system.
@@ -846,7 +846,7 @@ message AimsDevelopmentProcess {
   // Who the document came from, when it comes from outside.
   string aims_document_external_source = 35;
 }
-// The control that documented information is kept under: who wrote, owns and approved it, its format and medium, when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is kept, and whether it came from outside.
+// The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.
 message AimsDocumentControlMixin {
   // The reference the organization's document control gives it.
   string aims_document_reference = 1;
@@ -946,10 +946,10 @@ message AimsDocumentedInformation {
 }
 // An entry that leaves out an Annex A control the organization does not need, and says why.
 message AimsExcludedControl {
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 1;
   // The kind of entry, AimsIncludedControl or AimsExcludedControl.
-  string aims_entry_type = 2;
+  string aims_entry_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
   // Why the control is included or left out.
   string aims_entry_justification = 3;
   // The Annex A control a Statement of Applicability entry concerns.
@@ -1174,10 +1174,10 @@ message AimsImprovementOpportunity {
 }
 // An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was learned.
 message AimsIncident {
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 1;
   // The kind of record, AimsSystemEvent or AimsIncident.
-  string aims_event_type = 2;
+  string aims_event_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
   // When the event happened, or when it was first noticed.
   string aims_event_occurred_at = 3;
   // Who reported the event.
@@ -1284,12 +1284,12 @@ message AimsIncidentCommunicationPlan {
 }
 // An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for it and whether it is in place.
 message AimsIncludedControl {
-  // The Annex A control a Statement of Applicability entry concerns.
-  AimsAnnexAControl aims_entry_annex_a_control = 1;
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 2;
   // The kind of entry, AimsIncludedControl or AimsExcludedControl.
-  string aims_entry_type = 3;
+  string aims_entry_type = 1;
+  // The Annex A control a Statement of Applicability entry concerns.
+  AimsAnnexAControl aims_entry_annex_a_control = 2;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 3;
   // Why the control is included or left out.
   string aims_entry_justification = 4;
   // How far the control or the plan has been put into effect.
@@ -2387,12 +2387,12 @@ message AimsStatementOfApplicability {
 }
 // A relationship with a supplier to the organization's AI work: what it provides, the risk that brings, and how it is held to the organization's approach.
 message AimsSupplierRelationship {
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 1;
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.
-  string aims_relationship_type = 3;
+  string aims_relationship_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 3;
   // The other party.
   string aims_relationship_party = 4;
   // The parts the other party plays towards the system.
@@ -2430,10 +2430,10 @@ message AimsSupplierRelationship {
 }
 // Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.
 message AimsSystemEvent {
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 1;
   // The kind of record, AimsSystemEvent or AimsIncident.
-  string aims_event_type = 2;
+  string aims_event_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
   // When the event happened, or when it was first noticed.
   string aims_event_occurred_at = 3;
   // Who reported the event.
@@ -2527,12 +2527,12 @@ message AimsTechnicalDocumentation {
 }
 // A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what assures the organization of that.
 message AimsThirdPartyRelationship {
-  // The AI systems the record concerns.
-  repeated AimsAiSystem aims_ai_systems = 1;
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.
-  string aims_relationship_type = 3;
+  string aims_relationship_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 3;
   // The other party.
   string aims_relationship_party = 4;
   // The parts the other party plays towards the system.
@@ -2726,7 +2726,7 @@ enum AimsAiRole {
   AIMS_AI_ROLE_DATA_SUBJECT = 21;
   AIMS_AI_ROLE_OTHER_SUBJECT = 22;
   AIMS_AI_ROLE_RELEVANT_AUTHORITY = 23;
-  AIMS_AI_ROLE_POLICYMAKER = 24;
+  AIMS_AI_ROLE_POLICY_MAKER = 24;
   AIMS_AI_ROLE_REGULATOR = 25;
 }
 // Threats to information security peculiar to AI: those the guidance names, and other.
@@ -2737,7 +2737,7 @@ enum AimsAiThreat {
   AIMS_AI_THREAT_MODEL_INVERSION = 3;
   AIMS_AI_THREAT_OTHER = 4;
 }
-// The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.
+// The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.
 enum AimsAnnexAControl {
   AIMS_ANNEX_ACONTROL_UNSPECIFIED = 0;
   AIMS_ANNEX_ACONTROL_A_N2_N2 = 1;

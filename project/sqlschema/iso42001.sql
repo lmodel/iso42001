@@ -2,7 +2,7 @@
 --     * Slot: aims_id Description: The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
 --     * Slot: title Description: The name the organization gives the record.
 --     * Slot: description Description: What the record says or describes, in the organization's own words.
--- # Class: AimsDocumentControlMixin Description: The control that documented information is kept under: who wrote, owns and approved it, its format and medium, when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is kept, and whether it came from outside.
+-- # Class: AimsDocumentControlMixin Description: The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.
 --     * Slot: id
 --     * Slot: aims_document_reference Description: The reference the organization's document control gives it.
 --     * Slot: aims_document_version Description: The version of the document.
@@ -395,8 +395,8 @@
 --     * Slot: aims_document_external_source Description: Who the document came from, when it comes from outside.
 -- # Abstract Class: AimsApplicabilityEntry Description: One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
 --     * Slot: id
---     * Slot: aims_entry_annex_a_control Description: The Annex A control a Statement of Applicability entry concerns.
 --     * Slot: aims_entry_type Description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
+--     * Slot: aims_entry_annex_a_control Description: The Annex A control a Statement of Applicability entry concerns.
 --     * Slot: aims_entry_justification Description: Why the control is included or left out.
 --     * Slot: AimsStatementOfApplicability_aims_id Description: Autocreated FK slot
 -- # Class: AimsIncludedControl Description: An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for it and whether it is in place.
@@ -406,13 +406,13 @@
 --     * Slot: aims_included_control Description: The organization's control the entry includes.
 --     * Slot: aims_included_evidence Description: What shows that the control is in place.
 --     * Slot: aims_included_target_date Description: When the control is to be in place, if it is not yet.
---     * Slot: aims_entry_annex_a_control Description: The Annex A control a Statement of Applicability entry concerns.
 --     * Slot: aims_entry_type Description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
+--     * Slot: aims_entry_annex_a_control Description: The Annex A control a Statement of Applicability entry concerns.
 --     * Slot: aims_entry_justification Description: Why the control is included or left out.
 -- # Class: AimsExcludedControl Description: An entry that leaves out an Annex A control the organization does not need, and says why.
 --     * Slot: id
---     * Slot: aims_entry_annex_a_control Description: The Annex A control a Statement of Applicability entry concerns.
 --     * Slot: aims_entry_type Description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
+--     * Slot: aims_entry_annex_a_control Description: The Annex A control a Statement of Applicability entry concerns.
 --     * Slot: aims_entry_justification Description: Why the control is included or left out.
 -- # Class: AimsControl Description: A control the organization has found it needs to treat its risks: what it does in the organization's words, which Annex A controls it answers to, who owns it, how far it is in place and how well it works.
 --     * Slot: aims_implementation_state Description: How far the control or the plan has been put into effect.
@@ -2043,8 +2043,8 @@ CREATE INDEX "ix_AimsStatementOfApplicability_aims_id" ON "AimsStatementOfApplic
 
 CREATE TABLE "AimsExcludedControl" (
 	id INTEGER NOT NULL,
+	aims_entry_type TEXT NOT NULL,
 	aims_entry_annex_a_control VARCHAR(7) NOT NULL,
-	aims_entry_type TEXT,
 	aims_entry_justification TEXT NOT NULL,
 	PRIMARY KEY (id)
 );
@@ -2201,7 +2201,7 @@ CREATE TABLE "AimsSupplierRelationship" (
 	aims_supplier_risk VARCHAR(8),
 	aims_supplier_monitoring TEXT,
 	aims_supplier_integration TEXT,
-	aims_relationship_type TEXT,
+	aims_relationship_type TEXT NOT NULL,
 	aims_relationship_party TEXT,
 	aims_relationship_contract TEXT,
 	aims_relationship_pii_role VARCHAR(20),
@@ -2216,7 +2216,7 @@ CREATE INDEX "ix_AimsSupplierRelationship_aims_id" ON "AimsSupplierRelationship"
 CREATE TABLE "AimsCustomerRelationship" (
 	aims_customer_agreement TEXT,
 	aims_customer_responsibility_split TEXT,
-	aims_relationship_type TEXT,
+	aims_relationship_type TEXT NOT NULL,
 	aims_relationship_party TEXT,
 	aims_relationship_contract TEXT,
 	aims_relationship_pii_role VARCHAR(20),
@@ -2235,7 +2235,7 @@ CREATE TABLE "AimsIncident" (
 	aims_incident_root_cause TEXT,
 	aims_incident_notification_required BOOLEAN,
 	aims_incident_closed_at DATETIME,
-	aims_event_type TEXT,
+	aims_event_type TEXT NOT NULL,
 	aims_event_occurred_at DATETIME,
 	aims_event_reporter TEXT,
 	aims_event_source TEXT,
@@ -2504,8 +2504,8 @@ CREATE INDEX "ix_AimsImpactAssessment_aims_id" ON "AimsImpactAssessment" (aims_i
 
 CREATE TABLE "AimsApplicabilityEntry" (
 	id INTEGER NOT NULL,
+	aims_entry_type TEXT NOT NULL,
 	aims_entry_annex_a_control VARCHAR(7),
-	aims_entry_type TEXT,
 	aims_entry_justification TEXT NOT NULL,
 	"AimsStatementOfApplicability_aims_id" TEXT,
 	PRIMARY KEY (id),
@@ -3012,7 +3012,7 @@ CREATE TABLE "AimsImprovementOpportunity" (
 CREATE INDEX "ix_AimsImprovementOpportunity_aims_id" ON "AimsImprovementOpportunity" (aims_id);
 
 CREATE TABLE "AimsThirdPartyRelationship" (
-	aims_relationship_type TEXT,
+	aims_relationship_type TEXT NOT NULL,
 	aims_relationship_party TEXT,
 	aims_relationship_contract TEXT,
 	aims_relationship_pii_role VARCHAR(20),
@@ -3027,7 +3027,7 @@ CREATE TABLE "AimsThirdPartyRelationship" (
 CREATE INDEX "ix_AimsThirdPartyRelationship_aims_id" ON "AimsThirdPartyRelationship" (aims_id);
 
 CREATE TABLE "AimsSystemEvent" (
-	aims_event_type TEXT,
+	aims_event_type TEXT NOT NULL,
 	aims_event_occurred_at DATETIME,
 	aims_event_reporter TEXT,
 	aims_event_source TEXT,
@@ -3805,8 +3805,8 @@ CREATE TABLE "AimsIncludedControl" (
 	aims_included_control TEXT,
 	aims_included_evidence TEXT,
 	aims_included_target_date DATE,
+	aims_entry_type TEXT NOT NULL,
 	aims_entry_annex_a_control VARCHAR(7),
-	aims_entry_type TEXT,
 	aims_entry_justification TEXT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY(aims_responsible_role) REFERENCES "AimsRole" (aims_id),

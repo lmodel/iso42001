@@ -136,12 +136,30 @@ slots:
         It means what LOKF's description means and carries the same IRI, so lokf adapt
         folds it into LOKF's slot and a knowledge bundle reads one description key.
 
-  # A slot, not an attribute: the generated dataclasses cannot load a required
-  # designator that a class declares as an attribute.
+  # The designators are slots, not attributes: for a designator a class declares
+  # as an attribute the generated dataclasses write an unknown_ field, and they
+  # cannot load one that is required.
   aims_resource_type:
     description: >-
       The kind of resource: AimsComponentResource, AimsDataResource,
       AimsToolingResource, AimsComputingResource or AimsHumanResource.
+    designates_type: true
+    range: string
+
+  aims_entry_type:
+    description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
+    designates_type: true
+    range: string
+
+  aims_relationship_type:
+    description: >-
+      The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or
+      AimsCustomerRelationship.
+    designates_type: true
+    range: string
+
+  aims_event_type:
+    description: The kind of record, AimsSystemEvent or AimsIncident.
     designates_type: true
     range: string
 
@@ -453,9 +471,11 @@ enums:
 
   AimsAnnexAControl:
     description: >-
-      The 38 reference controls of Annex A. A value's title holds the control's number
+      The 38 reference controls of Annex A, by number. A value's title holds the number
       and a name of this project's own, and its description says in this project's words
-      what the control asks for. The headings and the control text are ISO's.
+      what the control asks for.
+    comments:
+      - The headings and the control text are ISO's, and appear nowhere here.
     in_subset:
       - aims_annex_a
     annotations:
@@ -520,7 +540,7 @@ enums:
         annotations:
           area: system_resources
       a_4_6:
-        title: "A.4.6 Record of people used"
+        title: "A.4.6 Record of the people involved"
         description: >-
           Record who works on a system across its whole life, and what skills they
           bring.
@@ -842,7 +862,7 @@ enums:
           role_family: ai_subject
       relevant_authority:
         description: Sets or enforces rules for AI.
-      policymaker:
+      policy_maker:
         description: Sets the rules.
         annotations:
           role_family: relevant_authority
@@ -1403,9 +1423,8 @@ classes:
     mixin: true
     description: >-
       The control that documented information is kept under: who wrote, owns and
-      approved it, its format and medium, when it takes effect and is looked at again,
-      how it is classified, handed out, stored and changed, how long it is kept, and
-      whether it came from outside.
+      approved it, when it takes effect and is reviewed, how it is classified, kept and
+      changed, and whether it came from outside.
     in_subset:
       - aims_documented_information
     annotations:
@@ -2602,13 +2621,13 @@ classes:
         An entry may hold for the whole system or for particular AI systems, which
         aims_ai_systems names.
     slots:
+      - aims_entry_type
       - aims_entry_annex_a_control
       - aims_ai_systems
-    attributes:
+    slot_usage:
       aims_entry_type:
-        description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
-        designates_type: true
-        range: string
+        required: true
+    attributes:
       aims_entry_justification:
         description: Why the control is included or left out.
         required: true
@@ -3989,15 +4008,13 @@ classes:
     annotations:
       annex_a_control: A.10.2
     slots:
+      - aims_relationship_type
       - aims_ai_systems
       - aims_life_cycle_stages
-    attributes:
+    slot_usage:
       aims_relationship_type:
-        description: >-
-          The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or
-          AimsCustomerRelationship.
-        designates_type: true
-        range: string
+        required: true
+    attributes:
       aims_relationship_party:
         description: The other party.
       aims_relationship_party_roles:
@@ -4109,12 +4126,12 @@ classes:
     annotations:
       annex_a_control: A.8.3
     slots:
+      - aims_event_type
       - aims_ai_systems
-    attributes:
+    slot_usage:
       aims_event_type:
-        description: The kind of record, AimsSystemEvent or AimsIncident.
-        designates_type: true
-        range: string
+        required: true
+    attributes:
       aims_event_occurred_at:
         description: When the event happened, or when it was first noticed.
         range: datetime

@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: A relationship says which kind of record it is.
+aims_id: acme:x
+title: A record
+aims_relationship_party: Example Integrations Ltd

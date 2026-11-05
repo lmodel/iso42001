@@ -25,7 +25,7 @@ enum AimsAiRole
     data_subject
     other_subject
     relevant_authority
-    policymaker
+    policy_maker
     regulator
   }
 
@@ -380,9 +380,9 @@ type AimsAiSystem implements AimsRecordMixin
 
 interface AimsApplicabilityEntry
   {
+    aimsEntryType: String!
     aimsEntryAnnexAControl: AimsAnnexAControl
     aimsAiSystems: [AimsAiSystem]
-    aimsEntryType: String
     aimsEntryJustification: String!
   }
 
@@ -715,9 +715,9 @@ type AimsCorrectiveAction implements AimsRecordMixin
 
 type AimsCustomerRelationship
   {
+    aimsRelationshipType: String!
     aimsAiSystems: [AimsAiSystem]
     aimsLifeCycleStages: [AimsLifecycleStage]
-    aimsRelationshipType: String
     aimsRelationshipParty: String
     aimsRelationshipPartyRoles: [AimsAiRole]
     aimsRelationshipContract: String
@@ -862,8 +862,8 @@ type AimsDocumentedInformation implements AimsRecordMixin, AimsDocumentControlMi
 
 type AimsExcludedControl
   {
+    aimsEntryType: String!
     aimsAiSystems: [AimsAiSystem]
-    aimsEntryType: String
     aimsEntryJustification: String!
     aimsEntryAnnexAControl: AimsAnnexAControl!
   }
@@ -991,8 +991,8 @@ type AimsImprovementOpportunity implements AimsRecordMixin
 
 type AimsIncident
   {
+    aimsEventType: String!
     aimsAiSystems: [AimsAiSystem]
-    aimsEventType: String
     aimsEventOccurredAt: String
     aimsEventReporter: String
     aimsEventSource: String
@@ -1051,9 +1051,9 @@ type AimsIncidentCommunicationPlan implements AimsRecordMixin, AimsDocumentContr
 
 type AimsIncludedControl
   {
+    aimsEntryType: String!
     aimsEntryAnnexAControl: AimsAnnexAControl
     aimsAiSystems: [AimsAiSystem]
-    aimsEntryType: String
     aimsEntryJustification: String!
     aimsImplementationState: AimsImplementationStatus!
     aimsResponsibleRole: AimsRole
@@ -1660,9 +1660,9 @@ type AimsStatementOfApplicability implements AimsRecordMixin, AimsDocumentContro
 
 type AimsSupplierRelationship
   {
+    aimsRelationshipType: String!
     aimsAiSystems: [AimsAiSystem]
     aimsLifeCycleStages: [AimsLifecycleStage]
-    aimsRelationshipType: String
     aimsRelationshipParty: String
     aimsRelationshipPartyRoles: [AimsAiRole]
     aimsRelationshipContract: String
@@ -1684,8 +1684,8 @@ type AimsSupplierRelationship
 
 type AimsSystemEvent implements AimsRecordMixin
   {
+    aimsEventType: String!
     aimsAiSystems: [AimsAiSystem]
-    aimsEventType: String
     aimsEventOccurredAt: String
     aimsEventReporter: String
     aimsEventSource: String
@@ -1740,9 +1740,9 @@ type AimsTechnicalDocumentation implements AimsRecordMixin, AimsDocumentControlM
 
 type AimsThirdPartyRelationship implements AimsRecordMixin
   {
+    aimsRelationshipType: String!
     aimsAiSystems: [AimsAiSystem]
     aimsLifeCycleStages: [AimsLifecycleStage]
-    aimsRelationshipType: String
     aimsRelationshipParty: String
     aimsRelationshipPartyRoles: [AimsAiRole]
     aimsRelationshipContract: String

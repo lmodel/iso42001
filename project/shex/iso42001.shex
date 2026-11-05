@@ -82,7 +82,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lmodel/iso42001/AimsAiRole#data_provider> <https://w3id.org/lmodel/iso42001/AimsAiRole#ai_subject>
              <https://w3id.org/lmodel/iso42001/AimsAiRole#data_subject> <https://w3id.org/lmodel/iso42001/AimsAiRole#other_subject>
              <https://w3id.org/lmodel/iso42001/AimsAiRole#relevant_authority>
-             <https://w3id.org/lmodel/iso42001/AimsAiRole#policymaker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ] *
+             <https://w3id.org/lmodel/iso42001/AimsAiRole#policy_maker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ] *
           ;
           <aims_system_pii_roles> [ <https://w3id.org/lmodel/iso42001/AimsPiiRole#pii_controller>
              <https://w3id.org/lmodel/iso42001/AimsPiiRole#joint_pii_controller>
@@ -139,7 +139,8 @@ linkml:Sparqlpath xsd:string
 )
 
 <AimsApplicabilityEntry_struct> {
-    (  $<AimsApplicabilityEntry_tes> (  <aims_entry_annex_a_control> [ <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_2_2>
+    (  $<AimsApplicabilityEntry_tes> (  <aims_entry_type> @linkml:String ;
+          <aims_entry_annex_a_control> [ <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_2_2>
              <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_2_3> <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_2_4>
              <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_3_2> <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_3_3>
              <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_4_2> <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_4_3>
@@ -166,7 +167,6 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_10_3>
              <https://w3id.org/lmodel/iso42001/AimsAnnexAControl#a_10_4> ] ? ;
           <aims_ai_systems> @<AimsAiSystem> * ;
-          <aims_entry_type> @linkml:String ? ;
           <aims_entry_justification> @linkml:String
        ) ;
        rdf:type [ <AimsApplicabilityEntry> ] ?
@@ -1198,7 +1198,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lmodel/iso42001/AimsAiRole#data_provider> <https://w3id.org/lmodel/iso42001/AimsAiRole#ai_subject>
              <https://w3id.org/lmodel/iso42001/AimsAiRole#data_subject> <https://w3id.org/lmodel/iso42001/AimsAiRole#other_subject>
              <https://w3id.org/lmodel/iso42001/AimsAiRole#relevant_authority>
-             <https://w3id.org/lmodel/iso42001/AimsAiRole#policymaker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ] *
+             <https://w3id.org/lmodel/iso42001/AimsAiRole#policy_maker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ] *
           ;
           <aims_party_relationship> @linkml:String ? ;
           <aims_party_requirements> @linkml:String * ;
@@ -1587,7 +1587,7 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lmodel/iso42001/AimsAiRole#data_provider> <https://w3id.org/lmodel/iso42001/AimsAiRole#ai_subject>
              <https://w3id.org/lmodel/iso42001/AimsAiRole#data_subject> <https://w3id.org/lmodel/iso42001/AimsAiRole#other_subject>
              <https://w3id.org/lmodel/iso42001/AimsAiRole#relevant_authority>
-             <https://w3id.org/lmodel/iso42001/AimsAiRole#policymaker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ] *
+             <https://w3id.org/lmodel/iso42001/AimsAiRole#policy_maker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ] *
           ;
           <aims_organization_pii_roles> [ <https://w3id.org/lmodel/iso42001/AimsPiiRole#pii_controller>
              <https://w3id.org/lmodel/iso42001/AimsPiiRole#joint_pii_controller>
@@ -2076,8 +2076,8 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<AimsSystemEvent_tes> (  &<AimsRecordMixin_tes> ;
              rdf:type [ <AimsRecordMixin> ] ? ;
+             <aims_event_type> @linkml:String ;
              <aims_ai_systems> @<AimsAiSystem> * ;
-             <aims_event_type> @linkml:String ? ;
              <aims_event_occurred_at> @linkml:Datetime ? ;
              <aims_event_reporter> @linkml:String ? ;
              <aims_event_source> @linkml:String ? ;
@@ -2158,6 +2158,7 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<AimsThirdPartyRelationship_tes> (  &<AimsRecordMixin_tes> ;
              rdf:type [ <AimsRecordMixin> ] ? ;
+             <aims_relationship_type> @linkml:String ;
              <aims_ai_systems> @<AimsAiSystem> * ;
              <aims_life_cycle_stages> [ <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#inception>
                 <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#design_and_development>
@@ -2167,7 +2168,6 @@ linkml:Sparqlpath xsd:string
                 <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#continuous_validation>
                 <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#re_evaluation>
                 <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#retirement> ] * ;
-             <aims_relationship_type> @linkml:String ? ;
              <aims_relationship_party> @linkml:String ? ;
              <aims_relationship_party_roles> [ <https://w3id.org/lmodel/iso42001/AimsAiRole#ai_provider>
                 <https://w3id.org/lmodel/iso42001/AimsAiRole#ai_platform_provider>
@@ -2189,8 +2189,8 @@ linkml:Sparqlpath xsd:string
                 <https://w3id.org/lmodel/iso42001/AimsAiRole#ai_subject> <https://w3id.org/lmodel/iso42001/AimsAiRole#data_subject>
                 <https://w3id.org/lmodel/iso42001/AimsAiRole#other_subject>
                 <https://w3id.org/lmodel/iso42001/AimsAiRole#relevant_authority>
-                <https://w3id.org/lmodel/iso42001/AimsAiRole#policymaker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator> ]
-             * ;
+                <https://w3id.org/lmodel/iso42001/AimsAiRole#policy_maker> <https://w3id.org/lmodel/iso42001/AimsAiRole#regulator>
+                ] * ;
              <aims_relationship_contract> @linkml:String ? ;
              <aims_relationship_responsibilities> @linkml:String * ;
              <aims_relationship_pii_role> [ <https://w3id.org/lmodel/iso42001/AimsPiiRole#pii_controller>

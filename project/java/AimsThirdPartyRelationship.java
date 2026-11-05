@@ -16,9 +16,9 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class AimsThirdPartyRelationship  {
 
+  private String aimsRelationshipType;
   private List<AimsAiSystem> aimsAiSystems;
   private List<String> aimsLifeCycleStages;
-  private String aimsRelationshipType;
   private String aimsRelationshipParty;
   private List<String> aimsRelationshipPartyRoles;
   private String aimsRelationshipContract;

@@ -167,7 +167,7 @@ export enum AimsControlArea {
     AFULL_STOP10 = "external_relationships",
 };
 /**
-* The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.
+* The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.
 */
 export enum AimsAnnexAControl {
     
@@ -190,7 +190,7 @@ export enum AimsAnnexAControl {
     /** Record facts about the hardware and computing a system draws on. */
     AFULL_STOP4FULL_STOP5_Record_of_infrastructure_used = "a_4_5",
     /** Record who works on a system across its whole life, and what skills they bring. */
-    AFULL_STOP4FULL_STOP6_Record_of_people_used = "a_4_6",
+    AFULL_STOP4FULL_STOP6_Record_of_the_people_involved = "a_4_6",
     /** Set up a way to work out what a system could do to people and society over its life. */
     AFULL_STOP5FULL_STOP2_Method_for_weighing_consequences = "a_5_2",
     /** Write down what each impact assessment found, and hold on to it for a set time. */
@@ -322,7 +322,7 @@ export enum AimsAiRole {
     /** Sets or enforces rules for AI. */
     relevant_authority = "relevant_authority",
     /** Sets the rules. */
-    policymaker = "policymaker",
+    policy_maker = "policy_maker",
     /** Enforces the rules. */
     regulator = "regulator",
 };
@@ -692,7 +692,7 @@ export interface AimsRecordMixin {
 
 
 /**
- * The control that documented information is kept under: who wrote, owns and approved it, its format and medium, when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is kept, and whether it came from outside.
+ * The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.
  */
 export interface AimsDocumentControlMixin {
     /** The reference the organization's document control gives it. */
@@ -1297,12 +1297,12 @@ export interface AimsStatementOfApplicability extends AimsRecordMixin, AimsDocum
  * One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
  */
 export interface AimsApplicabilityEntry {
+    /** The kind of entry, AimsIncludedControl or AimsExcludedControl. */
+    aims_entry_type: string,
     /** The Annex A control a Statement of Applicability entry concerns. */
     aims_entry_annex_a_control?: string,
     /** The AI systems the record concerns. */
     aims_ai_systems?: AimsAiSystemAimsId[],
-    /** The kind of entry, AimsIncludedControl or AimsExcludedControl. */
-    aims_entry_type?: string,
     /** Why the control is included or left out. */
     aims_entry_justification: string,
 }
@@ -2068,12 +2068,12 @@ export interface AimsImprovementOpportunity extends AimsRecordMixin {
  * A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what assures the organization of that.
  */
 export interface AimsThirdPartyRelationship extends AimsRecordMixin {
+    /** The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship. */
+    aims_relationship_type: string,
     /** The AI systems the record concerns. */
     aims_ai_systems?: AimsAiSystemAimsId[],
     /** The stages of an AI system's life the record applies to. */
     aims_life_cycle_stages?: string,
-    /** The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship. */
-    aims_relationship_type?: string,
     /** The other party. */
     aims_relationship_party?: string,
     /** The parts the other party plays towards the system. */
@@ -2131,10 +2131,10 @@ export interface AimsCustomerRelationship extends AimsThirdPartyRelationship {
  * Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.
  */
 export interface AimsSystemEvent extends AimsRecordMixin {
+    /** The kind of record, AimsSystemEvent or AimsIncident. */
+    aims_event_type: string,
     /** The AI systems the record concerns. */
     aims_ai_systems?: AimsAiSystemAimsId[],
-    /** The kind of record, AimsSystemEvent or AimsIncident. */
-    aims_event_type?: string,
     /** When the event happened, or when it was first noticed. */
     aims_event_occurred_at?: string,
     /** Who reported the event. */

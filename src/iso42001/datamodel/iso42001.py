@@ -327,9 +327,8 @@ class AimsRecordMixin(YAMLRoot):
 @dataclass(repr=False)
 class AimsDocumentControlMixin(YAMLRoot):
     """
-    The control that documented information is kept under: who wrote, owns and approved it, its format and medium,
-    when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is
-    kept, and whether it came from outside.
+    The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and
+    is reviewed, how it is classified, kept and changed, and whether it came from outside.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -2545,7 +2544,7 @@ class AimsStatementOfApplicability(YAMLRoot):
         if not isinstance(self.title, str):
             self.title = str(self.title)
 
-        self._normalize_inlined_as_list(slot_name="aims_soa_entries", slot_type=AimsApplicabilityEntry, key_name="aims_entry_justification", keyed=False)
+        self._normalize_inlined_as_list(slot_name="aims_soa_entries", slot_type=AimsApplicabilityEntry, key_name="aims_entry_type", keyed=False)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
@@ -2626,12 +2625,16 @@ class AimsApplicabilityEntry(YAMLRoot):
     class_name: ClassVar[str] = "AimsApplicabilityEntry"
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsApplicabilityEntry
 
+    aims_entry_type: str = None
     aims_entry_justification: str = None
     aims_entry_annex_a_control: Optional[Union[str, "AimsAnnexAControl"]] = None
     aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
-    aims_entry_type: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_entry_type):
+            self.MissingRequiredField("aims_entry_type")
+        self.aims_entry_type = str(self.class_name)
+
         if self._is_empty(self.aims_entry_justification):
             self.MissingRequiredField("aims_entry_justification")
         if not isinstance(self.aims_entry_justification, str):
@@ -2644,10 +2647,10 @@ class AimsApplicabilityEntry(YAMLRoot):
             self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
         self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        self.aims_entry_type = str(self.class_name)
-
         super().__post_init__(**kwargs)
-        self.unknown_aims_entry_type = str(self.class_name)
+        if self._is_empty(self.aims_entry_type):
+            self.MissingRequiredField("aims_entry_type")
+        self.aims_entry_type = str(self.class_name)
 
 
     def __new__(cls, *args, **kwargs):
@@ -2680,6 +2683,7 @@ class AimsIncludedControl(AimsApplicabilityEntry):
     class_name: ClassVar[str] = "AimsIncludedControl"
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsIncludedControl
 
+    aims_entry_type: str = None
     aims_entry_justification: str = None
     aims_implementation_state: Union[str, "AimsImplementationStatus"] = None
     aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
@@ -2711,7 +2715,9 @@ class AimsIncludedControl(AimsApplicabilityEntry):
             self.aims_included_target_date = XSDDate(self.aims_included_target_date)
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_entry_type = str(self.class_name)
+        if self._is_empty(self.aims_entry_type):
+            self.MissingRequiredField("aims_entry_type")
+        self.aims_entry_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -2726,6 +2732,7 @@ class AimsExcludedControl(AimsApplicabilityEntry):
     class_name: ClassVar[str] = "AimsExcludedControl"
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsExcludedControl
 
+    aims_entry_type: str = None
     aims_entry_justification: str = None
     aims_entry_annex_a_control: Union[str, "AimsAnnexAControl"] = None
 
@@ -2736,7 +2743,9 @@ class AimsExcludedControl(AimsApplicabilityEntry):
             self.aims_entry_annex_a_control = AimsAnnexAControl(self.aims_entry_annex_a_control)
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_entry_type = str(self.class_name)
+        if self._is_empty(self.aims_entry_type):
+            self.MissingRequiredField("aims_entry_type")
+        self.aims_entry_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -6003,10 +6012,10 @@ class AimsThirdPartyRelationship(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsThirdPartyRelationship
 
     aims_id: Union[str, AimsThirdPartyRelationshipAimsId] = None
+    aims_relationship_type: str = None
     title: str = None
     aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
     aims_life_cycle_stages: Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]] = empty_list()
-    aims_relationship_type: Optional[str] = None
     aims_relationship_party: Optional[str] = None
     aims_relationship_party_roles: Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]] = empty_list()
     aims_relationship_contract: Optional[str] = None
@@ -6023,6 +6032,10 @@ class AimsThirdPartyRelationship(YAMLRoot):
         if not isinstance(self.aims_id, AimsThirdPartyRelationshipAimsId):
             self.aims_id = AimsThirdPartyRelationshipAimsId(self.aims_id)
 
+        if self._is_empty(self.aims_relationship_type):
+            self.MissingRequiredField("aims_relationship_type")
+        self.aims_relationship_type = str(self.class_name)
+
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
         if not isinstance(self.title, str):
@@ -6035,8 +6048,6 @@ class AimsThirdPartyRelationship(YAMLRoot):
         if not isinstance(self.aims_life_cycle_stages, list):
             self.aims_life_cycle_stages = [self.aims_life_cycle_stages] if self.aims_life_cycle_stages is not None else []
         self.aims_life_cycle_stages = [v if isinstance(v, AimsLifecycleStage) else AimsLifecycleStage(v) for v in self.aims_life_cycle_stages]
-
-        self.aims_relationship_type = str(self.class_name)
 
         if self.aims_relationship_party is not None and not isinstance(self.aims_relationship_party, str):
             self.aims_relationship_party = str(self.aims_relationship_party)
@@ -6070,7 +6081,9 @@ class AimsThirdPartyRelationship(YAMLRoot):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_relationship_type = str(self.class_name)
+        if self._is_empty(self.aims_relationship_type):
+            self.MissingRequiredField("aims_relationship_type")
+        self.aims_relationship_type = str(self.class_name)
 
 
     def __new__(cls, *args, **kwargs):
@@ -6104,6 +6117,7 @@ class AimsSupplierRelationship(AimsThirdPartyRelationship):
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsSupplierRelationship
 
     aims_id: Union[str, AimsSupplierRelationshipAimsId] = None
+    aims_relationship_type: str = None
     title: str = None
     aims_supplier_provides: Optional[Union[str, list[str]]] = empty_list()
     aims_supplier_risk: Optional[Union[str, "AimsRiskLevel"]] = None
@@ -6140,7 +6154,9 @@ class AimsSupplierRelationship(AimsThirdPartyRelationship):
         self.aims_supplier_corrective_actions = [v if isinstance(v, str) else str(v) for v in self.aims_supplier_corrective_actions]
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_relationship_type = str(self.class_name)
+        if self._is_empty(self.aims_relationship_type):
+            self.MissingRequiredField("aims_relationship_type")
+        self.aims_relationship_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -6157,6 +6173,7 @@ class AimsCustomerRelationship(AimsThirdPartyRelationship):
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsCustomerRelationship
 
     aims_id: Union[str, AimsCustomerRelationshipAimsId] = None
+    aims_relationship_type: str = None
     title: str = None
     aims_customer_expectations: Optional[Union[str, list[str]]] = empty_list()
     aims_customer_agreement: Optional[str] = None
@@ -6184,7 +6201,9 @@ class AimsCustomerRelationship(AimsThirdPartyRelationship):
         self.aims_customer_communicated_limits = [v if isinstance(v, str) else str(v) for v in self.aims_customer_communicated_limits]
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_relationship_type = str(self.class_name)
+        if self._is_empty(self.aims_relationship_type):
+            self.MissingRequiredField("aims_relationship_type")
+        self.aims_relationship_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -6201,9 +6220,9 @@ class AimsSystemEvent(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsSystemEvent
 
     aims_id: Union[str, AimsSystemEventAimsId] = None
+    aims_event_type: str = None
     title: str = None
     aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
-    aims_event_type: Optional[str] = None
     aims_event_occurred_at: Optional[Union[str, XSDDateTime]] = None
     aims_event_reporter: Optional[str] = None
     aims_event_source: Optional[str] = None
@@ -6217,6 +6236,10 @@ class AimsSystemEvent(YAMLRoot):
         if not isinstance(self.aims_id, AimsSystemEventAimsId):
             self.aims_id = AimsSystemEventAimsId(self.aims_id)
 
+        if self._is_empty(self.aims_event_type):
+            self.MissingRequiredField("aims_event_type")
+        self.aims_event_type = str(self.class_name)
+
         if self._is_empty(self.title):
             self.MissingRequiredField("title")
         if not isinstance(self.title, str):
@@ -6225,8 +6248,6 @@ class AimsSystemEvent(YAMLRoot):
         if not isinstance(self.aims_ai_systems, list):
             self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
         self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
-
-        self.aims_event_type = str(self.class_name)
 
         if self.aims_event_occurred_at is not None and not isinstance(self.aims_event_occurred_at, XSDDateTime):
             self.aims_event_occurred_at = XSDDateTime(self.aims_event_occurred_at)
@@ -6247,7 +6268,9 @@ class AimsSystemEvent(YAMLRoot):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_event_type = str(self.class_name)
+        if self._is_empty(self.aims_event_type):
+            self.MissingRequiredField("aims_event_type")
+        self.aims_event_type = str(self.class_name)
 
 
     def __new__(cls, *args, **kwargs):
@@ -6281,6 +6304,7 @@ class AimsIncident(AimsSystemEvent):
     class_model_uri: ClassVar[URIRef] = ISO42001.AimsIncident
 
     aims_id: Union[str, AimsIncidentAimsId] = None
+    aims_event_type: str = None
     title: str = None
     aims_incident_category: Optional[Union[str, "AimsIncidentCategory"]] = None
     aims_incident_threats: Optional[Union[Union[str, "AimsAiThreat"], list[Union[str, "AimsAiThreat"]]]] = empty_list()
@@ -6349,7 +6373,9 @@ class AimsIncident(AimsSystemEvent):
             self.aims_incident_closed_at = XSDDateTime(self.aims_incident_closed_at)
 
         super().__post_init__(**kwargs)
-        self.unknown_aims_event_type = str(self.class_name)
+        if self._is_empty(self.aims_event_type):
+            self.MissingRequiredField("aims_event_type")
+        self.aims_event_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -6829,9 +6855,8 @@ class AimsControlArea(EnumDefinitionImpl):
 
 class AimsAnnexAControl(EnumDefinitionImpl):
     """
-    The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own,
-    and its description says in this project's words what the control asks for. The headings and the control text are
-    ISO's.
+    The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's
+    own, and its description says in this project's words what the control asks for.
     """
     a_2_2 = PermissibleValue(
         text="a_2_2",
@@ -6871,7 +6896,7 @@ class AimsAnnexAControl(EnumDefinitionImpl):
         description="Record facts about the hardware and computing a system draws on.")
     a_4_6 = PermissibleValue(
         text="a_4_6",
-        title="A.4.6 Record of people used",
+        title="A.4.6 Record of the people involved",
         description="Record who works on a system across its whole life, and what skills they bring.")
     a_5_2 = PermissibleValue(
         text="a_5_2",
@@ -6988,7 +7013,7 @@ class AimsAnnexAControl(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="AimsAnnexAControl",
-        description="""The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.""",
+        description="""The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.""",
     )
 
 class AimsLifecycleStage(EnumDefinitionImpl):
@@ -7099,8 +7124,8 @@ class AimsAiRole(EnumDefinitionImpl):
     relevant_authority = PermissibleValue(
         text="relevant_authority",
         description="Sets or enforces rules for AI.")
-    policymaker = PermissibleValue(
-        text="policymaker",
+    policy_maker = PermissibleValue(
+        text="policy_maker",
         description="Sets the rules.")
     regulator = PermissibleValue(
         text="regulator",
@@ -7679,6 +7704,15 @@ slots.description = Slot(uri=SCHEMA.description, name="description", curie=SCHEM
 
 slots.aims_resource_type = Slot(uri=ISO42001.aims_resource_type, name="aims_resource_type", curie=ISO42001.curie('aims_resource_type'),
                    model_uri=ISO42001.aims_resource_type, domain=None, range=Optional[str])
+
+slots.aims_entry_type = Slot(uri=ISO42001.aims_entry_type, name="aims_entry_type", curie=ISO42001.curie('aims_entry_type'),
+                   model_uri=ISO42001.aims_entry_type, domain=None, range=Optional[str])
+
+slots.aims_relationship_type = Slot(uri=ISO42001.aims_relationship_type, name="aims_relationship_type", curie=ISO42001.curie('aims_relationship_type'),
+                   model_uri=ISO42001.aims_relationship_type, domain=None, range=Optional[str])
+
+slots.aims_event_type = Slot(uri=ISO42001.aims_event_type, name="aims_event_type", curie=ISO42001.curie('aims_event_type'),
+                   model_uri=ISO42001.aims_event_type, domain=None, range=Optional[str])
 
 slots.aims_responsible_role = Slot(uri=ISO42001.aims_responsible_role, name="aims_responsible_role", curie=ISO42001.curie('aims_responsible_role'),
                    model_uri=ISO42001.aims_responsible_role, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
@@ -8382,9 +8416,6 @@ slots.aimsIdentifiedImpact__aims_identified_impact_mitigation = Slot(uri=ISO4200
 
 slots.aimsStatementOfApplicability__aims_soa_entries = Slot(uri=ISO42001.aims_soa_entries, name="aimsStatementOfApplicability__aims_soa_entries", curie=ISO42001.curie('aims_soa_entries'),
                    model_uri=ISO42001.aimsStatementOfApplicability__aims_soa_entries, domain=None, range=Optional[Union[Union[dict, AimsApplicabilityEntry], list[Union[dict, AimsApplicabilityEntry]]]])
-
-slots.aimsApplicabilityEntry__aims_entry_type = Slot(uri=ISO42001.aims_entry_type, name="aimsApplicabilityEntry__aims_entry_type", curie=ISO42001.curie('aims_entry_type'),
-                   model_uri=ISO42001.aimsApplicabilityEntry__aims_entry_type, domain=None, range=Optional[str])
 
 slots.aimsApplicabilityEntry__aims_entry_justification = Slot(uri=ISO42001.aims_entry_justification, name="aimsApplicabilityEntry__aims_entry_justification", curie=ISO42001.curie('aims_entry_justification'),
                    model_uri=ISO42001.aimsApplicabilityEntry__aims_entry_justification, domain=None, range=str,
@@ -9101,9 +9132,6 @@ slots.aimsImprovementOpportunity__aims_improvement_outcome = Slot(uri=ISO42001.a
 slots.aimsImprovementOpportunity__aims_improvement_status = Slot(uri=ISO42001.aims_improvement_status, name="aimsImprovementOpportunity__aims_improvement_status", curie=ISO42001.curie('aims_improvement_status'),
                    model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_status, domain=None, range=Optional[str])
 
-slots.aimsThirdPartyRelationship__aims_relationship_type = Slot(uri=ISO42001.aims_relationship_type, name="aimsThirdPartyRelationship__aims_relationship_type", curie=ISO42001.curie('aims_relationship_type'),
-                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_type, domain=None, range=Optional[str])
-
 slots.aimsThirdPartyRelationship__aims_relationship_party = Slot(uri=ISO42001.aims_relationship_party, name="aimsThirdPartyRelationship__aims_relationship_party", curie=ISO42001.curie('aims_relationship_party'),
                    model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_party, domain=None, range=Optional[str])
 
@@ -9157,9 +9185,6 @@ slots.aimsCustomerRelationship__aims_customer_responsibility_split = Slot(uri=IS
 
 slots.aimsCustomerRelationship__aims_customer_communicated_limits = Slot(uri=ISO42001.aims_customer_communicated_limits, name="aimsCustomerRelationship__aims_customer_communicated_limits", curie=ISO42001.curie('aims_customer_communicated_limits'),
                    model_uri=ISO42001.aimsCustomerRelationship__aims_customer_communicated_limits, domain=None, range=Optional[Union[str, list[str]]])
-
-slots.aimsSystemEvent__aims_event_type = Slot(uri=ISO42001.aims_event_type, name="aimsSystemEvent__aims_event_type", curie=ISO42001.curie('aims_event_type'),
-                   model_uri=ISO42001.aimsSystemEvent__aims_event_type, domain=None, range=Optional[str])
 
 slots.aimsSystemEvent__aims_event_occurred_at = Slot(uri=ISO42001.aims_event_occurred_at, name="aimsSystemEvent__aims_event_occurred_at", curie=ISO42001.curie('aims_event_occurred_at'),
                    model_uri=ISO42001.aimsSystemEvent__aims_event_occurred_at, domain=None, range=Optional[Union[str, XSDDateTime]])
@@ -9285,6 +9310,9 @@ slots.AimsRecordMixin_title = Slot(uri=SCHEMA.name, name="AimsRecordMixin_title"
                    model_uri=ISO42001.AimsRecordMixin_title, domain=None, range=str,
                    pattern=re.compile(r'^\s*\S'))
 
+slots.AimsApplicabilityEntry_aims_entry_type = Slot(uri=ISO42001.aims_entry_type, name="AimsApplicabilityEntry_aims_entry_type", curie=ISO42001.curie('aims_entry_type'),
+                   model_uri=ISO42001.AimsApplicabilityEntry_aims_entry_type, domain=AimsApplicabilityEntry, range=str)
+
 slots.AimsIncludedControl_aims_implementation_state = Slot(uri=ISO42001.aims_implementation_state, name="AimsIncludedControl_aims_implementation_state", curie=ISO42001.curie('aims_implementation_state'),
                    model_uri=ISO42001.AimsIncludedControl_aims_implementation_state, domain=AimsIncludedControl, range=Union[str, "AimsImplementationStatus"])
 
@@ -9293,3 +9321,9 @@ slots.AimsExcludedControl_aims_entry_annex_a_control = Slot(uri=ISO42001.aims_en
 
 slots.AimsSystemResource_aims_resource_type = Slot(uri=ISO42001.aims_resource_type, name="AimsSystemResource_aims_resource_type", curie=ISO42001.curie('aims_resource_type'),
                    model_uri=ISO42001.AimsSystemResource_aims_resource_type, domain=AimsSystemResource, range=str)
+
+slots.AimsThirdPartyRelationship_aims_relationship_type = Slot(uri=ISO42001.aims_relationship_type, name="AimsThirdPartyRelationship_aims_relationship_type", curie=ISO42001.curie('aims_relationship_type'),
+                   model_uri=ISO42001.AimsThirdPartyRelationship_aims_relationship_type, domain=AimsThirdPartyRelationship, range=str)
+
+slots.AimsSystemEvent_aims_event_type = Slot(uri=ISO42001.aims_event_type, name="AimsSystemEvent_aims_event_type", curie=ISO42001.curie('aims_event_type'),
+                   model_uri=ISO42001.AimsSystemEvent_aims_event_type, domain=AimsSystemEvent, range=str)

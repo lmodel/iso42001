@@ -16,8 +16,8 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public class AimsSystemEvent  {
 
-  private List<AimsAiSystem> aimsAiSystems;
   private String aimsEventType;
+  private List<AimsAiSystem> aimsAiSystems;
   private ZonedDateTime aimsEventOccurredAt;
   private String aimsEventReporter;
   private String aimsEventSource;

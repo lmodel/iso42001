@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: An event says whether it is an incident.
+aims_id: acme:x
+title: A record
+aims_event_source: Monitoring

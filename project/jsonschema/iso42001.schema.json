@@ -26,7 +26,7 @@
                 "data_subject",
                 "other_subject",
                 "relevant_authority",
-                "policymaker",
+                "policy_maker",
                 "regulator"
             ],
             "title": "AimsAiRole",
@@ -361,7 +361,7 @@
             "type": "string"
         },
         "AimsAnnexAControl": {
-            "description": "The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.",
+            "description": "The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.",
             "enum": [
                 "a_2_2",
                 "a_2_3",
@@ -440,13 +440,11 @@
                     "enum": [
                         "AimsApplicabilityEntry"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
+                "aims_entry_type",
                 "aims_entry_justification"
             ],
             "title": "AimsApplicabilityEntry",
@@ -2889,10 +2887,7 @@
                     "enum": [
                         "AimsCustomerRelationship"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "description": {
                     "description": "What the record says or describes, in the organization's own words.",
@@ -2908,6 +2903,7 @@
                 }
             },
             "required": [
+                "aims_relationship_type",
                 "aims_id",
                 "title"
             ],
@@ -3459,7 +3455,7 @@
         },
         "AimsDocumentControlMixin": {
             "additionalProperties": false,
-            "description": "The control that documented information is kept under: who wrote, owns and approved it, its format and medium, when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is kept, and whether it came from outside.",
+            "description": "The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.",
             "properties": {
                 "aims_document_approval_date": {
                     "description": "When the document was approved.",
@@ -3855,13 +3851,11 @@
                     "enum": [
                         "AimsExcludedControl"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
+                "aims_entry_type",
                 "aims_entry_annex_a_control",
                 "aims_entry_justification"
             ],
@@ -4793,10 +4787,7 @@
                     "enum": [
                         "AimsIncident"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "aims_id": {
                     "description": "The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.",
@@ -4937,6 +4928,7 @@
                 }
             },
             "required": [
+                "aims_event_type",
                 "aims_id",
                 "title"
             ],
@@ -5238,10 +5230,7 @@
                     "enum": [
                         "AimsIncludedControl"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "aims_implementation_state": {
                     "$ref": "#/$defs/AimsImplementationStatus",
@@ -5289,6 +5278,7 @@
             },
             "required": [
                 "aims_implementation_state",
+                "aims_entry_type",
                 "aims_entry_justification"
             ],
             "title": "AimsIncludedControl",
@@ -9739,10 +9729,7 @@
                     "enum": [
                         "AimsSupplierRelationship"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "aims_supplier_corrective_actions": {
                     "description": "What the supplier was asked to put right.",
@@ -9813,6 +9800,7 @@
                 }
             },
             "required": [
+                "aims_relationship_type",
                 "aims_id",
                 "title"
             ],
@@ -9874,10 +9862,7 @@
                     "enum": [
                         "AimsSystemEvent"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "aims_id": {
                     "description": "The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.",
@@ -9897,6 +9882,7 @@
                 }
             },
             "required": [
+                "aims_event_type",
                 "aims_id",
                 "title"
             ],
@@ -10285,10 +10271,7 @@
                     "enum": [
                         "AimsThirdPartyRelationship"
                     ],
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "description": {
                     "description": "What the record says or describes, in the organization's own words.",
@@ -10304,6 +10287,7 @@
                 }
             },
             "required": [
+                "aims_relationship_type",
                 "aims_id",
                 "title"
             ],

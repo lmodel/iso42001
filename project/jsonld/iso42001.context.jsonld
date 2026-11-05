@@ -37,6 +37,12 @@
          },
          "@id": "aims_entry_annex_a_control"
       },
+      "aims_entry_type": {
+         "@id": "aims_entry_type"
+      },
+      "aims_event_type": {
+         "@id": "aims_event_type"
+      },
       "aims_id": "@id",
       "aims_implementation_state": {
          "@context": {
@@ -61,6 +67,9 @@
             "meaning": "@id"
          },
          "@id": "aims_objective_categories"
+      },
+      "aims_relationship_type": {
+         "@id": "aims_relationship_type"
       },
       "aims_relevant_controls": {
          "@type": "@id",
@@ -214,9 +223,6 @@
       },
       "aims_entry_justification": {
          "@id": "aims_entry_justification"
-      },
-      "aims_entry_type": {
-         "@id": "aims_entry_type"
       },
       "aims_audit_auditees": {
          "@id": "aims_audit_auditees"
@@ -1888,9 +1894,6 @@
       "aims_event_source": {
          "@id": "aims_event_source"
       },
-      "aims_event_type": {
-         "@id": "aims_event_type"
-      },
       "aims_resource_provider": {
          "@context": {
             "text": "skos:notation",
@@ -1944,9 +1947,6 @@
       },
       "aims_relationship_review_frequency": {
          "@id": "aims_relationship_review_frequency"
-      },
-      "aims_relationship_type": {
-         "@id": "aims_relationship_type"
       },
       "aims_tool_category": {
          "@id": "aims_tool_category"

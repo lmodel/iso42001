@@ -16,9 +16,9 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public abstract class AimsApplicabilityEntry  {
 
+  private String aimsEntryType;
   private String aimsEntryAnnexAControl;
   private List<AimsAiSystem> aimsAiSystems;
-  private String aimsEntryType;
   private String aimsEntryJustification;
 
 

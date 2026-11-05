@@ -18,7 +18,7 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Changed
 
-- **The schema is rewritten.** Classes and enums take the `Aims` prefix and slots the `aims_` prefix, every record has an `aims_id`, and a reference holds one.
+- **The schema is rewritten.** Classes and enums take the `Aims` prefix and slots the `aims_` prefix, every record has an `aims_id`, a reference holds one, and a record of a class that comes in kinds states its kind.
 - **The template settings** turn PyPI publishing and the docs preview off, linkml and linkml-runtime are locked at 1.12.1, the Python project is named `iso42001-linkml`, and the generators' settings move to `.linkml/generators.yaml`.
 
 ### Removed

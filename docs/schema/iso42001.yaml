@@ -718,9 +718,11 @@ enums:
       iso42001_clause:
         tag: iso42001_clause
         value: Annex A
-    description: The 38 reference controls of Annex A. A value's title holds the control's
-      number and a name of this project's own, and its description says in this project's
-      words what the control asks for. The headings and the control text are ISO's.
+    description: The 38 reference controls of Annex A, by number. A value's title
+      holds the number and a name of this project's own, and its description says
+      in this project's words what the control asks for.
+    comments:
+    - The headings and the control text are ISO's, and appear nowhere here.
     in_subset:
     - aims_annex_a
     from_schema: https://w3id.org/lmodel/iso42001
@@ -811,7 +813,7 @@ enums:
           area:
             tag: area
             value: system_resources
-        title: A.4.6 Record of people used
+        title: A.4.6 Record of the people involved
       a_5_2:
         text: a_5_2
         description: Set up a way to work out what a system could do to people and
@@ -1281,8 +1283,8 @@ enums:
       relevant_authority:
         text: relevant_authority
         description: Sets or enforces rules for AI.
-      policymaker:
-        text: policymaker
+      policy_maker:
+        text: policy_maker
         description: Sets the rules.
         annotations:
           role_family:
@@ -2132,6 +2134,40 @@ slots:
     owner: AimsSystemResource
     domain_of:
     - AimsSystemResource
+    range: string
+  aims_entry_type:
+    name: aims_entry_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_entry_type
+    description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
+    from_schema: https://w3id.org/lmodel/iso42001
+    slot_uri: iso42001:aims_entry_type
+    designates_type: true
+    owner: AimsApplicabilityEntry
+    domain_of:
+    - AimsApplicabilityEntry
+    range: string
+  aims_relationship_type:
+    name: aims_relationship_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_relationship_type
+    description: 'The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship
+      or AimsCustomerRelationship.'
+    from_schema: https://w3id.org/lmodel/iso42001
+    slot_uri: iso42001:aims_relationship_type
+    designates_type: true
+    owner: AimsThirdPartyRelationship
+    domain_of:
+    - AimsThirdPartyRelationship
+    range: string
+  aims_event_type:
+    name: aims_event_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_event_type
+    description: The kind of record, AimsSystemEvent or AimsIncident.
+    from_schema: https://w3id.org/lmodel/iso42001
+    slot_uri: iso42001:aims_event_type
+    designates_type: true
+    owner: AimsSystemEvent
+    domain_of:
+    - AimsSystemEvent
     range: string
   aims_responsible_role:
     name: aims_responsible_role
@@ -5026,17 +5062,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  aimsApplicabilityEntry__aims_entry_type:
-    name: aimsApplicabilityEntry__aims_entry_type
-    description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
-    from_schema: https://w3id.org/lmodel/iso42001
-    slot_uri: iso42001:aims_entry_type
-    designates_type: true
-    alias: aims_entry_type
-    owner: AimsApplicabilityEntry
-    domain_of:
-    - AimsApplicabilityEntry
-    range: string
   aimsApplicabilityEntry__aims_entry_justification:
     name: aimsApplicabilityEntry__aims_entry_justification
     description: Why the control is included or left out.
@@ -7923,18 +7948,6 @@ slots:
     domain_of:
     - AimsImprovementOpportunity
     range: string
-  aimsThirdPartyRelationship__aims_relationship_type:
-    name: aimsThirdPartyRelationship__aims_relationship_type
-    description: 'The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship
-      or AimsCustomerRelationship.'
-    from_schema: https://w3id.org/lmodel/iso42001
-    slot_uri: iso42001:aims_relationship_type
-    designates_type: true
-    alias: aims_relationship_type
-    owner: AimsThirdPartyRelationship
-    domain_of:
-    - AimsThirdPartyRelationship
-    range: string
   aimsThirdPartyRelationship__aims_relationship_party:
     name: aimsThirdPartyRelationship__aims_relationship_party
     description: The other party.
@@ -8177,17 +8190,6 @@ slots:
     - AimsCustomerRelationship
     range: string
     multivalued: true
-  aimsSystemEvent__aims_event_type:
-    name: aimsSystemEvent__aims_event_type
-    description: The kind of record, AimsSystemEvent or AimsIncident.
-    from_schema: https://w3id.org/lmodel/iso42001
-    slot_uri: iso42001:aims_event_type
-    designates_type: true
-    alias: aims_event_type
-    owner: AimsSystemEvent
-    domain_of:
-    - AimsSystemEvent
-    range: string
   aimsSystemEvent__aims_event_occurred_at:
     name: aimsSystemEvent__aims_event_occurred_at
     description: When the event happened, or when it was first noticed.
@@ -8661,6 +8663,23 @@ slots:
     range: string
     required: true
     pattern: ^\s*\S
+  AimsApplicabilityEntry_aims_entry_type:
+    name: AimsApplicabilityEntry_aims_entry_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_entry_type
+    description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
+    from_schema: https://w3id.org/lmodel/iso42001
+    is_a: aims_entry_type
+    domain: AimsApplicabilityEntry
+    slot_uri: iso42001:aims_entry_type
+    designates_type: true
+    alias: aims_entry_type
+    owner: AimsApplicabilityEntry
+    domain_of:
+    - AimsApplicabilityEntry
+    is_usage_slot: true
+    usage_slot_name: aims_entry_type
+    range: string
+    required: true
   AimsIncludedControl_aims_implementation_state:
     name: AimsIncludedControl_aims_implementation_state
     definition_uri: https://w3id.org/lmodel/iso42001/aims_implementation_state
@@ -8711,6 +8730,41 @@ slots:
     usage_slot_name: aims_resource_type
     range: string
     required: true
+  AimsThirdPartyRelationship_aims_relationship_type:
+    name: AimsThirdPartyRelationship_aims_relationship_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_relationship_type
+    description: 'The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship
+      or AimsCustomerRelationship.'
+    from_schema: https://w3id.org/lmodel/iso42001
+    is_a: aims_relationship_type
+    domain: AimsThirdPartyRelationship
+    slot_uri: iso42001:aims_relationship_type
+    designates_type: true
+    alias: aims_relationship_type
+    owner: AimsThirdPartyRelationship
+    domain_of:
+    - AimsThirdPartyRelationship
+    is_usage_slot: true
+    usage_slot_name: aims_relationship_type
+    range: string
+    required: true
+  AimsSystemEvent_aims_event_type:
+    name: AimsSystemEvent_aims_event_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_event_type
+    description: The kind of record, AimsSystemEvent or AimsIncident.
+    from_schema: https://w3id.org/lmodel/iso42001
+    is_a: aims_event_type
+    domain: AimsSystemEvent
+    slot_uri: iso42001:aims_event_type
+    designates_type: true
+    alias: aims_event_type
+    owner: AimsSystemEvent
+    domain_of:
+    - AimsSystemEvent
+    is_usage_slot: true
+    usage_slot_name: aims_event_type
+    range: string
+    required: true
 classes:
   AimsRecordMixin:
     name: AimsRecordMixin
@@ -8742,9 +8796,8 @@ classes:
         tag: iso42001_clause
         value: '7.5'
     description: 'The control that documented information is kept under: who wrote,
-      owns and approved it, its format and medium, when it takes effect and is looked
-      at again, how it is classified, handed out, stored and changed, how long it
-      is kept, and whether it came from outside.'
+      owns and approved it, when it takes effect and is reviewed, how it is classified,
+      kept and changed, and whether it came from outside.'
     in_subset:
     - aims_documented_information
     from_schema: https://w3id.org/lmodel/iso42001
@@ -10858,16 +10911,15 @@ classes:
     - iso27001:IsmsApplicabilityEntry
     abstract: true
     slots:
+    - AimsApplicabilityEntry_aims_entry_type
     - aims_entry_annex_a_control
     - aims_ai_systems
-    - aimsApplicabilityEntry__aims_entry_type
     - aimsApplicabilityEntry__aims_entry_justification
-    attributes:
+    slot_usage:
       aims_entry_type:
         name: aims_entry_type
-        description: The kind of entry, AimsIncludedControl or AimsExcludedControl.
-        designates_type: true
-        range: string
+        required: true
+    attributes:
       aims_entry_justification:
         name: aims_entry_justification
         description: Why the control is included or left out.
@@ -10889,9 +10941,9 @@ classes:
     - iso27001:IsmsIncludedControl
     is_a: AimsApplicabilityEntry
     slots:
+    - AimsApplicabilityEntry_aims_entry_type
     - aims_entry_annex_a_control
     - aims_ai_systems
-    - aimsApplicabilityEntry__aims_entry_type
     - aimsApplicabilityEntry__aims_entry_justification
     - AimsIncludedControl_aims_implementation_state
     - aims_responsible_role
@@ -10942,8 +10994,8 @@ classes:
     - iso27001:IsmsExcludedControl
     is_a: AimsApplicabilityEntry
     slots:
+    - AimsApplicabilityEntry_aims_entry_type
     - aims_ai_systems
-    - aimsApplicabilityEntry__aims_entry_type
     - aimsApplicabilityEntry__aims_entry_justification
     - AimsExcludedControl_aims_entry_annex_a_control
     slot_usage:
@@ -13450,9 +13502,9 @@ classes:
     mixins:
     - AimsRecordMixin
     slots:
+    - AimsThirdPartyRelationship_aims_relationship_type
     - aims_ai_systems
     - aims_life_cycle_stages
-    - aimsThirdPartyRelationship__aims_relationship_type
     - aimsThirdPartyRelationship__aims_relationship_party
     - aimsThirdPartyRelationship__aims_relationship_party_roles
     - aimsThirdPartyRelationship__aims_relationship_contract
@@ -13464,13 +13516,11 @@ classes:
     - aims_id
     - AimsRecordMixin_title
     - description
-    attributes:
+    slot_usage:
       aims_relationship_type:
         name: aims_relationship_type
-        description: 'The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship
-          or AimsCustomerRelationship.'
-        designates_type: true
-        range: string
+        required: true
+    attributes:
       aims_relationship_party:
         name: aims_relationship_party
         description: The other party.
@@ -13529,9 +13579,9 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsThirdPartyRelationship
     slots:
+    - AimsThirdPartyRelationship_aims_relationship_type
     - aims_ai_systems
     - aims_life_cycle_stages
-    - aimsThirdPartyRelationship__aims_relationship_type
     - aimsThirdPartyRelationship__aims_relationship_party
     - aimsThirdPartyRelationship__aims_relationship_party_roles
     - aimsThirdPartyRelationship__aims_relationship_contract
@@ -13611,9 +13661,9 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsThirdPartyRelationship
     slots:
+    - AimsThirdPartyRelationship_aims_relationship_type
     - aims_ai_systems
     - aims_life_cycle_stages
-    - aimsThirdPartyRelationship__aims_relationship_type
     - aimsThirdPartyRelationship__aims_relationship_party
     - aimsThirdPartyRelationship__aims_relationship_party_roles
     - aimsThirdPartyRelationship__aims_relationship_contract
@@ -13679,8 +13729,8 @@ classes:
     mixins:
     - AimsRecordMixin
     slots:
+    - AimsSystemEvent_aims_event_type
     - aims_ai_systems
-    - aimsSystemEvent__aims_event_type
     - aimsSystemEvent__aims_event_occurred_at
     - aimsSystemEvent__aims_event_reporter
     - aimsSystemEvent__aims_event_source
@@ -13689,12 +13739,11 @@ classes:
     - aims_id
     - AimsRecordMixin_title
     - description
-    attributes:
+    slot_usage:
       aims_event_type:
         name: aims_event_type
-        description: The kind of record, AimsSystemEvent or AimsIncident.
-        designates_type: true
-        range: string
+        required: true
+    attributes:
       aims_event_occurred_at:
         name: aims_event_occurred_at
         description: When the event happened, or when it was first noticed.
@@ -13731,8 +13780,8 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsSystemEvent
     slots:
+    - AimsSystemEvent_aims_event_type
     - aims_ai_systems
-    - aimsSystemEvent__aims_event_type
     - aimsSystemEvent__aims_event_occurred_at
     - aimsSystemEvent__aims_event_reporter
     - aimsSystemEvent__aims_event_source
@@ -14009,6 +14058,6 @@ classes:
     class_uri: iso42001:AimsConcernReport
 metamodel_version: 1.12.0
 source_file: iso42001.yaml
-source_file_date: '2026-11-05T10:49:38'
-source_file_size: 149549
+source_file_date: '2026-11-05T10:56:34'
+source_file_size: 149820
 

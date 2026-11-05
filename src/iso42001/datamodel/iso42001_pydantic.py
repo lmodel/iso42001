@@ -423,7 +423,7 @@ class AimsControlArea(str, Enum):
 
 class AimsAnnexAControl(str, Enum):
     """
-    The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.
+    The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.
     """
     AFULL_STOP2FULL_STOP2_Written_direction_on_AI = "a_2_2"
     """
@@ -461,7 +461,7 @@ class AimsAnnexAControl(str, Enum):
     """
     Record facts about the hardware and computing a system draws on.
     """
-    AFULL_STOP4FULL_STOP6_Record_of_people_used = "a_4_6"
+    AFULL_STOP4FULL_STOP6_Record_of_the_people_involved = "a_4_6"
     """
     Record who works on a system across its whole life, and what skills they bring.
     """
@@ -713,7 +713,7 @@ class AimsAiRole(str, Enum):
     """
     Sets or enforces rules for AI.
     """
-    policymaker = "policymaker"
+    policy_maker = "policy_maker"
     """
     Sets the rules.
     """
@@ -1340,7 +1340,7 @@ class AimsRecordMixin(ConfiguredBaseModel):
 
 class AimsDocumentControlMixin(ConfiguredBaseModel):
     """
-    The control that documented information is kept under: who wrote, owns and approved it, its format and medium, when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is kept, and whether it came from outside.
+    The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.5'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
@@ -2883,8 +2883,11 @@ class AimsApplicabilityEntry(ConfiguredBaseModel):
          'comments': ['An entry may hold for the whole system or for particular AI '
                       'systems, which aims_ai_systems names.'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_annex_a']})
+         'in_subset': ['aims_annex_a'],
+         'slot_usage': {'aims_entry_type': {'name': 'aims_entry_type',
+                                            'required': True}}})
 
+    aims_entry_type: Literal["AimsApplicabilityEntry"] = Field(default="AimsApplicabilityEntry", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
     aims_entry_annex_a_control: Optional[AimsAnnexAControl] = Field(default=None, description="""The Annex A control a Statement of Applicability entry concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
@@ -2901,7 +2904,6 @@ class AimsApplicabilityEntry(ConfiguredBaseModel):
                        'AimsThirdPartyRelationship',
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
-    aims_entry_type: Literal["AimsApplicabilityEntry"] = Field(default="AimsApplicabilityEntry", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
     aims_entry_justification: str = Field(default=..., description="""Why the control is included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
 
     @field_validator('aims_entry_justification')
@@ -2946,6 +2948,7 @@ class AimsIncludedControl(AimsApplicabilityEntry):
     aims_included_risks: Optional[list[str]] = Field(default=None, description="""The risks the control answers to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
     aims_included_evidence: Optional[str] = Field(default=None, description="""What shows that the control is in place.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
     aims_included_target_date: Optional[date] = Field(default=None, description="""When the control is to be in place, if it is not yet.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
+    aims_entry_type: Literal["AimsIncludedControl"] = Field(default="AimsIncludedControl", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
     aims_entry_annex_a_control: Optional[AimsAnnexAControl] = Field(default=None, description="""The Annex A control a Statement of Applicability entry concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
@@ -2962,7 +2965,6 @@ class AimsIncludedControl(AimsApplicabilityEntry):
                        'AimsThirdPartyRelationship',
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
-    aims_entry_type: Literal["AimsIncludedControl"] = Field(default="AimsIncludedControl", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
     aims_entry_justification: str = Field(default=..., description="""Why the control is included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
 
     @field_validator('aims_entry_justification')
@@ -2989,6 +2991,7 @@ class AimsExcludedControl(AimsApplicabilityEntry):
          'slot_usage': {'aims_entry_annex_a_control': {'name': 'aims_entry_annex_a_control',
                                                        'required': True}}})
 
+    aims_entry_type: Literal["AimsExcludedControl"] = Field(default="AimsExcludedControl", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
     aims_entry_annex_a_control: AimsAnnexAControl = Field(default=..., description="""The Annex A control a Statement of Applicability entry concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
@@ -3005,7 +3008,6 @@ class AimsExcludedControl(AimsApplicabilityEntry):
                        'AimsThirdPartyRelationship',
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
-    aims_entry_type: Literal["AimsExcludedControl"] = Field(default="AimsExcludedControl", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
     aims_entry_justification: str = Field(default=..., description="""Why the control is included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
 
     @field_validator('aims_entry_justification')
@@ -5382,8 +5384,11 @@ class AimsThirdPartyRelationship(AimsRecordMixin):
                                              'value': 'A.10.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_external_parties'],
-         'mixins': ['AimsRecordMixin']})
+         'mixins': ['AimsRecordMixin'],
+         'slot_usage': {'aims_relationship_type': {'name': 'aims_relationship_type',
+                                                   'required': True}}})
 
+    aims_relationship_type: Literal["AimsThirdPartyRelationship"] = Field(default="AimsThirdPartyRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
                        'AimsRisk',
@@ -5400,7 +5405,6 @@ class AimsThirdPartyRelationship(AimsRecordMixin):
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
     aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
-    aims_relationship_type: Literal["AimsThirdPartyRelationship"] = Field(default="AimsThirdPartyRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_party: Optional[str] = Field(default=None, description="""The other party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_party_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the other party plays towards the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_contract: Optional[str] = Field(default=None, description="""The agreement the relationship rests on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
@@ -5460,6 +5464,7 @@ class AimsSupplierRelationship(AimsThirdPartyRelationship):
          'domain_of': ['AimsSupplierRelationship']} })
     aims_supplier_corrective_actions: Optional[list[str]] = Field(default=None, description="""What the supplier was asked to put right.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
          'domain_of': ['AimsSupplierRelationship']} })
+    aims_relationship_type: Literal["AimsSupplierRelationship"] = Field(default="AimsSupplierRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
                        'AimsRisk',
@@ -5476,7 +5481,6 @@ class AimsSupplierRelationship(AimsThirdPartyRelationship):
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
     aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
-    aims_relationship_type: Literal["AimsSupplierRelationship"] = Field(default="AimsSupplierRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_party: Optional[str] = Field(default=None, description="""The other party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_party_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the other party plays towards the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_contract: Optional[str] = Field(default=None, description="""The agreement the relationship rests on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
@@ -5533,6 +5537,7 @@ class AimsCustomerRelationship(AimsThirdPartyRelationship):
          'domain_of': ['AimsCustomerRelationship']} })
     aims_customer_communicated_limits: Optional[list[str]] = Field(default=None, description="""What the customer was told the system cannot do, or where it stops being valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.4'}},
          'domain_of': ['AimsCustomerRelationship']} })
+    aims_relationship_type: Literal["AimsCustomerRelationship"] = Field(default="AimsCustomerRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
                        'AimsRisk',
@@ -5549,7 +5554,6 @@ class AimsCustomerRelationship(AimsThirdPartyRelationship):
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
     aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
-    aims_relationship_type: Literal["AimsCustomerRelationship"] = Field(default="AimsCustomerRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_party: Optional[str] = Field(default=None, description="""The other party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_party_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the other party plays towards the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
     aims_relationship_contract: Optional[str] = Field(default=None, description="""The agreement the relationship rests on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
@@ -5596,8 +5600,11 @@ class AimsSystemEvent(AimsRecordMixin):
                                              'value': 'A.8.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_ai_systems'],
-         'mixins': ['AimsRecordMixin']})
+         'mixins': ['AimsRecordMixin'],
+         'slot_usage': {'aims_event_type': {'name': 'aims_event_type',
+                                            'required': True}}})
 
+    aims_event_type: Literal["AimsSystemEvent"] = Field(default="AimsSystemEvent", description="""The kind of record, AimsSystemEvent or AimsIncident.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemEvent']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
                        'AimsRisk',
@@ -5613,7 +5620,6 @@ class AimsSystemEvent(AimsRecordMixin):
                        'AimsThirdPartyRelationship',
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
-    aims_event_type: Literal["AimsSystemEvent"] = Field(default="AimsSystemEvent", description="""The kind of record, AimsSystemEvent or AimsIncident.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemEvent']} })
     aims_event_occurred_at: Optional[datetime ] = Field(default=None, description="""When the event happened, or when it was first noticed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
     aims_event_reporter: Optional[str] = Field(default=None, description="""Who reported the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
     aims_event_source: Optional[str] = Field(default=None, description="""How the event came to light, such as a log, monitoring or a report from outside.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
@@ -5673,6 +5679,7 @@ class AimsIncident(AimsSystemEvent):
          'domain_of': ['AimsIncident']} })
     aims_incident_corrective_actions: Optional[list[str]] = Field(default=None, description="""The corrective actions the incident led to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
     aims_incident_closed_at: Optional[datetime ] = Field(default=None, description="""When the incident was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_event_type: Literal["AimsIncident"] = Field(default="AimsIncident", description="""The kind of record, AimsSystemEvent or AimsIncident.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemEvent']} })
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
                        'AimsRisk',
@@ -5688,7 +5695,6 @@ class AimsIncident(AimsSystemEvent):
                        'AimsThirdPartyRelationship',
                        'AimsSystemEvent',
                        'AimsConcernReport']} })
-    aims_event_type: Literal["AimsIncident"] = Field(default="AimsIncident", description="""The kind of record, AimsSystemEvent or AimsIncident.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemEvent']} })
     aims_event_occurred_at: Optional[datetime ] = Field(default=None, description="""When the event happened, or when it was first noticed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
     aims_event_reporter: Optional[str] = Field(default=None, description="""Who reported the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
     aims_event_source: Optional[str] = Field(default=None, description="""How the event came to light, such as a log, monitoring or a report from outside.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
