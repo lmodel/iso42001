@@ -1,11 +1,9 @@
 # Auto generated from iso42001.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-01T16:09:22
 # Schema: iso42001
 #
 # id: https://w3id.org/lmodel/iso42001
-# description: A comprehensive LinkML schema modeling AI Management System (AIMS) entities, workflows, and traceability links aligned to ISO/IEC 42001:2023 clause and Annex references. Designed for open data publication, automated validation, and integration with AI governance, risk, and compliance platforms.
-#   This schema captures: - AIMS lifecycle (establish, implement, maintain, improve) - AI risk assessment, treatment, and AI system impact assessment (Clause 6.1) - Annex A reference control catalog (A.2-A.10) for responsible AI - Audit, measurement, and continual improvement artifacts - Data resources, tooling, computing, and human resources for AI systems - Third-party, supplier, and customer relationships across the AI life cycle
-# license: https://www.apache.org/licenses/LICENSE-2.0
+# description: A LinkML model of the records an organization keeps to run an artificial intelligence (AI) management system under ISO/IEC 42001:2023. The records cover its context, leadership, planning and support, how it weighs and treats AI risks, and what its AI systems may do to people and society. They also cover those systems with their resources, data and documents, its audits and reviews, and what it corrects and improves. The reference controls of Annex A appear by number, with titles of this project's own.
+# license: Apache-2.0
 
 import dataclasses
 import re
@@ -57,5442 +55,9240 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, String, Uriorcurie
+from linkml_runtime.linkml_model.types import Boolean, Date, Datetime, Integer, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, URIorCURIE, XSDDate, XSDDateTime
 
-metamodel_version = "1.11.0"
-version = "1.0.0"
+metamodel_version = "1.12.0"
+version = "2023"
 
 # Namespaces
-DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')
-ISO22989 = CurieNamespace('iso22989', 'https://w3id.org/lmodel/iso22989/')
-ISO23894 = CurieNamespace('iso23894', 'https://w3id.org/lmodel/iso23894/')
 ISO27001 = CurieNamespace('iso27001', 'https://w3id.org/lmodel/iso27001/')
-ISO29100 = CurieNamespace('iso29100', 'https://w3id.org/lmodel/iso29100/')
 ISO42001 = CurieNamespace('iso42001', 'https://w3id.org/lmodel/iso42001/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-NIST_AI_100_1 = CurieNamespace('nist_ai_100_1', 'https://w3id.org/lmodel/nist-ai-100-1/')
-NIST_AI_600_1 = CurieNamespace('nist_ai_600_1', 'https://w3id.org/lmodel/nist-ai-600-1/')
-NIST_AI_RMF = CurieNamespace('nist_ai_rmf', 'https://www.nist.gov/itl/ai-risk-management-framework/')
-PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
+OSCAL = CurieNamespace('oscal', 'https://w3id.org/lmodel/oscal/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
+SPDX_CORE = CurieNamespace('spdx_core', 'https://spdx.org/rdf/3.0.1/terms/Core/')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = ISO42001
 
 
 # Types
-class PositiveIntegerType(int):
-    """ integer greater than zero; natural number explicitly excluding zero """
-    type_class_uri = XSD["positiveInteger"]
-    type_class_curie = "xsd:positiveInteger"
-    type_name = "positive integer type"
-    type_model_uri = ISO42001.PositiveIntegerType
-
-
-class UnsignedShortType(int):
-    """ data type for non-negative integers that can be represented with 16 bits """
-    type_class_uri = XSD["unsignedShort"]
-    type_class_curie = "xsd:unsignedShort"
-    type_name = "unsigned short type"
-    type_model_uri = ISO42001.UnsignedShortType
-
-
-class DurationType(str):
-    """ ISO 8601 duration value such as P1Y, P30D, or PT4H """
+class AimsDuration(String):
+    """ A length of time as ISO 8601 writes it, such as P7Y for seven years or P30D for thirty days. """
     type_class_uri = XSD["duration"]
     type_class_curie = "xsd:duration"
-    type_name = "duration type"
-    type_model_uri = ISO42001.DurationType
+    type_name = "aims_duration"
+    type_model_uri = ISO42001.AimsDuration
 
 
 # Class references
-class NamedEntityId(URIorCURIE):
+class AimsRecordMixinAimsId(URIorCURIE):
     pass
 
 
-class DocumentedInformationId(NamedEntityId):
+class AimsManagementSystemAimsId(URIorCURIE):
     pass
 
 
-class AIManagementSystemId(NamedEntityId):
+class AimsOrganizationAimsId(URIorCURIE):
     pass
 
 
-class OrganizationId(NamedEntityId):
+class AimsInterestedPartyAimsId(URIorCURIE):
     pass
 
 
-class InterestedPartyId(NamedEntityId):
+class AimsPolicyAimsId(URIorCURIE):
     pass
 
 
-class AIPolicyId(DocumentedInformationId):
+class AimsTopicSpecificPolicyAimsId(URIorCURIE):
     pass
 
 
-class TopicSpecificPolicyId(DocumentedInformationId):
+class AimsRoleAimsId(URIorCURIE):
     pass
 
 
-class RoleId(NamedEntityId):
+class AimsObjectiveAimsId(URIorCURIE):
     pass
 
 
-class AIObjectiveId(NamedEntityId):
+class AimsPlannedActionAimsId(URIorCURIE):
     pass
 
 
-class AIRiskAssessmentProcessId(DocumentedInformationId):
+class AimsRiskAssessmentProcessAimsId(URIorCURIE):
     pass
 
 
-class AIRiskAssessmentId(DocumentedInformationId):
+class AimsRiskAssessmentAimsId(URIorCURIE):
     pass
 
 
-class AIRiskId(NamedEntityId):
+class AimsRiskAimsId(URIorCURIE):
     pass
 
 
-class AIRiskTreatmentProcessId(DocumentedInformationId):
+class AimsRiskTreatmentProcessAimsId(URIorCURIE):
     pass
 
 
-class AIRiskTreatmentPlanId(DocumentedInformationId):
+class AimsRiskTreatmentPlanAimsId(URIorCURIE):
     pass
 
 
-class AISystemImpactAssessmentProcessId(DocumentedInformationId):
+class AimsImpactAssessmentProcessAimsId(URIorCURIE):
     pass
 
 
-class AISystemImpactAssessmentId(DocumentedInformationId):
+class AimsImpactAssessmentAimsId(URIorCURIE):
     pass
 
 
-class StatementOfApplicabilityId(DocumentedInformationId):
+class AimsStatementOfApplicabilityAimsId(URIorCURIE):
     pass
 
 
-class AIReferenceControlId(NamedEntityId):
+class AimsControlAimsId(URIorCURIE):
     pass
 
 
-class AISystemId(NamedEntityId):
+class AimsAiSystemAimsId(URIorCURIE):
     pass
 
 
-class DataResourceId(NamedEntityId):
+class AimsSystemResourceAimsId(URIorCURIE):
     pass
 
 
-class ToolingResourceId(NamedEntityId):
+class AimsComponentResourceAimsId(AimsSystemResourceAimsId):
     pass
 
 
-class ComputingResourceId(NamedEntityId):
+class AimsDataResourceAimsId(AimsSystemResourceAimsId):
     pass
 
 
-class HumanResourceId(NamedEntityId):
+class AimsToolingResourceAimsId(AimsSystemResourceAimsId):
     pass
 
 
-class ResourceId(NamedEntityId):
+class AimsComputingResourceAimsId(AimsSystemResourceAimsId):
     pass
 
 
-class CompetenceRecordId(DocumentedInformationId):
+class AimsHumanResourceAimsId(AimsSystemResourceAimsId):
     pass
 
 
-class AwarenessProgramId(DocumentedInformationId):
+class AimsDevelopmentProcessAimsId(URIorCURIE):
     pass
 
 
-class CommunicationPlanId(DocumentedInformationId):
+class AimsResponsibleUseProcessAimsId(URIorCURIE):
     pass
 
 
-class OperationalProcedureId(DocumentedInformationId):
+class AimsTechnicalDocumentationAimsId(URIorCURIE):
     pass
 
 
-class MonitoringProgramId(DocumentedInformationId):
+class AimsUserInformationAimsId(URIorCURIE):
     pass
 
 
-class InternalAuditId(DocumentedInformationId):
+class AimsIncidentCommunicationPlanAimsId(URIorCURIE):
     pass
 
 
-class AuditProgrammeId(DocumentedInformationId):
+class AimsReportingObligationAimsId(URIorCURIE):
     pass
 
 
-class AuditFindingId(NamedEntityId):
+class AimsResourceAimsId(URIorCURIE):
     pass
 
 
-class ManagementReviewId(DocumentedInformationId):
+class AimsCompetenceRecordAimsId(URIorCURIE):
     pass
 
 
-class NonconformityId(NamedEntityId):
+class AimsAwarenessProgrammeAimsId(URIorCURIE):
     pass
 
 
-class CorrectiveActionId(NamedEntityId):
+class AimsCommunicationPlanAimsId(URIorCURIE):
     pass
 
 
-class ImprovementOpportunityId(NamedEntityId):
+class AimsDocumentedInformationAimsId(URIorCURIE):
     pass
 
 
-class ThirdPartyRelationshipId(NamedEntityId):
+class AimsOperationalProcedureAimsId(URIorCURIE):
     pass
 
 
-class SupplierRelationshipId(ThirdPartyRelationshipId):
+class AimsMonitoringProgrammeAimsId(URIorCURIE):
     pass
 
 
-class CustomerRelationshipId(ThirdPartyRelationshipId):
+class AimsAuditProgrammeAimsId(URIorCURIE):
     pass
 
 
-class AISystemEventId(NamedEntityId):
+class AimsAuditAimsId(URIorCURIE):
     pass
 
 
-class AIIncidentId(NamedEntityId):
+class AimsAuditFindingAimsId(URIorCURIE):
     pass
 
 
-class ConcernReportId(NamedEntityId):
+class AimsManagementReviewAimsId(URIorCURIE):
+    pass
+
+
+class AimsNonconformityAimsId(URIorCURIE):
+    pass
+
+
+class AimsCorrectiveActionAimsId(URIorCURIE):
+    pass
+
+
+class AimsImprovementOpportunityAimsId(URIorCURIE):
+    pass
+
+
+class AimsThirdPartyRelationshipAimsId(URIorCURIE):
+    pass
+
+
+class AimsSupplierRelationshipAimsId(AimsThirdPartyRelationshipAimsId):
+    pass
+
+
+class AimsCustomerRelationshipAimsId(AimsThirdPartyRelationshipAimsId):
+    pass
+
+
+class AimsSystemEventAimsId(URIorCURIE):
+    pass
+
+
+class AimsIncidentAimsId(AimsSystemEventAimsId):
+    pass
+
+
+class AimsConcernReportingProcessAimsId(URIorCURIE):
+    pass
+
+
+class AimsConcernReportAimsId(URIorCURIE):
     pass
 
 
 @dataclass(repr=False)
-class NamedEntity(YAMLRoot):
+class AimsRecordMixin(YAMLRoot):
     """
-    Abstract base class for all entities with an identifier, name, and description. Provides common identification and
-    documentation slots.
+    What every record of the system has, so that other records can refer to it: an identifier, a title and a
+    description.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["NamedEntity"]
-    class_class_curie: ClassVar[str] = "iso42001:NamedEntity"
-    class_name: ClassVar[str] = "NamedEntity"
-    class_model_uri: ClassVar[URIRef] = ISO42001.NamedEntity
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRecordMixin"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRecordMixin"
+    class_name: ClassVar[str] = "AimsRecordMixin"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRecordMixin
 
-    id: Union[str, NamedEntityId] = None
-    name: str = None
+    aims_id: Union[str, AimsRecordMixinAimsId] = None
+    title: str = None
     description: Optional[str] = None
-    created_date: Optional[Union[str, XSDDate]] = None
-    modified_date: Optional[Union[str, XSDDate]] = None
-    version: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NamedEntityId):
-            self.id = NamedEntityId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRecordMixinAimsId):
+            self.aims_id = AimsRecordMixinAimsId(self.aims_id)
 
-        if self._is_empty(self.name):
-            self.MissingRequiredField("name")
-        if not isinstance(self.name, str):
-            self.name = str(self.name)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.created_date is not None and not isinstance(self.created_date, XSDDate):
-            self.created_date = XSDDate(self.created_date)
+        super().__post_init__(**kwargs)
 
-        if self.modified_date is not None and not isinstance(self.modified_date, XSDDate):
-            self.modified_date = XSDDate(self.modified_date)
 
-        if self.version is not None and not isinstance(self.version, str):
-            self.version = str(self.version)
+@dataclass(repr=False)
+class AimsDocumentControlMixin(YAMLRoot):
+    """
+    The control that documented information is kept under: who wrote, owns and approved it, its format and medium,
+    when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is
+    kept, and whether it came from outside.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsDocumentControlMixin"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsDocumentControlMixin"
+    class_name: ClassVar[str] = "AimsDocumentControlMixin"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsDocumentControlMixin
+
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class DocumentedInformation(NamedEntity):
+class AimsManagementSystem(YAMLRoot):
     """
-    Abstract class for documented information per Clause 7.5. Captures metadata required for document control under
-    the AIMS.
+    One organization's management system for AI: its scope and context, and every record it keeps, each kind in a list
+    of its own.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["DocumentedInformation"]
-    class_class_curie: ClassVar[str] = "iso42001:DocumentedInformation"
-    class_name: ClassVar[str] = "DocumentedInformation"
-    class_model_uri: ClassVar[URIRef] = ISO42001.DocumentedInformation
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsManagementSystem"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsManagementSystem"
+    class_name: ClassVar[str] = "AimsManagementSystem"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsManagementSystem
 
-    id: Union[str, DocumentedInformationId] = None
-    name: str = None
-    document_type: Optional[Union[str, "DocumentType"]] = None
-    document_reference: Optional[str] = None
-    author: Optional[str] = None
-    owner: Optional[str] = None
-    approved_by: Optional[str] = None
-    approved_date: Optional[Union[str, XSDDate]] = None
-    effective_date: Optional[Union[str, XSDDate]] = None
-    review_date: Optional[Union[str, XSDDate]] = None
-    status: Optional[str] = None
-    classification: Optional[str] = None
-    retention_period: Optional[str] = None
+    aims_id: Union[str, AimsManagementSystemAimsId] = None
+    title: str = None
+    aims_organization: Optional[Union[dict, "AimsOrganization"]] = None
+    aims_top_management: Optional[str] = None
+    aims_governing_body: Optional[str] = None
+    aims_leadership_evidence: Optional[Union[str, list[str]]] = empty_list()
+    aims_scope: Optional[str] = None
+    aims_scope_boundaries: Optional[Union[str, list[str]]] = empty_list()
+    aims_scope_applicability: Optional[Union[str, list[str]]] = empty_list()
+    aims_processes: Optional[str] = None
+    aims_internal_issues: Optional[Union[str, list[str]]] = empty_list()
+    aims_external_issues: Optional[Union[str, list[str]]] = empty_list()
+    aims_planned_changes: Optional[Union[str, list[str]]] = empty_list()
+    aims_external_services: Optional[Union[str, list[str]]] = empty_list()
+    aims_integrated_standards: Optional[Union[Union[str, "AimsManagementSystemStandard"], list[Union[str, "AimsManagementSystemStandard"]]]] = empty_list()
+    aims_certification_status: Optional[str] = None
+    aims_certification_body: Optional[str] = None
+    aims_certification_date: Optional[Union[str, XSDDate]] = None
+    aims_recertification_date: Optional[Union[str, XSDDate]] = None
+    aims_interested_parties: Optional[Union[dict[Union[str, AimsInterestedPartyAimsId], Union[dict, "AimsInterestedParty"]], list[Union[dict, "AimsInterestedParty"]]]] = empty_dict()
+    aims_policy: Optional[Union[dict, "AimsPolicy"]] = None
+    aims_topic_specific_policies: Optional[Union[dict[Union[str, AimsTopicSpecificPolicyAimsId], Union[dict, "AimsTopicSpecificPolicy"]], list[Union[dict, "AimsTopicSpecificPolicy"]]]] = empty_dict()
+    aims_roles: Optional[Union[dict[Union[str, AimsRoleAimsId], Union[dict, "AimsRole"]], list[Union[dict, "AimsRole"]]]] = empty_dict()
+    aims_objectives: Optional[Union[dict[Union[str, AimsObjectiveAimsId], Union[dict, "AimsObjective"]], list[Union[dict, "AimsObjective"]]]] = empty_dict()
+    aims_planned_actions: Optional[Union[dict[Union[str, AimsPlannedActionAimsId], Union[dict, "AimsPlannedAction"]], list[Union[dict, "AimsPlannedAction"]]]] = empty_dict()
+    aims_risk_assessment_process: Optional[Union[dict, "AimsRiskAssessmentProcess"]] = None
+    aims_risk_treatment_process: Optional[Union[dict, "AimsRiskTreatmentProcess"]] = None
+    aims_impact_assessment_process: Optional[Union[dict, "AimsImpactAssessmentProcess"]] = None
+    aims_risk_assessments: Optional[Union[dict[Union[str, AimsRiskAssessmentAimsId], Union[dict, "AimsRiskAssessment"]], list[Union[dict, "AimsRiskAssessment"]]]] = empty_dict()
+    aims_risks: Optional[Union[dict[Union[str, AimsRiskAimsId], Union[dict, "AimsRisk"]], list[Union[dict, "AimsRisk"]]]] = empty_dict()
+    aims_risk_treatment_plans: Optional[Union[dict[Union[str, AimsRiskTreatmentPlanAimsId], Union[dict, "AimsRiskTreatmentPlan"]], list[Union[dict, "AimsRiskTreatmentPlan"]]]] = empty_dict()
+    aims_impact_assessments: Optional[Union[dict[Union[str, AimsImpactAssessmentAimsId], Union[dict, "AimsImpactAssessment"]], list[Union[dict, "AimsImpactAssessment"]]]] = empty_dict()
+    aims_statement_of_applicability: Optional[Union[dict, "AimsStatementOfApplicability"]] = None
+    aims_controls: Optional[Union[dict[Union[str, AimsControlAimsId], Union[dict, "AimsControl"]], list[Union[dict, "AimsControl"]]]] = empty_dict()
+    aims_systems: Optional[Union[dict[Union[str, AimsAiSystemAimsId], Union[dict, "AimsAiSystem"]], list[Union[dict, "AimsAiSystem"]]]] = empty_dict()
+    aims_system_resources: Optional[Union[dict[Union[str, AimsSystemResourceAimsId], Union[dict, "AimsSystemResource"]], list[Union[dict, "AimsSystemResource"]]]] = empty_dict()
+    aims_development_processes: Optional[Union[dict[Union[str, AimsDevelopmentProcessAimsId], Union[dict, "AimsDevelopmentProcess"]], list[Union[dict, "AimsDevelopmentProcess"]]]] = empty_dict()
+    aims_use_processes: Optional[Union[dict[Union[str, AimsResponsibleUseProcessAimsId], Union[dict, "AimsResponsibleUseProcess"]], list[Union[dict, "AimsResponsibleUseProcess"]]]] = empty_dict()
+    aims_technical_documentation: Optional[Union[dict[Union[str, AimsTechnicalDocumentationAimsId], Union[dict, "AimsTechnicalDocumentation"]], list[Union[dict, "AimsTechnicalDocumentation"]]]] = empty_dict()
+    aims_user_information: Optional[Union[dict[Union[str, AimsUserInformationAimsId], Union[dict, "AimsUserInformation"]], list[Union[dict, "AimsUserInformation"]]]] = empty_dict()
+    aims_incident_communication_plans: Optional[Union[dict[Union[str, AimsIncidentCommunicationPlanAimsId], Union[dict, "AimsIncidentCommunicationPlan"]], list[Union[dict, "AimsIncidentCommunicationPlan"]]]] = empty_dict()
+    aims_reporting_obligations: Optional[Union[dict[Union[str, AimsReportingObligationAimsId], Union[dict, "AimsReportingObligation"]], list[Union[dict, "AimsReportingObligation"]]]] = empty_dict()
+    aims_third_party_relationships: Optional[Union[dict[Union[str, AimsThirdPartyRelationshipAimsId], Union[dict, "AimsThirdPartyRelationship"]], list[Union[dict, "AimsThirdPartyRelationship"]]]] = empty_dict()
+    aims_resources: Optional[Union[dict[Union[str, AimsResourceAimsId], Union[dict, "AimsResource"]], list[Union[dict, "AimsResource"]]]] = empty_dict()
+    aims_competence_records: Optional[Union[dict[Union[str, AimsCompetenceRecordAimsId], Union[dict, "AimsCompetenceRecord"]], list[Union[dict, "AimsCompetenceRecord"]]]] = empty_dict()
+    aims_awareness_programme: Optional[Union[dict, "AimsAwarenessProgramme"]] = None
+    aims_communication_plan: Optional[Union[dict, "AimsCommunicationPlan"]] = None
+    aims_documented_information: Optional[Union[dict[Union[str, AimsDocumentedInformationAimsId], Union[dict, "AimsDocumentedInformation"]], list[Union[dict, "AimsDocumentedInformation"]]]] = empty_dict()
+    aims_operational_procedures: Optional[Union[dict[Union[str, AimsOperationalProcedureAimsId], Union[dict, "AimsOperationalProcedure"]], list[Union[dict, "AimsOperationalProcedure"]]]] = empty_dict()
+    aims_monitoring_programme: Optional[Union[dict, "AimsMonitoringProgramme"]] = None
+    aims_audit_programmes: Optional[Union[dict[Union[str, AimsAuditProgrammeAimsId], Union[dict, "AimsAuditProgramme"]], list[Union[dict, "AimsAuditProgramme"]]]] = empty_dict()
+    aims_audits: Optional[Union[dict[Union[str, AimsAuditAimsId], Union[dict, "AimsAudit"]], list[Union[dict, "AimsAudit"]]]] = empty_dict()
+    aims_management_reviews: Optional[Union[dict[Union[str, AimsManagementReviewAimsId], Union[dict, "AimsManagementReview"]], list[Union[dict, "AimsManagementReview"]]]] = empty_dict()
+    aims_nonconformities: Optional[Union[dict[Union[str, AimsNonconformityAimsId], Union[dict, "AimsNonconformity"]], list[Union[dict, "AimsNonconformity"]]]] = empty_dict()
+    aims_corrective_actions: Optional[Union[dict[Union[str, AimsCorrectiveActionAimsId], Union[dict, "AimsCorrectiveAction"]], list[Union[dict, "AimsCorrectiveAction"]]]] = empty_dict()
+    aims_improvements: Optional[Union[dict[Union[str, AimsImprovementOpportunityAimsId], Union[dict, "AimsImprovementOpportunity"]], list[Union[dict, "AimsImprovementOpportunity"]]]] = empty_dict()
+    aims_system_events: Optional[Union[dict[Union[str, AimsSystemEventAimsId], Union[dict, "AimsSystemEvent"]], list[Union[dict, "AimsSystemEvent"]]]] = empty_dict()
+    aims_concern_reporting_process: Optional[Union[dict, "AimsConcernReportingProcess"]] = None
+    aims_concern_reports: Optional[Union[dict[Union[str, AimsConcernReportAimsId], Union[dict, "AimsConcernReport"]], list[Union[dict, "AimsConcernReport"]]]] = empty_dict()
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.document_type is not None and not isinstance(self.document_type, DocumentType):
-            self.document_type = DocumentType(self.document_type)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsManagementSystemAimsId):
+            self.aims_id = AimsManagementSystemAimsId(self.aims_id)
 
-        if self.document_reference is not None and not isinstance(self.document_reference, str):
-            self.document_reference = str(self.document_reference)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.author is not None and not isinstance(self.author, str):
-            self.author = str(self.author)
+        if self.aims_organization is not None and not isinstance(self.aims_organization, AimsOrganization):
+            self.aims_organization = AimsOrganization(**as_dict(self.aims_organization))
 
-        if self.owner is not None and not isinstance(self.owner, str):
-            self.owner = str(self.owner)
+        if self.aims_top_management is not None and not isinstance(self.aims_top_management, str):
+            self.aims_top_management = str(self.aims_top_management)
 
-        if self.approved_by is not None and not isinstance(self.approved_by, str):
-            self.approved_by = str(self.approved_by)
+        if self.aims_governing_body is not None and not isinstance(self.aims_governing_body, str):
+            self.aims_governing_body = str(self.aims_governing_body)
 
-        if self.approved_date is not None and not isinstance(self.approved_date, XSDDate):
-            self.approved_date = XSDDate(self.approved_date)
+        if not isinstance(self.aims_leadership_evidence, list):
+            self.aims_leadership_evidence = [self.aims_leadership_evidence] if self.aims_leadership_evidence is not None else []
+        self.aims_leadership_evidence = [v if isinstance(v, str) else str(v) for v in self.aims_leadership_evidence]
 
-        if self.effective_date is not None and not isinstance(self.effective_date, XSDDate):
-            self.effective_date = XSDDate(self.effective_date)
+        if self.aims_scope is not None and not isinstance(self.aims_scope, str):
+            self.aims_scope = str(self.aims_scope)
 
-        if self.review_date is not None and not isinstance(self.review_date, XSDDate):
-            self.review_date = XSDDate(self.review_date)
+        if not isinstance(self.aims_scope_boundaries, list):
+            self.aims_scope_boundaries = [self.aims_scope_boundaries] if self.aims_scope_boundaries is not None else []
+        self.aims_scope_boundaries = [v if isinstance(v, str) else str(v) for v in self.aims_scope_boundaries]
 
-        if self.status is not None and not isinstance(self.status, str):
-            self.status = str(self.status)
+        if not isinstance(self.aims_scope_applicability, list):
+            self.aims_scope_applicability = [self.aims_scope_applicability] if self.aims_scope_applicability is not None else []
+        self.aims_scope_applicability = [v if isinstance(v, str) else str(v) for v in self.aims_scope_applicability]
 
-        if self.classification is not None and not isinstance(self.classification, str):
-            self.classification = str(self.classification)
+        if self.aims_processes is not None and not isinstance(self.aims_processes, str):
+            self.aims_processes = str(self.aims_processes)
 
-        if self.retention_period is not None and not isinstance(self.retention_period, str):
-            self.retention_period = str(self.retention_period)
+        if not isinstance(self.aims_internal_issues, list):
+            self.aims_internal_issues = [self.aims_internal_issues] if self.aims_internal_issues is not None else []
+        self.aims_internal_issues = [v if isinstance(v, str) else str(v) for v in self.aims_internal_issues]
+
+        if not isinstance(self.aims_external_issues, list):
+            self.aims_external_issues = [self.aims_external_issues] if self.aims_external_issues is not None else []
+        self.aims_external_issues = [v if isinstance(v, str) else str(v) for v in self.aims_external_issues]
+
+        if not isinstance(self.aims_planned_changes, list):
+            self.aims_planned_changes = [self.aims_planned_changes] if self.aims_planned_changes is not None else []
+        self.aims_planned_changes = [v if isinstance(v, str) else str(v) for v in self.aims_planned_changes]
+
+        if not isinstance(self.aims_external_services, list):
+            self.aims_external_services = [self.aims_external_services] if self.aims_external_services is not None else []
+        self.aims_external_services = [v if isinstance(v, str) else str(v) for v in self.aims_external_services]
+
+        if not isinstance(self.aims_integrated_standards, list):
+            self.aims_integrated_standards = [self.aims_integrated_standards] if self.aims_integrated_standards is not None else []
+        self.aims_integrated_standards = [v if isinstance(v, AimsManagementSystemStandard) else AimsManagementSystemStandard(v) for v in self.aims_integrated_standards]
+
+        if self.aims_certification_status is not None and not isinstance(self.aims_certification_status, str):
+            self.aims_certification_status = str(self.aims_certification_status)
+
+        if self.aims_certification_body is not None and not isinstance(self.aims_certification_body, str):
+            self.aims_certification_body = str(self.aims_certification_body)
+
+        if self.aims_certification_date is not None and not isinstance(self.aims_certification_date, XSDDate):
+            self.aims_certification_date = XSDDate(self.aims_certification_date)
+
+        if self.aims_recertification_date is not None and not isinstance(self.aims_recertification_date, XSDDate):
+            self.aims_recertification_date = XSDDate(self.aims_recertification_date)
+
+        self._normalize_inlined_as_list(slot_name="aims_interested_parties", slot_type=AimsInterestedParty, key_name="aims_id", keyed=True)
+
+        if self.aims_policy is not None and not isinstance(self.aims_policy, AimsPolicy):
+            self.aims_policy = AimsPolicy(**as_dict(self.aims_policy))
+
+        self._normalize_inlined_as_list(slot_name="aims_topic_specific_policies", slot_type=AimsTopicSpecificPolicy, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_roles", slot_type=AimsRole, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_objectives", slot_type=AimsObjective, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_planned_actions", slot_type=AimsPlannedAction, key_name="aims_id", keyed=True)
+
+        if self.aims_risk_assessment_process is not None and not isinstance(self.aims_risk_assessment_process, AimsRiskAssessmentProcess):
+            self.aims_risk_assessment_process = AimsRiskAssessmentProcess(**as_dict(self.aims_risk_assessment_process))
+
+        if self.aims_risk_treatment_process is not None and not isinstance(self.aims_risk_treatment_process, AimsRiskTreatmentProcess):
+            self.aims_risk_treatment_process = AimsRiskTreatmentProcess(**as_dict(self.aims_risk_treatment_process))
+
+        if self.aims_impact_assessment_process is not None and not isinstance(self.aims_impact_assessment_process, AimsImpactAssessmentProcess):
+            self.aims_impact_assessment_process = AimsImpactAssessmentProcess(**as_dict(self.aims_impact_assessment_process))
+
+        self._normalize_inlined_as_list(slot_name="aims_risk_assessments", slot_type=AimsRiskAssessment, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_risks", slot_type=AimsRisk, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_risk_treatment_plans", slot_type=AimsRiskTreatmentPlan, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_impact_assessments", slot_type=AimsImpactAssessment, key_name="aims_id", keyed=True)
+
+        if self.aims_statement_of_applicability is not None and not isinstance(self.aims_statement_of_applicability, AimsStatementOfApplicability):
+            self.aims_statement_of_applicability = AimsStatementOfApplicability(**as_dict(self.aims_statement_of_applicability))
+
+        self._normalize_inlined_as_list(slot_name="aims_controls", slot_type=AimsControl, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_systems", slot_type=AimsAiSystem, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_system_resources", slot_type=AimsSystemResource, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_development_processes", slot_type=AimsDevelopmentProcess, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_use_processes", slot_type=AimsResponsibleUseProcess, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_technical_documentation", slot_type=AimsTechnicalDocumentation, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_user_information", slot_type=AimsUserInformation, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_incident_communication_plans", slot_type=AimsIncidentCommunicationPlan, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_reporting_obligations", slot_type=AimsReportingObligation, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_third_party_relationships", slot_type=AimsThirdPartyRelationship, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_resources", slot_type=AimsResource, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_competence_records", slot_type=AimsCompetenceRecord, key_name="aims_id", keyed=True)
+
+        if self.aims_awareness_programme is not None and not isinstance(self.aims_awareness_programme, AimsAwarenessProgramme):
+            self.aims_awareness_programme = AimsAwarenessProgramme(**as_dict(self.aims_awareness_programme))
+
+        if self.aims_communication_plan is not None and not isinstance(self.aims_communication_plan, AimsCommunicationPlan):
+            self.aims_communication_plan = AimsCommunicationPlan(**as_dict(self.aims_communication_plan))
+
+        self._normalize_inlined_as_list(slot_name="aims_documented_information", slot_type=AimsDocumentedInformation, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_operational_procedures", slot_type=AimsOperationalProcedure, key_name="aims_id", keyed=True)
+
+        if self.aims_monitoring_programme is not None and not isinstance(self.aims_monitoring_programme, AimsMonitoringProgramme):
+            self.aims_monitoring_programme = AimsMonitoringProgramme(**as_dict(self.aims_monitoring_programme))
+
+        self._normalize_inlined_as_list(slot_name="aims_audit_programmes", slot_type=AimsAuditProgramme, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_audits", slot_type=AimsAudit, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_management_reviews", slot_type=AimsManagementReview, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_nonconformities", slot_type=AimsNonconformity, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_corrective_actions", slot_type=AimsCorrectiveAction, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_improvements", slot_type=AimsImprovementOpportunity, key_name="aims_id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="aims_system_events", slot_type=AimsSystemEvent, key_name="aims_id", keyed=True)
+
+        if self.aims_concern_reporting_process is not None and not isinstance(self.aims_concern_reporting_process, AimsConcernReportingProcess):
+            self.aims_concern_reporting_process = AimsConcernReportingProcess(**as_dict(self.aims_concern_reporting_process))
+
+        self._normalize_inlined_as_list(slot_name="aims_concern_reports", slot_type=AimsConcernReport, key_name="aims_id", keyed=True)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIManagementSystem(NamedEntity):
+class AimsOrganization(YAMLRoot):
     """
-    Top-level container representing an organization's complete AI Management System (AIMS) per ISO/IEC 42001:2023.
-    Aggregates all components required to support the AIMS lifecycle.
+    The organization that runs the system, with what it needs to know about itself to understand its context and the
+    parts it plays with AI.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIManagementSystem"]
-    class_class_curie: ClassVar[str] = "iso42001:AIManagementSystem"
-    class_name: ClassVar[str] = "AIManagementSystem"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIManagementSystem
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsOrganization"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsOrganization"
+    class_name: ClassVar[str] = "AimsOrganization"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsOrganization
 
-    id: Union[str, AIManagementSystemId] = None
-    name: str = None
-    organization: Optional[Union[str, OrganizationId]] = None
-    scope_statement: Optional[str] = None
-    scope_boundaries: Optional[Union[str, list[str]]] = empty_list()
-    scope_exclusions: Optional[Union[str, list[str]]] = empty_list()
-    context_internal_issues: Optional[Union[str, list[str]]] = empty_list()
-    context_external_issues: Optional[Union[str, list[str]]] = empty_list()
-    organizational_roles_with_ai: Optional[Union[Union[str, "AIOrganizationalRole"], list[Union[str, "AIOrganizationalRole"]]]] = empty_list()
-    integrated_management_systems: Optional[Union[Union[str, "RelatedManagementSystem"], list[Union[str, "RelatedManagementSystem"]]]] = empty_list()
-    top_management: Optional[str] = None
-    governing_body: Optional[str] = None
-    leadership_commitment_evidence: Optional[Union[str, list[str]]] = empty_list()
-    planned_changes: Optional[Union[str, list[str]]] = empty_list()
-    interested_parties: Optional[Union[Union[str, InterestedPartyId], list[Union[str, InterestedPartyId]]]] = empty_list()
-    ai_policy: Optional[Union[str, AIPolicyId]] = None
-    ai_objectives: Optional[Union[Union[str, AIObjectiveId], list[Union[str, AIObjectiveId]]]] = empty_list()
-    ai_risk_assessment_process: Optional[Union[str, AIRiskAssessmentProcessId]] = None
-    ai_risk_treatment_process: Optional[Union[str, AIRiskTreatmentProcessId]] = None
-    ai_system_impact_assessment_process: Optional[Union[str, AISystemImpactAssessmentProcessId]] = None
-    statement_of_applicability: Optional[Union[str, StatementOfApplicabilityId]] = None
-    reference_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    ai_systems: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    roles: Optional[Union[Union[str, RoleId], list[Union[str, RoleId]]]] = empty_list()
-    resources: Optional[Union[Union[str, ResourceId], list[Union[str, ResourceId]]]] = empty_list()
-    competence_records: Optional[Union[Union[str, CompetenceRecordId], list[Union[str, CompetenceRecordId]]]] = empty_list()
-    awareness_program: Optional[Union[str, AwarenessProgramId]] = None
-    communication_plan: Optional[Union[str, CommunicationPlanId]] = None
-    documented_information_register: Optional[Union[Union[str, DocumentedInformationId], list[Union[str, DocumentedInformationId]]]] = empty_list()
-    operational_procedures: Optional[Union[Union[str, OperationalProcedureId], list[Union[str, OperationalProcedureId]]]] = empty_list()
-    ai_risk_assessments: Optional[Union[Union[str, AIRiskAssessmentId], list[Union[str, AIRiskAssessmentId]]]] = empty_list()
-    ai_risk_treatment_plans: Optional[Union[Union[str, AIRiskTreatmentPlanId], list[Union[str, AIRiskTreatmentPlanId]]]] = empty_list()
-    ai_system_impact_assessments: Optional[Union[Union[str, AISystemImpactAssessmentId], list[Union[str, AISystemImpactAssessmentId]]]] = empty_list()
-    monitoring_program: Optional[Union[str, MonitoringProgramId]] = None
-    internal_audits: Optional[Union[Union[str, InternalAuditId], list[Union[str, InternalAuditId]]]] = empty_list()
-    management_reviews: Optional[Union[Union[str, ManagementReviewId], list[Union[str, ManagementReviewId]]]] = empty_list()
-    nonconformities: Optional[Union[Union[str, NonconformityId], list[Union[str, NonconformityId]]]] = empty_list()
-    corrective_actions: Optional[Union[Union[str, CorrectiveActionId], list[Union[str, CorrectiveActionId]]]] = empty_list()
-    improvements: Optional[Union[Union[str, ImprovementOpportunityId], list[Union[str, ImprovementOpportunityId]]]] = empty_list()
-    third_party_relationships: Optional[Union[Union[str, ThirdPartyRelationshipId], list[Union[str, ThirdPartyRelationshipId]]]] = empty_list()
-    certification_status: Optional[str] = None
-    certification_body: Optional[str] = None
-    certification_date: Optional[Union[str, XSDDate]] = None
-    recertification_date: Optional[Union[str, XSDDate]] = None
-    ai_system_events: Optional[Union[Union[str, AISystemEventId], list[Union[str, AISystemEventId]]]] = empty_list()
-    ai_incidents: Optional[Union[Union[str, AIIncidentId], list[Union[str, AIIncidentId]]]] = empty_list()
-    concern_reports: Optional[Union[Union[str, ConcernReportId], list[Union[str, ConcernReportId]]]] = empty_list()
+    aims_id: Union[str, AimsOrganizationAimsId] = None
+    title: str = None
+    aims_organization_legal_name: Optional[str] = None
+    aims_organization_trading_names: Optional[Union[str, list[str]]] = empty_list()
+    aims_organization_kind: Optional[str] = None
+    aims_organization_sectors: Optional[Union[str, list[str]]] = empty_list()
+    aims_organization_size: Optional[str] = None
+    aims_organization_employee_count: Optional[int] = None
+    aims_organization_locations: Optional[Union[str, list[str]]] = empty_list()
+    aims_organization_jurisdictions: Optional[Union[str, list[str]]] = empty_list()
+    aims_organization_parent: Optional[str] = None
+    aims_organization_subsidiaries: Optional[Union[str, list[str]]] = empty_list()
+    aims_organization_ai_roles: Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]] = empty_list()
+    aims_organization_pii_roles: Optional[Union[Union[str, "AimsPiiRole"], list[Union[str, "AimsPiiRole"]]]] = empty_list()
+    aims_organization_climate_change_relevant: Optional[Union[bool, Bool]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIManagementSystemId):
-            self.id = AIManagementSystemId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsOrganizationAimsId):
+            self.aims_id = AimsOrganizationAimsId(self.aims_id)
 
-        if self.organization is not None and not isinstance(self.organization, OrganizationId):
-            self.organization = OrganizationId(self.organization)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.scope_statement is not None and not isinstance(self.scope_statement, str):
-            self.scope_statement = str(self.scope_statement)
+        if self.aims_organization_legal_name is not None and not isinstance(self.aims_organization_legal_name, str):
+            self.aims_organization_legal_name = str(self.aims_organization_legal_name)
 
-        if not isinstance(self.scope_boundaries, list):
-            self.scope_boundaries = [self.scope_boundaries] if self.scope_boundaries is not None else []
-        self.scope_boundaries = [v if isinstance(v, str) else str(v) for v in self.scope_boundaries]
+        if not isinstance(self.aims_organization_trading_names, list):
+            self.aims_organization_trading_names = [self.aims_organization_trading_names] if self.aims_organization_trading_names is not None else []
+        self.aims_organization_trading_names = [v if isinstance(v, str) else str(v) for v in self.aims_organization_trading_names]
 
-        if not isinstance(self.scope_exclusions, list):
-            self.scope_exclusions = [self.scope_exclusions] if self.scope_exclusions is not None else []
-        self.scope_exclusions = [v if isinstance(v, str) else str(v) for v in self.scope_exclusions]
+        if self.aims_organization_kind is not None and not isinstance(self.aims_organization_kind, str):
+            self.aims_organization_kind = str(self.aims_organization_kind)
 
-        if not isinstance(self.context_internal_issues, list):
-            self.context_internal_issues = [self.context_internal_issues] if self.context_internal_issues is not None else []
-        self.context_internal_issues = [v if isinstance(v, str) else str(v) for v in self.context_internal_issues]
+        if not isinstance(self.aims_organization_sectors, list):
+            self.aims_organization_sectors = [self.aims_organization_sectors] if self.aims_organization_sectors is not None else []
+        self.aims_organization_sectors = [v if isinstance(v, str) else str(v) for v in self.aims_organization_sectors]
 
-        if not isinstance(self.context_external_issues, list):
-            self.context_external_issues = [self.context_external_issues] if self.context_external_issues is not None else []
-        self.context_external_issues = [v if isinstance(v, str) else str(v) for v in self.context_external_issues]
+        if self.aims_organization_size is not None and not isinstance(self.aims_organization_size, str):
+            self.aims_organization_size = str(self.aims_organization_size)
 
-        if not isinstance(self.organizational_roles_with_ai, list):
-            self.organizational_roles_with_ai = [self.organizational_roles_with_ai] if self.organizational_roles_with_ai is not None else []
-        self.organizational_roles_with_ai = [v if isinstance(v, AIOrganizationalRole) else AIOrganizationalRole(v) for v in self.organizational_roles_with_ai]
+        if self.aims_organization_employee_count is not None and not isinstance(self.aims_organization_employee_count, int):
+            self.aims_organization_employee_count = int(self.aims_organization_employee_count)
 
-        if not isinstance(self.integrated_management_systems, list):
-            self.integrated_management_systems = [self.integrated_management_systems] if self.integrated_management_systems is not None else []
-        self.integrated_management_systems = [v if isinstance(v, RelatedManagementSystem) else RelatedManagementSystem(v) for v in self.integrated_management_systems]
+        if not isinstance(self.aims_organization_locations, list):
+            self.aims_organization_locations = [self.aims_organization_locations] if self.aims_organization_locations is not None else []
+        self.aims_organization_locations = [v if isinstance(v, str) else str(v) for v in self.aims_organization_locations]
 
-        if self.top_management is not None and not isinstance(self.top_management, str):
-            self.top_management = str(self.top_management)
+        if not isinstance(self.aims_organization_jurisdictions, list):
+            self.aims_organization_jurisdictions = [self.aims_organization_jurisdictions] if self.aims_organization_jurisdictions is not None else []
+        self.aims_organization_jurisdictions = [v if isinstance(v, str) else str(v) for v in self.aims_organization_jurisdictions]
 
-        if self.governing_body is not None and not isinstance(self.governing_body, str):
-            self.governing_body = str(self.governing_body)
+        if self.aims_organization_parent is not None and not isinstance(self.aims_organization_parent, str):
+            self.aims_organization_parent = str(self.aims_organization_parent)
 
-        if not isinstance(self.leadership_commitment_evidence, list):
-            self.leadership_commitment_evidence = [self.leadership_commitment_evidence] if self.leadership_commitment_evidence is not None else []
-        self.leadership_commitment_evidence = [v if isinstance(v, str) else str(v) for v in self.leadership_commitment_evidence]
+        if not isinstance(self.aims_organization_subsidiaries, list):
+            self.aims_organization_subsidiaries = [self.aims_organization_subsidiaries] if self.aims_organization_subsidiaries is not None else []
+        self.aims_organization_subsidiaries = [v if isinstance(v, str) else str(v) for v in self.aims_organization_subsidiaries]
 
-        if not isinstance(self.planned_changes, list):
-            self.planned_changes = [self.planned_changes] if self.planned_changes is not None else []
-        self.planned_changes = [v if isinstance(v, str) else str(v) for v in self.planned_changes]
+        if not isinstance(self.aims_organization_ai_roles, list):
+            self.aims_organization_ai_roles = [self.aims_organization_ai_roles] if self.aims_organization_ai_roles is not None else []
+        self.aims_organization_ai_roles = [v if isinstance(v, AimsAiRole) else AimsAiRole(v) for v in self.aims_organization_ai_roles]
 
-        if not isinstance(self.interested_parties, list):
-            self.interested_parties = [self.interested_parties] if self.interested_parties is not None else []
-        self.interested_parties = [v if isinstance(v, InterestedPartyId) else InterestedPartyId(v) for v in self.interested_parties]
+        if not isinstance(self.aims_organization_pii_roles, list):
+            self.aims_organization_pii_roles = [self.aims_organization_pii_roles] if self.aims_organization_pii_roles is not None else []
+        self.aims_organization_pii_roles = [v if isinstance(v, AimsPiiRole) else AimsPiiRole(v) for v in self.aims_organization_pii_roles]
 
-        if self.ai_policy is not None and not isinstance(self.ai_policy, AIPolicyId):
-            self.ai_policy = AIPolicyId(self.ai_policy)
+        if self.aims_organization_climate_change_relevant is not None and not isinstance(self.aims_organization_climate_change_relevant, Bool):
+            self.aims_organization_climate_change_relevant = Bool(self.aims_organization_climate_change_relevant)
 
-        if not isinstance(self.ai_objectives, list):
-            self.ai_objectives = [self.ai_objectives] if self.ai_objectives is not None else []
-        self.ai_objectives = [v if isinstance(v, AIObjectiveId) else AIObjectiveId(v) for v in self.ai_objectives]
-
-        if self.ai_risk_assessment_process is not None and not isinstance(self.ai_risk_assessment_process, AIRiskAssessmentProcessId):
-            self.ai_risk_assessment_process = AIRiskAssessmentProcessId(self.ai_risk_assessment_process)
-
-        if self.ai_risk_treatment_process is not None and not isinstance(self.ai_risk_treatment_process, AIRiskTreatmentProcessId):
-            self.ai_risk_treatment_process = AIRiskTreatmentProcessId(self.ai_risk_treatment_process)
-
-        if self.ai_system_impact_assessment_process is not None and not isinstance(self.ai_system_impact_assessment_process, AISystemImpactAssessmentProcessId):
-            self.ai_system_impact_assessment_process = AISystemImpactAssessmentProcessId(self.ai_system_impact_assessment_process)
-
-        if self.statement_of_applicability is not None and not isinstance(self.statement_of_applicability, StatementOfApplicabilityId):
-            self.statement_of_applicability = StatementOfApplicabilityId(self.statement_of_applicability)
-
-        if not isinstance(self.reference_controls, list):
-            self.reference_controls = [self.reference_controls] if self.reference_controls is not None else []
-        self.reference_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.reference_controls]
-
-        if not isinstance(self.ai_systems, list):
-            self.ai_systems = [self.ai_systems] if self.ai_systems is not None else []
-        self.ai_systems = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.ai_systems]
-
-        if not isinstance(self.roles, list):
-            self.roles = [self.roles] if self.roles is not None else []
-        self.roles = [v if isinstance(v, RoleId) else RoleId(v) for v in self.roles]
-
-        if not isinstance(self.resources, list):
-            self.resources = [self.resources] if self.resources is not None else []
-        self.resources = [v if isinstance(v, ResourceId) else ResourceId(v) for v in self.resources]
-
-        if not isinstance(self.competence_records, list):
-            self.competence_records = [self.competence_records] if self.competence_records is not None else []
-        self.competence_records = [v if isinstance(v, CompetenceRecordId) else CompetenceRecordId(v) for v in self.competence_records]
-
-        if self.awareness_program is not None and not isinstance(self.awareness_program, AwarenessProgramId):
-            self.awareness_program = AwarenessProgramId(self.awareness_program)
-
-        if self.communication_plan is not None and not isinstance(self.communication_plan, CommunicationPlanId):
-            self.communication_plan = CommunicationPlanId(self.communication_plan)
-
-        if not isinstance(self.documented_information_register, list):
-            self.documented_information_register = [self.documented_information_register] if self.documented_information_register is not None else []
-        self.documented_information_register = [v if isinstance(v, DocumentedInformationId) else DocumentedInformationId(v) for v in self.documented_information_register]
-
-        if not isinstance(self.operational_procedures, list):
-            self.operational_procedures = [self.operational_procedures] if self.operational_procedures is not None else []
-        self.operational_procedures = [v if isinstance(v, OperationalProcedureId) else OperationalProcedureId(v) for v in self.operational_procedures]
-
-        if not isinstance(self.ai_risk_assessments, list):
-            self.ai_risk_assessments = [self.ai_risk_assessments] if self.ai_risk_assessments is not None else []
-        self.ai_risk_assessments = [v if isinstance(v, AIRiskAssessmentId) else AIRiskAssessmentId(v) for v in self.ai_risk_assessments]
-
-        if not isinstance(self.ai_risk_treatment_plans, list):
-            self.ai_risk_treatment_plans = [self.ai_risk_treatment_plans] if self.ai_risk_treatment_plans is not None else []
-        self.ai_risk_treatment_plans = [v if isinstance(v, AIRiskTreatmentPlanId) else AIRiskTreatmentPlanId(v) for v in self.ai_risk_treatment_plans]
-
-        if not isinstance(self.ai_system_impact_assessments, list):
-            self.ai_system_impact_assessments = [self.ai_system_impact_assessments] if self.ai_system_impact_assessments is not None else []
-        self.ai_system_impact_assessments = [v if isinstance(v, AISystemImpactAssessmentId) else AISystemImpactAssessmentId(v) for v in self.ai_system_impact_assessments]
-
-        if self.monitoring_program is not None and not isinstance(self.monitoring_program, MonitoringProgramId):
-            self.monitoring_program = MonitoringProgramId(self.monitoring_program)
-
-        if not isinstance(self.internal_audits, list):
-            self.internal_audits = [self.internal_audits] if self.internal_audits is not None else []
-        self.internal_audits = [v if isinstance(v, InternalAuditId) else InternalAuditId(v) for v in self.internal_audits]
-
-        if not isinstance(self.management_reviews, list):
-            self.management_reviews = [self.management_reviews] if self.management_reviews is not None else []
-        self.management_reviews = [v if isinstance(v, ManagementReviewId) else ManagementReviewId(v) for v in self.management_reviews]
-
-        if not isinstance(self.nonconformities, list):
-            self.nonconformities = [self.nonconformities] if self.nonconformities is not None else []
-        self.nonconformities = [v if isinstance(v, NonconformityId) else NonconformityId(v) for v in self.nonconformities]
-
-        if not isinstance(self.corrective_actions, list):
-            self.corrective_actions = [self.corrective_actions] if self.corrective_actions is not None else []
-        self.corrective_actions = [v if isinstance(v, CorrectiveActionId) else CorrectiveActionId(v) for v in self.corrective_actions]
-
-        if not isinstance(self.improvements, list):
-            self.improvements = [self.improvements] if self.improvements is not None else []
-        self.improvements = [v if isinstance(v, ImprovementOpportunityId) else ImprovementOpportunityId(v) for v in self.improvements]
-
-        if not isinstance(self.third_party_relationships, list):
-            self.third_party_relationships = [self.third_party_relationships] if self.third_party_relationships is not None else []
-        self.third_party_relationships = [v if isinstance(v, ThirdPartyRelationshipId) else ThirdPartyRelationshipId(v) for v in self.third_party_relationships]
-
-        if self.certification_status is not None and not isinstance(self.certification_status, str):
-            self.certification_status = str(self.certification_status)
-
-        if self.certification_body is not None and not isinstance(self.certification_body, str):
-            self.certification_body = str(self.certification_body)
-
-        if self.certification_date is not None and not isinstance(self.certification_date, XSDDate):
-            self.certification_date = XSDDate(self.certification_date)
-
-        if self.recertification_date is not None and not isinstance(self.recertification_date, XSDDate):
-            self.recertification_date = XSDDate(self.recertification_date)
-
-        if not isinstance(self.ai_system_events, list):
-            self.ai_system_events = [self.ai_system_events] if self.ai_system_events is not None else []
-        self.ai_system_events = [v if isinstance(v, AISystemEventId) else AISystemEventId(v) for v in self.ai_system_events]
-
-        if not isinstance(self.ai_incidents, list):
-            self.ai_incidents = [self.ai_incidents] if self.ai_incidents is not None else []
-        self.ai_incidents = [v if isinstance(v, AIIncidentId) else AIIncidentId(v) for v in self.ai_incidents]
-
-        if not isinstance(self.concern_reports, list):
-            self.concern_reports = [self.concern_reports] if self.concern_reports is not None else []
-        self.concern_reports = [v if isinstance(v, ConcernReportId) else ConcernReportId(v) for v in self.concern_reports]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Organization(NamedEntity):
+class AimsInterestedParty(YAMLRoot):
     """
-    The organization establishing and operating the AIMS. Captures the context required by Clause 4.1, including the
-    organization's role(s) with respect to AI systems.
+    A person or organization whose needs and expectations bear on the system, or who may feel its decisions, inside
+    the organization or outside it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["Organization"]
-    class_class_curie: ClassVar[str] = "iso42001:Organization"
-    class_name: ClassVar[str] = "Organization"
-    class_model_uri: ClassVar[URIRef] = ISO42001.Organization
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsInterestedParty"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsInterestedParty"
+    class_name: ClassVar[str] = "AimsInterestedParty"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsInterestedParty
 
-    id: Union[str, OrganizationId] = None
-    name: str = None
-    legal_name: Optional[str] = None
-    trading_names: Optional[Union[str, list[str]]] = empty_list()
-    organization_type: Optional[str] = None
-    industry_sector: Optional[str] = None
-    sector_domains: Optional[Union[Union[str, "SectorDomain"], list[Union[str, "SectorDomain"]]]] = empty_list()
-    size_category: Optional[str] = None
-    employee_count: Optional[int] = None
-    geographic_locations: Optional[Union[str, list[str]]] = empty_list()
-    regulatory_jurisdictions: Optional[Union[str, list[str]]] = empty_list()
-    parent_organization: Optional[str] = None
-    subsidiaries: Optional[Union[str, list[str]]] = empty_list()
-    ai_roles: Optional[Union[Union[str, "AIOrganizationalRole"], list[Union[str, "AIOrganizationalRole"]]]] = empty_list()
-    climate_change_relevant: Optional[Union[bool, Bool]] = None
+    aims_id: Union[str, AimsInterestedPartyAimsId] = None
+    title: str = None
+    aims_party_category: Optional[str] = None
+    aims_party_ai_roles: Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]] = empty_list()
+    aims_party_relationship: Optional[str] = None
+    aims_party_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_party_addressed_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_party_climate_change_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_party_communication_needs: Optional[str] = None
+    aims_party_contact: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, OrganizationId):
-            self.id = OrganizationId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsInterestedPartyAimsId):
+            self.aims_id = AimsInterestedPartyAimsId(self.aims_id)
 
-        if self.legal_name is not None and not isinstance(self.legal_name, str):
-            self.legal_name = str(self.legal_name)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.trading_names, list):
-            self.trading_names = [self.trading_names] if self.trading_names is not None else []
-        self.trading_names = [v if isinstance(v, str) else str(v) for v in self.trading_names]
+        if self.aims_party_category is not None and not isinstance(self.aims_party_category, str):
+            self.aims_party_category = str(self.aims_party_category)
 
-        if self.organization_type is not None and not isinstance(self.organization_type, str):
-            self.organization_type = str(self.organization_type)
+        if not isinstance(self.aims_party_ai_roles, list):
+            self.aims_party_ai_roles = [self.aims_party_ai_roles] if self.aims_party_ai_roles is not None else []
+        self.aims_party_ai_roles = [v if isinstance(v, AimsAiRole) else AimsAiRole(v) for v in self.aims_party_ai_roles]
 
-        if self.industry_sector is not None and not isinstance(self.industry_sector, str):
-            self.industry_sector = str(self.industry_sector)
+        if self.aims_party_relationship is not None and not isinstance(self.aims_party_relationship, str):
+            self.aims_party_relationship = str(self.aims_party_relationship)
 
-        if not isinstance(self.sector_domains, list):
-            self.sector_domains = [self.sector_domains] if self.sector_domains is not None else []
-        self.sector_domains = [v if isinstance(v, SectorDomain) else SectorDomain(v) for v in self.sector_domains]
+        if not isinstance(self.aims_party_requirements, list):
+            self.aims_party_requirements = [self.aims_party_requirements] if self.aims_party_requirements is not None else []
+        self.aims_party_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_party_requirements]
 
-        if self.size_category is not None and not isinstance(self.size_category, str):
-            self.size_category = str(self.size_category)
+        if not isinstance(self.aims_party_addressed_requirements, list):
+            self.aims_party_addressed_requirements = [self.aims_party_addressed_requirements] if self.aims_party_addressed_requirements is not None else []
+        self.aims_party_addressed_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_party_addressed_requirements]
 
-        if self.employee_count is not None and not isinstance(self.employee_count, int):
-            self.employee_count = int(self.employee_count)
+        if not isinstance(self.aims_party_climate_change_requirements, list):
+            self.aims_party_climate_change_requirements = [self.aims_party_climate_change_requirements] if self.aims_party_climate_change_requirements is not None else []
+        self.aims_party_climate_change_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_party_climate_change_requirements]
 
-        if not isinstance(self.geographic_locations, list):
-            self.geographic_locations = [self.geographic_locations] if self.geographic_locations is not None else []
-        self.geographic_locations = [v if isinstance(v, str) else str(v) for v in self.geographic_locations]
+        if self.aims_party_communication_needs is not None and not isinstance(self.aims_party_communication_needs, str):
+            self.aims_party_communication_needs = str(self.aims_party_communication_needs)
 
-        if not isinstance(self.regulatory_jurisdictions, list):
-            self.regulatory_jurisdictions = [self.regulatory_jurisdictions] if self.regulatory_jurisdictions is not None else []
-        self.regulatory_jurisdictions = [v if isinstance(v, str) else str(v) for v in self.regulatory_jurisdictions]
+        if self.aims_party_contact is not None and not isinstance(self.aims_party_contact, str):
+            self.aims_party_contact = str(self.aims_party_contact)
 
-        if self.parent_organization is not None and not isinstance(self.parent_organization, str):
-            self.parent_organization = str(self.parent_organization)
-
-        if not isinstance(self.subsidiaries, list):
-            self.subsidiaries = [self.subsidiaries] if self.subsidiaries is not None else []
-        self.subsidiaries = [v if isinstance(v, str) else str(v) for v in self.subsidiaries]
-
-        if not isinstance(self.ai_roles, list):
-            self.ai_roles = [self.ai_roles] if self.ai_roles is not None else []
-        self.ai_roles = [v if isinstance(v, AIOrganizationalRole) else AIOrganizationalRole(v) for v in self.ai_roles]
-
-        if self.climate_change_relevant is not None and not isinstance(self.climate_change_relevant, Bool):
-            self.climate_change_relevant = Bool(self.climate_change_relevant)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class InterestedParty(NamedEntity):
+class AimsPolicy(YAMLRoot):
     """
-    A stakeholder whose needs and expectations are relevant to the AIMS per Clause 4.2. Includes internal and external
-    parties such as users, regulators, partners, suppliers, customers, AI subjects, and relevant authorities.
+    The AI policy that top management sets: the organization's commitments and the frame for its AI objectives.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["InterestedParty"]
-    class_class_curie: ClassVar[str] = "iso42001:InterestedParty"
-    class_name: ClassVar[str] = "InterestedParty"
-    class_model_uri: ClassVar[URIRef] = ISO42001.InterestedParty
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsPolicy"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsPolicy"
+    class_name: ClassVar[str] = "AimsPolicy"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsPolicy
 
-    id: Union[str, InterestedPartyId] = None
-    name: str = None
-    party_type: Optional[str] = None
-    relationship: Optional[str] = None
-    requirements: Optional[Union[str, list[str]]] = empty_list()
-    communication_needs: Optional[str] = None
-    contact_information: Optional[str] = None
+    aims_id: Union[str, AimsPolicyAimsId] = None
+    title: str = None
+    aims_cited_clauses: Optional[Union[Union[str, "AimsClause"], list[Union[str, "AimsClause"]]]] = empty_list()
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    aims_policy_statement: Optional[str] = None
+    aims_policy_objectives_framework: Optional[str] = None
+    aims_policy_commitments: Optional[Union[str, list[str]]] = empty_list()
+    aims_policy_principles: Optional[Union[str, list[str]]] = empty_list()
+    aims_policy_exceptions_process: Optional[str] = None
+    aims_policy_influences: Optional[Union[str, list[str]]] = empty_list()
+    aims_policy_related_policies: Optional[Union[str, list[str]]] = empty_list()
+    aims_policy_communication_date: Optional[Union[str, XSDDate]] = None
+    aims_policy_availability: Optional[str] = None
+    aims_policy_review_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_policy_review_interval: Optional[Union[str, AimsDuration]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, InterestedPartyId):
-            self.id = InterestedPartyId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsPolicyAimsId):
+            self.aims_id = AimsPolicyAimsId(self.aims_id)
 
-        if self.party_type is not None and not isinstance(self.party_type, str):
-            self.party_type = str(self.party_type)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.relationship is not None and not isinstance(self.relationship, str):
-            self.relationship = str(self.relationship)
+        if not isinstance(self.aims_cited_clauses, list):
+            self.aims_cited_clauses = [self.aims_cited_clauses] if self.aims_cited_clauses is not None else []
+        self.aims_cited_clauses = [v if isinstance(v, AimsClause) else AimsClause(v) for v in self.aims_cited_clauses]
 
-        if not isinstance(self.requirements, list):
-            self.requirements = [self.requirements] if self.requirements is not None else []
-        self.requirements = [v if isinstance(v, str) else str(v) for v in self.requirements]
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
 
-        if self.communication_needs is not None and not isinstance(self.communication_needs, str):
-            self.communication_needs = str(self.communication_needs)
+        if self.aims_policy_statement is not None and not isinstance(self.aims_policy_statement, str):
+            self.aims_policy_statement = str(self.aims_policy_statement)
 
-        if self.contact_information is not None and not isinstance(self.contact_information, str):
-            self.contact_information = str(self.contact_information)
+        if self.aims_policy_objectives_framework is not None and not isinstance(self.aims_policy_objectives_framework, str):
+            self.aims_policy_objectives_framework = str(self.aims_policy_objectives_framework)
+
+        if not isinstance(self.aims_policy_commitments, list):
+            self.aims_policy_commitments = [self.aims_policy_commitments] if self.aims_policy_commitments is not None else []
+        self.aims_policy_commitments = [v if isinstance(v, str) else str(v) for v in self.aims_policy_commitments]
+
+        if not isinstance(self.aims_policy_principles, list):
+            self.aims_policy_principles = [self.aims_policy_principles] if self.aims_policy_principles is not None else []
+        self.aims_policy_principles = [v if isinstance(v, str) else str(v) for v in self.aims_policy_principles]
+
+        if self.aims_policy_exceptions_process is not None and not isinstance(self.aims_policy_exceptions_process, str):
+            self.aims_policy_exceptions_process = str(self.aims_policy_exceptions_process)
+
+        if not isinstance(self.aims_policy_influences, list):
+            self.aims_policy_influences = [self.aims_policy_influences] if self.aims_policy_influences is not None else []
+        self.aims_policy_influences = [v if isinstance(v, str) else str(v) for v in self.aims_policy_influences]
+
+        if not isinstance(self.aims_policy_related_policies, list):
+            self.aims_policy_related_policies = [self.aims_policy_related_policies] if self.aims_policy_related_policies is not None else []
+        self.aims_policy_related_policies = [v if isinstance(v, str) else str(v) for v in self.aims_policy_related_policies]
+
+        if self.aims_policy_communication_date is not None and not isinstance(self.aims_policy_communication_date, XSDDate):
+            self.aims_policy_communication_date = XSDDate(self.aims_policy_communication_date)
+
+        if self.aims_policy_availability is not None and not isinstance(self.aims_policy_availability, str):
+            self.aims_policy_availability = str(self.aims_policy_availability)
+
+        if self.aims_policy_review_role is not None and not isinstance(self.aims_policy_review_role, AimsRoleAimsId):
+            self.aims_policy_review_role = AimsRoleAimsId(self.aims_policy_review_role)
+
+        if self.aims_policy_review_interval is not None and not isinstance(self.aims_policy_review_interval, AimsDuration):
+            self.aims_policy_review_interval = AimsDuration(self.aims_policy_review_interval)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIPolicy(DocumentedInformation):
+class AimsTopicSpecificPolicy(YAMLRoot):
     """
-    The AI policy established by top management per Clause 5.2. Provides a framework for setting AI objectives and
-    demonstrates commitment to responsible AI.
+    A policy on one topic that gives more guidance under the AI policy, such as assessing impacts or building systems.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIPolicy"]
-    class_class_curie: ClassVar[str] = "iso42001:AIPolicy"
-    class_name: ClassVar[str] = "AIPolicy"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIPolicy
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsTopicSpecificPolicy"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsTopicSpecificPolicy"
+    class_name: ClassVar[str] = "AimsTopicSpecificPolicy"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsTopicSpecificPolicy
 
-    id: Union[str, AIPolicyId] = None
-    name: str = None
-    policy_statement: Optional[str] = None
-    policy_objectives_framework: Optional[str] = None
-    commitment_statements: Optional[Union[str, list[str]]] = empty_list()
-    applicability_statement: Optional[str] = None
-    communication_date: Optional[Union[str, XSDDate]] = None
-    acknowledgment_required: Optional[Union[bool, Bool]] = None
-    related_topic_policies: Optional[Union[Union[str, TopicSpecificPolicyId], list[Union[str, TopicSpecificPolicyId]]]] = empty_list()
-    last_policy_review_date: Optional[Union[str, XSDDate]] = None
-    next_policy_review_date: Optional[Union[str, XSDDate]] = None
+    aims_id: Union[str, AimsTopicSpecificPolicyAimsId] = None
+    title: str = None
+    aims_relevant_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    aims_topic_policy_topic: Optional[str] = None
+    aims_topic_policy_parent: Optional[Union[str, AimsPolicyAimsId]] = None
+    aims_topic_policy_audience: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIPolicyId):
-            self.id = AIPolicyId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsTopicSpecificPolicyAimsId):
+            self.aims_id = AimsTopicSpecificPolicyAimsId(self.aims_id)
 
-        if self.policy_statement is not None and not isinstance(self.policy_statement, str):
-            self.policy_statement = str(self.policy_statement)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.policy_objectives_framework is not None and not isinstance(self.policy_objectives_framework, str):
-            self.policy_objectives_framework = str(self.policy_objectives_framework)
+        if not isinstance(self.aims_relevant_controls, list):
+            self.aims_relevant_controls = [self.aims_relevant_controls] if self.aims_relevant_controls is not None else []
+        self.aims_relevant_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_relevant_controls]
 
-        if not isinstance(self.commitment_statements, list):
-            self.commitment_statements = [self.commitment_statements] if self.commitment_statements is not None else []
-        self.commitment_statements = [v if isinstance(v, str) else str(v) for v in self.commitment_statements]
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
 
-        if self.applicability_statement is not None and not isinstance(self.applicability_statement, str):
-            self.applicability_statement = str(self.applicability_statement)
+        if self.aims_topic_policy_topic is not None and not isinstance(self.aims_topic_policy_topic, str):
+            self.aims_topic_policy_topic = str(self.aims_topic_policy_topic)
 
-        if self.communication_date is not None and not isinstance(self.communication_date, XSDDate):
-            self.communication_date = XSDDate(self.communication_date)
+        if self.aims_topic_policy_parent is not None and not isinstance(self.aims_topic_policy_parent, AimsPolicyAimsId):
+            self.aims_topic_policy_parent = AimsPolicyAimsId(self.aims_topic_policy_parent)
 
-        if self.acknowledgment_required is not None and not isinstance(self.acknowledgment_required, Bool):
-            self.acknowledgment_required = Bool(self.acknowledgment_required)
+        if self.aims_topic_policy_audience is not None and not isinstance(self.aims_topic_policy_audience, str):
+            self.aims_topic_policy_audience = str(self.aims_topic_policy_audience)
 
-        if not isinstance(self.related_topic_policies, list):
-            self.related_topic_policies = [self.related_topic_policies] if self.related_topic_policies is not None else []
-        self.related_topic_policies = [v if isinstance(v, TopicSpecificPolicyId) else TopicSpecificPolicyId(v) for v in self.related_topic_policies]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if self.last_policy_review_date is not None and not isinstance(self.last_policy_review_date, XSDDate):
-            self.last_policy_review_date = XSDDate(self.last_policy_review_date)
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if self.next_policy_review_date is not None and not isinstance(self.next_policy_review_date, XSDDate):
-            self.next_policy_review_date = XSDDate(self.next_policy_review_date)
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class TopicSpecificPolicy(DocumentedInformation):
+class AimsRole(YAMLRoot):
     """
-    A topic-specific policy supporting the overarching AI policy, for example covering data governance, fairness,
-    transparency, supplier use, or human oversight of AI systems.
+    A role in the system, with the duties and powers it carries and who holds it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["TopicSpecificPolicy"]
-    class_class_curie: ClassVar[str] = "iso42001:TopicSpecificPolicy"
-    class_name: ClassVar[str] = "TopicSpecificPolicy"
-    class_model_uri: ClassVar[URIRef] = ISO42001.TopicSpecificPolicy
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRole"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRole"
+    class_name: ClassVar[str] = "AimsRole"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRole
 
-    id: Union[str, TopicSpecificPolicyId] = None
-    name: str = None
-    topic_area: Optional[str] = None
-    parent_policy: Optional[Union[str, AIPolicyId]] = None
-    applicable_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    target_audience: Optional[str] = None
+    aims_id: Union[str, AimsRoleAimsId] = None
+    title: str = None
+    aims_role_category: Optional[str] = None
+    aims_role_areas: Optional[Union[str, list[str]]] = empty_list()
+    aims_role_responsibilities: Optional[Union[str, list[str]]] = empty_list()
+    aims_role_authorities: Optional[Union[str, list[str]]] = empty_list()
+    aims_role_ensures_conformity: Optional[Union[bool, Bool]] = None
+    aims_role_reports_performance: Optional[Union[bool, Bool]] = None
+    aims_role_accountability: Optional[str] = None
+    aims_role_holders: Optional[Union[str, list[str]]] = empty_list()
+    aims_role_delegation: Optional[str] = None
+    aims_role_reports_to: Optional[Union[str, AimsRoleAimsId]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, TopicSpecificPolicyId):
-            self.id = TopicSpecificPolicyId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRoleAimsId):
+            self.aims_id = AimsRoleAimsId(self.aims_id)
 
-        if self.topic_area is not None and not isinstance(self.topic_area, str):
-            self.topic_area = str(self.topic_area)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.parent_policy is not None and not isinstance(self.parent_policy, AIPolicyId):
-            self.parent_policy = AIPolicyId(self.parent_policy)
+        if self.aims_role_category is not None and not isinstance(self.aims_role_category, str):
+            self.aims_role_category = str(self.aims_role_category)
 
-        if not isinstance(self.applicable_controls, list):
-            self.applicable_controls = [self.applicable_controls] if self.applicable_controls is not None else []
-        self.applicable_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.applicable_controls]
+        if not isinstance(self.aims_role_areas, list):
+            self.aims_role_areas = [self.aims_role_areas] if self.aims_role_areas is not None else []
+        self.aims_role_areas = [v if isinstance(v, str) else str(v) for v in self.aims_role_areas]
 
-        if self.target_audience is not None and not isinstance(self.target_audience, str):
-            self.target_audience = str(self.target_audience)
+        if not isinstance(self.aims_role_responsibilities, list):
+            self.aims_role_responsibilities = [self.aims_role_responsibilities] if self.aims_role_responsibilities is not None else []
+        self.aims_role_responsibilities = [v if isinstance(v, str) else str(v) for v in self.aims_role_responsibilities]
+
+        if not isinstance(self.aims_role_authorities, list):
+            self.aims_role_authorities = [self.aims_role_authorities] if self.aims_role_authorities is not None else []
+        self.aims_role_authorities = [v if isinstance(v, str) else str(v) for v in self.aims_role_authorities]
+
+        if self.aims_role_ensures_conformity is not None and not isinstance(self.aims_role_ensures_conformity, Bool):
+            self.aims_role_ensures_conformity = Bool(self.aims_role_ensures_conformity)
+
+        if self.aims_role_reports_performance is not None and not isinstance(self.aims_role_reports_performance, Bool):
+            self.aims_role_reports_performance = Bool(self.aims_role_reports_performance)
+
+        if self.aims_role_accountability is not None and not isinstance(self.aims_role_accountability, str):
+            self.aims_role_accountability = str(self.aims_role_accountability)
+
+        if not isinstance(self.aims_role_holders, list):
+            self.aims_role_holders = [self.aims_role_holders] if self.aims_role_holders is not None else []
+        self.aims_role_holders = [v if isinstance(v, str) else str(v) for v in self.aims_role_holders]
+
+        if self.aims_role_delegation is not None and not isinstance(self.aims_role_delegation, str):
+            self.aims_role_delegation = str(self.aims_role_delegation)
+
+        if self.aims_role_reports_to is not None and not isinstance(self.aims_role_reports_to, AimsRoleAimsId):
+            self.aims_role_reports_to = AimsRoleAimsId(self.aims_role_reports_to)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Role(NamedEntity):
+class AimsObjective(YAMLRoot):
     """
-    An AI-related role with defined responsibilities and authorities per Clause 5.3 and Annex A.3.2.
+    An AI objective: a result the organization aims for, with how it plans to reach it and how it judges progress.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["Role"]
-    class_class_curie: ClassVar[str] = "iso42001:Role"
-    class_name: ClassVar[str] = "Role"
-    class_model_uri: ClassVar[URIRef] = ISO42001.Role
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsObjective"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsObjective"
+    class_name: ClassVar[str] = "AimsObjective"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsObjective
 
-    id: Union[str, RoleId] = None
-    name: str = None
-    role_type: Optional[str] = None
-    responsibilities: Optional[Union[str, list[str]]] = empty_list()
-    authorities: Optional[Union[str, list[str]]] = empty_list()
-    accountability: Optional[str] = None
-    assigned_to: Optional[Union[str, list[str]]] = empty_list()
-    delegation_rules: Optional[str] = None
-    reporting_line: Optional[str] = None
+    aims_id: Union[str, AimsObjectiveAimsId] = None
+    title: str = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_relevant_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_objective_categories: Optional[Union[Union[str, "AimsObjectiveCategory"], list[Union[str, "AimsObjectiveCategory"]]]] = empty_list()
+    aims_objective_purpose: Optional[Union[str, "AimsObjectivePurpose"]] = None
+    aims_objective_statement: Optional[str] = None
+    aims_objective_target: Optional[str] = None
+    aims_objective_current_value: Optional[str] = None
+    aims_objective_metric: Optional[str] = None
+    aims_objective_measurement_method: Optional[str] = None
+    aims_objective_measurement_frequency: Optional[str] = None
+    aims_objective_target_date: Optional[Union[str, XSDDate]] = None
+    aims_objective_achievement: Optional[str] = None
+    aims_objective_risks: Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]] = empty_list()
+    aims_objective_action_plan: Optional[str] = None
+    aims_objective_resources: Optional[str] = None
+    aims_objective_evaluation: Optional[str] = None
+    aims_objective_communication: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, RoleId):
-            self.id = RoleId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsObjectiveAimsId):
+            self.aims_id = AimsObjectiveAimsId(self.aims_id)
 
-        if self.role_type is not None and not isinstance(self.role_type, str):
-            self.role_type = str(self.role_type)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.responsibilities, list):
-            self.responsibilities = [self.responsibilities] if self.responsibilities is not None else []
-        self.responsibilities = [v if isinstance(v, str) else str(v) for v in self.responsibilities]
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
 
-        if not isinstance(self.authorities, list):
-            self.authorities = [self.authorities] if self.authorities is not None else []
-        self.authorities = [v if isinstance(v, str) else str(v) for v in self.authorities]
+        if not isinstance(self.aims_relevant_controls, list):
+            self.aims_relevant_controls = [self.aims_relevant_controls] if self.aims_relevant_controls is not None else []
+        self.aims_relevant_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_relevant_controls]
 
-        if self.accountability is not None and not isinstance(self.accountability, str):
-            self.accountability = str(self.accountability)
+        if not isinstance(self.aims_objective_categories, list):
+            self.aims_objective_categories = [self.aims_objective_categories] if self.aims_objective_categories is not None else []
+        self.aims_objective_categories = [v if isinstance(v, AimsObjectiveCategory) else AimsObjectiveCategory(v) for v in self.aims_objective_categories]
 
-        if not isinstance(self.assigned_to, list):
-            self.assigned_to = [self.assigned_to] if self.assigned_to is not None else []
-        self.assigned_to = [v if isinstance(v, str) else str(v) for v in self.assigned_to]
+        if self.aims_objective_purpose is not None and not isinstance(self.aims_objective_purpose, AimsObjectivePurpose):
+            self.aims_objective_purpose = AimsObjectivePurpose(self.aims_objective_purpose)
 
-        if self.delegation_rules is not None and not isinstance(self.delegation_rules, str):
-            self.delegation_rules = str(self.delegation_rules)
+        if self.aims_objective_statement is not None and not isinstance(self.aims_objective_statement, str):
+            self.aims_objective_statement = str(self.aims_objective_statement)
 
-        if self.reporting_line is not None and not isinstance(self.reporting_line, str):
-            self.reporting_line = str(self.reporting_line)
+        if self.aims_objective_target is not None and not isinstance(self.aims_objective_target, str):
+            self.aims_objective_target = str(self.aims_objective_target)
+
+        if self.aims_objective_current_value is not None and not isinstance(self.aims_objective_current_value, str):
+            self.aims_objective_current_value = str(self.aims_objective_current_value)
+
+        if self.aims_objective_metric is not None and not isinstance(self.aims_objective_metric, str):
+            self.aims_objective_metric = str(self.aims_objective_metric)
+
+        if self.aims_objective_measurement_method is not None and not isinstance(self.aims_objective_measurement_method, str):
+            self.aims_objective_measurement_method = str(self.aims_objective_measurement_method)
+
+        if self.aims_objective_measurement_frequency is not None and not isinstance(self.aims_objective_measurement_frequency, str):
+            self.aims_objective_measurement_frequency = str(self.aims_objective_measurement_frequency)
+
+        if self.aims_objective_target_date is not None and not isinstance(self.aims_objective_target_date, XSDDate):
+            self.aims_objective_target_date = XSDDate(self.aims_objective_target_date)
+
+        if self.aims_objective_achievement is not None and not isinstance(self.aims_objective_achievement, str):
+            self.aims_objective_achievement = str(self.aims_objective_achievement)
+
+        if not isinstance(self.aims_objective_risks, list):
+            self.aims_objective_risks = [self.aims_objective_risks] if self.aims_objective_risks is not None else []
+        self.aims_objective_risks = [v if isinstance(v, AimsRiskAimsId) else AimsRiskAimsId(v) for v in self.aims_objective_risks]
+
+        if self.aims_objective_action_plan is not None and not isinstance(self.aims_objective_action_plan, str):
+            self.aims_objective_action_plan = str(self.aims_objective_action_plan)
+
+        if self.aims_objective_resources is not None and not isinstance(self.aims_objective_resources, str):
+            self.aims_objective_resources = str(self.aims_objective_resources)
+
+        if self.aims_objective_evaluation is not None and not isinstance(self.aims_objective_evaluation, str):
+            self.aims_objective_evaluation = str(self.aims_objective_evaluation)
+
+        if self.aims_objective_communication is not None and not isinstance(self.aims_objective_communication, str):
+            self.aims_objective_communication = str(self.aims_objective_communication)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIObjective(NamedEntity):
+class AimsPlannedAction(YAMLRoot):
     """
-    A measurable AI objective per Clause 6.2, established at relevant functions and levels and aligned with the AI
-    policy.
+    An action planned on a risk or an opportunity the system faces, with how it fits the system's processes and how
+    its effect will be judged.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIObjective"]
-    class_class_curie: ClassVar[str] = "iso42001:AIObjective"
-    class_name: ClassVar[str] = "AIObjective"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIObjective
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsPlannedAction"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsPlannedAction"
+    class_name: ClassVar[str] = "AimsPlannedAction"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsPlannedAction
 
-    id: Union[str, AIObjectiveId] = None
-    name: str = None
-    objective_statement: Optional[str] = None
-    objective_category: Optional[Union[str, "AIObjectiveCategory"]] = None
-    target_value: Optional[str] = None
-    current_value: Optional[str] = None
-    metric_definition: Optional[str] = None
-    measurement_method: Optional[str] = None
-    measurement_frequency: Optional[str] = None
-    responsible_role: Optional[Union[str, RoleId]] = None
-    resources_required: Optional[str] = None
-    target_date: Optional[Union[str, XSDDate]] = None
-    achievement_status: Optional[str] = None
-    related_risks: Optional[Union[Union[str, AIRiskId], list[Union[str, AIRiskId]]]] = empty_list()
-    related_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    action_plan: Optional[str] = None
+    aims_id: Union[str, AimsPlannedActionAimsId] = None
+    title: str = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_planned_action_risks: Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]] = empty_list()
+    aims_planned_action_opportunities: Optional[Union[str, list[str]]] = empty_list()
+    aims_planned_action_integration: Optional[str] = None
+    aims_planned_action_effectiveness: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIObjectiveId):
-            self.id = AIObjectiveId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsPlannedActionAimsId):
+            self.aims_id = AimsPlannedActionAimsId(self.aims_id)
 
-        if self.objective_statement is not None and not isinstance(self.objective_statement, str):
-            self.objective_statement = str(self.objective_statement)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.objective_category is not None and not isinstance(self.objective_category, AIObjectiveCategory):
-            self.objective_category = AIObjectiveCategory(self.objective_category)
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
 
-        if self.target_value is not None and not isinstance(self.target_value, str):
-            self.target_value = str(self.target_value)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.current_value is not None and not isinstance(self.current_value, str):
-            self.current_value = str(self.current_value)
+        if not isinstance(self.aims_planned_action_risks, list):
+            self.aims_planned_action_risks = [self.aims_planned_action_risks] if self.aims_planned_action_risks is not None else []
+        self.aims_planned_action_risks = [v if isinstance(v, AimsRiskAimsId) else AimsRiskAimsId(v) for v in self.aims_planned_action_risks]
 
-        if self.metric_definition is not None and not isinstance(self.metric_definition, str):
-            self.metric_definition = str(self.metric_definition)
+        if not isinstance(self.aims_planned_action_opportunities, list):
+            self.aims_planned_action_opportunities = [self.aims_planned_action_opportunities] if self.aims_planned_action_opportunities is not None else []
+        self.aims_planned_action_opportunities = [v if isinstance(v, str) else str(v) for v in self.aims_planned_action_opportunities]
 
-        if self.measurement_method is not None and not isinstance(self.measurement_method, str):
-            self.measurement_method = str(self.measurement_method)
+        if self.aims_planned_action_integration is not None and not isinstance(self.aims_planned_action_integration, str):
+            self.aims_planned_action_integration = str(self.aims_planned_action_integration)
 
-        if self.measurement_frequency is not None and not isinstance(self.measurement_frequency, str):
-            self.measurement_frequency = str(self.measurement_frequency)
+        if self.aims_planned_action_effectiveness is not None and not isinstance(self.aims_planned_action_effectiveness, str):
+            self.aims_planned_action_effectiveness = str(self.aims_planned_action_effectiveness)
 
-        if self.responsible_role is not None and not isinstance(self.responsible_role, RoleId):
-            self.responsible_role = RoleId(self.responsible_role)
-
-        if self.resources_required is not None and not isinstance(self.resources_required, str):
-            self.resources_required = str(self.resources_required)
-
-        if self.target_date is not None and not isinstance(self.target_date, XSDDate):
-            self.target_date = XSDDate(self.target_date)
-
-        if self.achievement_status is not None and not isinstance(self.achievement_status, str):
-            self.achievement_status = str(self.achievement_status)
-
-        if not isinstance(self.related_risks, list):
-            self.related_risks = [self.related_risks] if self.related_risks is not None else []
-        self.related_risks = [v if isinstance(v, AIRiskId) else AIRiskId(v) for v in self.related_risks]
-
-        if not isinstance(self.related_controls, list):
-            self.related_controls = [self.related_controls] if self.related_controls is not None else []
-        self.related_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.related_controls]
-
-        if self.action_plan is not None and not isinstance(self.action_plan, str):
-            self.action_plan = str(self.action_plan)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIRiskAssessmentProcess(DocumentedInformation):
+class AimsRiskAssessmentProcess(YAMLRoot):
     """
-    The documented AI risk assessment process per Clause 6.1.2, defining criteria and methodology for identifying,
-    analysing, and evaluating AI risks. Aligned with ISO/IEC 23894.
+    The organization's process for assessing AI risks: its criteria, scales and method, and when it runs.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIRiskAssessmentProcess"]
-    class_class_curie: ClassVar[str] = "iso42001:AIRiskAssessmentProcess"
-    class_name: ClassVar[str] = "AIRiskAssessmentProcess"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIRiskAssessmentProcess
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRiskAssessmentProcess"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRiskAssessmentProcess"
+    class_name: ClassVar[str] = "AimsRiskAssessmentProcess"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRiskAssessmentProcess
 
-    id: Union[str, AIRiskAssessmentProcessId] = None
-    name: str = None
-    risk_acceptance_criteria: Optional[str] = None
-    assessment_criteria: Optional[str] = None
-    assessment_methodology: Optional[str] = None
-    likelihood_scale: Optional[str] = None
-    impact_scale: Optional[str] = None
-    risk_matrix: Optional[str] = None
-    assessment_frequency: Optional[str] = None
-    trigger_events: Optional[Union[str, list[str]]] = empty_list()
-    alignment_with_ai_policy: Optional[str] = None
+    aims_id: Union[str, AimsRiskAssessmentProcessAimsId] = None
+    title: str = None
+    aims_risk_criteria: Optional[Union[str, list[str]]] = empty_list()
+    aims_risk_policy_alignment: Optional[str] = None
+    aims_risk_comparability: Optional[str] = None
+    aims_risk_method: Optional[str] = None
+    aims_risk_likelihood_scale: Optional[str] = None
+    aims_risk_consequence_scale: Optional[str] = None
+    aims_risk_matrix: Optional[str] = None
+    aims_risk_prioritization: Optional[str] = None
+    aims_risk_assessment_interval: Optional[Union[str, AimsDuration]] = None
+    aims_risk_assessment_triggers: Optional[Union[str, list[str]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIRiskAssessmentProcessId):
-            self.id = AIRiskAssessmentProcessId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRiskAssessmentProcessAimsId):
+            self.aims_id = AimsRiskAssessmentProcessAimsId(self.aims_id)
 
-        if self.risk_acceptance_criteria is not None and not isinstance(self.risk_acceptance_criteria, str):
-            self.risk_acceptance_criteria = str(self.risk_acceptance_criteria)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.assessment_criteria is not None and not isinstance(self.assessment_criteria, str):
-            self.assessment_criteria = str(self.assessment_criteria)
+        if not isinstance(self.aims_risk_criteria, list):
+            self.aims_risk_criteria = [self.aims_risk_criteria] if self.aims_risk_criteria is not None else []
+        self.aims_risk_criteria = [v if isinstance(v, str) else str(v) for v in self.aims_risk_criteria]
 
-        if self.assessment_methodology is not None and not isinstance(self.assessment_methodology, str):
-            self.assessment_methodology = str(self.assessment_methodology)
+        if self.aims_risk_policy_alignment is not None and not isinstance(self.aims_risk_policy_alignment, str):
+            self.aims_risk_policy_alignment = str(self.aims_risk_policy_alignment)
 
-        if self.likelihood_scale is not None and not isinstance(self.likelihood_scale, str):
-            self.likelihood_scale = str(self.likelihood_scale)
+        if self.aims_risk_comparability is not None and not isinstance(self.aims_risk_comparability, str):
+            self.aims_risk_comparability = str(self.aims_risk_comparability)
 
-        if self.impact_scale is not None and not isinstance(self.impact_scale, str):
-            self.impact_scale = str(self.impact_scale)
+        if self.aims_risk_method is not None and not isinstance(self.aims_risk_method, str):
+            self.aims_risk_method = str(self.aims_risk_method)
 
-        if self.risk_matrix is not None and not isinstance(self.risk_matrix, str):
-            self.risk_matrix = str(self.risk_matrix)
+        if self.aims_risk_likelihood_scale is not None and not isinstance(self.aims_risk_likelihood_scale, str):
+            self.aims_risk_likelihood_scale = str(self.aims_risk_likelihood_scale)
 
-        if self.assessment_frequency is not None and not isinstance(self.assessment_frequency, str):
-            self.assessment_frequency = str(self.assessment_frequency)
+        if self.aims_risk_consequence_scale is not None and not isinstance(self.aims_risk_consequence_scale, str):
+            self.aims_risk_consequence_scale = str(self.aims_risk_consequence_scale)
 
-        if not isinstance(self.trigger_events, list):
-            self.trigger_events = [self.trigger_events] if self.trigger_events is not None else []
-        self.trigger_events = [v if isinstance(v, str) else str(v) for v in self.trigger_events]
+        if self.aims_risk_matrix is not None and not isinstance(self.aims_risk_matrix, str):
+            self.aims_risk_matrix = str(self.aims_risk_matrix)
 
-        if self.alignment_with_ai_policy is not None and not isinstance(self.alignment_with_ai_policy, str):
-            self.alignment_with_ai_policy = str(self.alignment_with_ai_policy)
+        if self.aims_risk_prioritization is not None and not isinstance(self.aims_risk_prioritization, str):
+            self.aims_risk_prioritization = str(self.aims_risk_prioritization)
+
+        if self.aims_risk_assessment_interval is not None and not isinstance(self.aims_risk_assessment_interval, AimsDuration):
+            self.aims_risk_assessment_interval = AimsDuration(self.aims_risk_assessment_interval)
+
+        if not isinstance(self.aims_risk_assessment_triggers, list):
+            self.aims_risk_assessment_triggers = [self.aims_risk_assessment_triggers] if self.aims_risk_assessment_triggers is not None else []
+        self.aims_risk_assessment_triggers = [v if isinstance(v, str) else str(v) for v in self.aims_risk_assessment_triggers]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIRiskAssessment(DocumentedInformation):
+class AimsRiskAssessment(YAMLRoot):
     """
-    An instance of AI risk assessment performed per Clause 8.2, identifying and evaluating AI risks at planned
-    intervals or following significant change.
+    One risk assessment carried out under the process, and what it found.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIRiskAssessment"]
-    class_class_curie: ClassVar[str] = "iso42001:AIRiskAssessment"
-    class_name: ClassVar[str] = "AIRiskAssessment"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIRiskAssessment
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRiskAssessment"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRiskAssessment"
+    class_name: ClassVar[str] = "AimsRiskAssessment"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRiskAssessment
 
-    id: Union[str, AIRiskAssessmentId] = None
-    name: str = None
-    assessment_scope: Optional[str] = None
-    ai_systems_assessed: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    assessment_date: Optional[Union[str, XSDDate]] = None
-    assessor: Optional[str] = None
-    methodology_used: Optional[str] = None
-    risks_identified: Optional[Union[Union[str, AIRiskId], list[Union[str, AIRiskId]]]] = empty_list()
-    linked_impact_assessment: Optional[Union[str, AISystemImpactAssessmentId]] = None
-    summary_findings: Optional[str] = None
-    recommendations: Optional[Union[str, list[str]]] = empty_list()
-    next_assessment_date: Optional[Union[str, XSDDate]] = None
+    aims_id: Union[str, AimsRiskAssessmentAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_assessment_scope: Optional[str] = None
+    aims_assessment_date: Optional[Union[str, XSDDate]] = None
+    aims_assessment_assessor: Optional[str] = None
+    aims_assessment_method_used: Optional[str] = None
+    aims_assessment_risks: Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]] = empty_list()
+    aims_assessment_impact_assessments: Optional[Union[Union[str, AimsImpactAssessmentAimsId], list[Union[str, AimsImpactAssessmentAimsId]]]] = empty_list()
+    aims_assessment_summary: Optional[str] = None
+    aims_assessment_recommendations: Optional[Union[str, list[str]]] = empty_list()
+    aims_assessment_next_date: Optional[Union[str, XSDDate]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIRiskAssessmentId):
-            self.id = AIRiskAssessmentId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRiskAssessmentAimsId):
+            self.aims_id = AimsRiskAssessmentAimsId(self.aims_id)
 
-        if self.assessment_scope is not None and not isinstance(self.assessment_scope, str):
-            self.assessment_scope = str(self.assessment_scope)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.ai_systems_assessed, list):
-            self.ai_systems_assessed = [self.ai_systems_assessed] if self.ai_systems_assessed is not None else []
-        self.ai_systems_assessed = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.ai_systems_assessed]
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.assessment_date is not None and not isinstance(self.assessment_date, XSDDate):
-            self.assessment_date = XSDDate(self.assessment_date)
+        if self.aims_assessment_scope is not None and not isinstance(self.aims_assessment_scope, str):
+            self.aims_assessment_scope = str(self.aims_assessment_scope)
 
-        if self.assessor is not None and not isinstance(self.assessor, str):
-            self.assessor = str(self.assessor)
+        if self.aims_assessment_date is not None and not isinstance(self.aims_assessment_date, XSDDate):
+            self.aims_assessment_date = XSDDate(self.aims_assessment_date)
 
-        if self.methodology_used is not None and not isinstance(self.methodology_used, str):
-            self.methodology_used = str(self.methodology_used)
+        if self.aims_assessment_assessor is not None and not isinstance(self.aims_assessment_assessor, str):
+            self.aims_assessment_assessor = str(self.aims_assessment_assessor)
 
-        if not isinstance(self.risks_identified, list):
-            self.risks_identified = [self.risks_identified] if self.risks_identified is not None else []
-        self.risks_identified = [v if isinstance(v, AIRiskId) else AIRiskId(v) for v in self.risks_identified]
+        if self.aims_assessment_method_used is not None and not isinstance(self.aims_assessment_method_used, str):
+            self.aims_assessment_method_used = str(self.aims_assessment_method_used)
 
-        if self.linked_impact_assessment is not None and not isinstance(self.linked_impact_assessment, AISystemImpactAssessmentId):
-            self.linked_impact_assessment = AISystemImpactAssessmentId(self.linked_impact_assessment)
+        if not isinstance(self.aims_assessment_risks, list):
+            self.aims_assessment_risks = [self.aims_assessment_risks] if self.aims_assessment_risks is not None else []
+        self.aims_assessment_risks = [v if isinstance(v, AimsRiskAimsId) else AimsRiskAimsId(v) for v in self.aims_assessment_risks]
 
-        if self.summary_findings is not None and not isinstance(self.summary_findings, str):
-            self.summary_findings = str(self.summary_findings)
+        if not isinstance(self.aims_assessment_impact_assessments, list):
+            self.aims_assessment_impact_assessments = [self.aims_assessment_impact_assessments] if self.aims_assessment_impact_assessments is not None else []
+        self.aims_assessment_impact_assessments = [v if isinstance(v, AimsImpactAssessmentAimsId) else AimsImpactAssessmentAimsId(v) for v in self.aims_assessment_impact_assessments]
 
-        if not isinstance(self.recommendations, list):
-            self.recommendations = [self.recommendations] if self.recommendations is not None else []
-        self.recommendations = [v if isinstance(v, str) else str(v) for v in self.recommendations]
+        if self.aims_assessment_summary is not None and not isinstance(self.aims_assessment_summary, str):
+            self.aims_assessment_summary = str(self.aims_assessment_summary)
 
-        if self.next_assessment_date is not None and not isinstance(self.next_assessment_date, XSDDate):
-            self.next_assessment_date = XSDDate(self.next_assessment_date)
+        if not isinstance(self.aims_assessment_recommendations, list):
+            self.aims_assessment_recommendations = [self.aims_assessment_recommendations] if self.aims_assessment_recommendations is not None else []
+        self.aims_assessment_recommendations = [v if isinstance(v, str) else str(v) for v in self.aims_assessment_recommendations]
+
+        if self.aims_assessment_next_date is not None and not isinstance(self.aims_assessment_next_date, XSDDate):
+            self.aims_assessment_next_date = XSDDate(self.aims_assessment_next_date)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIRisk(NamedEntity):
+class AimsRisk(YAMLRoot):
     """
-    An identified AI risk that may affect achievement of AI objectives, individuals, groups, or societies within the
-    AIMS scope.
+    An AI risk in the risk register: where it comes from, which objectives it helps or hinders, who could feel its
+    consequences, how it is rated and how it is treated.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIRisk"]
-    class_class_curie: ClassVar[str] = "iso42001:AIRisk"
-    class_name: ClassVar[str] = "AIRisk"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIRisk
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRisk"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRisk"
+    class_name: ClassVar[str] = "AimsRisk"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRisk
 
-    id: Union[str, AIRiskId] = None
-    name: str = None
-    risk_source_category: Optional[Union[str, "AIRiskSourceCategory"]] = None
-    risk_source_description: Optional[str] = None
-    affected_ai_systems: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    affected_dimensions: Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]] = empty_list()
-    risk_owner: Optional[str] = None
-    likelihood: Optional[Union[str, "LikelihoodRating"]] = None
-    impact: Optional[Union[str, "ImpactRating"]] = None
-    inherent_risk_level: Optional[Union[str, "RiskLevel"]] = None
-    existing_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    residual_risk_level: Optional[Union[str, "RiskLevel"]] = None
-    risk_treatment_option: Optional[Union[str, "RiskTreatmentOption"]] = None
-    treatment_priority: Optional[str] = None
-    related_treatment_plan: Optional[Union[str, AIRiskTreatmentPlanId]] = None
-    related_impact_assessment: Optional[Union[str, AISystemImpactAssessmentId]] = None
+    aims_id: Union[str, AimsRiskAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_risk_source_categories: Optional[Union[Union[str, "AimsRiskSourceCategory"], list[Union[str, "AimsRiskSourceCategory"]]]] = empty_list()
+    aims_risk_source: Optional[str] = None
+    aims_risk_objectives: Optional[Union[Union[str, AimsObjectiveAimsId], list[Union[str, AimsObjectiveAimsId]]]] = empty_list()
+    aims_risk_consequences_for_organization: Optional[str] = None
+    aims_risk_consequences_for_individuals: Optional[str] = None
+    aims_risk_consequences_for_societies: Optional[str] = None
+    aims_risk_owner: Optional[str] = None
+    aims_risk_likelihood: Optional[Union[str, "AimsLikelihood"]] = None
+    aims_risk_consequence: Optional[Union[str, "AimsConsequence"]] = None
+    aims_risk_inherent_level: Optional[Union[str, "AimsRiskLevel"]] = None
+    aims_risk_existing_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_risk_residual_level: Optional[Union[str, "AimsRiskLevel"]] = None
+    aims_risk_acceptable: Optional[Union[bool, Bool]] = None
+    aims_risk_treatment_option: Optional[Union[str, "AimsRiskTreatmentOption"]] = None
+    aims_risk_treatment_priority: Optional[str] = None
+    aims_risk_impact_assessments: Optional[Union[Union[str, AimsImpactAssessmentAimsId], list[Union[str, AimsImpactAssessmentAimsId]]]] = empty_list()
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIRiskId):
-            self.id = AIRiskId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRiskAimsId):
+            self.aims_id = AimsRiskAimsId(self.aims_id)
 
-        if self.risk_source_category is not None and not isinstance(self.risk_source_category, AIRiskSourceCategory):
-            self.risk_source_category = AIRiskSourceCategory(self.risk_source_category)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.risk_source_description is not None and not isinstance(self.risk_source_description, str):
-            self.risk_source_description = str(self.risk_source_description)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if not isinstance(self.affected_ai_systems, list):
-            self.affected_ai_systems = [self.affected_ai_systems] if self.affected_ai_systems is not None else []
-        self.affected_ai_systems = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.affected_ai_systems]
+        if not isinstance(self.aims_risk_source_categories, list):
+            self.aims_risk_source_categories = [self.aims_risk_source_categories] if self.aims_risk_source_categories is not None else []
+        self.aims_risk_source_categories = [v if isinstance(v, AimsRiskSourceCategory) else AimsRiskSourceCategory(v) for v in self.aims_risk_source_categories]
 
-        if not isinstance(self.affected_dimensions, list):
-            self.affected_dimensions = [self.affected_dimensions] if self.affected_dimensions is not None else []
-        self.affected_dimensions = [v if isinstance(v, ImpactAssessmentDimension) else ImpactAssessmentDimension(v) for v in self.affected_dimensions]
+        if self.aims_risk_source is not None and not isinstance(self.aims_risk_source, str):
+            self.aims_risk_source = str(self.aims_risk_source)
 
-        if self.risk_owner is not None and not isinstance(self.risk_owner, str):
-            self.risk_owner = str(self.risk_owner)
+        if not isinstance(self.aims_risk_objectives, list):
+            self.aims_risk_objectives = [self.aims_risk_objectives] if self.aims_risk_objectives is not None else []
+        self.aims_risk_objectives = [v if isinstance(v, AimsObjectiveAimsId) else AimsObjectiveAimsId(v) for v in self.aims_risk_objectives]
 
-        if self.likelihood is not None and not isinstance(self.likelihood, LikelihoodRating):
-            self.likelihood = LikelihoodRating(self.likelihood)
+        if self.aims_risk_consequences_for_organization is not None and not isinstance(self.aims_risk_consequences_for_organization, str):
+            self.aims_risk_consequences_for_organization = str(self.aims_risk_consequences_for_organization)
 
-        if self.impact is not None and not isinstance(self.impact, ImpactRating):
-            self.impact = ImpactRating(self.impact)
+        if self.aims_risk_consequences_for_individuals is not None and not isinstance(self.aims_risk_consequences_for_individuals, str):
+            self.aims_risk_consequences_for_individuals = str(self.aims_risk_consequences_for_individuals)
 
-        if self.inherent_risk_level is not None and not isinstance(self.inherent_risk_level, RiskLevel):
-            self.inherent_risk_level = RiskLevel(self.inherent_risk_level)
+        if self.aims_risk_consequences_for_societies is not None and not isinstance(self.aims_risk_consequences_for_societies, str):
+            self.aims_risk_consequences_for_societies = str(self.aims_risk_consequences_for_societies)
 
-        if not isinstance(self.existing_controls, list):
-            self.existing_controls = [self.existing_controls] if self.existing_controls is not None else []
-        self.existing_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.existing_controls]
+        if self.aims_risk_owner is not None and not isinstance(self.aims_risk_owner, str):
+            self.aims_risk_owner = str(self.aims_risk_owner)
 
-        if self.residual_risk_level is not None and not isinstance(self.residual_risk_level, RiskLevel):
-            self.residual_risk_level = RiskLevel(self.residual_risk_level)
+        if self.aims_risk_likelihood is not None and not isinstance(self.aims_risk_likelihood, AimsLikelihood):
+            self.aims_risk_likelihood = AimsLikelihood(self.aims_risk_likelihood)
 
-        if self.risk_treatment_option is not None and not isinstance(self.risk_treatment_option, RiskTreatmentOption):
-            self.risk_treatment_option = RiskTreatmentOption(self.risk_treatment_option)
+        if self.aims_risk_consequence is not None and not isinstance(self.aims_risk_consequence, AimsConsequence):
+            self.aims_risk_consequence = AimsConsequence(self.aims_risk_consequence)
 
-        if self.treatment_priority is not None and not isinstance(self.treatment_priority, str):
-            self.treatment_priority = str(self.treatment_priority)
+        if self.aims_risk_inherent_level is not None and not isinstance(self.aims_risk_inherent_level, AimsRiskLevel):
+            self.aims_risk_inherent_level = AimsRiskLevel(self.aims_risk_inherent_level)
 
-        if self.related_treatment_plan is not None and not isinstance(self.related_treatment_plan, AIRiskTreatmentPlanId):
-            self.related_treatment_plan = AIRiskTreatmentPlanId(self.related_treatment_plan)
+        if not isinstance(self.aims_risk_existing_controls, list):
+            self.aims_risk_existing_controls = [self.aims_risk_existing_controls] if self.aims_risk_existing_controls is not None else []
+        self.aims_risk_existing_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_risk_existing_controls]
 
-        if self.related_impact_assessment is not None and not isinstance(self.related_impact_assessment, AISystemImpactAssessmentId):
-            self.related_impact_assessment = AISystemImpactAssessmentId(self.related_impact_assessment)
+        if self.aims_risk_residual_level is not None and not isinstance(self.aims_risk_residual_level, AimsRiskLevel):
+            self.aims_risk_residual_level = AimsRiskLevel(self.aims_risk_residual_level)
+
+        if self.aims_risk_acceptable is not None and not isinstance(self.aims_risk_acceptable, Bool):
+            self.aims_risk_acceptable = Bool(self.aims_risk_acceptable)
+
+        if self.aims_risk_treatment_option is not None and not isinstance(self.aims_risk_treatment_option, AimsRiskTreatmentOption):
+            self.aims_risk_treatment_option = AimsRiskTreatmentOption(self.aims_risk_treatment_option)
+
+        if self.aims_risk_treatment_priority is not None and not isinstance(self.aims_risk_treatment_priority, str):
+            self.aims_risk_treatment_priority = str(self.aims_risk_treatment_priority)
+
+        if not isinstance(self.aims_risk_impact_assessments, list):
+            self.aims_risk_impact_assessments = [self.aims_risk_impact_assessments] if self.aims_risk_impact_assessments is not None else []
+        self.aims_risk_impact_assessments = [v if isinstance(v, AimsImpactAssessmentAimsId) else AimsImpactAssessmentAimsId(v) for v in self.aims_risk_impact_assessments]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIRiskTreatmentProcess(DocumentedInformation):
+class AimsRiskTreatmentProcess(YAMLRoot):
     """
-    The documented AI risk treatment process per Clause 6.1.3, defining how treatment options are selected, how Annex
-    A controls are considered, and how the Statement of Applicability is produced.
+    The organization's process for treating AI risks: how it chooses options and controls, checks them against Annex A
+    and produces the Statement of Applicability and the plan.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIRiskTreatmentProcess"]
-    class_class_curie: ClassVar[str] = "iso42001:AIRiskTreatmentProcess"
-    class_name: ClassVar[str] = "AIRiskTreatmentProcess"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIRiskTreatmentProcess
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRiskTreatmentProcess"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRiskTreatmentProcess"
+    class_name: ClassVar[str] = "AimsRiskTreatmentProcess"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRiskTreatmentProcess
 
-    id: Union[str, AIRiskTreatmentProcessId] = None
-    name: str = None
-    treatment_options_guidance: Optional[str] = None
-    control_selection_criteria: Optional[str] = None
-    soa_template: Optional[str] = None
-    approval_workflow: Optional[str] = None
+    aims_id: Union[str, AimsRiskTreatmentProcessAimsId] = None
+    title: str = None
+    aims_treatment_options_guidance: Optional[str] = None
+    aims_treatment_control_selection: Optional[str] = None
+    aims_treatment_annex_a_comparison: Optional[str] = None
+    aims_treatment_additional_controls: Optional[str] = None
+    aims_treatment_annex_b_use: Optional[str] = None
+    aims_treatment_soa_template: Optional[str] = None
+    aims_treatment_approval_workflow: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIRiskTreatmentProcessId):
-            self.id = AIRiskTreatmentProcessId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRiskTreatmentProcessAimsId):
+            self.aims_id = AimsRiskTreatmentProcessAimsId(self.aims_id)
 
-        if self.treatment_options_guidance is not None and not isinstance(self.treatment_options_guidance, str):
-            self.treatment_options_guidance = str(self.treatment_options_guidance)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.control_selection_criteria is not None and not isinstance(self.control_selection_criteria, str):
-            self.control_selection_criteria = str(self.control_selection_criteria)
+        if self.aims_treatment_options_guidance is not None and not isinstance(self.aims_treatment_options_guidance, str):
+            self.aims_treatment_options_guidance = str(self.aims_treatment_options_guidance)
 
-        if self.soa_template is not None and not isinstance(self.soa_template, str):
-            self.soa_template = str(self.soa_template)
+        if self.aims_treatment_control_selection is not None and not isinstance(self.aims_treatment_control_selection, str):
+            self.aims_treatment_control_selection = str(self.aims_treatment_control_selection)
 
-        if self.approval_workflow is not None and not isinstance(self.approval_workflow, str):
-            self.approval_workflow = str(self.approval_workflow)
+        if self.aims_treatment_annex_a_comparison is not None and not isinstance(self.aims_treatment_annex_a_comparison, str):
+            self.aims_treatment_annex_a_comparison = str(self.aims_treatment_annex_a_comparison)
+
+        if self.aims_treatment_additional_controls is not None and not isinstance(self.aims_treatment_additional_controls, str):
+            self.aims_treatment_additional_controls = str(self.aims_treatment_additional_controls)
+
+        if self.aims_treatment_annex_b_use is not None and not isinstance(self.aims_treatment_annex_b_use, str):
+            self.aims_treatment_annex_b_use = str(self.aims_treatment_annex_b_use)
+
+        if self.aims_treatment_soa_template is not None and not isinstance(self.aims_treatment_soa_template, str):
+            self.aims_treatment_soa_template = str(self.aims_treatment_soa_template)
+
+        if self.aims_treatment_approval_workflow is not None and not isinstance(self.aims_treatment_approval_workflow, str):
+            self.aims_treatment_approval_workflow = str(self.aims_treatment_approval_workflow)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIRiskTreatmentPlan(DocumentedInformation):
+class AimsRiskTreatmentPlan(YAMLRoot):
     """
-    A plan documenting planned actions to address identified AI risks through selected controls. Requires approval by
-    designated management per Clause 6.1.3.
+    A plan to treat one or more risks: the actions and controls, who carries them out and when, and designated
+    management's approval of the plan and of the risk left over.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIRiskTreatmentPlan"]
-    class_class_curie: ClassVar[str] = "iso42001:AIRiskTreatmentPlan"
-    class_name: ClassVar[str] = "AIRiskTreatmentPlan"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIRiskTreatmentPlan
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsRiskTreatmentPlan"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsRiskTreatmentPlan"
+    class_name: ClassVar[str] = "AimsRiskTreatmentPlan"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsRiskTreatmentPlan
 
-    id: Union[str, AIRiskTreatmentPlanId] = None
-    name: str = None
-    plan_scope: Optional[str] = None
-    risks_addressed: Optional[Union[Union[str, AIRiskId], list[Union[str, AIRiskId]]]] = empty_list()
-    treatment_actions: Optional[Union[str, list[str]]] = empty_list()
-    controls_to_implement: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    resources_required: Optional[str] = None
-    responsible_parties: Optional[Union[str, list[str]]] = empty_list()
-    implementation_timeline: Optional[str] = None
-    risk_owner_approval: Optional[str] = None
-    approved_date: Optional[Union[str, XSDDate]] = None
-    residual_risk_acceptance: Optional[str] = None
-    implementation_status: Optional[Union[str, "ImplementationStatus"]] = None
-    completion_date: Optional[Union[str, XSDDate]] = None
+    aims_id: Union[str, AimsRiskTreatmentPlanAimsId] = None
+    title: str = None
+    aims_implementation_state: Optional[Union[str, "AimsImplementationStatus"]] = None
+    aims_plan_scope: Optional[str] = None
+    aims_plan_risks: Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]] = empty_list()
+    aims_plan_actions: Optional[Union[str, list[str]]] = empty_list()
+    aims_plan_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_plan_resources: Optional[str] = None
+    aims_plan_responsible_parties: Optional[Union[str, list[str]]] = empty_list()
+    aims_plan_timeline: Optional[str] = None
+    aims_plan_approver: Optional[str] = None
+    aims_plan_residual_risk_acceptance: Optional[str] = None
+    aims_plan_effectiveness: Optional[str] = None
+    aims_plan_revalidation: Optional[str] = None
+    aims_plan_completion_date: Optional[Union[str, XSDDate]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIRiskTreatmentPlanId):
-            self.id = AIRiskTreatmentPlanId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsRiskTreatmentPlanAimsId):
+            self.aims_id = AimsRiskTreatmentPlanAimsId(self.aims_id)
 
-        if self.plan_scope is not None and not isinstance(self.plan_scope, str):
-            self.plan_scope = str(self.plan_scope)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.risks_addressed, list):
-            self.risks_addressed = [self.risks_addressed] if self.risks_addressed is not None else []
-        self.risks_addressed = [v if isinstance(v, AIRiskId) else AIRiskId(v) for v in self.risks_addressed]
+        if self.aims_implementation_state is not None and not isinstance(self.aims_implementation_state, AimsImplementationStatus):
+            self.aims_implementation_state = AimsImplementationStatus(self.aims_implementation_state)
 
-        if not isinstance(self.treatment_actions, list):
-            self.treatment_actions = [self.treatment_actions] if self.treatment_actions is not None else []
-        self.treatment_actions = [v if isinstance(v, str) else str(v) for v in self.treatment_actions]
+        if self.aims_plan_scope is not None and not isinstance(self.aims_plan_scope, str):
+            self.aims_plan_scope = str(self.aims_plan_scope)
 
-        if not isinstance(self.controls_to_implement, list):
-            self.controls_to_implement = [self.controls_to_implement] if self.controls_to_implement is not None else []
-        self.controls_to_implement = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.controls_to_implement]
+        if not isinstance(self.aims_plan_risks, list):
+            self.aims_plan_risks = [self.aims_plan_risks] if self.aims_plan_risks is not None else []
+        self.aims_plan_risks = [v if isinstance(v, AimsRiskAimsId) else AimsRiskAimsId(v) for v in self.aims_plan_risks]
 
-        if self.resources_required is not None and not isinstance(self.resources_required, str):
-            self.resources_required = str(self.resources_required)
+        if not isinstance(self.aims_plan_actions, list):
+            self.aims_plan_actions = [self.aims_plan_actions] if self.aims_plan_actions is not None else []
+        self.aims_plan_actions = [v if isinstance(v, str) else str(v) for v in self.aims_plan_actions]
 
-        if not isinstance(self.responsible_parties, list):
-            self.responsible_parties = [self.responsible_parties] if self.responsible_parties is not None else []
-        self.responsible_parties = [v if isinstance(v, str) else str(v) for v in self.responsible_parties]
+        if not isinstance(self.aims_plan_controls, list):
+            self.aims_plan_controls = [self.aims_plan_controls] if self.aims_plan_controls is not None else []
+        self.aims_plan_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_plan_controls]
 
-        if self.implementation_timeline is not None and not isinstance(self.implementation_timeline, str):
-            self.implementation_timeline = str(self.implementation_timeline)
+        if self.aims_plan_resources is not None and not isinstance(self.aims_plan_resources, str):
+            self.aims_plan_resources = str(self.aims_plan_resources)
 
-        if self.risk_owner_approval is not None and not isinstance(self.risk_owner_approval, str):
-            self.risk_owner_approval = str(self.risk_owner_approval)
+        if not isinstance(self.aims_plan_responsible_parties, list):
+            self.aims_plan_responsible_parties = [self.aims_plan_responsible_parties] if self.aims_plan_responsible_parties is not None else []
+        self.aims_plan_responsible_parties = [v if isinstance(v, str) else str(v) for v in self.aims_plan_responsible_parties]
 
-        if self.approved_date is not None and not isinstance(self.approved_date, XSDDate):
-            self.approved_date = XSDDate(self.approved_date)
+        if self.aims_plan_timeline is not None and not isinstance(self.aims_plan_timeline, str):
+            self.aims_plan_timeline = str(self.aims_plan_timeline)
 
-        if self.residual_risk_acceptance is not None and not isinstance(self.residual_risk_acceptance, str):
-            self.residual_risk_acceptance = str(self.residual_risk_acceptance)
+        if self.aims_plan_approver is not None and not isinstance(self.aims_plan_approver, str):
+            self.aims_plan_approver = str(self.aims_plan_approver)
 
-        if self.implementation_status is not None and not isinstance(self.implementation_status, ImplementationStatus):
-            self.implementation_status = ImplementationStatus(self.implementation_status)
+        if self.aims_plan_residual_risk_acceptance is not None and not isinstance(self.aims_plan_residual_risk_acceptance, str):
+            self.aims_plan_residual_risk_acceptance = str(self.aims_plan_residual_risk_acceptance)
 
-        if self.completion_date is not None and not isinstance(self.completion_date, XSDDate):
-            self.completion_date = XSDDate(self.completion_date)
+        if self.aims_plan_effectiveness is not None and not isinstance(self.aims_plan_effectiveness, str):
+            self.aims_plan_effectiveness = str(self.aims_plan_effectiveness)
+
+        if self.aims_plan_revalidation is not None and not isinstance(self.aims_plan_revalidation, str):
+            self.aims_plan_revalidation = str(self.aims_plan_revalidation)
+
+        if self.aims_plan_completion_date is not None and not isinstance(self.aims_plan_completion_date, XSDDate):
+            self.aims_plan_completion_date = XSDDate(self.aims_plan_completion_date)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AISystemImpactAssessmentProcess(DocumentedInformation):
+class AimsImpactAssessmentProcess(YAMLRoot):
     """
-    The documented process for assessing the potential consequences for individuals, groups, and societies arising
-    from the development, provision, or use of AI systems per Clause 6.1.4.
+    The process for working out what AI systems may do to people and society: when it applies, what it takes in, who
+    runs it and how the results are used.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AISystemImpactAssessmentProcess"]
-    class_class_curie: ClassVar[str] = "iso42001:AISystemImpactAssessmentProcess"
-    class_name: ClassVar[str] = "AISystemImpactAssessmentProcess"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AISystemImpactAssessmentProcess
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsImpactAssessmentProcess"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsImpactAssessmentProcess"
+    class_name: ClassVar[str] = "AimsImpactAssessmentProcess"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsImpactAssessmentProcess
 
-    id: Union[str, AISystemImpactAssessmentProcessId] = None
-    name: str = None
-    assessment_criteria: Optional[str] = None
-    assessment_methodology: Optional[str] = None
-    dimensions_in_scope: Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]] = empty_list()
-    assessment_frequency: Optional[str] = None
-    trigger_events: Optional[Union[str, list[str]]] = empty_list()
-    linkage_to_risk_assessment: Optional[str] = None
+    aims_id: Union[str, AimsImpactAssessmentProcessAimsId] = None
+    title: str = None
+    aims_impact_process_triggers: Optional[Union[str, list[str]]] = empty_list()
+    aims_impact_process_interval: Optional[Union[str, AimsDuration]] = None
+    aims_impact_process_steps: Optional[Union[str, list[str]]] = empty_list()
+    aims_impact_process_assessors: Optional[str] = None
+    aims_impact_process_use: Optional[str] = None
+    aims_impact_process_subjects: Optional[Union[Union[str, "AimsImpactSubject"], list[Union[str, "AimsImpactSubject"]]]] = empty_list()
+    aims_impact_process_areas: Optional[Union[Union[str, "AimsImpactArea"], list[Union[str, "AimsImpactArea"]]]] = empty_list()
+    aims_impact_process_retention: Optional[Union[str, AimsDuration]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AISystemImpactAssessmentProcessId):
-            self.id = AISystemImpactAssessmentProcessId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsImpactAssessmentProcessAimsId):
+            self.aims_id = AimsImpactAssessmentProcessAimsId(self.aims_id)
 
-        if self.assessment_criteria is not None and not isinstance(self.assessment_criteria, str):
-            self.assessment_criteria = str(self.assessment_criteria)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.assessment_methodology is not None and not isinstance(self.assessment_methodology, str):
-            self.assessment_methodology = str(self.assessment_methodology)
+        if not isinstance(self.aims_impact_process_triggers, list):
+            self.aims_impact_process_triggers = [self.aims_impact_process_triggers] if self.aims_impact_process_triggers is not None else []
+        self.aims_impact_process_triggers = [v if isinstance(v, str) else str(v) for v in self.aims_impact_process_triggers]
 
-        if not isinstance(self.dimensions_in_scope, list):
-            self.dimensions_in_scope = [self.dimensions_in_scope] if self.dimensions_in_scope is not None else []
-        self.dimensions_in_scope = [v if isinstance(v, ImpactAssessmentDimension) else ImpactAssessmentDimension(v) for v in self.dimensions_in_scope]
+        if self.aims_impact_process_interval is not None and not isinstance(self.aims_impact_process_interval, AimsDuration):
+            self.aims_impact_process_interval = AimsDuration(self.aims_impact_process_interval)
 
-        if self.assessment_frequency is not None and not isinstance(self.assessment_frequency, str):
-            self.assessment_frequency = str(self.assessment_frequency)
+        if not isinstance(self.aims_impact_process_steps, list):
+            self.aims_impact_process_steps = [self.aims_impact_process_steps] if self.aims_impact_process_steps is not None else []
+        self.aims_impact_process_steps = [v if isinstance(v, str) else str(v) for v in self.aims_impact_process_steps]
 
-        if not isinstance(self.trigger_events, list):
-            self.trigger_events = [self.trigger_events] if self.trigger_events is not None else []
-        self.trigger_events = [v if isinstance(v, str) else str(v) for v in self.trigger_events]
+        if self.aims_impact_process_assessors is not None and not isinstance(self.aims_impact_process_assessors, str):
+            self.aims_impact_process_assessors = str(self.aims_impact_process_assessors)
 
-        if self.linkage_to_risk_assessment is not None and not isinstance(self.linkage_to_risk_assessment, str):
-            self.linkage_to_risk_assessment = str(self.linkage_to_risk_assessment)
+        if self.aims_impact_process_use is not None and not isinstance(self.aims_impact_process_use, str):
+            self.aims_impact_process_use = str(self.aims_impact_process_use)
+
+        if not isinstance(self.aims_impact_process_subjects, list):
+            self.aims_impact_process_subjects = [self.aims_impact_process_subjects] if self.aims_impact_process_subjects is not None else []
+        self.aims_impact_process_subjects = [v if isinstance(v, AimsImpactSubject) else AimsImpactSubject(v) for v in self.aims_impact_process_subjects]
+
+        if not isinstance(self.aims_impact_process_areas, list):
+            self.aims_impact_process_areas = [self.aims_impact_process_areas] if self.aims_impact_process_areas is not None else []
+        self.aims_impact_process_areas = [v if isinstance(v, AimsImpactArea) else AimsImpactArea(v) for v in self.aims_impact_process_areas]
+
+        if self.aims_impact_process_retention is not None and not isinstance(self.aims_impact_process_retention, AimsDuration):
+            self.aims_impact_process_retention = AimsDuration(self.aims_impact_process_retention)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AISystemImpactAssessment(DocumentedInformation):
+class AimsImpactAssessment(YAMLRoot):
     """
-    An instance of an AI system impact assessment performed per Clause 6.1.4 and Clause 8.4. Documents consequences of
-    deployment, intended use, and foreseeable misuse on individuals, groups, and societies.
+    One impact assessment carried out under the process: the systems and the setting it looked at, and each impact it
+    found.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AISystemImpactAssessment"]
-    class_class_curie: ClassVar[str] = "iso42001:AISystemImpactAssessment"
-    class_name: ClassVar[str] = "AISystemImpactAssessment"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AISystemImpactAssessment
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsImpactAssessment"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsImpactAssessment"
+    class_name: ClassVar[str] = "AimsImpactAssessment"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsImpactAssessment
 
-    id: Union[str, AISystemImpactAssessmentId] = None
-    name: str = None
-    assessment_scope: Optional[str] = None
-    ai_systems_assessed: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    assessment_date: Optional[Union[str, XSDDate]] = None
-    assessor: Optional[str] = None
-    technical_context: Optional[str] = None
-    societal_context: Optional[str] = None
-    applicable_jurisdictions: Optional[Union[str, list[str]]] = empty_list()
-    dimensions_assessed: Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]] = empty_list()
-    identified_consequences: Optional[Union[str, list[str]]] = empty_list()
-    mitigations: Optional[Union[str, list[str]]] = empty_list()
-    shared_with_parties: Optional[Union[str, list[str]]] = empty_list()
-    next_assessment_date: Optional[Union[str, XSDDate]] = None
+    aims_id: Union[str, AimsImpactAssessmentAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_impact_scope: Optional[str] = None
+    aims_impact_discipline: Optional[str] = None
+    aims_impact_date: Optional[Union[str, XSDDate]] = None
+    aims_impact_assessor: Optional[str] = None
+    aims_impact_intended_use: Optional[str] = None
+    aims_impact_foreseeable_misuse: Optional[str] = None
+    aims_impact_technical_context: Optional[str] = None
+    aims_impact_societal_context: Optional[str] = None
+    aims_impact_jurisdictions: Optional[Union[str, list[str]]] = empty_list()
+    aims_impact_demographic_groups: Optional[Union[str, list[str]]] = empty_list()
+    aims_impact_system_complexity: Optional[str] = None
+    aims_impact_human_role: Optional[str] = None
+    aims_impact_failures: Optional[Union[str, list[str]]] = empty_list()
+    aims_impact_workforce: Optional[str] = None
+    aims_impact_findings: Optional[Union[Union[dict, "AimsIdentifiedImpact"], list[Union[dict, "AimsIdentifiedImpact"]]]] = empty_list()
+    aims_impact_shared_with: Optional[Union[Union[str, AimsInterestedPartyAimsId], list[Union[str, AimsInterestedPartyAimsId]]]] = empty_list()
+    aims_impact_next_date: Optional[Union[str, XSDDate]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AISystemImpactAssessmentId):
-            self.id = AISystemImpactAssessmentId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsImpactAssessmentAimsId):
+            self.aims_id = AimsImpactAssessmentAimsId(self.aims_id)
 
-        if self.assessment_scope is not None and not isinstance(self.assessment_scope, str):
-            self.assessment_scope = str(self.assessment_scope)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.ai_systems_assessed, list):
-            self.ai_systems_assessed = [self.ai_systems_assessed] if self.ai_systems_assessed is not None else []
-        self.ai_systems_assessed = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.ai_systems_assessed]
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.assessment_date is not None and not isinstance(self.assessment_date, XSDDate):
-            self.assessment_date = XSDDate(self.assessment_date)
+        if self.aims_impact_scope is not None and not isinstance(self.aims_impact_scope, str):
+            self.aims_impact_scope = str(self.aims_impact_scope)
 
-        if self.assessor is not None and not isinstance(self.assessor, str):
-            self.assessor = str(self.assessor)
+        if self.aims_impact_discipline is not None and not isinstance(self.aims_impact_discipline, str):
+            self.aims_impact_discipline = str(self.aims_impact_discipline)
 
-        if self.technical_context is not None and not isinstance(self.technical_context, str):
-            self.technical_context = str(self.technical_context)
+        if self.aims_impact_date is not None and not isinstance(self.aims_impact_date, XSDDate):
+            self.aims_impact_date = XSDDate(self.aims_impact_date)
 
-        if self.societal_context is not None and not isinstance(self.societal_context, str):
-            self.societal_context = str(self.societal_context)
+        if self.aims_impact_assessor is not None and not isinstance(self.aims_impact_assessor, str):
+            self.aims_impact_assessor = str(self.aims_impact_assessor)
 
-        if not isinstance(self.applicable_jurisdictions, list):
-            self.applicable_jurisdictions = [self.applicable_jurisdictions] if self.applicable_jurisdictions is not None else []
-        self.applicable_jurisdictions = [v if isinstance(v, str) else str(v) for v in self.applicable_jurisdictions]
+        if self.aims_impact_intended_use is not None and not isinstance(self.aims_impact_intended_use, str):
+            self.aims_impact_intended_use = str(self.aims_impact_intended_use)
 
-        if not isinstance(self.dimensions_assessed, list):
-            self.dimensions_assessed = [self.dimensions_assessed] if self.dimensions_assessed is not None else []
-        self.dimensions_assessed = [v if isinstance(v, ImpactAssessmentDimension) else ImpactAssessmentDimension(v) for v in self.dimensions_assessed]
+        if self.aims_impact_foreseeable_misuse is not None and not isinstance(self.aims_impact_foreseeable_misuse, str):
+            self.aims_impact_foreseeable_misuse = str(self.aims_impact_foreseeable_misuse)
 
-        if not isinstance(self.identified_consequences, list):
-            self.identified_consequences = [self.identified_consequences] if self.identified_consequences is not None else []
-        self.identified_consequences = [v if isinstance(v, str) else str(v) for v in self.identified_consequences]
+        if self.aims_impact_technical_context is not None and not isinstance(self.aims_impact_technical_context, str):
+            self.aims_impact_technical_context = str(self.aims_impact_technical_context)
 
-        if not isinstance(self.mitigations, list):
-            self.mitigations = [self.mitigations] if self.mitigations is not None else []
-        self.mitigations = [v if isinstance(v, str) else str(v) for v in self.mitigations]
+        if self.aims_impact_societal_context is not None and not isinstance(self.aims_impact_societal_context, str):
+            self.aims_impact_societal_context = str(self.aims_impact_societal_context)
 
-        if not isinstance(self.shared_with_parties, list):
-            self.shared_with_parties = [self.shared_with_parties] if self.shared_with_parties is not None else []
-        self.shared_with_parties = [v if isinstance(v, str) else str(v) for v in self.shared_with_parties]
+        if not isinstance(self.aims_impact_jurisdictions, list):
+            self.aims_impact_jurisdictions = [self.aims_impact_jurisdictions] if self.aims_impact_jurisdictions is not None else []
+        self.aims_impact_jurisdictions = [v if isinstance(v, str) else str(v) for v in self.aims_impact_jurisdictions]
 
-        if self.next_assessment_date is not None and not isinstance(self.next_assessment_date, XSDDate):
-            self.next_assessment_date = XSDDate(self.next_assessment_date)
+        if not isinstance(self.aims_impact_demographic_groups, list):
+            self.aims_impact_demographic_groups = [self.aims_impact_demographic_groups] if self.aims_impact_demographic_groups is not None else []
+        self.aims_impact_demographic_groups = [v if isinstance(v, str) else str(v) for v in self.aims_impact_demographic_groups]
+
+        if self.aims_impact_system_complexity is not None and not isinstance(self.aims_impact_system_complexity, str):
+            self.aims_impact_system_complexity = str(self.aims_impact_system_complexity)
+
+        if self.aims_impact_human_role is not None and not isinstance(self.aims_impact_human_role, str):
+            self.aims_impact_human_role = str(self.aims_impact_human_role)
+
+        if not isinstance(self.aims_impact_failures, list):
+            self.aims_impact_failures = [self.aims_impact_failures] if self.aims_impact_failures is not None else []
+        self.aims_impact_failures = [v if isinstance(v, str) else str(v) for v in self.aims_impact_failures]
+
+        if self.aims_impact_workforce is not None and not isinstance(self.aims_impact_workforce, str):
+            self.aims_impact_workforce = str(self.aims_impact_workforce)
+
+        self._normalize_inlined_as_list(slot_name="aims_impact_findings", slot_type=AimsIdentifiedImpact, key_name="aims_identified_impact_subject", keyed=False)
+
+        if not isinstance(self.aims_impact_shared_with, list):
+            self.aims_impact_shared_with = [self.aims_impact_shared_with] if self.aims_impact_shared_with is not None else []
+        self.aims_impact_shared_with = [v if isinstance(v, AimsInterestedPartyAimsId) else AimsInterestedPartyAimsId(v) for v in self.aims_impact_shared_with]
+
+        if self.aims_impact_next_date is not None and not isinstance(self.aims_impact_next_date, XSDDate):
+            self.aims_impact_next_date = XSDDate(self.aims_impact_next_date)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class StatementOfApplicability(DocumentedInformation):
+class AimsIdentifiedImpact(YAMLRoot):
     """
-    The Statement of Applicability (SoA) for the AIMS recording which Annex A controls apply, justification for
-    inclusion or exclusion, and current implementation state per Clause 6.1.3 f).
+    One impact an assessment found: on whom it falls, in what area, whether it helps or harms, and what limits the
+    harm.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["StatementOfApplicability"]
-    class_class_curie: ClassVar[str] = "iso42001:StatementOfApplicability"
-    class_name: ClassVar[str] = "StatementOfApplicability"
-    class_model_uri: ClassVar[URIRef] = ISO42001.StatementOfApplicability
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsIdentifiedImpact"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsIdentifiedImpact"
+    class_name: ClassVar[str] = "AimsIdentifiedImpact"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsIdentifiedImpact
 
-    id: Union[str, StatementOfApplicabilityId] = None
-    name: str = None
-    soa_entries: Optional[Union[Union[dict, "SoAEntry"], list[Union[dict, "SoAEntry"]]]] = empty_list()
-    total_controls: Optional[int] = None
-    implemented_count: Optional[int] = None
-    planned_count: Optional[int] = None
-    not_applicable_count: Optional[int] = None
-    last_review_date: Optional[Union[str, XSDDate]] = None
-    approved_by: Optional[str] = None
+    aims_identified_impact_subject: Union[str, "AimsImpactSubject"] = None
+    aims_identified_impact_text: str = None
+    aims_identified_impact_area: Optional[Union[str, "AimsImpactArea"]] = None
+    aims_identified_impact_direction: Optional[Union[str, "AimsImpactDirection"]] = None
+    aims_identified_impact_mitigation: Optional[Union[str, list[str]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, StatementOfApplicabilityId):
-            self.id = StatementOfApplicabilityId(self.id)
+        if self._is_empty(self.aims_identified_impact_subject):
+            self.MissingRequiredField("aims_identified_impact_subject")
+        if not isinstance(self.aims_identified_impact_subject, AimsImpactSubject):
+            self.aims_identified_impact_subject = AimsImpactSubject(self.aims_identified_impact_subject)
 
-        if not isinstance(self.soa_entries, list):
-            self.soa_entries = [self.soa_entries] if self.soa_entries is not None else []
-        self.soa_entries = [v if isinstance(v, SoAEntry) else SoAEntry(**as_dict(v)) for v in self.soa_entries]
+        if self._is_empty(self.aims_identified_impact_text):
+            self.MissingRequiredField("aims_identified_impact_text")
+        if not isinstance(self.aims_identified_impact_text, str):
+            self.aims_identified_impact_text = str(self.aims_identified_impact_text)
 
-        if self.total_controls is not None and not isinstance(self.total_controls, int):
-            self.total_controls = int(self.total_controls)
+        if self.aims_identified_impact_area is not None and not isinstance(self.aims_identified_impact_area, AimsImpactArea):
+            self.aims_identified_impact_area = AimsImpactArea(self.aims_identified_impact_area)
 
-        if self.implemented_count is not None and not isinstance(self.implemented_count, int):
-            self.implemented_count = int(self.implemented_count)
+        if self.aims_identified_impact_direction is not None and not isinstance(self.aims_identified_impact_direction, AimsImpactDirection):
+            self.aims_identified_impact_direction = AimsImpactDirection(self.aims_identified_impact_direction)
 
-        if self.planned_count is not None and not isinstance(self.planned_count, int):
-            self.planned_count = int(self.planned_count)
-
-        if self.not_applicable_count is not None and not isinstance(self.not_applicable_count, int):
-            self.not_applicable_count = int(self.not_applicable_count)
-
-        if self.last_review_date is not None and not isinstance(self.last_review_date, XSDDate):
-            self.last_review_date = XSDDate(self.last_review_date)
-
-        if self.approved_by is not None and not isinstance(self.approved_by, str):
-            self.approved_by = str(self.approved_by)
+        if not isinstance(self.aims_identified_impact_mitigation, list):
+            self.aims_identified_impact_mitigation = [self.aims_identified_impact_mitigation] if self.aims_identified_impact_mitigation is not None else []
+        self.aims_identified_impact_mitigation = [v if isinstance(v, str) else str(v) for v in self.aims_identified_impact_mitigation]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class SoAEntry(YAMLRoot):
+class AimsStatementOfApplicability(YAMLRoot):
     """
-    A single entry in the AIMS Statement of Applicability documenting the applicability and implementation status of
-    one reference control.
+    The Statement of Applicability: each control the organization needs, with why it is included and whether it is in
+    place, and each control it leaves out, with why.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["SoAEntry"]
-    class_class_curie: ClassVar[str] = "iso42001:SoAEntry"
-    class_name: ClassVar[str] = "SoAEntry"
-    class_model_uri: ClassVar[URIRef] = ISO42001.SoAEntry
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsStatementOfApplicability"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsStatementOfApplicability"
+    class_name: ClassVar[str] = "AimsStatementOfApplicability"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsStatementOfApplicability
 
-    control_reference: Optional[Union[str, AIReferenceControlId]] = None
-    is_applicable: Optional[Union[bool, Bool]] = None
-    inclusion_justification: Optional[str] = None
-    exclusion_justification: Optional[str] = None
-    implementation_status: Optional[Union[str, "ImplementationStatus"]] = None
-    implementation_evidence: Optional[str] = None
-    responsible_role: Optional[Union[str, RoleId]] = None
-    target_implementation_date: Optional[Union[str, XSDDate]] = None
+    aims_id: Union[str, AimsStatementOfApplicabilityAimsId] = None
+    title: str = None
+    aims_soa_entries: Optional[Union[Union[dict, "AimsApplicabilityEntry"], list[Union[dict, "AimsApplicabilityEntry"]]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.control_reference is not None and not isinstance(self.control_reference, AIReferenceControlId):
-            self.control_reference = AIReferenceControlId(self.control_reference)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsStatementOfApplicabilityAimsId):
+            self.aims_id = AimsStatementOfApplicabilityAimsId(self.aims_id)
 
-        if self.is_applicable is not None and not isinstance(self.is_applicable, Bool):
-            self.is_applicable = Bool(self.is_applicable)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.inclusion_justification is not None and not isinstance(self.inclusion_justification, str):
-            self.inclusion_justification = str(self.inclusion_justification)
+        self._normalize_inlined_as_list(slot_name="aims_soa_entries", slot_type=AimsApplicabilityEntry, key_name="aims_entry_justification", keyed=False)
 
-        if self.exclusion_justification is not None and not isinstance(self.exclusion_justification, str):
-            self.exclusion_justification = str(self.exclusion_justification)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if self.implementation_status is not None and not isinstance(self.implementation_status, ImplementationStatus):
-            self.implementation_status = ImplementationStatus(self.implementation_status)
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if self.implementation_evidence is not None and not isinstance(self.implementation_evidence, str):
-            self.implementation_evidence = str(self.implementation_evidence)
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
 
-        if self.responsible_role is not None and not isinstance(self.responsible_role, RoleId):
-            self.responsible_role = RoleId(self.responsible_role)
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
 
-        if self.target_implementation_date is not None and not isinstance(self.target_implementation_date, XSDDate):
-            self.target_implementation_date = XSDDate(self.target_implementation_date)
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIReferenceControl(NamedEntity):
+class AimsApplicabilityEntry(YAMLRoot):
     """
-    A reference control from Annex A of ISO/IEC 42001:2023. Controls are grouped into nine families (A.2 through A.10)
-    and supported by implementation guidance in Annex B.
+    One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIReferenceControl"]
-    class_class_curie: ClassVar[str] = "iso42001:AIReferenceControl"
-    class_name: ClassVar[str] = "AIReferenceControl"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIReferenceControl
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsApplicabilityEntry"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsApplicabilityEntry"
+    class_name: ClassVar[str] = "AimsApplicabilityEntry"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsApplicabilityEntry
 
-    id: Union[str, AIReferenceControlId] = None
-    name: str = None
-    control_id: Optional[str] = None
-    control_title: Optional[str] = None
-    control_family: Optional[Union[str, "AIControlFamily"]] = None
-    control_text: Optional[str] = None
-    implementation_guidance: Optional[str] = None
-    related_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    applicable_risk_sources: Optional[Union[Union[str, "AIRiskSourceCategory"], list[Union[str, "AIRiskSourceCategory"]]]] = empty_list()
-    applicable_objectives: Optional[Union[Union[str, "AIObjectiveCategory"], list[Union[str, "AIObjectiveCategory"]]]] = empty_list()
-    control_owner: Optional[str] = None
-    implementation_status: Optional[Union[str, "ImplementationStatus"]] = None
-    implementation_date: Optional[Union[str, XSDDate]] = None
-    effectiveness_rating: Optional[str] = None
-    last_test_date: Optional[Union[str, XSDDate]] = None
-    evidence_references: Optional[Union[str, list[str]]] = empty_list()
+    aims_entry_justification: str = None
+    aims_entry_annex_a_control: Optional[Union[str, "AimsAnnexAControl"]] = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_entry_type: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIReferenceControlId):
-            self.id = AIReferenceControlId(self.id)
+        if self._is_empty(self.aims_entry_justification):
+            self.MissingRequiredField("aims_entry_justification")
+        if not isinstance(self.aims_entry_justification, str):
+            self.aims_entry_justification = str(self.aims_entry_justification)
 
-        if self.control_id is not None and not isinstance(self.control_id, str):
-            self.control_id = str(self.control_id)
+        if self.aims_entry_annex_a_control is not None and not isinstance(self.aims_entry_annex_a_control, AimsAnnexAControl):
+            self.aims_entry_annex_a_control = AimsAnnexAControl(self.aims_entry_annex_a_control)
 
-        if self.control_title is not None and not isinstance(self.control_title, str):
-            self.control_title = str(self.control_title)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.control_family is not None and not isinstance(self.control_family, AIControlFamily):
-            self.control_family = AIControlFamily(self.control_family)
+        self.aims_entry_type = str(self.class_name)
 
-        if self.control_text is not None and not isinstance(self.control_text, str):
-            self.control_text = str(self.control_text)
+        super().__post_init__(**kwargs)
+        self.unknown_aims_entry_type = str(self.class_name)
 
-        if self.implementation_guidance is not None and not isinstance(self.implementation_guidance, str):
-            self.implementation_guidance = str(self.implementation_guidance)
 
-        if not isinstance(self.related_controls, list):
-            self.related_controls = [self.related_controls] if self.related_controls is not None else []
-        self.related_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.related_controls]
+    def __new__(cls, *args, **kwargs):
 
-        if not isinstance(self.applicable_risk_sources, list):
-            self.applicable_risk_sources = [self.applicable_risk_sources] if self.applicable_risk_sources is not None else []
-        self.applicable_risk_sources = [v if isinstance(v, AIRiskSourceCategory) else AIRiskSourceCategory(v) for v in self.applicable_risk_sources]
+        type_designator = "aims_entry_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
 
-        if not isinstance(self.applicable_objectives, list):
-            self.applicable_objectives = [self.applicable_objectives] if self.applicable_objectives is not None else []
-        self.applicable_objectives = [v if isinstance(v, AIObjectiveCategory) else AIObjectiveCategory(v) for v in self.applicable_objectives]
 
-        if self.control_owner is not None and not isinstance(self.control_owner, str):
-            self.control_owner = str(self.control_owner)
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
 
-        if self.implementation_status is not None and not isinstance(self.implementation_status, ImplementationStatus):
-            self.implementation_status = ImplementationStatus(self.implementation_status)
 
-        if self.implementation_date is not None and not isinstance(self.implementation_date, XSDDate):
-            self.implementation_date = XSDDate(self.implementation_date)
 
-        if self.effectiveness_rating is not None and not isinstance(self.effectiveness_rating, str):
-            self.effectiveness_rating = str(self.effectiveness_rating)
+@dataclass(repr=False)
+class AimsIncludedControl(AimsApplicabilityEntry):
+    """
+    An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for
+    it and whether it is in place.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
 
-        if self.last_test_date is not None and not isinstance(self.last_test_date, XSDDate):
-            self.last_test_date = XSDDate(self.last_test_date)
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsIncludedControl"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsIncludedControl"
+    class_name: ClassVar[str] = "AimsIncludedControl"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsIncludedControl
 
-        if not isinstance(self.evidence_references, list):
-            self.evidence_references = [self.evidence_references] if self.evidence_references is not None else []
-        self.evidence_references = [v if isinstance(v, str) else str(v) for v in self.evidence_references]
+    aims_entry_justification: str = None
+    aims_implementation_state: Union[str, "AimsImplementationStatus"] = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_included_control: Optional[Union[str, AimsControlAimsId]] = None
+    aims_included_risks: Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]] = empty_list()
+    aims_included_evidence: Optional[str] = None
+    aims_included_target_date: Optional[Union[str, XSDDate]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_implementation_state):
+            self.MissingRequiredField("aims_implementation_state")
+        if not isinstance(self.aims_implementation_state, AimsImplementationStatus):
+            self.aims_implementation_state = AimsImplementationStatus(self.aims_implementation_state)
+
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
+
+        if self.aims_included_control is not None and not isinstance(self.aims_included_control, AimsControlAimsId):
+            self.aims_included_control = AimsControlAimsId(self.aims_included_control)
+
+        if not isinstance(self.aims_included_risks, list):
+            self.aims_included_risks = [self.aims_included_risks] if self.aims_included_risks is not None else []
+        self.aims_included_risks = [v if isinstance(v, AimsRiskAimsId) else AimsRiskAimsId(v) for v in self.aims_included_risks]
+
+        if self.aims_included_evidence is not None and not isinstance(self.aims_included_evidence, str):
+            self.aims_included_evidence = str(self.aims_included_evidence)
+
+        if self.aims_included_target_date is not None and not isinstance(self.aims_included_target_date, XSDDate):
+            self.aims_included_target_date = XSDDate(self.aims_included_target_date)
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_entry_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsExcludedControl(AimsApplicabilityEntry):
+    """
+    An entry that leaves out an Annex A control the organization does not need, and says why.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsExcludedControl"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsExcludedControl"
+    class_name: ClassVar[str] = "AimsExcludedControl"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsExcludedControl
+
+    aims_entry_justification: str = None
+    aims_entry_annex_a_control: Union[str, "AimsAnnexAControl"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_entry_annex_a_control):
+            self.MissingRequiredField("aims_entry_annex_a_control")
+        if not isinstance(self.aims_entry_annex_a_control, AimsAnnexAControl):
+            self.aims_entry_annex_a_control = AimsAnnexAControl(self.aims_entry_annex_a_control)
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_entry_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsControl(YAMLRoot):
+    """
+    A control the organization has found it needs to treat its risks: what it does in the organization's words, which
+    Annex A controls it answers to, who owns it, how far it is in place and how well it works.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsControl"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsControl"
+    class_name: ClassVar[str] = "AimsControl"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsControl
+
+    aims_id: Union[str, AimsControlAimsId] = None
+    title: str = None
+    aims_relevant_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_implementation_state: Optional[Union[str, "AimsImplementationStatus"]] = None
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_objective_categories: Optional[Union[Union[str, "AimsObjectiveCategory"], list[Union[str, "AimsObjectiveCategory"]]]] = empty_list()
+    aims_risk_source_categories: Optional[Union[Union[str, "AimsRiskSourceCategory"], list[Union[str, "AimsRiskSourceCategory"]]]] = empty_list()
+    aims_control_area: Optional[Union[str, "AimsControlArea"]] = None
+    aims_control_text: Optional[str] = None
+    aims_control_guidance: Optional[str] = None
+    aims_control_owner: Optional[str] = None
+    aims_control_implementation_date: Optional[Union[str, XSDDate]] = None
+    aims_control_effectiveness: Optional[str] = None
+    aims_control_last_tested: Optional[Union[str, XSDDate]] = None
+    aims_control_evidence: Optional[Union[str, list[str]]] = empty_list()
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsControlAimsId):
+            self.aims_id = AimsControlAimsId(self.aims_id)
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.aims_relevant_controls, list):
+            self.aims_relevant_controls = [self.aims_relevant_controls] if self.aims_relevant_controls is not None else []
+        self.aims_relevant_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_relevant_controls]
+
+        if self.aims_implementation_state is not None and not isinstance(self.aims_implementation_state, AimsImplementationStatus):
+            self.aims_implementation_state = AimsImplementationStatus(self.aims_implementation_state)
+
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
+
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
+
+        if not isinstance(self.aims_objective_categories, list):
+            self.aims_objective_categories = [self.aims_objective_categories] if self.aims_objective_categories is not None else []
+        self.aims_objective_categories = [v if isinstance(v, AimsObjectiveCategory) else AimsObjectiveCategory(v) for v in self.aims_objective_categories]
+
+        if not isinstance(self.aims_risk_source_categories, list):
+            self.aims_risk_source_categories = [self.aims_risk_source_categories] if self.aims_risk_source_categories is not None else []
+        self.aims_risk_source_categories = [v if isinstance(v, AimsRiskSourceCategory) else AimsRiskSourceCategory(v) for v in self.aims_risk_source_categories]
+
+        if self.aims_control_area is not None and not isinstance(self.aims_control_area, AimsControlArea):
+            self.aims_control_area = AimsControlArea(self.aims_control_area)
+
+        if self.aims_control_text is not None and not isinstance(self.aims_control_text, str):
+            self.aims_control_text = str(self.aims_control_text)
+
+        if self.aims_control_guidance is not None and not isinstance(self.aims_control_guidance, str):
+            self.aims_control_guidance = str(self.aims_control_guidance)
+
+        if self.aims_control_owner is not None and not isinstance(self.aims_control_owner, str):
+            self.aims_control_owner = str(self.aims_control_owner)
+
+        if self.aims_control_implementation_date is not None and not isinstance(self.aims_control_implementation_date, XSDDate):
+            self.aims_control_implementation_date = XSDDate(self.aims_control_implementation_date)
+
+        if self.aims_control_effectiveness is not None and not isinstance(self.aims_control_effectiveness, str):
+            self.aims_control_effectiveness = str(self.aims_control_effectiveness)
+
+        if self.aims_control_last_tested is not None and not isinstance(self.aims_control_last_tested, XSDDate):
+            self.aims_control_last_tested = XSDDate(self.aims_control_last_tested)
+
+        if not isinstance(self.aims_control_evidence, list):
+            self.aims_control_evidence = [self.aims_control_evidence] if self.aims_control_evidence is not None else []
+        self.aims_control_evidence = [v if isinstance(v, str) else str(v) for v in self.aims_control_evidence]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AISystem(NamedEntity):
+class AimsAiSystem(YAMLRoot):
     """
-    An AI system within the AIMS scope. Captures life cycle stage, intended use, applicable domains, and references to
-    data and tooling resources, technical documentation, and impact assessments.
+    One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on,
+    and what is kept about it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AISystem"]
-    class_class_curie: ClassVar[str] = "iso42001:AISystem"
-    class_name: ClassVar[str] = "AISystem"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AISystem
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsAiSystem"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsAiSystem"
+    class_name: ClassVar[str] = "AimsAiSystem"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsAiSystem
 
-    id: Union[str, AISystemId] = None
-    name: str = None
-    ai_system_purpose: Optional[str] = None
-    intended_uses: Optional[Union[str, list[str]]] = empty_list()
-    foreseeable_misuse: Optional[Union[str, list[str]]] = empty_list()
-    application_domain: Optional[str] = None
-    deployment_context: Optional[str] = None
-    lifecycle_stage: Optional[Union[str, "AISystemLifecycleStage"]] = None
-    organization_role: Optional[Union[str, "AIOrganizationalRole"]] = None
-    autonomy_level: Optional[str] = None
-    ml_approach: Optional[Union[str, "MLApproach"]] = None
-    human_oversight_required: Optional[Union[bool, Bool]] = None
-    human_oversight_description: Optional[str] = None
-    human_oversight_stages: Optional[Union[Union[str, "AISystemLifecycleStage"], list[Union[str, "AISystemLifecycleStage"]]]] = empty_list()
-    learning_mode: Optional[Union[str, "LearningParadigm"]] = None
-    data_resources: Optional[Union[Union[str, DataResourceId], list[Union[str, DataResourceId]]]] = empty_list()
-    tooling_resources: Optional[Union[Union[str, ToolingResourceId], list[Union[str, ToolingResourceId]]]] = empty_list()
-    computing_resources: Optional[Union[Union[str, ComputingResourceId], list[Union[str, ComputingResourceId]]]] = empty_list()
-    human_resources: Optional[Union[Union[str, HumanResourceId], list[Union[str, HumanResourceId]]]] = empty_list()
-    technical_documentation: Optional[Union[str, list[str]]] = empty_list()
-    event_log_policy: Optional[str] = None
-    applicable_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    related_impact_assessments: Optional[Union[Union[str, AISystemImpactAssessmentId], list[Union[str, AISystemImpactAssessmentId]]]] = empty_list()
-    supplier_relationships: Optional[Union[Union[str, SupplierRelationshipId], list[Union[str, SupplierRelationshipId]]]] = empty_list()
-    customer_relationships: Optional[Union[Union[str, CustomerRelationshipId], list[Union[str, CustomerRelationshipId]]]] = empty_list()
+    aims_id: Union[str, AimsAiSystemAimsId] = None
+    title: str = None
+    aims_relevant_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_system_intended_purpose: Optional[str] = None
+    aims_system_intended_uses: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_foreseeable_misuse: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_domain: Optional[str] = None
+    aims_system_deployment_context: Optional[str] = None
+    aims_system_life_cycle_stage: Optional[Union[str, "AimsLifecycleStage"]] = None
+    aims_system_organization_roles: Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]] = empty_list()
+    aims_system_pii_roles: Optional[Union[Union[str, "AimsPiiRole"], list[Union[str, "AimsPiiRole"]]]] = empty_list()
+    aims_system_rationale: Optional[str] = None
+    aims_system_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_ml_approach: Optional[str] = None
+    aims_system_model_types: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_continuous_learning: Optional[Union[bool, Bool]] = None
+    aims_system_automation_level: Optional[str] = None
+    aims_system_threats: Optional[Union[Union[str, "AimsAiThreat"], list[Union[str, "AimsAiThreat"]]]] = empty_list()
+    aims_system_verification_measures: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_evaluation_criteria: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_release_criteria: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_deployment_plan: Optional[Union[str, AimsDocumentedInformationAimsId]] = None
+    aims_system_operation_elements: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_performance_metrics: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_log_stages: Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]] = empty_list()
+    aims_system_log_contents: Optional[Union[str, list[str]]] = empty_list()
+    aims_system_log_retention: Optional[Union[str, AimsDuration]] = None
+    aims_system_human_oversight_required: Optional[Union[bool, Bool]] = None
+    aims_system_human_oversight: Optional[str] = None
+    aims_system_human_oversight_stages: Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]] = empty_list()
+    aims_system_resources_used: Optional[Union[Union[str, AimsSystemResourceAimsId], list[Union[str, AimsSystemResourceAimsId]]]] = empty_list()
+    aims_system_technical_documents: Optional[Union[Union[str, AimsTechnicalDocumentationAimsId], list[Union[str, AimsTechnicalDocumentationAimsId]]]] = empty_list()
+    aims_system_impact_assessments: Optional[Union[Union[str, AimsImpactAssessmentAimsId], list[Union[str, AimsImpactAssessmentAimsId]]]] = empty_list()
+    aims_system_relationships: Optional[Union[Union[str, AimsThirdPartyRelationshipAimsId], list[Union[str, AimsThirdPartyRelationshipAimsId]]]] = empty_list()
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AISystemId):
-            self.id = AISystemId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsAiSystemAimsId):
+            self.aims_id = AimsAiSystemAimsId(self.aims_id)
 
-        if self.ai_system_purpose is not None and not isinstance(self.ai_system_purpose, str):
-            self.ai_system_purpose = str(self.ai_system_purpose)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.intended_uses, list):
-            self.intended_uses = [self.intended_uses] if self.intended_uses is not None else []
-        self.intended_uses = [v if isinstance(v, str) else str(v) for v in self.intended_uses]
+        if not isinstance(self.aims_relevant_controls, list):
+            self.aims_relevant_controls = [self.aims_relevant_controls] if self.aims_relevant_controls is not None else []
+        self.aims_relevant_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_relevant_controls]
 
-        if not isinstance(self.foreseeable_misuse, list):
-            self.foreseeable_misuse = [self.foreseeable_misuse] if self.foreseeable_misuse is not None else []
-        self.foreseeable_misuse = [v if isinstance(v, str) else str(v) for v in self.foreseeable_misuse]
+        if self.aims_system_intended_purpose is not None and not isinstance(self.aims_system_intended_purpose, str):
+            self.aims_system_intended_purpose = str(self.aims_system_intended_purpose)
 
-        if self.application_domain is not None and not isinstance(self.application_domain, str):
-            self.application_domain = str(self.application_domain)
+        if not isinstance(self.aims_system_intended_uses, list):
+            self.aims_system_intended_uses = [self.aims_system_intended_uses] if self.aims_system_intended_uses is not None else []
+        self.aims_system_intended_uses = [v if isinstance(v, str) else str(v) for v in self.aims_system_intended_uses]
 
-        if self.deployment_context is not None and not isinstance(self.deployment_context, str):
-            self.deployment_context = str(self.deployment_context)
+        if not isinstance(self.aims_system_foreseeable_misuse, list):
+            self.aims_system_foreseeable_misuse = [self.aims_system_foreseeable_misuse] if self.aims_system_foreseeable_misuse is not None else []
+        self.aims_system_foreseeable_misuse = [v if isinstance(v, str) else str(v) for v in self.aims_system_foreseeable_misuse]
 
-        if self.lifecycle_stage is not None and not isinstance(self.lifecycle_stage, AISystemLifecycleStage):
-            self.lifecycle_stage = AISystemLifecycleStage(self.lifecycle_stage)
+        if self.aims_system_domain is not None and not isinstance(self.aims_system_domain, str):
+            self.aims_system_domain = str(self.aims_system_domain)
 
-        if self.organization_role is not None and not isinstance(self.organization_role, AIOrganizationalRole):
-            self.organization_role = AIOrganizationalRole(self.organization_role)
+        if self.aims_system_deployment_context is not None and not isinstance(self.aims_system_deployment_context, str):
+            self.aims_system_deployment_context = str(self.aims_system_deployment_context)
 
-        if self.autonomy_level is not None and not isinstance(self.autonomy_level, str):
-            self.autonomy_level = str(self.autonomy_level)
+        if self.aims_system_life_cycle_stage is not None and not isinstance(self.aims_system_life_cycle_stage, AimsLifecycleStage):
+            self.aims_system_life_cycle_stage = AimsLifecycleStage(self.aims_system_life_cycle_stage)
 
-        if self.ml_approach is not None and not isinstance(self.ml_approach, MLApproach):
-            self.ml_approach = MLApproach(self.ml_approach)
+        if not isinstance(self.aims_system_organization_roles, list):
+            self.aims_system_organization_roles = [self.aims_system_organization_roles] if self.aims_system_organization_roles is not None else []
+        self.aims_system_organization_roles = [v if isinstance(v, AimsAiRole) else AimsAiRole(v) for v in self.aims_system_organization_roles]
 
-        if self.human_oversight_required is not None and not isinstance(self.human_oversight_required, Bool):
-            self.human_oversight_required = Bool(self.human_oversight_required)
+        if not isinstance(self.aims_system_pii_roles, list):
+            self.aims_system_pii_roles = [self.aims_system_pii_roles] if self.aims_system_pii_roles is not None else []
+        self.aims_system_pii_roles = [v if isinstance(v, AimsPiiRole) else AimsPiiRole(v) for v in self.aims_system_pii_roles]
 
-        if self.human_oversight_description is not None and not isinstance(self.human_oversight_description, str):
-            self.human_oversight_description = str(self.human_oversight_description)
+        if self.aims_system_rationale is not None and not isinstance(self.aims_system_rationale, str):
+            self.aims_system_rationale = str(self.aims_system_rationale)
 
-        if not isinstance(self.human_oversight_stages, list):
-            self.human_oversight_stages = [self.human_oversight_stages] if self.human_oversight_stages is not None else []
-        self.human_oversight_stages = [v if isinstance(v, AISystemLifecycleStage) else AISystemLifecycleStage(v) for v in self.human_oversight_stages]
+        if not isinstance(self.aims_system_requirements, list):
+            self.aims_system_requirements = [self.aims_system_requirements] if self.aims_system_requirements is not None else []
+        self.aims_system_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_system_requirements]
 
-        if self.learning_mode is not None and not isinstance(self.learning_mode, LearningParadigm):
-            self.learning_mode = LearningParadigm(self.learning_mode)
+        if self.aims_system_ml_approach is not None and not isinstance(self.aims_system_ml_approach, str):
+            self.aims_system_ml_approach = str(self.aims_system_ml_approach)
 
-        if not isinstance(self.data_resources, list):
-            self.data_resources = [self.data_resources] if self.data_resources is not None else []
-        self.data_resources = [v if isinstance(v, DataResourceId) else DataResourceId(v) for v in self.data_resources]
+        if not isinstance(self.aims_system_model_types, list):
+            self.aims_system_model_types = [self.aims_system_model_types] if self.aims_system_model_types is not None else []
+        self.aims_system_model_types = [v if isinstance(v, str) else str(v) for v in self.aims_system_model_types]
 
-        if not isinstance(self.tooling_resources, list):
-            self.tooling_resources = [self.tooling_resources] if self.tooling_resources is not None else []
-        self.tooling_resources = [v if isinstance(v, ToolingResourceId) else ToolingResourceId(v) for v in self.tooling_resources]
+        if self.aims_system_continuous_learning is not None and not isinstance(self.aims_system_continuous_learning, Bool):
+            self.aims_system_continuous_learning = Bool(self.aims_system_continuous_learning)
 
-        if not isinstance(self.computing_resources, list):
-            self.computing_resources = [self.computing_resources] if self.computing_resources is not None else []
-        self.computing_resources = [v if isinstance(v, ComputingResourceId) else ComputingResourceId(v) for v in self.computing_resources]
+        if self.aims_system_automation_level is not None and not isinstance(self.aims_system_automation_level, str):
+            self.aims_system_automation_level = str(self.aims_system_automation_level)
 
-        if not isinstance(self.human_resources, list):
-            self.human_resources = [self.human_resources] if self.human_resources is not None else []
-        self.human_resources = [v if isinstance(v, HumanResourceId) else HumanResourceId(v) for v in self.human_resources]
+        if not isinstance(self.aims_system_threats, list):
+            self.aims_system_threats = [self.aims_system_threats] if self.aims_system_threats is not None else []
+        self.aims_system_threats = [v if isinstance(v, AimsAiThreat) else AimsAiThreat(v) for v in self.aims_system_threats]
 
-        if not isinstance(self.technical_documentation, list):
-            self.technical_documentation = [self.technical_documentation] if self.technical_documentation is not None else []
-        self.technical_documentation = [v if isinstance(v, str) else str(v) for v in self.technical_documentation]
+        if not isinstance(self.aims_system_verification_measures, list):
+            self.aims_system_verification_measures = [self.aims_system_verification_measures] if self.aims_system_verification_measures is not None else []
+        self.aims_system_verification_measures = [v if isinstance(v, str) else str(v) for v in self.aims_system_verification_measures]
 
-        if self.event_log_policy is not None and not isinstance(self.event_log_policy, str):
-            self.event_log_policy = str(self.event_log_policy)
+        if not isinstance(self.aims_system_evaluation_criteria, list):
+            self.aims_system_evaluation_criteria = [self.aims_system_evaluation_criteria] if self.aims_system_evaluation_criteria is not None else []
+        self.aims_system_evaluation_criteria = [v if isinstance(v, str) else str(v) for v in self.aims_system_evaluation_criteria]
 
-        if not isinstance(self.applicable_controls, list):
-            self.applicable_controls = [self.applicable_controls] if self.applicable_controls is not None else []
-        self.applicable_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.applicable_controls]
+        if not isinstance(self.aims_system_release_criteria, list):
+            self.aims_system_release_criteria = [self.aims_system_release_criteria] if self.aims_system_release_criteria is not None else []
+        self.aims_system_release_criteria = [v if isinstance(v, str) else str(v) for v in self.aims_system_release_criteria]
 
-        if not isinstance(self.related_impact_assessments, list):
-            self.related_impact_assessments = [self.related_impact_assessments] if self.related_impact_assessments is not None else []
-        self.related_impact_assessments = [v if isinstance(v, AISystemImpactAssessmentId) else AISystemImpactAssessmentId(v) for v in self.related_impact_assessments]
+        if self.aims_system_deployment_plan is not None and not isinstance(self.aims_system_deployment_plan, AimsDocumentedInformationAimsId):
+            self.aims_system_deployment_plan = AimsDocumentedInformationAimsId(self.aims_system_deployment_plan)
 
-        if not isinstance(self.supplier_relationships, list):
-            self.supplier_relationships = [self.supplier_relationships] if self.supplier_relationships is not None else []
-        self.supplier_relationships = [v if isinstance(v, SupplierRelationshipId) else SupplierRelationshipId(v) for v in self.supplier_relationships]
+        if not isinstance(self.aims_system_operation_elements, list):
+            self.aims_system_operation_elements = [self.aims_system_operation_elements] if self.aims_system_operation_elements is not None else []
+        self.aims_system_operation_elements = [v if isinstance(v, str) else str(v) for v in self.aims_system_operation_elements]
 
-        if not isinstance(self.customer_relationships, list):
-            self.customer_relationships = [self.customer_relationships] if self.customer_relationships is not None else []
-        self.customer_relationships = [v if isinstance(v, CustomerRelationshipId) else CustomerRelationshipId(v) for v in self.customer_relationships]
+        if not isinstance(self.aims_system_performance_metrics, list):
+            self.aims_system_performance_metrics = [self.aims_system_performance_metrics] if self.aims_system_performance_metrics is not None else []
+        self.aims_system_performance_metrics = [v if isinstance(v, str) else str(v) for v in self.aims_system_performance_metrics]
+
+        if not isinstance(self.aims_system_log_stages, list):
+            self.aims_system_log_stages = [self.aims_system_log_stages] if self.aims_system_log_stages is not None else []
+        self.aims_system_log_stages = [v if isinstance(v, AimsLifecycleStage) else AimsLifecycleStage(v) for v in self.aims_system_log_stages]
+
+        if not isinstance(self.aims_system_log_contents, list):
+            self.aims_system_log_contents = [self.aims_system_log_contents] if self.aims_system_log_contents is not None else []
+        self.aims_system_log_contents = [v if isinstance(v, str) else str(v) for v in self.aims_system_log_contents]
+
+        if self.aims_system_log_retention is not None and not isinstance(self.aims_system_log_retention, AimsDuration):
+            self.aims_system_log_retention = AimsDuration(self.aims_system_log_retention)
+
+        if self.aims_system_human_oversight_required is not None and not isinstance(self.aims_system_human_oversight_required, Bool):
+            self.aims_system_human_oversight_required = Bool(self.aims_system_human_oversight_required)
+
+        if self.aims_system_human_oversight is not None and not isinstance(self.aims_system_human_oversight, str):
+            self.aims_system_human_oversight = str(self.aims_system_human_oversight)
+
+        if not isinstance(self.aims_system_human_oversight_stages, list):
+            self.aims_system_human_oversight_stages = [self.aims_system_human_oversight_stages] if self.aims_system_human_oversight_stages is not None else []
+        self.aims_system_human_oversight_stages = [v if isinstance(v, AimsLifecycleStage) else AimsLifecycleStage(v) for v in self.aims_system_human_oversight_stages]
+
+        if not isinstance(self.aims_system_resources_used, list):
+            self.aims_system_resources_used = [self.aims_system_resources_used] if self.aims_system_resources_used is not None else []
+        self.aims_system_resources_used = [v if isinstance(v, AimsSystemResourceAimsId) else AimsSystemResourceAimsId(v) for v in self.aims_system_resources_used]
+
+        if not isinstance(self.aims_system_technical_documents, list):
+            self.aims_system_technical_documents = [self.aims_system_technical_documents] if self.aims_system_technical_documents is not None else []
+        self.aims_system_technical_documents = [v if isinstance(v, AimsTechnicalDocumentationAimsId) else AimsTechnicalDocumentationAimsId(v) for v in self.aims_system_technical_documents]
+
+        if not isinstance(self.aims_system_impact_assessments, list):
+            self.aims_system_impact_assessments = [self.aims_system_impact_assessments] if self.aims_system_impact_assessments is not None else []
+        self.aims_system_impact_assessments = [v if isinstance(v, AimsImpactAssessmentAimsId) else AimsImpactAssessmentAimsId(v) for v in self.aims_system_impact_assessments]
+
+        if not isinstance(self.aims_system_relationships, list):
+            self.aims_system_relationships = [self.aims_system_relationships] if self.aims_system_relationships is not None else []
+        self.aims_system_relationships = [v if isinstance(v, AimsThirdPartyRelationshipAimsId) else AimsThirdPartyRelationshipAimsId(v) for v in self.aims_system_relationships]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class DataResource(NamedEntity):
+class AimsSystemResource(YAMLRoot):
     """
-    A data resource used by an AI system per Annex A.7. Includes data acquisition, quality, provenance, and
-    preparation metadata.
+    Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who
+    provides it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["DataResource"]
-    class_class_curie: ClassVar[str] = "iso42001:DataResource"
-    class_name: ClassVar[str] = "DataResource"
-    class_model_uri: ClassVar[URIRef] = ISO42001.DataResource
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsSystemResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsSystemResource"
+    class_name: ClassVar[str] = "AimsSystemResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsSystemResource
 
-    id: Union[str, DataResourceId] = None
-    name: str = None
-    data_resource_category: Optional[Union[str, "DataResourceCategory"]] = None
-    source: Optional[str] = None
-    acquisition_method: Optional[str] = None
-    data_quality_requirements: Optional[Union[str, list[str]]] = empty_list()
-    data_quality_metrics: Optional[Union[str, list[str]]] = empty_list()
-    data_provenance: Optional[str] = None
-    labelling_process: Optional[str] = None
-    data_preparation_methods: Optional[Union[Union[str, "DataPreparationMethod"], list[Union[str, "DataPreparationMethod"]]]] = empty_list()
-    last_updated_date: Optional[Union[str, XSDDate]] = None
-    known_bias_issues: Optional[Union[str, list[str]]] = empty_list()
-    retention_policy: Optional[str] = None
-    data_classification: Optional[str] = None
+    aims_id: Union[str, AimsSystemResourceAimsId] = None
+    aims_resource_type: str = None
+    title: str = None
+    aims_life_cycle_stages: Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]] = empty_list()
+    aims_resource_provider: Optional[Union[str, "AimsResourceProvider"]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, DataResourceId):
-            self.id = DataResourceId(self.id)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
-        if self.data_resource_category is not None and not isinstance(self.data_resource_category, DataResourceCategory):
-            self.data_resource_category = DataResourceCategory(self.data_resource_category)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsSystemResourceAimsId):
+            self.aims_id = AimsSystemResourceAimsId(self.aims_id)
 
-        if self.source is not None and not isinstance(self.source, str):
-            self.source = str(self.source)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.acquisition_method is not None and not isinstance(self.acquisition_method, str):
-            self.acquisition_method = str(self.acquisition_method)
+        if not isinstance(self.aims_life_cycle_stages, list):
+            self.aims_life_cycle_stages = [self.aims_life_cycle_stages] if self.aims_life_cycle_stages is not None else []
+        self.aims_life_cycle_stages = [v if isinstance(v, AimsLifecycleStage) else AimsLifecycleStage(v) for v in self.aims_life_cycle_stages]
 
-        if not isinstance(self.data_quality_requirements, list):
-            self.data_quality_requirements = [self.data_quality_requirements] if self.data_quality_requirements is not None else []
-        self.data_quality_requirements = [v if isinstance(v, str) else str(v) for v in self.data_quality_requirements]
+        if self.aims_resource_provider is not None and not isinstance(self.aims_resource_provider, AimsResourceProvider):
+            self.aims_resource_provider = AimsResourceProvider(self.aims_resource_provider)
 
-        if not isinstance(self.data_quality_metrics, list):
-            self.data_quality_metrics = [self.data_quality_metrics] if self.data_quality_metrics is not None else []
-        self.data_quality_metrics = [v if isinstance(v, str) else str(v) for v in self.data_quality_metrics]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if self.data_provenance is not None and not isinstance(self.data_provenance, str):
-            self.data_provenance = str(self.data_provenance)
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_aims_resource_type):
+            self.MissingRequiredField("unknown_aims_resource_type")
+        self.unknown_aims_resource_type = str(self.class_name)
 
-        if self.labelling_process is not None and not isinstance(self.labelling_process, str):
-            self.labelling_process = str(self.labelling_process)
 
-        if not isinstance(self.data_preparation_methods, list):
-            self.data_preparation_methods = [self.data_preparation_methods] if self.data_preparation_methods is not None else []
-        self.data_preparation_methods = [v if isinstance(v, DataPreparationMethod) else DataPreparationMethod(v) for v in self.data_preparation_methods]
+    def __new__(cls, *args, **kwargs):
 
-        if self.last_updated_date is not None and not isinstance(self.last_updated_date, XSDDate):
-            self.last_updated_date = XSDDate(self.last_updated_date)
+        type_designator = "aims_resource_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
 
-        if not isinstance(self.known_bias_issues, list):
-            self.known_bias_issues = [self.known_bias_issues] if self.known_bias_issues is not None else []
-        self.known_bias_issues = [v if isinstance(v, str) else str(v) for v in self.known_bias_issues]
 
-        if self.retention_policy is not None and not isinstance(self.retention_policy, str):
-            self.retention_policy = str(self.retention_policy)
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
 
-        if self.data_classification is not None and not isinstance(self.data_classification, str):
-            self.data_classification = str(self.data_classification)
+
+
+@dataclass(repr=False)
+class AimsComponentResource(AimsSystemResource):
+    """
+    A part of a system, and how it is joined to the rest.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsComponentResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsComponentResource"
+    class_name: ClassVar[str] = "AimsComponentResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsComponentResource
+
+    aims_id: Union[str, AimsComponentResourceAimsId] = None
+    aims_resource_type: str = None
+    title: str = None
+    aims_component_kind: Optional[str] = None
+    aims_component_integration: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsComponentResourceAimsId):
+            self.aims_id = AimsComponentResourceAimsId(self.aims_id)
+
+        if self.aims_component_kind is not None and not isinstance(self.aims_component_kind, str):
+            self.aims_component_kind = str(self.aims_component_kind)
+
+        if self.aims_component_integration is not None and not isinstance(self.aims_component_integration, str):
+            self.aims_component_integration = str(self.aims_component_integration)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_aims_resource_type):
+            self.MissingRequiredField("unknown_aims_resource_type")
+        self.unknown_aims_resource_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsDataResource(AimsSystemResource):
+    """
+    Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged
+    fit, and how long it is kept.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsDataResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsDataResource"
+    class_name: ClassVar[str] = "AimsDataResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsDataResource
+
+    aims_id: Union[str, AimsDataResourceAimsId] = None
+    aims_resource_type: str = None
+    title: str = None
+    aims_data_categories: Optional[Union[Union[str, "AimsDataCategory"], list[Union[str, "AimsDataCategory"]]]] = empty_list()
+    aims_data_kinds: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_intended_use: Optional[str] = None
+    aims_data_quantity: Optional[str] = None
+    aims_data_sources: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_source_characteristics: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_subject_demographics: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_prior_handling: Optional[str] = None
+    aims_data_rights: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_metadata: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_provenance: Optional[str] = None
+    aims_data_provenance_verification: Optional[str] = None
+    aims_data_quality_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_quality_results: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_bias_issues: Optional[Union[str, list[str]]] = empty_list()
+    aims_data_representativeness: Optional[str] = None
+    aims_data_labelling_process: Optional[str] = None
+    aims_data_preparation_criteria: Optional[str] = None
+    aims_data_preparation_methods: Optional[Union[Union[str, "AimsDataPreparationMethod"], list[Union[str, "AimsDataPreparationMethod"]]]] = empty_list()
+    aims_data_last_updated: Optional[Union[str, XSDDate]] = None
+    aims_data_retention: Optional[str] = None
+    aims_data_classification: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsDataResourceAimsId):
+            self.aims_id = AimsDataResourceAimsId(self.aims_id)
+
+        if not isinstance(self.aims_data_categories, list):
+            self.aims_data_categories = [self.aims_data_categories] if self.aims_data_categories is not None else []
+        self.aims_data_categories = [v if isinstance(v, AimsDataCategory) else AimsDataCategory(v) for v in self.aims_data_categories]
+
+        if not isinstance(self.aims_data_kinds, list):
+            self.aims_data_kinds = [self.aims_data_kinds] if self.aims_data_kinds is not None else []
+        self.aims_data_kinds = [v if isinstance(v, str) else str(v) for v in self.aims_data_kinds]
+
+        if self.aims_data_intended_use is not None and not isinstance(self.aims_data_intended_use, str):
+            self.aims_data_intended_use = str(self.aims_data_intended_use)
+
+        if self.aims_data_quantity is not None and not isinstance(self.aims_data_quantity, str):
+            self.aims_data_quantity = str(self.aims_data_quantity)
+
+        if not isinstance(self.aims_data_sources, list):
+            self.aims_data_sources = [self.aims_data_sources] if self.aims_data_sources is not None else []
+        self.aims_data_sources = [v if isinstance(v, str) else str(v) for v in self.aims_data_sources]
+
+        if not isinstance(self.aims_data_source_characteristics, list):
+            self.aims_data_source_characteristics = [self.aims_data_source_characteristics] if self.aims_data_source_characteristics is not None else []
+        self.aims_data_source_characteristics = [v if isinstance(v, str) else str(v) for v in self.aims_data_source_characteristics]
+
+        if not isinstance(self.aims_data_subject_demographics, list):
+            self.aims_data_subject_demographics = [self.aims_data_subject_demographics] if self.aims_data_subject_demographics is not None else []
+        self.aims_data_subject_demographics = [v if isinstance(v, str) else str(v) for v in self.aims_data_subject_demographics]
+
+        if self.aims_data_prior_handling is not None and not isinstance(self.aims_data_prior_handling, str):
+            self.aims_data_prior_handling = str(self.aims_data_prior_handling)
+
+        if not isinstance(self.aims_data_rights, list):
+            self.aims_data_rights = [self.aims_data_rights] if self.aims_data_rights is not None else []
+        self.aims_data_rights = [v if isinstance(v, str) else str(v) for v in self.aims_data_rights]
+
+        if not isinstance(self.aims_data_metadata, list):
+            self.aims_data_metadata = [self.aims_data_metadata] if self.aims_data_metadata is not None else []
+        self.aims_data_metadata = [v if isinstance(v, str) else str(v) for v in self.aims_data_metadata]
+
+        if self.aims_data_provenance is not None and not isinstance(self.aims_data_provenance, str):
+            self.aims_data_provenance = str(self.aims_data_provenance)
+
+        if self.aims_data_provenance_verification is not None and not isinstance(self.aims_data_provenance_verification, str):
+            self.aims_data_provenance_verification = str(self.aims_data_provenance_verification)
+
+        if not isinstance(self.aims_data_quality_requirements, list):
+            self.aims_data_quality_requirements = [self.aims_data_quality_requirements] if self.aims_data_quality_requirements is not None else []
+        self.aims_data_quality_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_data_quality_requirements]
+
+        if not isinstance(self.aims_data_quality_results, list):
+            self.aims_data_quality_results = [self.aims_data_quality_results] if self.aims_data_quality_results is not None else []
+        self.aims_data_quality_results = [v if isinstance(v, str) else str(v) for v in self.aims_data_quality_results]
+
+        if not isinstance(self.aims_data_bias_issues, list):
+            self.aims_data_bias_issues = [self.aims_data_bias_issues] if self.aims_data_bias_issues is not None else []
+        self.aims_data_bias_issues = [v if isinstance(v, str) else str(v) for v in self.aims_data_bias_issues]
+
+        if self.aims_data_representativeness is not None and not isinstance(self.aims_data_representativeness, str):
+            self.aims_data_representativeness = str(self.aims_data_representativeness)
+
+        if self.aims_data_labelling_process is not None and not isinstance(self.aims_data_labelling_process, str):
+            self.aims_data_labelling_process = str(self.aims_data_labelling_process)
+
+        if self.aims_data_preparation_criteria is not None and not isinstance(self.aims_data_preparation_criteria, str):
+            self.aims_data_preparation_criteria = str(self.aims_data_preparation_criteria)
+
+        if not isinstance(self.aims_data_preparation_methods, list):
+            self.aims_data_preparation_methods = [self.aims_data_preparation_methods] if self.aims_data_preparation_methods is not None else []
+        self.aims_data_preparation_methods = [v if isinstance(v, AimsDataPreparationMethod) else AimsDataPreparationMethod(v) for v in self.aims_data_preparation_methods]
+
+        if self.aims_data_last_updated is not None and not isinstance(self.aims_data_last_updated, XSDDate):
+            self.aims_data_last_updated = XSDDate(self.aims_data_last_updated)
+
+        if self.aims_data_retention is not None and not isinstance(self.aims_data_retention, str):
+            self.aims_data_retention = str(self.aims_data_retention)
+
+        if self.aims_data_classification is not None and not isinstance(self.aims_data_classification, str):
+            self.aims_data_classification = str(self.aims_data_classification)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_aims_resource_type):
+            self.MissingRequiredField("unknown_aims_resource_type")
+        self.unknown_aims_resource_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsToolingResource(AimsSystemResource):
+    """
+    A tool an AI system draws on, such as an algorithm, a model or a development tool.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsToolingResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsToolingResource"
+    class_name: ClassVar[str] = "AimsToolingResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsToolingResource
+
+    aims_id: Union[str, AimsToolingResourceAimsId] = None
+    aims_resource_type: str = None
+    title: str = None
+    aims_tool_category: Optional[str] = None
+    aims_tool_version: Optional[str] = None
+    aims_tool_vendor: Optional[str] = None
+    aims_tool_licence: Optional[str] = None
+    aims_tool_purpose: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsToolingResourceAimsId):
+            self.aims_id = AimsToolingResourceAimsId(self.aims_id)
+
+        if self.aims_tool_category is not None and not isinstance(self.aims_tool_category, str):
+            self.aims_tool_category = str(self.aims_tool_category)
+
+        if self.aims_tool_version is not None and not isinstance(self.aims_tool_version, str):
+            self.aims_tool_version = str(self.aims_tool_version)
+
+        if self.aims_tool_vendor is not None and not isinstance(self.aims_tool_vendor, str):
+            self.aims_tool_vendor = str(self.aims_tool_vendor)
+
+        if self.aims_tool_licence is not None and not isinstance(self.aims_tool_licence, str):
+            self.aims_tool_licence = str(self.aims_tool_licence)
+
+        if self.aims_tool_purpose is not None and not isinstance(self.aims_tool_purpose, str):
+            self.aims_tool_purpose = str(self.aims_tool_purpose)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_aims_resource_type):
+            self.MissingRequiredField("unknown_aims_resource_type")
+        self.unknown_aims_resource_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsComputingResource(AimsSystemResource):
+    """
+    Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsComputingResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsComputingResource"
+    class_name: ClassVar[str] = "AimsComputingResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsComputingResource
+
+    aims_id: Union[str, AimsComputingResourceAimsId] = None
+    aims_resource_type: str = None
+    title: str = None
+    aims_computing_requirements: Optional[str] = None
+    aims_computing_location: Optional[str] = None
+    aims_computing_processing: Optional[str] = None
+    aims_computing_hardware_impact: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsComputingResourceAimsId):
+            self.aims_id = AimsComputingResourceAimsId(self.aims_id)
+
+        if self.aims_computing_requirements is not None and not isinstance(self.aims_computing_requirements, str):
+            self.aims_computing_requirements = str(self.aims_computing_requirements)
+
+        if self.aims_computing_location is not None and not isinstance(self.aims_computing_location, str):
+            self.aims_computing_location = str(self.aims_computing_location)
+
+        if self.aims_computing_processing is not None and not isinstance(self.aims_computing_processing, str):
+            self.aims_computing_processing = str(self.aims_computing_processing)
+
+        if self.aims_computing_hardware_impact is not None and not isinstance(self.aims_computing_hardware_impact, str):
+            self.aims_computing_hardware_impact = str(self.aims_computing_hardware_impact)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_aims_resource_type):
+            self.MissingRequiredField("unknown_aims_resource_type")
+        self.unknown_aims_resource_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsHumanResource(AimsSystemResource):
+    """
+    People an AI system draws on: their skills and the work they do on it.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsHumanResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsHumanResource"
+    class_name: ClassVar[str] = "AimsHumanResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsHumanResource
+
+    aims_id: Union[str, AimsHumanResourceAimsId] = None
+    aims_resource_type: str = None
+    title: str = None
+    aims_human_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_human_competences: Optional[Union[str, list[str]]] = empty_list()
+    aims_human_activities: Optional[Union[str, list[str]]] = empty_list()
+    aims_human_diversity: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsHumanResourceAimsId):
+            self.aims_id = AimsHumanResourceAimsId(self.aims_id)
+
+        if self.aims_human_role is not None and not isinstance(self.aims_human_role, AimsRoleAimsId):
+            self.aims_human_role = AimsRoleAimsId(self.aims_human_role)
+
+        if not isinstance(self.aims_human_competences, list):
+            self.aims_human_competences = [self.aims_human_competences] if self.aims_human_competences is not None else []
+        self.aims_human_competences = [v if isinstance(v, str) else str(v) for v in self.aims_human_competences]
+
+        if not isinstance(self.aims_human_activities, list):
+            self.aims_human_activities = [self.aims_human_activities] if self.aims_human_activities is not None else []
+        self.aims_human_activities = [v if isinstance(v, str) else str(v) for v in self.aims_human_activities]
+
+        if self.aims_human_diversity is not None and not isinstance(self.aims_human_diversity, str):
+            self.aims_human_diversity = str(self.aims_human_diversity)
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.unknown_aims_resource_type):
+            self.MissingRequiredField("unknown_aims_resource_type")
+        self.unknown_aims_resource_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsDevelopmentProcess(YAMLRoot):
+    """
+    A process for designing and building an AI system responsibly: the life cycle it follows, and what it asks of
+    testing, oversight, data and approvals.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsDevelopmentProcess"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsDevelopmentProcess"
+    class_name: ClassVar[str] = "AimsDevelopmentProcess"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsDevelopmentProcess
+
+    aims_id: Union[str, AimsDevelopmentProcessAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_development_life_cycle_model: Optional[str] = None
+    aims_development_testing: Optional[str] = None
+    aims_development_human_oversight: Optional[str] = None
+    aims_development_impact_assessment_stages: Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]] = empty_list()
+    aims_development_training_data_rules: Optional[str] = None
+    aims_development_expertise: Optional[str] = None
+    aims_development_release_criteria: Optional[Union[str, list[str]]] = empty_list()
+    aims_development_approvals: Optional[Union[str, list[str]]] = empty_list()
+    aims_development_change_control: Optional[str] = None
+    aims_development_usability: Optional[str] = None
+    aims_development_party_engagement: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsDevelopmentProcessAimsId):
+            self.aims_id = AimsDevelopmentProcessAimsId(self.aims_id)
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
+
+        if self.aims_development_life_cycle_model is not None and not isinstance(self.aims_development_life_cycle_model, str):
+            self.aims_development_life_cycle_model = str(self.aims_development_life_cycle_model)
+
+        if self.aims_development_testing is not None and not isinstance(self.aims_development_testing, str):
+            self.aims_development_testing = str(self.aims_development_testing)
+
+        if self.aims_development_human_oversight is not None and not isinstance(self.aims_development_human_oversight, str):
+            self.aims_development_human_oversight = str(self.aims_development_human_oversight)
+
+        if not isinstance(self.aims_development_impact_assessment_stages, list):
+            self.aims_development_impact_assessment_stages = [self.aims_development_impact_assessment_stages] if self.aims_development_impact_assessment_stages is not None else []
+        self.aims_development_impact_assessment_stages = [v if isinstance(v, AimsLifecycleStage) else AimsLifecycleStage(v) for v in self.aims_development_impact_assessment_stages]
+
+        if self.aims_development_training_data_rules is not None and not isinstance(self.aims_development_training_data_rules, str):
+            self.aims_development_training_data_rules = str(self.aims_development_training_data_rules)
+
+        if self.aims_development_expertise is not None and not isinstance(self.aims_development_expertise, str):
+            self.aims_development_expertise = str(self.aims_development_expertise)
+
+        if not isinstance(self.aims_development_release_criteria, list):
+            self.aims_development_release_criteria = [self.aims_development_release_criteria] if self.aims_development_release_criteria is not None else []
+        self.aims_development_release_criteria = [v if isinstance(v, str) else str(v) for v in self.aims_development_release_criteria]
+
+        if not isinstance(self.aims_development_approvals, list):
+            self.aims_development_approvals = [self.aims_development_approvals] if self.aims_development_approvals is not None else []
+        self.aims_development_approvals = [v if isinstance(v, str) else str(v) for v in self.aims_development_approvals]
+
+        if self.aims_development_change_control is not None and not isinstance(self.aims_development_change_control, str):
+            self.aims_development_change_control = str(self.aims_development_change_control)
+
+        if self.aims_development_usability is not None and not isinstance(self.aims_development_usability, str):
+            self.aims_development_usability = str(self.aims_development_usability)
+
+        if self.aims_development_party_engagement is not None and not isinstance(self.aims_development_party_engagement, str):
+            self.aims_development_party_engagement = str(self.aims_development_party_engagement)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class ToolingResource(NamedEntity):
+class AimsResponsibleUseProcess(YAMLRoot):
     """
-    A tooling resource (algorithm, framework, model, library) used in an AI system per A.4.4.
+    A process for using AI systems responsibly: what decides if a system may be used, built in-house or brought in.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["ToolingResource"]
-    class_class_curie: ClassVar[str] = "iso42001:ToolingResource"
-    class_name: ClassVar[str] = "ToolingResource"
-    class_model_uri: ClassVar[URIRef] = ISO42001.ToolingResource
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsResponsibleUseProcess"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsResponsibleUseProcess"
+    class_name: ClassVar[str] = "AimsResponsibleUseProcess"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsResponsibleUseProcess
 
-    id: Union[str, ToolingResourceId] = None
-    name: str = None
-    tool_category: Optional[str] = None
-    tool_version: Optional[str] = None
-    vendor: Optional[str] = None
-    license_terms: Optional[str] = None
-    usage_purpose: Optional[str] = None
+    aims_id: Union[str, AimsResponsibleUseProcessAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_use_approvals: Optional[Union[str, list[str]]] = empty_list()
+    aims_use_costs: Optional[str] = None
+    aims_use_sourcing_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_use_legal_requirements: Optional[Union[str, list[str]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ToolingResourceId):
-            self.id = ToolingResourceId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsResponsibleUseProcessAimsId):
+            self.aims_id = AimsResponsibleUseProcessAimsId(self.aims_id)
 
-        if self.tool_category is not None and not isinstance(self.tool_category, str):
-            self.tool_category = str(self.tool_category)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.tool_version is not None and not isinstance(self.tool_version, str):
-            self.tool_version = str(self.tool_version)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.vendor is not None and not isinstance(self.vendor, str):
-            self.vendor = str(self.vendor)
+        if not isinstance(self.aims_use_approvals, list):
+            self.aims_use_approvals = [self.aims_use_approvals] if self.aims_use_approvals is not None else []
+        self.aims_use_approvals = [v if isinstance(v, str) else str(v) for v in self.aims_use_approvals]
 
-        if self.license_terms is not None and not isinstance(self.license_terms, str):
-            self.license_terms = str(self.license_terms)
+        if self.aims_use_costs is not None and not isinstance(self.aims_use_costs, str):
+            self.aims_use_costs = str(self.aims_use_costs)
 
-        if self.usage_purpose is not None and not isinstance(self.usage_purpose, str):
-            self.usage_purpose = str(self.usage_purpose)
+        if not isinstance(self.aims_use_sourcing_requirements, list):
+            self.aims_use_sourcing_requirements = [self.aims_use_sourcing_requirements] if self.aims_use_sourcing_requirements is not None else []
+        self.aims_use_sourcing_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_use_sourcing_requirements]
+
+        if not isinstance(self.aims_use_legal_requirements, list):
+            self.aims_use_legal_requirements = [self.aims_use_legal_requirements] if self.aims_use_legal_requirements is not None else []
+        self.aims_use_legal_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_use_legal_requirements]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class ComputingResource(NamedEntity):
+class AimsTechnicalDocumentation(YAMLRoot):
     """
-    A system or computing resource used in the development or operation of an AI system per A.4.5.
+    Technical documents about an AI system for one kind of reader: what they hold, and the form they take.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["ComputingResource"]
-    class_class_curie: ClassVar[str] = "iso42001:ComputingResource"
-    class_name: ClassVar[str] = "ComputingResource"
-    class_model_uri: ClassVar[URIRef] = ISO42001.ComputingResource
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsTechnicalDocumentation"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsTechnicalDocumentation"
+    class_name: ClassVar[str] = "AimsTechnicalDocumentation"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsTechnicalDocumentation
 
-    id: Union[str, ComputingResourceId] = None
-    name: str = None
-    resource_class: Optional[str] = None
-    quantity: Optional[str] = None
-    location: Optional[str] = None
-    environment_type: Optional[str] = None
-    cost: Optional[str] = None
+    aims_id: Union[str, AimsTechnicalDocumentationAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_technical_doc_audiences: Optional[Union[str, list[str]]] = empty_list()
+    aims_technical_doc_form: Optional[str] = None
+    aims_technical_doc_contents: Optional[Union[str, list[str]]] = empty_list()
+    aims_technical_doc_failure_plan: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ComputingResourceId):
-            self.id = ComputingResourceId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsTechnicalDocumentationAimsId):
+            self.aims_id = AimsTechnicalDocumentationAimsId(self.aims_id)
 
-        if self.resource_class is not None and not isinstance(self.resource_class, str):
-            self.resource_class = str(self.resource_class)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.quantity is not None and not isinstance(self.quantity, str):
-            self.quantity = str(self.quantity)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.location is not None and not isinstance(self.location, str):
-            self.location = str(self.location)
+        if not isinstance(self.aims_technical_doc_audiences, list):
+            self.aims_technical_doc_audiences = [self.aims_technical_doc_audiences] if self.aims_technical_doc_audiences is not None else []
+        self.aims_technical_doc_audiences = [v if isinstance(v, str) else str(v) for v in self.aims_technical_doc_audiences]
 
-        if self.environment_type is not None and not isinstance(self.environment_type, str):
-            self.environment_type = str(self.environment_type)
+        if self.aims_technical_doc_form is not None and not isinstance(self.aims_technical_doc_form, str):
+            self.aims_technical_doc_form = str(self.aims_technical_doc_form)
 
-        if self.cost is not None and not isinstance(self.cost, str):
-            self.cost = str(self.cost)
+        if not isinstance(self.aims_technical_doc_contents, list):
+            self.aims_technical_doc_contents = [self.aims_technical_doc_contents] if self.aims_technical_doc_contents is not None else []
+        self.aims_technical_doc_contents = [v if isinstance(v, str) else str(v) for v in self.aims_technical_doc_contents]
+
+        if self.aims_technical_doc_failure_plan is not None and not isinstance(self.aims_technical_doc_failure_plan, str):
+            self.aims_technical_doc_failure_plan = str(self.aims_technical_doc_failure_plan)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class HumanResource(NamedEntity):
+class AimsUserInformation(YAMLRoot):
     """
-    A human resource (role, expertise area) involved in development, deployment, operation, maintenance, or oversight
-    of an AI system per A.4.6.
+    What those who use a system are told: the contents, how it reaches them, what decided it, and the check that they
+    got it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["HumanResource"]
-    class_class_curie: ClassVar[str] = "iso42001:HumanResource"
-    class_name: ClassVar[str] = "HumanResource"
-    class_model_uri: ClassVar[URIRef] = ISO42001.HumanResource
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsUserInformation"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsUserInformation"
+    class_name: ClassVar[str] = "AimsUserInformation"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsUserInformation
 
-    id: Union[str, HumanResourceId] = None
-    name: str = None
-    required_competencies: Optional[Union[str, list[str]]] = empty_list()
-    assigned_to: Optional[Union[str, list[str]]] = empty_list()
-    lifecycle_responsibilities: Optional[Union[str, list[str]]] = empty_list()
+    aims_id: Union[str, AimsUserInformationAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_user_information_contents: Optional[Union[str, list[str]]] = empty_list()
+    aims_user_information_channels: Optional[Union[str, list[str]]] = empty_list()
+    aims_user_information_criteria: Optional[Union[str, list[str]]] = empty_list()
+    aims_user_information_validated: Optional[Union[bool, Bool]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, HumanResourceId):
-            self.id = HumanResourceId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsUserInformationAimsId):
+            self.aims_id = AimsUserInformationAimsId(self.aims_id)
 
-        if not isinstance(self.required_competencies, list):
-            self.required_competencies = [self.required_competencies] if self.required_competencies is not None else []
-        self.required_competencies = [v if isinstance(v, str) else str(v) for v in self.required_competencies]
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.assigned_to, list):
-            self.assigned_to = [self.assigned_to] if self.assigned_to is not None else []
-        self.assigned_to = [v if isinstance(v, str) else str(v) for v in self.assigned_to]
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if not isinstance(self.lifecycle_responsibilities, list):
-            self.lifecycle_responsibilities = [self.lifecycle_responsibilities] if self.lifecycle_responsibilities is not None else []
-        self.lifecycle_responsibilities = [v if isinstance(v, str) else str(v) for v in self.lifecycle_responsibilities]
+        if not isinstance(self.aims_user_information_contents, list):
+            self.aims_user_information_contents = [self.aims_user_information_contents] if self.aims_user_information_contents is not None else []
+        self.aims_user_information_contents = [v if isinstance(v, str) else str(v) for v in self.aims_user_information_contents]
+
+        if not isinstance(self.aims_user_information_channels, list):
+            self.aims_user_information_channels = [self.aims_user_information_channels] if self.aims_user_information_channels is not None else []
+        self.aims_user_information_channels = [v if isinstance(v, str) else str(v) for v in self.aims_user_information_channels]
+
+        if not isinstance(self.aims_user_information_criteria, list):
+            self.aims_user_information_criteria = [self.aims_user_information_criteria] if self.aims_user_information_criteria is not None else []
+        self.aims_user_information_criteria = [v if isinstance(v, str) else str(v) for v in self.aims_user_information_criteria]
+
+        if self.aims_user_information_validated is not None and not isinstance(self.aims_user_information_validated, Bool):
+            self.aims_user_information_validated = Bool(self.aims_user_information_validated)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Resource(NamedEntity):
+class AimsIncidentCommunicationPlan(YAMLRoot):
     """
-    A resource provided for the AIMS per Clause 7.1.
+    The plan for telling users when a system goes wrong: which incidents, how soon, to which authorities, and with
+    what details.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["Resource"]
-    class_class_curie: ClassVar[str] = "iso42001:Resource"
-    class_name: ClassVar[str] = "Resource"
-    class_model_uri: ClassVar[URIRef] = ISO42001.Resource
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsIncidentCommunicationPlan"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsIncidentCommunicationPlan"
+    class_name: ClassVar[str] = "AimsIncidentCommunicationPlan"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsIncidentCommunicationPlan
 
-    id: Union[str, ResourceId] = None
-    name: str = None
-    resource_type: Optional[str] = None
-    quantity: Optional[str] = None
-    allocation_date: Optional[Union[str, XSDDate]] = None
-    allocated_to: Optional[str] = None
-    cost: Optional[str] = None
-    availability_status: Optional[str] = None
+    aims_id: Union[str, AimsIncidentCommunicationPlanAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_incident_plan_categories: Optional[Union[Union[str, "AimsIncidentCategory"], list[Union[str, "AimsIncidentCategory"]]]] = empty_list()
+    aims_incident_plan_timeline: Optional[str] = None
+    aims_incident_plan_authorities: Optional[Union[str, list[str]]] = empty_list()
+    aims_incident_plan_details: Optional[Union[str, list[str]]] = empty_list()
+    aims_incident_plan_integration: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ResourceId):
-            self.id = ResourceId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsIncidentCommunicationPlanAimsId):
+            self.aims_id = AimsIncidentCommunicationPlanAimsId(self.aims_id)
 
-        if self.resource_type is not None and not isinstance(self.resource_type, str):
-            self.resource_type = str(self.resource_type)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.quantity is not None and not isinstance(self.quantity, str):
-            self.quantity = str(self.quantity)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.allocation_date is not None and not isinstance(self.allocation_date, XSDDate):
-            self.allocation_date = XSDDate(self.allocation_date)
+        if not isinstance(self.aims_incident_plan_categories, list):
+            self.aims_incident_plan_categories = [self.aims_incident_plan_categories] if self.aims_incident_plan_categories is not None else []
+        self.aims_incident_plan_categories = [v if isinstance(v, AimsIncidentCategory) else AimsIncidentCategory(v) for v in self.aims_incident_plan_categories]
 
-        if self.allocated_to is not None and not isinstance(self.allocated_to, str):
-            self.allocated_to = str(self.allocated_to)
+        if self.aims_incident_plan_timeline is not None and not isinstance(self.aims_incident_plan_timeline, str):
+            self.aims_incident_plan_timeline = str(self.aims_incident_plan_timeline)
 
-        if self.cost is not None and not isinstance(self.cost, str):
-            self.cost = str(self.cost)
+        if not isinstance(self.aims_incident_plan_authorities, list):
+            self.aims_incident_plan_authorities = [self.aims_incident_plan_authorities] if self.aims_incident_plan_authorities is not None else []
+        self.aims_incident_plan_authorities = [v if isinstance(v, str) else str(v) for v in self.aims_incident_plan_authorities]
 
-        if self.availability_status is not None and not isinstance(self.availability_status, str):
-            self.availability_status = str(self.availability_status)
+        if not isinstance(self.aims_incident_plan_details, list):
+            self.aims_incident_plan_details = [self.aims_incident_plan_details] if self.aims_incident_plan_details is not None else []
+        self.aims_incident_plan_details = [v if isinstance(v, str) else str(v) for v in self.aims_incident_plan_details]
+
+        if self.aims_incident_plan_integration is not None and not isinstance(self.aims_incident_plan_integration, str):
+            self.aims_incident_plan_integration = str(self.aims_incident_plan_integration)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class CompetenceRecord(DocumentedInformation):
+class AimsReportingObligation(YAMLRoot):
     """
-    Evidence of competence for personnel affecting AIMS performance per Clause 7.2.
+    Something the organization must report about a system to an interested party: to whom, under what rule, what and
+    how soon.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["CompetenceRecord"]
-    class_class_curie: ClassVar[str] = "iso42001:CompetenceRecord"
-    class_name: ClassVar[str] = "CompetenceRecord"
-    class_model_uri: ClassVar[URIRef] = ISO42001.CompetenceRecord
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsReportingObligation"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsReportingObligation"
+    class_name: ClassVar[str] = "AimsReportingObligation"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsReportingObligation
 
-    id: Union[str, CompetenceRecordId] = None
-    name: str = None
-    person_name: Optional[str] = None
-    person_role: Optional[str] = None
-    required_competencies: Optional[Union[str, list[str]]] = empty_list()
-    education_records: Optional[Union[str, list[str]]] = empty_list()
-    training_records: Optional[Union[str, list[str]]] = empty_list()
-    experience_records: Optional[Union[str, list[str]]] = empty_list()
-    competency_assessment_date: Optional[Union[str, XSDDate]] = None
-    competency_gaps: Optional[Union[str, list[str]]] = empty_list()
-    development_actions: Optional[Union[str, list[str]]] = empty_list()
+    aims_id: Union[str, AimsReportingObligationAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_obligation_parties: Optional[Union[Union[str, AimsInterestedPartyAimsId], list[Union[str, AimsInterestedPartyAimsId]]]] = empty_list()
+    aims_obligation_basis: Optional[str] = None
+    aims_obligation_jurisdiction: Optional[str] = None
+    aims_obligation_contents: Optional[Union[str, list[str]]] = empty_list()
+    aims_obligation_timeframe: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CompetenceRecordId):
-            self.id = CompetenceRecordId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsReportingObligationAimsId):
+            self.aims_id = AimsReportingObligationAimsId(self.aims_id)
 
-        if self.person_name is not None and not isinstance(self.person_name, str):
-            self.person_name = str(self.person_name)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.person_role is not None and not isinstance(self.person_role, str):
-            self.person_role = str(self.person_role)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if not isinstance(self.required_competencies, list):
-            self.required_competencies = [self.required_competencies] if self.required_competencies is not None else []
-        self.required_competencies = [v if isinstance(v, str) else str(v) for v in self.required_competencies]
+        if not isinstance(self.aims_obligation_parties, list):
+            self.aims_obligation_parties = [self.aims_obligation_parties] if self.aims_obligation_parties is not None else []
+        self.aims_obligation_parties = [v if isinstance(v, AimsInterestedPartyAimsId) else AimsInterestedPartyAimsId(v) for v in self.aims_obligation_parties]
 
-        if not isinstance(self.education_records, list):
-            self.education_records = [self.education_records] if self.education_records is not None else []
-        self.education_records = [v if isinstance(v, str) else str(v) for v in self.education_records]
+        if self.aims_obligation_basis is not None and not isinstance(self.aims_obligation_basis, str):
+            self.aims_obligation_basis = str(self.aims_obligation_basis)
 
-        if not isinstance(self.training_records, list):
-            self.training_records = [self.training_records] if self.training_records is not None else []
-        self.training_records = [v if isinstance(v, str) else str(v) for v in self.training_records]
+        if self.aims_obligation_jurisdiction is not None and not isinstance(self.aims_obligation_jurisdiction, str):
+            self.aims_obligation_jurisdiction = str(self.aims_obligation_jurisdiction)
 
-        if not isinstance(self.experience_records, list):
-            self.experience_records = [self.experience_records] if self.experience_records is not None else []
-        self.experience_records = [v if isinstance(v, str) else str(v) for v in self.experience_records]
+        if not isinstance(self.aims_obligation_contents, list):
+            self.aims_obligation_contents = [self.aims_obligation_contents] if self.aims_obligation_contents is not None else []
+        self.aims_obligation_contents = [v if isinstance(v, str) else str(v) for v in self.aims_obligation_contents]
 
-        if self.competency_assessment_date is not None and not isinstance(self.competency_assessment_date, XSDDate):
-            self.competency_assessment_date = XSDDate(self.competency_assessment_date)
+        if self.aims_obligation_timeframe is not None and not isinstance(self.aims_obligation_timeframe, str):
+            self.aims_obligation_timeframe = str(self.aims_obligation_timeframe)
 
-        if not isinstance(self.competency_gaps, list):
-            self.competency_gaps = [self.competency_gaps] if self.competency_gaps is not None else []
-        self.competency_gaps = [v if isinstance(v, str) else str(v) for v in self.competency_gaps]
-
-        if not isinstance(self.development_actions, list):
-            self.development_actions = [self.development_actions] if self.development_actions is not None else []
-        self.development_actions = [v if isinstance(v, str) else str(v) for v in self.development_actions]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AwarenessProgram(DocumentedInformation):
+class AimsResource(YAMLRoot):
     """
-    The awareness program ensuring personnel understand their AI-related responsibilities per Clause 7.3.
+    A resource provided for the management system itself, such as people, time, tools or budget. What an AI system
+    draws on is an AimsSystemResource.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AwarenessProgram"]
-    class_class_curie: ClassVar[str] = "iso42001:AwarenessProgram"
-    class_name: ClassVar[str] = "AwarenessProgram"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AwarenessProgram
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsResource"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsResource"
+    class_name: ClassVar[str] = "AimsResource"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsResource
 
-    id: Union[str, AwarenessProgramId] = None
-    name: str = None
-    awareness_topics: Optional[Union[str, list[str]]] = empty_list()
-    delivery_methods: Optional[Union[str, list[str]]] = empty_list()
-    target_audience: Optional[str] = None
-    frequency: Optional[str] = None
-    completion_tracking: Optional[str] = None
-    effectiveness_measures: Optional[str] = None
+    aims_id: Union[str, AimsResourceAimsId] = None
+    title: str = None
+    aims_support_category: Optional[str] = None
+    aims_support_quantity: Optional[str] = None
+    aims_support_allocation_date: Optional[Union[str, XSDDate]] = None
+    aims_support_allocated_to: Optional[str] = None
+    aims_support_cost: Optional[str] = None
+    aims_support_availability: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AwarenessProgramId):
-            self.id = AwarenessProgramId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsResourceAimsId):
+            self.aims_id = AimsResourceAimsId(self.aims_id)
 
-        if not isinstance(self.awareness_topics, list):
-            self.awareness_topics = [self.awareness_topics] if self.awareness_topics is not None else []
-        self.awareness_topics = [v if isinstance(v, str) else str(v) for v in self.awareness_topics]
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.delivery_methods, list):
-            self.delivery_methods = [self.delivery_methods] if self.delivery_methods is not None else []
-        self.delivery_methods = [v if isinstance(v, str) else str(v) for v in self.delivery_methods]
+        if self.aims_support_category is not None and not isinstance(self.aims_support_category, str):
+            self.aims_support_category = str(self.aims_support_category)
 
-        if self.target_audience is not None and not isinstance(self.target_audience, str):
-            self.target_audience = str(self.target_audience)
+        if self.aims_support_quantity is not None and not isinstance(self.aims_support_quantity, str):
+            self.aims_support_quantity = str(self.aims_support_quantity)
 
-        if self.frequency is not None and not isinstance(self.frequency, str):
-            self.frequency = str(self.frequency)
+        if self.aims_support_allocation_date is not None and not isinstance(self.aims_support_allocation_date, XSDDate):
+            self.aims_support_allocation_date = XSDDate(self.aims_support_allocation_date)
 
-        if self.completion_tracking is not None and not isinstance(self.completion_tracking, str):
-            self.completion_tracking = str(self.completion_tracking)
+        if self.aims_support_allocated_to is not None and not isinstance(self.aims_support_allocated_to, str):
+            self.aims_support_allocated_to = str(self.aims_support_allocated_to)
 
-        if self.effectiveness_measures is not None and not isinstance(self.effectiveness_measures, str):
-            self.effectiveness_measures = str(self.effectiveness_measures)
+        if self.aims_support_cost is not None and not isinstance(self.aims_support_cost, str):
+            self.aims_support_cost = str(self.aims_support_cost)
+
+        if self.aims_support_availability is not None and not isinstance(self.aims_support_availability, str):
+            self.aims_support_availability = str(self.aims_support_availability)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class CommunicationPlan(DocumentedInformation):
+class AimsCompetenceRecord(YAMLRoot):
     """
-    Plan for internal and external communications relevant to the AIMS per Clause 7.4.
+    The evidence of one person's competence for work that affects AI performance, and what is done to close any gap.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["CommunicationPlan"]
-    class_class_curie: ClassVar[str] = "iso42001:CommunicationPlan"
-    class_name: ClassVar[str] = "CommunicationPlan"
-    class_model_uri: ClassVar[URIRef] = ISO42001.CommunicationPlan
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsCompetenceRecord"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsCompetenceRecord"
+    class_name: ClassVar[str] = "AimsCompetenceRecord"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsCompetenceRecord
 
-    id: Union[str, CommunicationPlanId] = None
-    name: str = None
-    communication_items: Optional[Union[Union[dict, "CommunicationItem"], list[Union[dict, "CommunicationItem"]]]] = empty_list()
+    aims_id: Union[str, AimsCompetenceRecordAimsId] = None
+    title: str = None
+    aims_competence_person: Optional[str] = None
+    aims_competence_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_competence_required: Optional[Union[str, list[str]]] = empty_list()
+    aims_competence_education: Optional[Union[str, list[str]]] = empty_list()
+    aims_competence_training: Optional[Union[str, list[str]]] = empty_list()
+    aims_competence_experience: Optional[Union[str, list[str]]] = empty_list()
+    aims_competence_assessment_date: Optional[Union[str, XSDDate]] = None
+    aims_competence_gaps: Optional[Union[str, list[str]]] = empty_list()
+    aims_competence_actions: Optional[Union[str, list[str]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CommunicationPlanId):
-            self.id = CommunicationPlanId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsCompetenceRecordAimsId):
+            self.aims_id = AimsCompetenceRecordAimsId(self.aims_id)
 
-        if not isinstance(self.communication_items, list):
-            self.communication_items = [self.communication_items] if self.communication_items is not None else []
-        self.communication_items = [v if isinstance(v, CommunicationItem) else CommunicationItem(**as_dict(v)) for v in self.communication_items]
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.aims_competence_person is not None and not isinstance(self.aims_competence_person, str):
+            self.aims_competence_person = str(self.aims_competence_person)
+
+        if self.aims_competence_role is not None and not isinstance(self.aims_competence_role, AimsRoleAimsId):
+            self.aims_competence_role = AimsRoleAimsId(self.aims_competence_role)
+
+        if not isinstance(self.aims_competence_required, list):
+            self.aims_competence_required = [self.aims_competence_required] if self.aims_competence_required is not None else []
+        self.aims_competence_required = [v if isinstance(v, str) else str(v) for v in self.aims_competence_required]
+
+        if not isinstance(self.aims_competence_education, list):
+            self.aims_competence_education = [self.aims_competence_education] if self.aims_competence_education is not None else []
+        self.aims_competence_education = [v if isinstance(v, str) else str(v) for v in self.aims_competence_education]
+
+        if not isinstance(self.aims_competence_training, list):
+            self.aims_competence_training = [self.aims_competence_training] if self.aims_competence_training is not None else []
+        self.aims_competence_training = [v if isinstance(v, str) else str(v) for v in self.aims_competence_training]
+
+        if not isinstance(self.aims_competence_experience, list):
+            self.aims_competence_experience = [self.aims_competence_experience] if self.aims_competence_experience is not None else []
+        self.aims_competence_experience = [v if isinstance(v, str) else str(v) for v in self.aims_competence_experience]
+
+        if self.aims_competence_assessment_date is not None and not isinstance(self.aims_competence_assessment_date, XSDDate):
+            self.aims_competence_assessment_date = XSDDate(self.aims_competence_assessment_date)
+
+        if not isinstance(self.aims_competence_gaps, list):
+            self.aims_competence_gaps = [self.aims_competence_gaps] if self.aims_competence_gaps is not None else []
+        self.aims_competence_gaps = [v if isinstance(v, str) else str(v) for v in self.aims_competence_gaps]
+
+        if not isinstance(self.aims_competence_actions, list):
+            self.aims_competence_actions = [self.aims_competence_actions] if self.aims_competence_actions is not None else []
+        self.aims_competence_actions = [v if isinstance(v, str) else str(v) for v in self.aims_competence_actions]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class CommunicationItem(YAMLRoot):
+class AimsAwarenessProgramme(YAMLRoot):
     """
-    A single communication requirement within the AIMS communication plan.
+    The programme that tells people working for the organization about the AI policy, their part in the system and
+    what failing it would mean.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["CommunicationItem"]
-    class_class_curie: ClassVar[str] = "iso42001:CommunicationItem"
-    class_name: ClassVar[str] = "CommunicationItem"
-    class_model_uri: ClassVar[URIRef] = ISO42001.CommunicationItem
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsAwarenessProgramme"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsAwarenessProgramme"
+    class_name: ClassVar[str] = "AimsAwarenessProgramme"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsAwarenessProgramme
 
-    subject: Optional[str] = None
-    purpose: Optional[str] = None
-    audience: Optional[str] = None
-    frequency: Optional[str] = None
-    method: Optional[str] = None
-    responsible_party: Optional[str] = None
-    records_required: Optional[str] = None
+    aims_id: Union[str, AimsAwarenessProgrammeAimsId] = None
+    title: str = None
+    aims_awareness_topics: Optional[Union[str, list[str]]] = empty_list()
+    aims_awareness_methods: Optional[Union[str, list[str]]] = empty_list()
+    aims_awareness_audience: Optional[str] = None
+    aims_awareness_frequency: Optional[str] = None
+    aims_awareness_completion_tracking: Optional[str] = None
+    aims_awareness_effectiveness: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.subject is not None and not isinstance(self.subject, str):
-            self.subject = str(self.subject)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsAwarenessProgrammeAimsId):
+            self.aims_id = AimsAwarenessProgrammeAimsId(self.aims_id)
 
-        if self.purpose is not None and not isinstance(self.purpose, str):
-            self.purpose = str(self.purpose)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.audience is not None and not isinstance(self.audience, str):
-            self.audience = str(self.audience)
+        if not isinstance(self.aims_awareness_topics, list):
+            self.aims_awareness_topics = [self.aims_awareness_topics] if self.aims_awareness_topics is not None else []
+        self.aims_awareness_topics = [v if isinstance(v, str) else str(v) for v in self.aims_awareness_topics]
 
-        if self.frequency is not None and not isinstance(self.frequency, str):
-            self.frequency = str(self.frequency)
+        if not isinstance(self.aims_awareness_methods, list):
+            self.aims_awareness_methods = [self.aims_awareness_methods] if self.aims_awareness_methods is not None else []
+        self.aims_awareness_methods = [v if isinstance(v, str) else str(v) for v in self.aims_awareness_methods]
 
-        if self.method is not None and not isinstance(self.method, str):
-            self.method = str(self.method)
+        if self.aims_awareness_audience is not None and not isinstance(self.aims_awareness_audience, str):
+            self.aims_awareness_audience = str(self.aims_awareness_audience)
 
-        if self.responsible_party is not None and not isinstance(self.responsible_party, str):
-            self.responsible_party = str(self.responsible_party)
+        if self.aims_awareness_frequency is not None and not isinstance(self.aims_awareness_frequency, str):
+            self.aims_awareness_frequency = str(self.aims_awareness_frequency)
 
-        if self.records_required is not None and not isinstance(self.records_required, str):
-            self.records_required = str(self.records_required)
+        if self.aims_awareness_completion_tracking is not None and not isinstance(self.aims_awareness_completion_tracking, str):
+            self.aims_awareness_completion_tracking = str(self.aims_awareness_completion_tracking)
+
+        if self.aims_awareness_effectiveness is not None and not isinstance(self.aims_awareness_effectiveness, str):
+            self.aims_awareness_effectiveness = str(self.aims_awareness_effectiveness)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class OperationalProcedure(DocumentedInformation):
+class AimsCommunicationPlan(YAMLRoot):
     """
-    A documented procedure for operational planning and control of AIMS processes per Clause 8.1, including AI system
-    life cycle related controls.
+    The plan for communication about the system, inside the organization and outside it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["OperationalProcedure"]
-    class_class_curie: ClassVar[str] = "iso42001:OperationalProcedure"
-    class_name: ClassVar[str] = "OperationalProcedure"
-    class_model_uri: ClassVar[URIRef] = ISO42001.OperationalProcedure
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsCommunicationPlan"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsCommunicationPlan"
+    class_name: ClassVar[str] = "AimsCommunicationPlan"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsCommunicationPlan
 
-    id: Union[str, OperationalProcedureId] = None
-    name: str = None
-    procedure_scope: Optional[str] = None
-    process_criteria: Optional[str] = None
-    control_measures: Optional[Union[str, list[str]]] = empty_list()
-    responsible_roles: Optional[Union[Union[str, RoleId], list[Union[str, RoleId]]]] = empty_list()
-    related_controls: Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]] = empty_list()
-    change_control_requirements: Optional[str] = None
+    aims_id: Union[str, AimsCommunicationPlanAimsId] = None
+    title: str = None
+    aims_communication_items: Optional[Union[Union[dict, "AimsCommunication"], list[Union[dict, "AimsCommunication"]]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, OperationalProcedureId):
-            self.id = OperationalProcedureId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsCommunicationPlanAimsId):
+            self.aims_id = AimsCommunicationPlanAimsId(self.aims_id)
 
-        if self.procedure_scope is not None and not isinstance(self.procedure_scope, str):
-            self.procedure_scope = str(self.procedure_scope)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.process_criteria is not None and not isinstance(self.process_criteria, str):
-            self.process_criteria = str(self.process_criteria)
+        self._normalize_inlined_as_list(slot_name="aims_communication_items", slot_type=AimsCommunication, key_name="aims_communication_subject", keyed=False)
 
-        if not isinstance(self.control_measures, list):
-            self.control_measures = [self.control_measures] if self.control_measures is not None else []
-        self.control_measures = [v if isinstance(v, str) else str(v) for v in self.control_measures]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if not isinstance(self.responsible_roles, list):
-            self.responsible_roles = [self.responsible_roles] if self.responsible_roles is not None else []
-        self.responsible_roles = [v if isinstance(v, RoleId) else RoleId(v) for v in self.responsible_roles]
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if not isinstance(self.related_controls, list):
-            self.related_controls = [self.related_controls] if self.related_controls is not None else []
-        self.related_controls = [v if isinstance(v, AIReferenceControlId) else AIReferenceControlId(v) for v in self.related_controls]
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
 
-        if self.change_control_requirements is not None and not isinstance(self.change_control_requirements, str):
-            self.change_control_requirements = str(self.change_control_requirements)
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class MonitoringProgram(DocumentedInformation):
+class AimsCommunication(YAMLRoot):
     """
-    The program for monitoring, measurement, analysis, and evaluation of AIMS performance per Clause 9.1.
+    One communication the plan provides for: what about, to whom, when, how, and who communicates.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["MonitoringProgram"]
-    class_class_curie: ClassVar[str] = "iso42001:MonitoringProgram"
-    class_name: ClassVar[str] = "MonitoringProgram"
-    class_model_uri: ClassVar[URIRef] = ISO42001.MonitoringProgram
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsCommunication"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsCommunication"
+    class_name: ClassVar[str] = "AimsCommunication"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsCommunication
 
-    id: Union[str, MonitoringProgramId] = None
-    name: str = None
-    monitoring_items: Optional[Union[Union[dict, "MonitoringItem"], list[Union[dict, "MonitoringItem"]]]] = empty_list()
+    aims_communication_subject: str = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_communication_purpose: Optional[str] = None
+    aims_communication_audience: Optional[str] = None
+    aims_communication_external: Optional[Union[bool, Bool]] = None
+    aims_communication_timing: Optional[str] = None
+    aims_communication_method: Optional[str] = None
+    aims_communication_records_required: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MonitoringProgramId):
-            self.id = MonitoringProgramId(self.id)
+        if self._is_empty(self.aims_communication_subject):
+            self.MissingRequiredField("aims_communication_subject")
+        if not isinstance(self.aims_communication_subject, str):
+            self.aims_communication_subject = str(self.aims_communication_subject)
 
-        if not isinstance(self.monitoring_items, list):
-            self.monitoring_items = [self.monitoring_items] if self.monitoring_items is not None else []
-        self.monitoring_items = [v if isinstance(v, MonitoringItem) else MonitoringItem(**as_dict(v)) for v in self.monitoring_items]
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
+
+        if self.aims_communication_purpose is not None and not isinstance(self.aims_communication_purpose, str):
+            self.aims_communication_purpose = str(self.aims_communication_purpose)
+
+        if self.aims_communication_audience is not None and not isinstance(self.aims_communication_audience, str):
+            self.aims_communication_audience = str(self.aims_communication_audience)
+
+        if self.aims_communication_external is not None and not isinstance(self.aims_communication_external, Bool):
+            self.aims_communication_external = Bool(self.aims_communication_external)
+
+        if self.aims_communication_timing is not None and not isinstance(self.aims_communication_timing, str):
+            self.aims_communication_timing = str(self.aims_communication_timing)
+
+        if self.aims_communication_method is not None and not isinstance(self.aims_communication_method, str):
+            self.aims_communication_method = str(self.aims_communication_method)
+
+        if self.aims_communication_records_required is not None and not isinstance(self.aims_communication_records_required, Bool):
+            self.aims_communication_records_required = Bool(self.aims_communication_records_required)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class MonitoringItem(YAMLRoot):
+class AimsDocumentedInformation(YAMLRoot):
     """
-    A single item to be monitored and measured per Clause 9.1.
+    A document or record the system keeps under control that no more specific record describes, such as a procedure, a
+    plan or a report.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["MonitoringItem"]
-    class_class_curie: ClassVar[str] = "iso42001:MonitoringItem"
-    class_name: ClassVar[str] = "MonitoringItem"
-    class_model_uri: ClassVar[URIRef] = ISO42001.MonitoringItem
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsDocumentedInformation"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsDocumentedInformation"
+    class_name: ClassVar[str] = "AimsDocumentedInformation"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsDocumentedInformation
 
-    metric_name: Optional[str] = None
-    metric_description: Optional[str] = None
-    measurement_method: Optional[str] = None
-    measurement_frequency: Optional[str] = None
-    responsible_party: Optional[str] = None
-    analysis_frequency: Optional[str] = None
-    analyst: Optional[str] = None
-    target_threshold: Optional[str] = None
-    alert_threshold: Optional[str] = None
-    current_value: Optional[str] = None
-    trend: Optional[str] = None
+    aims_id: Union[str, AimsDocumentedInformationAimsId] = None
+    aims_document_kind: Union[str, "AimsDocumentKind"] = None
+    title: str = None
+    aims_cited_clauses: Optional[Union[Union[str, "AimsClause"], list[Union[str, "AimsClause"]]]] = empty_list()
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.metric_name is not None and not isinstance(self.metric_name, str):
-            self.metric_name = str(self.metric_name)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsDocumentedInformationAimsId):
+            self.aims_id = AimsDocumentedInformationAimsId(self.aims_id)
 
-        if self.metric_description is not None and not isinstance(self.metric_description, str):
-            self.metric_description = str(self.metric_description)
+        if self._is_empty(self.aims_document_kind):
+            self.MissingRequiredField("aims_document_kind")
+        if not isinstance(self.aims_document_kind, AimsDocumentKind):
+            self.aims_document_kind = AimsDocumentKind(self.aims_document_kind)
 
-        if self.measurement_method is not None and not isinstance(self.measurement_method, str):
-            self.measurement_method = str(self.measurement_method)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.measurement_frequency is not None and not isinstance(self.measurement_frequency, str):
-            self.measurement_frequency = str(self.measurement_frequency)
+        if not isinstance(self.aims_cited_clauses, list):
+            self.aims_cited_clauses = [self.aims_cited_clauses] if self.aims_cited_clauses is not None else []
+        self.aims_cited_clauses = [v if isinstance(v, AimsClause) else AimsClause(v) for v in self.aims_cited_clauses]
 
-        if self.responsible_party is not None and not isinstance(self.responsible_party, str):
-            self.responsible_party = str(self.responsible_party)
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
 
-        if self.analysis_frequency is not None and not isinstance(self.analysis_frequency, str):
-            self.analysis_frequency = str(self.analysis_frequency)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if self.analyst is not None and not isinstance(self.analyst, str):
-            self.analyst = str(self.analyst)
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if self.target_threshold is not None and not isinstance(self.target_threshold, str):
-            self.target_threshold = str(self.target_threshold)
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
 
-        if self.alert_threshold is not None and not isinstance(self.alert_threshold, str):
-            self.alert_threshold = str(self.alert_threshold)
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
 
-        if self.current_value is not None and not isinstance(self.current_value, str):
-            self.current_value = str(self.current_value)
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
 
-        if self.trend is not None and not isinstance(self.trend, str):
-            self.trend = str(self.trend)
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class InternalAudit(DocumentedInformation):
+class AimsOperationalProcedure(YAMLRoot):
     """
-    An internal audit instance per Clause 9.2 assessing AIMS conformance and effectiveness.
+    A procedure by which the organization plans and controls the processes that meet its requirements, such as
+    managing data for building or vetting suppliers.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["InternalAudit"]
-    class_class_curie: ClassVar[str] = "iso42001:InternalAudit"
-    class_name: ClassVar[str] = "InternalAudit"
-    class_model_uri: ClassVar[URIRef] = ISO42001.InternalAudit
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsOperationalProcedure"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsOperationalProcedure"
+    class_name: ClassVar[str] = "AimsOperationalProcedure"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsOperationalProcedure
 
-    id: Union[str, InternalAuditId] = None
-    name: str = None
-    audit_reference: Optional[str] = None
-    audit_type: Optional[Union[str, "AuditType"]] = None
-    audit_scope: Optional[str] = None
-    audit_criteria: Optional[str] = None
-    audit_objectives: Optional[str] = None
-    audit_period_start: Optional[Union[str, XSDDate]] = None
-    audit_period_end: Optional[Union[str, XSDDate]] = None
-    lead_auditor: Optional[str] = None
-    audit_team: Optional[Union[str, list[str]]] = empty_list()
-    auditee_representatives: Optional[Union[str, list[str]]] = empty_list()
-    audit_plan: Optional[str] = None
-    findings: Optional[Union[Union[str, AuditFindingId], list[Union[str, AuditFindingId]]]] = empty_list()
-    positive_observations: Optional[Union[str, list[str]]] = empty_list()
-    audit_conclusion: Optional[str] = None
-    report_date: Optional[Union[str, XSDDate]] = None
-    report_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_id: Union[str, AimsOperationalProcedureAimsId] = None
+    title: str = None
+    aims_relevant_controls: Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]] = empty_list()
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    aims_procedure_scope: Optional[str] = None
+    aims_procedure_criteria: Optional[str] = None
+    aims_procedure_control_measures: Optional[Union[str, list[str]]] = empty_list()
+    aims_procedure_roles: Optional[Union[Union[str, AimsRoleAimsId], list[Union[str, AimsRoleAimsId]]]] = empty_list()
+    aims_procedure_change_control: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, InternalAuditId):
-            self.id = InternalAuditId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsOperationalProcedureAimsId):
+            self.aims_id = AimsOperationalProcedureAimsId(self.aims_id)
 
-        if self.audit_reference is not None and not isinstance(self.audit_reference, str):
-            self.audit_reference = str(self.audit_reference)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.audit_type is not None and not isinstance(self.audit_type, AuditType):
-            self.audit_type = AuditType(self.audit_type)
+        if not isinstance(self.aims_relevant_controls, list):
+            self.aims_relevant_controls = [self.aims_relevant_controls] if self.aims_relevant_controls is not None else []
+        self.aims_relevant_controls = [v if isinstance(v, AimsControlAimsId) else AimsControlAimsId(v) for v in self.aims_relevant_controls]
 
-        if self.audit_scope is not None and not isinstance(self.audit_scope, str):
-            self.audit_scope = str(self.audit_scope)
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
 
-        if self.audit_criteria is not None and not isinstance(self.audit_criteria, str):
-            self.audit_criteria = str(self.audit_criteria)
+        if self.aims_procedure_scope is not None and not isinstance(self.aims_procedure_scope, str):
+            self.aims_procedure_scope = str(self.aims_procedure_scope)
 
-        if self.audit_objectives is not None and not isinstance(self.audit_objectives, str):
-            self.audit_objectives = str(self.audit_objectives)
+        if self.aims_procedure_criteria is not None and not isinstance(self.aims_procedure_criteria, str):
+            self.aims_procedure_criteria = str(self.aims_procedure_criteria)
 
-        if self.audit_period_start is not None and not isinstance(self.audit_period_start, XSDDate):
-            self.audit_period_start = XSDDate(self.audit_period_start)
+        if not isinstance(self.aims_procedure_control_measures, list):
+            self.aims_procedure_control_measures = [self.aims_procedure_control_measures] if self.aims_procedure_control_measures is not None else []
+        self.aims_procedure_control_measures = [v if isinstance(v, str) else str(v) for v in self.aims_procedure_control_measures]
 
-        if self.audit_period_end is not None and not isinstance(self.audit_period_end, XSDDate):
-            self.audit_period_end = XSDDate(self.audit_period_end)
+        if not isinstance(self.aims_procedure_roles, list):
+            self.aims_procedure_roles = [self.aims_procedure_roles] if self.aims_procedure_roles is not None else []
+        self.aims_procedure_roles = [v if isinstance(v, AimsRoleAimsId) else AimsRoleAimsId(v) for v in self.aims_procedure_roles]
 
-        if self.lead_auditor is not None and not isinstance(self.lead_auditor, str):
-            self.lead_auditor = str(self.lead_auditor)
+        if self.aims_procedure_change_control is not None and not isinstance(self.aims_procedure_change_control, str):
+            self.aims_procedure_change_control = str(self.aims_procedure_change_control)
 
-        if not isinstance(self.audit_team, list):
-            self.audit_team = [self.audit_team] if self.audit_team is not None else []
-        self.audit_team = [v if isinstance(v, str) else str(v) for v in self.audit_team]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if not isinstance(self.auditee_representatives, list):
-            self.auditee_representatives = [self.auditee_representatives] if self.auditee_representatives is not None else []
-        self.auditee_representatives = [v if isinstance(v, str) else str(v) for v in self.auditee_representatives]
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if self.audit_plan is not None and not isinstance(self.audit_plan, str):
-            self.audit_plan = str(self.audit_plan)
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
 
-        if not isinstance(self.findings, list):
-            self.findings = [self.findings] if self.findings is not None else []
-        self.findings = [v if isinstance(v, AuditFindingId) else AuditFindingId(v) for v in self.findings]
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
 
-        if not isinstance(self.positive_observations, list):
-            self.positive_observations = [self.positive_observations] if self.positive_observations is not None else []
-        self.positive_observations = [v if isinstance(v, str) else str(v) for v in self.positive_observations]
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
 
-        if self.audit_conclusion is not None and not isinstance(self.audit_conclusion, str):
-            self.audit_conclusion = str(self.audit_conclusion)
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
 
-        if self.report_date is not None and not isinstance(self.report_date, XSDDate):
-            self.report_date = XSDDate(self.report_date)
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
 
-        if not isinstance(self.report_distribution, list):
-            self.report_distribution = [self.report_distribution] if self.report_distribution is not None else []
-        self.report_distribution = [v if isinstance(v, str) else str(v) for v in self.report_distribution]
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AuditProgramme(DocumentedInformation):
+class AimsMonitoringProgramme(YAMLRoot):
     """
-    The internal audit programme per Clause 9.2.2, planning AIMS audit activities over a defined period.
+    The programme that watches, measures, analyses and judges how well the system does and how well it works.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AuditProgramme"]
-    class_class_curie: ClassVar[str] = "iso42001:AuditProgramme"
-    class_name: ClassVar[str] = "AuditProgramme"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AuditProgramme
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsMonitoringProgramme"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsMonitoringProgramme"
+    class_name: ClassVar[str] = "AimsMonitoringProgramme"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsMonitoringProgramme
 
-    id: Union[str, AuditProgrammeId] = None
-    name: str = None
-    programme_period: Optional[str] = None
-    planned_audits: Optional[Union[Union[str, InternalAuditId], list[Union[str, InternalAuditId]]]] = empty_list()
-    audit_frequency_rationale: Optional[str] = None
-    resource_requirements: Optional[str] = None
-    auditor_qualifications: Optional[str] = None
-    programme_status: Optional[str] = None
+    aims_id: Union[str, AimsMonitoringProgrammeAimsId] = None
+    title: str = None
+    aims_monitoring_items: Optional[Union[Union[dict, "AimsMonitoringItem"], list[Union[dict, "AimsMonitoringItem"]]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AuditProgrammeId):
-            self.id = AuditProgrammeId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsMonitoringProgrammeAimsId):
+            self.aims_id = AimsMonitoringProgrammeAimsId(self.aims_id)
 
-        if self.programme_period is not None and not isinstance(self.programme_period, str):
-            self.programme_period = str(self.programme_period)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.planned_audits, list):
-            self.planned_audits = [self.planned_audits] if self.planned_audits is not None else []
-        self.planned_audits = [v if isinstance(v, InternalAuditId) else InternalAuditId(v) for v in self.planned_audits]
+        self._normalize_inlined_as_list(slot_name="aims_monitoring_items", slot_type=AimsMonitoringItem, key_name="aims_monitoring_metric", keyed=False)
 
-        if self.audit_frequency_rationale is not None and not isinstance(self.audit_frequency_rationale, str):
-            self.audit_frequency_rationale = str(self.audit_frequency_rationale)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if self.resource_requirements is not None and not isinstance(self.resource_requirements, str):
-            self.resource_requirements = str(self.resource_requirements)
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if self.auditor_qualifications is not None and not isinstance(self.auditor_qualifications, str):
-            self.auditor_qualifications = str(self.auditor_qualifications)
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
 
-        if self.programme_status is not None and not isinstance(self.programme_status, str):
-            self.programme_status = str(self.programme_status)
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AuditFinding(NamedEntity):
+class AimsMonitoringItem(YAMLRoot):
     """
-    A finding from an AIMS internal audit, including nonconformities, observations, and positive findings.
+    One thing the monitoring programme measures: what, how, how often and by whom it is measured and analysed, and
+    against what thresholds.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AuditFinding"]
-    class_class_curie: ClassVar[str] = "iso42001:AuditFinding"
-    class_name: ClassVar[str] = "AuditFinding"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AuditFinding
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsMonitoringItem"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsMonitoringItem"
+    class_name: ClassVar[str] = "AimsMonitoringItem"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsMonitoringItem
 
-    id: Union[str, AuditFindingId] = None
-    name: str = None
-    finding_type: Optional[Union[str, "AuditFindingType"]] = None
-    clause_reference: Optional[str] = None
-    control_reference: Optional[Union[str, AIReferenceControlId]] = None
-    finding_description: Optional[str] = None
-    objective_evidence: Optional[str] = None
-    root_cause_analysis: Optional[str] = None
-    risk_implication: Optional[str] = None
-    recommended_action: Optional[str] = None
-    auditee_response: Optional[str] = None
-    linked_corrective_action: Optional[Union[str, CorrectiveActionId]] = None
-    closure_status: Optional[str] = None
-    closure_date: Optional[Union[str, XSDDate]] = None
+    aims_monitoring_metric: str = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_monitoring_description: Optional[str] = None
+    aims_monitoring_method: Optional[str] = None
+    aims_monitoring_frequency: Optional[str] = None
+    aims_monitoring_analysis_frequency: Optional[str] = None
+    aims_monitoring_analyst: Optional[str] = None
+    aims_monitoring_target: Optional[str] = None
+    aims_monitoring_alert_threshold: Optional[str] = None
+    aims_monitoring_current_value: Optional[str] = None
+    aims_monitoring_trend: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AuditFindingId):
-            self.id = AuditFindingId(self.id)
+        if self._is_empty(self.aims_monitoring_metric):
+            self.MissingRequiredField("aims_monitoring_metric")
+        if not isinstance(self.aims_monitoring_metric, str):
+            self.aims_monitoring_metric = str(self.aims_monitoring_metric)
 
-        if self.finding_type is not None and not isinstance(self.finding_type, AuditFindingType):
-            self.finding_type = AuditFindingType(self.finding_type)
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
 
-        if self.clause_reference is not None and not isinstance(self.clause_reference, str):
-            self.clause_reference = str(self.clause_reference)
+        if self.aims_monitoring_description is not None and not isinstance(self.aims_monitoring_description, str):
+            self.aims_monitoring_description = str(self.aims_monitoring_description)
 
-        if self.control_reference is not None and not isinstance(self.control_reference, AIReferenceControlId):
-            self.control_reference = AIReferenceControlId(self.control_reference)
+        if self.aims_monitoring_method is not None and not isinstance(self.aims_monitoring_method, str):
+            self.aims_monitoring_method = str(self.aims_monitoring_method)
 
-        if self.finding_description is not None and not isinstance(self.finding_description, str):
-            self.finding_description = str(self.finding_description)
+        if self.aims_monitoring_frequency is not None and not isinstance(self.aims_monitoring_frequency, str):
+            self.aims_monitoring_frequency = str(self.aims_monitoring_frequency)
 
-        if self.objective_evidence is not None and not isinstance(self.objective_evidence, str):
-            self.objective_evidence = str(self.objective_evidence)
+        if self.aims_monitoring_analysis_frequency is not None and not isinstance(self.aims_monitoring_analysis_frequency, str):
+            self.aims_monitoring_analysis_frequency = str(self.aims_monitoring_analysis_frequency)
 
-        if self.root_cause_analysis is not None and not isinstance(self.root_cause_analysis, str):
-            self.root_cause_analysis = str(self.root_cause_analysis)
+        if self.aims_monitoring_analyst is not None and not isinstance(self.aims_monitoring_analyst, str):
+            self.aims_monitoring_analyst = str(self.aims_monitoring_analyst)
 
-        if self.risk_implication is not None and not isinstance(self.risk_implication, str):
-            self.risk_implication = str(self.risk_implication)
+        if self.aims_monitoring_target is not None and not isinstance(self.aims_monitoring_target, str):
+            self.aims_monitoring_target = str(self.aims_monitoring_target)
 
-        if self.recommended_action is not None and not isinstance(self.recommended_action, str):
-            self.recommended_action = str(self.recommended_action)
+        if self.aims_monitoring_alert_threshold is not None and not isinstance(self.aims_monitoring_alert_threshold, str):
+            self.aims_monitoring_alert_threshold = str(self.aims_monitoring_alert_threshold)
 
-        if self.auditee_response is not None and not isinstance(self.auditee_response, str):
-            self.auditee_response = str(self.auditee_response)
+        if self.aims_monitoring_current_value is not None and not isinstance(self.aims_monitoring_current_value, str):
+            self.aims_monitoring_current_value = str(self.aims_monitoring_current_value)
 
-        if self.linked_corrective_action is not None and not isinstance(self.linked_corrective_action, CorrectiveActionId):
-            self.linked_corrective_action = CorrectiveActionId(self.linked_corrective_action)
-
-        if self.closure_status is not None and not isinstance(self.closure_status, str):
-            self.closure_status = str(self.closure_status)
-
-        if self.closure_date is not None and not isinstance(self.closure_date, XSDDate):
-            self.closure_date = XSDDate(self.closure_date)
+        if self.aims_monitoring_trend is not None and not isinstance(self.aims_monitoring_trend, str):
+            self.aims_monitoring_trend = str(self.aims_monitoring_trend)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class ManagementReview(DocumentedInformation):
+class AimsAuditProgramme(YAMLRoot):
     """
-    A management review per Clause 9.3, conducted by top management to evaluate ongoing AIMS suitability, adequacy,
-    and effectiveness.
+    A programme of internal audits: the audits planned over a period, how often and why, and the resources and
+    auditors they need.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["ManagementReview"]
-    class_class_curie: ClassVar[str] = "iso42001:ManagementReview"
-    class_name: ClassVar[str] = "ManagementReview"
-    class_model_uri: ClassVar[URIRef] = ISO42001.ManagementReview
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsAuditProgramme"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsAuditProgramme"
+    class_name: ClassVar[str] = "AimsAuditProgramme"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsAuditProgramme
 
-    id: Union[str, ManagementReviewId] = None
-    name: str = None
-    review_date: Optional[Union[str, XSDDate]] = None
-    attendees: Optional[Union[str, list[str]]] = empty_list()
-    previous_actions_status: Optional[str] = None
-    context_changes: Optional[Union[str, list[str]]] = empty_list()
-    interested_party_changes: Optional[Union[str, list[str]]] = empty_list()
-    performance_trends: Optional[str] = None
-    audit_results_summary: Optional[str] = None
-    risk_assessment_results: Optional[str] = None
-    impact_assessment_results: Optional[str] = None
-    improvement_opportunities: Optional[Union[Union[str, ImprovementOpportunityId], list[Union[str, ImprovementOpportunityId]]]] = empty_list()
-    decisions: Optional[Union[str, list[str]]] = empty_list()
-    action_items: Optional[Union[str, list[str]]] = empty_list()
-    next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_id: Union[str, AimsAuditProgrammeAimsId] = None
+    title: str = None
+    aims_programme_period: Optional[str] = None
+    aims_programme_audits: Optional[Union[Union[str, AimsAuditAimsId], list[Union[str, AimsAuditAimsId]]]] = empty_list()
+    aims_programme_frequency_rationale: Optional[str] = None
+    aims_programme_methods: Optional[str] = None
+    aims_programme_responsibilities: Optional[Union[str, list[str]]] = empty_list()
+    aims_programme_resources: Optional[str] = None
+    aims_programme_auditor_selection: Optional[str] = None
+    aims_programme_status: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ManagementReviewId):
-            self.id = ManagementReviewId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsAuditProgrammeAimsId):
+            self.aims_id = AimsAuditProgrammeAimsId(self.aims_id)
 
-        if self.review_date is not None and not isinstance(self.review_date, XSDDate):
-            self.review_date = XSDDate(self.review_date)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if not isinstance(self.attendees, list):
-            self.attendees = [self.attendees] if self.attendees is not None else []
-        self.attendees = [v if isinstance(v, str) else str(v) for v in self.attendees]
+        if self.aims_programme_period is not None and not isinstance(self.aims_programme_period, str):
+            self.aims_programme_period = str(self.aims_programme_period)
 
-        if self.previous_actions_status is not None and not isinstance(self.previous_actions_status, str):
-            self.previous_actions_status = str(self.previous_actions_status)
+        if not isinstance(self.aims_programme_audits, list):
+            self.aims_programme_audits = [self.aims_programme_audits] if self.aims_programme_audits is not None else []
+        self.aims_programme_audits = [v if isinstance(v, AimsAuditAimsId) else AimsAuditAimsId(v) for v in self.aims_programme_audits]
 
-        if not isinstance(self.context_changes, list):
-            self.context_changes = [self.context_changes] if self.context_changes is not None else []
-        self.context_changes = [v if isinstance(v, str) else str(v) for v in self.context_changes]
+        if self.aims_programme_frequency_rationale is not None and not isinstance(self.aims_programme_frequency_rationale, str):
+            self.aims_programme_frequency_rationale = str(self.aims_programme_frequency_rationale)
 
-        if not isinstance(self.interested_party_changes, list):
-            self.interested_party_changes = [self.interested_party_changes] if self.interested_party_changes is not None else []
-        self.interested_party_changes = [v if isinstance(v, str) else str(v) for v in self.interested_party_changes]
+        if self.aims_programme_methods is not None and not isinstance(self.aims_programme_methods, str):
+            self.aims_programme_methods = str(self.aims_programme_methods)
 
-        if self.performance_trends is not None and not isinstance(self.performance_trends, str):
-            self.performance_trends = str(self.performance_trends)
+        if not isinstance(self.aims_programme_responsibilities, list):
+            self.aims_programme_responsibilities = [self.aims_programme_responsibilities] if self.aims_programme_responsibilities is not None else []
+        self.aims_programme_responsibilities = [v if isinstance(v, str) else str(v) for v in self.aims_programme_responsibilities]
 
-        if self.audit_results_summary is not None and not isinstance(self.audit_results_summary, str):
-            self.audit_results_summary = str(self.audit_results_summary)
+        if self.aims_programme_resources is not None and not isinstance(self.aims_programme_resources, str):
+            self.aims_programme_resources = str(self.aims_programme_resources)
 
-        if self.risk_assessment_results is not None and not isinstance(self.risk_assessment_results, str):
-            self.risk_assessment_results = str(self.risk_assessment_results)
+        if self.aims_programme_auditor_selection is not None and not isinstance(self.aims_programme_auditor_selection, str):
+            self.aims_programme_auditor_selection = str(self.aims_programme_auditor_selection)
 
-        if self.impact_assessment_results is not None and not isinstance(self.impact_assessment_results, str):
-            self.impact_assessment_results = str(self.impact_assessment_results)
+        if self.aims_programme_status is not None and not isinstance(self.aims_programme_status, str):
+            self.aims_programme_status = str(self.aims_programme_status)
 
-        if not isinstance(self.improvement_opportunities, list):
-            self.improvement_opportunities = [self.improvement_opportunities] if self.improvement_opportunities is not None else []
-        self.improvement_opportunities = [v if isinstance(v, ImprovementOpportunityId) else ImprovementOpportunityId(v) for v in self.improvement_opportunities]
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
-        if not isinstance(self.decisions, list):
-            self.decisions = [self.decisions] if self.decisions is not None else []
-        self.decisions = [v if isinstance(v, str) else str(v) for v in self.decisions]
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
 
-        if not isinstance(self.action_items, list):
-            self.action_items = [self.action_items] if self.action_items is not None else []
-        self.action_items = [v if isinstance(v, str) else str(v) for v in self.action_items]
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
 
-        if self.next_review_date is not None and not isinstance(self.next_review_date, XSDDate):
-            self.next_review_date = XSDDate(self.next_review_date)
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Nonconformity(NamedEntity):
+class AimsAudit(YAMLRoot):
     """
-    A nonconformity identified per Clause 10.2 representing failure to fulfill an AIMS requirement.
+    An audit of the system: an internal audit, or one by a customer or a certification body, with its scope, criteria,
+    team, findings and conclusion.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["Nonconformity"]
-    class_class_curie: ClassVar[str] = "iso42001:Nonconformity"
-    class_name: ClassVar[str] = "Nonconformity"
-    class_model_uri: ClassVar[URIRef] = ISO42001.Nonconformity
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsAudit"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsAudit"
+    class_name: ClassVar[str] = "AimsAudit"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsAudit
 
-    id: Union[str, NonconformityId] = None
-    name: str = None
-    nonconformity_source: Optional[str] = None
-    detection_date: Optional[Union[str, XSDDate]] = None
-    detected_by: Optional[str] = None
-    requirement_violated: Optional[str] = None
-    nonconformity_description: Optional[str] = None
-    immediate_actions: Optional[Union[str, list[str]]] = empty_list()
-    consequences_addressed: Optional[str] = None
-    root_cause: Optional[str] = None
-    similar_nonconformities_check: Optional[str] = None
-    linked_corrective_actions: Optional[Union[Union[str, CorrectiveActionId], list[Union[str, CorrectiveActionId]]]] = empty_list()
-    status: Optional[str] = None
-    closure_date: Optional[Union[str, XSDDate]] = None
-    closure_evidence: Optional[str] = None
+    aims_id: Union[str, AimsAuditAimsId] = None
+    aims_audit_type: Union[str, "AimsAuditType"] = None
+    title: str = None
+    aims_audit_standards: Optional[Union[Union[str, "AimsManagementSystemStandard"], list[Union[str, "AimsManagementSystemStandard"]]]] = empty_list()
+    aims_audit_scope: Optional[str] = None
+    aims_audit_criteria: Optional[Union[str, list[str]]] = empty_list()
+    aims_audit_objectives: Optional[Union[str, list[str]]] = empty_list()
+    aims_audit_period_start: Optional[Union[str, XSDDate]] = None
+    aims_audit_period_end: Optional[Union[str, XSDDate]] = None
+    aims_audit_lead: Optional[str] = None
+    aims_audit_team: Optional[Union[str, list[str]]] = empty_list()
+    aims_audit_auditees: Optional[Union[str, list[str]]] = empty_list()
+    aims_audit_plan: Optional[Union[str, AimsDocumentedInformationAimsId]] = None
+    aims_audit_findings: Optional[Union[Union[str, AimsAuditFindingAimsId], list[Union[str, AimsAuditFindingAimsId]]]] = empty_list()
+    aims_audit_conclusion: Optional[str] = None
+    aims_audit_report_date: Optional[Union[str, XSDDate]] = None
+    aims_audit_report_distribution: Optional[Union[str, list[str]]] = empty_list()
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NonconformityId):
-            self.id = NonconformityId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsAuditAimsId):
+            self.aims_id = AimsAuditAimsId(self.aims_id)
 
-        if self.nonconformity_source is not None and not isinstance(self.nonconformity_source, str):
-            self.nonconformity_source = str(self.nonconformity_source)
+        if self._is_empty(self.aims_audit_type):
+            self.MissingRequiredField("aims_audit_type")
+        if not isinstance(self.aims_audit_type, AimsAuditType):
+            self.aims_audit_type = AimsAuditType(self.aims_audit_type)
 
-        if self.detection_date is not None and not isinstance(self.detection_date, XSDDate):
-            self.detection_date = XSDDate(self.detection_date)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.detected_by is not None and not isinstance(self.detected_by, str):
-            self.detected_by = str(self.detected_by)
+        if not isinstance(self.aims_audit_standards, list):
+            self.aims_audit_standards = [self.aims_audit_standards] if self.aims_audit_standards is not None else []
+        self.aims_audit_standards = [v if isinstance(v, AimsManagementSystemStandard) else AimsManagementSystemStandard(v) for v in self.aims_audit_standards]
 
-        if self.requirement_violated is not None and not isinstance(self.requirement_violated, str):
-            self.requirement_violated = str(self.requirement_violated)
+        if self.aims_audit_scope is not None and not isinstance(self.aims_audit_scope, str):
+            self.aims_audit_scope = str(self.aims_audit_scope)
 
-        if self.nonconformity_description is not None and not isinstance(self.nonconformity_description, str):
-            self.nonconformity_description = str(self.nonconformity_description)
+        if not isinstance(self.aims_audit_criteria, list):
+            self.aims_audit_criteria = [self.aims_audit_criteria] if self.aims_audit_criteria is not None else []
+        self.aims_audit_criteria = [v if isinstance(v, str) else str(v) for v in self.aims_audit_criteria]
 
-        if not isinstance(self.immediate_actions, list):
-            self.immediate_actions = [self.immediate_actions] if self.immediate_actions is not None else []
-        self.immediate_actions = [v if isinstance(v, str) else str(v) for v in self.immediate_actions]
+        if not isinstance(self.aims_audit_objectives, list):
+            self.aims_audit_objectives = [self.aims_audit_objectives] if self.aims_audit_objectives is not None else []
+        self.aims_audit_objectives = [v if isinstance(v, str) else str(v) for v in self.aims_audit_objectives]
 
-        if self.consequences_addressed is not None and not isinstance(self.consequences_addressed, str):
-            self.consequences_addressed = str(self.consequences_addressed)
+        if self.aims_audit_period_start is not None and not isinstance(self.aims_audit_period_start, XSDDate):
+            self.aims_audit_period_start = XSDDate(self.aims_audit_period_start)
 
-        if self.root_cause is not None and not isinstance(self.root_cause, str):
-            self.root_cause = str(self.root_cause)
+        if self.aims_audit_period_end is not None and not isinstance(self.aims_audit_period_end, XSDDate):
+            self.aims_audit_period_end = XSDDate(self.aims_audit_period_end)
 
-        if self.similar_nonconformities_check is not None and not isinstance(self.similar_nonconformities_check, str):
-            self.similar_nonconformities_check = str(self.similar_nonconformities_check)
+        if self.aims_audit_lead is not None and not isinstance(self.aims_audit_lead, str):
+            self.aims_audit_lead = str(self.aims_audit_lead)
 
-        if not isinstance(self.linked_corrective_actions, list):
-            self.linked_corrective_actions = [self.linked_corrective_actions] if self.linked_corrective_actions is not None else []
-        self.linked_corrective_actions = [v if isinstance(v, CorrectiveActionId) else CorrectiveActionId(v) for v in self.linked_corrective_actions]
+        if not isinstance(self.aims_audit_team, list):
+            self.aims_audit_team = [self.aims_audit_team] if self.aims_audit_team is not None else []
+        self.aims_audit_team = [v if isinstance(v, str) else str(v) for v in self.aims_audit_team]
 
-        if self.status is not None and not isinstance(self.status, str):
-            self.status = str(self.status)
+        if not isinstance(self.aims_audit_auditees, list):
+            self.aims_audit_auditees = [self.aims_audit_auditees] if self.aims_audit_auditees is not None else []
+        self.aims_audit_auditees = [v if isinstance(v, str) else str(v) for v in self.aims_audit_auditees]
 
-        if self.closure_date is not None and not isinstance(self.closure_date, XSDDate):
-            self.closure_date = XSDDate(self.closure_date)
+        if self.aims_audit_plan is not None and not isinstance(self.aims_audit_plan, AimsDocumentedInformationAimsId):
+            self.aims_audit_plan = AimsDocumentedInformationAimsId(self.aims_audit_plan)
 
-        if self.closure_evidence is not None and not isinstance(self.closure_evidence, str):
-            self.closure_evidence = str(self.closure_evidence)
+        if not isinstance(self.aims_audit_findings, list):
+            self.aims_audit_findings = [self.aims_audit_findings] if self.aims_audit_findings is not None else []
+        self.aims_audit_findings = [v if isinstance(v, AimsAuditFindingAimsId) else AimsAuditFindingAimsId(v) for v in self.aims_audit_findings]
+
+        if self.aims_audit_conclusion is not None and not isinstance(self.aims_audit_conclusion, str):
+            self.aims_audit_conclusion = str(self.aims_audit_conclusion)
+
+        if self.aims_audit_report_date is not None and not isinstance(self.aims_audit_report_date, XSDDate):
+            self.aims_audit_report_date = XSDDate(self.aims_audit_report_date)
+
+        if not isinstance(self.aims_audit_report_distribution, list):
+            self.aims_audit_report_distribution = [self.aims_audit_report_distribution] if self.aims_audit_report_distribution is not None else []
+        self.aims_audit_report_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_audit_report_distribution]
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class CorrectiveAction(NamedEntity):
+class AimsAuditFinding(YAMLRoot):
     """
-    A corrective action per Clause 10.2 to address the root cause of an AIMS nonconformity and reduce the likelihood
-    of recurrence.
+    One finding of an audit: a nonconformity, an observation or a strength, with the requirement or control it
+    concerns, its evidence and how it is closed.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["CorrectiveAction"]
-    class_class_curie: ClassVar[str] = "iso42001:CorrectiveAction"
-    class_name: ClassVar[str] = "CorrectiveAction"
-    class_model_uri: ClassVar[URIRef] = ISO42001.CorrectiveAction
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsAuditFinding"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsAuditFinding"
+    class_name: ClassVar[str] = "AimsAuditFinding"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsAuditFinding
 
-    id: Union[str, CorrectiveActionId] = None
-    name: str = None
-    linked_nonconformity: Optional[Union[str, NonconformityId]] = None
-    action_description: Optional[str] = None
-    root_cause_addressed: Optional[str] = None
-    responsible_party: Optional[str] = None
-    target_completion_date: Optional[Union[str, XSDDate]] = None
-    actual_completion_date: Optional[Union[str, XSDDate]] = None
-    resources_required: Optional[str] = None
-    effectiveness_criteria: Optional[str] = None
-    effectiveness_review_date: Optional[Union[str, XSDDate]] = None
-    effectiveness_verified: Optional[Union[bool, Bool]] = None
-    aims_changes_required: Optional[Union[bool, Bool]] = None
-    status: Optional[str] = None
+    aims_id: Union[str, AimsAuditFindingAimsId] = None
+    aims_finding_type: Union[str, "AimsAuditFindingType"] = None
+    title: str = None
+    aims_cited_clauses: Optional[Union[Union[str, "AimsClause"], list[Union[str, "AimsClause"]]]] = empty_list()
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    aims_finding_control: Optional[Union[str, AimsControlAimsId]] = None
+    aims_finding_evidence: Optional[str] = None
+    aims_finding_root_cause: Optional[str] = None
+    aims_finding_risk: Optional[str] = None
+    aims_finding_recommendation: Optional[str] = None
+    aims_finding_auditee_response: Optional[str] = None
+    aims_finding_corrective_action: Optional[Union[str, AimsCorrectiveActionAimsId]] = None
+    aims_finding_closure_status: Optional[str] = None
+    aims_finding_closure_date: Optional[Union[str, XSDDate]] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CorrectiveActionId):
-            self.id = CorrectiveActionId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsAuditFindingAimsId):
+            self.aims_id = AimsAuditFindingAimsId(self.aims_id)
 
-        if self.linked_nonconformity is not None and not isinstance(self.linked_nonconformity, NonconformityId):
-            self.linked_nonconformity = NonconformityId(self.linked_nonconformity)
+        if self._is_empty(self.aims_finding_type):
+            self.MissingRequiredField("aims_finding_type")
+        if not isinstance(self.aims_finding_type, AimsAuditFindingType):
+            self.aims_finding_type = AimsAuditFindingType(self.aims_finding_type)
 
-        if self.action_description is not None and not isinstance(self.action_description, str):
-            self.action_description = str(self.action_description)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.root_cause_addressed is not None and not isinstance(self.root_cause_addressed, str):
-            self.root_cause_addressed = str(self.root_cause_addressed)
+        if not isinstance(self.aims_cited_clauses, list):
+            self.aims_cited_clauses = [self.aims_cited_clauses] if self.aims_cited_clauses is not None else []
+        self.aims_cited_clauses = [v if isinstance(v, AimsClause) else AimsClause(v) for v in self.aims_cited_clauses]
 
-        if self.responsible_party is not None and not isinstance(self.responsible_party, str):
-            self.responsible_party = str(self.responsible_party)
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
 
-        if self.target_completion_date is not None and not isinstance(self.target_completion_date, XSDDate):
-            self.target_completion_date = XSDDate(self.target_completion_date)
+        if self.aims_finding_control is not None and not isinstance(self.aims_finding_control, AimsControlAimsId):
+            self.aims_finding_control = AimsControlAimsId(self.aims_finding_control)
 
-        if self.actual_completion_date is not None and not isinstance(self.actual_completion_date, XSDDate):
-            self.actual_completion_date = XSDDate(self.actual_completion_date)
+        if self.aims_finding_evidence is not None and not isinstance(self.aims_finding_evidence, str):
+            self.aims_finding_evidence = str(self.aims_finding_evidence)
 
-        if self.resources_required is not None and not isinstance(self.resources_required, str):
-            self.resources_required = str(self.resources_required)
+        if self.aims_finding_root_cause is not None and not isinstance(self.aims_finding_root_cause, str):
+            self.aims_finding_root_cause = str(self.aims_finding_root_cause)
 
-        if self.effectiveness_criteria is not None and not isinstance(self.effectiveness_criteria, str):
-            self.effectiveness_criteria = str(self.effectiveness_criteria)
+        if self.aims_finding_risk is not None and not isinstance(self.aims_finding_risk, str):
+            self.aims_finding_risk = str(self.aims_finding_risk)
 
-        if self.effectiveness_review_date is not None and not isinstance(self.effectiveness_review_date, XSDDate):
-            self.effectiveness_review_date = XSDDate(self.effectiveness_review_date)
+        if self.aims_finding_recommendation is not None and not isinstance(self.aims_finding_recommendation, str):
+            self.aims_finding_recommendation = str(self.aims_finding_recommendation)
 
-        if self.effectiveness_verified is not None and not isinstance(self.effectiveness_verified, Bool):
-            self.effectiveness_verified = Bool(self.effectiveness_verified)
+        if self.aims_finding_auditee_response is not None and not isinstance(self.aims_finding_auditee_response, str):
+            self.aims_finding_auditee_response = str(self.aims_finding_auditee_response)
 
-        if self.aims_changes_required is not None and not isinstance(self.aims_changes_required, Bool):
-            self.aims_changes_required = Bool(self.aims_changes_required)
+        if self.aims_finding_corrective_action is not None and not isinstance(self.aims_finding_corrective_action, AimsCorrectiveActionAimsId):
+            self.aims_finding_corrective_action = AimsCorrectiveActionAimsId(self.aims_finding_corrective_action)
 
-        if self.status is not None and not isinstance(self.status, str):
-            self.status = str(self.status)
+        if self.aims_finding_closure_status is not None and not isinstance(self.aims_finding_closure_status, str):
+            self.aims_finding_closure_status = str(self.aims_finding_closure_status)
+
+        if self.aims_finding_closure_date is not None and not isinstance(self.aims_finding_closure_date, XSDDate):
+            self.aims_finding_closure_date = XSDDate(self.aims_finding_closure_date)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class ImprovementOpportunity(NamedEntity):
+class AimsManagementReview(YAMLRoot):
     """
-    An opportunity for continual improvement of the AIMS per Clause 10.1.
+    A review of the system by top management: what it took in, what it decided and what it asked to be done.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["ImprovementOpportunity"]
-    class_class_curie: ClassVar[str] = "iso42001:ImprovementOpportunity"
-    class_name: ClassVar[str] = "ImprovementOpportunity"
-    class_model_uri: ClassVar[URIRef] = ISO42001.ImprovementOpportunity
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsManagementReview"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsManagementReview"
+    class_name: ClassVar[str] = "AimsManagementReview"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsManagementReview
 
-    id: Union[str, ImprovementOpportunityId] = None
-    name: str = None
-    improvement_source: Optional[str] = None
-    identification_date: Optional[Union[str, XSDDate]] = None
-    identified_by: Optional[str] = None
-    improvement_description: Optional[str] = None
-    expected_benefit: Optional[str] = None
-    priority: Optional[Union[str, "RiskLevel"]] = None
-    implementation_plan: Optional[str] = None
-    responsible_party: Optional[str] = None
-    target_date: Optional[Union[str, XSDDate]] = None
-    actual_completion_date: Optional[Union[str, XSDDate]] = None
-    outcome_assessment: Optional[str] = None
-    status: Optional[str] = None
+    aims_id: Union[str, AimsManagementReviewAimsId] = None
+    aims_review_held_on: Union[str, XSDDate] = None
+    title: str = None
+    aims_review_attendees: Optional[Union[str, list[str]]] = empty_list()
+    aims_review_previous_actions: Optional[str] = None
+    aims_review_context_changes: Optional[str] = None
+    aims_review_interested_party_changes: Optional[str] = None
+    aims_review_nonconformity_trends: Optional[str] = None
+    aims_review_monitoring_trends: Optional[str] = None
+    aims_review_audit_trends: Optional[str] = None
+    aims_review_improvement_opportunities: Optional[Union[str, list[str]]] = empty_list()
+    aims_review_decisions: Optional[Union[str, list[str]]] = empty_list()
+    aims_review_system_changes: Optional[Union[str, list[str]]] = empty_list()
+    aims_review_actions: Optional[Union[str, list[str]]] = empty_list()
+    aims_review_next_date: Optional[Union[str, XSDDate]] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ImprovementOpportunityId):
-            self.id = ImprovementOpportunityId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsManagementReviewAimsId):
+            self.aims_id = AimsManagementReviewAimsId(self.aims_id)
 
-        if self.improvement_source is not None and not isinstance(self.improvement_source, str):
-            self.improvement_source = str(self.improvement_source)
+        if self._is_empty(self.aims_review_held_on):
+            self.MissingRequiredField("aims_review_held_on")
+        if not isinstance(self.aims_review_held_on, XSDDate):
+            self.aims_review_held_on = XSDDate(self.aims_review_held_on)
 
-        if self.identification_date is not None and not isinstance(self.identification_date, XSDDate):
-            self.identification_date = XSDDate(self.identification_date)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.identified_by is not None and not isinstance(self.identified_by, str):
-            self.identified_by = str(self.identified_by)
+        if not isinstance(self.aims_review_attendees, list):
+            self.aims_review_attendees = [self.aims_review_attendees] if self.aims_review_attendees is not None else []
+        self.aims_review_attendees = [v if isinstance(v, str) else str(v) for v in self.aims_review_attendees]
 
-        if self.improvement_description is not None and not isinstance(self.improvement_description, str):
-            self.improvement_description = str(self.improvement_description)
+        if self.aims_review_previous_actions is not None and not isinstance(self.aims_review_previous_actions, str):
+            self.aims_review_previous_actions = str(self.aims_review_previous_actions)
 
-        if self.expected_benefit is not None and not isinstance(self.expected_benefit, str):
-            self.expected_benefit = str(self.expected_benefit)
+        if self.aims_review_context_changes is not None and not isinstance(self.aims_review_context_changes, str):
+            self.aims_review_context_changes = str(self.aims_review_context_changes)
 
-        if self.priority is not None and not isinstance(self.priority, RiskLevel):
-            self.priority = RiskLevel(self.priority)
+        if self.aims_review_interested_party_changes is not None and not isinstance(self.aims_review_interested_party_changes, str):
+            self.aims_review_interested_party_changes = str(self.aims_review_interested_party_changes)
 
-        if self.implementation_plan is not None and not isinstance(self.implementation_plan, str):
-            self.implementation_plan = str(self.implementation_plan)
+        if self.aims_review_nonconformity_trends is not None and not isinstance(self.aims_review_nonconformity_trends, str):
+            self.aims_review_nonconformity_trends = str(self.aims_review_nonconformity_trends)
 
-        if self.responsible_party is not None and not isinstance(self.responsible_party, str):
-            self.responsible_party = str(self.responsible_party)
+        if self.aims_review_monitoring_trends is not None and not isinstance(self.aims_review_monitoring_trends, str):
+            self.aims_review_monitoring_trends = str(self.aims_review_monitoring_trends)
 
-        if self.target_date is not None and not isinstance(self.target_date, XSDDate):
-            self.target_date = XSDDate(self.target_date)
+        if self.aims_review_audit_trends is not None and not isinstance(self.aims_review_audit_trends, str):
+            self.aims_review_audit_trends = str(self.aims_review_audit_trends)
 
-        if self.actual_completion_date is not None and not isinstance(self.actual_completion_date, XSDDate):
-            self.actual_completion_date = XSDDate(self.actual_completion_date)
+        if not isinstance(self.aims_review_improvement_opportunities, list):
+            self.aims_review_improvement_opportunities = [self.aims_review_improvement_opportunities] if self.aims_review_improvement_opportunities is not None else []
+        self.aims_review_improvement_opportunities = [v if isinstance(v, str) else str(v) for v in self.aims_review_improvement_opportunities]
 
-        if self.outcome_assessment is not None and not isinstance(self.outcome_assessment, str):
-            self.outcome_assessment = str(self.outcome_assessment)
+        if not isinstance(self.aims_review_decisions, list):
+            self.aims_review_decisions = [self.aims_review_decisions] if self.aims_review_decisions is not None else []
+        self.aims_review_decisions = [v if isinstance(v, str) else str(v) for v in self.aims_review_decisions]
 
-        if self.status is not None and not isinstance(self.status, str):
-            self.status = str(self.status)
+        if not isinstance(self.aims_review_system_changes, list):
+            self.aims_review_system_changes = [self.aims_review_system_changes] if self.aims_review_system_changes is not None else []
+        self.aims_review_system_changes = [v if isinstance(v, str) else str(v) for v in self.aims_review_system_changes]
+
+        if not isinstance(self.aims_review_actions, list):
+            self.aims_review_actions = [self.aims_review_actions] if self.aims_review_actions is not None else []
+        self.aims_review_actions = [v if isinstance(v, str) else str(v) for v in self.aims_review_actions]
+
+        if self.aims_review_next_date is not None and not isinstance(self.aims_review_next_date, XSDDate):
+            self.aims_review_next_date = XSDDate(self.aims_review_next_date)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class ThirdPartyRelationship(NamedEntity):
+class AimsNonconformity(YAMLRoot):
     """
-    A documented relationship with a third party (supplier, partner, or customer) involved in the AI system life cycle
-    per A.10.
+    A nonconformity: a requirement not met, how it was found and contained, its consequences and cause, and how it was
+    closed.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["ThirdPartyRelationship"]
-    class_class_curie: ClassVar[str] = "iso42001:ThirdPartyRelationship"
-    class_name: ClassVar[str] = "ThirdPartyRelationship"
-    class_model_uri: ClassVar[URIRef] = ISO42001.ThirdPartyRelationship
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsNonconformity"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsNonconformity"
+    class_name: ClassVar[str] = "AimsNonconformity"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsNonconformity
 
-    id: Union[str, ThirdPartyRelationshipId] = None
-    name: str = None
-    party_type: Optional[str] = None
-    party_name: Optional[str] = None
-    contractual_basis: Optional[str] = None
-    allocated_responsibilities: Optional[Union[str, list[str]]] = empty_list()
-    data_processing_role: Optional[str] = None
-    ai_systems_involved: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    lifecycle_stages_involved: Optional[Union[Union[str, "AISystemLifecycleStage"], list[Union[str, "AISystemLifecycleStage"]]]] = empty_list()
-    assurance_evidence: Optional[Union[str, list[str]]] = empty_list()
-    review_frequency: Optional[str] = None
+    aims_id: Union[str, AimsNonconformityAimsId] = None
+    title: str = None
+    aims_cited_clauses: Optional[Union[Union[str, "AimsClause"], list[Union[str, "AimsClause"]]]] = empty_list()
+    aims_cited_annex_a_controls: Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]] = empty_list()
+    aims_nonconformity_source: Optional[str] = None
+    aims_nonconformity_detected_on: Optional[Union[str, XSDDate]] = None
+    aims_nonconformity_detected_by: Optional[str] = None
+    aims_nonconformity_requirement: Optional[str] = None
+    aims_nonconformity_immediate_actions: Optional[Union[str, list[str]]] = empty_list()
+    aims_nonconformity_consequences: Optional[str] = None
+    aims_nonconformity_root_cause: Optional[str] = None
+    aims_nonconformity_similar_check: Optional[str] = None
+    aims_nonconformity_status: Optional[str] = None
+    aims_nonconformity_closure_date: Optional[Union[str, XSDDate]] = None
+    aims_nonconformity_closure_evidence: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ThirdPartyRelationshipId):
-            self.id = ThirdPartyRelationshipId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsNonconformityAimsId):
+            self.aims_id = AimsNonconformityAimsId(self.aims_id)
 
-        if self.party_type is not None and not isinstance(self.party_type, str):
-            self.party_type = str(self.party_type)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.party_name is not None and not isinstance(self.party_name, str):
-            self.party_name = str(self.party_name)
+        if not isinstance(self.aims_cited_clauses, list):
+            self.aims_cited_clauses = [self.aims_cited_clauses] if self.aims_cited_clauses is not None else []
+        self.aims_cited_clauses = [v if isinstance(v, AimsClause) else AimsClause(v) for v in self.aims_cited_clauses]
 
-        if self.contractual_basis is not None and not isinstance(self.contractual_basis, str):
-            self.contractual_basis = str(self.contractual_basis)
+        if not isinstance(self.aims_cited_annex_a_controls, list):
+            self.aims_cited_annex_a_controls = [self.aims_cited_annex_a_controls] if self.aims_cited_annex_a_controls is not None else []
+        self.aims_cited_annex_a_controls = [v if isinstance(v, AimsAnnexAControl) else AimsAnnexAControl(v) for v in self.aims_cited_annex_a_controls]
 
-        if not isinstance(self.allocated_responsibilities, list):
-            self.allocated_responsibilities = [self.allocated_responsibilities] if self.allocated_responsibilities is not None else []
-        self.allocated_responsibilities = [v if isinstance(v, str) else str(v) for v in self.allocated_responsibilities]
+        if self.aims_nonconformity_source is not None and not isinstance(self.aims_nonconformity_source, str):
+            self.aims_nonconformity_source = str(self.aims_nonconformity_source)
 
-        if self.data_processing_role is not None and not isinstance(self.data_processing_role, str):
-            self.data_processing_role = str(self.data_processing_role)
+        if self.aims_nonconformity_detected_on is not None and not isinstance(self.aims_nonconformity_detected_on, XSDDate):
+            self.aims_nonconformity_detected_on = XSDDate(self.aims_nonconformity_detected_on)
 
-        if not isinstance(self.ai_systems_involved, list):
-            self.ai_systems_involved = [self.ai_systems_involved] if self.ai_systems_involved is not None else []
-        self.ai_systems_involved = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.ai_systems_involved]
+        if self.aims_nonconformity_detected_by is not None and not isinstance(self.aims_nonconformity_detected_by, str):
+            self.aims_nonconformity_detected_by = str(self.aims_nonconformity_detected_by)
 
-        if not isinstance(self.lifecycle_stages_involved, list):
-            self.lifecycle_stages_involved = [self.lifecycle_stages_involved] if self.lifecycle_stages_involved is not None else []
-        self.lifecycle_stages_involved = [v if isinstance(v, AISystemLifecycleStage) else AISystemLifecycleStage(v) for v in self.lifecycle_stages_involved]
+        if self.aims_nonconformity_requirement is not None and not isinstance(self.aims_nonconformity_requirement, str):
+            self.aims_nonconformity_requirement = str(self.aims_nonconformity_requirement)
 
-        if not isinstance(self.assurance_evidence, list):
-            self.assurance_evidence = [self.assurance_evidence] if self.assurance_evidence is not None else []
-        self.assurance_evidence = [v if isinstance(v, str) else str(v) for v in self.assurance_evidence]
+        if not isinstance(self.aims_nonconformity_immediate_actions, list):
+            self.aims_nonconformity_immediate_actions = [self.aims_nonconformity_immediate_actions] if self.aims_nonconformity_immediate_actions is not None else []
+        self.aims_nonconformity_immediate_actions = [v if isinstance(v, str) else str(v) for v in self.aims_nonconformity_immediate_actions]
 
-        if self.review_frequency is not None and not isinstance(self.review_frequency, str):
-            self.review_frequency = str(self.review_frequency)
+        if self.aims_nonconformity_consequences is not None and not isinstance(self.aims_nonconformity_consequences, str):
+            self.aims_nonconformity_consequences = str(self.aims_nonconformity_consequences)
+
+        if self.aims_nonconformity_root_cause is not None and not isinstance(self.aims_nonconformity_root_cause, str):
+            self.aims_nonconformity_root_cause = str(self.aims_nonconformity_root_cause)
+
+        if self.aims_nonconformity_similar_check is not None and not isinstance(self.aims_nonconformity_similar_check, str):
+            self.aims_nonconformity_similar_check = str(self.aims_nonconformity_similar_check)
+
+        if self.aims_nonconformity_status is not None and not isinstance(self.aims_nonconformity_status, str):
+            self.aims_nonconformity_status = str(self.aims_nonconformity_status)
+
+        if self.aims_nonconformity_closure_date is not None and not isinstance(self.aims_nonconformity_closure_date, XSDDate):
+            self.aims_nonconformity_closure_date = XSDDate(self.aims_nonconformity_closure_date)
+
+        if self.aims_nonconformity_closure_evidence is not None and not isinstance(self.aims_nonconformity_closure_evidence, str):
+            self.aims_nonconformity_closure_evidence = str(self.aims_nonconformity_closure_evidence)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class SupplierRelationship(ThirdPartyRelationship):
+class AimsCorrectiveAction(YAMLRoot):
     """
-    A supplier relationship covering services, products, or materials (e.g., datasets, models, libraries, full AI
-    systems) provided to the organization per A.10.3.
+    An action that removes the cause of one or more nonconformities so that they do not recur, and the check that it
+    worked.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["SupplierRelationship"]
-    class_class_curie: ClassVar[str] = "iso42001:SupplierRelationship"
-    class_name: ClassVar[str] = "SupplierRelationship"
-    class_model_uri: ClassVar[URIRef] = ISO42001.SupplierRelationship
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsCorrectiveAction"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsCorrectiveAction"
+    class_name: ClassVar[str] = "AimsCorrectiveAction"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsCorrectiveAction
 
-    id: Union[str, SupplierRelationshipId] = None
-    name: str = None
-    supplier_assessment_criteria: Optional[Union[str, list[str]]] = empty_list()
-    monitoring_method: Optional[str] = None
-    corrective_actions_required: Optional[Union[str, list[str]]] = empty_list()
+    aims_id: Union[str, AimsCorrectiveActionAimsId] = None
+    title: str = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_action_nonconformities: Optional[Union[Union[str, AimsNonconformityAimsId], list[Union[str, AimsNonconformityAimsId]]]] = empty_list()
+    aims_action_root_cause: Optional[str] = None
+    aims_action_target_date: Optional[Union[str, XSDDate]] = None
+    aims_action_completion_date: Optional[Union[str, XSDDate]] = None
+    aims_action_resources: Optional[str] = None
+    aims_action_effectiveness_criteria: Optional[str] = None
+    aims_action_effectiveness_review_date: Optional[Union[str, XSDDate]] = None
+    aims_action_effective: Optional[Union[bool, Bool]] = None
+    aims_action_system_changes: Optional[str] = None
+    aims_action_status: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, SupplierRelationshipId):
-            self.id = SupplierRelationshipId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsCorrectiveActionAimsId):
+            self.aims_id = AimsCorrectiveActionAimsId(self.aims_id)
 
-        if not isinstance(self.supplier_assessment_criteria, list):
-            self.supplier_assessment_criteria = [self.supplier_assessment_criteria] if self.supplier_assessment_criteria is not None else []
-        self.supplier_assessment_criteria = [v if isinstance(v, str) else str(v) for v in self.supplier_assessment_criteria]
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.monitoring_method is not None and not isinstance(self.monitoring_method, str):
-            self.monitoring_method = str(self.monitoring_method)
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
 
-        if not isinstance(self.corrective_actions_required, list):
-            self.corrective_actions_required = [self.corrective_actions_required] if self.corrective_actions_required is not None else []
-        self.corrective_actions_required = [v if isinstance(v, str) else str(v) for v in self.corrective_actions_required]
+        if not isinstance(self.aims_action_nonconformities, list):
+            self.aims_action_nonconformities = [self.aims_action_nonconformities] if self.aims_action_nonconformities is not None else []
+        self.aims_action_nonconformities = [v if isinstance(v, AimsNonconformityAimsId) else AimsNonconformityAimsId(v) for v in self.aims_action_nonconformities]
+
+        if self.aims_action_root_cause is not None and not isinstance(self.aims_action_root_cause, str):
+            self.aims_action_root_cause = str(self.aims_action_root_cause)
+
+        if self.aims_action_target_date is not None and not isinstance(self.aims_action_target_date, XSDDate):
+            self.aims_action_target_date = XSDDate(self.aims_action_target_date)
+
+        if self.aims_action_completion_date is not None and not isinstance(self.aims_action_completion_date, XSDDate):
+            self.aims_action_completion_date = XSDDate(self.aims_action_completion_date)
+
+        if self.aims_action_resources is not None and not isinstance(self.aims_action_resources, str):
+            self.aims_action_resources = str(self.aims_action_resources)
+
+        if self.aims_action_effectiveness_criteria is not None and not isinstance(self.aims_action_effectiveness_criteria, str):
+            self.aims_action_effectiveness_criteria = str(self.aims_action_effectiveness_criteria)
+
+        if self.aims_action_effectiveness_review_date is not None and not isinstance(self.aims_action_effectiveness_review_date, XSDDate):
+            self.aims_action_effectiveness_review_date = XSDDate(self.aims_action_effectiveness_review_date)
+
+        if self.aims_action_effective is not None and not isinstance(self.aims_action_effective, Bool):
+            self.aims_action_effective = Bool(self.aims_action_effective)
+
+        if self.aims_action_system_changes is not None and not isinstance(self.aims_action_system_changes, str):
+            self.aims_action_system_changes = str(self.aims_action_system_changes)
+
+        if self.aims_action_status is not None and not isinstance(self.aims_action_status, str):
+            self.aims_action_status = str(self.aims_action_status)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class CustomerRelationship(ThirdPartyRelationship):
+class AimsImprovementOpportunity(YAMLRoot):
     """
-    A customer relationship for an AI product or service supplied by the organization per A.10.4.
+    An opportunity to make the system more suitable, adequate or effective, and what came of it.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["CustomerRelationship"]
-    class_class_curie: ClassVar[str] = "iso42001:CustomerRelationship"
-    class_name: ClassVar[str] = "CustomerRelationship"
-    class_model_uri: ClassVar[URIRef] = ISO42001.CustomerRelationship
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsImprovementOpportunity"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsImprovementOpportunity"
+    class_name: ClassVar[str] = "AimsImprovementOpportunity"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsImprovementOpportunity
 
-    id: Union[str, CustomerRelationshipId] = None
-    name: str = None
-    customer_expectations: Optional[Union[str, list[str]]] = empty_list()
-    usage_agreement_reference: Optional[str] = None
-    communicated_limitations: Optional[Union[str, list[str]]] = empty_list()
+    aims_id: Union[str, AimsImprovementOpportunityAimsId] = None
+    title: str = None
+    aims_responsible_role: Optional[Union[str, AimsRoleAimsId]] = None
+    aims_improvement_source: Optional[str] = None
+    aims_improvement_identified_on: Optional[Union[str, XSDDate]] = None
+    aims_improvement_identified_by: Optional[str] = None
+    aims_improvement_benefit: Optional[str] = None
+    aims_improvement_priority: Optional[str] = None
+    aims_improvement_plan: Optional[str] = None
+    aims_improvement_target_date: Optional[Union[str, XSDDate]] = None
+    aims_improvement_completion_date: Optional[Union[str, XSDDate]] = None
+    aims_improvement_outcome: Optional[str] = None
+    aims_improvement_status: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, CustomerRelationshipId):
-            self.id = CustomerRelationshipId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsImprovementOpportunityAimsId):
+            self.aims_id = AimsImprovementOpportunityAimsId(self.aims_id)
 
-        if not isinstance(self.customer_expectations, list):
-            self.customer_expectations = [self.customer_expectations] if self.customer_expectations is not None else []
-        self.customer_expectations = [v if isinstance(v, str) else str(v) for v in self.customer_expectations]
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.usage_agreement_reference is not None and not isinstance(self.usage_agreement_reference, str):
-            self.usage_agreement_reference = str(self.usage_agreement_reference)
+        if self.aims_responsible_role is not None and not isinstance(self.aims_responsible_role, AimsRoleAimsId):
+            self.aims_responsible_role = AimsRoleAimsId(self.aims_responsible_role)
 
-        if not isinstance(self.communicated_limitations, list):
-            self.communicated_limitations = [self.communicated_limitations] if self.communicated_limitations is not None else []
-        self.communicated_limitations = [v if isinstance(v, str) else str(v) for v in self.communicated_limitations]
+        if self.aims_improvement_source is not None and not isinstance(self.aims_improvement_source, str):
+            self.aims_improvement_source = str(self.aims_improvement_source)
+
+        if self.aims_improvement_identified_on is not None and not isinstance(self.aims_improvement_identified_on, XSDDate):
+            self.aims_improvement_identified_on = XSDDate(self.aims_improvement_identified_on)
+
+        if self.aims_improvement_identified_by is not None and not isinstance(self.aims_improvement_identified_by, str):
+            self.aims_improvement_identified_by = str(self.aims_improvement_identified_by)
+
+        if self.aims_improvement_benefit is not None and not isinstance(self.aims_improvement_benefit, str):
+            self.aims_improvement_benefit = str(self.aims_improvement_benefit)
+
+        if self.aims_improvement_priority is not None and not isinstance(self.aims_improvement_priority, str):
+            self.aims_improvement_priority = str(self.aims_improvement_priority)
+
+        if self.aims_improvement_plan is not None and not isinstance(self.aims_improvement_plan, str):
+            self.aims_improvement_plan = str(self.aims_improvement_plan)
+
+        if self.aims_improvement_target_date is not None and not isinstance(self.aims_improvement_target_date, XSDDate):
+            self.aims_improvement_target_date = XSDDate(self.aims_improvement_target_date)
+
+        if self.aims_improvement_completion_date is not None and not isinstance(self.aims_improvement_completion_date, XSDDate):
+            self.aims_improvement_completion_date = XSDDate(self.aims_improvement_completion_date)
+
+        if self.aims_improvement_outcome is not None and not isinstance(self.aims_improvement_outcome, str):
+            self.aims_improvement_outcome = str(self.aims_improvement_outcome)
+
+        if self.aims_improvement_status is not None and not isinstance(self.aims_improvement_status, str):
+            self.aims_improvement_status = str(self.aims_improvement_status)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AISystemEvent(NamedEntity):
+class AimsThirdPartyRelationship(YAMLRoot):
     """
-    An AI system event detected by monitoring, users, or external reporting channels. Events may or may not be
-    subsequently classified as incidents. Supports A.6.2.8 event log capture and A.8.3 external reporting workflows.
+    A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what
+    assures the organization of that.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["AISystemEvent"]
-    class_class_curie: ClassVar[str] = "iso42001:AISystemEvent"
-    class_name: ClassVar[str] = "AISystemEvent"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AISystemEvent
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsThirdPartyRelationship"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsThirdPartyRelationship"
+    class_name: ClassVar[str] = "AimsThirdPartyRelationship"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsThirdPartyRelationship
 
-    id: Union[str, AISystemEventId] = None
-    name: str = None
-    event_datetime: Optional[Union[str, XSDDateTime]] = None
-    reporter: Optional[str] = None
-    reporter_party_type: Optional[str] = None
-    event_source: Optional[str] = None
-    event_description: Optional[str] = None
-    affected_ai_systems: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    initial_assessment: Optional[str] = None
-    categorized_as_incident: Optional[Union[bool, Bool]] = None
-    linked_incident: Optional[Union[str, AIIncidentId]] = None
+    aims_id: Union[str, AimsThirdPartyRelationshipAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_life_cycle_stages: Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]] = empty_list()
+    aims_relationship_type: Optional[str] = None
+    aims_relationship_party: Optional[str] = None
+    aims_relationship_party_roles: Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]] = empty_list()
+    aims_relationship_contract: Optional[str] = None
+    aims_relationship_responsibilities: Optional[Union[str, list[str]]] = empty_list()
+    aims_relationship_pii_role: Optional[Union[str, "AimsPiiRole"]] = None
+    aims_relationship_documentation: Optional[Union[str, list[str]]] = empty_list()
+    aims_relationship_assurance_evidence: Optional[Union[str, list[str]]] = empty_list()
+    aims_relationship_review_frequency: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AISystemEventId):
-            self.id = AISystemEventId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsThirdPartyRelationshipAimsId):
+            self.aims_id = AimsThirdPartyRelationshipAimsId(self.aims_id)
 
-        if self.event_datetime is not None and not isinstance(self.event_datetime, XSDDateTime):
-            self.event_datetime = XSDDateTime(self.event_datetime)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.reporter is not None and not isinstance(self.reporter, str):
-            self.reporter = str(self.reporter)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.reporter_party_type is not None and not isinstance(self.reporter_party_type, str):
-            self.reporter_party_type = str(self.reporter_party_type)
+        if not isinstance(self.aims_life_cycle_stages, list):
+            self.aims_life_cycle_stages = [self.aims_life_cycle_stages] if self.aims_life_cycle_stages is not None else []
+        self.aims_life_cycle_stages = [v if isinstance(v, AimsLifecycleStage) else AimsLifecycleStage(v) for v in self.aims_life_cycle_stages]
 
-        if self.event_source is not None and not isinstance(self.event_source, str):
-            self.event_source = str(self.event_source)
+        self.aims_relationship_type = str(self.class_name)
 
-        if self.event_description is not None and not isinstance(self.event_description, str):
-            self.event_description = str(self.event_description)
+        if self.aims_relationship_party is not None and not isinstance(self.aims_relationship_party, str):
+            self.aims_relationship_party = str(self.aims_relationship_party)
 
-        if not isinstance(self.affected_ai_systems, list):
-            self.affected_ai_systems = [self.affected_ai_systems] if self.affected_ai_systems is not None else []
-        self.affected_ai_systems = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.affected_ai_systems]
+        if not isinstance(self.aims_relationship_party_roles, list):
+            self.aims_relationship_party_roles = [self.aims_relationship_party_roles] if self.aims_relationship_party_roles is not None else []
+        self.aims_relationship_party_roles = [v if isinstance(v, AimsAiRole) else AimsAiRole(v) for v in self.aims_relationship_party_roles]
 
-        if self.initial_assessment is not None and not isinstance(self.initial_assessment, str):
-            self.initial_assessment = str(self.initial_assessment)
+        if self.aims_relationship_contract is not None and not isinstance(self.aims_relationship_contract, str):
+            self.aims_relationship_contract = str(self.aims_relationship_contract)
 
-        if self.categorized_as_incident is not None and not isinstance(self.categorized_as_incident, Bool):
-            self.categorized_as_incident = Bool(self.categorized_as_incident)
+        if not isinstance(self.aims_relationship_responsibilities, list):
+            self.aims_relationship_responsibilities = [self.aims_relationship_responsibilities] if self.aims_relationship_responsibilities is not None else []
+        self.aims_relationship_responsibilities = [v if isinstance(v, str) else str(v) for v in self.aims_relationship_responsibilities]
 
-        if self.linked_incident is not None and not isinstance(self.linked_incident, AIIncidentId):
-            self.linked_incident = AIIncidentId(self.linked_incident)
+        if self.aims_relationship_pii_role is not None and not isinstance(self.aims_relationship_pii_role, AimsPiiRole):
+            self.aims_relationship_pii_role = AimsPiiRole(self.aims_relationship_pii_role)
+
+        if not isinstance(self.aims_relationship_documentation, list):
+            self.aims_relationship_documentation = [self.aims_relationship_documentation] if self.aims_relationship_documentation is not None else []
+        self.aims_relationship_documentation = [v if isinstance(v, str) else str(v) for v in self.aims_relationship_documentation]
+
+        if not isinstance(self.aims_relationship_assurance_evidence, list):
+            self.aims_relationship_assurance_evidence = [self.aims_relationship_assurance_evidence] if self.aims_relationship_assurance_evidence is not None else []
+        self.aims_relationship_assurance_evidence = [v if isinstance(v, str) else str(v) for v in self.aims_relationship_assurance_evidence]
+
+        if self.aims_relationship_review_frequency is not None and not isinstance(self.aims_relationship_review_frequency, str):
+            self.aims_relationship_review_frequency = str(self.aims_relationship_review_frequency)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_relationship_type = str(self.class_name)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "aims_relationship_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
+
+
+@dataclass(repr=False)
+class AimsSupplierRelationship(AimsThirdPartyRelationship):
+    """
+    A relationship with a supplier to the organization's AI work: what it provides, the risk that brings, and how it
+    is held to the organization's approach.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsSupplierRelationship"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsSupplierRelationship"
+    class_name: ClassVar[str] = "AimsSupplierRelationship"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsSupplierRelationship
+
+    aims_id: Union[str, AimsSupplierRelationshipAimsId] = None
+    title: str = None
+    aims_supplier_provides: Optional[Union[str, list[str]]] = empty_list()
+    aims_supplier_risk: Optional[Union[str, "AimsRiskLevel"]] = None
+    aims_supplier_requirements: Optional[Union[str, list[str]]] = empty_list()
+    aims_supplier_monitoring: Optional[str] = None
+    aims_supplier_integration: Optional[str] = None
+    aims_supplier_corrective_actions: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsSupplierRelationshipAimsId):
+            self.aims_id = AimsSupplierRelationshipAimsId(self.aims_id)
+
+        if not isinstance(self.aims_supplier_provides, list):
+            self.aims_supplier_provides = [self.aims_supplier_provides] if self.aims_supplier_provides is not None else []
+        self.aims_supplier_provides = [v if isinstance(v, str) else str(v) for v in self.aims_supplier_provides]
+
+        if self.aims_supplier_risk is not None and not isinstance(self.aims_supplier_risk, AimsRiskLevel):
+            self.aims_supplier_risk = AimsRiskLevel(self.aims_supplier_risk)
+
+        if not isinstance(self.aims_supplier_requirements, list):
+            self.aims_supplier_requirements = [self.aims_supplier_requirements] if self.aims_supplier_requirements is not None else []
+        self.aims_supplier_requirements = [v if isinstance(v, str) else str(v) for v in self.aims_supplier_requirements]
+
+        if self.aims_supplier_monitoring is not None and not isinstance(self.aims_supplier_monitoring, str):
+            self.aims_supplier_monitoring = str(self.aims_supplier_monitoring)
+
+        if self.aims_supplier_integration is not None and not isinstance(self.aims_supplier_integration, str):
+            self.aims_supplier_integration = str(self.aims_supplier_integration)
+
+        if not isinstance(self.aims_supplier_corrective_actions, list):
+            self.aims_supplier_corrective_actions = [self.aims_supplier_corrective_actions] if self.aims_supplier_corrective_actions is not None else []
+        self.aims_supplier_corrective_actions = [v if isinstance(v, str) else str(v) for v in self.aims_supplier_corrective_actions]
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_relationship_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsCustomerRelationship(AimsThirdPartyRelationship):
+    """
+    A relationship with a customer of the organization's AI work: what it expects, who answers for what, and which
+    limits it was told of.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsCustomerRelationship"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsCustomerRelationship"
+    class_name: ClassVar[str] = "AimsCustomerRelationship"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsCustomerRelationship
+
+    aims_id: Union[str, AimsCustomerRelationshipAimsId] = None
+    title: str = None
+    aims_customer_expectations: Optional[Union[str, list[str]]] = empty_list()
+    aims_customer_agreement: Optional[str] = None
+    aims_customer_responsibility_split: Optional[str] = None
+    aims_customer_communicated_limits: Optional[Union[str, list[str]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsCustomerRelationshipAimsId):
+            self.aims_id = AimsCustomerRelationshipAimsId(self.aims_id)
+
+        if not isinstance(self.aims_customer_expectations, list):
+            self.aims_customer_expectations = [self.aims_customer_expectations] if self.aims_customer_expectations is not None else []
+        self.aims_customer_expectations = [v if isinstance(v, str) else str(v) for v in self.aims_customer_expectations]
+
+        if self.aims_customer_agreement is not None and not isinstance(self.aims_customer_agreement, str):
+            self.aims_customer_agreement = str(self.aims_customer_agreement)
+
+        if self.aims_customer_responsibility_split is not None and not isinstance(self.aims_customer_responsibility_split, str):
+            self.aims_customer_responsibility_split = str(self.aims_customer_responsibility_split)
+
+        if not isinstance(self.aims_customer_communicated_limits, list):
+            self.aims_customer_communicated_limits = [self.aims_customer_communicated_limits] if self.aims_customer_communicated_limits is not None else []
+        self.aims_customer_communicated_limits = [v if isinstance(v, str) else str(v) for v in self.aims_customer_communicated_limits]
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_relationship_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsSystemEvent(YAMLRoot):
+    """
+    Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the
+    assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsSystemEvent"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsSystemEvent"
+    class_name: ClassVar[str] = "AimsSystemEvent"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsSystemEvent
+
+    aims_id: Union[str, AimsSystemEventAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_event_type: Optional[str] = None
+    aims_event_occurred_at: Optional[Union[str, XSDDateTime]] = None
+    aims_event_reporter: Optional[str] = None
+    aims_event_source: Optional[str] = None
+    aims_event_adverse_impact: Optional[str] = None
+    aims_event_assessment: Optional[str] = None
+    description: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsSystemEventAimsId):
+            self.aims_id = AimsSystemEventAimsId(self.aims_id)
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
+
+        self.aims_event_type = str(self.class_name)
+
+        if self.aims_event_occurred_at is not None and not isinstance(self.aims_event_occurred_at, XSDDateTime):
+            self.aims_event_occurred_at = XSDDateTime(self.aims_event_occurred_at)
+
+        if self.aims_event_reporter is not None and not isinstance(self.aims_event_reporter, str):
+            self.aims_event_reporter = str(self.aims_event_reporter)
+
+        if self.aims_event_source is not None and not isinstance(self.aims_event_source, str):
+            self.aims_event_source = str(self.aims_event_source)
+
+        if self.aims_event_adverse_impact is not None and not isinstance(self.aims_event_adverse_impact, str):
+            self.aims_event_adverse_impact = str(self.aims_event_adverse_impact)
+
+        if self.aims_event_assessment is not None and not isinstance(self.aims_event_assessment, str):
+            self.aims_event_assessment = str(self.aims_event_assessment)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_event_type = str(self.class_name)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "aims_event_type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
+
+
+@dataclass(repr=False)
+class AimsIncident(AimsSystemEvent):
+    """
+    An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was
+    learned.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsIncident"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsIncident"
+    class_name: ClassVar[str] = "AimsIncident"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsIncident
+
+    aims_id: Union[str, AimsIncidentAimsId] = None
+    title: str = None
+    aims_incident_category: Optional[Union[str, "AimsIncidentCategory"]] = None
+    aims_incident_threats: Optional[Union[Union[str, "AimsAiThreat"], list[Union[str, "AimsAiThreat"]]]] = empty_list()
+    aims_incident_severity: Optional[Union[str, "AimsRiskLevel"]] = None
+    aims_incident_impact_areas: Optional[Union[Union[str, "AimsImpactArea"], list[Union[str, "AimsImpactArea"]]]] = empty_list()
+    aims_incident_detection_method: Optional[str] = None
+    aims_incident_response_actions: Optional[Union[str, list[str]]] = empty_list()
+    aims_incident_recovery_actions: Optional[Union[str, list[str]]] = empty_list()
+    aims_incident_root_cause: Optional[str] = None
+    aims_incident_lessons_learned: Optional[Union[str, list[str]]] = empty_list()
+    aims_incident_notification_required: Optional[Union[bool, Bool]] = None
+    aims_incident_notifications: Optional[Union[str, list[str]]] = empty_list()
+    aims_incident_corrective_actions: Optional[Union[Union[str, AimsCorrectiveActionAimsId], list[Union[str, AimsCorrectiveActionAimsId]]]] = empty_list()
+    aims_incident_closed_at: Optional[Union[str, XSDDateTime]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsIncidentAimsId):
+            self.aims_id = AimsIncidentAimsId(self.aims_id)
+
+        if self.aims_incident_category is not None and not isinstance(self.aims_incident_category, AimsIncidentCategory):
+            self.aims_incident_category = AimsIncidentCategory(self.aims_incident_category)
+
+        if not isinstance(self.aims_incident_threats, list):
+            self.aims_incident_threats = [self.aims_incident_threats] if self.aims_incident_threats is not None else []
+        self.aims_incident_threats = [v if isinstance(v, AimsAiThreat) else AimsAiThreat(v) for v in self.aims_incident_threats]
+
+        if self.aims_incident_severity is not None and not isinstance(self.aims_incident_severity, AimsRiskLevel):
+            self.aims_incident_severity = AimsRiskLevel(self.aims_incident_severity)
+
+        if not isinstance(self.aims_incident_impact_areas, list):
+            self.aims_incident_impact_areas = [self.aims_incident_impact_areas] if self.aims_incident_impact_areas is not None else []
+        self.aims_incident_impact_areas = [v if isinstance(v, AimsImpactArea) else AimsImpactArea(v) for v in self.aims_incident_impact_areas]
+
+        if self.aims_incident_detection_method is not None and not isinstance(self.aims_incident_detection_method, str):
+            self.aims_incident_detection_method = str(self.aims_incident_detection_method)
+
+        if not isinstance(self.aims_incident_response_actions, list):
+            self.aims_incident_response_actions = [self.aims_incident_response_actions] if self.aims_incident_response_actions is not None else []
+        self.aims_incident_response_actions = [v if isinstance(v, str) else str(v) for v in self.aims_incident_response_actions]
+
+        if not isinstance(self.aims_incident_recovery_actions, list):
+            self.aims_incident_recovery_actions = [self.aims_incident_recovery_actions] if self.aims_incident_recovery_actions is not None else []
+        self.aims_incident_recovery_actions = [v if isinstance(v, str) else str(v) for v in self.aims_incident_recovery_actions]
+
+        if self.aims_incident_root_cause is not None and not isinstance(self.aims_incident_root_cause, str):
+            self.aims_incident_root_cause = str(self.aims_incident_root_cause)
+
+        if not isinstance(self.aims_incident_lessons_learned, list):
+            self.aims_incident_lessons_learned = [self.aims_incident_lessons_learned] if self.aims_incident_lessons_learned is not None else []
+        self.aims_incident_lessons_learned = [v if isinstance(v, str) else str(v) for v in self.aims_incident_lessons_learned]
+
+        if self.aims_incident_notification_required is not None and not isinstance(self.aims_incident_notification_required, Bool):
+            self.aims_incident_notification_required = Bool(self.aims_incident_notification_required)
+
+        if not isinstance(self.aims_incident_notifications, list):
+            self.aims_incident_notifications = [self.aims_incident_notifications] if self.aims_incident_notifications is not None else []
+        self.aims_incident_notifications = [v if isinstance(v, str) else str(v) for v in self.aims_incident_notifications]
+
+        if not isinstance(self.aims_incident_corrective_actions, list):
+            self.aims_incident_corrective_actions = [self.aims_incident_corrective_actions] if self.aims_incident_corrective_actions is not None else []
+        self.aims_incident_corrective_actions = [v if isinstance(v, AimsCorrectiveActionAimsId) else AimsCorrectiveActionAimsId(v) for v in self.aims_incident_corrective_actions]
+
+        if self.aims_incident_closed_at is not None and not isinstance(self.aims_incident_closed_at, XSDDateTime):
+            self.aims_incident_closed_at = XSDDateTime(self.aims_incident_closed_at)
+
+        super().__post_init__(**kwargs)
+        self.unknown_aims_event_type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class AimsConcernReportingProcess(YAMLRoot):
+    """
+    The way people raise worries about the organization's part in a system: how it keeps them safe, who looks into a
+    worry, and how fast it answers.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsConcernReportingProcess"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsConcernReportingProcess"
+    class_name: ClassVar[str] = "AimsConcernReportingProcess"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsConcernReportingProcess
+
+    aims_id: Union[str, AimsConcernReportingProcessAimsId] = None
+    title: str = None
+    aims_concern_process_confidentiality: Optional[Union[str, list[str]]] = empty_list()
+    aims_concern_process_audience: Optional[str] = None
+    aims_concern_process_investigators: Optional[str] = None
+    aims_concern_process_escalation: Optional[str] = None
+    aims_concern_process_reprisal_protection: Optional[str] = None
+    aims_concern_process_response_time: Optional[str] = None
+    description: Optional[str] = None
+    aims_document_reference: Optional[str] = None
+    aims_document_version: Optional[str] = None
+    aims_document_author: Optional[str] = None
+    aims_document_owner: Optional[str] = None
+    aims_document_format: Optional[str] = None
+    aims_document_medium: Optional[str] = None
+    aims_document_approver: Optional[str] = None
+    aims_document_approval_date: Optional[Union[str, XSDDate]] = None
+    aims_document_effective_date: Optional[Union[str, XSDDate]] = None
+    aims_document_last_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_next_review_date: Optional[Union[str, XSDDate]] = None
+    aims_document_status: Optional[str] = None
+    aims_document_classification: Optional[str] = None
+    aims_document_retention: Optional[Union[str, AimsDuration]] = None
+    aims_document_disposition: Optional[str] = None
+    aims_document_distribution: Optional[Union[str, list[str]]] = empty_list()
+    aims_document_storage: Optional[str] = None
+    aims_document_change_control: Optional[str] = None
+    aims_document_external_origin: Optional[Union[bool, Bool]] = None
+    aims_document_external_source: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsConcernReportingProcessAimsId):
+            self.aims_id = AimsConcernReportingProcessAimsId(self.aims_id)
+
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if not isinstance(self.aims_concern_process_confidentiality, list):
+            self.aims_concern_process_confidentiality = [self.aims_concern_process_confidentiality] if self.aims_concern_process_confidentiality is not None else []
+        self.aims_concern_process_confidentiality = [v if isinstance(v, str) else str(v) for v in self.aims_concern_process_confidentiality]
+
+        if self.aims_concern_process_audience is not None and not isinstance(self.aims_concern_process_audience, str):
+            self.aims_concern_process_audience = str(self.aims_concern_process_audience)
+
+        if self.aims_concern_process_investigators is not None and not isinstance(self.aims_concern_process_investigators, str):
+            self.aims_concern_process_investigators = str(self.aims_concern_process_investigators)
+
+        if self.aims_concern_process_escalation is not None and not isinstance(self.aims_concern_process_escalation, str):
+            self.aims_concern_process_escalation = str(self.aims_concern_process_escalation)
+
+        if self.aims_concern_process_reprisal_protection is not None and not isinstance(self.aims_concern_process_reprisal_protection, str):
+            self.aims_concern_process_reprisal_protection = str(self.aims_concern_process_reprisal_protection)
+
+        if self.aims_concern_process_response_time is not None and not isinstance(self.aims_concern_process_response_time, str):
+            self.aims_concern_process_response_time = str(self.aims_concern_process_response_time)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        if self.aims_document_reference is not None and not isinstance(self.aims_document_reference, str):
+            self.aims_document_reference = str(self.aims_document_reference)
+
+        if self.aims_document_version is not None and not isinstance(self.aims_document_version, str):
+            self.aims_document_version = str(self.aims_document_version)
+
+        if self.aims_document_author is not None and not isinstance(self.aims_document_author, str):
+            self.aims_document_author = str(self.aims_document_author)
+
+        if self.aims_document_owner is not None and not isinstance(self.aims_document_owner, str):
+            self.aims_document_owner = str(self.aims_document_owner)
+
+        if self.aims_document_format is not None and not isinstance(self.aims_document_format, str):
+            self.aims_document_format = str(self.aims_document_format)
+
+        if self.aims_document_medium is not None and not isinstance(self.aims_document_medium, str):
+            self.aims_document_medium = str(self.aims_document_medium)
+
+        if self.aims_document_approver is not None and not isinstance(self.aims_document_approver, str):
+            self.aims_document_approver = str(self.aims_document_approver)
+
+        if self.aims_document_approval_date is not None and not isinstance(self.aims_document_approval_date, XSDDate):
+            self.aims_document_approval_date = XSDDate(self.aims_document_approval_date)
+
+        if self.aims_document_effective_date is not None and not isinstance(self.aims_document_effective_date, XSDDate):
+            self.aims_document_effective_date = XSDDate(self.aims_document_effective_date)
+
+        if self.aims_document_last_review_date is not None and not isinstance(self.aims_document_last_review_date, XSDDate):
+            self.aims_document_last_review_date = XSDDate(self.aims_document_last_review_date)
+
+        if self.aims_document_next_review_date is not None and not isinstance(self.aims_document_next_review_date, XSDDate):
+            self.aims_document_next_review_date = XSDDate(self.aims_document_next_review_date)
+
+        if self.aims_document_status is not None and not isinstance(self.aims_document_status, str):
+            self.aims_document_status = str(self.aims_document_status)
+
+        if self.aims_document_classification is not None and not isinstance(self.aims_document_classification, str):
+            self.aims_document_classification = str(self.aims_document_classification)
+
+        if self.aims_document_retention is not None and not isinstance(self.aims_document_retention, AimsDuration):
+            self.aims_document_retention = AimsDuration(self.aims_document_retention)
+
+        if self.aims_document_disposition is not None and not isinstance(self.aims_document_disposition, str):
+            self.aims_document_disposition = str(self.aims_document_disposition)
+
+        if not isinstance(self.aims_document_distribution, list):
+            self.aims_document_distribution = [self.aims_document_distribution] if self.aims_document_distribution is not None else []
+        self.aims_document_distribution = [v if isinstance(v, str) else str(v) for v in self.aims_document_distribution]
+
+        if self.aims_document_storage is not None and not isinstance(self.aims_document_storage, str):
+            self.aims_document_storage = str(self.aims_document_storage)
+
+        if self.aims_document_change_control is not None and not isinstance(self.aims_document_change_control, str):
+            self.aims_document_change_control = str(self.aims_document_change_control)
+
+        if self.aims_document_external_origin is not None and not isinstance(self.aims_document_external_origin, Bool):
+            self.aims_document_external_origin = Bool(self.aims_document_external_origin)
+
+        if self.aims_document_external_source is not None and not isinstance(self.aims_document_external_source, str):
+            self.aims_document_external_source = str(self.aims_document_external_source)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class AIIncident(NamedEntity):
+class AimsConcernReport(YAMLRoot):
     """
-    An AI incident, i.e., an AI system event determined to require response, escalation, or external communication.
-    Captures triage, response lifecycle, and communications to users and other interested parties per A.8.4 and A.8.3.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = ISO42001["AIIncident"]
-    class_class_curie: ClassVar[str] = "iso42001:AIIncident"
-    class_name: ClassVar[str] = "AIIncident"
-    class_model_uri: ClassVar[URIRef] = ISO42001.AIIncident
-
-    id: Union[str, AIIncidentId] = None
-    name: str = None
-    incident_datetime: Optional[Union[str, XSDDateTime]] = None
-    incident_category: Optional[Union[str, "AIIncidentCategory"]] = None
-    severity: Optional[Union[str, "RiskLevel"]] = None
-    affected_ai_systems: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    affected_dimensions: Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]] = empty_list()
-    incident_description: Optional[str] = None
-    detection_method: Optional[str] = None
-    response_actions: Optional[Union[str, list[str]]] = empty_list()
-    containment_actions: Optional[Union[str, list[str]]] = empty_list()
-    recovery_actions: Optional[Union[str, list[str]]] = empty_list()
-    root_cause: Optional[str] = None
-    lessons_learned: Optional[Union[str, list[str]]] = empty_list()
-    evidence_collected: Optional[Union[str, list[str]]] = empty_list()
-    notification_required: Optional[Union[bool, Bool]] = None
-    notifications_made: Optional[Union[str, list[str]]] = empty_list()
-    external_reports: Optional[Union[str, list[str]]] = empty_list()
-    communication_plan: Optional[Union[str, CommunicationPlanId]] = None
-    linked_corrective_actions: Optional[Union[Union[str, CorrectiveActionId], list[Union[str, CorrectiveActionId]]]] = empty_list()
-    closure_datetime: Optional[Union[str, XSDDateTime]] = None
-    post_incident_review: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AIIncidentId):
-            self.id = AIIncidentId(self.id)
-
-        if self.incident_datetime is not None and not isinstance(self.incident_datetime, XSDDateTime):
-            self.incident_datetime = XSDDateTime(self.incident_datetime)
-
-        if self.incident_category is not None and not isinstance(self.incident_category, AIIncidentCategory):
-            self.incident_category = AIIncidentCategory(self.incident_category)
-
-        if self.severity is not None and not isinstance(self.severity, RiskLevel):
-            self.severity = RiskLevel(self.severity)
-
-        if not isinstance(self.affected_ai_systems, list):
-            self.affected_ai_systems = [self.affected_ai_systems] if self.affected_ai_systems is not None else []
-        self.affected_ai_systems = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.affected_ai_systems]
-
-        if not isinstance(self.affected_dimensions, list):
-            self.affected_dimensions = [self.affected_dimensions] if self.affected_dimensions is not None else []
-        self.affected_dimensions = [v if isinstance(v, ImpactAssessmentDimension) else ImpactAssessmentDimension(v) for v in self.affected_dimensions]
-
-        if self.incident_description is not None and not isinstance(self.incident_description, str):
-            self.incident_description = str(self.incident_description)
-
-        if self.detection_method is not None and not isinstance(self.detection_method, str):
-            self.detection_method = str(self.detection_method)
-
-        if not isinstance(self.response_actions, list):
-            self.response_actions = [self.response_actions] if self.response_actions is not None else []
-        self.response_actions = [v if isinstance(v, str) else str(v) for v in self.response_actions]
-
-        if not isinstance(self.containment_actions, list):
-            self.containment_actions = [self.containment_actions] if self.containment_actions is not None else []
-        self.containment_actions = [v if isinstance(v, str) else str(v) for v in self.containment_actions]
-
-        if not isinstance(self.recovery_actions, list):
-            self.recovery_actions = [self.recovery_actions] if self.recovery_actions is not None else []
-        self.recovery_actions = [v if isinstance(v, str) else str(v) for v in self.recovery_actions]
-
-        if self.root_cause is not None and not isinstance(self.root_cause, str):
-            self.root_cause = str(self.root_cause)
-
-        if not isinstance(self.lessons_learned, list):
-            self.lessons_learned = [self.lessons_learned] if self.lessons_learned is not None else []
-        self.lessons_learned = [v if isinstance(v, str) else str(v) for v in self.lessons_learned]
-
-        if not isinstance(self.evidence_collected, list):
-            self.evidence_collected = [self.evidence_collected] if self.evidence_collected is not None else []
-        self.evidence_collected = [v if isinstance(v, str) else str(v) for v in self.evidence_collected]
-
-        if self.notification_required is not None and not isinstance(self.notification_required, Bool):
-            self.notification_required = Bool(self.notification_required)
-
-        if not isinstance(self.notifications_made, list):
-            self.notifications_made = [self.notifications_made] if self.notifications_made is not None else []
-        self.notifications_made = [v if isinstance(v, str) else str(v) for v in self.notifications_made]
-
-        if not isinstance(self.external_reports, list):
-            self.external_reports = [self.external_reports] if self.external_reports is not None else []
-        self.external_reports = [v if isinstance(v, str) else str(v) for v in self.external_reports]
-
-        if self.communication_plan is not None and not isinstance(self.communication_plan, CommunicationPlanId):
-            self.communication_plan = CommunicationPlanId(self.communication_plan)
-
-        if not isinstance(self.linked_corrective_actions, list):
-            self.linked_corrective_actions = [self.linked_corrective_actions] if self.linked_corrective_actions is not None else []
-        self.linked_corrective_actions = [v if isinstance(v, CorrectiveActionId) else CorrectiveActionId(v) for v in self.linked_corrective_actions]
-
-        if self.closure_datetime is not None and not isinstance(self.closure_datetime, XSDDateTime):
-            self.closure_datetime = XSDDateTime(self.closure_datetime)
-
-        if self.post_incident_review is not None and not isinstance(self.post_incident_review, str):
-            self.post_incident_review = str(self.post_incident_review)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ConcernReport(NamedEntity):
-    """
-    A concern raised by employees, contractors, users, or other interested parties about the organization's role with
-    respect to an AI system. Operationalises Annex A.3.3 (Reporting of concerns). Confidentiality, anonymity,
-    anti-reprisal protection, escalation, and timely response are core attributes; informed by ISO 37002.
+    One worry someone raised about the organization's part in a system, and how it was looked into and settled.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = ISO42001["ConcernReport"]
-    class_class_curie: ClassVar[str] = "iso42001:ConcernReport"
-    class_name: ClassVar[str] = "ConcernReport"
-    class_model_uri: ClassVar[URIRef] = ISO42001.ConcernReport
+    class_class_uri: ClassVar[URIRef] = ISO42001["AimsConcernReport"]
+    class_class_curie: ClassVar[str] = "iso42001:AimsConcernReport"
+    class_name: ClassVar[str] = "AimsConcernReport"
+    class_model_uri: ClassVar[URIRef] = ISO42001.AimsConcernReport
 
-    id: Union[str, ConcernReportId] = None
-    name: str = None
-    reported_date: Optional[Union[str, XSDDate]] = None
-    reporter: Optional[str] = None
-    reporter_party_type: Optional[str] = None
-    reporter_anonymous: Optional[Union[bool, Bool]] = None
-    confidentiality_level: Optional[str] = None
-    reporting_channel: Optional[str] = None
-    concern_description: Optional[str] = None
-    concern_ai_systems: Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]] = empty_list()
-    concern_lifecycle_stage: Optional[Union[Union[str, "AISystemLifecycleStage"], list[Union[str, "AISystemLifecycleStage"]]]] = empty_list()
-    severity: Optional[Union[str, "RiskLevel"]] = None
-    investigator: Optional[str] = None
-    investigation_status: Optional[str] = None
-    investigation_findings: Optional[str] = None
-    escalation_status: Optional[str] = None
-    response_due_date: Optional[Union[str, XSDDate]] = None
-    response_provided_date: Optional[Union[str, XSDDate]] = None
-    resolution: Optional[str] = None
-    reprisal_protection_actions: Optional[Union[str, list[str]]] = empty_list()
-    related_incidents: Optional[Union[Union[str, AIIncidentId], list[Union[str, AIIncidentId]]]] = empty_list()
-    related_nonconformities: Optional[Union[Union[str, NonconformityId], list[Union[str, NonconformityId]]]] = empty_list()
-    closure_datetime: Optional[Union[str, XSDDateTime]] = None
+    aims_id: Union[str, AimsConcernReportAimsId] = None
+    title: str = None
+    aims_ai_systems: Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]] = empty_list()
+    aims_concern_reported_on: Optional[Union[str, XSDDate]] = None
+    aims_concern_reporter: Optional[str] = None
+    aims_concern_anonymous: Optional[Union[bool, Bool]] = None
+    aims_concern_channel: Optional[str] = None
+    aims_concern_life_cycle_stage: Optional[Union[str, "AimsLifecycleStage"]] = None
+    aims_concern_severity: Optional[Union[str, "AimsRiskLevel"]] = None
+    aims_concern_investigator: Optional[str] = None
+    aims_concern_investigation_status: Optional[str] = None
+    aims_concern_findings: Optional[str] = None
+    aims_concern_escalation: Optional[str] = None
+    aims_concern_response_due: Optional[Union[str, XSDDate]] = None
+    aims_concern_responded_on: Optional[Union[str, XSDDate]] = None
+    aims_concern_resolution: Optional[str] = None
+    aims_concern_reprisal_protection: Optional[str] = None
+    aims_concern_incidents: Optional[Union[Union[str, AimsIncidentAimsId], list[Union[str, AimsIncidentAimsId]]]] = empty_list()
+    aims_concern_nonconformities: Optional[Union[Union[str, AimsNonconformityAimsId], list[Union[str, AimsNonconformityAimsId]]]] = empty_list()
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ConcernReportId):
-            self.id = ConcernReportId(self.id)
+        if self._is_empty(self.aims_id):
+            self.MissingRequiredField("aims_id")
+        if not isinstance(self.aims_id, AimsConcernReportAimsId):
+            self.aims_id = AimsConcernReportAimsId(self.aims_id)
 
-        if self.reported_date is not None and not isinstance(self.reported_date, XSDDate):
-            self.reported_date = XSDDate(self.reported_date)
+        if self._is_empty(self.title):
+            self.MissingRequiredField("title")
+        if not isinstance(self.title, str):
+            self.title = str(self.title)
 
-        if self.reporter is not None and not isinstance(self.reporter, str):
-            self.reporter = str(self.reporter)
+        if not isinstance(self.aims_ai_systems, list):
+            self.aims_ai_systems = [self.aims_ai_systems] if self.aims_ai_systems is not None else []
+        self.aims_ai_systems = [v if isinstance(v, AimsAiSystemAimsId) else AimsAiSystemAimsId(v) for v in self.aims_ai_systems]
 
-        if self.reporter_party_type is not None and not isinstance(self.reporter_party_type, str):
-            self.reporter_party_type = str(self.reporter_party_type)
+        if self.aims_concern_reported_on is not None and not isinstance(self.aims_concern_reported_on, XSDDate):
+            self.aims_concern_reported_on = XSDDate(self.aims_concern_reported_on)
 
-        if self.reporter_anonymous is not None and not isinstance(self.reporter_anonymous, Bool):
-            self.reporter_anonymous = Bool(self.reporter_anonymous)
+        if self.aims_concern_reporter is not None and not isinstance(self.aims_concern_reporter, str):
+            self.aims_concern_reporter = str(self.aims_concern_reporter)
 
-        if self.confidentiality_level is not None and not isinstance(self.confidentiality_level, str):
-            self.confidentiality_level = str(self.confidentiality_level)
+        if self.aims_concern_anonymous is not None and not isinstance(self.aims_concern_anonymous, Bool):
+            self.aims_concern_anonymous = Bool(self.aims_concern_anonymous)
 
-        if self.reporting_channel is not None and not isinstance(self.reporting_channel, str):
-            self.reporting_channel = str(self.reporting_channel)
+        if self.aims_concern_channel is not None and not isinstance(self.aims_concern_channel, str):
+            self.aims_concern_channel = str(self.aims_concern_channel)
 
-        if self.concern_description is not None and not isinstance(self.concern_description, str):
-            self.concern_description = str(self.concern_description)
+        if self.aims_concern_life_cycle_stage is not None and not isinstance(self.aims_concern_life_cycle_stage, AimsLifecycleStage):
+            self.aims_concern_life_cycle_stage = AimsLifecycleStage(self.aims_concern_life_cycle_stage)
 
-        if not isinstance(self.concern_ai_systems, list):
-            self.concern_ai_systems = [self.concern_ai_systems] if self.concern_ai_systems is not None else []
-        self.concern_ai_systems = [v if isinstance(v, AISystemId) else AISystemId(v) for v in self.concern_ai_systems]
+        if self.aims_concern_severity is not None and not isinstance(self.aims_concern_severity, AimsRiskLevel):
+            self.aims_concern_severity = AimsRiskLevel(self.aims_concern_severity)
 
-        if not isinstance(self.concern_lifecycle_stage, list):
-            self.concern_lifecycle_stage = [self.concern_lifecycle_stage] if self.concern_lifecycle_stage is not None else []
-        self.concern_lifecycle_stage = [v if isinstance(v, AISystemLifecycleStage) else AISystemLifecycleStage(v) for v in self.concern_lifecycle_stage]
+        if self.aims_concern_investigator is not None and not isinstance(self.aims_concern_investigator, str):
+            self.aims_concern_investigator = str(self.aims_concern_investigator)
 
-        if self.severity is not None and not isinstance(self.severity, RiskLevel):
-            self.severity = RiskLevel(self.severity)
+        if self.aims_concern_investigation_status is not None and not isinstance(self.aims_concern_investigation_status, str):
+            self.aims_concern_investigation_status = str(self.aims_concern_investigation_status)
 
-        if self.investigator is not None and not isinstance(self.investigator, str):
-            self.investigator = str(self.investigator)
+        if self.aims_concern_findings is not None and not isinstance(self.aims_concern_findings, str):
+            self.aims_concern_findings = str(self.aims_concern_findings)
 
-        if self.investigation_status is not None and not isinstance(self.investigation_status, str):
-            self.investigation_status = str(self.investigation_status)
+        if self.aims_concern_escalation is not None and not isinstance(self.aims_concern_escalation, str):
+            self.aims_concern_escalation = str(self.aims_concern_escalation)
 
-        if self.investigation_findings is not None and not isinstance(self.investigation_findings, str):
-            self.investigation_findings = str(self.investigation_findings)
+        if self.aims_concern_response_due is not None and not isinstance(self.aims_concern_response_due, XSDDate):
+            self.aims_concern_response_due = XSDDate(self.aims_concern_response_due)
 
-        if self.escalation_status is not None and not isinstance(self.escalation_status, str):
-            self.escalation_status = str(self.escalation_status)
+        if self.aims_concern_responded_on is not None and not isinstance(self.aims_concern_responded_on, XSDDate):
+            self.aims_concern_responded_on = XSDDate(self.aims_concern_responded_on)
 
-        if self.response_due_date is not None and not isinstance(self.response_due_date, XSDDate):
-            self.response_due_date = XSDDate(self.response_due_date)
+        if self.aims_concern_resolution is not None and not isinstance(self.aims_concern_resolution, str):
+            self.aims_concern_resolution = str(self.aims_concern_resolution)
 
-        if self.response_provided_date is not None and not isinstance(self.response_provided_date, XSDDate):
-            self.response_provided_date = XSDDate(self.response_provided_date)
+        if self.aims_concern_reprisal_protection is not None and not isinstance(self.aims_concern_reprisal_protection, str):
+            self.aims_concern_reprisal_protection = str(self.aims_concern_reprisal_protection)
 
-        if self.resolution is not None and not isinstance(self.resolution, str):
-            self.resolution = str(self.resolution)
+        if not isinstance(self.aims_concern_incidents, list):
+            self.aims_concern_incidents = [self.aims_concern_incidents] if self.aims_concern_incidents is not None else []
+        self.aims_concern_incidents = [v if isinstance(v, AimsIncidentAimsId) else AimsIncidentAimsId(v) for v in self.aims_concern_incidents]
 
-        if not isinstance(self.reprisal_protection_actions, list):
-            self.reprisal_protection_actions = [self.reprisal_protection_actions] if self.reprisal_protection_actions is not None else []
-        self.reprisal_protection_actions = [v if isinstance(v, str) else str(v) for v in self.reprisal_protection_actions]
+        if not isinstance(self.aims_concern_nonconformities, list):
+            self.aims_concern_nonconformities = [self.aims_concern_nonconformities] if self.aims_concern_nonconformities is not None else []
+        self.aims_concern_nonconformities = [v if isinstance(v, AimsNonconformityAimsId) else AimsNonconformityAimsId(v) for v in self.aims_concern_nonconformities]
 
-        if not isinstance(self.related_incidents, list):
-            self.related_incidents = [self.related_incidents] if self.related_incidents is not None else []
-        self.related_incidents = [v if isinstance(v, AIIncidentId) else AIIncidentId(v) for v in self.related_incidents]
-
-        if not isinstance(self.related_nonconformities, list):
-            self.related_nonconformities = [self.related_nonconformities] if self.related_nonconformities is not None else []
-        self.related_nonconformities = [v if isinstance(v, NonconformityId) else NonconformityId(v) for v in self.related_nonconformities]
-
-        if self.closure_datetime is not None and not isinstance(self.closure_datetime, XSDDateTime):
-            self.closure_datetime = XSDDateTime(self.closure_datetime)
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
 
         super().__post_init__(**kwargs)
 
 
 # Enumerations
-class AIControlFamily(EnumDefinitionImpl):
+class AimsClause(EnumDefinitionImpl):
     """
-    The reference control families in Annex A of ISO/IEC 42001:2023.
+    The numbered clauses and subclauses of the standard from 4 to 10, by their numbers. A value's description is this
+    project's own summary, and the clause headings and the requirements are ISO's.
     """
-    ai_policies = PermissibleValue(
-        text="ai_policies",
-        description="""Policies related to AI (Annex A.2) - management direction and support for AI systems according to business requirements.""")
-    internal_organization = PermissibleValue(
-        text="internal_organization",
-        description="""Internal organization (Annex A.3) - accountability for responsible implementation, operation, and management of AI systems.""")
-    ai_resources = PermissibleValue(
-        text="ai_resources",
-        description="""Resources for AI systems (Annex A.4) - documentation of data, tooling, system/computing, and human resources for AI systems.""")
+    clause_4 = PermissibleValue(
+        text="clause_4",
+        title="4",
+        description="Why the system exists and what it reaches.")
+    clause_4_1 = PermissibleValue(
+        text="clause_4_1",
+        title="4.1",
+        description="""Matters inside and outside that bear on the system, climate among them, and the part the organization plays with AI.""")
+    clause_4_2 = PermissibleValue(
+        text="clause_4_2",
+        title="4.2",
+        description="Who has a stake in the system, and what they want from it.")
+    clause_4_3 = PermissibleValue(
+        text="clause_4_3",
+        title="4.3",
+        description="Where the system stops, stated in writing.")
+    clause_4_4 = PermissibleValue(
+        text="clause_4_4",
+        title="4.4",
+        description="Having the system and its processes in place, and keeping them up.")
+    clause_5 = PermissibleValue(
+        text="clause_5",
+        title="5",
+        description="What top management must do.")
+    clause_5_1 = PermissibleValue(
+        text="clause_5_1",
+        title="5.1",
+        description="How top management shows it leads and backs the system.")
+    clause_5_2 = PermissibleValue(
+        text="clause_5_2",
+        title="5.2",
+        description="Management's written direction on AI.")
+    clause_5_3 = PermissibleValue(
+        text="clause_5_3",
+        title="5.3",
+        description="""Who holds which duty and power, including who checks conformity and who reports on performance.""")
+    clause_6 = PermissibleValue(
+        text="clause_6",
+        title="6",
+        description="Deciding what to do before doing it.")
+    clause_6_1 = PermissibleValue(
+        text="clause_6_1",
+        title="6.1",
+        description="Dealing with what could go well or badly.")
+    clause_6_1_1 = PermissibleValue(
+        text="clause_6_1_1",
+        title="6.1.1",
+        description="Criteria for risk, and the actions planned on risks and opportunities.")
+    clause_6_1_2 = PermissibleValue(
+        text="clause_6_1_2",
+        title="6.1.2",
+        description="A repeatable way to find, analyse and rank AI risks.")
+    clause_6_1_3 = PermissibleValue(
+        text="clause_6_1_3",
+        title="6.1.3",
+        description="Choosing treatments and controls, with the Statement of Applicability and the plan.")
+    clause_6_1_4 = PermissibleValue(
+        text="clause_6_1_4",
+        title="6.1.4",
+        description="A way to work out what AI systems may do to people and society.")
+    clause_6_2 = PermissibleValue(
+        text="clause_6_2",
+        title="6.2",
+        description="Measurable aims for AI, and how each will be reached.")
+    clause_6_3 = PermissibleValue(
+        text="clause_6_3",
+        title="6.3",
+        description="Changing the system in an orderly way.")
+    clause_7 = PermissibleValue(
+        text="clause_7",
+        title="7",
+        description="What the system needs in order to run.")
+    clause_7_1 = PermissibleValue(
+        text="clause_7_1",
+        title="7.1",
+        description="Providing what the system needs.")
+    clause_7_2 = PermissibleValue(
+        text="clause_7_2",
+        title="7.2",
+        description="People's ability to do the work, and the evidence of it.")
+    clause_7_3 = PermissibleValue(
+        text="clause_7_3",
+        title="7.3",
+        description="What those who work for the organization must know.")
+    clause_7_4 = PermissibleValue(
+        text="clause_7_4",
+        title="7.4",
+        description="Who is told what, when and how.")
+    clause_7_5 = PermissibleValue(
+        text="clause_7_5",
+        title="7.5",
+        description="Keeping information under control.")
+    clause_7_5_1 = PermissibleValue(
+        text="clause_7_5_1",
+        title="7.5.1",
+        description="Which information the system holds.")
+    clause_7_5_2 = PermissibleValue(
+        text="clause_7_5_2",
+        title="7.5.2",
+        description="Naming, formatting, reviewing and approving it.")
+    clause_7_5_3 = PermissibleValue(
+        text="clause_7_5_3",
+        title="7.5.3",
+        description="Keeping it to hand and protected.")
+    clause_8 = PermissibleValue(
+        text="clause_8",
+        title="8",
+        description="Carrying out what was planned.")
+    clause_8_1 = PermissibleValue(
+        text="clause_8_1",
+        title="8.1",
+        description="Running and controlling the processes, including those from outside.")
+    clause_8_2 = PermissibleValue(
+        text="clause_8_2",
+        title="8.2",
+        description="Carrying out risk assessments, on schedule and when things change.")
+    clause_8_3 = PermissibleValue(
+        text="clause_8_3",
+        title="8.3",
+        description="Carrying out the treatment plan and checking that it works.")
+    clause_8_4 = PermissibleValue(
+        text="clause_8_4",
+        title="8.4",
+        description="Carrying out impact assessments, on schedule and when things change.")
+    clause_9 = PermissibleValue(
+        text="clause_9",
+        title="9",
+        description="Checking how the system is doing.")
+    clause_9_1 = PermissibleValue(
+        text="clause_9_1",
+        title="9.1",
+        description="What is measured, how and when, and what the results mean.")
+    clause_9_2 = PermissibleValue(
+        text="clause_9_2",
+        title="9.2",
+        description="Audits the organization runs on itself.")
+    clause_9_2_1 = PermissibleValue(
+        text="clause_9_2_1",
+        title="9.2.1",
+        description="What such an audit must establish, and how often.")
+    clause_9_2_2 = PermissibleValue(
+        text="clause_9_2_2",
+        title="9.2.2",
+        description="The plan for those audits, and how impartial they are.")
+    clause_9_3 = PermissibleValue(
+        text="clause_9_3",
+        title="9.3",
+        description="Top management's own look at the system.")
+    clause_9_3_1 = PermissibleValue(
+        text="clause_9_3_1",
+        title="9.3.1",
+        description="How often it looks, and to what end.")
+    clause_9_3_2 = PermissibleValue(
+        text="clause_9_3_2",
+        title="9.3.2",
+        description="What it must take in.")
+    clause_9_3_3 = PermissibleValue(
+        text="clause_9_3_3",
+        title="9.3.3",
+        description="What it must produce.")
+    clause_10 = PermissibleValue(
+        text="clause_10",
+        title="10",
+        description="Getting better and putting things right.")
+    clause_10_1 = PermissibleValue(
+        text="clause_10_1",
+        title="10.1",
+        description="Making the system better over time.")
+    clause_10_2 = PermissibleValue(
+        text="clause_10_2",
+        title="10.2",
+        description="Dealing with an unmet requirement and removing its cause.")
+
+    _defn = EnumDefinition(
+        name="AimsClause",
+        description="""The numbered clauses and subclauses of the standard from 4 to 10, by their numbers. A value's description is this project's own summary, and the clause headings and the requirements are ISO's.""",
+    )
+
+class AimsControlArea(EnumDefinitionImpl):
+    """
+    The nine areas Annex A sorts its controls into, under names of this project's own. An area's number is its
+    annotation.
+    """
+    policy_direction = PermissibleValue(
+        text="policy_direction",
+        title="A.2",
+        description="Written direction from management on AI, and how it fits with other policies.")
+    accountability = PermissibleValue(
+        text="accountability",
+        title="A.3",
+        description="Who answers for AI within the organization's walls, and the way worries are raised.")
+    system_resources = PermissibleValue(
+        text="system_resources",
+        title="A.4",
+        description="What each AI system draws on: components, data, tools, computing and people.")
     impact_assessment = PermissibleValue(
         text="impact_assessment",
-        description="""Assessing impacts of AI systems (Annex A.5) - evaluation of consequences for individuals, groups, and societies across the AI system life cycle.""")
-    ai_system_lifecycle = PermissibleValue(
-        text="ai_system_lifecycle",
-        description="""AI system life cycle (Annex A.6) - responsible design, development, verification, deployment, operation, and technical documentation.""")
-    data_for_ai = PermissibleValue(
-        text="data_for_ai",
-        description="""Data for AI systems (Annex A.7) - data management, acquisition, quality, provenance, and preparation for AI.""")
-    information_for_parties = PermissibleValue(
-        text="information_for_parties",
-        description="""Information for interested parties (Annex A.8) - system documentation for users, external reporting, and incident communications.""")
-    use_of_ai = PermissibleValue(
-        text="use_of_ai",
-        description="""Use of AI systems (Annex A.9) - responsible-use processes, objectives, and intended-use enforcement.""")
-    third_party_relationships = PermissibleValue(
-        text="third_party_relationships",
-        description="""Third-party and customer relationships (Annex A.10) - allocating responsibilities, supplier management, and customer expectations.""")
+        title="A.5",
+        description="Working out what AI systems may do to people and society.")
+    system_life_cycle = PermissibleValue(
+        text="system_life_cycle",
+        title="A.6",
+        description="Building and running AI systems, from the goals set for them to their logs.")
+    data_management = PermissibleValue(
+        text="data_management",
+        title="A.7",
+        description="The data AI systems use: how it is managed, obtained, kept fit, traced and readied.")
+    stakeholder_information = PermissibleValue(
+        text="stakeholder_information",
+        title="A.8",
+        description="What users and others are told about a system, and their way to report harm.")
+    responsible_use = PermissibleValue(
+        text="responsible_use",
+        title="A.9",
+        description="How AI systems are put to use, against the organization's goals and the systems' documents.")
+    external_relationships = PermissibleValue(
+        text="external_relationships",
+        title="A.10",
+        description="Duties shared with partners, suppliers and customers.")
 
     _defn = EnumDefinition(
-        name="AIControlFamily",
-        description="The reference control families in Annex A of ISO/IEC 42001:2023.",
+        name="AimsControlArea",
+        description="""The nine areas Annex A sorts its controls into, under names of this project's own. An area's number is its annotation.""",
     )
 
-class ImplementationStatus(EnumDefinitionImpl):
+class AimsAnnexAControl(EnumDefinitionImpl):
     """
-    Lifecycle status of a reference control, used in the AIMS Statement of Applicability and control tracking.
-    """
-    not_started = PermissibleValue(
-        text="not_started",
-        description="Control identified but no implementation activities begun.")
-    planned = PermissibleValue(
-        text="planned",
-        description="Control scheduled for implementation with defined timeline.")
-    in_progress = PermissibleValue(
-        text="in_progress",
-        description="Implementation actively underway but not yet complete.")
-    implemented = PermissibleValue(
-        text="implemented",
-        description="Control fully implemented and operational.")
-    not_applicable = PermissibleValue(
-        text="not_applicable",
-        description="Control excluded from scope with documented justification per Clause 6.1.3 f).")
-
-    _defn = EnumDefinition(
-        name="ImplementationStatus",
-        description="""Lifecycle status of a reference control, used in the AIMS Statement of Applicability and control tracking.""",
-    )
-
-class RiskTreatmentOption(EnumDefinitionImpl):
-    """
-    Standard risk treatment options drawn from ISO 31000 and adapted for AI risk treatment per Clause 6.1.3.
-    """
-    modify = PermissibleValue(
-        text="modify",
-        description="Apply controls to change the AI risk level (reduce likelihood or consequence).")
-    accept = PermissibleValue(
-        text="accept",
-        description="""Accept the residual AI risk without further treatment, within risk appetite, with designated management approval.""")
-    avoid = PermissibleValue(
-        text="avoid",
-        description="""Eliminate the AI risk by not undertaking the activity that creates it (for example, not deploying a high-risk AI use case).""")
-    share = PermissibleValue(
-        text="share",
-        description="""Transfer or share the AI risk with external parties (e.g., insurance, contractual transfer to a supplier or partner).""")
-
-    _defn = EnumDefinition(
-        name="RiskTreatmentOption",
-        description="""Standard risk treatment options drawn from ISO 31000 and adapted for AI risk treatment per Clause 6.1.3.""",
-    )
-
-class RiskLevel(EnumDefinitionImpl):
-    """
-    Qualitative AI risk rating derived from likelihood and consequence analysis.
-    """
-    very_low = PermissibleValue(
-        text="very_low",
-        description="Negligible AI risk requiring no immediate action.")
-    low = PermissibleValue(
-        text="low",
-        description="Minor AI risk manageable through routine procedures.")
-    medium = PermissibleValue(
-        text="medium",
-        description="Moderate AI risk requiring management attention and planned controls.")
-    high = PermissibleValue(
-        text="high",
-        description="Significant AI risk requiring priority treatment and escalation.")
-    critical = PermissibleValue(
-        text="critical",
-        description="""Severe AI risk threatening organizational objectives, individuals, or societies; requires immediate executive action.""")
-
-    _defn = EnumDefinition(
-        name="RiskLevel",
-        description="Qualitative AI risk rating derived from likelihood and consequence analysis.",
-    )
-
-class LikelihoodRating(EnumDefinitionImpl):
-    """
-    Qualitative likelihood scale for AI risk assessment.
-    """
-    rare = PermissibleValue(
-        text="rare",
-        description="Highly unlikely to occur (< 5% probability).")
-    unlikely = PermissibleValue(
-        text="unlikely",
-        description="Not expected but possible (5-20% probability).")
-    possible = PermissibleValue(
-        text="possible",
-        description="May occur at some point (20-50% probability).")
-    likely = PermissibleValue(
-        text="likely",
-        description="Probably will occur (50-80% probability).")
-    almost_certain = PermissibleValue(
-        text="almost_certain",
-        description="Expected to occur in most circumstances (> 80% probability).")
-
-    _defn = EnumDefinition(
-        name="LikelihoodRating",
-        description="Qualitative likelihood scale for AI risk assessment.",
-    )
-
-class ImpactRating(EnumDefinitionImpl):
-    """
-    Qualitative consequence scale for AI risk assessment, covering impact on the organization, individuals, groups,
-    and societies.
-    """
-    negligible = PermissibleValue(
-        text="negligible",
-        description="No significant impact on operations, individuals, or society.")
-    minor = PermissibleValue(
-        text="minor",
-        description="Limited impact, easily absorbed by normal operations.")
-    moderate = PermissibleValue(
-        text="moderate",
-        description="Noticeable impact requiring management intervention.")
-    major = PermissibleValue(
-        text="major",
-        description="Serious impact on objectives, reputation, compliance, or identifiable groups of individuals.")
-    severe = PermissibleValue(
-        text="severe",
-        description="""Catastrophic impact threatening organizational viability, broad societal harm, or fundamental rights of affected individuals.""")
-
-    _defn = EnumDefinition(
-        name="ImpactRating",
-        description="""Qualitative consequence scale for AI risk assessment, covering impact on the organization, individuals, groups, and societies.""",
-    )
-
-class AISystemLifecycleStage(EnumDefinitionImpl):
-    """
-    Stages of the AI system life cycle referenced throughout Annex A.6 and defined in ISO/IEC 5338 / ISO/IEC 22989.
-    """
-    inception = PermissibleValue(
-        text="inception",
-        description="Initial conception, feasibility, and use-case definition.")
-    design = PermissibleValue(
-        text="design",
-        description="AI system design including requirements and architecture.")
-    data_collection_and_preparation = PermissibleValue(
-        text="data_collection_and_preparation",
-        description="Acquiring, labelling, and preparing data resources.")
-    development = PermissibleValue(
-        text="development",
-        description="Model and AI system development and training.")
-    verification_and_validation = PermissibleValue(
-        text="verification_and_validation",
-        description="Verification and validation of the AI system.")
-    deployment = PermissibleValue(
-        text="deployment",
-        description="Release and integration into the production environment.")
-    operation_and_monitoring = PermissibleValue(
-        text="operation_and_monitoring",
-        description="Ongoing operation, monitoring, and support.")
-    continuous_validation = PermissibleValue(
-        text="continuous_validation",
-        description="Continuous validation, including drift detection and re-training triggers.")
-    re_evaluation = PermissibleValue(
-        text="re_evaluation",
-        description="Re-evaluation following significant changes or new evidence.")
-    decommissioning = PermissibleValue(
-        text="decommissioning",
-        description="Retirement, disposal, and post-decommissioning obligations.")
-
-    _defn = EnumDefinition(
-        name="AISystemLifecycleStage",
-        description="""Stages of the AI system life cycle referenced throughout Annex A.6 and defined in ISO/IEC 5338 / ISO/IEC 22989.""",
-    )
-
-class AIOrganizationalRole(EnumDefinitionImpl):
-    """
-    Roles an organization may take with respect to an AI system, paraphrased from the role taxonomy referenced in
-    ISO/IEC 22989 and the NIST AI RMF.
-    """
-    ai_provider = PermissibleValue(
-        text="ai_provider",
-        description="Organization providing AI platforms, products, or services to others.")
-    ai_producer = PermissibleValue(
-        text="ai_producer",
-        description="""Organization or actor that develops, designs, operates, tests, evaluates, deploys, or governs AI systems.""")
-    ai_customer = PermissibleValue(
-        text="ai_customer",
-        description="Organization or individual that uses an AI product or service.")
-    ai_partner = PermissibleValue(
-        text="ai_partner",
-        description="System integrators and data providers for AI systems.")
-    ai_subject = PermissibleValue(
-        text="ai_subject",
-        description="""Individuals or groups whose data or interests are affected by an AI system (e.g., data subjects).""")
-    relevant_authority = PermissibleValue(
-        text="relevant_authority",
-        description="Policymakers, regulators, and other oversight bodies.")
-
-    _defn = EnumDefinition(
-        name="AIOrganizationalRole",
-        description="""Roles an organization may take with respect to an AI system, paraphrased from the role taxonomy referenced in ISO/IEC 22989 and the NIST AI RMF.""",
-    )
-
-class DataResourceCategory(EnumDefinitionImpl):
-    """
-    Categories of data resources documented for AI systems per A.7 (Data for AI systems).
-    """
-    training = PermissibleValue(
-        text="training",
-        description="Data used to train machine learning models.")
-    validation = PermissibleValue(
-        text="validation",
-        description="Data used for model selection and hyperparameter tuning.")
-    test = PermissibleValue(
-        text="test",
-        description="Data used to evaluate model performance prior to deployment.")
-    production = PermissibleValue(
-        text="production",
-        description="Live operational data processed by the deployed AI system.")
-    reference = PermissibleValue(
-        text="reference",
-        description="Reference datasets used for benchmarking or comparison.")
-
-    _defn = EnumDefinition(
-        name="DataResourceCategory",
-        description="Categories of data resources documented for AI systems per A.7 (Data for AI systems).",
-    )
-
-class AIObjectiveCategory(EnumDefinitionImpl):
-    """
-    Categories of organizational objectives associated with responsible development and use of AI systems, paraphrased
-    from Annex C of ISO/IEC 42001:2023.
-    """
-    accountability = PermissibleValue(
-        text="accountability",
-        description="Clear allocation of responsibility for AI-supported decisions.")
-    ai_expertise = PermissibleValue(
-        text="ai_expertise",
-        description="Availability of interdisciplinary expertise for AI activities.")
-    data_quality = PermissibleValue(
-        text="data_quality",
-        description="Adequate quality of training, validation, and test data.")
-    environmental_impact = PermissibleValue(
-        text="environmental_impact",
-        description="Management of positive and negative environmental effects.")
-    fairness = PermissibleValue(
-        text="fairness",
-        description="Avoiding inappropriate or unfair outcomes for individuals or groups.")
-    maintainability = PermissibleValue(
-        text="maintainability",
-        description="Ability to correct defects and accommodate new requirements.")
-    privacy = PermissibleValue(
-        text="privacy",
-        description="Protection of personal and sensitive data processed by AI systems.")
-    robustness = PermissibleValue(
-        text="robustness",
-        description="Comparable performance on new and operational data.")
-    safety = PermissibleValue(
-        text="safety",
-        description="Avoidance of harm to life, health, property, or the environment.")
-    security = PermissibleValue(
-        text="security",
-        description="Protection from AI-specific and conventional security threats.")
-    transparency = PermissibleValue(
-        text="transparency",
-        description="Visibility into organizational AI practices and AI system behaviour.")
-    explainability = PermissibleValue(
-        text="explainability",
-        description="Comprehensible explanations of important factors driving AI outputs.")
-    reliability = PermissibleValue(
-        text="reliability",
-        description="Consistent performance under defined conditions.")
-    accessibility = PermissibleValue(
-        text="accessibility",
-        description="Usability of AI systems by people with diverse abilities.")
-    availability_of_training_data = PermissibleValue(
-        text="availability_of_training_data",
-        description="""Sufficient availability and quality of training, validation, and test data needed to train and verify AI systems (Annex C.2.3).""")
-
-    _defn = EnumDefinition(
-        name="AIObjectiveCategory",
-        description="""Categories of organizational objectives associated with responsible development and use of AI systems, paraphrased from Annex C of ISO/IEC 42001:2023.""",
-    )
-
-class AIRiskSourceCategory(EnumDefinitionImpl):
-    """
-    Categories of AI risk sources, paraphrased from Annex C of ISO/IEC 42001:2023.
-    """
-    complexity_of_environment = PermissibleValue(
-        text="complexity_of_environment",
-        description="""Performance uncertainty in complex or open operational environments (e.g., autonomous systems).""")
-    lack_of_transparency_or_explainability = PermissibleValue(
-        text="lack_of_transparency_or_explainability",
-        description="""Inability to provide adequate information to interested parties, affecting trustworthiness and accountability.""")
-    level_of_automation = PermissibleValue(
-        text="level_of_automation",
-        description="Effects of automation on safety, fairness, security, or human oversight.")
-    machine_learning_specific = PermissibleValue(
-        text="machine_learning_specific",
-        description="Risks tied to data collection, data quality, and ML-specific phenomena such as data poisoning.")
-    hardware = PermissibleValue(
-        text="hardware",
-        description="Hardware errors or behavioural differences when transferring trained models between systems.")
-    lifecycle = PermissibleValue(
-        text="lifecycle",
-        description="""Risks introduced at any AI system life cycle stage, including design flaws, deployment issues, or decommissioning gaps.""")
-    technology_readiness = PermissibleValue(
-        text="technology_readiness",
-        description="""Risks from immature technology with unknown limitations as well as mature technology subject to technology complacency.""")
-
-    _defn = EnumDefinition(
-        name="AIRiskSourceCategory",
-        description="Categories of AI risk sources, paraphrased from Annex C of ISO/IEC 42001:2023.",
-    )
-
-class DocumentType(EnumDefinitionImpl):
-    """
-    Categories of documented information referenced in or required by ISO/IEC 42001:2023.
-    """
-    policy = PermissibleValue(
-        text="policy",
-        description="High-level statement of intent and direction (e.g., AI policy per 5.2).")
-    procedure = PermissibleValue(
-        text="procedure",
-        description="Documented steps for performing AIMS activities consistently.")
-    standard = PermissibleValue(
-        text="standard",
-        description="Mandatory requirements for specific AI technologies or processes.")
-    guideline = PermissibleValue(
-        text="guideline",
-        description="Recommended practices that support AI-related policies.")
-    record = PermissibleValue(
-        text="record",
-        description="Evidence of AIMS activities performed or results achieved.")
-    plan = PermissibleValue(
-        text="plan",
-        description="Documented approach for achieving objectives (e.g., AI risk treatment plan, deployment plan).")
-    report = PermissibleValue(
-        text="report",
-        description="Formal output of assessment, audit, impact assessment, or review activities.")
-    technical_documentation = PermissibleValue(
-        text="technical_documentation",
-        description="""AI system technical documentation provided to users, partners, supervisory authorities, and other interested parties per A.6.2.7 and A.8.2.""")
-
-    _defn = EnumDefinition(
-        name="DocumentType",
-        description="Categories of documented information referenced in or required by ISO/IEC 42001:2023.",
-    )
-
-class AuditFindingType(EnumDefinitionImpl):
-    """
-    Classification of internal audit findings for the AIMS.
-    """
-    major_nonconformity = PermissibleValue(
-        text="major_nonconformity",
-        description="""Significant failure to fulfill a requirement that affects the AIMS ability to achieve its intended outcomes.""")
-    minor_nonconformity = PermissibleValue(
-        text="minor_nonconformity",
-        description="Isolated lapse that does not significantly affect AIMS effectiveness.")
-    observation = PermissibleValue(
-        text="observation",
-        description="Noted condition that could lead to a nonconformity if not addressed.")
-    positive_finding = PermissibleValue(
-        text="positive_finding",
-        description="Evidence of effective implementation exceeding requirements.")
-
-    _defn = EnumDefinition(
-        name="AuditFindingType",
-        description="Classification of internal audit findings for the AIMS.",
-    )
-
-class ImpactAssessmentDimension(EnumDefinitionImpl):
-    """
-    Dimensions evaluated during an AI system impact assessment per Clause 6.1.4. Combines individual/group impacts
-    (Annex A.5.4 / Annex B.5.4) with societal-scope impacts (Annex A.5.5 / Annex B.5.5).
-    """
-    individual = PermissibleValue(
-        text="individual",
-        description="Consequences for individual persons interacting with or affected by the AI system.")
-    group = PermissibleValue(
-        text="group",
-        description="Consequences for identifiable groups of individuals.")
-    societal = PermissibleValue(
-        text="societal",
-        description="Broader societal consequences.")
-    fairness = PermissibleValue(
-        text="fairness",
-        description="Fair and non-discriminatory treatment of affected individuals and groups (B.5.4).")
-    transparency = PermissibleValue(
-        text="transparency",
-        description="Transparency of organizational AI practices and AI system behaviour (B.5.4).")
-    explainability = PermissibleValue(
-        text="explainability",
-        description="Comprehensibility of important factors driving AI outputs (B.5.4).")
-    accountability = PermissibleValue(
-        text="accountability",
-        description="Clear allocation of accountability for AI-supported decisions (B.5.4).")
-    accessibility = PermissibleValue(
-        text="accessibility",
-        description="Accessibility of the AI system for people with diverse abilities (B.5.4).")
-    human_rights = PermissibleValue(
-        text="human_rights",
-        description="Effects on fundamental human rights (B.5.4).")
-    financial = PermissibleValue(
-        text="financial",
-        description="Financial consequences for affected individuals or organizations (B.5.4).")
-    health = PermissibleValue(
-        text="health",
-        description="Effects on physical or mental health (B.5.4).")
-    environmental = PermissibleValue(
-        text="environmental",
-        description="Environmental consequences attributable to the AI system (B.5.5).")
-    economic = PermissibleValue(
-        text="economic",
-        description="Wider economic consequences (B.5.5).")
-    government = PermissibleValue(
-        text="government",
-        description="Consequences for democratic processes, governance, or rule of law (B.5.5).")
-    cultural_norms = PermissibleValue(
-        text="cultural_norms",
-        description="Consequences for cultural norms, traditions, or values (B.5.5).")
-    safety = PermissibleValue(
-        text="safety",
-        description="Safety-related consequences in the deployment context.")
-    privacy = PermissibleValue(
-        text="privacy",
-        description="Privacy-related consequences for data subjects.")
-    security = PermissibleValue(
-        text="security",
-        description="Information security consequences attributable to the AI system.")
-
-    _defn = EnumDefinition(
-        name="ImpactAssessmentDimension",
-        description="""Dimensions evaluated during an AI system impact assessment per Clause 6.1.4. Combines individual/group impacts (Annex A.5.4 / Annex B.5.4) with societal-scope impacts (Annex A.5.5 / Annex B.5.5).""",
-    )
-
-class AnnexAControlId(EnumDefinitionImpl):
-    """
-    Normative reference control identifiers from Annex A of ISO/IEC 42001:2023 (38 controls across nine families
-    A.2-A.10). Permissible value names use underscores in place of dots; the `meaning` slot preserves the Annex A
-    dotted form. Control titles are paraphrased.
+    The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own,
+    and its description says in this project's words what the control asks for. The headings and the control text are
+    ISO's.
     """
     a_2_2 = PermissibleValue(
         text="a_2_2",
-        description="AI policy - document a policy governing AI system development or use.")
+        title="A.2.2 Written direction on AI",
+        description="Set down in writing how the organization means to treat AI systems.")
     a_2_3 = PermissibleValue(
         text="a_2_3",
-        description="Alignment with other organizational policies - reconcile AI objectives with related policies.")
+        title="A.2.3 Fit with other policies",
+        description="Find where the organization's other policies touch its aims for AI, in either direction.")
     a_2_4 = PermissibleValue(
         text="a_2_4",
-        description="""Review of the AI policy - planned and event-driven policy review for suitability and effectiveness.""")
+        title="A.2.4 Regular policy check",
+        description="""Look at the AI policy again on a schedule and whenever the need arises, to see that it still serves.""")
     a_3_2 = PermissibleValue(
         text="a_3_2",
-        description="AI roles and responsibilities - define and allocate AI-related roles per organizational needs.")
+        title="A.3.2 Who answers for what",
+        description="Decide who carries which duty for AI, as the organization's needs dictate.")
     a_3_3 = PermissibleValue(
         text="a_3_3",
-        description="""Reporting of concerns - process for raising concerns about the organization's role with respect to AI.""")
+        title="A.3.3 A way to raise worries",
+        description="""Give people a way to raise worries about the organization's part in a system, at any point in that system's life.""")
     a_4_2 = PermissibleValue(
         text="a_4_2",
-        description="Resource documentation - identify and document resources used at each AI lifecycle stage.")
+        title="A.4.2 Inventory of what is needed",
+        description="List what each stage of a system's life, and other AI work, draws on.")
     a_4_3 = PermissibleValue(
         text="a_4_3",
-        description="Data resources - document data resources used by the AI system.")
+        title="A.4.3 Record of data used",
+        description="Record facts about the data a system draws on.")
     a_4_4 = PermissibleValue(
         text="a_4_4",
-        description="Tooling resources - document tooling resources used by the AI system.")
+        title="A.4.4 Record of tools used",
+        description="Record facts about the tools a system draws on.")
     a_4_5 = PermissibleValue(
         text="a_4_5",
-        description="""System and computing resources - document system and computing resources used by the AI system.""")
+        title="A.4.5 Record of infrastructure used",
+        description="Record facts about the hardware and computing a system draws on.")
     a_4_6 = PermissibleValue(
         text="a_4_6",
-        description="Human resources - document human resources and competences across the AI lifecycle.")
+        title="A.4.6 Record of people used",
+        description="Record who works on a system across its whole life, and what skills they bring.")
     a_5_2 = PermissibleValue(
         text="a_5_2",
-        description="""AI system impact assessment process - establish a process to assess consequences across the lifecycle.""")
+        title="A.5.2 Method for weighing consequences",
+        description="Set up a way to work out what a system could do to people and society over its life.")
     a_5_3 = PermissibleValue(
         text="a_5_3",
-        description="Documentation of AI system impact assessments - record and retain assessment results.")
+        title="A.5.3 Keeping assessment results",
+        description="Write down what each impact assessment found, and hold on to it for a set time.")
     a_5_4 = PermissibleValue(
         text="a_5_4",
-        description="""Assessing AI system impact on individuals or groups - evaluate and document impacts to individuals.""")
+        title="A.5.4 Effects on people",
+        description="""Work out and record how a system could affect single persons or particular groups over its life.""")
     a_5_5 = PermissibleValue(
         text="a_5_5",
-        description="Assessing societal impacts of AI systems - evaluate and document broader societal impacts.")
+        title="A.5.5 Effects on society",
+        description="Work out and record how a system could affect society over its life.")
     a_6_1_2 = PermissibleValue(
         text="a_6_1_2",
-        description="""Objectives for responsible development - identify objectives that guide responsible AI development.""")
+        title="A.6.1.2 Goals for building",
+        description="""Set goals that steer responsible building, and work measures for them into the development cycle.""")
     a_6_1_3 = PermissibleValue(
         text="a_6_1_3",
-        description="""Processes for responsible AI system design and development - document the design and development processes.""")
+        title="A.6.1.3 Defined ways of building",
+        description="Set down the particular processes for designing and building a system responsibly.")
     a_6_2_2 = PermissibleValue(
         text="a_6_2_2",
-        description="""AI system requirements and specification - specify requirements for new or enhanced AI systems.""")
+        title="A.6.2.2 What a system must do",
+        description="Write down what a new system, or a large upgrade to one, must meet.")
     a_6_2_3 = PermissibleValue(
         text="a_6_2_3",
-        description="""Documentation of AI system design and development - document design and development against requirements.""")
+        title="A.6.2.3 Build records",
+        description="Write down how a system was designed and built, against the goals and the requirements.")
     a_6_2_4 = PermissibleValue(
         text="a_6_2_4",
-        description="AI system verification and validation - define and document V&V measures and criteria.")
+        title="A.6.2.4 Checks and their criteria",
+        description="Set the checks that verify and validate a system, and say when each applies.")
     a_6_2_5 = PermissibleValue(
         text="a_6_2_5",
-        description="AI system deployment - document a deployment plan and verify pre-deployment requirements.")
+        title="A.6.2.5 Going live",
+        description="Keep a plan for putting a system into service, and meet its conditions first.")
     a_6_2_6 = PermissibleValue(
         text="a_6_2_6",
-        description="""AI system operation and monitoring - document operational and performance monitoring, repairs, updates, and support.""")
+        title="A.6.2.6 Running and watching",
+        description="""Set down what keeping a system in service takes: at least watching it, fixing it, updating it and supporting it.""")
     a_6_2_7 = PermissibleValue(
         text="a_6_2_7",
-        description="""AI system technical documentation - provide technical documentation tailored to each interested party.""")
+        title="A.6.2.7 Documents per audience",
+        description="""Decide what technical documents each kind of reader needs, and give them those documents in a suitable form.""")
     a_6_2_8 = PermissibleValue(
         text="a_6_2_8",
-        description="""AI system recording of event logs - enable event log recording across relevant lifecycle phases.""")
+        title="A.6.2.8 Keeping logs",
+        description="""Decide at which points in a system's life it keeps event logs, and keep them at least while it is in service.""")
     a_7_2 = PermissibleValue(
         text="a_7_2",
-        description="""Data for development and enhancement - define and implement data management processes for AI development.""")
+        title="A.7.2 Managing data for building",
+        description="Set down and follow processes that manage the data used to build systems.")
     a_7_3 = PermissibleValue(
         text="a_7_3",
-        description="Acquisition of data - document acquisition and selection details for data used in AI systems.")
+        title="A.7.3 Obtaining and choosing data",
+        description="Record how the data a system uses was obtained and picked.")
     a_7_4 = PermissibleValue(
         text="a_7_4",
-        description="Quality of data for AI systems - define and meet data quality requirements.")
+        title="A.7.4 Data fit for purpose",
+        description="""State what quality data must have, and see that the data used to build and run a system has it.""")
     a_7_5 = PermissibleValue(
         text="a_7_5",
-        description="Data provenance - record data provenance across the data and AI system life cycles.")
+        title="A.7.5 Tracing where data came from",
+        description="""Keep a process that records where data came from and what happened to it, while it and the system last.""")
     a_7_6 = PermissibleValue(
         text="a_7_6",
-        description="Data preparation - document criteria and methods used for data preparation.")
+        title="A.7.6 Readying data",
+        description="Set criteria for choosing how data is made ready, and name the methods to use.")
     a_8_2 = PermissibleValue(
         text="a_8_2",
-        description="""System documentation and information for users - provide information needed by AI system users.""")
+        title="A.8.2 What users are told",
+        description="Work out what those who use a system need to know, and tell them.")
     a_8_3 = PermissibleValue(
         text="a_8_3",
-        description="External reporting - enable interested parties to report adverse impacts.")
+        title="A.8.3 Letting outsiders report harm",
+        description="Give people outside the organization a way to report harm a system has done.")
     a_8_4 = PermissibleValue(
         text="a_8_4",
-        description="Communication of incidents - document a plan for communicating incidents to users.")
+        title="A.8.4 Telling users about incidents",
+        description="Keep a plan for telling those who use a system when something goes wrong.")
     a_8_5 = PermissibleValue(
         text="a_8_5",
-        description="""Information for interested parties - document obligations to report AI system information to interested parties.""")
+        title="A.8.5 Duties to inform others",
+        description="Work out what the organization owes others by way of reports about a system.")
     a_9_2 = PermissibleValue(
         text="a_9_2",
-        description="Processes for responsible use of AI systems - define and document responsible use processes.")
+        title="A.9.2 Defined ways of using",
+        description="Set down the processes for using AI systems responsibly.")
     a_9_3 = PermissibleValue(
         text="a_9_3",
-        description="""Objectives for responsible use of AI system - identify and document responsible-use objectives.""")
+        title="A.9.3 Goals for use",
+        description="Set goals that steer how AI systems are used responsibly.")
     a_9_4 = PermissibleValue(
         text="a_9_4",
-        description="Intended use of the AI system - ensure use aligns with the documented intended use.")
+        title="A.9.4 Staying within documented use",
+        description="See that a system is used only as intended and as its documents say.")
     a_10_2 = PermissibleValue(
         text="a_10_2",
-        description="""Allocating responsibilities - allocate AI lifecycle responsibilities across organization, partners, suppliers, customers, third parties.""")
+        title="A.10.2 Sharing out duties",
+        description="""Settle who carries which duty across a system's life, among the organization and those it deals with.""")
     a_10_3 = PermissibleValue(
         text="a_10_3",
-        description="""Suppliers - ensure supplier-provided services, products, and materials align with the organization's responsible AI approach.""")
+        title="A.10.3 What is bought in",
+        description="Keep a process that holds what suppliers provide to how the organization means to treat AI.")
     a_10_4 = PermissibleValue(
         text="a_10_4",
-        description="""Customers - account for customer expectations and needs in the organization's responsible AI approach.""")
+        title="A.10.4 Buyers' needs",
+        description="See that how the organization treats AI takes account of what its customers expect and want.")
 
     _defn = EnumDefinition(
-        name="AnnexAControlId",
-        description="""Normative reference control identifiers from Annex A of ISO/IEC 42001:2023 (38 controls across nine families A.2-A.10). Permissible value names use underscores in place of dots; the `meaning` slot preserves the Annex A dotted form. Control titles are paraphrased.""",
+        name="AimsAnnexAControl",
+        description="""The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.""",
     )
 
-class SectorDomain(EnumDefinitionImpl):
+class AimsLifecycleStage(EnumDefinitionImpl):
     """
-    Application sectors referenced in Annex D of ISO/IEC 42001:2023 in which the AIMS can be deployed jointly with
-    sector-specific management system standards (e.g., ISO 13485, ISO 22000, IEC 62304).
+    The eight stages of the generic life cycle model that ISO/IEC 22989:2022 gives, which ISO/IEC 42001 points to.
     """
-    health = PermissibleValue(
-        text="health",
-        description="Health, medical devices, and healthcare delivery contexts.")
-    defence = PermissibleValue(
-        text="defence",
-        description="Defence, security, and dual-use technology contexts.")
-    transport = PermissibleValue(
-        text="transport",
-        description="Transport, mobility, and autonomous vehicle contexts.")
-    finance = PermissibleValue(
-        text="finance",
-        description="Financial services, banking, insurance, and capital markets.")
-    employment = PermissibleValue(
-        text="employment",
-        description="Hiring, workforce management, and employee evaluation.")
-    energy = PermissibleValue(
-        text="energy",
-        description="Energy production, distribution, and grid management.")
-    public_sector = PermissibleValue(
-        text="public_sector",
-        description="Government, public administration, and public-service delivery.")
-    education = PermissibleValue(
-        text="education",
-        description="Education, training, and academic assessment contexts.")
-    manufacturing = PermissibleValue(
-        text="manufacturing",
-        description="Industrial and manufacturing automation.")
-    agriculture = PermissibleValue(
-        text="agriculture",
-        description="Agricultural production and food-supply contexts.")
-    telecommunications = PermissibleValue(
-        text="telecommunications",
-        description="Telecommunications and network operations.")
-    retail = PermissibleValue(
-        text="retail",
-        description="Retail, e-commerce, and consumer products.")
+    inception = PermissibleValue(
+        text="inception",
+        description="Someone sees a need, weighs whether to meet it, and sets goals.")
+    design_and_development = PermissibleValue(
+        text="design_and_development",
+        description="The system is designed and built.")
+    verification_and_validation = PermissibleValue(
+        text="verification_and_validation",
+        description="The system is checked against what was asked of it.")
+    deployment = PermissibleValue(
+        text="deployment",
+        description="The system is put into service.")
+    operation_and_monitoring = PermissibleValue(
+        text="operation_and_monitoring",
+        description="The system runs and is watched.")
+    continuous_validation = PermissibleValue(
+        text="continuous_validation",
+        description="A system that goes on learning is checked again as it changes.")
+    re_evaluation = PermissibleValue(
+        text="re_evaluation",
+        description="The system's results are weighed against its goals afresh.")
+    retirement = PermissibleValue(
+        text="retirement",
+        description="The system is taken out of service.")
+
+    _defn = EnumDefinition(
+        name="AimsLifecycleStage",
+        description="""The eight stages of the generic life cycle model that ISO/IEC 22989:2022 gives, which ISO/IEC 42001 points to.""",
+    )
+
+class AimsAiRole(EnumDefinitionImpl):
+    """
+    The parts an organization or a person can play towards AI systems. The six families are those of ISO/IEC
+    22989:2022, and each more specific role names its family in an annotation.
+    """
+    ai_provider = PermissibleValue(
+        text="ai_provider",
+        description="Offers AI systems or platforms to others.")
+    ai_platform_provider = PermissibleValue(
+        text="ai_platform_provider",
+        description="Offers a platform that others build AI services on.")
+    ai_product_or_service_provider = PermissibleValue(
+        text="ai_product_or_service_provider",
+        description="Offers goods or services that hold an AI system.")
+    ai_producer = PermissibleValue(
+        text="ai_producer",
+        description="Makes AI systems.")
+    ai_developer = PermissibleValue(
+        text="ai_developer",
+        description="Writes and trains what goes into a system.")
+    ai_designer = PermissibleValue(
+        text="ai_designer",
+        description="Decides how a system should work.")
+    ai_operator = PermissibleValue(
+        text="ai_operator",
+        description="Keeps a system running.")
+    ai_tester_or_evaluator = PermissibleValue(
+        text="ai_tester_or_evaluator",
+        description="Checks how well a system does.")
+    ai_deployer = PermissibleValue(
+        text="ai_deployer",
+        description="Puts a system into service.")
+    ai_human_factor_professional = PermissibleValue(
+        text="ai_human_factor_professional",
+        description="Looks after how people and a system work together.")
+    domain_expert = PermissibleValue(
+        text="domain_expert",
+        description="Knows the field a system is used in.")
+    ai_impact_assessor = PermissibleValue(
+        text="ai_impact_assessor",
+        description="Weighs what a system may do to people and society.")
+    procurer = PermissibleValue(
+        text="procurer",
+        description="Buys systems or their parts.")
+    ai_governance_professional = PermissibleValue(
+        text="ai_governance_professional",
+        description="Oversees how AI is run and held to account.")
+    ai_customer = PermissibleValue(
+        text="ai_customer",
+        description="Takes AI systems from a provider.")
+    ai_user = PermissibleValue(
+        text="ai_user",
+        description="Works with a system directly.")
+    ai_partner = PermissibleValue(
+        text="ai_partner",
+        description="Helps others make or run AI systems.")
+    ai_system_integrator = PermissibleValue(
+        text="ai_system_integrator",
+        description="Joins a system to others.")
+    data_provider = PermissibleValue(
+        text="data_provider",
+        description="Supplies data for a system.")
+    ai_subject = PermissibleValue(
+        text="ai_subject",
+        description="Is affected by what a system decides or does.")
+    data_subject = PermissibleValue(
+        text="data_subject",
+        description="Is someone a system's data is about.")
+    other_subject = PermissibleValue(
+        text="other_subject",
+        description="Is affected in some other way.")
+    relevant_authority = PermissibleValue(
+        text="relevant_authority",
+        description="Sets or enforces rules for AI.")
+    policymaker = PermissibleValue(
+        text="policymaker",
+        description="Sets the rules.")
+    regulator = PermissibleValue(
+        text="regulator",
+        description="Enforces the rules.")
+
+    _defn = EnumDefinition(
+        name="AimsAiRole",
+        description="""The parts an organization or a person can play towards AI systems. The six families are those of ISO/IEC 22989:2022, and each more specific role names its family in an annotation.""",
+    )
+
+class AimsPiiRole(EnumDefinitionImpl):
+    """
+    The parts a party can play when personal data passes through AI, which ISO/IEC 29100 describes.
+    """
+    pii_controller = PermissibleValue(
+        text="pii_controller",
+        description="Decides why and how personal data is processed.")
+    joint_pii_controller = PermissibleValue(
+        text="joint_pii_controller",
+        description="Makes those decisions together with another party.")
+    pii_processor = PermissibleValue(
+        text="pii_processor",
+        description="Processes personal data on a controller's behalf.")
+
+    _defn = EnumDefinition(
+        name="AimsPiiRole",
+        description="The parts a party can play when personal data passes through AI, which ISO/IEC 29100 describes.",
+    )
+
+class AimsObjectivePurpose(EnumDefinitionImpl):
+    """
+    What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex A controls ask for
+    objectives of a narrower kind.
+    """
+    organizational = PermissibleValue(
+        text="organizational",
+        description="An objective for the whole system.")
+    responsible_development = PermissibleValue(
+        text="responsible_development",
+        description="A goal that steers how systems are built.")
+    responsible_use = PermissibleValue(
+        text="responsible_use",
+        description="A goal that steers how systems are used.")
+
+    _defn = EnumDefinition(
+        name="AimsObjectivePurpose",
+        description="""What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex A controls ask for objectives of a narrower kind.""",
+    )
+
+class AimsObjectiveCategory(EnumDefinitionImpl):
+    """
+    Kinds of objective an organization may set for AI: those Annex C lists, two more from the guidance on responsible
+    use, and other.
+    """
+    accountability = PermissibleValue(
+        text="accountability",
+        description="Someone stays answerable for what a system helps to do.")
+    ai_expertise = PermissibleValue(
+        text="ai_expertise",
+        description="The organization has people with the skills AI calls for.")
+    training_and_test_data = PermissibleValue(
+        text="training_and_test_data",
+        description="Good data to train and check a system is to hand.")
+    environmental_impact = PermissibleValue(
+        text="environmental_impact",
+        description="A system's effect on the environment is kept in view.")
+    fairness = PermissibleValue(
+        text="fairness",
+        description="Automated decisions do not wrong particular persons or groups.")
+    maintainability = PermissibleValue(
+        text="maintainability",
+        description="Defects can be mended and new needs met.")
+    privacy = PermissibleValue(
+        text="privacy",
+        description="Data about people, sensitive data above all, is neither misused nor exposed.")
+    robustness = PermissibleValue(
+        text="robustness",
+        description="A system does as well on unseen data as on what it was trained on.")
+    safety = PermissibleValue(
+        text="safety",
+        description="Nobody's life or health, and no property or part of nature, comes to harm.")
+    security = PermissibleValue(
+        text="security",
+        description="Threats peculiar to AI are met, beyond the usual ones.")
+    transparency_and_explainability = PermissibleValue(
+        text="transparency_and_explainability",
+        description="Those concerned can see how a system works and why it gave a result.")
+    reliability = PermissibleValue(
+        text="reliability",
+        description="A system keeps doing what it is meant to.")
+    accessibility = PermissibleValue(
+        text="accessibility",
+        description="A system can be used by people with differing abilities.")
     other = PermissibleValue(
         text="other",
-        description="Other sector not enumerated above.")
+        description="A kind of objective the organization sets for itself.")
 
     _defn = EnumDefinition(
-        name="SectorDomain",
-        description="""Application sectors referenced in Annex D of ISO/IEC 42001:2023 in which the AIMS can be deployed jointly with sector-specific management system standards (e.g., ISO 13485, ISO 22000, IEC 62304).""",
+        name="AimsObjectiveCategory",
+        description="""Kinds of objective an organization may set for AI: those Annex C lists, two more from the guidance on responsible use, and other.""",
     )
 
-class LearningParadigm(EnumDefinitionImpl):
+class AimsRiskSourceCategory(EnumDefinitionImpl):
     """
-    Learning paradigm of an AI system, informing risk considerations related to data provenance, drift, and
-    behavioural change over time (see ISO/IEC 42001:2023 Introduction and Annex C.3.4).
+    Kinds of source a risk from AI can come from: those Annex C lists, and other.
     """
-    static = PermissibleValue(
-        text="static",
-        description="Trained once and deployed without further learning during operation.")
-    periodic_retraining = PermissibleValue(
-        text="periodic_retraining",
-        description="Retrained on a defined cadence with controlled release cycles.")
-    continuous_learning = PermissibleValue(
-        text="continuous_learning",
-        description="Updates its behaviour during operation based on new data or feedback.")
-    online_learning = PermissibleValue(
-        text="online_learning",
-        description="Continuously updates parameters from a stream of data.")
-    transfer_learning = PermissibleValue(
-        text="transfer_learning",
-        description="Adapted from a pre-trained model to a new task or domain.")
-    reinforcement_learning = PermissibleValue(
-        text="reinforcement_learning",
-        description="Learns a policy through interaction with an environment and reward signals.")
-    hybrid = PermissibleValue(
-        text="hybrid",
-        description="Combines multiple learning paradigms (e.g., supervised plus reinforcement).")
-    not_applicable = PermissibleValue(
-        text="not_applicable",
-        description="AI system that is not based on machine learning (e.g., rule-based).")
-
-    _defn = EnumDefinition(
-        name="LearningParadigm",
-        description="""Learning paradigm of an AI system, informing risk considerations related to data provenance, drift, and behavioural change over time (see ISO/IEC 42001:2023 Introduction and Annex C.3.4).""",
-    )
-
-class AIIncidentCategory(EnumDefinitionImpl):
-    """
-    AI-specific incident categories supplementing classical information security incident classes. Supports incident
-    triage and communication per Annex A.8.3 (External reporting) and A.8.4 (Communication of incidents).
-    """
-    data_poisoning = PermissibleValue(
-        text="data_poisoning",
-        description="Training or production data manipulated to compromise model behaviour.")
-    model_stealing = PermissibleValue(
-        text="model_stealing",
-        description="Unauthorized extraction or reconstruction of a deployed model.")
-    model_inversion = PermissibleValue(
-        text="model_inversion",
-        description="Reconstruction of sensitive training data via model queries.")
-    membership_inference = PermissibleValue(
-        text="membership_inference",
-        description="Inference of whether a record was part of the training set.")
-    prompt_injection = PermissibleValue(
-        text="prompt_injection",
-        description="Adversarial inputs causing the model to deviate from intended behaviour.")
-    hallucination = PermissibleValue(
-        text="hallucination",
-        description="Confidently incorrect or fabricated outputs causing material harm.")
-    model_drift = PermissibleValue(
-        text="model_drift",
-        description="Performance or behaviour degradation due to distribution shift.")
-    bias_incident = PermissibleValue(
-        text="bias_incident",
-        description="Unfair or discriminatory outcomes affecting individuals or groups.")
-    safety_incident = PermissibleValue(
-        text="safety_incident",
-        description="Harm to life, health, property, or the environment from AI behaviour.")
-    privacy_breach = PermissibleValue(
-        text="privacy_breach",
-        description="Unauthorized disclosure of personal data via the AI system.")
-    security_breach = PermissibleValue(
-        text="security_breach",
-        description="Compromise of confidentiality, integrity, or availability of the AI system.")
-    misuse = PermissibleValue(
-        text="misuse",
-        description="Use of the AI system outside its documented intended use.")
-    adverse_societal_impact = PermissibleValue(
-        text="adverse_societal_impact",
-        description="Broader societal harm reported by external interested parties.")
+    complex_environment = PermissibleValue(
+        text="complex_environment",
+        description="A system works where situations vary widely, so its results are less sure.")
+    opaque_system = PermissibleValue(
+        text="opaque_system",
+        description="The organization cannot tell people enough about a system.")
+    level_of_automation = PermissibleValue(
+        text="level_of_automation",
+        description="How much a system does alone, which bears on safety or fairness among others.")
+    machine_learning = PermissibleValue(
+        text="machine_learning",
+        description="The data a model learns from, or how it was gathered, is flawed.")
+    hardware = PermissibleValue(
+        text="hardware",
+        description="Faulty parts, or moving a trained model to other equipment.")
+    life_cycle = PermissibleValue(
+        text="life_cycle",
+        description="Flaws anywhere in a system's life, from design to retirement.")
+    technology_readiness = PermissibleValue(
+        text="technology_readiness",
+        description="A technology is too new to know well, or so old it breeds complacency.")
     other = PermissibleValue(
         text="other",
-        description="Other AI incident category not enumerated above.")
+        description="A source the organization names for itself.")
 
     _defn = EnumDefinition(
-        name="AIIncidentCategory",
-        description="""AI-specific incident categories supplementing classical information security incident classes. Supports incident triage and communication per Annex A.8.3 (External reporting) and A.8.4 (Communication of incidents).""",
+        name="AimsRiskSourceCategory",
+        description="Kinds of source a risk from AI can come from: those Annex C lists, and other.",
     )
 
-class AuditType(EnumDefinitionImpl):
+class AimsImpactSubject(EnumDefinitionImpl):
     """
-    Type of audit conducted against the AIMS per Clause 9.2 and the ISO 19011 audit taxonomy.
+    Who an AI system's impact falls on.
     """
-    internal = PermissibleValue(
-        text="internal",
-        description="First-party audit conducted by the organization itself or on its behalf.")
-    external_second_party = PermissibleValue(
-        text="external_second_party",
-        description="Second-party audit conducted by an interested party (e.g., customer).")
-    external_third_party = PermissibleValue(
-        text="external_third_party",
-        description="Third-party audit conducted by an independent certification body.")
-    surveillance = PermissibleValue(
-        text="surveillance",
-        description="Ongoing surveillance audit during the certification cycle.")
-    recertification = PermissibleValue(
-        text="recertification",
-        description="Audit performed to renew certification.")
-    combined = PermissibleValue(
-        text="combined",
-        description="Combined audit covering two or more management system disciplines.")
+    individuals = PermissibleValue(
+        text="individuals",
+        description="Particular persons.")
+    groups_of_individuals = PermissibleValue(
+        text="groups_of_individuals",
+        description="Groups of persons, such as children or workers.")
+    societies = PermissibleValue(
+        text="societies",
+        description="Society at large.")
 
     _defn = EnumDefinition(
-        name="AuditType",
-        description="Type of audit conducted against the AIMS per Clause 9.2 and the ISO 19011 audit taxonomy.",
+        name="AimsImpactSubject",
+        description="Who an AI system's impact falls on.",
     )
 
-class MLApproach(EnumDefinitionImpl):
+class AimsImpactArea(EnumDefinitionImpl):
     """
-    Machine-learning approach used by the AI system, capturing the design-choice dimension referenced in B.6.2.3.
-    Distinct from `LearningParadigm`, which describes how often the model updates.
+    Areas where AI systems can touch people or society: those the guidance on impact assessment names as examples, and
+    other.
     """
-    supervised = PermissibleValue(
-        text="supervised",
-        description="Learns from labelled examples.")
-    unsupervised = PermissibleValue(
-        text="unsupervised",
-        description="Discovers structure in unlabelled data.")
-    semi_supervised = PermissibleValue(
-        text="semi_supervised",
-        description="Combines a small labelled set with a larger unlabelled set.")
-    self_supervised = PermissibleValue(
-        text="self_supervised",
-        description="Generates supervisory signals from the data itself.")
-    reinforcement = PermissibleValue(
-        text="reinforcement",
-        description="Learns a policy through interaction with an environment and reward signals.")
-    transfer = PermissibleValue(
-        text="transfer",
-        description="Adapts a pre-trained model to a new task or domain.")
-    federated = PermissibleValue(
-        text="federated",
-        description="Trains across distributed data holders without centralizing raw data.")
-    generative = PermissibleValue(
-        text="generative",
-        description="Generative modelling approach (e.g., LLMs, diffusion models).")
-    symbolic = PermissibleValue(
-        text="symbolic",
-        description="Rule-based or symbolic reasoning, not statistical ML.")
-    hybrid = PermissibleValue(
-        text="hybrid",
-        description="Combines multiple ML approaches.")
-    not_applicable = PermissibleValue(
-        text="not_applicable",
-        description="AI system not based on machine learning.")
+    fairness = PermissibleValue(
+        text="fairness",
+        description="Treating persons and groups even-handedly.")
+    accountability = PermissibleValue(
+        text="accountability",
+        description="Someone staying answerable for the outcome.")
+    transparency_and_explainability = PermissibleValue(
+        text="transparency_and_explainability",
+        description="Being able to see how a system works and why it gave a result.")
+    security_and_privacy = PermissibleValue(
+        text="security_and_privacy",
+        description="Keeping people's information safe and private.")
+    safety_and_health = PermissibleValue(
+        text="safety_and_health",
+        description="Physical and mental harm and wellbeing.")
+    financial = PermissibleValue(
+        text="financial",
+        description="What people stand to gain or lose in money.")
+    accessibility = PermissibleValue(
+        text="accessibility",
+        description="Whether people with differing abilities can use a system.")
+    human_rights = PermissibleValue(
+        text="human_rights",
+        description="Rights everyone holds.")
+    environmental_sustainability = PermissibleValue(
+        text="environmental_sustainability",
+        description="Natural resources and emissions.")
+    economic = PermissibleValue(
+        text="economic",
+        description="Jobs, access to finance, taxes and trade.")
+    government = PermissibleValue(
+        text="government",
+        description="Lawmaking, political falsehoods, defence of the state and the courts.")
+    culture_and_values = PermissibleValue(
+        text="culture_and_values",
+        description="What a society holds to, and the biases a system can feed.")
+    other = PermissibleValue(
+        text="other",
+        description="An area the organization names for itself.")
 
     _defn = EnumDefinition(
-        name="MLApproach",
-        description="""Machine-learning approach used by the AI system, capturing the design-choice dimension referenced in B.6.2.3. Distinct from `LearningParadigm`, which describes how often the model updates.""",
+        name="AimsImpactArea",
+        description="""Areas where AI systems can touch people or society: those the guidance on impact assessment names as examples, and other.""",
     )
 
-class DataPreparationMethod(EnumDefinitionImpl):
+class AimsImpactDirection(EnumDefinitionImpl):
     """
-    Common data preparation and transformation methods documented per Annex A.7.6 and Annex B.7.6.
+    Whether an impact helps or harms.
+    """
+    positive = PermissibleValue(
+        text="positive",
+        description="It helps.")
+    negative = PermissibleValue(
+        text="negative",
+        description="It harms.")
+
+    _defn = EnumDefinition(
+        name="AimsImpactDirection",
+        description="Whether an impact helps or harms.",
+    )
+
+class AimsResourceProvider(EnumDefinitionImpl):
+    """
+    Who provides a resource an AI system draws on.
+    """
+    organization = PermissibleValue(
+        text="organization",
+        description="The organization itself.")
+    customer = PermissibleValue(
+        text="customer",
+        description="One of its customers.")
+    third_party = PermissibleValue(
+        text="third_party",
+        description="Someone else.")
+
+    _defn = EnumDefinition(
+        name="AimsResourceProvider",
+        description="Who provides a resource an AI system draws on.",
+    )
+
+class AimsDataCategory(EnumDefinitionImpl):
+    """
+    The parts data can play in machine learning.
+    """
+    training = PermissibleValue(
+        text="training",
+        description="Data a model learns from.")
+    validation = PermissibleValue(
+        text="validation",
+        description="Data used to tune a model and compare versions of it.")
+    test = PermissibleValue(
+        text="test",
+        description="Data held back to see how a finished model does.")
+    production = PermissibleValue(
+        text="production",
+        description="Data a system meets in service.")
+
+    _defn = EnumDefinition(
+        name="AimsDataCategory",
+        description="The parts data can play in machine learning.",
+    )
+
+class AimsDataPreparationMethod(EnumDefinitionImpl):
+    """
+    Common ways of making data ready for AI: those the guidance names, and other.
     """
     statistical_exploration = PermissibleValue(
         text="statistical_exploration",
-        description="Distribution, mean, median, standard deviation, range, stratification, sampling.")
+        description="Looking at how the values are spread, and describing them.")
     cleaning = PermissibleValue(
         text="cleaning",
-        description="Correcting entries and handling malformed records.")
+        description="Mending wrong values and dealing with gaps.")
     imputation = PermissibleValue(
         text="imputation",
-        description="Filling in missing entries.")
+        description="Filling gaps by a method.")
     normalization = PermissibleValue(
         text="normalization",
-        description="Re-scaling values to a common range or distribution.")
+        description="Reshaping values to a common distribution or range.")
     scaling = PermissibleValue(
         text="scaling",
-        description="Multiplicative re-scaling of feature values.")
+        description="Bringing values to comparable sizes.")
     labelling = PermissibleValue(
         text="labelling",
-        description="Assigning target labels to records.")
+        description="Marking the values a model is to predict.")
     encoding = PermissibleValue(
         text="encoding",
-        description="Converting categorical variables to numeric representations.")
-    augmentation = PermissibleValue(
-        text="augmentation",
-        description="Synthesising additional training samples from existing data.")
-    deduplication = PermissibleValue(
-        text="deduplication",
-        description="Removing duplicate records.")
-    anonymization = PermissibleValue(
-        text="anonymization",
-        description="Removing or transforming personally identifying information.")
+        description="Turning categories into numbers.")
     other = PermissibleValue(
         text="other",
-        description="Other preparation method not enumerated above.")
+        description="A method the organization names for itself.")
 
     _defn = EnumDefinition(
-        name="DataPreparationMethod",
-        description="Common data preparation and transformation methods documented per Annex A.7.6 and Annex B.7.6.",
+        name="AimsDataPreparationMethod",
+        description="Common ways of making data ready for AI: those the guidance names, and other.",
     )
 
-class RelatedManagementSystem(EnumDefinitionImpl):
+class AimsAiThreat(EnumDefinitionImpl):
     """
-    Related management-system standards with which the AIMS may be jointly implemented, per the Introduction
-    (Compatibility with other management system standards) and Annex D.
+    Threats to information security peculiar to AI: those the guidance names, and other.
+    """
+    data_poisoning = PermissibleValue(
+        text="data_poisoning",
+        description="Slipping bad data in to spoil what a model learns.")
+    model_stealing = PermissibleValue(
+        text="model_stealing",
+        description="Copying a model by querying it or by taking it.")
+    model_inversion = PermissibleValue(
+        text="model_inversion",
+        description="Working back from a model to the data it learned from.")
+    other = PermissibleValue(
+        text="other",
+        description="A threat the organization names for itself.")
+
+    _defn = EnumDefinition(
+        name="AimsAiThreat",
+        description="Threats to information security peculiar to AI: those the guidance names, and other.",
+    )
+
+class AimsImplementationStatus(EnumDefinitionImpl):
+    """
+    How far a control or a plan has been put into effect.
+    """
+    not_started = PermissibleValue(
+        text="not_started",
+        description="Nothing has been done yet.")
+    planned = PermissibleValue(
+        text="planned",
+        description="The work is planned, with a timeline.")
+    in_progress = PermissibleValue(
+        text="in_progress",
+        description="The work is under way.")
+    implemented = PermissibleValue(
+        text="implemented",
+        description="The work is done and in operation.")
+
+    _defn = EnumDefinition(
+        name="AimsImplementationStatus",
+        description="How far a control or a plan has been put into effect.",
+    )
+
+class AimsRiskTreatmentOption(EnumDefinitionImpl):
+    """
+    The ways of treating a risk, by the names ISO 31000 gives them.
+    """
+    modify = PermissibleValue(
+        text="modify",
+        description="Change the risk with controls that lower its likelihood or its consequences.")
+    retain = PermissibleValue(
+        text="retain",
+        description="Keep the risk as it is, with management's approval.")
+    avoid = PermissibleValue(
+        text="avoid",
+        description="Remove the risk by stopping or changing what gives rise to it.")
+    share = PermissibleValue(
+        text="share",
+        description="Share the risk with another party, such as an insurer or a supplier.")
+
+    _defn = EnumDefinition(
+        name="AimsRiskTreatmentOption",
+        description="The ways of treating a risk, by the names ISO 31000 gives them.",
+    )
+
+class AimsRiskLevel(EnumDefinitionImpl):
+    """
+    A five-point scale of risk level, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the
+    organization.
+    """
+    very_low = PermissibleValue(
+        text="very_low",
+        description="Small enough to need no action.")
+    low = PermissibleValue(
+        text="low",
+        description="Managed by routine procedures.")
+    medium = PermissibleValue(
+        text="medium",
+        description="Needs management's attention and planned controls.")
+    high = PermissibleValue(
+        text="high",
+        description="Needs treatment first and escalation.")
+    critical = PermissibleValue(
+        text="critical",
+        description="Threatens the organization's objectives and needs action at once.")
+
+    _defn = EnumDefinition(
+        name="AimsRiskLevel",
+        description="""A five-point scale of risk level, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.""",
+    )
+
+class AimsLikelihood(EnumDefinitionImpl):
+    """
+    A five-point scale of likelihood, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the
+    organization.
+    """
+    rare = PermissibleValue(
+        text="rare",
+        description="Not expected to happen.")
+    unlikely = PermissibleValue(
+        text="unlikely",
+        description="Could happen, but is not expected to.")
+    possible = PermissibleValue(
+        text="possible",
+        description="Might happen at some point.")
+    likely = PermissibleValue(
+        text="likely",
+        description="Will probably happen.")
+    almost_certain = PermissibleValue(
+        text="almost_certain",
+        description="Expected to happen.")
+
+    _defn = EnumDefinition(
+        name="AimsLikelihood",
+        description="""A five-point scale of likelihood, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.""",
+    )
+
+class AimsConsequence(EnumDefinitionImpl):
+    """
+    A five-point scale of consequence, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the
+    organization.
+    """
+    negligible = PermissibleValue(
+        text="negligible",
+        description="No noticeable effect.")
+    minor = PermissibleValue(
+        text="minor",
+        description="An effect normal operations absorb.")
+    moderate = PermissibleValue(
+        text="moderate",
+        description="An effect that needs management to step in.")
+    major = PermissibleValue(
+        text="major",
+        description="A serious effect on people, objectives or reputation.")
+    severe = PermissibleValue(
+        text="severe",
+        description="An effect that threatens lives or the organization's survival.")
+
+    _defn = EnumDefinition(
+        name="AimsConsequence",
+        description="""A five-point scale of consequence, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.""",
+    )
+
+class AimsDocumentKind(EnumDefinitionImpl):
+    """
+    The kinds of documented information an AimsDocumentedInformation record holds. Policies have records of their own.
+    """
+    procedure = PermissibleValue(
+        text="procedure",
+        description="The steps for carrying out an activity the same way each time.")
+    standard = PermissibleValue(
+        text="standard",
+        description="Mandatory requirements for a technology or a process.")
+    guideline = PermissibleValue(
+        text="guideline",
+        description="Recommended practice that supports a policy or a procedure.")
+    record = PermissibleValue(
+        text="record",
+        description="Evidence of what was done or achieved.")
+    plan = PermissibleValue(
+        text="plan",
+        description="How the organization means to reach an objective.")
+    report = PermissibleValue(
+        text="report",
+        description="The formal output of an assessment, audit or review.")
+
+    _defn = EnumDefinition(
+        name="AimsDocumentKind",
+        description="""The kinds of documented information an AimsDocumentedInformation record holds. Policies have records of their own.""",
+    )
+
+class AimsAuditType(EnumDefinitionImpl):
+    """
+    Who carries out an audit, relative to the organization audited, as ISO 19011 sorts audits.
+    """
+    first_party = PermissibleValue(
+        text="first_party",
+        description="The organization audits itself, or someone audits it on its behalf.")
+    second_party = PermissibleValue(
+        text="second_party",
+        description="A party with an interest in the organization audits it, such as a customer.")
+    third_party = PermissibleValue(
+        text="third_party",
+        description="An independent body audits it, such as a certification body or a regulator.")
+
+    _defn = EnumDefinition(
+        name="AimsAuditType",
+        description="Who carries out an audit, relative to the organization audited, as ISO 19011 sorts audits.",
+    )
+
+class AimsAuditFindingType(EnumDefinitionImpl):
+    """
+    The kinds of audit finding.
+    """
+    major_nonconformity = PermissibleValue(
+        text="major_nonconformity",
+        description="A requirement not met in a way that puts the system's results in doubt.")
+    minor_nonconformity = PermissibleValue(
+        text="minor_nonconformity",
+        description="A requirement not met in an isolated way that leaves its results in reach.")
+    observation = PermissibleValue(
+        text="observation",
+        description="A condition that could lead to a nonconformity if left alone.")
+    positive_finding = PermissibleValue(
+        text="positive_finding",
+        description="Evidence of practice that works well.")
+
+    _defn = EnumDefinition(
+        name="AimsAuditFindingType",
+        description="The kinds of audit finding.",
+    )
+
+class AimsIncidentCategory(EnumDefinitionImpl):
+    """
+    What an incident involving an AI system concerns. ISO/IEC 42001 tells apart an incident of the system itself from
+    one about security of information or about privacy.
+    """
+    ai_system = PermissibleValue(
+        text="ai_system",
+        description="The system itself misbehaved or failed.")
+    information_security = PermissibleValue(
+        text="information_security",
+        description="Information was exposed, altered or made unavailable.")
+    privacy = PermissibleValue(
+        text="privacy",
+        description="Personal data was exposed or misused.")
+    safety = PermissibleValue(
+        text="safety",
+        description="Someone or something was put in danger.")
+    other = PermissibleValue(
+        text="other",
+        description="Something the organization names for itself.")
+
+    _defn = EnumDefinition(
+        name="AimsIncidentCategory",
+        description="""What an incident involving an AI system concerns. ISO/IEC 42001 tells apart an incident of the system itself from one about security of information or about privacy.""",
+    )
+
+class AimsManagementSystemStandard(EnumDefinitionImpl):
+    """
+    Management system standards Annex D names as ones to run this system beside, and other.
     """
     iso_iec_27001 = PermissibleValue(
         text="iso_iec_27001",
-        description="Information security management systems.")
+        description="Managing information security.")
     iso_iec_27701 = PermissibleValue(
         text="iso_iec_27701",
-        description="Privacy information management.")
+        description="Managing privacy of information.")
     iso_9001 = PermissibleValue(
         text="iso_9001",
-        description="Quality management systems.")
+        description="Managing quality.")
     iso_22000 = PermissibleValue(
         text="iso_22000",
-        description="Food safety management systems.")
+        description="Managing food safety.")
     iso_13485 = PermissibleValue(
         text="iso_13485",
-        description="Medical-device quality management systems.")
-    iec_62304 = PermissibleValue(
-        text="iec_62304",
-        description="Medical device software life cycle processes.")
-    iso_iec_5338 = PermissibleValue(
-        text="iso_iec_5338",
-        description="AI system life cycle process.")
-    iso_iec_5259 = PermissibleValue(
-        text="iso_iec_5259",
-        description="Data quality for analytics and ML.")
-    iso_iec_22989 = PermissibleValue(
-        text="iso_iec_22989",
-        description="AI concepts and terminology (normative reference).")
-    iso_iec_23894 = PermissibleValue(
-        text="iso_iec_23894",
-        description="AI risk management guidance.")
-    iso_iec_38507 = PermissibleValue(
-        text="iso_iec_38507",
-        description="Governance of IT - AI governance implications.")
-    iso_iec_27000 = PermissibleValue(
-        text="iso_iec_27000",
-        description="Information security management - overview and vocabulary.")
-    iso_iec_29100 = PermissibleValue(
-        text="iso_iec_29100",
-        description="Privacy framework.")
-    iso_31000 = PermissibleValue(
-        text="iso_31000",
-        description="Risk management guidelines.")
-    iso_iec_25024 = PermissibleValue(
-        text="iso_iec_25024",
-        description="Measurement of data quality.")
-    iso_iec_25059 = PermissibleValue(
-        text="iso_iec_25059",
-        description="Quality model for AI systems.")
-    iso_19011 = PermissibleValue(
-        text="iso_19011",
-        description="Guidelines for auditing management systems.")
-    iso_37002 = PermissibleValue(
-        text="iso_37002",
-        description="Whistleblowing management systems (informs A.3.3 concern reporting).")
+        description="Managing quality of medical devices.")
     other = PermissibleValue(
         text="other",
-        description="Other management system standard not enumerated above.")
+        description="Another management system standard, generic or for one sector.")
 
     _defn = EnumDefinition(
-        name="RelatedManagementSystem",
-        description="""Related management-system standards with which the AIMS may be jointly implemented, per the Introduction (Compatibility with other management system standards) and Annex D.""",
-    )
-
-class GovernanceRoleType(EnumDefinitionImpl):
-    """
-    Governance role types within the AIMS, paraphrased from Clause 3.3 (top management), Clause 3.22 (governing body),
-    Clause 5.3, and Annex A.3.2. Use this enum on `role_type` for normative governance positions; free-form strings
-    remain accepted for organization-defined roles.
-    """
-    governing_body = PermissibleValue(
-        text="governing_body",
-        description="Board, trustees, or other body accountable for organizational performance (3.22).")
-    top_management = PermissibleValue(
-        text="top_management",
-        description="Person or group directing and controlling the organization at the highest level (3.3).")
-    designated_management = PermissibleValue(
-        text="designated_management",
-        description="Management designated to approve AI risk treatment plans and residual-risk acceptance (6.1.3).")
-    chief_ai_officer = PermissibleValue(
-        text="chief_ai_officer",
-        description="Senior executive accountable for the AIMS.")
-    ai_risk_owner = PermissibleValue(
-        text="ai_risk_owner",
-        description="Person accountable for managing a specific AI risk (6.1.2).")
-    ai_policy_owner = PermissibleValue(
-        text="ai_policy_owner",
-        description="Role accountable for AI policy development and review (A.2.4).")
-    ai_oversight_committee = PermissibleValue(
-        text="ai_oversight_committee",
-        description="Cross-functional committee providing oversight of AI systems.")
-    data_steward = PermissibleValue(
-        text="data_steward",
-        description="Role accountable for data resources used by AI systems (A.4.3, A.7).")
-    model_validator = PermissibleValue(
-        text="model_validator",
-        description="Role responsible for verification and validation of AI models (A.6.2.4).")
-    human_oversight_reviewer = PermissibleValue(
-        text="human_oversight_reviewer",
-        description="Role performing human-in-the-loop review of AI outputs (B.9.3).")
-    ai_developer = PermissibleValue(
-        text="ai_developer",
-        description="Role developing AI systems or components.")
-    ai_operator = PermissibleValue(
-        text="ai_operator",
-        description="Role operating and monitoring AI systems in production.")
-    ai_impact_assessor = PermissibleValue(
-        text="ai_impact_assessor",
-        description="Role conducting AI system impact assessments (6.1.4).")
-    auditor = PermissibleValue(
-        text="auditor",
-        description="Internal or external auditor of the AIMS (9.2).")
-    other = PermissibleValue(
-        text="other",
-        description="Other governance role not enumerated above.")
-
-    _defn = EnumDefinition(
-        name="GovernanceRoleType",
-        description="""Governance role types within the AIMS, paraphrased from Clause 3.3 (top management), Clause 3.22 (governing body), Clause 5.3, and Annex A.3.2. Use this enum on `role_type` for normative governance positions; free-form strings remain accepted for organization-defined roles.""",
+        name="AimsManagementSystemStandard",
+        description="Management system standards Annex D names as ones to run this system beside, and other.",
     )
 
 # Slots
 class slots:
     pass
 
-slots.id = Slot(uri=ISO42001.id, name="id", curie=ISO42001.curie('id'),
-                   model_uri=ISO42001.id, domain=None, range=URIRef)
+slots.aims_id = Slot(uri=ISO42001.aims_id, name="aims_id", curie=ISO42001.curie('aims_id'),
+                   model_uri=ISO42001.aims_id, domain=None, range=URIRef)
 
-slots.name = Slot(uri=ISO42001.name, name="name", curie=ISO42001.curie('name'),
-                   model_uri=ISO42001.name, domain=None, range=str)
+slots.title = Slot(uri=SCHEMA.name, name="title", curie=SCHEMA.curie('name'),
+                   model_uri=ISO42001.title, domain=None, range=Optional[str])
 
-slots.description = Slot(uri=ISO42001.description, name="description", curie=ISO42001.curie('description'),
+slots.description = Slot(uri=SCHEMA.description, name="description", curie=SCHEMA.curie('description'),
                    model_uri=ISO42001.description, domain=None, range=Optional[str])
 
-slots.version = Slot(uri=ISO42001.version, name="version", curie=ISO42001.curie('version'),
-                   model_uri=ISO42001.version, domain=None, range=Optional[str])
+slots.aims_responsible_role = Slot(uri=ISO42001.aims_responsible_role, name="aims_responsible_role", curie=ISO42001.curie('aims_responsible_role'),
+                   model_uri=ISO42001.aims_responsible_role, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
 
-slots.created_date = Slot(uri=ISO42001.created_date, name="created_date", curie=ISO42001.curie('created_date'),
-                   model_uri=ISO42001.created_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aims_relevant_controls = Slot(uri=ISO42001.aims_relevant_controls, name="aims_relevant_controls", curie=ISO42001.curie('aims_relevant_controls'),
+                   model_uri=ISO42001.aims_relevant_controls, domain=None, range=Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]])
 
-slots.modified_date = Slot(uri=ISO42001.modified_date, name="modified_date", curie=ISO42001.curie('modified_date'),
-                   model_uri=ISO42001.modified_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aims_ai_systems = Slot(uri=ISO42001.aims_ai_systems, name="aims_ai_systems", curie=ISO42001.curie('aims_ai_systems'),
+                   model_uri=ISO42001.aims_ai_systems, domain=None, range=Optional[Union[Union[str, AimsAiSystemAimsId], list[Union[str, AimsAiSystemAimsId]]]])
 
-slots.document_type = Slot(uri=ISO42001.document_type, name="document_type", curie=ISO42001.curie('document_type'),
-                   model_uri=ISO42001.document_type, domain=None, range=Optional[Union[str, "DocumentType"]])
+slots.aims_implementation_state = Slot(uri=ISO42001.aims_implementation_state, name="aims_implementation_state", curie=ISO42001.curie('aims_implementation_state'),
+                   model_uri=ISO42001.aims_implementation_state, domain=None, range=Optional[Union[str, "AimsImplementationStatus"]])
 
-slots.document_reference = Slot(uri=ISO42001.document_reference, name="document_reference", curie=ISO42001.curie('document_reference'),
-                   model_uri=ISO42001.document_reference, domain=None, range=Optional[str])
+slots.aims_cited_clauses = Slot(uri=ISO42001.aims_cited_clauses, name="aims_cited_clauses", curie=ISO42001.curie('aims_cited_clauses'),
+                   model_uri=ISO42001.aims_cited_clauses, domain=None, range=Optional[Union[Union[str, "AimsClause"], list[Union[str, "AimsClause"]]]])
 
-slots.author = Slot(uri=ISO42001.author, name="author", curie=ISO42001.curie('author'),
-                   model_uri=ISO42001.author, domain=None, range=Optional[str])
+slots.aims_cited_annex_a_controls = Slot(uri=ISO42001.aims_cited_annex_a_controls, name="aims_cited_annex_a_controls", curie=ISO42001.curie('aims_cited_annex_a_controls'),
+                   model_uri=ISO42001.aims_cited_annex_a_controls, domain=None, range=Optional[Union[Union[str, "AimsAnnexAControl"], list[Union[str, "AimsAnnexAControl"]]]])
 
-slots.owner = Slot(uri=ISO42001.owner, name="owner", curie=ISO42001.curie('owner'),
-                   model_uri=ISO42001.owner, domain=None, range=Optional[str])
+slots.aims_life_cycle_stages = Slot(uri=ISO42001.aims_life_cycle_stages, name="aims_life_cycle_stages", curie=ISO42001.curie('aims_life_cycle_stages'),
+                   model_uri=ISO42001.aims_life_cycle_stages, domain=None, range=Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]])
 
-slots.approved_by = Slot(uri=ISO42001.approved_by, name="approved_by", curie=ISO42001.curie('approved_by'),
-                   model_uri=ISO42001.approved_by, domain=None, range=Optional[str])
+slots.aims_entry_annex_a_control = Slot(uri=ISO42001.aims_entry_annex_a_control, name="aims_entry_annex_a_control", curie=ISO42001.curie('aims_entry_annex_a_control'),
+                   model_uri=ISO42001.aims_entry_annex_a_control, domain=None, range=Optional[Union[str, "AimsAnnexAControl"]])
 
-slots.approved_date = Slot(uri=ISO42001.approved_date, name="approved_date", curie=ISO42001.curie('approved_date'),
-                   model_uri=ISO42001.approved_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aims_objective_categories = Slot(uri=ISO42001.aims_objective_categories, name="aims_objective_categories", curie=ISO42001.curie('aims_objective_categories'),
+                   model_uri=ISO42001.aims_objective_categories, domain=None, range=Optional[Union[Union[str, "AimsObjectiveCategory"], list[Union[str, "AimsObjectiveCategory"]]]])
 
-slots.effective_date = Slot(uri=ISO42001.effective_date, name="effective_date", curie=ISO42001.curie('effective_date'),
-                   model_uri=ISO42001.effective_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aims_risk_source_categories = Slot(uri=ISO42001.aims_risk_source_categories, name="aims_risk_source_categories", curie=ISO42001.curie('aims_risk_source_categories'),
+                   model_uri=ISO42001.aims_risk_source_categories, domain=None, range=Optional[Union[Union[str, "AimsRiskSourceCategory"], list[Union[str, "AimsRiskSourceCategory"]]]])
 
-slots.review_date = Slot(uri=ISO42001.review_date, name="review_date", curie=ISO42001.curie('review_date'),
-                   model_uri=ISO42001.review_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsDocumentControlMixin__aims_document_reference = Slot(uri=ISO42001.aims_document_reference, name="aimsDocumentControlMixin__aims_document_reference", curie=ISO42001.curie('aims_document_reference'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_reference, domain=None, range=Optional[str])
 
-slots.status = Slot(uri=ISO42001.status, name="status", curie=ISO42001.curie('status'),
-                   model_uri=ISO42001.status, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_version = Slot(uri=ISO42001.aims_document_version, name="aimsDocumentControlMixin__aims_document_version", curie=ISO42001.curie('aims_document_version'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_version, domain=None, range=Optional[str])
 
-slots.classification = Slot(uri=ISO42001.classification, name="classification", curie=ISO42001.curie('classification'),
-                   model_uri=ISO42001.classification, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_author = Slot(uri=ISO42001.aims_document_author, name="aimsDocumentControlMixin__aims_document_author", curie=ISO42001.curie('aims_document_author'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_author, domain=None, range=Optional[str])
 
-slots.retention_period = Slot(uri=ISO42001.retention_period, name="retention_period", curie=ISO42001.curie('retention_period'),
-                   model_uri=ISO42001.retention_period, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_owner = Slot(uri=ISO42001.aims_document_owner, name="aimsDocumentControlMixin__aims_document_owner", curie=ISO42001.curie('aims_document_owner'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_owner, domain=None, range=Optional[str])
 
-slots.organization = Slot(uri=ISO42001.organization, name="organization", curie=ISO42001.curie('organization'),
-                   model_uri=ISO42001.organization, domain=None, range=Optional[Union[str, OrganizationId]])
+slots.aimsDocumentControlMixin__aims_document_format = Slot(uri=ISO42001.aims_document_format, name="aimsDocumentControlMixin__aims_document_format", curie=ISO42001.curie('aims_document_format'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_format, domain=None, range=Optional[str])
 
-slots.legal_name = Slot(uri=ISO42001.legal_name, name="legal_name", curie=ISO42001.curie('legal_name'),
-                   model_uri=ISO42001.legal_name, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_medium = Slot(uri=ISO42001.aims_document_medium, name="aimsDocumentControlMixin__aims_document_medium", curie=ISO42001.curie('aims_document_medium'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_medium, domain=None, range=Optional[str])
 
-slots.trading_names = Slot(uri=ISO42001.trading_names, name="trading_names", curie=ISO42001.curie('trading_names'),
-                   model_uri=ISO42001.trading_names, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDocumentControlMixin__aims_document_approver = Slot(uri=ISO42001.aims_document_approver, name="aimsDocumentControlMixin__aims_document_approver", curie=ISO42001.curie('aims_document_approver'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_approver, domain=None, range=Optional[str])
 
-slots.organization_type = Slot(uri=ISO42001.organization_type, name="organization_type", curie=ISO42001.curie('organization_type'),
-                   model_uri=ISO42001.organization_type, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_approval_date = Slot(uri=ISO42001.aims_document_approval_date, name="aimsDocumentControlMixin__aims_document_approval_date", curie=ISO42001.curie('aims_document_approval_date'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_approval_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.industry_sector = Slot(uri=ISO42001.industry_sector, name="industry_sector", curie=ISO42001.curie('industry_sector'),
-                   model_uri=ISO42001.industry_sector, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_effective_date = Slot(uri=ISO42001.aims_document_effective_date, name="aimsDocumentControlMixin__aims_document_effective_date", curie=ISO42001.curie('aims_document_effective_date'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_effective_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.sector_domains = Slot(uri=ISO42001.sector_domains, name="sector_domains", curie=ISO42001.curie('sector_domains'),
-                   model_uri=ISO42001.sector_domains, domain=None, range=Optional[Union[Union[str, "SectorDomain"], list[Union[str, "SectorDomain"]]]])
+slots.aimsDocumentControlMixin__aims_document_last_review_date = Slot(uri=ISO42001.aims_document_last_review_date, name="aimsDocumentControlMixin__aims_document_last_review_date", curie=ISO42001.curie('aims_document_last_review_date'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_last_review_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.size_category = Slot(uri=ISO42001.size_category, name="size_category", curie=ISO42001.curie('size_category'),
-                   model_uri=ISO42001.size_category, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_next_review_date = Slot(uri=ISO42001.aims_document_next_review_date, name="aimsDocumentControlMixin__aims_document_next_review_date", curie=ISO42001.curie('aims_document_next_review_date'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_next_review_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.employee_count = Slot(uri=ISO42001.employee_count, name="employee_count", curie=ISO42001.curie('employee_count'),
-                   model_uri=ISO42001.employee_count, domain=None, range=Optional[int])
+slots.aimsDocumentControlMixin__aims_document_status = Slot(uri=ISO42001.aims_document_status, name="aimsDocumentControlMixin__aims_document_status", curie=ISO42001.curie('aims_document_status'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_status, domain=None, range=Optional[str])
 
-slots.geographic_locations = Slot(uri=ISO42001.geographic_locations, name="geographic_locations", curie=ISO42001.curie('geographic_locations'),
-                   model_uri=ISO42001.geographic_locations, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDocumentControlMixin__aims_document_classification = Slot(uri=ISO42001.aims_document_classification, name="aimsDocumentControlMixin__aims_document_classification", curie=ISO42001.curie('aims_document_classification'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_classification, domain=None, range=Optional[str])
 
-slots.regulatory_jurisdictions = Slot(uri=ISO42001.regulatory_jurisdictions, name="regulatory_jurisdictions", curie=ISO42001.curie('regulatory_jurisdictions'),
-                   model_uri=ISO42001.regulatory_jurisdictions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDocumentControlMixin__aims_document_retention = Slot(uri=ISO42001.aims_document_retention, name="aimsDocumentControlMixin__aims_document_retention", curie=ISO42001.curie('aims_document_retention'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_retention, domain=None, range=Optional[Union[str, AimsDuration]])
 
-slots.parent_organization = Slot(uri=ISO42001.parent_organization, name="parent_organization", curie=ISO42001.curie('parent_organization'),
-                   model_uri=ISO42001.parent_organization, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_disposition = Slot(uri=ISO42001.aims_document_disposition, name="aimsDocumentControlMixin__aims_document_disposition", curie=ISO42001.curie('aims_document_disposition'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_disposition, domain=None, range=Optional[str])
 
-slots.subsidiaries = Slot(uri=ISO42001.subsidiaries, name="subsidiaries", curie=ISO42001.curie('subsidiaries'),
-                   model_uri=ISO42001.subsidiaries, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDocumentControlMixin__aims_document_distribution = Slot(uri=ISO42001.aims_document_distribution, name="aimsDocumentControlMixin__aims_document_distribution", curie=ISO42001.curie('aims_document_distribution'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_distribution, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ai_roles = Slot(uri=ISO42001.ai_roles, name="ai_roles", curie=ISO42001.curie('ai_roles'),
-                   model_uri=ISO42001.ai_roles, domain=None, range=Optional[Union[Union[str, "AIOrganizationalRole"], list[Union[str, "AIOrganizationalRole"]]]])
+slots.aimsDocumentControlMixin__aims_document_storage = Slot(uri=ISO42001.aims_document_storage, name="aimsDocumentControlMixin__aims_document_storage", curie=ISO42001.curie('aims_document_storage'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_storage, domain=None, range=Optional[str])
 
-slots.organizational_roles_with_ai = Slot(uri=ISO42001.organizational_roles_with_ai, name="organizational_roles_with_ai", curie=ISO42001.curie('organizational_roles_with_ai'),
-                   model_uri=ISO42001.organizational_roles_with_ai, domain=None, range=Optional[Union[Union[str, "AIOrganizationalRole"], list[Union[str, "AIOrganizationalRole"]]]])
+slots.aimsDocumentControlMixin__aims_document_change_control = Slot(uri=ISO42001.aims_document_change_control, name="aimsDocumentControlMixin__aims_document_change_control", curie=ISO42001.curie('aims_document_change_control'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_change_control, domain=None, range=Optional[str])
 
-slots.scope_statement = Slot(uri=ISO42001.scope_statement, name="scope_statement", curie=ISO42001.curie('scope_statement'),
-                   model_uri=ISO42001.scope_statement, domain=None, range=Optional[str])
+slots.aimsDocumentControlMixin__aims_document_external_origin = Slot(uri=ISO42001.aims_document_external_origin, name="aimsDocumentControlMixin__aims_document_external_origin", curie=ISO42001.curie('aims_document_external_origin'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_external_origin, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.scope_boundaries = Slot(uri=ISO42001.scope_boundaries, name="scope_boundaries", curie=ISO42001.curie('scope_boundaries'),
-                   model_uri=ISO42001.scope_boundaries, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDocumentControlMixin__aims_document_external_source = Slot(uri=ISO42001.aims_document_external_source, name="aimsDocumentControlMixin__aims_document_external_source", curie=ISO42001.curie('aims_document_external_source'),
+                   model_uri=ISO42001.aimsDocumentControlMixin__aims_document_external_source, domain=None, range=Optional[str])
 
-slots.scope_exclusions = Slot(uri=ISO42001.scope_exclusions, name="scope_exclusions", curie=ISO42001.curie('scope_exclusions'),
-                   model_uri=ISO42001.scope_exclusions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_organization = Slot(uri=ISO42001.aims_organization, name="aimsManagementSystem__aims_organization", curie=ISO42001.curie('aims_organization'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_organization, domain=None, range=Optional[Union[dict, AimsOrganization]])
 
-slots.context_internal_issues = Slot(uri=ISO42001.context_internal_issues, name="context_internal_issues", curie=ISO42001.curie('context_internal_issues'),
-                   model_uri=ISO42001.context_internal_issues, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_top_management = Slot(uri=ISO42001.aims_top_management, name="aimsManagementSystem__aims_top_management", curie=ISO42001.curie('aims_top_management'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_top_management, domain=None, range=Optional[str])
 
-slots.context_external_issues = Slot(uri=ISO42001.context_external_issues, name="context_external_issues", curie=ISO42001.curie('context_external_issues'),
-                   model_uri=ISO42001.context_external_issues, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_governing_body = Slot(uri=ISO42001.aims_governing_body, name="aimsManagementSystem__aims_governing_body", curie=ISO42001.curie('aims_governing_body'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_governing_body, domain=None, range=Optional[str])
 
-slots.climate_change_relevant = Slot(uri=ISO42001.climate_change_relevant, name="climate_change_relevant", curie=ISO42001.curie('climate_change_relevant'),
-                   model_uri=ISO42001.climate_change_relevant, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsManagementSystem__aims_leadership_evidence = Slot(uri=ISO42001.aims_leadership_evidence, name="aimsManagementSystem__aims_leadership_evidence", curie=ISO42001.curie('aims_leadership_evidence'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_leadership_evidence, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.interested_parties = Slot(uri=ISO42001.interested_parties, name="interested_parties", curie=ISO42001.curie('interested_parties'),
-                   model_uri=ISO42001.interested_parties, domain=None, range=Optional[Union[Union[str, InterestedPartyId], list[Union[str, InterestedPartyId]]]])
+slots.aimsManagementSystem__aims_scope = Slot(uri=ISO42001.aims_scope, name="aimsManagementSystem__aims_scope", curie=ISO42001.curie('aims_scope'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_scope, domain=None, range=Optional[str])
 
-slots.party_type = Slot(uri=ISO42001.party_type, name="party_type", curie=ISO42001.curie('party_type'),
-                   model_uri=ISO42001.party_type, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_scope_boundaries = Slot(uri=ISO42001.aims_scope_boundaries, name="aimsManagementSystem__aims_scope_boundaries", curie=ISO42001.curie('aims_scope_boundaries'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_scope_boundaries, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.relationship = Slot(uri=ISO42001.relationship, name="relationship", curie=ISO42001.curie('relationship'),
-                   model_uri=ISO42001.relationship, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_scope_applicability = Slot(uri=ISO42001.aims_scope_applicability, name="aimsManagementSystem__aims_scope_applicability", curie=ISO42001.curie('aims_scope_applicability'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_scope_applicability, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.requirements = Slot(uri=ISO42001.requirements, name="requirements", curie=ISO42001.curie('requirements'),
-                   model_uri=ISO42001.requirements, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_processes = Slot(uri=ISO42001.aims_processes, name="aimsManagementSystem__aims_processes", curie=ISO42001.curie('aims_processes'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_processes, domain=None, range=Optional[str])
 
-slots.communication_needs = Slot(uri=ISO42001.communication_needs, name="communication_needs", curie=ISO42001.curie('communication_needs'),
-                   model_uri=ISO42001.communication_needs, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_internal_issues = Slot(uri=ISO42001.aims_internal_issues, name="aimsManagementSystem__aims_internal_issues", curie=ISO42001.curie('aims_internal_issues'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_internal_issues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.contact_information = Slot(uri=ISO42001.contact_information, name="contact_information", curie=ISO42001.curie('contact_information'),
-                   model_uri=ISO42001.contact_information, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_external_issues = Slot(uri=ISO42001.aims_external_issues, name="aimsManagementSystem__aims_external_issues", curie=ISO42001.curie('aims_external_issues'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_external_issues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ai_policy = Slot(uri=ISO42001.ai_policy, name="ai_policy", curie=ISO42001.curie('ai_policy'),
-                   model_uri=ISO42001.ai_policy, domain=None, range=Optional[Union[str, AIPolicyId]])
+slots.aimsManagementSystem__aims_planned_changes = Slot(uri=ISO42001.aims_planned_changes, name="aimsManagementSystem__aims_planned_changes", curie=ISO42001.curie('aims_planned_changes'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_planned_changes, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.policy_statement = Slot(uri=ISO42001.policy_statement, name="policy_statement", curie=ISO42001.curie('policy_statement'),
-                   model_uri=ISO42001.policy_statement, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_external_services = Slot(uri=ISO42001.aims_external_services, name="aimsManagementSystem__aims_external_services", curie=ISO42001.curie('aims_external_services'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_external_services, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.policy_objectives_framework = Slot(uri=ISO42001.policy_objectives_framework, name="policy_objectives_framework", curie=ISO42001.curie('policy_objectives_framework'),
-                   model_uri=ISO42001.policy_objectives_framework, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_integrated_standards = Slot(uri=ISO42001.aims_integrated_standards, name="aimsManagementSystem__aims_integrated_standards", curie=ISO42001.curie('aims_integrated_standards'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_integrated_standards, domain=None, range=Optional[Union[Union[str, "AimsManagementSystemStandard"], list[Union[str, "AimsManagementSystemStandard"]]]])
 
-slots.commitment_statements = Slot(uri=ISO42001.commitment_statements, name="commitment_statements", curie=ISO42001.curie('commitment_statements'),
-                   model_uri=ISO42001.commitment_statements, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_certification_status = Slot(uri=ISO42001.aims_certification_status, name="aimsManagementSystem__aims_certification_status", curie=ISO42001.curie('aims_certification_status'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_certification_status, domain=None, range=Optional[str])
 
-slots.applicability_statement = Slot(uri=ISO42001.applicability_statement, name="applicability_statement", curie=ISO42001.curie('applicability_statement'),
-                   model_uri=ISO42001.applicability_statement, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_certification_body = Slot(uri=ISO42001.aims_certification_body, name="aimsManagementSystem__aims_certification_body", curie=ISO42001.curie('aims_certification_body'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_certification_body, domain=None, range=Optional[str])
 
-slots.communication_date = Slot(uri=ISO42001.communication_date, name="communication_date", curie=ISO42001.curie('communication_date'),
-                   model_uri=ISO42001.communication_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsManagementSystem__aims_certification_date = Slot(uri=ISO42001.aims_certification_date, name="aimsManagementSystem__aims_certification_date", curie=ISO42001.curie('aims_certification_date'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_certification_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.acknowledgment_required = Slot(uri=ISO42001.acknowledgment_required, name="acknowledgment_required", curie=ISO42001.curie('acknowledgment_required'),
-                   model_uri=ISO42001.acknowledgment_required, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsManagementSystem__aims_recertification_date = Slot(uri=ISO42001.aims_recertification_date, name="aimsManagementSystem__aims_recertification_date", curie=ISO42001.curie('aims_recertification_date'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_recertification_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.related_topic_policies = Slot(uri=ISO42001.related_topic_policies, name="related_topic_policies", curie=ISO42001.curie('related_topic_policies'),
-                   model_uri=ISO42001.related_topic_policies, domain=None, range=Optional[Union[Union[str, TopicSpecificPolicyId], list[Union[str, TopicSpecificPolicyId]]]])
+slots.aimsManagementSystem__aims_interested_parties = Slot(uri=ISO42001.aims_interested_parties, name="aimsManagementSystem__aims_interested_parties", curie=ISO42001.curie('aims_interested_parties'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_interested_parties, domain=None, range=Optional[Union[dict[Union[str, AimsInterestedPartyAimsId], Union[dict, AimsInterestedParty]], list[Union[dict, AimsInterestedParty]]]])
 
-slots.last_policy_review_date = Slot(uri=ISO42001.last_policy_review_date, name="last_policy_review_date", curie=ISO42001.curie('last_policy_review_date'),
-                   model_uri=ISO42001.last_policy_review_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsManagementSystem__aims_policy = Slot(uri=ISO42001.aims_policy, name="aimsManagementSystem__aims_policy", curie=ISO42001.curie('aims_policy'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_policy, domain=None, range=Optional[Union[dict, AimsPolicy]])
 
-slots.next_policy_review_date = Slot(uri=ISO42001.next_policy_review_date, name="next_policy_review_date", curie=ISO42001.curie('next_policy_review_date'),
-                   model_uri=ISO42001.next_policy_review_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsManagementSystem__aims_topic_specific_policies = Slot(uri=ISO42001.aims_topic_specific_policies, name="aimsManagementSystem__aims_topic_specific_policies", curie=ISO42001.curie('aims_topic_specific_policies'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_topic_specific_policies, domain=None, range=Optional[Union[dict[Union[str, AimsTopicSpecificPolicyAimsId], Union[dict, AimsTopicSpecificPolicy]], list[Union[dict, AimsTopicSpecificPolicy]]]])
 
-slots.topic_area = Slot(uri=ISO42001.topic_area, name="topic_area", curie=ISO42001.curie('topic_area'),
-                   model_uri=ISO42001.topic_area, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_roles = Slot(uri=ISO42001.aims_roles, name="aimsManagementSystem__aims_roles", curie=ISO42001.curie('aims_roles'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_roles, domain=None, range=Optional[Union[dict[Union[str, AimsRoleAimsId], Union[dict, AimsRole]], list[Union[dict, AimsRole]]]])
 
-slots.parent_policy = Slot(uri=ISO42001.parent_policy, name="parent_policy", curie=ISO42001.curie('parent_policy'),
-                   model_uri=ISO42001.parent_policy, domain=None, range=Optional[Union[str, AIPolicyId]])
+slots.aimsManagementSystem__aims_objectives = Slot(uri=ISO42001.aims_objectives, name="aimsManagementSystem__aims_objectives", curie=ISO42001.curie('aims_objectives'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_objectives, domain=None, range=Optional[Union[dict[Union[str, AimsObjectiveAimsId], Union[dict, AimsObjective]], list[Union[dict, AimsObjective]]]])
 
-slots.applicable_controls = Slot(uri=ISO42001.applicable_controls, name="applicable_controls", curie=ISO42001.curie('applicable_controls'),
-                   model_uri=ISO42001.applicable_controls, domain=None, range=Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]])
+slots.aimsManagementSystem__aims_planned_actions = Slot(uri=ISO42001.aims_planned_actions, name="aimsManagementSystem__aims_planned_actions", curie=ISO42001.curie('aims_planned_actions'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_planned_actions, domain=None, range=Optional[Union[dict[Union[str, AimsPlannedActionAimsId], Union[dict, AimsPlannedAction]], list[Union[dict, AimsPlannedAction]]]])
 
-slots.target_audience = Slot(uri=ISO42001.target_audience, name="target_audience", curie=ISO42001.curie('target_audience'),
-                   model_uri=ISO42001.target_audience, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_risk_assessment_process = Slot(uri=ISO42001.aims_risk_assessment_process, name="aimsManagementSystem__aims_risk_assessment_process", curie=ISO42001.curie('aims_risk_assessment_process'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_risk_assessment_process, domain=None, range=Optional[Union[dict, AimsRiskAssessmentProcess]])
 
-slots.roles = Slot(uri=ISO42001.roles, name="roles", curie=ISO42001.curie('roles'),
-                   model_uri=ISO42001.roles, domain=None, range=Optional[Union[Union[str, RoleId], list[Union[str, RoleId]]]])
+slots.aimsManagementSystem__aims_risk_treatment_process = Slot(uri=ISO42001.aims_risk_treatment_process, name="aimsManagementSystem__aims_risk_treatment_process", curie=ISO42001.curie('aims_risk_treatment_process'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_risk_treatment_process, domain=None, range=Optional[Union[dict, AimsRiskTreatmentProcess]])
 
-slots.role_type = Slot(uri=ISO42001.role_type, name="role_type", curie=ISO42001.curie('role_type'),
-                   model_uri=ISO42001.role_type, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_impact_assessment_process = Slot(uri=ISO42001.aims_impact_assessment_process, name="aimsManagementSystem__aims_impact_assessment_process", curie=ISO42001.curie('aims_impact_assessment_process'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_impact_assessment_process, domain=None, range=Optional[Union[dict, AimsImpactAssessmentProcess]])
 
-slots.responsibilities = Slot(uri=ISO42001.responsibilities, name="responsibilities", curie=ISO42001.curie('responsibilities'),
-                   model_uri=ISO42001.responsibilities, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_risk_assessments = Slot(uri=ISO42001.aims_risk_assessments, name="aimsManagementSystem__aims_risk_assessments", curie=ISO42001.curie('aims_risk_assessments'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_risk_assessments, domain=None, range=Optional[Union[dict[Union[str, AimsRiskAssessmentAimsId], Union[dict, AimsRiskAssessment]], list[Union[dict, AimsRiskAssessment]]]])
 
-slots.authorities = Slot(uri=ISO42001.authorities, name="authorities", curie=ISO42001.curie('authorities'),
-                   model_uri=ISO42001.authorities, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_risks = Slot(uri=ISO42001.aims_risks, name="aimsManagementSystem__aims_risks", curie=ISO42001.curie('aims_risks'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_risks, domain=None, range=Optional[Union[dict[Union[str, AimsRiskAimsId], Union[dict, AimsRisk]], list[Union[dict, AimsRisk]]]])
 
-slots.accountability = Slot(uri=ISO42001.accountability, name="accountability", curie=ISO42001.curie('accountability'),
-                   model_uri=ISO42001.accountability, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_risk_treatment_plans = Slot(uri=ISO42001.aims_risk_treatment_plans, name="aimsManagementSystem__aims_risk_treatment_plans", curie=ISO42001.curie('aims_risk_treatment_plans'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_risk_treatment_plans, domain=None, range=Optional[Union[dict[Union[str, AimsRiskTreatmentPlanAimsId], Union[dict, AimsRiskTreatmentPlan]], list[Union[dict, AimsRiskTreatmentPlan]]]])
 
-slots.assigned_to = Slot(uri=ISO42001.assigned_to, name="assigned_to", curie=ISO42001.curie('assigned_to'),
-                   model_uri=ISO42001.assigned_to, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_impact_assessments = Slot(uri=ISO42001.aims_impact_assessments, name="aimsManagementSystem__aims_impact_assessments", curie=ISO42001.curie('aims_impact_assessments'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_impact_assessments, domain=None, range=Optional[Union[dict[Union[str, AimsImpactAssessmentAimsId], Union[dict, AimsImpactAssessment]], list[Union[dict, AimsImpactAssessment]]]])
 
-slots.delegation_rules = Slot(uri=ISO42001.delegation_rules, name="delegation_rules", curie=ISO42001.curie('delegation_rules'),
-                   model_uri=ISO42001.delegation_rules, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_statement_of_applicability = Slot(uri=ISO42001.aims_statement_of_applicability, name="aimsManagementSystem__aims_statement_of_applicability", curie=ISO42001.curie('aims_statement_of_applicability'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_statement_of_applicability, domain=None, range=Optional[Union[dict, AimsStatementOfApplicability]])
 
-slots.reporting_line = Slot(uri=ISO42001.reporting_line, name="reporting_line", curie=ISO42001.curie('reporting_line'),
-                   model_uri=ISO42001.reporting_line, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_controls = Slot(uri=ISO42001.aims_controls, name="aimsManagementSystem__aims_controls", curie=ISO42001.curie('aims_controls'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_controls, domain=None, range=Optional[Union[dict[Union[str, AimsControlAimsId], Union[dict, AimsControl]], list[Union[dict, AimsControl]]]])
 
-slots.ai_objectives = Slot(uri=ISO42001.ai_objectives, name="ai_objectives", curie=ISO42001.curie('ai_objectives'),
-                   model_uri=ISO42001.ai_objectives, domain=None, range=Optional[Union[Union[str, AIObjectiveId], list[Union[str, AIObjectiveId]]]])
+slots.aimsManagementSystem__aims_systems = Slot(uri=ISO42001.aims_systems, name="aimsManagementSystem__aims_systems", curie=ISO42001.curie('aims_systems'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_systems, domain=None, range=Optional[Union[dict[Union[str, AimsAiSystemAimsId], Union[dict, AimsAiSystem]], list[Union[dict, AimsAiSystem]]]])
 
-slots.objective_statement = Slot(uri=ISO42001.objective_statement, name="objective_statement", curie=ISO42001.curie('objective_statement'),
-                   model_uri=ISO42001.objective_statement, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_system_resources = Slot(uri=ISO42001.aims_system_resources, name="aimsManagementSystem__aims_system_resources", curie=ISO42001.curie('aims_system_resources'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_system_resources, domain=None, range=Optional[Union[dict[Union[str, AimsSystemResourceAimsId], Union[dict, AimsSystemResource]], list[Union[dict, AimsSystemResource]]]])
 
-slots.objective_category = Slot(uri=ISO42001.objective_category, name="objective_category", curie=ISO42001.curie('objective_category'),
-                   model_uri=ISO42001.objective_category, domain=None, range=Optional[Union[str, "AIObjectiveCategory"]])
+slots.aimsManagementSystem__aims_development_processes = Slot(uri=ISO42001.aims_development_processes, name="aimsManagementSystem__aims_development_processes", curie=ISO42001.curie('aims_development_processes'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_development_processes, domain=None, range=Optional[Union[dict[Union[str, AimsDevelopmentProcessAimsId], Union[dict, AimsDevelopmentProcess]], list[Union[dict, AimsDevelopmentProcess]]]])
 
-slots.target_value = Slot(uri=ISO42001.target_value, name="target_value", curie=ISO42001.curie('target_value'),
-                   model_uri=ISO42001.target_value, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_use_processes = Slot(uri=ISO42001.aims_use_processes, name="aimsManagementSystem__aims_use_processes", curie=ISO42001.curie('aims_use_processes'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_use_processes, domain=None, range=Optional[Union[dict[Union[str, AimsResponsibleUseProcessAimsId], Union[dict, AimsResponsibleUseProcess]], list[Union[dict, AimsResponsibleUseProcess]]]])
 
-slots.current_value = Slot(uri=ISO42001.current_value, name="current_value", curie=ISO42001.curie('current_value'),
-                   model_uri=ISO42001.current_value, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_technical_documentation = Slot(uri=ISO42001.aims_technical_documentation, name="aimsManagementSystem__aims_technical_documentation", curie=ISO42001.curie('aims_technical_documentation'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_technical_documentation, domain=None, range=Optional[Union[dict[Union[str, AimsTechnicalDocumentationAimsId], Union[dict, AimsTechnicalDocumentation]], list[Union[dict, AimsTechnicalDocumentation]]]])
 
-slots.metric_definition = Slot(uri=ISO42001.metric_definition, name="metric_definition", curie=ISO42001.curie('metric_definition'),
-                   model_uri=ISO42001.metric_definition, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_user_information = Slot(uri=ISO42001.aims_user_information, name="aimsManagementSystem__aims_user_information", curie=ISO42001.curie('aims_user_information'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_user_information, domain=None, range=Optional[Union[dict[Union[str, AimsUserInformationAimsId], Union[dict, AimsUserInformation]], list[Union[dict, AimsUserInformation]]]])
 
-slots.measurement_method = Slot(uri=ISO42001.measurement_method, name="measurement_method", curie=ISO42001.curie('measurement_method'),
-                   model_uri=ISO42001.measurement_method, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_incident_communication_plans = Slot(uri=ISO42001.aims_incident_communication_plans, name="aimsManagementSystem__aims_incident_communication_plans", curie=ISO42001.curie('aims_incident_communication_plans'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_incident_communication_plans, domain=None, range=Optional[Union[dict[Union[str, AimsIncidentCommunicationPlanAimsId], Union[dict, AimsIncidentCommunicationPlan]], list[Union[dict, AimsIncidentCommunicationPlan]]]])
 
-slots.measurement_frequency = Slot(uri=ISO42001.measurement_frequency, name="measurement_frequency", curie=ISO42001.curie('measurement_frequency'),
-                   model_uri=ISO42001.measurement_frequency, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_reporting_obligations = Slot(uri=ISO42001.aims_reporting_obligations, name="aimsManagementSystem__aims_reporting_obligations", curie=ISO42001.curie('aims_reporting_obligations'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_reporting_obligations, domain=None, range=Optional[Union[dict[Union[str, AimsReportingObligationAimsId], Union[dict, AimsReportingObligation]], list[Union[dict, AimsReportingObligation]]]])
 
-slots.responsible_role = Slot(uri=ISO42001.responsible_role, name="responsible_role", curie=ISO42001.curie('responsible_role'),
-                   model_uri=ISO42001.responsible_role, domain=None, range=Optional[Union[str, RoleId]])
+slots.aimsManagementSystem__aims_third_party_relationships = Slot(uri=ISO42001.aims_third_party_relationships, name="aimsManagementSystem__aims_third_party_relationships", curie=ISO42001.curie('aims_third_party_relationships'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_third_party_relationships, domain=None, range=Optional[Union[dict[Union[str, AimsThirdPartyRelationshipAimsId], Union[dict, AimsThirdPartyRelationship]], list[Union[dict, AimsThirdPartyRelationship]]]])
 
-slots.target_date = Slot(uri=ISO42001.target_date, name="target_date", curie=ISO42001.curie('target_date'),
-                   model_uri=ISO42001.target_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsManagementSystem__aims_resources = Slot(uri=ISO42001.aims_resources, name="aimsManagementSystem__aims_resources", curie=ISO42001.curie('aims_resources'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_resources, domain=None, range=Optional[Union[dict[Union[str, AimsResourceAimsId], Union[dict, AimsResource]], list[Union[dict, AimsResource]]]])
 
-slots.achievement_status = Slot(uri=ISO42001.achievement_status, name="achievement_status", curie=ISO42001.curie('achievement_status'),
-                   model_uri=ISO42001.achievement_status, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_competence_records = Slot(uri=ISO42001.aims_competence_records, name="aimsManagementSystem__aims_competence_records", curie=ISO42001.curie('aims_competence_records'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_competence_records, domain=None, range=Optional[Union[dict[Union[str, AimsCompetenceRecordAimsId], Union[dict, AimsCompetenceRecord]], list[Union[dict, AimsCompetenceRecord]]]])
 
-slots.action_plan = Slot(uri=ISO42001.action_plan, name="action_plan", curie=ISO42001.curie('action_plan'),
-                   model_uri=ISO42001.action_plan, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_awareness_programme = Slot(uri=ISO42001.aims_awareness_programme, name="aimsManagementSystem__aims_awareness_programme", curie=ISO42001.curie('aims_awareness_programme'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_awareness_programme, domain=None, range=Optional[Union[dict, AimsAwarenessProgramme]])
 
-slots.ai_risk_assessment_process = Slot(uri=ISO42001.ai_risk_assessment_process, name="ai_risk_assessment_process", curie=ISO42001.curie('ai_risk_assessment_process'),
-                   model_uri=ISO42001.ai_risk_assessment_process, domain=None, range=Optional[Union[str, AIRiskAssessmentProcessId]])
+slots.aimsManagementSystem__aims_communication_plan = Slot(uri=ISO42001.aims_communication_plan, name="aimsManagementSystem__aims_communication_plan", curie=ISO42001.curie('aims_communication_plan'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_communication_plan, domain=None, range=Optional[Union[dict, AimsCommunicationPlan]])
 
-slots.alignment_with_ai_policy = Slot(uri=ISO42001.alignment_with_ai_policy, name="alignment_with_ai_policy", curie=ISO42001.curie('alignment_with_ai_policy'),
-                   model_uri=ISO42001.alignment_with_ai_policy, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_documented_information = Slot(uri=ISO42001.aims_documented_information, name="aimsManagementSystem__aims_documented_information", curie=ISO42001.curie('aims_documented_information'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_documented_information, domain=None, range=Optional[Union[dict[Union[str, AimsDocumentedInformationAimsId], Union[dict, AimsDocumentedInformation]], list[Union[dict, AimsDocumentedInformation]]]])
 
-slots.risk_acceptance_criteria = Slot(uri=ISO42001.risk_acceptance_criteria, name="risk_acceptance_criteria", curie=ISO42001.curie('risk_acceptance_criteria'),
-                   model_uri=ISO42001.risk_acceptance_criteria, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_operational_procedures = Slot(uri=ISO42001.aims_operational_procedures, name="aimsManagementSystem__aims_operational_procedures", curie=ISO42001.curie('aims_operational_procedures'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_operational_procedures, domain=None, range=Optional[Union[dict[Union[str, AimsOperationalProcedureAimsId], Union[dict, AimsOperationalProcedure]], list[Union[dict, AimsOperationalProcedure]]]])
 
-slots.assessment_criteria = Slot(uri=ISO42001.assessment_criteria, name="assessment_criteria", curie=ISO42001.curie('assessment_criteria'),
-                   model_uri=ISO42001.assessment_criteria, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_monitoring_programme = Slot(uri=ISO42001.aims_monitoring_programme, name="aimsManagementSystem__aims_monitoring_programme", curie=ISO42001.curie('aims_monitoring_programme'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_monitoring_programme, domain=None, range=Optional[Union[dict, AimsMonitoringProgramme]])
 
-slots.assessment_methodology = Slot(uri=ISO42001.assessment_methodology, name="assessment_methodology", curie=ISO42001.curie('assessment_methodology'),
-                   model_uri=ISO42001.assessment_methodology, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_audit_programmes = Slot(uri=ISO42001.aims_audit_programmes, name="aimsManagementSystem__aims_audit_programmes", curie=ISO42001.curie('aims_audit_programmes'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_audit_programmes, domain=None, range=Optional[Union[dict[Union[str, AimsAuditProgrammeAimsId], Union[dict, AimsAuditProgramme]], list[Union[dict, AimsAuditProgramme]]]])
 
-slots.likelihood_scale = Slot(uri=ISO42001.likelihood_scale, name="likelihood_scale", curie=ISO42001.curie('likelihood_scale'),
-                   model_uri=ISO42001.likelihood_scale, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_audits = Slot(uri=ISO42001.aims_audits, name="aimsManagementSystem__aims_audits", curie=ISO42001.curie('aims_audits'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_audits, domain=None, range=Optional[Union[dict[Union[str, AimsAuditAimsId], Union[dict, AimsAudit]], list[Union[dict, AimsAudit]]]])
 
-slots.impact_scale = Slot(uri=ISO42001.impact_scale, name="impact_scale", curie=ISO42001.curie('impact_scale'),
-                   model_uri=ISO42001.impact_scale, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_management_reviews = Slot(uri=ISO42001.aims_management_reviews, name="aimsManagementSystem__aims_management_reviews", curie=ISO42001.curie('aims_management_reviews'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_management_reviews, domain=None, range=Optional[Union[dict[Union[str, AimsManagementReviewAimsId], Union[dict, AimsManagementReview]], list[Union[dict, AimsManagementReview]]]])
 
-slots.risk_matrix = Slot(uri=ISO42001.risk_matrix, name="risk_matrix", curie=ISO42001.curie('risk_matrix'),
-                   model_uri=ISO42001.risk_matrix, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_nonconformities = Slot(uri=ISO42001.aims_nonconformities, name="aimsManagementSystem__aims_nonconformities", curie=ISO42001.curie('aims_nonconformities'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_nonconformities, domain=None, range=Optional[Union[dict[Union[str, AimsNonconformityAimsId], Union[dict, AimsNonconformity]], list[Union[dict, AimsNonconformity]]]])
 
-slots.assessment_frequency = Slot(uri=ISO42001.assessment_frequency, name="assessment_frequency", curie=ISO42001.curie('assessment_frequency'),
-                   model_uri=ISO42001.assessment_frequency, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_corrective_actions = Slot(uri=ISO42001.aims_corrective_actions, name="aimsManagementSystem__aims_corrective_actions", curie=ISO42001.curie('aims_corrective_actions'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_corrective_actions, domain=None, range=Optional[Union[dict[Union[str, AimsCorrectiveActionAimsId], Union[dict, AimsCorrectiveAction]], list[Union[dict, AimsCorrectiveAction]]]])
 
-slots.trigger_events = Slot(uri=ISO42001.trigger_events, name="trigger_events", curie=ISO42001.curie('trigger_events'),
-                   model_uri=ISO42001.trigger_events, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsManagementSystem__aims_improvements = Slot(uri=ISO42001.aims_improvements, name="aimsManagementSystem__aims_improvements", curie=ISO42001.curie('aims_improvements'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_improvements, domain=None, range=Optional[Union[dict[Union[str, AimsImprovementOpportunityAimsId], Union[dict, AimsImprovementOpportunity]], list[Union[dict, AimsImprovementOpportunity]]]])
 
-slots.ai_risk_assessments = Slot(uri=ISO42001.ai_risk_assessments, name="ai_risk_assessments", curie=ISO42001.curie('ai_risk_assessments'),
-                   model_uri=ISO42001.ai_risk_assessments, domain=None, range=Optional[Union[Union[str, AIRiskAssessmentId], list[Union[str, AIRiskAssessmentId]]]])
+slots.aimsManagementSystem__aims_system_events = Slot(uri=ISO42001.aims_system_events, name="aimsManagementSystem__aims_system_events", curie=ISO42001.curie('aims_system_events'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_system_events, domain=None, range=Optional[Union[dict[Union[str, AimsSystemEventAimsId], Union[dict, AimsSystemEvent]], list[Union[dict, AimsSystemEvent]]]])
 
-slots.assessment_scope = Slot(uri=ISO42001.assessment_scope, name="assessment_scope", curie=ISO42001.curie('assessment_scope'),
-                   model_uri=ISO42001.assessment_scope, domain=None, range=Optional[str])
+slots.aimsManagementSystem__aims_concern_reporting_process = Slot(uri=ISO42001.aims_concern_reporting_process, name="aimsManagementSystem__aims_concern_reporting_process", curie=ISO42001.curie('aims_concern_reporting_process'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_concern_reporting_process, domain=None, range=Optional[Union[dict, AimsConcernReportingProcess]])
 
-slots.ai_systems_assessed = Slot(uri=ISO42001.ai_systems_assessed, name="ai_systems_assessed", curie=ISO42001.curie('ai_systems_assessed'),
-                   model_uri=ISO42001.ai_systems_assessed, domain=None, range=Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]])
+slots.aimsManagementSystem__aims_concern_reports = Slot(uri=ISO42001.aims_concern_reports, name="aimsManagementSystem__aims_concern_reports", curie=ISO42001.curie('aims_concern_reports'),
+                   model_uri=ISO42001.aimsManagementSystem__aims_concern_reports, domain=None, range=Optional[Union[dict[Union[str, AimsConcernReportAimsId], Union[dict, AimsConcernReport]], list[Union[dict, AimsConcernReport]]]])
 
-slots.assessment_date = Slot(uri=ISO42001.assessment_date, name="assessment_date", curie=ISO42001.curie('assessment_date'),
-                   model_uri=ISO42001.assessment_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsOrganization__aims_organization_legal_name = Slot(uri=ISO42001.aims_organization_legal_name, name="aimsOrganization__aims_organization_legal_name", curie=ISO42001.curie('aims_organization_legal_name'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_legal_name, domain=None, range=Optional[str])
 
-slots.assessor = Slot(uri=ISO42001.assessor, name="assessor", curie=ISO42001.curie('assessor'),
-                   model_uri=ISO42001.assessor, domain=None, range=Optional[str])
+slots.aimsOrganization__aims_organization_trading_names = Slot(uri=ISO42001.aims_organization_trading_names, name="aimsOrganization__aims_organization_trading_names", curie=ISO42001.curie('aims_organization_trading_names'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_trading_names, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.methodology_used = Slot(uri=ISO42001.methodology_used, name="methodology_used", curie=ISO42001.curie('methodology_used'),
-                   model_uri=ISO42001.methodology_used, domain=None, range=Optional[str])
+slots.aimsOrganization__aims_organization_kind = Slot(uri=ISO42001.aims_organization_kind, name="aimsOrganization__aims_organization_kind", curie=ISO42001.curie('aims_organization_kind'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_kind, domain=None, range=Optional[str])
 
-slots.risks_identified = Slot(uri=ISO42001.risks_identified, name="risks_identified", curie=ISO42001.curie('risks_identified'),
-                   model_uri=ISO42001.risks_identified, domain=None, range=Optional[Union[Union[str, AIRiskId], list[Union[str, AIRiskId]]]])
+slots.aimsOrganization__aims_organization_sectors = Slot(uri=ISO42001.aims_organization_sectors, name="aimsOrganization__aims_organization_sectors", curie=ISO42001.curie('aims_organization_sectors'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_sectors, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.linked_impact_assessment = Slot(uri=ISO42001.linked_impact_assessment, name="linked_impact_assessment", curie=ISO42001.curie('linked_impact_assessment'),
-                   model_uri=ISO42001.linked_impact_assessment, domain=None, range=Optional[Union[str, AISystemImpactAssessmentId]])
+slots.aimsOrganization__aims_organization_size = Slot(uri=ISO42001.aims_organization_size, name="aimsOrganization__aims_organization_size", curie=ISO42001.curie('aims_organization_size'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_size, domain=None, range=Optional[str])
 
-slots.summary_findings = Slot(uri=ISO42001.summary_findings, name="summary_findings", curie=ISO42001.curie('summary_findings'),
-                   model_uri=ISO42001.summary_findings, domain=None, range=Optional[str])
+slots.aimsOrganization__aims_organization_employee_count = Slot(uri=ISO42001.aims_organization_employee_count, name="aimsOrganization__aims_organization_employee_count", curie=ISO42001.curie('aims_organization_employee_count'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_employee_count, domain=None, range=Optional[int])
 
-slots.recommendations = Slot(uri=ISO42001.recommendations, name="recommendations", curie=ISO42001.curie('recommendations'),
-                   model_uri=ISO42001.recommendations, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsOrganization__aims_organization_locations = Slot(uri=ISO42001.aims_organization_locations, name="aimsOrganization__aims_organization_locations", curie=ISO42001.curie('aims_organization_locations'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_locations, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.next_assessment_date = Slot(uri=ISO42001.next_assessment_date, name="next_assessment_date", curie=ISO42001.curie('next_assessment_date'),
-                   model_uri=ISO42001.next_assessment_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsOrganization__aims_organization_jurisdictions = Slot(uri=ISO42001.aims_organization_jurisdictions, name="aimsOrganization__aims_organization_jurisdictions", curie=ISO42001.curie('aims_organization_jurisdictions'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_jurisdictions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.related_risks = Slot(uri=ISO42001.related_risks, name="related_risks", curie=ISO42001.curie('related_risks'),
-                   model_uri=ISO42001.related_risks, domain=None, range=Optional[Union[Union[str, AIRiskId], list[Union[str, AIRiskId]]]])
+slots.aimsOrganization__aims_organization_parent = Slot(uri=ISO42001.aims_organization_parent, name="aimsOrganization__aims_organization_parent", curie=ISO42001.curie('aims_organization_parent'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_parent, domain=None, range=Optional[str])
 
-slots.risk_source_category = Slot(uri=ISO42001.risk_source_category, name="risk_source_category", curie=ISO42001.curie('risk_source_category'),
-                   model_uri=ISO42001.risk_source_category, domain=None, range=Optional[Union[str, "AIRiskSourceCategory"]])
+slots.aimsOrganization__aims_organization_subsidiaries = Slot(uri=ISO42001.aims_organization_subsidiaries, name="aimsOrganization__aims_organization_subsidiaries", curie=ISO42001.curie('aims_organization_subsidiaries'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_subsidiaries, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.risk_source_description = Slot(uri=ISO42001.risk_source_description, name="risk_source_description", curie=ISO42001.curie('risk_source_description'),
-                   model_uri=ISO42001.risk_source_description, domain=None, range=Optional[str])
+slots.aimsOrganization__aims_organization_ai_roles = Slot(uri=ISO42001.aims_organization_ai_roles, name="aimsOrganization__aims_organization_ai_roles", curie=ISO42001.curie('aims_organization_ai_roles'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_ai_roles, domain=None, range=Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]])
 
-slots.affected_ai_systems = Slot(uri=ISO42001.affected_ai_systems, name="affected_ai_systems", curie=ISO42001.curie('affected_ai_systems'),
-                   model_uri=ISO42001.affected_ai_systems, domain=None, range=Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]])
+slots.aimsOrganization__aims_organization_pii_roles = Slot(uri=ISO42001.aims_organization_pii_roles, name="aimsOrganization__aims_organization_pii_roles", curie=ISO42001.curie('aims_organization_pii_roles'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_pii_roles, domain=None, range=Optional[Union[Union[str, "AimsPiiRole"], list[Union[str, "AimsPiiRole"]]]])
 
-slots.affected_dimensions = Slot(uri=ISO42001.affected_dimensions, name="affected_dimensions", curie=ISO42001.curie('affected_dimensions'),
-                   model_uri=ISO42001.affected_dimensions, domain=None, range=Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]])
+slots.aimsOrganization__aims_organization_climate_change_relevant = Slot(uri=ISO42001.aims_organization_climate_change_relevant, name="aimsOrganization__aims_organization_climate_change_relevant", curie=ISO42001.curie('aims_organization_climate_change_relevant'),
+                   model_uri=ISO42001.aimsOrganization__aims_organization_climate_change_relevant, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.risk_owner = Slot(uri=ISO42001.risk_owner, name="risk_owner", curie=ISO42001.curie('risk_owner'),
-                   model_uri=ISO42001.risk_owner, domain=None, range=Optional[str])
+slots.aimsInterestedParty__aims_party_category = Slot(uri=ISO42001.aims_party_category, name="aimsInterestedParty__aims_party_category", curie=ISO42001.curie('aims_party_category'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_category, domain=None, range=Optional[str])
 
-slots.likelihood = Slot(uri=ISO42001.likelihood, name="likelihood", curie=ISO42001.curie('likelihood'),
-                   model_uri=ISO42001.likelihood, domain=None, range=Optional[Union[str, "LikelihoodRating"]])
+slots.aimsInterestedParty__aims_party_ai_roles = Slot(uri=ISO42001.aims_party_ai_roles, name="aimsInterestedParty__aims_party_ai_roles", curie=ISO42001.curie('aims_party_ai_roles'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_ai_roles, domain=None, range=Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]])
 
-slots.impact = Slot(uri=ISO42001.impact, name="impact", curie=ISO42001.curie('impact'),
-                   model_uri=ISO42001.impact, domain=None, range=Optional[Union[str, "ImpactRating"]])
+slots.aimsInterestedParty__aims_party_relationship = Slot(uri=ISO42001.aims_party_relationship, name="aimsInterestedParty__aims_party_relationship", curie=ISO42001.curie('aims_party_relationship'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_relationship, domain=None, range=Optional[str])
 
-slots.inherent_risk_level = Slot(uri=ISO42001.inherent_risk_level, name="inherent_risk_level", curie=ISO42001.curie('inherent_risk_level'),
-                   model_uri=ISO42001.inherent_risk_level, domain=None, range=Optional[Union[str, "RiskLevel"]])
+slots.aimsInterestedParty__aims_party_requirements = Slot(uri=ISO42001.aims_party_requirements, name="aimsInterestedParty__aims_party_requirements", curie=ISO42001.curie('aims_party_requirements'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.existing_controls = Slot(uri=ISO42001.existing_controls, name="existing_controls", curie=ISO42001.curie('existing_controls'),
-                   model_uri=ISO42001.existing_controls, domain=None, range=Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]])
+slots.aimsInterestedParty__aims_party_addressed_requirements = Slot(uri=ISO42001.aims_party_addressed_requirements, name="aimsInterestedParty__aims_party_addressed_requirements", curie=ISO42001.curie('aims_party_addressed_requirements'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_addressed_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.residual_risk_level = Slot(uri=ISO42001.residual_risk_level, name="residual_risk_level", curie=ISO42001.curie('residual_risk_level'),
-                   model_uri=ISO42001.residual_risk_level, domain=None, range=Optional[Union[str, "RiskLevel"]])
+slots.aimsInterestedParty__aims_party_climate_change_requirements = Slot(uri=ISO42001.aims_party_climate_change_requirements, name="aimsInterestedParty__aims_party_climate_change_requirements", curie=ISO42001.curie('aims_party_climate_change_requirements'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_climate_change_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.risk_treatment_option = Slot(uri=ISO42001.risk_treatment_option, name="risk_treatment_option", curie=ISO42001.curie('risk_treatment_option'),
-                   model_uri=ISO42001.risk_treatment_option, domain=None, range=Optional[Union[str, "RiskTreatmentOption"]])
+slots.aimsInterestedParty__aims_party_communication_needs = Slot(uri=ISO42001.aims_party_communication_needs, name="aimsInterestedParty__aims_party_communication_needs", curie=ISO42001.curie('aims_party_communication_needs'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_communication_needs, domain=None, range=Optional[str])
 
-slots.treatment_priority = Slot(uri=ISO42001.treatment_priority, name="treatment_priority", curie=ISO42001.curie('treatment_priority'),
-                   model_uri=ISO42001.treatment_priority, domain=None, range=Optional[str])
+slots.aimsInterestedParty__aims_party_contact = Slot(uri=ISO42001.aims_party_contact, name="aimsInterestedParty__aims_party_contact", curie=ISO42001.curie('aims_party_contact'),
+                   model_uri=ISO42001.aimsInterestedParty__aims_party_contact, domain=None, range=Optional[str])
 
-slots.related_treatment_plan = Slot(uri=ISO42001.related_treatment_plan, name="related_treatment_plan", curie=ISO42001.curie('related_treatment_plan'),
-                   model_uri=ISO42001.related_treatment_plan, domain=None, range=Optional[Union[str, AIRiskTreatmentPlanId]])
+slots.aimsPolicy__aims_policy_statement = Slot(uri=ISO42001.aims_policy_statement, name="aimsPolicy__aims_policy_statement", curie=ISO42001.curie('aims_policy_statement'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_statement, domain=None, range=Optional[str])
 
-slots.related_impact_assessment = Slot(uri=ISO42001.related_impact_assessment, name="related_impact_assessment", curie=ISO42001.curie('related_impact_assessment'),
-                   model_uri=ISO42001.related_impact_assessment, domain=None, range=Optional[Union[str, AISystemImpactAssessmentId]])
+slots.aimsPolicy__aims_policy_objectives_framework = Slot(uri=ISO42001.aims_policy_objectives_framework, name="aimsPolicy__aims_policy_objectives_framework", curie=ISO42001.curie('aims_policy_objectives_framework'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_objectives_framework, domain=None, range=Optional[str])
 
-slots.ai_risk_treatment_process = Slot(uri=ISO42001.ai_risk_treatment_process, name="ai_risk_treatment_process", curie=ISO42001.curie('ai_risk_treatment_process'),
-                   model_uri=ISO42001.ai_risk_treatment_process, domain=None, range=Optional[Union[str, AIRiskTreatmentProcessId]])
+slots.aimsPolicy__aims_policy_commitments = Slot(uri=ISO42001.aims_policy_commitments, name="aimsPolicy__aims_policy_commitments", curie=ISO42001.curie('aims_policy_commitments'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_commitments, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.treatment_options_guidance = Slot(uri=ISO42001.treatment_options_guidance, name="treatment_options_guidance", curie=ISO42001.curie('treatment_options_guidance'),
-                   model_uri=ISO42001.treatment_options_guidance, domain=None, range=Optional[str])
+slots.aimsPolicy__aims_policy_principles = Slot(uri=ISO42001.aims_policy_principles, name="aimsPolicy__aims_policy_principles", curie=ISO42001.curie('aims_policy_principles'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_principles, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.control_selection_criteria = Slot(uri=ISO42001.control_selection_criteria, name="control_selection_criteria", curie=ISO42001.curie('control_selection_criteria'),
-                   model_uri=ISO42001.control_selection_criteria, domain=None, range=Optional[str])
+slots.aimsPolicy__aims_policy_exceptions_process = Slot(uri=ISO42001.aims_policy_exceptions_process, name="aimsPolicy__aims_policy_exceptions_process", curie=ISO42001.curie('aims_policy_exceptions_process'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_exceptions_process, domain=None, range=Optional[str])
 
-slots.soa_template = Slot(uri=ISO42001.soa_template, name="soa_template", curie=ISO42001.curie('soa_template'),
-                   model_uri=ISO42001.soa_template, domain=None, range=Optional[str])
+slots.aimsPolicy__aims_policy_influences = Slot(uri=ISO42001.aims_policy_influences, name="aimsPolicy__aims_policy_influences", curie=ISO42001.curie('aims_policy_influences'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_influences, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.approval_workflow = Slot(uri=ISO42001.approval_workflow, name="approval_workflow", curie=ISO42001.curie('approval_workflow'),
-                   model_uri=ISO42001.approval_workflow, domain=None, range=Optional[str])
+slots.aimsPolicy__aims_policy_related_policies = Slot(uri=ISO42001.aims_policy_related_policies, name="aimsPolicy__aims_policy_related_policies", curie=ISO42001.curie('aims_policy_related_policies'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_related_policies, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ai_risk_treatment_plans = Slot(uri=ISO42001.ai_risk_treatment_plans, name="ai_risk_treatment_plans", curie=ISO42001.curie('ai_risk_treatment_plans'),
-                   model_uri=ISO42001.ai_risk_treatment_plans, domain=None, range=Optional[Union[Union[str, AIRiskTreatmentPlanId], list[Union[str, AIRiskTreatmentPlanId]]]])
+slots.aimsPolicy__aims_policy_communication_date = Slot(uri=ISO42001.aims_policy_communication_date, name="aimsPolicy__aims_policy_communication_date", curie=ISO42001.curie('aims_policy_communication_date'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_communication_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.plan_scope = Slot(uri=ISO42001.plan_scope, name="plan_scope", curie=ISO42001.curie('plan_scope'),
-                   model_uri=ISO42001.plan_scope, domain=None, range=Optional[str])
+slots.aimsPolicy__aims_policy_availability = Slot(uri=ISO42001.aims_policy_availability, name="aimsPolicy__aims_policy_availability", curie=ISO42001.curie('aims_policy_availability'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_availability, domain=None, range=Optional[str])
 
-slots.risks_addressed = Slot(uri=ISO42001.risks_addressed, name="risks_addressed", curie=ISO42001.curie('risks_addressed'),
-                   model_uri=ISO42001.risks_addressed, domain=None, range=Optional[Union[Union[str, AIRiskId], list[Union[str, AIRiskId]]]])
+slots.aimsPolicy__aims_policy_review_role = Slot(uri=ISO42001.aims_policy_review_role, name="aimsPolicy__aims_policy_review_role", curie=ISO42001.curie('aims_policy_review_role'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_review_role, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
 
-slots.treatment_actions = Slot(uri=ISO42001.treatment_actions, name="treatment_actions", curie=ISO42001.curie('treatment_actions'),
-                   model_uri=ISO42001.treatment_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsPolicy__aims_policy_review_interval = Slot(uri=ISO42001.aims_policy_review_interval, name="aimsPolicy__aims_policy_review_interval", curie=ISO42001.curie('aims_policy_review_interval'),
+                   model_uri=ISO42001.aimsPolicy__aims_policy_review_interval, domain=None, range=Optional[Union[str, AimsDuration]])
 
-slots.controls_to_implement = Slot(uri=ISO42001.controls_to_implement, name="controls_to_implement", curie=ISO42001.curie('controls_to_implement'),
-                   model_uri=ISO42001.controls_to_implement, domain=None, range=Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]])
+slots.aimsTopicSpecificPolicy__aims_topic_policy_topic = Slot(uri=ISO42001.aims_topic_policy_topic, name="aimsTopicSpecificPolicy__aims_topic_policy_topic", curie=ISO42001.curie('aims_topic_policy_topic'),
+                   model_uri=ISO42001.aimsTopicSpecificPolicy__aims_topic_policy_topic, domain=None, range=Optional[str])
 
-slots.resources_required = Slot(uri=ISO42001.resources_required, name="resources_required", curie=ISO42001.curie('resources_required'),
-                   model_uri=ISO42001.resources_required, domain=None, range=Optional[str])
+slots.aimsTopicSpecificPolicy__aims_topic_policy_parent = Slot(uri=ISO42001.aims_topic_policy_parent, name="aimsTopicSpecificPolicy__aims_topic_policy_parent", curie=ISO42001.curie('aims_topic_policy_parent'),
+                   model_uri=ISO42001.aimsTopicSpecificPolicy__aims_topic_policy_parent, domain=None, range=Optional[Union[str, AimsPolicyAimsId]])
 
-slots.responsible_parties = Slot(uri=ISO42001.responsible_parties, name="responsible_parties", curie=ISO42001.curie('responsible_parties'),
-                   model_uri=ISO42001.responsible_parties, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsTopicSpecificPolicy__aims_topic_policy_audience = Slot(uri=ISO42001.aims_topic_policy_audience, name="aimsTopicSpecificPolicy__aims_topic_policy_audience", curie=ISO42001.curie('aims_topic_policy_audience'),
+                   model_uri=ISO42001.aimsTopicSpecificPolicy__aims_topic_policy_audience, domain=None, range=Optional[str])
 
-slots.implementation_timeline = Slot(uri=ISO42001.implementation_timeline, name="implementation_timeline", curie=ISO42001.curie('implementation_timeline'),
-                   model_uri=ISO42001.implementation_timeline, domain=None, range=Optional[str])
+slots.aimsRole__aims_role_category = Slot(uri=ISO42001.aims_role_category, name="aimsRole__aims_role_category", curie=ISO42001.curie('aims_role_category'),
+                   model_uri=ISO42001.aimsRole__aims_role_category, domain=None, range=Optional[str])
 
-slots.risk_owner_approval = Slot(uri=ISO42001.risk_owner_approval, name="risk_owner_approval", curie=ISO42001.curie('risk_owner_approval'),
-                   model_uri=ISO42001.risk_owner_approval, domain=None, range=Optional[str])
+slots.aimsRole__aims_role_areas = Slot(uri=ISO42001.aims_role_areas, name="aimsRole__aims_role_areas", curie=ISO42001.curie('aims_role_areas'),
+                   model_uri=ISO42001.aimsRole__aims_role_areas, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.residual_risk_acceptance = Slot(uri=ISO42001.residual_risk_acceptance, name="residual_risk_acceptance", curie=ISO42001.curie('residual_risk_acceptance'),
-                   model_uri=ISO42001.residual_risk_acceptance, domain=None, range=Optional[str])
+slots.aimsRole__aims_role_responsibilities = Slot(uri=ISO42001.aims_role_responsibilities, name="aimsRole__aims_role_responsibilities", curie=ISO42001.curie('aims_role_responsibilities'),
+                   model_uri=ISO42001.aimsRole__aims_role_responsibilities, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.implementation_status = Slot(uri=ISO42001.implementation_status, name="implementation_status", curie=ISO42001.curie('implementation_status'),
-                   model_uri=ISO42001.implementation_status, domain=None, range=Optional[Union[str, "ImplementationStatus"]])
+slots.aimsRole__aims_role_authorities = Slot(uri=ISO42001.aims_role_authorities, name="aimsRole__aims_role_authorities", curie=ISO42001.curie('aims_role_authorities'),
+                   model_uri=ISO42001.aimsRole__aims_role_authorities, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.completion_date = Slot(uri=ISO42001.completion_date, name="completion_date", curie=ISO42001.curie('completion_date'),
-                   model_uri=ISO42001.completion_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsRole__aims_role_ensures_conformity = Slot(uri=ISO42001.aims_role_ensures_conformity, name="aimsRole__aims_role_ensures_conformity", curie=ISO42001.curie('aims_role_ensures_conformity'),
+                   model_uri=ISO42001.aimsRole__aims_role_ensures_conformity, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ai_system_impact_assessment_process = Slot(uri=ISO42001.ai_system_impact_assessment_process, name="ai_system_impact_assessment_process", curie=ISO42001.curie('ai_system_impact_assessment_process'),
-                   model_uri=ISO42001.ai_system_impact_assessment_process, domain=None, range=Optional[Union[str, AISystemImpactAssessmentProcessId]])
+slots.aimsRole__aims_role_reports_performance = Slot(uri=ISO42001.aims_role_reports_performance, name="aimsRole__aims_role_reports_performance", curie=ISO42001.curie('aims_role_reports_performance'),
+                   model_uri=ISO42001.aimsRole__aims_role_reports_performance, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.ai_system_impact_assessments = Slot(uri=ISO42001.ai_system_impact_assessments, name="ai_system_impact_assessments", curie=ISO42001.curie('ai_system_impact_assessments'),
-                   model_uri=ISO42001.ai_system_impact_assessments, domain=None, range=Optional[Union[Union[str, AISystemImpactAssessmentId], list[Union[str, AISystemImpactAssessmentId]]]])
+slots.aimsRole__aims_role_accountability = Slot(uri=ISO42001.aims_role_accountability, name="aimsRole__aims_role_accountability", curie=ISO42001.curie('aims_role_accountability'),
+                   model_uri=ISO42001.aimsRole__aims_role_accountability, domain=None, range=Optional[str])
 
-slots.dimensions_in_scope = Slot(uri=ISO42001.dimensions_in_scope, name="dimensions_in_scope", curie=ISO42001.curie('dimensions_in_scope'),
-                   model_uri=ISO42001.dimensions_in_scope, domain=None, range=Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]])
+slots.aimsRole__aims_role_holders = Slot(uri=ISO42001.aims_role_holders, name="aimsRole__aims_role_holders", curie=ISO42001.curie('aims_role_holders'),
+                   model_uri=ISO42001.aimsRole__aims_role_holders, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.linkage_to_risk_assessment = Slot(uri=ISO42001.linkage_to_risk_assessment, name="linkage_to_risk_assessment", curie=ISO42001.curie('linkage_to_risk_assessment'),
-                   model_uri=ISO42001.linkage_to_risk_assessment, domain=None, range=Optional[str])
+slots.aimsRole__aims_role_delegation = Slot(uri=ISO42001.aims_role_delegation, name="aimsRole__aims_role_delegation", curie=ISO42001.curie('aims_role_delegation'),
+                   model_uri=ISO42001.aimsRole__aims_role_delegation, domain=None, range=Optional[str])
 
-slots.technical_context = Slot(uri=ISO42001.technical_context, name="technical_context", curie=ISO42001.curie('technical_context'),
-                   model_uri=ISO42001.technical_context, domain=None, range=Optional[str])
+slots.aimsRole__aims_role_reports_to = Slot(uri=ISO42001.aims_role_reports_to, name="aimsRole__aims_role_reports_to", curie=ISO42001.curie('aims_role_reports_to'),
+                   model_uri=ISO42001.aimsRole__aims_role_reports_to, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
 
-slots.societal_context = Slot(uri=ISO42001.societal_context, name="societal_context", curie=ISO42001.curie('societal_context'),
-                   model_uri=ISO42001.societal_context, domain=None, range=Optional[str])
+slots.aimsObjective__aims_objective_purpose = Slot(uri=ISO42001.aims_objective_purpose, name="aimsObjective__aims_objective_purpose", curie=ISO42001.curie('aims_objective_purpose'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_purpose, domain=None, range=Optional[Union[str, "AimsObjectivePurpose"]])
 
-slots.applicable_jurisdictions = Slot(uri=ISO42001.applicable_jurisdictions, name="applicable_jurisdictions", curie=ISO42001.curie('applicable_jurisdictions'),
-                   model_uri=ISO42001.applicable_jurisdictions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsObjective__aims_objective_statement = Slot(uri=ISO42001.aims_objective_statement, name="aimsObjective__aims_objective_statement", curie=ISO42001.curie('aims_objective_statement'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_statement, domain=None, range=Optional[str])
 
-slots.dimensions_assessed = Slot(uri=ISO42001.dimensions_assessed, name="dimensions_assessed", curie=ISO42001.curie('dimensions_assessed'),
-                   model_uri=ISO42001.dimensions_assessed, domain=None, range=Optional[Union[Union[str, "ImpactAssessmentDimension"], list[Union[str, "ImpactAssessmentDimension"]]]])
+slots.aimsObjective__aims_objective_target = Slot(uri=ISO42001.aims_objective_target, name="aimsObjective__aims_objective_target", curie=ISO42001.curie('aims_objective_target'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_target, domain=None, range=Optional[str])
 
-slots.identified_consequences = Slot(uri=ISO42001.identified_consequences, name="identified_consequences", curie=ISO42001.curie('identified_consequences'),
-                   model_uri=ISO42001.identified_consequences, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsObjective__aims_objective_current_value = Slot(uri=ISO42001.aims_objective_current_value, name="aimsObjective__aims_objective_current_value", curie=ISO42001.curie('aims_objective_current_value'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_current_value, domain=None, range=Optional[str])
 
-slots.mitigations = Slot(uri=ISO42001.mitigations, name="mitigations", curie=ISO42001.curie('mitigations'),
-                   model_uri=ISO42001.mitigations, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsObjective__aims_objective_metric = Slot(uri=ISO42001.aims_objective_metric, name="aimsObjective__aims_objective_metric", curie=ISO42001.curie('aims_objective_metric'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_metric, domain=None, range=Optional[str])
 
-slots.shared_with_parties = Slot(uri=ISO42001.shared_with_parties, name="shared_with_parties", curie=ISO42001.curie('shared_with_parties'),
-                   model_uri=ISO42001.shared_with_parties, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsObjective__aims_objective_measurement_method = Slot(uri=ISO42001.aims_objective_measurement_method, name="aimsObjective__aims_objective_measurement_method", curie=ISO42001.curie('aims_objective_measurement_method'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_measurement_method, domain=None, range=Optional[str])
 
-slots.statement_of_applicability = Slot(uri=ISO42001.statement_of_applicability, name="statement_of_applicability", curie=ISO42001.curie('statement_of_applicability'),
-                   model_uri=ISO42001.statement_of_applicability, domain=None, range=Optional[Union[str, StatementOfApplicabilityId]])
+slots.aimsObjective__aims_objective_measurement_frequency = Slot(uri=ISO42001.aims_objective_measurement_frequency, name="aimsObjective__aims_objective_measurement_frequency", curie=ISO42001.curie('aims_objective_measurement_frequency'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_measurement_frequency, domain=None, range=Optional[str])
 
-slots.soa_entries = Slot(uri=ISO42001.soa_entries, name="soa_entries", curie=ISO42001.curie('soa_entries'),
-                   model_uri=ISO42001.soa_entries, domain=None, range=Optional[Union[Union[dict, SoAEntry], list[Union[dict, SoAEntry]]]])
+slots.aimsObjective__aims_objective_target_date = Slot(uri=ISO42001.aims_objective_target_date, name="aimsObjective__aims_objective_target_date", curie=ISO42001.curie('aims_objective_target_date'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_target_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.total_controls = Slot(uri=ISO42001.total_controls, name="total_controls", curie=ISO42001.curie('total_controls'),
-                   model_uri=ISO42001.total_controls, domain=None, range=Optional[int])
+slots.aimsObjective__aims_objective_achievement = Slot(uri=ISO42001.aims_objective_achievement, name="aimsObjective__aims_objective_achievement", curie=ISO42001.curie('aims_objective_achievement'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_achievement, domain=None, range=Optional[str])
 
-slots.implemented_count = Slot(uri=ISO42001.implemented_count, name="implemented_count", curie=ISO42001.curie('implemented_count'),
-                   model_uri=ISO42001.implemented_count, domain=None, range=Optional[int])
+slots.aimsObjective__aims_objective_risks = Slot(uri=ISO42001.aims_objective_risks, name="aimsObjective__aims_objective_risks", curie=ISO42001.curie('aims_objective_risks'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_risks, domain=None, range=Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]])
 
-slots.planned_count = Slot(uri=ISO42001.planned_count, name="planned_count", curie=ISO42001.curie('planned_count'),
-                   model_uri=ISO42001.planned_count, domain=None, range=Optional[int])
+slots.aimsObjective__aims_objective_action_plan = Slot(uri=ISO42001.aims_objective_action_plan, name="aimsObjective__aims_objective_action_plan", curie=ISO42001.curie('aims_objective_action_plan'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_action_plan, domain=None, range=Optional[str])
 
-slots.not_applicable_count = Slot(uri=ISO42001.not_applicable_count, name="not_applicable_count", curie=ISO42001.curie('not_applicable_count'),
-                   model_uri=ISO42001.not_applicable_count, domain=None, range=Optional[int])
+slots.aimsObjective__aims_objective_resources = Slot(uri=ISO42001.aims_objective_resources, name="aimsObjective__aims_objective_resources", curie=ISO42001.curie('aims_objective_resources'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_resources, domain=None, range=Optional[str])
 
-slots.last_review_date = Slot(uri=ISO42001.last_review_date, name="last_review_date", curie=ISO42001.curie('last_review_date'),
-                   model_uri=ISO42001.last_review_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsObjective__aims_objective_evaluation = Slot(uri=ISO42001.aims_objective_evaluation, name="aimsObjective__aims_objective_evaluation", curie=ISO42001.curie('aims_objective_evaluation'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_evaluation, domain=None, range=Optional[str])
 
-slots.control_reference = Slot(uri=ISO42001.control_reference, name="control_reference", curie=ISO42001.curie('control_reference'),
-                   model_uri=ISO42001.control_reference, domain=None, range=Optional[Union[str, AIReferenceControlId]])
+slots.aimsObjective__aims_objective_communication = Slot(uri=ISO42001.aims_objective_communication, name="aimsObjective__aims_objective_communication", curie=ISO42001.curie('aims_objective_communication'),
+                   model_uri=ISO42001.aimsObjective__aims_objective_communication, domain=None, range=Optional[str])
 
-slots.is_applicable = Slot(uri=ISO42001.is_applicable, name="is_applicable", curie=ISO42001.curie('is_applicable'),
-                   model_uri=ISO42001.is_applicable, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsPlannedAction__aims_planned_action_risks = Slot(uri=ISO42001.aims_planned_action_risks, name="aimsPlannedAction__aims_planned_action_risks", curie=ISO42001.curie('aims_planned_action_risks'),
+                   model_uri=ISO42001.aimsPlannedAction__aims_planned_action_risks, domain=None, range=Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]])
 
-slots.inclusion_justification = Slot(uri=ISO42001.inclusion_justification, name="inclusion_justification", curie=ISO42001.curie('inclusion_justification'),
-                   model_uri=ISO42001.inclusion_justification, domain=None, range=Optional[str])
+slots.aimsPlannedAction__aims_planned_action_opportunities = Slot(uri=ISO42001.aims_planned_action_opportunities, name="aimsPlannedAction__aims_planned_action_opportunities", curie=ISO42001.curie('aims_planned_action_opportunities'),
+                   model_uri=ISO42001.aimsPlannedAction__aims_planned_action_opportunities, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.exclusion_justification = Slot(uri=ISO42001.exclusion_justification, name="exclusion_justification", curie=ISO42001.curie('exclusion_justification'),
-                   model_uri=ISO42001.exclusion_justification, domain=None, range=Optional[str])
+slots.aimsPlannedAction__aims_planned_action_integration = Slot(uri=ISO42001.aims_planned_action_integration, name="aimsPlannedAction__aims_planned_action_integration", curie=ISO42001.curie('aims_planned_action_integration'),
+                   model_uri=ISO42001.aimsPlannedAction__aims_planned_action_integration, domain=None, range=Optional[str])
 
-slots.implementation_evidence = Slot(uri=ISO42001.implementation_evidence, name="implementation_evidence", curie=ISO42001.curie('implementation_evidence'),
-                   model_uri=ISO42001.implementation_evidence, domain=None, range=Optional[str])
+slots.aimsPlannedAction__aims_planned_action_effectiveness = Slot(uri=ISO42001.aims_planned_action_effectiveness, name="aimsPlannedAction__aims_planned_action_effectiveness", curie=ISO42001.curie('aims_planned_action_effectiveness'),
+                   model_uri=ISO42001.aimsPlannedAction__aims_planned_action_effectiveness, domain=None, range=Optional[str])
 
-slots.target_implementation_date = Slot(uri=ISO42001.target_implementation_date, name="target_implementation_date", curie=ISO42001.curie('target_implementation_date'),
-                   model_uri=ISO42001.target_implementation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsRiskAssessmentProcess__aims_risk_criteria = Slot(uri=ISO42001.aims_risk_criteria, name="aimsRiskAssessmentProcess__aims_risk_criteria", curie=ISO42001.curie('aims_risk_criteria'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_criteria, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.reference_controls = Slot(uri=ISO42001.reference_controls, name="reference_controls", curie=ISO42001.curie('reference_controls'),
-                   model_uri=ISO42001.reference_controls, domain=None, range=Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]])
+slots.aimsRiskAssessmentProcess__aims_risk_policy_alignment = Slot(uri=ISO42001.aims_risk_policy_alignment, name="aimsRiskAssessmentProcess__aims_risk_policy_alignment", curie=ISO42001.curie('aims_risk_policy_alignment'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_policy_alignment, domain=None, range=Optional[str])
 
-slots.control_id = Slot(uri=ISO42001.control_id, name="control_id", curie=ISO42001.curie('control_id'),
-                   model_uri=ISO42001.control_id, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^A\.[0-9]{1,2}(\.[0-9]{1,2})*$'))
+slots.aimsRiskAssessmentProcess__aims_risk_comparability = Slot(uri=ISO42001.aims_risk_comparability, name="aimsRiskAssessmentProcess__aims_risk_comparability", curie=ISO42001.curie('aims_risk_comparability'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_comparability, domain=None, range=Optional[str])
 
-slots.control_title = Slot(uri=ISO42001.control_title, name="control_title", curie=ISO42001.curie('control_title'),
-                   model_uri=ISO42001.control_title, domain=None, range=Optional[str])
+slots.aimsRiskAssessmentProcess__aims_risk_method = Slot(uri=ISO42001.aims_risk_method, name="aimsRiskAssessmentProcess__aims_risk_method", curie=ISO42001.curie('aims_risk_method'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_method, domain=None, range=Optional[str])
 
-slots.control_family = Slot(uri=ISO42001.control_family, name="control_family", curie=ISO42001.curie('control_family'),
-                   model_uri=ISO42001.control_family, domain=None, range=Optional[Union[str, "AIControlFamily"]])
+slots.aimsRiskAssessmentProcess__aims_risk_likelihood_scale = Slot(uri=ISO42001.aims_risk_likelihood_scale, name="aimsRiskAssessmentProcess__aims_risk_likelihood_scale", curie=ISO42001.curie('aims_risk_likelihood_scale'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_likelihood_scale, domain=None, range=Optional[str])
 
-slots.control_text = Slot(uri=ISO42001.control_text, name="control_text", curie=ISO42001.curie('control_text'),
-                   model_uri=ISO42001.control_text, domain=None, range=Optional[str])
+slots.aimsRiskAssessmentProcess__aims_risk_consequence_scale = Slot(uri=ISO42001.aims_risk_consequence_scale, name="aimsRiskAssessmentProcess__aims_risk_consequence_scale", curie=ISO42001.curie('aims_risk_consequence_scale'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_consequence_scale, domain=None, range=Optional[str])
 
-slots.implementation_guidance = Slot(uri=ISO42001.implementation_guidance, name="implementation_guidance", curie=ISO42001.curie('implementation_guidance'),
-                   model_uri=ISO42001.implementation_guidance, domain=None, range=Optional[str])
+slots.aimsRiskAssessmentProcess__aims_risk_matrix = Slot(uri=ISO42001.aims_risk_matrix, name="aimsRiskAssessmentProcess__aims_risk_matrix", curie=ISO42001.curie('aims_risk_matrix'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_matrix, domain=None, range=Optional[str])
 
-slots.related_controls = Slot(uri=ISO42001.related_controls, name="related_controls", curie=ISO42001.curie('related_controls'),
-                   model_uri=ISO42001.related_controls, domain=None, range=Optional[Union[Union[str, AIReferenceControlId], list[Union[str, AIReferenceControlId]]]])
+slots.aimsRiskAssessmentProcess__aims_risk_prioritization = Slot(uri=ISO42001.aims_risk_prioritization, name="aimsRiskAssessmentProcess__aims_risk_prioritization", curie=ISO42001.curie('aims_risk_prioritization'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_prioritization, domain=None, range=Optional[str])
 
-slots.applicable_risk_sources = Slot(uri=ISO42001.applicable_risk_sources, name="applicable_risk_sources", curie=ISO42001.curie('applicable_risk_sources'),
-                   model_uri=ISO42001.applicable_risk_sources, domain=None, range=Optional[Union[Union[str, "AIRiskSourceCategory"], list[Union[str, "AIRiskSourceCategory"]]]])
+slots.aimsRiskAssessmentProcess__aims_risk_assessment_interval = Slot(uri=ISO42001.aims_risk_assessment_interval, name="aimsRiskAssessmentProcess__aims_risk_assessment_interval", curie=ISO42001.curie('aims_risk_assessment_interval'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_assessment_interval, domain=None, range=Optional[Union[str, AimsDuration]])
 
-slots.applicable_objectives = Slot(uri=ISO42001.applicable_objectives, name="applicable_objectives", curie=ISO42001.curie('applicable_objectives'),
-                   model_uri=ISO42001.applicable_objectives, domain=None, range=Optional[Union[Union[str, "AIObjectiveCategory"], list[Union[str, "AIObjectiveCategory"]]]])
+slots.aimsRiskAssessmentProcess__aims_risk_assessment_triggers = Slot(uri=ISO42001.aims_risk_assessment_triggers, name="aimsRiskAssessmentProcess__aims_risk_assessment_triggers", curie=ISO42001.curie('aims_risk_assessment_triggers'),
+                   model_uri=ISO42001.aimsRiskAssessmentProcess__aims_risk_assessment_triggers, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.control_owner = Slot(uri=ISO42001.control_owner, name="control_owner", curie=ISO42001.curie('control_owner'),
-                   model_uri=ISO42001.control_owner, domain=None, range=Optional[str])
+slots.aimsRiskAssessment__aims_assessment_scope = Slot(uri=ISO42001.aims_assessment_scope, name="aimsRiskAssessment__aims_assessment_scope", curie=ISO42001.curie('aims_assessment_scope'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_scope, domain=None, range=Optional[str])
 
-slots.implementation_date = Slot(uri=ISO42001.implementation_date, name="implementation_date", curie=ISO42001.curie('implementation_date'),
-                   model_uri=ISO42001.implementation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsRiskAssessment__aims_assessment_date = Slot(uri=ISO42001.aims_assessment_date, name="aimsRiskAssessment__aims_assessment_date", curie=ISO42001.curie('aims_assessment_date'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.effectiveness_rating = Slot(uri=ISO42001.effectiveness_rating, name="effectiveness_rating", curie=ISO42001.curie('effectiveness_rating'),
-                   model_uri=ISO42001.effectiveness_rating, domain=None, range=Optional[str])
+slots.aimsRiskAssessment__aims_assessment_assessor = Slot(uri=ISO42001.aims_assessment_assessor, name="aimsRiskAssessment__aims_assessment_assessor", curie=ISO42001.curie('aims_assessment_assessor'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_assessor, domain=None, range=Optional[str])
 
-slots.last_test_date = Slot(uri=ISO42001.last_test_date, name="last_test_date", curie=ISO42001.curie('last_test_date'),
-                   model_uri=ISO42001.last_test_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsRiskAssessment__aims_assessment_method_used = Slot(uri=ISO42001.aims_assessment_method_used, name="aimsRiskAssessment__aims_assessment_method_used", curie=ISO42001.curie('aims_assessment_method_used'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_method_used, domain=None, range=Optional[str])
 
-slots.evidence_references = Slot(uri=ISO42001.evidence_references, name="evidence_references", curie=ISO42001.curie('evidence_references'),
-                   model_uri=ISO42001.evidence_references, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRiskAssessment__aims_assessment_risks = Slot(uri=ISO42001.aims_assessment_risks, name="aimsRiskAssessment__aims_assessment_risks", curie=ISO42001.curie('aims_assessment_risks'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_risks, domain=None, range=Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]])
 
-slots.ai_systems = Slot(uri=ISO42001.ai_systems, name="ai_systems", curie=ISO42001.curie('ai_systems'),
-                   model_uri=ISO42001.ai_systems, domain=None, range=Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]])
+slots.aimsRiskAssessment__aims_assessment_impact_assessments = Slot(uri=ISO42001.aims_assessment_impact_assessments, name="aimsRiskAssessment__aims_assessment_impact_assessments", curie=ISO42001.curie('aims_assessment_impact_assessments'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_impact_assessments, domain=None, range=Optional[Union[Union[str, AimsImpactAssessmentAimsId], list[Union[str, AimsImpactAssessmentAimsId]]]])
 
-slots.ai_system_purpose = Slot(uri=ISO42001.ai_system_purpose, name="ai_system_purpose", curie=ISO42001.curie('ai_system_purpose'),
-                   model_uri=ISO42001.ai_system_purpose, domain=None, range=Optional[str])
+slots.aimsRiskAssessment__aims_assessment_summary = Slot(uri=ISO42001.aims_assessment_summary, name="aimsRiskAssessment__aims_assessment_summary", curie=ISO42001.curie('aims_assessment_summary'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_summary, domain=None, range=Optional[str])
 
-slots.intended_uses = Slot(uri=ISO42001.intended_uses, name="intended_uses", curie=ISO42001.curie('intended_uses'),
-                   model_uri=ISO42001.intended_uses, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRiskAssessment__aims_assessment_recommendations = Slot(uri=ISO42001.aims_assessment_recommendations, name="aimsRiskAssessment__aims_assessment_recommendations", curie=ISO42001.curie('aims_assessment_recommendations'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_recommendations, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.foreseeable_misuse = Slot(uri=ISO42001.foreseeable_misuse, name="foreseeable_misuse", curie=ISO42001.curie('foreseeable_misuse'),
-                   model_uri=ISO42001.foreseeable_misuse, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRiskAssessment__aims_assessment_next_date = Slot(uri=ISO42001.aims_assessment_next_date, name="aimsRiskAssessment__aims_assessment_next_date", curie=ISO42001.curie('aims_assessment_next_date'),
+                   model_uri=ISO42001.aimsRiskAssessment__aims_assessment_next_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.application_domain = Slot(uri=ISO42001.application_domain, name="application_domain", curie=ISO42001.curie('application_domain'),
-                   model_uri=ISO42001.application_domain, domain=None, range=Optional[str])
+slots.aimsRisk__aims_risk_source = Slot(uri=ISO42001.aims_risk_source, name="aimsRisk__aims_risk_source", curie=ISO42001.curie('aims_risk_source'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_source, domain=None, range=Optional[str])
 
-slots.deployment_context = Slot(uri=ISO42001.deployment_context, name="deployment_context", curie=ISO42001.curie('deployment_context'),
-                   model_uri=ISO42001.deployment_context, domain=None, range=Optional[str])
+slots.aimsRisk__aims_risk_objectives = Slot(uri=ISO42001.aims_risk_objectives, name="aimsRisk__aims_risk_objectives", curie=ISO42001.curie('aims_risk_objectives'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_objectives, domain=None, range=Optional[Union[Union[str, AimsObjectiveAimsId], list[Union[str, AimsObjectiveAimsId]]]])
 
-slots.lifecycle_stage = Slot(uri=ISO42001.lifecycle_stage, name="lifecycle_stage", curie=ISO42001.curie('lifecycle_stage'),
-                   model_uri=ISO42001.lifecycle_stage, domain=None, range=Optional[Union[str, "AISystemLifecycleStage"]])
+slots.aimsRisk__aims_risk_consequences_for_organization = Slot(uri=ISO42001.aims_risk_consequences_for_organization, name="aimsRisk__aims_risk_consequences_for_organization", curie=ISO42001.curie('aims_risk_consequences_for_organization'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_consequences_for_organization, domain=None, range=Optional[str])
 
-slots.organization_role = Slot(uri=ISO42001.organization_role, name="organization_role", curie=ISO42001.curie('organization_role'),
-                   model_uri=ISO42001.organization_role, domain=None, range=Optional[Union[str, "AIOrganizationalRole"]])
+slots.aimsRisk__aims_risk_consequences_for_individuals = Slot(uri=ISO42001.aims_risk_consequences_for_individuals, name="aimsRisk__aims_risk_consequences_for_individuals", curie=ISO42001.curie('aims_risk_consequences_for_individuals'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_consequences_for_individuals, domain=None, range=Optional[str])
 
-slots.autonomy_level = Slot(uri=ISO42001.autonomy_level, name="autonomy_level", curie=ISO42001.curie('autonomy_level'),
-                   model_uri=ISO42001.autonomy_level, domain=None, range=Optional[str])
+slots.aimsRisk__aims_risk_consequences_for_societies = Slot(uri=ISO42001.aims_risk_consequences_for_societies, name="aimsRisk__aims_risk_consequences_for_societies", curie=ISO42001.curie('aims_risk_consequences_for_societies'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_consequences_for_societies, domain=None, range=Optional[str])
 
-slots.learning_mode = Slot(uri=ISO42001.learning_mode, name="learning_mode", curie=ISO42001.curie('learning_mode'),
-                   model_uri=ISO42001.learning_mode, domain=None, range=Optional[Union[str, "LearningParadigm"]])
+slots.aimsRisk__aims_risk_owner = Slot(uri=ISO42001.aims_risk_owner, name="aimsRisk__aims_risk_owner", curie=ISO42001.curie('aims_risk_owner'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_owner, domain=None, range=Optional[str])
 
-slots.data_resources = Slot(uri=ISO42001.data_resources, name="data_resources", curie=ISO42001.curie('data_resources'),
-                   model_uri=ISO42001.data_resources, domain=None, range=Optional[Union[Union[str, DataResourceId], list[Union[str, DataResourceId]]]])
+slots.aimsRisk__aims_risk_likelihood = Slot(uri=ISO42001.aims_risk_likelihood, name="aimsRisk__aims_risk_likelihood", curie=ISO42001.curie('aims_risk_likelihood'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_likelihood, domain=None, range=Optional[Union[str, "AimsLikelihood"]])
 
-slots.tooling_resources = Slot(uri=ISO42001.tooling_resources, name="tooling_resources", curie=ISO42001.curie('tooling_resources'),
-                   model_uri=ISO42001.tooling_resources, domain=None, range=Optional[Union[Union[str, ToolingResourceId], list[Union[str, ToolingResourceId]]]])
+slots.aimsRisk__aims_risk_consequence = Slot(uri=ISO42001.aims_risk_consequence, name="aimsRisk__aims_risk_consequence", curie=ISO42001.curie('aims_risk_consequence'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_consequence, domain=None, range=Optional[Union[str, "AimsConsequence"]])
 
-slots.computing_resources = Slot(uri=ISO42001.computing_resources, name="computing_resources", curie=ISO42001.curie('computing_resources'),
-                   model_uri=ISO42001.computing_resources, domain=None, range=Optional[Union[Union[str, ComputingResourceId], list[Union[str, ComputingResourceId]]]])
+slots.aimsRisk__aims_risk_inherent_level = Slot(uri=ISO42001.aims_risk_inherent_level, name="aimsRisk__aims_risk_inherent_level", curie=ISO42001.curie('aims_risk_inherent_level'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_inherent_level, domain=None, range=Optional[Union[str, "AimsRiskLevel"]])
 
-slots.human_resources = Slot(uri=ISO42001.human_resources, name="human_resources", curie=ISO42001.curie('human_resources'),
-                   model_uri=ISO42001.human_resources, domain=None, range=Optional[Union[Union[str, HumanResourceId], list[Union[str, HumanResourceId]]]])
+slots.aimsRisk__aims_risk_existing_controls = Slot(uri=ISO42001.aims_risk_existing_controls, name="aimsRisk__aims_risk_existing_controls", curie=ISO42001.curie('aims_risk_existing_controls'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_existing_controls, domain=None, range=Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]])
 
-slots.technical_documentation = Slot(uri=ISO42001.technical_documentation, name="technical_documentation", curie=ISO42001.curie('technical_documentation'),
-                   model_uri=ISO42001.technical_documentation, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRisk__aims_risk_residual_level = Slot(uri=ISO42001.aims_risk_residual_level, name="aimsRisk__aims_risk_residual_level", curie=ISO42001.curie('aims_risk_residual_level'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_residual_level, domain=None, range=Optional[Union[str, "AimsRiskLevel"]])
 
-slots.event_log_policy = Slot(uri=ISO42001.event_log_policy, name="event_log_policy", curie=ISO42001.curie('event_log_policy'),
-                   model_uri=ISO42001.event_log_policy, domain=None, range=Optional[str])
+slots.aimsRisk__aims_risk_acceptable = Slot(uri=ISO42001.aims_risk_acceptable, name="aimsRisk__aims_risk_acceptable", curie=ISO42001.curie('aims_risk_acceptable'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_acceptable, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.related_impact_assessments = Slot(uri=ISO42001.related_impact_assessments, name="related_impact_assessments", curie=ISO42001.curie('related_impact_assessments'),
-                   model_uri=ISO42001.related_impact_assessments, domain=None, range=Optional[Union[Union[str, AISystemImpactAssessmentId], list[Union[str, AISystemImpactAssessmentId]]]])
+slots.aimsRisk__aims_risk_treatment_option = Slot(uri=ISO42001.aims_risk_treatment_option, name="aimsRisk__aims_risk_treatment_option", curie=ISO42001.curie('aims_risk_treatment_option'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_treatment_option, domain=None, range=Optional[Union[str, "AimsRiskTreatmentOption"]])
 
-slots.supplier_relationships = Slot(uri=ISO42001.supplier_relationships, name="supplier_relationships", curie=ISO42001.curie('supplier_relationships'),
-                   model_uri=ISO42001.supplier_relationships, domain=None, range=Optional[Union[Union[str, SupplierRelationshipId], list[Union[str, SupplierRelationshipId]]]])
+slots.aimsRisk__aims_risk_treatment_priority = Slot(uri=ISO42001.aims_risk_treatment_priority, name="aimsRisk__aims_risk_treatment_priority", curie=ISO42001.curie('aims_risk_treatment_priority'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_treatment_priority, domain=None, range=Optional[str])
 
-slots.customer_relationships = Slot(uri=ISO42001.customer_relationships, name="customer_relationships", curie=ISO42001.curie('customer_relationships'),
-                   model_uri=ISO42001.customer_relationships, domain=None, range=Optional[Union[Union[str, CustomerRelationshipId], list[Union[str, CustomerRelationshipId]]]])
+slots.aimsRisk__aims_risk_impact_assessments = Slot(uri=ISO42001.aims_risk_impact_assessments, name="aimsRisk__aims_risk_impact_assessments", curie=ISO42001.curie('aims_risk_impact_assessments'),
+                   model_uri=ISO42001.aimsRisk__aims_risk_impact_assessments, domain=None, range=Optional[Union[Union[str, AimsImpactAssessmentAimsId], list[Union[str, AimsImpactAssessmentAimsId]]]])
 
-slots.data_resource_category = Slot(uri=ISO42001.data_resource_category, name="data_resource_category", curie=ISO42001.curie('data_resource_category'),
-                   model_uri=ISO42001.data_resource_category, domain=None, range=Optional[Union[str, "DataResourceCategory"]])
+slots.aimsRiskTreatmentProcess__aims_treatment_options_guidance = Slot(uri=ISO42001.aims_treatment_options_guidance, name="aimsRiskTreatmentProcess__aims_treatment_options_guidance", curie=ISO42001.curie('aims_treatment_options_guidance'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_options_guidance, domain=None, range=Optional[str])
 
-slots.source = Slot(uri=ISO42001.source, name="source", curie=ISO42001.curie('source'),
-                   model_uri=ISO42001.source, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentProcess__aims_treatment_control_selection = Slot(uri=ISO42001.aims_treatment_control_selection, name="aimsRiskTreatmentProcess__aims_treatment_control_selection", curie=ISO42001.curie('aims_treatment_control_selection'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_control_selection, domain=None, range=Optional[str])
 
-slots.acquisition_method = Slot(uri=ISO42001.acquisition_method, name="acquisition_method", curie=ISO42001.curie('acquisition_method'),
-                   model_uri=ISO42001.acquisition_method, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentProcess__aims_treatment_annex_a_comparison = Slot(uri=ISO42001.aims_treatment_annex_a_comparison, name="aimsRiskTreatmentProcess__aims_treatment_annex_a_comparison", curie=ISO42001.curie('aims_treatment_annex_a_comparison'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_annex_a_comparison, domain=None, range=Optional[str])
 
-slots.data_quality_requirements = Slot(uri=ISO42001.data_quality_requirements, name="data_quality_requirements", curie=ISO42001.curie('data_quality_requirements'),
-                   model_uri=ISO42001.data_quality_requirements, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRiskTreatmentProcess__aims_treatment_additional_controls = Slot(uri=ISO42001.aims_treatment_additional_controls, name="aimsRiskTreatmentProcess__aims_treatment_additional_controls", curie=ISO42001.curie('aims_treatment_additional_controls'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_additional_controls, domain=None, range=Optional[str])
 
-slots.data_quality_metrics = Slot(uri=ISO42001.data_quality_metrics, name="data_quality_metrics", curie=ISO42001.curie('data_quality_metrics'),
-                   model_uri=ISO42001.data_quality_metrics, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRiskTreatmentProcess__aims_treatment_annex_b_use = Slot(uri=ISO42001.aims_treatment_annex_b_use, name="aimsRiskTreatmentProcess__aims_treatment_annex_b_use", curie=ISO42001.curie('aims_treatment_annex_b_use'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_annex_b_use, domain=None, range=Optional[str])
 
-slots.data_provenance = Slot(uri=ISO42001.data_provenance, name="data_provenance", curie=ISO42001.curie('data_provenance'),
-                   model_uri=ISO42001.data_provenance, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentProcess__aims_treatment_soa_template = Slot(uri=ISO42001.aims_treatment_soa_template, name="aimsRiskTreatmentProcess__aims_treatment_soa_template", curie=ISO42001.curie('aims_treatment_soa_template'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_soa_template, domain=None, range=Optional[str])
 
-slots.labelling_process = Slot(uri=ISO42001.labelling_process, name="labelling_process", curie=ISO42001.curie('labelling_process'),
-                   model_uri=ISO42001.labelling_process, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentProcess__aims_treatment_approval_workflow = Slot(uri=ISO42001.aims_treatment_approval_workflow, name="aimsRiskTreatmentProcess__aims_treatment_approval_workflow", curie=ISO42001.curie('aims_treatment_approval_workflow'),
+                   model_uri=ISO42001.aimsRiskTreatmentProcess__aims_treatment_approval_workflow, domain=None, range=Optional[str])
 
-slots.data_preparation_methods = Slot(uri=ISO42001.data_preparation_methods, name="data_preparation_methods", curie=ISO42001.curie('data_preparation_methods'),
-                   model_uri=ISO42001.data_preparation_methods, domain=None, range=Optional[Union[Union[str, "DataPreparationMethod"], list[Union[str, "DataPreparationMethod"]]]])
+slots.aimsRiskTreatmentPlan__aims_plan_scope = Slot(uri=ISO42001.aims_plan_scope, name="aimsRiskTreatmentPlan__aims_plan_scope", curie=ISO42001.curie('aims_plan_scope'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_scope, domain=None, range=Optional[str])
 
-slots.last_updated_date = Slot(uri=ISO42001.last_updated_date, name="last_updated_date", curie=ISO42001.curie('last_updated_date'),
-                   model_uri=ISO42001.last_updated_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsRiskTreatmentPlan__aims_plan_risks = Slot(uri=ISO42001.aims_plan_risks, name="aimsRiskTreatmentPlan__aims_plan_risks", curie=ISO42001.curie('aims_plan_risks'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_risks, domain=None, range=Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]])
 
-slots.known_bias_issues = Slot(uri=ISO42001.known_bias_issues, name="known_bias_issues", curie=ISO42001.curie('known_bias_issues'),
-                   model_uri=ISO42001.known_bias_issues, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsRiskTreatmentPlan__aims_plan_actions = Slot(uri=ISO42001.aims_plan_actions, name="aimsRiskTreatmentPlan__aims_plan_actions", curie=ISO42001.curie('aims_plan_actions'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_actions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.retention_policy = Slot(uri=ISO42001.retention_policy, name="retention_policy", curie=ISO42001.curie('retention_policy'),
-                   model_uri=ISO42001.retention_policy, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_controls = Slot(uri=ISO42001.aims_plan_controls, name="aimsRiskTreatmentPlan__aims_plan_controls", curie=ISO42001.curie('aims_plan_controls'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_controls, domain=None, range=Optional[Union[Union[str, AimsControlAimsId], list[Union[str, AimsControlAimsId]]]])
 
-slots.data_classification = Slot(uri=ISO42001.data_classification, name="data_classification", curie=ISO42001.curie('data_classification'),
-                   model_uri=ISO42001.data_classification, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_resources = Slot(uri=ISO42001.aims_plan_resources, name="aimsRiskTreatmentPlan__aims_plan_resources", curie=ISO42001.curie('aims_plan_resources'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_resources, domain=None, range=Optional[str])
 
-slots.tool_category = Slot(uri=ISO42001.tool_category, name="tool_category", curie=ISO42001.curie('tool_category'),
-                   model_uri=ISO42001.tool_category, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_responsible_parties = Slot(uri=ISO42001.aims_plan_responsible_parties, name="aimsRiskTreatmentPlan__aims_plan_responsible_parties", curie=ISO42001.curie('aims_plan_responsible_parties'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_responsible_parties, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.tool_version = Slot(uri=ISO42001.tool_version, name="tool_version", curie=ISO42001.curie('tool_version'),
-                   model_uri=ISO42001.tool_version, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_timeline = Slot(uri=ISO42001.aims_plan_timeline, name="aimsRiskTreatmentPlan__aims_plan_timeline", curie=ISO42001.curie('aims_plan_timeline'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_timeline, domain=None, range=Optional[str])
 
-slots.vendor = Slot(uri=ISO42001.vendor, name="vendor", curie=ISO42001.curie('vendor'),
-                   model_uri=ISO42001.vendor, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_approver = Slot(uri=ISO42001.aims_plan_approver, name="aimsRiskTreatmentPlan__aims_plan_approver", curie=ISO42001.curie('aims_plan_approver'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_approver, domain=None, range=Optional[str])
 
-slots.license_terms = Slot(uri=ISO42001.license_terms, name="license_terms", curie=ISO42001.curie('license_terms'),
-                   model_uri=ISO42001.license_terms, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_residual_risk_acceptance = Slot(uri=ISO42001.aims_plan_residual_risk_acceptance, name="aimsRiskTreatmentPlan__aims_plan_residual_risk_acceptance", curie=ISO42001.curie('aims_plan_residual_risk_acceptance'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_residual_risk_acceptance, domain=None, range=Optional[str])
 
-slots.usage_purpose = Slot(uri=ISO42001.usage_purpose, name="usage_purpose", curie=ISO42001.curie('usage_purpose'),
-                   model_uri=ISO42001.usage_purpose, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_effectiveness = Slot(uri=ISO42001.aims_plan_effectiveness, name="aimsRiskTreatmentPlan__aims_plan_effectiveness", curie=ISO42001.curie('aims_plan_effectiveness'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_effectiveness, domain=None, range=Optional[str])
 
-slots.resource_class = Slot(uri=ISO42001.resource_class, name="resource_class", curie=ISO42001.curie('resource_class'),
-                   model_uri=ISO42001.resource_class, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_revalidation = Slot(uri=ISO42001.aims_plan_revalidation, name="aimsRiskTreatmentPlan__aims_plan_revalidation", curie=ISO42001.curie('aims_plan_revalidation'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_revalidation, domain=None, range=Optional[str])
 
-slots.location = Slot(uri=ISO42001.location, name="location", curie=ISO42001.curie('location'),
-                   model_uri=ISO42001.location, domain=None, range=Optional[str])
+slots.aimsRiskTreatmentPlan__aims_plan_completion_date = Slot(uri=ISO42001.aims_plan_completion_date, name="aimsRiskTreatmentPlan__aims_plan_completion_date", curie=ISO42001.curie('aims_plan_completion_date'),
+                   model_uri=ISO42001.aimsRiskTreatmentPlan__aims_plan_completion_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.environment_type = Slot(uri=ISO42001.environment_type, name="environment_type", curie=ISO42001.curie('environment_type'),
-                   model_uri=ISO42001.environment_type, domain=None, range=Optional[str])
+slots.aimsImpactAssessmentProcess__aims_impact_process_triggers = Slot(uri=ISO42001.aims_impact_process_triggers, name="aimsImpactAssessmentProcess__aims_impact_process_triggers", curie=ISO42001.curie('aims_impact_process_triggers'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_triggers, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.lifecycle_responsibilities = Slot(uri=ISO42001.lifecycle_responsibilities, name="lifecycle_responsibilities", curie=ISO42001.curie('lifecycle_responsibilities'),
-                   model_uri=ISO42001.lifecycle_responsibilities, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessmentProcess__aims_impact_process_interval = Slot(uri=ISO42001.aims_impact_process_interval, name="aimsImpactAssessmentProcess__aims_impact_process_interval", curie=ISO42001.curie('aims_impact_process_interval'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_interval, domain=None, range=Optional[Union[str, AimsDuration]])
 
-slots.resources = Slot(uri=ISO42001.resources, name="resources", curie=ISO42001.curie('resources'),
-                   model_uri=ISO42001.resources, domain=None, range=Optional[Union[Union[str, ResourceId], list[Union[str, ResourceId]]]])
+slots.aimsImpactAssessmentProcess__aims_impact_process_steps = Slot(uri=ISO42001.aims_impact_process_steps, name="aimsImpactAssessmentProcess__aims_impact_process_steps", curie=ISO42001.curie('aims_impact_process_steps'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_steps, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.resource_type = Slot(uri=ISO42001.resource_type, name="resource_type", curie=ISO42001.curie('resource_type'),
-                   model_uri=ISO42001.resource_type, domain=None, range=Optional[str])
+slots.aimsImpactAssessmentProcess__aims_impact_process_assessors = Slot(uri=ISO42001.aims_impact_process_assessors, name="aimsImpactAssessmentProcess__aims_impact_process_assessors", curie=ISO42001.curie('aims_impact_process_assessors'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_assessors, domain=None, range=Optional[str])
 
-slots.quantity = Slot(uri=ISO42001.quantity, name="quantity", curie=ISO42001.curie('quantity'),
-                   model_uri=ISO42001.quantity, domain=None, range=Optional[str])
+slots.aimsImpactAssessmentProcess__aims_impact_process_use = Slot(uri=ISO42001.aims_impact_process_use, name="aimsImpactAssessmentProcess__aims_impact_process_use", curie=ISO42001.curie('aims_impact_process_use'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_use, domain=None, range=Optional[str])
 
-slots.allocation_date = Slot(uri=ISO42001.allocation_date, name="allocation_date", curie=ISO42001.curie('allocation_date'),
-                   model_uri=ISO42001.allocation_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsImpactAssessmentProcess__aims_impact_process_subjects = Slot(uri=ISO42001.aims_impact_process_subjects, name="aimsImpactAssessmentProcess__aims_impact_process_subjects", curie=ISO42001.curie('aims_impact_process_subjects'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_subjects, domain=None, range=Optional[Union[Union[str, "AimsImpactSubject"], list[Union[str, "AimsImpactSubject"]]]])
 
-slots.allocated_to = Slot(uri=ISO42001.allocated_to, name="allocated_to", curie=ISO42001.curie('allocated_to'),
-                   model_uri=ISO42001.allocated_to, domain=None, range=Optional[str])
+slots.aimsImpactAssessmentProcess__aims_impact_process_areas = Slot(uri=ISO42001.aims_impact_process_areas, name="aimsImpactAssessmentProcess__aims_impact_process_areas", curie=ISO42001.curie('aims_impact_process_areas'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_areas, domain=None, range=Optional[Union[Union[str, "AimsImpactArea"], list[Union[str, "AimsImpactArea"]]]])
 
-slots.cost = Slot(uri=ISO42001.cost, name="cost", curie=ISO42001.curie('cost'),
-                   model_uri=ISO42001.cost, domain=None, range=Optional[str])
+slots.aimsImpactAssessmentProcess__aims_impact_process_retention = Slot(uri=ISO42001.aims_impact_process_retention, name="aimsImpactAssessmentProcess__aims_impact_process_retention", curie=ISO42001.curie('aims_impact_process_retention'),
+                   model_uri=ISO42001.aimsImpactAssessmentProcess__aims_impact_process_retention, domain=None, range=Optional[Union[str, AimsDuration]])
 
-slots.availability_status = Slot(uri=ISO42001.availability_status, name="availability_status", curie=ISO42001.curie('availability_status'),
-                   model_uri=ISO42001.availability_status, domain=None, range=Optional[str])
+slots.aimsImpactAssessment__aims_impact_scope = Slot(uri=ISO42001.aims_impact_scope, name="aimsImpactAssessment__aims_impact_scope", curie=ISO42001.curie('aims_impact_scope'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_scope, domain=None, range=Optional[str])
 
-slots.competence_records = Slot(uri=ISO42001.competence_records, name="competence_records", curie=ISO42001.curie('competence_records'),
-                   model_uri=ISO42001.competence_records, domain=None, range=Optional[Union[Union[str, CompetenceRecordId], list[Union[str, CompetenceRecordId]]]])
+slots.aimsImpactAssessment__aims_impact_discipline = Slot(uri=ISO42001.aims_impact_discipline, name="aimsImpactAssessment__aims_impact_discipline", curie=ISO42001.curie('aims_impact_discipline'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_discipline, domain=None, range=Optional[str])
 
-slots.person_name = Slot(uri=ISO42001.person_name, name="person_name", curie=ISO42001.curie('person_name'),
-                   model_uri=ISO42001.person_name, domain=None, range=Optional[str])
+slots.aimsImpactAssessment__aims_impact_date = Slot(uri=ISO42001.aims_impact_date, name="aimsImpactAssessment__aims_impact_date", curie=ISO42001.curie('aims_impact_date'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.person_role = Slot(uri=ISO42001.person_role, name="person_role", curie=ISO42001.curie('person_role'),
-                   model_uri=ISO42001.person_role, domain=None, range=Optional[str])
+slots.aimsImpactAssessment__aims_impact_assessor = Slot(uri=ISO42001.aims_impact_assessor, name="aimsImpactAssessment__aims_impact_assessor", curie=ISO42001.curie('aims_impact_assessor'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_assessor, domain=None, range=Optional[str])
 
-slots.required_competencies = Slot(uri=ISO42001.required_competencies, name="required_competencies", curie=ISO42001.curie('required_competencies'),
-                   model_uri=ISO42001.required_competencies, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_intended_use = Slot(uri=ISO42001.aims_impact_intended_use, name="aimsImpactAssessment__aims_impact_intended_use", curie=ISO42001.curie('aims_impact_intended_use'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_intended_use, domain=None, range=Optional[str])
 
-slots.education_records = Slot(uri=ISO42001.education_records, name="education_records", curie=ISO42001.curie('education_records'),
-                   model_uri=ISO42001.education_records, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_foreseeable_misuse = Slot(uri=ISO42001.aims_impact_foreseeable_misuse, name="aimsImpactAssessment__aims_impact_foreseeable_misuse", curie=ISO42001.curie('aims_impact_foreseeable_misuse'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_foreseeable_misuse, domain=None, range=Optional[str])
 
-slots.training_records = Slot(uri=ISO42001.training_records, name="training_records", curie=ISO42001.curie('training_records'),
-                   model_uri=ISO42001.training_records, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_technical_context = Slot(uri=ISO42001.aims_impact_technical_context, name="aimsImpactAssessment__aims_impact_technical_context", curie=ISO42001.curie('aims_impact_technical_context'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_technical_context, domain=None, range=Optional[str])
 
-slots.experience_records = Slot(uri=ISO42001.experience_records, name="experience_records", curie=ISO42001.curie('experience_records'),
-                   model_uri=ISO42001.experience_records, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_societal_context = Slot(uri=ISO42001.aims_impact_societal_context, name="aimsImpactAssessment__aims_impact_societal_context", curie=ISO42001.curie('aims_impact_societal_context'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_societal_context, domain=None, range=Optional[str])
 
-slots.competency_assessment_date = Slot(uri=ISO42001.competency_assessment_date, name="competency_assessment_date", curie=ISO42001.curie('competency_assessment_date'),
-                   model_uri=ISO42001.competency_assessment_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsImpactAssessment__aims_impact_jurisdictions = Slot(uri=ISO42001.aims_impact_jurisdictions, name="aimsImpactAssessment__aims_impact_jurisdictions", curie=ISO42001.curie('aims_impact_jurisdictions'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_jurisdictions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.competency_gaps = Slot(uri=ISO42001.competency_gaps, name="competency_gaps", curie=ISO42001.curie('competency_gaps'),
-                   model_uri=ISO42001.competency_gaps, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_demographic_groups = Slot(uri=ISO42001.aims_impact_demographic_groups, name="aimsImpactAssessment__aims_impact_demographic_groups", curie=ISO42001.curie('aims_impact_demographic_groups'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_demographic_groups, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.development_actions = Slot(uri=ISO42001.development_actions, name="development_actions", curie=ISO42001.curie('development_actions'),
-                   model_uri=ISO42001.development_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_system_complexity = Slot(uri=ISO42001.aims_impact_system_complexity, name="aimsImpactAssessment__aims_impact_system_complexity", curie=ISO42001.curie('aims_impact_system_complexity'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_system_complexity, domain=None, range=Optional[str])
 
-slots.awareness_program = Slot(uri=ISO42001.awareness_program, name="awareness_program", curie=ISO42001.curie('awareness_program'),
-                   model_uri=ISO42001.awareness_program, domain=None, range=Optional[Union[str, AwarenessProgramId]])
+slots.aimsImpactAssessment__aims_impact_human_role = Slot(uri=ISO42001.aims_impact_human_role, name="aimsImpactAssessment__aims_impact_human_role", curie=ISO42001.curie('aims_impact_human_role'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_human_role, domain=None, range=Optional[str])
 
-slots.awareness_topics = Slot(uri=ISO42001.awareness_topics, name="awareness_topics", curie=ISO42001.curie('awareness_topics'),
-                   model_uri=ISO42001.awareness_topics, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_failures = Slot(uri=ISO42001.aims_impact_failures, name="aimsImpactAssessment__aims_impact_failures", curie=ISO42001.curie('aims_impact_failures'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_failures, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.delivery_methods = Slot(uri=ISO42001.delivery_methods, name="delivery_methods", curie=ISO42001.curie('delivery_methods'),
-                   model_uri=ISO42001.delivery_methods, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsImpactAssessment__aims_impact_workforce = Slot(uri=ISO42001.aims_impact_workforce, name="aimsImpactAssessment__aims_impact_workforce", curie=ISO42001.curie('aims_impact_workforce'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_workforce, domain=None, range=Optional[str])
 
-slots.frequency = Slot(uri=ISO42001.frequency, name="frequency", curie=ISO42001.curie('frequency'),
-                   model_uri=ISO42001.frequency, domain=None, range=Optional[str])
+slots.aimsImpactAssessment__aims_impact_findings = Slot(uri=ISO42001.aims_impact_findings, name="aimsImpactAssessment__aims_impact_findings", curie=ISO42001.curie('aims_impact_findings'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_findings, domain=None, range=Optional[Union[Union[dict, AimsIdentifiedImpact], list[Union[dict, AimsIdentifiedImpact]]]])
 
-slots.completion_tracking = Slot(uri=ISO42001.completion_tracking, name="completion_tracking", curie=ISO42001.curie('completion_tracking'),
-                   model_uri=ISO42001.completion_tracking, domain=None, range=Optional[str])
+slots.aimsImpactAssessment__aims_impact_shared_with = Slot(uri=ISO42001.aims_impact_shared_with, name="aimsImpactAssessment__aims_impact_shared_with", curie=ISO42001.curie('aims_impact_shared_with'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_shared_with, domain=None, range=Optional[Union[Union[str, AimsInterestedPartyAimsId], list[Union[str, AimsInterestedPartyAimsId]]]])
 
-slots.effectiveness_measures = Slot(uri=ISO42001.effectiveness_measures, name="effectiveness_measures", curie=ISO42001.curie('effectiveness_measures'),
-                   model_uri=ISO42001.effectiveness_measures, domain=None, range=Optional[str])
+slots.aimsImpactAssessment__aims_impact_next_date = Slot(uri=ISO42001.aims_impact_next_date, name="aimsImpactAssessment__aims_impact_next_date", curie=ISO42001.curie('aims_impact_next_date'),
+                   model_uri=ISO42001.aimsImpactAssessment__aims_impact_next_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.communication_plan = Slot(uri=ISO42001.communication_plan, name="communication_plan", curie=ISO42001.curie('communication_plan'),
-                   model_uri=ISO42001.communication_plan, domain=None, range=Optional[Union[str, CommunicationPlanId]])
+slots.aimsIdentifiedImpact__aims_identified_impact_subject = Slot(uri=ISO42001.aims_identified_impact_subject, name="aimsIdentifiedImpact__aims_identified_impact_subject", curie=ISO42001.curie('aims_identified_impact_subject'),
+                   model_uri=ISO42001.aimsIdentifiedImpact__aims_identified_impact_subject, domain=None, range=Union[str, "AimsImpactSubject"])
 
-slots.communication_items = Slot(uri=ISO42001.communication_items, name="communication_items", curie=ISO42001.curie('communication_items'),
-                   model_uri=ISO42001.communication_items, domain=None, range=Optional[Union[Union[dict, CommunicationItem], list[Union[dict, CommunicationItem]]]])
+slots.aimsIdentifiedImpact__aims_identified_impact_area = Slot(uri=ISO42001.aims_identified_impact_area, name="aimsIdentifiedImpact__aims_identified_impact_area", curie=ISO42001.curie('aims_identified_impact_area'),
+                   model_uri=ISO42001.aimsIdentifiedImpact__aims_identified_impact_area, domain=None, range=Optional[Union[str, "AimsImpactArea"]])
 
-slots.subject = Slot(uri=ISO42001.subject, name="subject", curie=ISO42001.curie('subject'),
-                   model_uri=ISO42001.subject, domain=None, range=Optional[str])
+slots.aimsIdentifiedImpact__aims_identified_impact_direction = Slot(uri=ISO42001.aims_identified_impact_direction, name="aimsIdentifiedImpact__aims_identified_impact_direction", curie=ISO42001.curie('aims_identified_impact_direction'),
+                   model_uri=ISO42001.aimsIdentifiedImpact__aims_identified_impact_direction, domain=None, range=Optional[Union[str, "AimsImpactDirection"]])
 
-slots.purpose = Slot(uri=ISO42001.purpose, name="purpose", curie=ISO42001.curie('purpose'),
-                   model_uri=ISO42001.purpose, domain=None, range=Optional[str])
+slots.aimsIdentifiedImpact__aims_identified_impact_text = Slot(uri=ISO42001.aims_identified_impact_text, name="aimsIdentifiedImpact__aims_identified_impact_text", curie=ISO42001.curie('aims_identified_impact_text'),
+                   model_uri=ISO42001.aimsIdentifiedImpact__aims_identified_impact_text, domain=None, range=str,
+                   pattern=re.compile(r'^\s*\S'))
 
-slots.audience = Slot(uri=ISO42001.audience, name="audience", curie=ISO42001.curie('audience'),
-                   model_uri=ISO42001.audience, domain=None, range=Optional[str])
+slots.aimsIdentifiedImpact__aims_identified_impact_mitigation = Slot(uri=ISO42001.aims_identified_impact_mitigation, name="aimsIdentifiedImpact__aims_identified_impact_mitigation", curie=ISO42001.curie('aims_identified_impact_mitigation'),
+                   model_uri=ISO42001.aimsIdentifiedImpact__aims_identified_impact_mitigation, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.method = Slot(uri=ISO42001.method, name="method", curie=ISO42001.curie('method'),
-                   model_uri=ISO42001.method, domain=None, range=Optional[str])
+slots.aimsStatementOfApplicability__aims_soa_entries = Slot(uri=ISO42001.aims_soa_entries, name="aimsStatementOfApplicability__aims_soa_entries", curie=ISO42001.curie('aims_soa_entries'),
+                   model_uri=ISO42001.aimsStatementOfApplicability__aims_soa_entries, domain=None, range=Optional[Union[Union[dict, AimsApplicabilityEntry], list[Union[dict, AimsApplicabilityEntry]]]])
 
-slots.responsible_party = Slot(uri=ISO42001.responsible_party, name="responsible_party", curie=ISO42001.curie('responsible_party'),
-                   model_uri=ISO42001.responsible_party, domain=None, range=Optional[str])
+slots.aimsApplicabilityEntry__aims_entry_type = Slot(uri=ISO42001.aims_entry_type, name="aimsApplicabilityEntry__aims_entry_type", curie=ISO42001.curie('aims_entry_type'),
+                   model_uri=ISO42001.aimsApplicabilityEntry__aims_entry_type, domain=None, range=Optional[str])
 
-slots.records_required = Slot(uri=ISO42001.records_required, name="records_required", curie=ISO42001.curie('records_required'),
-                   model_uri=ISO42001.records_required, domain=None, range=Optional[str])
+slots.aimsApplicabilityEntry__aims_entry_justification = Slot(uri=ISO42001.aims_entry_justification, name="aimsApplicabilityEntry__aims_entry_justification", curie=ISO42001.curie('aims_entry_justification'),
+                   model_uri=ISO42001.aimsApplicabilityEntry__aims_entry_justification, domain=None, range=str,
+                   pattern=re.compile(r'^\s*\S'))
 
-slots.documented_information_register = Slot(uri=ISO42001.documented_information_register, name="documented_information_register", curie=ISO42001.curie('documented_information_register'),
-                   model_uri=ISO42001.documented_information_register, domain=None, range=Optional[Union[Union[str, DocumentedInformationId], list[Union[str, DocumentedInformationId]]]])
+slots.aimsIncludedControl__aims_included_control = Slot(uri=ISO42001.aims_included_control, name="aimsIncludedControl__aims_included_control", curie=ISO42001.curie('aims_included_control'),
+                   model_uri=ISO42001.aimsIncludedControl__aims_included_control, domain=None, range=Optional[Union[str, AimsControlAimsId]])
 
-slots.operational_procedures = Slot(uri=ISO42001.operational_procedures, name="operational_procedures", curie=ISO42001.curie('operational_procedures'),
-                   model_uri=ISO42001.operational_procedures, domain=None, range=Optional[Union[Union[str, OperationalProcedureId], list[Union[str, OperationalProcedureId]]]])
+slots.aimsIncludedControl__aims_included_risks = Slot(uri=ISO42001.aims_included_risks, name="aimsIncludedControl__aims_included_risks", curie=ISO42001.curie('aims_included_risks'),
+                   model_uri=ISO42001.aimsIncludedControl__aims_included_risks, domain=None, range=Optional[Union[Union[str, AimsRiskAimsId], list[Union[str, AimsRiskAimsId]]]])
 
-slots.procedure_scope = Slot(uri=ISO42001.procedure_scope, name="procedure_scope", curie=ISO42001.curie('procedure_scope'),
-                   model_uri=ISO42001.procedure_scope, domain=None, range=Optional[str])
+slots.aimsIncludedControl__aims_included_evidence = Slot(uri=ISO42001.aims_included_evidence, name="aimsIncludedControl__aims_included_evidence", curie=ISO42001.curie('aims_included_evidence'),
+                   model_uri=ISO42001.aimsIncludedControl__aims_included_evidence, domain=None, range=Optional[str])
 
-slots.process_criteria = Slot(uri=ISO42001.process_criteria, name="process_criteria", curie=ISO42001.curie('process_criteria'),
-                   model_uri=ISO42001.process_criteria, domain=None, range=Optional[str])
+slots.aimsIncludedControl__aims_included_target_date = Slot(uri=ISO42001.aims_included_target_date, name="aimsIncludedControl__aims_included_target_date", curie=ISO42001.curie('aims_included_target_date'),
+                   model_uri=ISO42001.aimsIncludedControl__aims_included_target_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.control_measures = Slot(uri=ISO42001.control_measures, name="control_measures", curie=ISO42001.curie('control_measures'),
-                   model_uri=ISO42001.control_measures, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsControl__aims_control_area = Slot(uri=ISO42001.aims_control_area, name="aimsControl__aims_control_area", curie=ISO42001.curie('aims_control_area'),
+                   model_uri=ISO42001.aimsControl__aims_control_area, domain=None, range=Optional[Union[str, "AimsControlArea"]])
 
-slots.responsible_roles = Slot(uri=ISO42001.responsible_roles, name="responsible_roles", curie=ISO42001.curie('responsible_roles'),
-                   model_uri=ISO42001.responsible_roles, domain=None, range=Optional[Union[Union[str, RoleId], list[Union[str, RoleId]]]])
+slots.aimsControl__aims_control_text = Slot(uri=ISO42001.aims_control_text, name="aimsControl__aims_control_text", curie=ISO42001.curie('aims_control_text'),
+                   model_uri=ISO42001.aimsControl__aims_control_text, domain=None, range=Optional[str])
 
-slots.change_control_requirements = Slot(uri=ISO42001.change_control_requirements, name="change_control_requirements", curie=ISO42001.curie('change_control_requirements'),
-                   model_uri=ISO42001.change_control_requirements, domain=None, range=Optional[str])
+slots.aimsControl__aims_control_guidance = Slot(uri=ISO42001.aims_control_guidance, name="aimsControl__aims_control_guidance", curie=ISO42001.curie('aims_control_guidance'),
+                   model_uri=ISO42001.aimsControl__aims_control_guidance, domain=None, range=Optional[str])
 
-slots.monitoring_program = Slot(uri=ISO42001.monitoring_program, name="monitoring_program", curie=ISO42001.curie('monitoring_program'),
-                   model_uri=ISO42001.monitoring_program, domain=None, range=Optional[Union[str, MonitoringProgramId]])
+slots.aimsControl__aims_control_owner = Slot(uri=ISO42001.aims_control_owner, name="aimsControl__aims_control_owner", curie=ISO42001.curie('aims_control_owner'),
+                   model_uri=ISO42001.aimsControl__aims_control_owner, domain=None, range=Optional[str])
 
-slots.monitoring_items = Slot(uri=ISO42001.monitoring_items, name="monitoring_items", curie=ISO42001.curie('monitoring_items'),
-                   model_uri=ISO42001.monitoring_items, domain=None, range=Optional[Union[Union[dict, MonitoringItem], list[Union[dict, MonitoringItem]]]])
+slots.aimsControl__aims_control_implementation_date = Slot(uri=ISO42001.aims_control_implementation_date, name="aimsControl__aims_control_implementation_date", curie=ISO42001.curie('aims_control_implementation_date'),
+                   model_uri=ISO42001.aimsControl__aims_control_implementation_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.metric_name = Slot(uri=ISO42001.metric_name, name="metric_name", curie=ISO42001.curie('metric_name'),
-                   model_uri=ISO42001.metric_name, domain=None, range=Optional[str])
+slots.aimsControl__aims_control_effectiveness = Slot(uri=ISO42001.aims_control_effectiveness, name="aimsControl__aims_control_effectiveness", curie=ISO42001.curie('aims_control_effectiveness'),
+                   model_uri=ISO42001.aimsControl__aims_control_effectiveness, domain=None, range=Optional[str])
 
-slots.metric_description = Slot(uri=ISO42001.metric_description, name="metric_description", curie=ISO42001.curie('metric_description'),
-                   model_uri=ISO42001.metric_description, domain=None, range=Optional[str])
+slots.aimsControl__aims_control_last_tested = Slot(uri=ISO42001.aims_control_last_tested, name="aimsControl__aims_control_last_tested", curie=ISO42001.curie('aims_control_last_tested'),
+                   model_uri=ISO42001.aimsControl__aims_control_last_tested, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.analysis_frequency = Slot(uri=ISO42001.analysis_frequency, name="analysis_frequency", curie=ISO42001.curie('analysis_frequency'),
-                   model_uri=ISO42001.analysis_frequency, domain=None, range=Optional[str])
+slots.aimsControl__aims_control_evidence = Slot(uri=ISO42001.aims_control_evidence, name="aimsControl__aims_control_evidence", curie=ISO42001.curie('aims_control_evidence'),
+                   model_uri=ISO42001.aimsControl__aims_control_evidence, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.analyst = Slot(uri=ISO42001.analyst, name="analyst", curie=ISO42001.curie('analyst'),
-                   model_uri=ISO42001.analyst, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_intended_purpose = Slot(uri=ISO42001.aims_system_intended_purpose, name="aimsAiSystem__aims_system_intended_purpose", curie=ISO42001.curie('aims_system_intended_purpose'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_intended_purpose, domain=None, range=Optional[str])
 
-slots.target_threshold = Slot(uri=ISO42001.target_threshold, name="target_threshold", curie=ISO42001.curie('target_threshold'),
-                   model_uri=ISO42001.target_threshold, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_intended_uses = Slot(uri=ISO42001.aims_system_intended_uses, name="aimsAiSystem__aims_system_intended_uses", curie=ISO42001.curie('aims_system_intended_uses'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_intended_uses, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.alert_threshold = Slot(uri=ISO42001.alert_threshold, name="alert_threshold", curie=ISO42001.curie('alert_threshold'),
-                   model_uri=ISO42001.alert_threshold, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_foreseeable_misuse = Slot(uri=ISO42001.aims_system_foreseeable_misuse, name="aimsAiSystem__aims_system_foreseeable_misuse", curie=ISO42001.curie('aims_system_foreseeable_misuse'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_foreseeable_misuse, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.trend = Slot(uri=ISO42001.trend, name="trend", curie=ISO42001.curie('trend'),
-                   model_uri=ISO42001.trend, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_domain = Slot(uri=ISO42001.aims_system_domain, name="aimsAiSystem__aims_system_domain", curie=ISO42001.curie('aims_system_domain'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_domain, domain=None, range=Optional[str])
 
-slots.internal_audits = Slot(uri=ISO42001.internal_audits, name="internal_audits", curie=ISO42001.curie('internal_audits'),
-                   model_uri=ISO42001.internal_audits, domain=None, range=Optional[Union[Union[str, InternalAuditId], list[Union[str, InternalAuditId]]]])
+slots.aimsAiSystem__aims_system_deployment_context = Slot(uri=ISO42001.aims_system_deployment_context, name="aimsAiSystem__aims_system_deployment_context", curie=ISO42001.curie('aims_system_deployment_context'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_deployment_context, domain=None, range=Optional[str])
 
-slots.audit_reference = Slot(uri=ISO42001.audit_reference, name="audit_reference", curie=ISO42001.curie('audit_reference'),
-                   model_uri=ISO42001.audit_reference, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_life_cycle_stage = Slot(uri=ISO42001.aims_system_life_cycle_stage, name="aimsAiSystem__aims_system_life_cycle_stage", curie=ISO42001.curie('aims_system_life_cycle_stage'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_life_cycle_stage, domain=None, range=Optional[Union[str, "AimsLifecycleStage"]])
 
-slots.audit_type = Slot(uri=ISO42001.audit_type, name="audit_type", curie=ISO42001.curie('audit_type'),
-                   model_uri=ISO42001.audit_type, domain=None, range=Optional[Union[str, "AuditType"]])
+slots.aimsAiSystem__aims_system_organization_roles = Slot(uri=ISO42001.aims_system_organization_roles, name="aimsAiSystem__aims_system_organization_roles", curie=ISO42001.curie('aims_system_organization_roles'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_organization_roles, domain=None, range=Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]])
 
-slots.audit_scope = Slot(uri=ISO42001.audit_scope, name="audit_scope", curie=ISO42001.curie('audit_scope'),
-                   model_uri=ISO42001.audit_scope, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_pii_roles = Slot(uri=ISO42001.aims_system_pii_roles, name="aimsAiSystem__aims_system_pii_roles", curie=ISO42001.curie('aims_system_pii_roles'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_pii_roles, domain=None, range=Optional[Union[Union[str, "AimsPiiRole"], list[Union[str, "AimsPiiRole"]]]])
 
-slots.audit_criteria = Slot(uri=ISO42001.audit_criteria, name="audit_criteria", curie=ISO42001.curie('audit_criteria'),
-                   model_uri=ISO42001.audit_criteria, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_rationale = Slot(uri=ISO42001.aims_system_rationale, name="aimsAiSystem__aims_system_rationale", curie=ISO42001.curie('aims_system_rationale'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_rationale, domain=None, range=Optional[str])
 
-slots.audit_objectives = Slot(uri=ISO42001.audit_objectives, name="audit_objectives", curie=ISO42001.curie('audit_objectives'),
-                   model_uri=ISO42001.audit_objectives, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_requirements = Slot(uri=ISO42001.aims_system_requirements, name="aimsAiSystem__aims_system_requirements", curie=ISO42001.curie('aims_system_requirements'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.audit_period_start = Slot(uri=ISO42001.audit_period_start, name="audit_period_start", curie=ISO42001.curie('audit_period_start'),
-                   model_uri=ISO42001.audit_period_start, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsAiSystem__aims_system_ml_approach = Slot(uri=ISO42001.aims_system_ml_approach, name="aimsAiSystem__aims_system_ml_approach", curie=ISO42001.curie('aims_system_ml_approach'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_ml_approach, domain=None, range=Optional[str])
 
-slots.audit_period_end = Slot(uri=ISO42001.audit_period_end, name="audit_period_end", curie=ISO42001.curie('audit_period_end'),
-                   model_uri=ISO42001.audit_period_end, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsAiSystem__aims_system_model_types = Slot(uri=ISO42001.aims_system_model_types, name="aimsAiSystem__aims_system_model_types", curie=ISO42001.curie('aims_system_model_types'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_model_types, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.lead_auditor = Slot(uri=ISO42001.lead_auditor, name="lead_auditor", curie=ISO42001.curie('lead_auditor'),
-                   model_uri=ISO42001.lead_auditor, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_continuous_learning = Slot(uri=ISO42001.aims_system_continuous_learning, name="aimsAiSystem__aims_system_continuous_learning", curie=ISO42001.curie('aims_system_continuous_learning'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_continuous_learning, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.audit_team = Slot(uri=ISO42001.audit_team, name="audit_team", curie=ISO42001.curie('audit_team'),
-                   model_uri=ISO42001.audit_team, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAiSystem__aims_system_automation_level = Slot(uri=ISO42001.aims_system_automation_level, name="aimsAiSystem__aims_system_automation_level", curie=ISO42001.curie('aims_system_automation_level'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_automation_level, domain=None, range=Optional[str])
 
-slots.auditee_representatives = Slot(uri=ISO42001.auditee_representatives, name="auditee_representatives", curie=ISO42001.curie('auditee_representatives'),
-                   model_uri=ISO42001.auditee_representatives, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAiSystem__aims_system_threats = Slot(uri=ISO42001.aims_system_threats, name="aimsAiSystem__aims_system_threats", curie=ISO42001.curie('aims_system_threats'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_threats, domain=None, range=Optional[Union[Union[str, "AimsAiThreat"], list[Union[str, "AimsAiThreat"]]]])
 
-slots.audit_plan = Slot(uri=ISO42001.audit_plan, name="audit_plan", curie=ISO42001.curie('audit_plan'),
-                   model_uri=ISO42001.audit_plan, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_verification_measures = Slot(uri=ISO42001.aims_system_verification_measures, name="aimsAiSystem__aims_system_verification_measures", curie=ISO42001.curie('aims_system_verification_measures'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_verification_measures, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.findings = Slot(uri=ISO42001.findings, name="findings", curie=ISO42001.curie('findings'),
-                   model_uri=ISO42001.findings, domain=None, range=Optional[Union[Union[str, AuditFindingId], list[Union[str, AuditFindingId]]]])
+slots.aimsAiSystem__aims_system_evaluation_criteria = Slot(uri=ISO42001.aims_system_evaluation_criteria, name="aimsAiSystem__aims_system_evaluation_criteria", curie=ISO42001.curie('aims_system_evaluation_criteria'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_evaluation_criteria, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.positive_observations = Slot(uri=ISO42001.positive_observations, name="positive_observations", curie=ISO42001.curie('positive_observations'),
-                   model_uri=ISO42001.positive_observations, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAiSystem__aims_system_release_criteria = Slot(uri=ISO42001.aims_system_release_criteria, name="aimsAiSystem__aims_system_release_criteria", curie=ISO42001.curie('aims_system_release_criteria'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_release_criteria, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.audit_conclusion = Slot(uri=ISO42001.audit_conclusion, name="audit_conclusion", curie=ISO42001.curie('audit_conclusion'),
-                   model_uri=ISO42001.audit_conclusion, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_deployment_plan = Slot(uri=ISO42001.aims_system_deployment_plan, name="aimsAiSystem__aims_system_deployment_plan", curie=ISO42001.curie('aims_system_deployment_plan'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_deployment_plan, domain=None, range=Optional[Union[str, AimsDocumentedInformationAimsId]])
 
-slots.report_date = Slot(uri=ISO42001.report_date, name="report_date", curie=ISO42001.curie('report_date'),
-                   model_uri=ISO42001.report_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsAiSystem__aims_system_operation_elements = Slot(uri=ISO42001.aims_system_operation_elements, name="aimsAiSystem__aims_system_operation_elements", curie=ISO42001.curie('aims_system_operation_elements'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_operation_elements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.report_distribution = Slot(uri=ISO42001.report_distribution, name="report_distribution", curie=ISO42001.curie('report_distribution'),
-                   model_uri=ISO42001.report_distribution, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAiSystem__aims_system_performance_metrics = Slot(uri=ISO42001.aims_system_performance_metrics, name="aimsAiSystem__aims_system_performance_metrics", curie=ISO42001.curie('aims_system_performance_metrics'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_performance_metrics, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.programme_period = Slot(uri=ISO42001.programme_period, name="programme_period", curie=ISO42001.curie('programme_period'),
-                   model_uri=ISO42001.programme_period, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_log_stages = Slot(uri=ISO42001.aims_system_log_stages, name="aimsAiSystem__aims_system_log_stages", curie=ISO42001.curie('aims_system_log_stages'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_log_stages, domain=None, range=Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]])
 
-slots.planned_audits = Slot(uri=ISO42001.planned_audits, name="planned_audits", curie=ISO42001.curie('planned_audits'),
-                   model_uri=ISO42001.planned_audits, domain=None, range=Optional[Union[Union[str, InternalAuditId], list[Union[str, InternalAuditId]]]])
+slots.aimsAiSystem__aims_system_log_contents = Slot(uri=ISO42001.aims_system_log_contents, name="aimsAiSystem__aims_system_log_contents", curie=ISO42001.curie('aims_system_log_contents'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_log_contents, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.audit_frequency_rationale = Slot(uri=ISO42001.audit_frequency_rationale, name="audit_frequency_rationale", curie=ISO42001.curie('audit_frequency_rationale'),
-                   model_uri=ISO42001.audit_frequency_rationale, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_log_retention = Slot(uri=ISO42001.aims_system_log_retention, name="aimsAiSystem__aims_system_log_retention", curie=ISO42001.curie('aims_system_log_retention'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_log_retention, domain=None, range=Optional[Union[str, AimsDuration]])
 
-slots.resource_requirements = Slot(uri=ISO42001.resource_requirements, name="resource_requirements", curie=ISO42001.curie('resource_requirements'),
-                   model_uri=ISO42001.resource_requirements, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_human_oversight_required = Slot(uri=ISO42001.aims_system_human_oversight_required, name="aimsAiSystem__aims_system_human_oversight_required", curie=ISO42001.curie('aims_system_human_oversight_required'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_human_oversight_required, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.auditor_qualifications = Slot(uri=ISO42001.auditor_qualifications, name="auditor_qualifications", curie=ISO42001.curie('auditor_qualifications'),
-                   model_uri=ISO42001.auditor_qualifications, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_human_oversight = Slot(uri=ISO42001.aims_system_human_oversight, name="aimsAiSystem__aims_system_human_oversight", curie=ISO42001.curie('aims_system_human_oversight'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_human_oversight, domain=None, range=Optional[str])
 
-slots.programme_status = Slot(uri=ISO42001.programme_status, name="programme_status", curie=ISO42001.curie('programme_status'),
-                   model_uri=ISO42001.programme_status, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_human_oversight_stages = Slot(uri=ISO42001.aims_system_human_oversight_stages, name="aimsAiSystem__aims_system_human_oversight_stages", curie=ISO42001.curie('aims_system_human_oversight_stages'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_human_oversight_stages, domain=None, range=Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]])
 
-slots.finding_type = Slot(uri=ISO42001.finding_type, name="finding_type", curie=ISO42001.curie('finding_type'),
-                   model_uri=ISO42001.finding_type, domain=None, range=Optional[Union[str, "AuditFindingType"]])
+slots.aimsAiSystem__aims_system_resources_used = Slot(uri=ISO42001.aims_system_resources_used, name="aimsAiSystem__aims_system_resources_used", curie=ISO42001.curie('aims_system_resources_used'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_resources_used, domain=None, range=Optional[Union[Union[str, AimsSystemResourceAimsId], list[Union[str, AimsSystemResourceAimsId]]]])
 
-slots.clause_reference = Slot(uri=ISO42001.clause_reference, name="clause_reference", curie=ISO42001.curie('clause_reference'),
-                   model_uri=ISO42001.clause_reference, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_technical_documents = Slot(uri=ISO42001.aims_system_technical_documents, name="aimsAiSystem__aims_system_technical_documents", curie=ISO42001.curie('aims_system_technical_documents'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_technical_documents, domain=None, range=Optional[Union[Union[str, AimsTechnicalDocumentationAimsId], list[Union[str, AimsTechnicalDocumentationAimsId]]]])
 
-slots.finding_description = Slot(uri=ISO42001.finding_description, name="finding_description", curie=ISO42001.curie('finding_description'),
-                   model_uri=ISO42001.finding_description, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_impact_assessments = Slot(uri=ISO42001.aims_system_impact_assessments, name="aimsAiSystem__aims_system_impact_assessments", curie=ISO42001.curie('aims_system_impact_assessments'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_impact_assessments, domain=None, range=Optional[Union[Union[str, AimsImpactAssessmentAimsId], list[Union[str, AimsImpactAssessmentAimsId]]]])
 
-slots.objective_evidence = Slot(uri=ISO42001.objective_evidence, name="objective_evidence", curie=ISO42001.curie('objective_evidence'),
-                   model_uri=ISO42001.objective_evidence, domain=None, range=Optional[str])
+slots.aimsAiSystem__aims_system_relationships = Slot(uri=ISO42001.aims_system_relationships, name="aimsAiSystem__aims_system_relationships", curie=ISO42001.curie('aims_system_relationships'),
+                   model_uri=ISO42001.aimsAiSystem__aims_system_relationships, domain=None, range=Optional[Union[Union[str, AimsThirdPartyRelationshipAimsId], list[Union[str, AimsThirdPartyRelationshipAimsId]]]])
 
-slots.root_cause_analysis = Slot(uri=ISO42001.root_cause_analysis, name="root_cause_analysis", curie=ISO42001.curie('root_cause_analysis'),
-                   model_uri=ISO42001.root_cause_analysis, domain=None, range=Optional[str])
+slots.aimsSystemResource__aims_resource_type = Slot(uri=ISO42001.aims_resource_type, name="aimsSystemResource__aims_resource_type", curie=ISO42001.curie('aims_resource_type'),
+                   model_uri=ISO42001.aimsSystemResource__aims_resource_type, domain=None, range=str)
 
-slots.risk_implication = Slot(uri=ISO42001.risk_implication, name="risk_implication", curie=ISO42001.curie('risk_implication'),
-                   model_uri=ISO42001.risk_implication, domain=None, range=Optional[str])
+slots.aimsSystemResource__aims_resource_provider = Slot(uri=ISO42001.aims_resource_provider, name="aimsSystemResource__aims_resource_provider", curie=ISO42001.curie('aims_resource_provider'),
+                   model_uri=ISO42001.aimsSystemResource__aims_resource_provider, domain=None, range=Optional[Union[str, "AimsResourceProvider"]])
 
-slots.recommended_action = Slot(uri=ISO42001.recommended_action, name="recommended_action", curie=ISO42001.curie('recommended_action'),
-                   model_uri=ISO42001.recommended_action, domain=None, range=Optional[str])
+slots.aimsComponentResource__aims_component_kind = Slot(uri=ISO42001.aims_component_kind, name="aimsComponentResource__aims_component_kind", curie=ISO42001.curie('aims_component_kind'),
+                   model_uri=ISO42001.aimsComponentResource__aims_component_kind, domain=None, range=Optional[str])
 
-slots.auditee_response = Slot(uri=ISO42001.auditee_response, name="auditee_response", curie=ISO42001.curie('auditee_response'),
-                   model_uri=ISO42001.auditee_response, domain=None, range=Optional[str])
+slots.aimsComponentResource__aims_component_integration = Slot(uri=ISO42001.aims_component_integration, name="aimsComponentResource__aims_component_integration", curie=ISO42001.curie('aims_component_integration'),
+                   model_uri=ISO42001.aimsComponentResource__aims_component_integration, domain=None, range=Optional[str])
 
-slots.linked_corrective_action = Slot(uri=ISO42001.linked_corrective_action, name="linked_corrective_action", curie=ISO42001.curie('linked_corrective_action'),
-                   model_uri=ISO42001.linked_corrective_action, domain=None, range=Optional[Union[str, CorrectiveActionId]])
+slots.aimsDataResource__aims_data_categories = Slot(uri=ISO42001.aims_data_categories, name="aimsDataResource__aims_data_categories", curie=ISO42001.curie('aims_data_categories'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_categories, domain=None, range=Optional[Union[Union[str, "AimsDataCategory"], list[Union[str, "AimsDataCategory"]]]])
 
-slots.closure_status = Slot(uri=ISO42001.closure_status, name="closure_status", curie=ISO42001.curie('closure_status'),
-                   model_uri=ISO42001.closure_status, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_kinds = Slot(uri=ISO42001.aims_data_kinds, name="aimsDataResource__aims_data_kinds", curie=ISO42001.curie('aims_data_kinds'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_kinds, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.closure_date = Slot(uri=ISO42001.closure_date, name="closure_date", curie=ISO42001.curie('closure_date'),
-                   model_uri=ISO42001.closure_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsDataResource__aims_data_intended_use = Slot(uri=ISO42001.aims_data_intended_use, name="aimsDataResource__aims_data_intended_use", curie=ISO42001.curie('aims_data_intended_use'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_intended_use, domain=None, range=Optional[str])
 
-slots.management_reviews = Slot(uri=ISO42001.management_reviews, name="management_reviews", curie=ISO42001.curie('management_reviews'),
-                   model_uri=ISO42001.management_reviews, domain=None, range=Optional[Union[Union[str, ManagementReviewId], list[Union[str, ManagementReviewId]]]])
+slots.aimsDataResource__aims_data_quantity = Slot(uri=ISO42001.aims_data_quantity, name="aimsDataResource__aims_data_quantity", curie=ISO42001.curie('aims_data_quantity'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_quantity, domain=None, range=Optional[str])
 
-slots.attendees = Slot(uri=ISO42001.attendees, name="attendees", curie=ISO42001.curie('attendees'),
-                   model_uri=ISO42001.attendees, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDataResource__aims_data_sources = Slot(uri=ISO42001.aims_data_sources, name="aimsDataResource__aims_data_sources", curie=ISO42001.curie('aims_data_sources'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_sources, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.previous_actions_status = Slot(uri=ISO42001.previous_actions_status, name="previous_actions_status", curie=ISO42001.curie('previous_actions_status'),
-                   model_uri=ISO42001.previous_actions_status, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_source_characteristics = Slot(uri=ISO42001.aims_data_source_characteristics, name="aimsDataResource__aims_data_source_characteristics", curie=ISO42001.curie('aims_data_source_characteristics'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_source_characteristics, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.context_changes = Slot(uri=ISO42001.context_changes, name="context_changes", curie=ISO42001.curie('context_changes'),
-                   model_uri=ISO42001.context_changes, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDataResource__aims_data_subject_demographics = Slot(uri=ISO42001.aims_data_subject_demographics, name="aimsDataResource__aims_data_subject_demographics", curie=ISO42001.curie('aims_data_subject_demographics'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_subject_demographics, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.interested_party_changes = Slot(uri=ISO42001.interested_party_changes, name="interested_party_changes", curie=ISO42001.curie('interested_party_changes'),
-                   model_uri=ISO42001.interested_party_changes, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDataResource__aims_data_prior_handling = Slot(uri=ISO42001.aims_data_prior_handling, name="aimsDataResource__aims_data_prior_handling", curie=ISO42001.curie('aims_data_prior_handling'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_prior_handling, domain=None, range=Optional[str])
 
-slots.performance_trends = Slot(uri=ISO42001.performance_trends, name="performance_trends", curie=ISO42001.curie('performance_trends'),
-                   model_uri=ISO42001.performance_trends, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_rights = Slot(uri=ISO42001.aims_data_rights, name="aimsDataResource__aims_data_rights", curie=ISO42001.curie('aims_data_rights'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_rights, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.audit_results_summary = Slot(uri=ISO42001.audit_results_summary, name="audit_results_summary", curie=ISO42001.curie('audit_results_summary'),
-                   model_uri=ISO42001.audit_results_summary, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_metadata = Slot(uri=ISO42001.aims_data_metadata, name="aimsDataResource__aims_data_metadata", curie=ISO42001.curie('aims_data_metadata'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_metadata, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.risk_assessment_results = Slot(uri=ISO42001.risk_assessment_results, name="risk_assessment_results", curie=ISO42001.curie('risk_assessment_results'),
-                   model_uri=ISO42001.risk_assessment_results, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_provenance = Slot(uri=ISO42001.aims_data_provenance, name="aimsDataResource__aims_data_provenance", curie=ISO42001.curie('aims_data_provenance'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_provenance, domain=None, range=Optional[str])
 
-slots.impact_assessment_results = Slot(uri=ISO42001.impact_assessment_results, name="impact_assessment_results", curie=ISO42001.curie('impact_assessment_results'),
-                   model_uri=ISO42001.impact_assessment_results, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_provenance_verification = Slot(uri=ISO42001.aims_data_provenance_verification, name="aimsDataResource__aims_data_provenance_verification", curie=ISO42001.curie('aims_data_provenance_verification'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_provenance_verification, domain=None, range=Optional[str])
 
-slots.improvement_opportunities = Slot(uri=ISO42001.improvement_opportunities, name="improvement_opportunities", curie=ISO42001.curie('improvement_opportunities'),
-                   model_uri=ISO42001.improvement_opportunities, domain=None, range=Optional[Union[Union[str, ImprovementOpportunityId], list[Union[str, ImprovementOpportunityId]]]])
+slots.aimsDataResource__aims_data_quality_requirements = Slot(uri=ISO42001.aims_data_quality_requirements, name="aimsDataResource__aims_data_quality_requirements", curie=ISO42001.curie('aims_data_quality_requirements'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_quality_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.decisions = Slot(uri=ISO42001.decisions, name="decisions", curie=ISO42001.curie('decisions'),
-                   model_uri=ISO42001.decisions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDataResource__aims_data_quality_results = Slot(uri=ISO42001.aims_data_quality_results, name="aimsDataResource__aims_data_quality_results", curie=ISO42001.curie('aims_data_quality_results'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_quality_results, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.action_items = Slot(uri=ISO42001.action_items, name="action_items", curie=ISO42001.curie('action_items'),
-                   model_uri=ISO42001.action_items, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsDataResource__aims_data_bias_issues = Slot(uri=ISO42001.aims_data_bias_issues, name="aimsDataResource__aims_data_bias_issues", curie=ISO42001.curie('aims_data_bias_issues'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_bias_issues, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.next_review_date = Slot(uri=ISO42001.next_review_date, name="next_review_date", curie=ISO42001.curie('next_review_date'),
-                   model_uri=ISO42001.next_review_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsDataResource__aims_data_representativeness = Slot(uri=ISO42001.aims_data_representativeness, name="aimsDataResource__aims_data_representativeness", curie=ISO42001.curie('aims_data_representativeness'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_representativeness, domain=None, range=Optional[str])
 
-slots.nonconformities = Slot(uri=ISO42001.nonconformities, name="nonconformities", curie=ISO42001.curie('nonconformities'),
-                   model_uri=ISO42001.nonconformities, domain=None, range=Optional[Union[Union[str, NonconformityId], list[Union[str, NonconformityId]]]])
+slots.aimsDataResource__aims_data_labelling_process = Slot(uri=ISO42001.aims_data_labelling_process, name="aimsDataResource__aims_data_labelling_process", curie=ISO42001.curie('aims_data_labelling_process'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_labelling_process, domain=None, range=Optional[str])
 
-slots.nonconformity_source = Slot(uri=ISO42001.nonconformity_source, name="nonconformity_source", curie=ISO42001.curie('nonconformity_source'),
-                   model_uri=ISO42001.nonconformity_source, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_preparation_criteria = Slot(uri=ISO42001.aims_data_preparation_criteria, name="aimsDataResource__aims_data_preparation_criteria", curie=ISO42001.curie('aims_data_preparation_criteria'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_preparation_criteria, domain=None, range=Optional[str])
 
-slots.detection_date = Slot(uri=ISO42001.detection_date, name="detection_date", curie=ISO42001.curie('detection_date'),
-                   model_uri=ISO42001.detection_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsDataResource__aims_data_preparation_methods = Slot(uri=ISO42001.aims_data_preparation_methods, name="aimsDataResource__aims_data_preparation_methods", curie=ISO42001.curie('aims_data_preparation_methods'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_preparation_methods, domain=None, range=Optional[Union[Union[str, "AimsDataPreparationMethod"], list[Union[str, "AimsDataPreparationMethod"]]]])
 
-slots.detected_by = Slot(uri=ISO42001.detected_by, name="detected_by", curie=ISO42001.curie('detected_by'),
-                   model_uri=ISO42001.detected_by, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_last_updated = Slot(uri=ISO42001.aims_data_last_updated, name="aimsDataResource__aims_data_last_updated", curie=ISO42001.curie('aims_data_last_updated'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_last_updated, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.requirement_violated = Slot(uri=ISO42001.requirement_violated, name="requirement_violated", curie=ISO42001.curie('requirement_violated'),
-                   model_uri=ISO42001.requirement_violated, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_retention = Slot(uri=ISO42001.aims_data_retention, name="aimsDataResource__aims_data_retention", curie=ISO42001.curie('aims_data_retention'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_retention, domain=None, range=Optional[str])
 
-slots.nonconformity_description = Slot(uri=ISO42001.nonconformity_description, name="nonconformity_description", curie=ISO42001.curie('nonconformity_description'),
-                   model_uri=ISO42001.nonconformity_description, domain=None, range=Optional[str])
+slots.aimsDataResource__aims_data_classification = Slot(uri=ISO42001.aims_data_classification, name="aimsDataResource__aims_data_classification", curie=ISO42001.curie('aims_data_classification'),
+                   model_uri=ISO42001.aimsDataResource__aims_data_classification, domain=None, range=Optional[str])
 
-slots.immediate_actions = Slot(uri=ISO42001.immediate_actions, name="immediate_actions", curie=ISO42001.curie('immediate_actions'),
-                   model_uri=ISO42001.immediate_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsToolingResource__aims_tool_category = Slot(uri=ISO42001.aims_tool_category, name="aimsToolingResource__aims_tool_category", curie=ISO42001.curie('aims_tool_category'),
+                   model_uri=ISO42001.aimsToolingResource__aims_tool_category, domain=None, range=Optional[str])
 
-slots.consequences_addressed = Slot(uri=ISO42001.consequences_addressed, name="consequences_addressed", curie=ISO42001.curie('consequences_addressed'),
-                   model_uri=ISO42001.consequences_addressed, domain=None, range=Optional[str])
+slots.aimsToolingResource__aims_tool_version = Slot(uri=ISO42001.aims_tool_version, name="aimsToolingResource__aims_tool_version", curie=ISO42001.curie('aims_tool_version'),
+                   model_uri=ISO42001.aimsToolingResource__aims_tool_version, domain=None, range=Optional[str])
 
-slots.root_cause = Slot(uri=ISO42001.root_cause, name="root_cause", curie=ISO42001.curie('root_cause'),
-                   model_uri=ISO42001.root_cause, domain=None, range=Optional[str])
+slots.aimsToolingResource__aims_tool_vendor = Slot(uri=ISO42001.aims_tool_vendor, name="aimsToolingResource__aims_tool_vendor", curie=ISO42001.curie('aims_tool_vendor'),
+                   model_uri=ISO42001.aimsToolingResource__aims_tool_vendor, domain=None, range=Optional[str])
 
-slots.similar_nonconformities_check = Slot(uri=ISO42001.similar_nonconformities_check, name="similar_nonconformities_check", curie=ISO42001.curie('similar_nonconformities_check'),
-                   model_uri=ISO42001.similar_nonconformities_check, domain=None, range=Optional[str])
+slots.aimsToolingResource__aims_tool_licence = Slot(uri=ISO42001.aims_tool_licence, name="aimsToolingResource__aims_tool_licence", curie=ISO42001.curie('aims_tool_licence'),
+                   model_uri=ISO42001.aimsToolingResource__aims_tool_licence, domain=None, range=Optional[str])
 
-slots.linked_corrective_actions = Slot(uri=ISO42001.linked_corrective_actions, name="linked_corrective_actions", curie=ISO42001.curie('linked_corrective_actions'),
-                   model_uri=ISO42001.linked_corrective_actions, domain=None, range=Optional[Union[Union[str, CorrectiveActionId], list[Union[str, CorrectiveActionId]]]])
+slots.aimsToolingResource__aims_tool_purpose = Slot(uri=ISO42001.aims_tool_purpose, name="aimsToolingResource__aims_tool_purpose", curie=ISO42001.curie('aims_tool_purpose'),
+                   model_uri=ISO42001.aimsToolingResource__aims_tool_purpose, domain=None, range=Optional[str])
 
-slots.closure_evidence = Slot(uri=ISO42001.closure_evidence, name="closure_evidence", curie=ISO42001.curie('closure_evidence'),
-                   model_uri=ISO42001.closure_evidence, domain=None, range=Optional[str])
+slots.aimsComputingResource__aims_computing_requirements = Slot(uri=ISO42001.aims_computing_requirements, name="aimsComputingResource__aims_computing_requirements", curie=ISO42001.curie('aims_computing_requirements'),
+                   model_uri=ISO42001.aimsComputingResource__aims_computing_requirements, domain=None, range=Optional[str])
 
-slots.corrective_actions = Slot(uri=ISO42001.corrective_actions, name="corrective_actions", curie=ISO42001.curie('corrective_actions'),
-                   model_uri=ISO42001.corrective_actions, domain=None, range=Optional[Union[Union[str, CorrectiveActionId], list[Union[str, CorrectiveActionId]]]])
+slots.aimsComputingResource__aims_computing_location = Slot(uri=ISO42001.aims_computing_location, name="aimsComputingResource__aims_computing_location", curie=ISO42001.curie('aims_computing_location'),
+                   model_uri=ISO42001.aimsComputingResource__aims_computing_location, domain=None, range=Optional[str])
 
-slots.linked_nonconformity = Slot(uri=ISO42001.linked_nonconformity, name="linked_nonconformity", curie=ISO42001.curie('linked_nonconformity'),
-                   model_uri=ISO42001.linked_nonconformity, domain=None, range=Optional[Union[str, NonconformityId]])
+slots.aimsComputingResource__aims_computing_processing = Slot(uri=ISO42001.aims_computing_processing, name="aimsComputingResource__aims_computing_processing", curie=ISO42001.curie('aims_computing_processing'),
+                   model_uri=ISO42001.aimsComputingResource__aims_computing_processing, domain=None, range=Optional[str])
 
-slots.action_description = Slot(uri=ISO42001.action_description, name="action_description", curie=ISO42001.curie('action_description'),
-                   model_uri=ISO42001.action_description, domain=None, range=Optional[str])
+slots.aimsComputingResource__aims_computing_hardware_impact = Slot(uri=ISO42001.aims_computing_hardware_impact, name="aimsComputingResource__aims_computing_hardware_impact", curie=ISO42001.curie('aims_computing_hardware_impact'),
+                   model_uri=ISO42001.aimsComputingResource__aims_computing_hardware_impact, domain=None, range=Optional[str])
 
-slots.root_cause_addressed = Slot(uri=ISO42001.root_cause_addressed, name="root_cause_addressed", curie=ISO42001.curie('root_cause_addressed'),
-                   model_uri=ISO42001.root_cause_addressed, domain=None, range=Optional[str])
+slots.aimsHumanResource__aims_human_role = Slot(uri=ISO42001.aims_human_role, name="aimsHumanResource__aims_human_role", curie=ISO42001.curie('aims_human_role'),
+                   model_uri=ISO42001.aimsHumanResource__aims_human_role, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
 
-slots.target_completion_date = Slot(uri=ISO42001.target_completion_date, name="target_completion_date", curie=ISO42001.curie('target_completion_date'),
-                   model_uri=ISO42001.target_completion_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsHumanResource__aims_human_competences = Slot(uri=ISO42001.aims_human_competences, name="aimsHumanResource__aims_human_competences", curie=ISO42001.curie('aims_human_competences'),
+                   model_uri=ISO42001.aimsHumanResource__aims_human_competences, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.actual_completion_date = Slot(uri=ISO42001.actual_completion_date, name="actual_completion_date", curie=ISO42001.curie('actual_completion_date'),
-                   model_uri=ISO42001.actual_completion_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsHumanResource__aims_human_activities = Slot(uri=ISO42001.aims_human_activities, name="aimsHumanResource__aims_human_activities", curie=ISO42001.curie('aims_human_activities'),
+                   model_uri=ISO42001.aimsHumanResource__aims_human_activities, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.effectiveness_criteria = Slot(uri=ISO42001.effectiveness_criteria, name="effectiveness_criteria", curie=ISO42001.curie('effectiveness_criteria'),
-                   model_uri=ISO42001.effectiveness_criteria, domain=None, range=Optional[str])
+slots.aimsHumanResource__aims_human_diversity = Slot(uri=ISO42001.aims_human_diversity, name="aimsHumanResource__aims_human_diversity", curie=ISO42001.curie('aims_human_diversity'),
+                   model_uri=ISO42001.aimsHumanResource__aims_human_diversity, domain=None, range=Optional[str])
 
-slots.effectiveness_review_date = Slot(uri=ISO42001.effectiveness_review_date, name="effectiveness_review_date", curie=ISO42001.curie('effectiveness_review_date'),
-                   model_uri=ISO42001.effectiveness_review_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsDevelopmentProcess__aims_development_life_cycle_model = Slot(uri=ISO42001.aims_development_life_cycle_model, name="aimsDevelopmentProcess__aims_development_life_cycle_model", curie=ISO42001.curie('aims_development_life_cycle_model'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_life_cycle_model, domain=None, range=Optional[str])
 
-slots.effectiveness_verified = Slot(uri=ISO42001.effectiveness_verified, name="effectiveness_verified", curie=ISO42001.curie('effectiveness_verified'),
-                   model_uri=ISO42001.effectiveness_verified, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsDevelopmentProcess__aims_development_testing = Slot(uri=ISO42001.aims_development_testing, name="aimsDevelopmentProcess__aims_development_testing", curie=ISO42001.curie('aims_development_testing'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_testing, domain=None, range=Optional[str])
 
-slots.aims_changes_required = Slot(uri=ISO42001.aims_changes_required, name="aims_changes_required", curie=ISO42001.curie('aims_changes_required'),
-                   model_uri=ISO42001.aims_changes_required, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsDevelopmentProcess__aims_development_human_oversight = Slot(uri=ISO42001.aims_development_human_oversight, name="aimsDevelopmentProcess__aims_development_human_oversight", curie=ISO42001.curie('aims_development_human_oversight'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_human_oversight, domain=None, range=Optional[str])
 
-slots.improvements = Slot(uri=ISO42001.improvements, name="improvements", curie=ISO42001.curie('improvements'),
-                   model_uri=ISO42001.improvements, domain=None, range=Optional[Union[Union[str, ImprovementOpportunityId], list[Union[str, ImprovementOpportunityId]]]])
+slots.aimsDevelopmentProcess__aims_development_impact_assessment_stages = Slot(uri=ISO42001.aims_development_impact_assessment_stages, name="aimsDevelopmentProcess__aims_development_impact_assessment_stages", curie=ISO42001.curie('aims_development_impact_assessment_stages'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_impact_assessment_stages, domain=None, range=Optional[Union[Union[str, "AimsLifecycleStage"], list[Union[str, "AimsLifecycleStage"]]]])
 
-slots.improvement_source = Slot(uri=ISO42001.improvement_source, name="improvement_source", curie=ISO42001.curie('improvement_source'),
-                   model_uri=ISO42001.improvement_source, domain=None, range=Optional[str])
+slots.aimsDevelopmentProcess__aims_development_training_data_rules = Slot(uri=ISO42001.aims_development_training_data_rules, name="aimsDevelopmentProcess__aims_development_training_data_rules", curie=ISO42001.curie('aims_development_training_data_rules'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_training_data_rules, domain=None, range=Optional[str])
 
-slots.identification_date = Slot(uri=ISO42001.identification_date, name="identification_date", curie=ISO42001.curie('identification_date'),
-                   model_uri=ISO42001.identification_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsDevelopmentProcess__aims_development_expertise = Slot(uri=ISO42001.aims_development_expertise, name="aimsDevelopmentProcess__aims_development_expertise", curie=ISO42001.curie('aims_development_expertise'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_expertise, domain=None, range=Optional[str])
 
-slots.identified_by = Slot(uri=ISO42001.identified_by, name="identified_by", curie=ISO42001.curie('identified_by'),
-                   model_uri=ISO42001.identified_by, domain=None, range=Optional[str])
+slots.aimsDevelopmentProcess__aims_development_release_criteria = Slot(uri=ISO42001.aims_development_release_criteria, name="aimsDevelopmentProcess__aims_development_release_criteria", curie=ISO42001.curie('aims_development_release_criteria'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_release_criteria, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.improvement_description = Slot(uri=ISO42001.improvement_description, name="improvement_description", curie=ISO42001.curie('improvement_description'),
-                   model_uri=ISO42001.improvement_description, domain=None, range=Optional[str])
+slots.aimsDevelopmentProcess__aims_development_approvals = Slot(uri=ISO42001.aims_development_approvals, name="aimsDevelopmentProcess__aims_development_approvals", curie=ISO42001.curie('aims_development_approvals'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_approvals, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.expected_benefit = Slot(uri=ISO42001.expected_benefit, name="expected_benefit", curie=ISO42001.curie('expected_benefit'),
-                   model_uri=ISO42001.expected_benefit, domain=None, range=Optional[str])
+slots.aimsDevelopmentProcess__aims_development_change_control = Slot(uri=ISO42001.aims_development_change_control, name="aimsDevelopmentProcess__aims_development_change_control", curie=ISO42001.curie('aims_development_change_control'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_change_control, domain=None, range=Optional[str])
 
-slots.priority = Slot(uri=ISO42001.priority, name="priority", curie=ISO42001.curie('priority'),
-                   model_uri=ISO42001.priority, domain=None, range=Optional[Union[str, "RiskLevel"]])
+slots.aimsDevelopmentProcess__aims_development_usability = Slot(uri=ISO42001.aims_development_usability, name="aimsDevelopmentProcess__aims_development_usability", curie=ISO42001.curie('aims_development_usability'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_usability, domain=None, range=Optional[str])
 
-slots.implementation_plan = Slot(uri=ISO42001.implementation_plan, name="implementation_plan", curie=ISO42001.curie('implementation_plan'),
-                   model_uri=ISO42001.implementation_plan, domain=None, range=Optional[str])
+slots.aimsDevelopmentProcess__aims_development_party_engagement = Slot(uri=ISO42001.aims_development_party_engagement, name="aimsDevelopmentProcess__aims_development_party_engagement", curie=ISO42001.curie('aims_development_party_engagement'),
+                   model_uri=ISO42001.aimsDevelopmentProcess__aims_development_party_engagement, domain=None, range=Optional[str])
 
-slots.outcome_assessment = Slot(uri=ISO42001.outcome_assessment, name="outcome_assessment", curie=ISO42001.curie('outcome_assessment'),
-                   model_uri=ISO42001.outcome_assessment, domain=None, range=Optional[str])
+slots.aimsResponsibleUseProcess__aims_use_approvals = Slot(uri=ISO42001.aims_use_approvals, name="aimsResponsibleUseProcess__aims_use_approvals", curie=ISO42001.curie('aims_use_approvals'),
+                   model_uri=ISO42001.aimsResponsibleUseProcess__aims_use_approvals, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.third_party_relationships = Slot(uri=ISO42001.third_party_relationships, name="third_party_relationships", curie=ISO42001.curie('third_party_relationships'),
-                   model_uri=ISO42001.third_party_relationships, domain=None, range=Optional[Union[Union[str, ThirdPartyRelationshipId], list[Union[str, ThirdPartyRelationshipId]]]])
+slots.aimsResponsibleUseProcess__aims_use_costs = Slot(uri=ISO42001.aims_use_costs, name="aimsResponsibleUseProcess__aims_use_costs", curie=ISO42001.curie('aims_use_costs'),
+                   model_uri=ISO42001.aimsResponsibleUseProcess__aims_use_costs, domain=None, range=Optional[str])
 
-slots.party_name = Slot(uri=ISO42001.party_name, name="party_name", curie=ISO42001.curie('party_name'),
-                   model_uri=ISO42001.party_name, domain=None, range=Optional[str])
+slots.aimsResponsibleUseProcess__aims_use_sourcing_requirements = Slot(uri=ISO42001.aims_use_sourcing_requirements, name="aimsResponsibleUseProcess__aims_use_sourcing_requirements", curie=ISO42001.curie('aims_use_sourcing_requirements'),
+                   model_uri=ISO42001.aimsResponsibleUseProcess__aims_use_sourcing_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.contractual_basis = Slot(uri=ISO42001.contractual_basis, name="contractual_basis", curie=ISO42001.curie('contractual_basis'),
-                   model_uri=ISO42001.contractual_basis, domain=None, range=Optional[str])
+slots.aimsResponsibleUseProcess__aims_use_legal_requirements = Slot(uri=ISO42001.aims_use_legal_requirements, name="aimsResponsibleUseProcess__aims_use_legal_requirements", curie=ISO42001.curie('aims_use_legal_requirements'),
+                   model_uri=ISO42001.aimsResponsibleUseProcess__aims_use_legal_requirements, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.allocated_responsibilities = Slot(uri=ISO42001.allocated_responsibilities, name="allocated_responsibilities", curie=ISO42001.curie('allocated_responsibilities'),
-                   model_uri=ISO42001.allocated_responsibilities, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsTechnicalDocumentation__aims_technical_doc_audiences = Slot(uri=ISO42001.aims_technical_doc_audiences, name="aimsTechnicalDocumentation__aims_technical_doc_audiences", curie=ISO42001.curie('aims_technical_doc_audiences'),
+                   model_uri=ISO42001.aimsTechnicalDocumentation__aims_technical_doc_audiences, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.data_processing_role = Slot(uri=ISO42001.data_processing_role, name="data_processing_role", curie=ISO42001.curie('data_processing_role'),
-                   model_uri=ISO42001.data_processing_role, domain=None, range=Optional[str])
+slots.aimsTechnicalDocumentation__aims_technical_doc_form = Slot(uri=ISO42001.aims_technical_doc_form, name="aimsTechnicalDocumentation__aims_technical_doc_form", curie=ISO42001.curie('aims_technical_doc_form'),
+                   model_uri=ISO42001.aimsTechnicalDocumentation__aims_technical_doc_form, domain=None, range=Optional[str])
 
-slots.ai_systems_involved = Slot(uri=ISO42001.ai_systems_involved, name="ai_systems_involved", curie=ISO42001.curie('ai_systems_involved'),
-                   model_uri=ISO42001.ai_systems_involved, domain=None, range=Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]])
+slots.aimsTechnicalDocumentation__aims_technical_doc_contents = Slot(uri=ISO42001.aims_technical_doc_contents, name="aimsTechnicalDocumentation__aims_technical_doc_contents", curie=ISO42001.curie('aims_technical_doc_contents'),
+                   model_uri=ISO42001.aimsTechnicalDocumentation__aims_technical_doc_contents, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.lifecycle_stages_involved = Slot(uri=ISO42001.lifecycle_stages_involved, name="lifecycle_stages_involved", curie=ISO42001.curie('lifecycle_stages_involved'),
-                   model_uri=ISO42001.lifecycle_stages_involved, domain=None, range=Optional[Union[Union[str, "AISystemLifecycleStage"], list[Union[str, "AISystemLifecycleStage"]]]])
+slots.aimsTechnicalDocumentation__aims_technical_doc_failure_plan = Slot(uri=ISO42001.aims_technical_doc_failure_plan, name="aimsTechnicalDocumentation__aims_technical_doc_failure_plan", curie=ISO42001.curie('aims_technical_doc_failure_plan'),
+                   model_uri=ISO42001.aimsTechnicalDocumentation__aims_technical_doc_failure_plan, domain=None, range=Optional[str])
 
-slots.assurance_evidence = Slot(uri=ISO42001.assurance_evidence, name="assurance_evidence", curie=ISO42001.curie('assurance_evidence'),
-                   model_uri=ISO42001.assurance_evidence, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsUserInformation__aims_user_information_contents = Slot(uri=ISO42001.aims_user_information_contents, name="aimsUserInformation__aims_user_information_contents", curie=ISO42001.curie('aims_user_information_contents'),
+                   model_uri=ISO42001.aimsUserInformation__aims_user_information_contents, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.review_frequency = Slot(uri=ISO42001.review_frequency, name="review_frequency", curie=ISO42001.curie('review_frequency'),
-                   model_uri=ISO42001.review_frequency, domain=None, range=Optional[str])
+slots.aimsUserInformation__aims_user_information_channels = Slot(uri=ISO42001.aims_user_information_channels, name="aimsUserInformation__aims_user_information_channels", curie=ISO42001.curie('aims_user_information_channels'),
+                   model_uri=ISO42001.aimsUserInformation__aims_user_information_channels, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.supplier_assessment_criteria = Slot(uri=ISO42001.supplier_assessment_criteria, name="supplier_assessment_criteria", curie=ISO42001.curie('supplier_assessment_criteria'),
-                   model_uri=ISO42001.supplier_assessment_criteria, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsUserInformation__aims_user_information_criteria = Slot(uri=ISO42001.aims_user_information_criteria, name="aimsUserInformation__aims_user_information_criteria", curie=ISO42001.curie('aims_user_information_criteria'),
+                   model_uri=ISO42001.aimsUserInformation__aims_user_information_criteria, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.monitoring_method = Slot(uri=ISO42001.monitoring_method, name="monitoring_method", curie=ISO42001.curie('monitoring_method'),
-                   model_uri=ISO42001.monitoring_method, domain=None, range=Optional[str])
+slots.aimsUserInformation__aims_user_information_validated = Slot(uri=ISO42001.aims_user_information_validated, name="aimsUserInformation__aims_user_information_validated", curie=ISO42001.curie('aims_user_information_validated'),
+                   model_uri=ISO42001.aimsUserInformation__aims_user_information_validated, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.corrective_actions_required = Slot(uri=ISO42001.corrective_actions_required, name="corrective_actions_required", curie=ISO42001.curie('corrective_actions_required'),
-                   model_uri=ISO42001.corrective_actions_required, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsIncidentCommunicationPlan__aims_incident_plan_categories = Slot(uri=ISO42001.aims_incident_plan_categories, name="aimsIncidentCommunicationPlan__aims_incident_plan_categories", curie=ISO42001.curie('aims_incident_plan_categories'),
+                   model_uri=ISO42001.aimsIncidentCommunicationPlan__aims_incident_plan_categories, domain=None, range=Optional[Union[Union[str, "AimsIncidentCategory"], list[Union[str, "AimsIncidentCategory"]]]])
 
-slots.customer_expectations = Slot(uri=ISO42001.customer_expectations, name="customer_expectations", curie=ISO42001.curie('customer_expectations'),
-                   model_uri=ISO42001.customer_expectations, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsIncidentCommunicationPlan__aims_incident_plan_timeline = Slot(uri=ISO42001.aims_incident_plan_timeline, name="aimsIncidentCommunicationPlan__aims_incident_plan_timeline", curie=ISO42001.curie('aims_incident_plan_timeline'),
+                   model_uri=ISO42001.aimsIncidentCommunicationPlan__aims_incident_plan_timeline, domain=None, range=Optional[str])
 
-slots.usage_agreement_reference = Slot(uri=ISO42001.usage_agreement_reference, name="usage_agreement_reference", curie=ISO42001.curie('usage_agreement_reference'),
-                   model_uri=ISO42001.usage_agreement_reference, domain=None, range=Optional[str])
+slots.aimsIncidentCommunicationPlan__aims_incident_plan_authorities = Slot(uri=ISO42001.aims_incident_plan_authorities, name="aimsIncidentCommunicationPlan__aims_incident_plan_authorities", curie=ISO42001.curie('aims_incident_plan_authorities'),
+                   model_uri=ISO42001.aimsIncidentCommunicationPlan__aims_incident_plan_authorities, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.communicated_limitations = Slot(uri=ISO42001.communicated_limitations, name="communicated_limitations", curie=ISO42001.curie('communicated_limitations'),
-                   model_uri=ISO42001.communicated_limitations, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsIncidentCommunicationPlan__aims_incident_plan_details = Slot(uri=ISO42001.aims_incident_plan_details, name="aimsIncidentCommunicationPlan__aims_incident_plan_details", curie=ISO42001.curie('aims_incident_plan_details'),
+                   model_uri=ISO42001.aimsIncidentCommunicationPlan__aims_incident_plan_details, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.certification_status = Slot(uri=ISO42001.certification_status, name="certification_status", curie=ISO42001.curie('certification_status'),
-                   model_uri=ISO42001.certification_status, domain=None, range=Optional[str])
+slots.aimsIncidentCommunicationPlan__aims_incident_plan_integration = Slot(uri=ISO42001.aims_incident_plan_integration, name="aimsIncidentCommunicationPlan__aims_incident_plan_integration", curie=ISO42001.curie('aims_incident_plan_integration'),
+                   model_uri=ISO42001.aimsIncidentCommunicationPlan__aims_incident_plan_integration, domain=None, range=Optional[str])
 
-slots.certification_body = Slot(uri=ISO42001.certification_body, name="certification_body", curie=ISO42001.curie('certification_body'),
-                   model_uri=ISO42001.certification_body, domain=None, range=Optional[str])
+slots.aimsReportingObligation__aims_obligation_parties = Slot(uri=ISO42001.aims_obligation_parties, name="aimsReportingObligation__aims_obligation_parties", curie=ISO42001.curie('aims_obligation_parties'),
+                   model_uri=ISO42001.aimsReportingObligation__aims_obligation_parties, domain=None, range=Optional[Union[Union[str, AimsInterestedPartyAimsId], list[Union[str, AimsInterestedPartyAimsId]]]])
 
-slots.certification_date = Slot(uri=ISO42001.certification_date, name="certification_date", curie=ISO42001.curie('certification_date'),
-                   model_uri=ISO42001.certification_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsReportingObligation__aims_obligation_basis = Slot(uri=ISO42001.aims_obligation_basis, name="aimsReportingObligation__aims_obligation_basis", curie=ISO42001.curie('aims_obligation_basis'),
+                   model_uri=ISO42001.aimsReportingObligation__aims_obligation_basis, domain=None, range=Optional[str])
 
-slots.recertification_date = Slot(uri=ISO42001.recertification_date, name="recertification_date", curie=ISO42001.curie('recertification_date'),
-                   model_uri=ISO42001.recertification_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsReportingObligation__aims_obligation_jurisdiction = Slot(uri=ISO42001.aims_obligation_jurisdiction, name="aimsReportingObligation__aims_obligation_jurisdiction", curie=ISO42001.curie('aims_obligation_jurisdiction'),
+                   model_uri=ISO42001.aimsReportingObligation__aims_obligation_jurisdiction, domain=None, range=Optional[str])
 
-slots.ai_system_events = Slot(uri=ISO42001.ai_system_events, name="ai_system_events", curie=ISO42001.curie('ai_system_events'),
-                   model_uri=ISO42001.ai_system_events, domain=None, range=Optional[Union[Union[str, AISystemEventId], list[Union[str, AISystemEventId]]]])
+slots.aimsReportingObligation__aims_obligation_contents = Slot(uri=ISO42001.aims_obligation_contents, name="aimsReportingObligation__aims_obligation_contents", curie=ISO42001.curie('aims_obligation_contents'),
+                   model_uri=ISO42001.aimsReportingObligation__aims_obligation_contents, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.ai_incidents = Slot(uri=ISO42001.ai_incidents, name="ai_incidents", curie=ISO42001.curie('ai_incidents'),
-                   model_uri=ISO42001.ai_incidents, domain=None, range=Optional[Union[Union[str, AIIncidentId], list[Union[str, AIIncidentId]]]])
+slots.aimsReportingObligation__aims_obligation_timeframe = Slot(uri=ISO42001.aims_obligation_timeframe, name="aimsReportingObligation__aims_obligation_timeframe", curie=ISO42001.curie('aims_obligation_timeframe'),
+                   model_uri=ISO42001.aimsReportingObligation__aims_obligation_timeframe, domain=None, range=Optional[str])
 
-slots.event_datetime = Slot(uri=ISO42001.event_datetime, name="event_datetime", curie=ISO42001.curie('event_datetime'),
-                   model_uri=ISO42001.event_datetime, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.aimsResource__aims_support_category = Slot(uri=ISO42001.aims_support_category, name="aimsResource__aims_support_category", curie=ISO42001.curie('aims_support_category'),
+                   model_uri=ISO42001.aimsResource__aims_support_category, domain=None, range=Optional[str])
 
-slots.reporter = Slot(uri=ISO42001.reporter, name="reporter", curie=ISO42001.curie('reporter'),
-                   model_uri=ISO42001.reporter, domain=None, range=Optional[str])
+slots.aimsResource__aims_support_quantity = Slot(uri=ISO42001.aims_support_quantity, name="aimsResource__aims_support_quantity", curie=ISO42001.curie('aims_support_quantity'),
+                   model_uri=ISO42001.aimsResource__aims_support_quantity, domain=None, range=Optional[str])
 
-slots.reporter_party_type = Slot(uri=ISO42001.reporter_party_type, name="reporter_party_type", curie=ISO42001.curie('reporter_party_type'),
-                   model_uri=ISO42001.reporter_party_type, domain=None, range=Optional[str])
+slots.aimsResource__aims_support_allocation_date = Slot(uri=ISO42001.aims_support_allocation_date, name="aimsResource__aims_support_allocation_date", curie=ISO42001.curie('aims_support_allocation_date'),
+                   model_uri=ISO42001.aimsResource__aims_support_allocation_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.event_source = Slot(uri=ISO42001.event_source, name="event_source", curie=ISO42001.curie('event_source'),
-                   model_uri=ISO42001.event_source, domain=None, range=Optional[str])
+slots.aimsResource__aims_support_allocated_to = Slot(uri=ISO42001.aims_support_allocated_to, name="aimsResource__aims_support_allocated_to", curie=ISO42001.curie('aims_support_allocated_to'),
+                   model_uri=ISO42001.aimsResource__aims_support_allocated_to, domain=None, range=Optional[str])
 
-slots.event_description = Slot(uri=ISO42001.event_description, name="event_description", curie=ISO42001.curie('event_description'),
-                   model_uri=ISO42001.event_description, domain=None, range=Optional[str])
+slots.aimsResource__aims_support_cost = Slot(uri=ISO42001.aims_support_cost, name="aimsResource__aims_support_cost", curie=ISO42001.curie('aims_support_cost'),
+                   model_uri=ISO42001.aimsResource__aims_support_cost, domain=None, range=Optional[str])
 
-slots.initial_assessment = Slot(uri=ISO42001.initial_assessment, name="initial_assessment", curie=ISO42001.curie('initial_assessment'),
-                   model_uri=ISO42001.initial_assessment, domain=None, range=Optional[str])
+slots.aimsResource__aims_support_availability = Slot(uri=ISO42001.aims_support_availability, name="aimsResource__aims_support_availability", curie=ISO42001.curie('aims_support_availability'),
+                   model_uri=ISO42001.aimsResource__aims_support_availability, domain=None, range=Optional[str])
 
-slots.categorized_as_incident = Slot(uri=ISO42001.categorized_as_incident, name="categorized_as_incident", curie=ISO42001.curie('categorized_as_incident'),
-                   model_uri=ISO42001.categorized_as_incident, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsCompetenceRecord__aims_competence_person = Slot(uri=ISO42001.aims_competence_person, name="aimsCompetenceRecord__aims_competence_person", curie=ISO42001.curie('aims_competence_person'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_person, domain=None, range=Optional[str])
 
-slots.linked_incident = Slot(uri=ISO42001.linked_incident, name="linked_incident", curie=ISO42001.curie('linked_incident'),
-                   model_uri=ISO42001.linked_incident, domain=None, range=Optional[Union[str, AIIncidentId]])
+slots.aimsCompetenceRecord__aims_competence_role = Slot(uri=ISO42001.aims_competence_role, name="aimsCompetenceRecord__aims_competence_role", curie=ISO42001.curie('aims_competence_role'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_role, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
 
-slots.incident_datetime = Slot(uri=ISO42001.incident_datetime, name="incident_datetime", curie=ISO42001.curie('incident_datetime'),
-                   model_uri=ISO42001.incident_datetime, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.aimsCompetenceRecord__aims_competence_required = Slot(uri=ISO42001.aims_competence_required, name="aimsCompetenceRecord__aims_competence_required", curie=ISO42001.curie('aims_competence_required'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_required, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.incident_category = Slot(uri=ISO42001.incident_category, name="incident_category", curie=ISO42001.curie('incident_category'),
-                   model_uri=ISO42001.incident_category, domain=None, range=Optional[Union[str, "AIIncidentCategory"]])
+slots.aimsCompetenceRecord__aims_competence_education = Slot(uri=ISO42001.aims_competence_education, name="aimsCompetenceRecord__aims_competence_education", curie=ISO42001.curie('aims_competence_education'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_education, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.severity = Slot(uri=ISO42001.severity, name="severity", curie=ISO42001.curie('severity'),
-                   model_uri=ISO42001.severity, domain=None, range=Optional[Union[str, "RiskLevel"]])
+slots.aimsCompetenceRecord__aims_competence_training = Slot(uri=ISO42001.aims_competence_training, name="aimsCompetenceRecord__aims_competence_training", curie=ISO42001.curie('aims_competence_training'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_training, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.incident_description = Slot(uri=ISO42001.incident_description, name="incident_description", curie=ISO42001.curie('incident_description'),
-                   model_uri=ISO42001.incident_description, domain=None, range=Optional[str])
+slots.aimsCompetenceRecord__aims_competence_experience = Slot(uri=ISO42001.aims_competence_experience, name="aimsCompetenceRecord__aims_competence_experience", curie=ISO42001.curie('aims_competence_experience'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_experience, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.detection_method = Slot(uri=ISO42001.detection_method, name="detection_method", curie=ISO42001.curie('detection_method'),
-                   model_uri=ISO42001.detection_method, domain=None, range=Optional[str])
+slots.aimsCompetenceRecord__aims_competence_assessment_date = Slot(uri=ISO42001.aims_competence_assessment_date, name="aimsCompetenceRecord__aims_competence_assessment_date", curie=ISO42001.curie('aims_competence_assessment_date'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_assessment_date, domain=None, range=Optional[Union[str, XSDDate]])
 
-slots.response_actions = Slot(uri=ISO42001.response_actions, name="response_actions", curie=ISO42001.curie('response_actions'),
-                   model_uri=ISO42001.response_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsCompetenceRecord__aims_competence_gaps = Slot(uri=ISO42001.aims_competence_gaps, name="aimsCompetenceRecord__aims_competence_gaps", curie=ISO42001.curie('aims_competence_gaps'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_gaps, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.containment_actions = Slot(uri=ISO42001.containment_actions, name="containment_actions", curie=ISO42001.curie('containment_actions'),
-                   model_uri=ISO42001.containment_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsCompetenceRecord__aims_competence_actions = Slot(uri=ISO42001.aims_competence_actions, name="aimsCompetenceRecord__aims_competence_actions", curie=ISO42001.curie('aims_competence_actions'),
+                   model_uri=ISO42001.aimsCompetenceRecord__aims_competence_actions, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.recovery_actions = Slot(uri=ISO42001.recovery_actions, name="recovery_actions", curie=ISO42001.curie('recovery_actions'),
-                   model_uri=ISO42001.recovery_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAwarenessProgramme__aims_awareness_topics = Slot(uri=ISO42001.aims_awareness_topics, name="aimsAwarenessProgramme__aims_awareness_topics", curie=ISO42001.curie('aims_awareness_topics'),
+                   model_uri=ISO42001.aimsAwarenessProgramme__aims_awareness_topics, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.lessons_learned = Slot(uri=ISO42001.lessons_learned, name="lessons_learned", curie=ISO42001.curie('lessons_learned'),
-                   model_uri=ISO42001.lessons_learned, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAwarenessProgramme__aims_awareness_methods = Slot(uri=ISO42001.aims_awareness_methods, name="aimsAwarenessProgramme__aims_awareness_methods", curie=ISO42001.curie('aims_awareness_methods'),
+                   model_uri=ISO42001.aimsAwarenessProgramme__aims_awareness_methods, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.evidence_collected = Slot(uri=ISO42001.evidence_collected, name="evidence_collected", curie=ISO42001.curie('evidence_collected'),
-                   model_uri=ISO42001.evidence_collected, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAwarenessProgramme__aims_awareness_audience = Slot(uri=ISO42001.aims_awareness_audience, name="aimsAwarenessProgramme__aims_awareness_audience", curie=ISO42001.curie('aims_awareness_audience'),
+                   model_uri=ISO42001.aimsAwarenessProgramme__aims_awareness_audience, domain=None, range=Optional[str])
 
-slots.notification_required = Slot(uri=ISO42001.notification_required, name="notification_required", curie=ISO42001.curie('notification_required'),
-                   model_uri=ISO42001.notification_required, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsAwarenessProgramme__aims_awareness_frequency = Slot(uri=ISO42001.aims_awareness_frequency, name="aimsAwarenessProgramme__aims_awareness_frequency", curie=ISO42001.curie('aims_awareness_frequency'),
+                   model_uri=ISO42001.aimsAwarenessProgramme__aims_awareness_frequency, domain=None, range=Optional[str])
 
-slots.notifications_made = Slot(uri=ISO42001.notifications_made, name="notifications_made", curie=ISO42001.curie('notifications_made'),
-                   model_uri=ISO42001.notifications_made, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAwarenessProgramme__aims_awareness_completion_tracking = Slot(uri=ISO42001.aims_awareness_completion_tracking, name="aimsAwarenessProgramme__aims_awareness_completion_tracking", curie=ISO42001.curie('aims_awareness_completion_tracking'),
+                   model_uri=ISO42001.aimsAwarenessProgramme__aims_awareness_completion_tracking, domain=None, range=Optional[str])
 
-slots.external_reports = Slot(uri=ISO42001.external_reports, name="external_reports", curie=ISO42001.curie('external_reports'),
-                   model_uri=ISO42001.external_reports, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAwarenessProgramme__aims_awareness_effectiveness = Slot(uri=ISO42001.aims_awareness_effectiveness, name="aimsAwarenessProgramme__aims_awareness_effectiveness", curie=ISO42001.curie('aims_awareness_effectiveness'),
+                   model_uri=ISO42001.aimsAwarenessProgramme__aims_awareness_effectiveness, domain=None, range=Optional[str])
 
-slots.closure_datetime = Slot(uri=ISO42001.closure_datetime, name="closure_datetime", curie=ISO42001.curie('closure_datetime'),
-                   model_uri=ISO42001.closure_datetime, domain=None, range=Optional[Union[str, XSDDateTime]])
+slots.aimsCommunicationPlan__aims_communication_items = Slot(uri=ISO42001.aims_communication_items, name="aimsCommunicationPlan__aims_communication_items", curie=ISO42001.curie('aims_communication_items'),
+                   model_uri=ISO42001.aimsCommunicationPlan__aims_communication_items, domain=None, range=Optional[Union[Union[dict, AimsCommunication], list[Union[dict, AimsCommunication]]]])
 
-slots.post_incident_review = Slot(uri=ISO42001.post_incident_review, name="post_incident_review", curie=ISO42001.curie('post_incident_review'),
-                   model_uri=ISO42001.post_incident_review, domain=None, range=Optional[str])
+slots.aimsCommunication__aims_communication_subject = Slot(uri=ISO42001.aims_communication_subject, name="aimsCommunication__aims_communication_subject", curie=ISO42001.curie('aims_communication_subject'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_subject, domain=None, range=str)
 
-slots.integrated_management_systems = Slot(uri=ISO42001.integrated_management_systems, name="integrated_management_systems", curie=ISO42001.curie('integrated_management_systems'),
-                   model_uri=ISO42001.integrated_management_systems, domain=None, range=Optional[Union[Union[str, "RelatedManagementSystem"], list[Union[str, "RelatedManagementSystem"]]]])
+slots.aimsCommunication__aims_communication_purpose = Slot(uri=ISO42001.aims_communication_purpose, name="aimsCommunication__aims_communication_purpose", curie=ISO42001.curie('aims_communication_purpose'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_purpose, domain=None, range=Optional[str])
 
-slots.top_management = Slot(uri=ISO42001.top_management, name="top_management", curie=ISO42001.curie('top_management'),
-                   model_uri=ISO42001.top_management, domain=None, range=Optional[str])
+slots.aimsCommunication__aims_communication_audience = Slot(uri=ISO42001.aims_communication_audience, name="aimsCommunication__aims_communication_audience", curie=ISO42001.curie('aims_communication_audience'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_audience, domain=None, range=Optional[str])
 
-slots.governing_body = Slot(uri=ISO42001.governing_body, name="governing_body", curie=ISO42001.curie('governing_body'),
-                   model_uri=ISO42001.governing_body, domain=None, range=Optional[str])
+slots.aimsCommunication__aims_communication_external = Slot(uri=ISO42001.aims_communication_external, name="aimsCommunication__aims_communication_external", curie=ISO42001.curie('aims_communication_external'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_external, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.leadership_commitment_evidence = Slot(uri=ISO42001.leadership_commitment_evidence, name="leadership_commitment_evidence", curie=ISO42001.curie('leadership_commitment_evidence'),
-                   model_uri=ISO42001.leadership_commitment_evidence, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsCommunication__aims_communication_timing = Slot(uri=ISO42001.aims_communication_timing, name="aimsCommunication__aims_communication_timing", curie=ISO42001.curie('aims_communication_timing'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_timing, domain=None, range=Optional[str])
 
-slots.planned_changes = Slot(uri=ISO42001.planned_changes, name="planned_changes", curie=ISO42001.curie('planned_changes'),
-                   model_uri=ISO42001.planned_changes, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsCommunication__aims_communication_method = Slot(uri=ISO42001.aims_communication_method, name="aimsCommunication__aims_communication_method", curie=ISO42001.curie('aims_communication_method'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_method, domain=None, range=Optional[str])
 
-slots.ml_approach = Slot(uri=ISO42001.ml_approach, name="ml_approach", curie=ISO42001.curie('ml_approach'),
-                   model_uri=ISO42001.ml_approach, domain=None, range=Optional[Union[str, "MLApproach"]])
+slots.aimsCommunication__aims_communication_records_required = Slot(uri=ISO42001.aims_communication_records_required, name="aimsCommunication__aims_communication_records_required", curie=ISO42001.curie('aims_communication_records_required'),
+                   model_uri=ISO42001.aimsCommunication__aims_communication_records_required, domain=None, range=Optional[Union[bool, Bool]])
 
-slots.human_oversight_required = Slot(uri=ISO42001.human_oversight_required, name="human_oversight_required", curie=ISO42001.curie('human_oversight_required'),
-                   model_uri=ISO42001.human_oversight_required, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsDocumentedInformation__aims_document_kind = Slot(uri=ISO42001.aims_document_kind, name="aimsDocumentedInformation__aims_document_kind", curie=ISO42001.curie('aims_document_kind'),
+                   model_uri=ISO42001.aimsDocumentedInformation__aims_document_kind, domain=None, range=Union[str, "AimsDocumentKind"])
 
-slots.human_oversight_description = Slot(uri=ISO42001.human_oversight_description, name="human_oversight_description", curie=ISO42001.curie('human_oversight_description'),
-                   model_uri=ISO42001.human_oversight_description, domain=None, range=Optional[str])
+slots.aimsOperationalProcedure__aims_procedure_scope = Slot(uri=ISO42001.aims_procedure_scope, name="aimsOperationalProcedure__aims_procedure_scope", curie=ISO42001.curie('aims_procedure_scope'),
+                   model_uri=ISO42001.aimsOperationalProcedure__aims_procedure_scope, domain=None, range=Optional[str])
 
-slots.human_oversight_stages = Slot(uri=ISO42001.human_oversight_stages, name="human_oversight_stages", curie=ISO42001.curie('human_oversight_stages'),
-                   model_uri=ISO42001.human_oversight_stages, domain=None, range=Optional[Union[Union[str, "AISystemLifecycleStage"], list[Union[str, "AISystemLifecycleStage"]]]])
+slots.aimsOperationalProcedure__aims_procedure_criteria = Slot(uri=ISO42001.aims_procedure_criteria, name="aimsOperationalProcedure__aims_procedure_criteria", curie=ISO42001.curie('aims_procedure_criteria'),
+                   model_uri=ISO42001.aimsOperationalProcedure__aims_procedure_criteria, domain=None, range=Optional[str])
 
-slots.concern_reports = Slot(uri=ISO42001.concern_reports, name="concern_reports", curie=ISO42001.curie('concern_reports'),
-                   model_uri=ISO42001.concern_reports, domain=None, range=Optional[Union[Union[str, ConcernReportId], list[Union[str, ConcernReportId]]]])
+slots.aimsOperationalProcedure__aims_procedure_control_measures = Slot(uri=ISO42001.aims_procedure_control_measures, name="aimsOperationalProcedure__aims_procedure_control_measures", curie=ISO42001.curie('aims_procedure_control_measures'),
+                   model_uri=ISO42001.aimsOperationalProcedure__aims_procedure_control_measures, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.reported_date = Slot(uri=ISO42001.reported_date, name="reported_date", curie=ISO42001.curie('reported_date'),
-                   model_uri=ISO42001.reported_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsOperationalProcedure__aims_procedure_roles = Slot(uri=ISO42001.aims_procedure_roles, name="aimsOperationalProcedure__aims_procedure_roles", curie=ISO42001.curie('aims_procedure_roles'),
+                   model_uri=ISO42001.aimsOperationalProcedure__aims_procedure_roles, domain=None, range=Optional[Union[Union[str, AimsRoleAimsId], list[Union[str, AimsRoleAimsId]]]])
 
-slots.reporter_anonymous = Slot(uri=ISO42001.reporter_anonymous, name="reporter_anonymous", curie=ISO42001.curie('reporter_anonymous'),
-                   model_uri=ISO42001.reporter_anonymous, domain=None, range=Optional[Union[bool, Bool]])
+slots.aimsOperationalProcedure__aims_procedure_change_control = Slot(uri=ISO42001.aims_procedure_change_control, name="aimsOperationalProcedure__aims_procedure_change_control", curie=ISO42001.curie('aims_procedure_change_control'),
+                   model_uri=ISO42001.aimsOperationalProcedure__aims_procedure_change_control, domain=None, range=Optional[str])
 
-slots.confidentiality_level = Slot(uri=ISO42001.confidentiality_level, name="confidentiality_level", curie=ISO42001.curie('confidentiality_level'),
-                   model_uri=ISO42001.confidentiality_level, domain=None, range=Optional[str])
+slots.aimsMonitoringProgramme__aims_monitoring_items = Slot(uri=ISO42001.aims_monitoring_items, name="aimsMonitoringProgramme__aims_monitoring_items", curie=ISO42001.curie('aims_monitoring_items'),
+                   model_uri=ISO42001.aimsMonitoringProgramme__aims_monitoring_items, domain=None, range=Optional[Union[Union[dict, AimsMonitoringItem], list[Union[dict, AimsMonitoringItem]]]])
 
-slots.reporting_channel = Slot(uri=ISO42001.reporting_channel, name="reporting_channel", curie=ISO42001.curie('reporting_channel'),
-                   model_uri=ISO42001.reporting_channel, domain=None, range=Optional[str])
+slots.aimsMonitoringItem__aims_monitoring_metric = Slot(uri=ISO42001.aims_monitoring_metric, name="aimsMonitoringItem__aims_monitoring_metric", curie=ISO42001.curie('aims_monitoring_metric'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_metric, domain=None, range=str)
 
-slots.concern_description = Slot(uri=ISO42001.concern_description, name="concern_description", curie=ISO42001.curie('concern_description'),
-                   model_uri=ISO42001.concern_description, domain=None, range=Optional[str])
+slots.aimsMonitoringItem__aims_monitoring_description = Slot(uri=ISO42001.aims_monitoring_description, name="aimsMonitoringItem__aims_monitoring_description", curie=ISO42001.curie('aims_monitoring_description'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_description, domain=None, range=Optional[str])
 
-slots.concern_ai_systems = Slot(uri=ISO42001.concern_ai_systems, name="concern_ai_systems", curie=ISO42001.curie('concern_ai_systems'),
-                   model_uri=ISO42001.concern_ai_systems, domain=None, range=Optional[Union[Union[str, AISystemId], list[Union[str, AISystemId]]]])
+slots.aimsMonitoringItem__aims_monitoring_method = Slot(uri=ISO42001.aims_monitoring_method, name="aimsMonitoringItem__aims_monitoring_method", curie=ISO42001.curie('aims_monitoring_method'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_method, domain=None, range=Optional[str])
 
-slots.concern_lifecycle_stage = Slot(uri=ISO42001.concern_lifecycle_stage, name="concern_lifecycle_stage", curie=ISO42001.curie('concern_lifecycle_stage'),
-                   model_uri=ISO42001.concern_lifecycle_stage, domain=None, range=Optional[Union[Union[str, "AISystemLifecycleStage"], list[Union[str, "AISystemLifecycleStage"]]]])
+slots.aimsMonitoringItem__aims_monitoring_frequency = Slot(uri=ISO42001.aims_monitoring_frequency, name="aimsMonitoringItem__aims_monitoring_frequency", curie=ISO42001.curie('aims_monitoring_frequency'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_frequency, domain=None, range=Optional[str])
 
-slots.investigator = Slot(uri=ISO42001.investigator, name="investigator", curie=ISO42001.curie('investigator'),
-                   model_uri=ISO42001.investigator, domain=None, range=Optional[str])
+slots.aimsMonitoringItem__aims_monitoring_analysis_frequency = Slot(uri=ISO42001.aims_monitoring_analysis_frequency, name="aimsMonitoringItem__aims_monitoring_analysis_frequency", curie=ISO42001.curie('aims_monitoring_analysis_frequency'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_analysis_frequency, domain=None, range=Optional[str])
 
-slots.investigation_status = Slot(uri=ISO42001.investigation_status, name="investigation_status", curie=ISO42001.curie('investigation_status'),
-                   model_uri=ISO42001.investigation_status, domain=None, range=Optional[str])
+slots.aimsMonitoringItem__aims_monitoring_analyst = Slot(uri=ISO42001.aims_monitoring_analyst, name="aimsMonitoringItem__aims_monitoring_analyst", curie=ISO42001.curie('aims_monitoring_analyst'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_analyst, domain=None, range=Optional[str])
 
-slots.investigation_findings = Slot(uri=ISO42001.investigation_findings, name="investigation_findings", curie=ISO42001.curie('investigation_findings'),
-                   model_uri=ISO42001.investigation_findings, domain=None, range=Optional[str])
+slots.aimsMonitoringItem__aims_monitoring_target = Slot(uri=ISO42001.aims_monitoring_target, name="aimsMonitoringItem__aims_monitoring_target", curie=ISO42001.curie('aims_monitoring_target'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_target, domain=None, range=Optional[str])
 
-slots.escalation_status = Slot(uri=ISO42001.escalation_status, name="escalation_status", curie=ISO42001.curie('escalation_status'),
-                   model_uri=ISO42001.escalation_status, domain=None, range=Optional[str])
+slots.aimsMonitoringItem__aims_monitoring_alert_threshold = Slot(uri=ISO42001.aims_monitoring_alert_threshold, name="aimsMonitoringItem__aims_monitoring_alert_threshold", curie=ISO42001.curie('aims_monitoring_alert_threshold'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_alert_threshold, domain=None, range=Optional[str])
 
-slots.response_due_date = Slot(uri=ISO42001.response_due_date, name="response_due_date", curie=ISO42001.curie('response_due_date'),
-                   model_uri=ISO42001.response_due_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsMonitoringItem__aims_monitoring_current_value = Slot(uri=ISO42001.aims_monitoring_current_value, name="aimsMonitoringItem__aims_monitoring_current_value", curie=ISO42001.curie('aims_monitoring_current_value'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_current_value, domain=None, range=Optional[str])
 
-slots.response_provided_date = Slot(uri=ISO42001.response_provided_date, name="response_provided_date", curie=ISO42001.curie('response_provided_date'),
-                   model_uri=ISO42001.response_provided_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.aimsMonitoringItem__aims_monitoring_trend = Slot(uri=ISO42001.aims_monitoring_trend, name="aimsMonitoringItem__aims_monitoring_trend", curie=ISO42001.curie('aims_monitoring_trend'),
+                   model_uri=ISO42001.aimsMonitoringItem__aims_monitoring_trend, domain=None, range=Optional[str])
 
-slots.resolution = Slot(uri=ISO42001.resolution, name="resolution", curie=ISO42001.curie('resolution'),
-                   model_uri=ISO42001.resolution, domain=None, range=Optional[str])
+slots.aimsAuditProgramme__aims_programme_period = Slot(uri=ISO42001.aims_programme_period, name="aimsAuditProgramme__aims_programme_period", curie=ISO42001.curie('aims_programme_period'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_period, domain=None, range=Optional[str])
 
-slots.reprisal_protection_actions = Slot(uri=ISO42001.reprisal_protection_actions, name="reprisal_protection_actions", curie=ISO42001.curie('reprisal_protection_actions'),
-                   model_uri=ISO42001.reprisal_protection_actions, domain=None, range=Optional[Union[str, list[str]]])
+slots.aimsAuditProgramme__aims_programme_audits = Slot(uri=ISO42001.aims_programme_audits, name="aimsAuditProgramme__aims_programme_audits", curie=ISO42001.curie('aims_programme_audits'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_audits, domain=None, range=Optional[Union[Union[str, AimsAuditAimsId], list[Union[str, AimsAuditAimsId]]]])
 
-slots.related_incidents = Slot(uri=ISO42001.related_incidents, name="related_incidents", curie=ISO42001.curie('related_incidents'),
-                   model_uri=ISO42001.related_incidents, domain=None, range=Optional[Union[Union[str, AIIncidentId], list[Union[str, AIIncidentId]]]])
+slots.aimsAuditProgramme__aims_programme_frequency_rationale = Slot(uri=ISO42001.aims_programme_frequency_rationale, name="aimsAuditProgramme__aims_programme_frequency_rationale", curie=ISO42001.curie('aims_programme_frequency_rationale'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_frequency_rationale, domain=None, range=Optional[str])
 
-slots.related_nonconformities = Slot(uri=ISO42001.related_nonconformities, name="related_nonconformities", curie=ISO42001.curie('related_nonconformities'),
-                   model_uri=ISO42001.related_nonconformities, domain=None, range=Optional[Union[Union[str, NonconformityId], list[Union[str, NonconformityId]]]])
+slots.aimsAuditProgramme__aims_programme_methods = Slot(uri=ISO42001.aims_programme_methods, name="aimsAuditProgramme__aims_programme_methods", curie=ISO42001.curie('aims_programme_methods'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_methods, domain=None, range=Optional[str])
 
-slots.NamedEntity_id = Slot(uri=ISO42001.id, name="NamedEntity_id", curie=ISO42001.curie('id'),
-                   model_uri=ISO42001.NamedEntity_id, domain=NamedEntity, range=Union[str, NamedEntityId])
+slots.aimsAuditProgramme__aims_programme_responsibilities = Slot(uri=ISO42001.aims_programme_responsibilities, name="aimsAuditProgramme__aims_programme_responsibilities", curie=ISO42001.curie('aims_programme_responsibilities'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_responsibilities, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsAuditProgramme__aims_programme_resources = Slot(uri=ISO42001.aims_programme_resources, name="aimsAuditProgramme__aims_programme_resources", curie=ISO42001.curie('aims_programme_resources'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_resources, domain=None, range=Optional[str])
+
+slots.aimsAuditProgramme__aims_programme_auditor_selection = Slot(uri=ISO42001.aims_programme_auditor_selection, name="aimsAuditProgramme__aims_programme_auditor_selection", curie=ISO42001.curie('aims_programme_auditor_selection'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_auditor_selection, domain=None, range=Optional[str])
+
+slots.aimsAuditProgramme__aims_programme_status = Slot(uri=ISO42001.aims_programme_status, name="aimsAuditProgramme__aims_programme_status", curie=ISO42001.curie('aims_programme_status'),
+                   model_uri=ISO42001.aimsAuditProgramme__aims_programme_status, domain=None, range=Optional[str])
+
+slots.aimsAudit__aims_audit_type = Slot(uri=ISO42001.aims_audit_type, name="aimsAudit__aims_audit_type", curie=ISO42001.curie('aims_audit_type'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_type, domain=None, range=Union[str, "AimsAuditType"])
+
+slots.aimsAudit__aims_audit_standards = Slot(uri=ISO42001.aims_audit_standards, name="aimsAudit__aims_audit_standards", curie=ISO42001.curie('aims_audit_standards'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_standards, domain=None, range=Optional[Union[Union[str, "AimsManagementSystemStandard"], list[Union[str, "AimsManagementSystemStandard"]]]])
+
+slots.aimsAudit__aims_audit_scope = Slot(uri=ISO42001.aims_audit_scope, name="aimsAudit__aims_audit_scope", curie=ISO42001.curie('aims_audit_scope'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_scope, domain=None, range=Optional[str])
+
+slots.aimsAudit__aims_audit_criteria = Slot(uri=ISO42001.aims_audit_criteria, name="aimsAudit__aims_audit_criteria", curie=ISO42001.curie('aims_audit_criteria'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_criteria, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsAudit__aims_audit_objectives = Slot(uri=ISO42001.aims_audit_objectives, name="aimsAudit__aims_audit_objectives", curie=ISO42001.curie('aims_audit_objectives'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_objectives, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsAudit__aims_audit_period_start = Slot(uri=ISO42001.aims_audit_period_start, name="aimsAudit__aims_audit_period_start", curie=ISO42001.curie('aims_audit_period_start'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_period_start, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsAudit__aims_audit_period_end = Slot(uri=ISO42001.aims_audit_period_end, name="aimsAudit__aims_audit_period_end", curie=ISO42001.curie('aims_audit_period_end'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_period_end, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsAudit__aims_audit_lead = Slot(uri=ISO42001.aims_audit_lead, name="aimsAudit__aims_audit_lead", curie=ISO42001.curie('aims_audit_lead'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_lead, domain=None, range=Optional[str])
+
+slots.aimsAudit__aims_audit_team = Slot(uri=ISO42001.aims_audit_team, name="aimsAudit__aims_audit_team", curie=ISO42001.curie('aims_audit_team'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_team, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsAudit__aims_audit_auditees = Slot(uri=ISO42001.aims_audit_auditees, name="aimsAudit__aims_audit_auditees", curie=ISO42001.curie('aims_audit_auditees'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_auditees, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsAudit__aims_audit_plan = Slot(uri=ISO42001.aims_audit_plan, name="aimsAudit__aims_audit_plan", curie=ISO42001.curie('aims_audit_plan'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_plan, domain=None, range=Optional[Union[str, AimsDocumentedInformationAimsId]])
+
+slots.aimsAudit__aims_audit_findings = Slot(uri=ISO42001.aims_audit_findings, name="aimsAudit__aims_audit_findings", curie=ISO42001.curie('aims_audit_findings'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_findings, domain=None, range=Optional[Union[Union[str, AimsAuditFindingAimsId], list[Union[str, AimsAuditFindingAimsId]]]])
+
+slots.aimsAudit__aims_audit_conclusion = Slot(uri=ISO42001.aims_audit_conclusion, name="aimsAudit__aims_audit_conclusion", curie=ISO42001.curie('aims_audit_conclusion'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_conclusion, domain=None, range=Optional[str])
+
+slots.aimsAudit__aims_audit_report_date = Slot(uri=ISO42001.aims_audit_report_date, name="aimsAudit__aims_audit_report_date", curie=ISO42001.curie('aims_audit_report_date'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_report_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsAudit__aims_audit_report_distribution = Slot(uri=ISO42001.aims_audit_report_distribution, name="aimsAudit__aims_audit_report_distribution", curie=ISO42001.curie('aims_audit_report_distribution'),
+                   model_uri=ISO42001.aimsAudit__aims_audit_report_distribution, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsAuditFinding__aims_finding_type = Slot(uri=ISO42001.aims_finding_type, name="aimsAuditFinding__aims_finding_type", curie=ISO42001.curie('aims_finding_type'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_type, domain=None, range=Union[str, "AimsAuditFindingType"])
+
+slots.aimsAuditFinding__aims_finding_control = Slot(uri=ISO42001.aims_finding_control, name="aimsAuditFinding__aims_finding_control", curie=ISO42001.curie('aims_finding_control'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_control, domain=None, range=Optional[Union[str, AimsControlAimsId]])
+
+slots.aimsAuditFinding__aims_finding_evidence = Slot(uri=ISO42001.aims_finding_evidence, name="aimsAuditFinding__aims_finding_evidence", curie=ISO42001.curie('aims_finding_evidence'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_evidence, domain=None, range=Optional[str])
+
+slots.aimsAuditFinding__aims_finding_root_cause = Slot(uri=ISO42001.aims_finding_root_cause, name="aimsAuditFinding__aims_finding_root_cause", curie=ISO42001.curie('aims_finding_root_cause'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_root_cause, domain=None, range=Optional[str])
+
+slots.aimsAuditFinding__aims_finding_risk = Slot(uri=ISO42001.aims_finding_risk, name="aimsAuditFinding__aims_finding_risk", curie=ISO42001.curie('aims_finding_risk'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_risk, domain=None, range=Optional[str])
+
+slots.aimsAuditFinding__aims_finding_recommendation = Slot(uri=ISO42001.aims_finding_recommendation, name="aimsAuditFinding__aims_finding_recommendation", curie=ISO42001.curie('aims_finding_recommendation'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_recommendation, domain=None, range=Optional[str])
+
+slots.aimsAuditFinding__aims_finding_auditee_response = Slot(uri=ISO42001.aims_finding_auditee_response, name="aimsAuditFinding__aims_finding_auditee_response", curie=ISO42001.curie('aims_finding_auditee_response'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_auditee_response, domain=None, range=Optional[str])
+
+slots.aimsAuditFinding__aims_finding_corrective_action = Slot(uri=ISO42001.aims_finding_corrective_action, name="aimsAuditFinding__aims_finding_corrective_action", curie=ISO42001.curie('aims_finding_corrective_action'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_corrective_action, domain=None, range=Optional[Union[str, AimsCorrectiveActionAimsId]])
+
+slots.aimsAuditFinding__aims_finding_closure_status = Slot(uri=ISO42001.aims_finding_closure_status, name="aimsAuditFinding__aims_finding_closure_status", curie=ISO42001.curie('aims_finding_closure_status'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_closure_status, domain=None, range=Optional[str])
+
+slots.aimsAuditFinding__aims_finding_closure_date = Slot(uri=ISO42001.aims_finding_closure_date, name="aimsAuditFinding__aims_finding_closure_date", curie=ISO42001.curie('aims_finding_closure_date'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_closure_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsManagementReview__aims_review_held_on = Slot(uri=ISO42001.aims_review_held_on, name="aimsManagementReview__aims_review_held_on", curie=ISO42001.curie('aims_review_held_on'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_held_on, domain=None, range=Union[str, XSDDate])
+
+slots.aimsManagementReview__aims_review_attendees = Slot(uri=ISO42001.aims_review_attendees, name="aimsManagementReview__aims_review_attendees", curie=ISO42001.curie('aims_review_attendees'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_attendees, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsManagementReview__aims_review_previous_actions = Slot(uri=ISO42001.aims_review_previous_actions, name="aimsManagementReview__aims_review_previous_actions", curie=ISO42001.curie('aims_review_previous_actions'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_previous_actions, domain=None, range=Optional[str])
+
+slots.aimsManagementReview__aims_review_context_changes = Slot(uri=ISO42001.aims_review_context_changes, name="aimsManagementReview__aims_review_context_changes", curie=ISO42001.curie('aims_review_context_changes'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_context_changes, domain=None, range=Optional[str])
+
+slots.aimsManagementReview__aims_review_interested_party_changes = Slot(uri=ISO42001.aims_review_interested_party_changes, name="aimsManagementReview__aims_review_interested_party_changes", curie=ISO42001.curie('aims_review_interested_party_changes'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_interested_party_changes, domain=None, range=Optional[str])
+
+slots.aimsManagementReview__aims_review_nonconformity_trends = Slot(uri=ISO42001.aims_review_nonconformity_trends, name="aimsManagementReview__aims_review_nonconformity_trends", curie=ISO42001.curie('aims_review_nonconformity_trends'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_nonconformity_trends, domain=None, range=Optional[str])
+
+slots.aimsManagementReview__aims_review_monitoring_trends = Slot(uri=ISO42001.aims_review_monitoring_trends, name="aimsManagementReview__aims_review_monitoring_trends", curie=ISO42001.curie('aims_review_monitoring_trends'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_monitoring_trends, domain=None, range=Optional[str])
+
+slots.aimsManagementReview__aims_review_audit_trends = Slot(uri=ISO42001.aims_review_audit_trends, name="aimsManagementReview__aims_review_audit_trends", curie=ISO42001.curie('aims_review_audit_trends'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_audit_trends, domain=None, range=Optional[str])
+
+slots.aimsManagementReview__aims_review_improvement_opportunities = Slot(uri=ISO42001.aims_review_improvement_opportunities, name="aimsManagementReview__aims_review_improvement_opportunities", curie=ISO42001.curie('aims_review_improvement_opportunities'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_improvement_opportunities, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsManagementReview__aims_review_decisions = Slot(uri=ISO42001.aims_review_decisions, name="aimsManagementReview__aims_review_decisions", curie=ISO42001.curie('aims_review_decisions'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_decisions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsManagementReview__aims_review_system_changes = Slot(uri=ISO42001.aims_review_system_changes, name="aimsManagementReview__aims_review_system_changes", curie=ISO42001.curie('aims_review_system_changes'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_system_changes, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsManagementReview__aims_review_actions = Slot(uri=ISO42001.aims_review_actions, name="aimsManagementReview__aims_review_actions", curie=ISO42001.curie('aims_review_actions'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_actions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsManagementReview__aims_review_next_date = Slot(uri=ISO42001.aims_review_next_date, name="aimsManagementReview__aims_review_next_date", curie=ISO42001.curie('aims_review_next_date'),
+                   model_uri=ISO42001.aimsManagementReview__aims_review_next_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsNonconformity__aims_nonconformity_source = Slot(uri=ISO42001.aims_nonconformity_source, name="aimsNonconformity__aims_nonconformity_source", curie=ISO42001.curie('aims_nonconformity_source'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_source, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_detected_on = Slot(uri=ISO42001.aims_nonconformity_detected_on, name="aimsNonconformity__aims_nonconformity_detected_on", curie=ISO42001.curie('aims_nonconformity_detected_on'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_detected_on, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsNonconformity__aims_nonconformity_detected_by = Slot(uri=ISO42001.aims_nonconformity_detected_by, name="aimsNonconformity__aims_nonconformity_detected_by", curie=ISO42001.curie('aims_nonconformity_detected_by'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_detected_by, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_requirement = Slot(uri=ISO42001.aims_nonconformity_requirement, name="aimsNonconformity__aims_nonconformity_requirement", curie=ISO42001.curie('aims_nonconformity_requirement'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_requirement, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_immediate_actions = Slot(uri=ISO42001.aims_nonconformity_immediate_actions, name="aimsNonconformity__aims_nonconformity_immediate_actions", curie=ISO42001.curie('aims_nonconformity_immediate_actions'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_immediate_actions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsNonconformity__aims_nonconformity_consequences = Slot(uri=ISO42001.aims_nonconformity_consequences, name="aimsNonconformity__aims_nonconformity_consequences", curie=ISO42001.curie('aims_nonconformity_consequences'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_consequences, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_root_cause = Slot(uri=ISO42001.aims_nonconformity_root_cause, name="aimsNonconformity__aims_nonconformity_root_cause", curie=ISO42001.curie('aims_nonconformity_root_cause'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_root_cause, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_similar_check = Slot(uri=ISO42001.aims_nonconformity_similar_check, name="aimsNonconformity__aims_nonconformity_similar_check", curie=ISO42001.curie('aims_nonconformity_similar_check'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_similar_check, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_status = Slot(uri=ISO42001.aims_nonconformity_status, name="aimsNonconformity__aims_nonconformity_status", curie=ISO42001.curie('aims_nonconformity_status'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_status, domain=None, range=Optional[str])
+
+slots.aimsNonconformity__aims_nonconformity_closure_date = Slot(uri=ISO42001.aims_nonconformity_closure_date, name="aimsNonconformity__aims_nonconformity_closure_date", curie=ISO42001.curie('aims_nonconformity_closure_date'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_closure_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsNonconformity__aims_nonconformity_closure_evidence = Slot(uri=ISO42001.aims_nonconformity_closure_evidence, name="aimsNonconformity__aims_nonconformity_closure_evidence", curie=ISO42001.curie('aims_nonconformity_closure_evidence'),
+                   model_uri=ISO42001.aimsNonconformity__aims_nonconformity_closure_evidence, domain=None, range=Optional[str])
+
+slots.aimsCorrectiveAction__aims_action_nonconformities = Slot(uri=ISO42001.aims_action_nonconformities, name="aimsCorrectiveAction__aims_action_nonconformities", curie=ISO42001.curie('aims_action_nonconformities'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_nonconformities, domain=None, range=Optional[Union[Union[str, AimsNonconformityAimsId], list[Union[str, AimsNonconformityAimsId]]]])
+
+slots.aimsCorrectiveAction__aims_action_root_cause = Slot(uri=ISO42001.aims_action_root_cause, name="aimsCorrectiveAction__aims_action_root_cause", curie=ISO42001.curie('aims_action_root_cause'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_root_cause, domain=None, range=Optional[str])
+
+slots.aimsCorrectiveAction__aims_action_target_date = Slot(uri=ISO42001.aims_action_target_date, name="aimsCorrectiveAction__aims_action_target_date", curie=ISO42001.curie('aims_action_target_date'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_target_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsCorrectiveAction__aims_action_completion_date = Slot(uri=ISO42001.aims_action_completion_date, name="aimsCorrectiveAction__aims_action_completion_date", curie=ISO42001.curie('aims_action_completion_date'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_completion_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsCorrectiveAction__aims_action_resources = Slot(uri=ISO42001.aims_action_resources, name="aimsCorrectiveAction__aims_action_resources", curie=ISO42001.curie('aims_action_resources'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_resources, domain=None, range=Optional[str])
+
+slots.aimsCorrectiveAction__aims_action_effectiveness_criteria = Slot(uri=ISO42001.aims_action_effectiveness_criteria, name="aimsCorrectiveAction__aims_action_effectiveness_criteria", curie=ISO42001.curie('aims_action_effectiveness_criteria'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_effectiveness_criteria, domain=None, range=Optional[str])
+
+slots.aimsCorrectiveAction__aims_action_effectiveness_review_date = Slot(uri=ISO42001.aims_action_effectiveness_review_date, name="aimsCorrectiveAction__aims_action_effectiveness_review_date", curie=ISO42001.curie('aims_action_effectiveness_review_date'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_effectiveness_review_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsCorrectiveAction__aims_action_effective = Slot(uri=ISO42001.aims_action_effective, name="aimsCorrectiveAction__aims_action_effective", curie=ISO42001.curie('aims_action_effective'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_effective, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.aimsCorrectiveAction__aims_action_system_changes = Slot(uri=ISO42001.aims_action_system_changes, name="aimsCorrectiveAction__aims_action_system_changes", curie=ISO42001.curie('aims_action_system_changes'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_system_changes, domain=None, range=Optional[str])
+
+slots.aimsCorrectiveAction__aims_action_status = Slot(uri=ISO42001.aims_action_status, name="aimsCorrectiveAction__aims_action_status", curie=ISO42001.curie('aims_action_status'),
+                   model_uri=ISO42001.aimsCorrectiveAction__aims_action_status, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_source = Slot(uri=ISO42001.aims_improvement_source, name="aimsImprovementOpportunity__aims_improvement_source", curie=ISO42001.curie('aims_improvement_source'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_source, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_identified_on = Slot(uri=ISO42001.aims_improvement_identified_on, name="aimsImprovementOpportunity__aims_improvement_identified_on", curie=ISO42001.curie('aims_improvement_identified_on'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_identified_on, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsImprovementOpportunity__aims_improvement_identified_by = Slot(uri=ISO42001.aims_improvement_identified_by, name="aimsImprovementOpportunity__aims_improvement_identified_by", curie=ISO42001.curie('aims_improvement_identified_by'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_identified_by, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_benefit = Slot(uri=ISO42001.aims_improvement_benefit, name="aimsImprovementOpportunity__aims_improvement_benefit", curie=ISO42001.curie('aims_improvement_benefit'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_benefit, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_priority = Slot(uri=ISO42001.aims_improvement_priority, name="aimsImprovementOpportunity__aims_improvement_priority", curie=ISO42001.curie('aims_improvement_priority'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_priority, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_plan = Slot(uri=ISO42001.aims_improvement_plan, name="aimsImprovementOpportunity__aims_improvement_plan", curie=ISO42001.curie('aims_improvement_plan'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_plan, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_target_date = Slot(uri=ISO42001.aims_improvement_target_date, name="aimsImprovementOpportunity__aims_improvement_target_date", curie=ISO42001.curie('aims_improvement_target_date'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_target_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsImprovementOpportunity__aims_improvement_completion_date = Slot(uri=ISO42001.aims_improvement_completion_date, name="aimsImprovementOpportunity__aims_improvement_completion_date", curie=ISO42001.curie('aims_improvement_completion_date'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_completion_date, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsImprovementOpportunity__aims_improvement_outcome = Slot(uri=ISO42001.aims_improvement_outcome, name="aimsImprovementOpportunity__aims_improvement_outcome", curie=ISO42001.curie('aims_improvement_outcome'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_outcome, domain=None, range=Optional[str])
+
+slots.aimsImprovementOpportunity__aims_improvement_status = Slot(uri=ISO42001.aims_improvement_status, name="aimsImprovementOpportunity__aims_improvement_status", curie=ISO42001.curie('aims_improvement_status'),
+                   model_uri=ISO42001.aimsImprovementOpportunity__aims_improvement_status, domain=None, range=Optional[str])
+
+slots.aimsThirdPartyRelationship__aims_relationship_type = Slot(uri=ISO42001.aims_relationship_type, name="aimsThirdPartyRelationship__aims_relationship_type", curie=ISO42001.curie('aims_relationship_type'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_type, domain=None, range=Optional[str])
+
+slots.aimsThirdPartyRelationship__aims_relationship_party = Slot(uri=ISO42001.aims_relationship_party, name="aimsThirdPartyRelationship__aims_relationship_party", curie=ISO42001.curie('aims_relationship_party'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_party, domain=None, range=Optional[str])
+
+slots.aimsThirdPartyRelationship__aims_relationship_party_roles = Slot(uri=ISO42001.aims_relationship_party_roles, name="aimsThirdPartyRelationship__aims_relationship_party_roles", curie=ISO42001.curie('aims_relationship_party_roles'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_party_roles, domain=None, range=Optional[Union[Union[str, "AimsAiRole"], list[Union[str, "AimsAiRole"]]]])
+
+slots.aimsThirdPartyRelationship__aims_relationship_contract = Slot(uri=ISO42001.aims_relationship_contract, name="aimsThirdPartyRelationship__aims_relationship_contract", curie=ISO42001.curie('aims_relationship_contract'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_contract, domain=None, range=Optional[str])
+
+slots.aimsThirdPartyRelationship__aims_relationship_responsibilities = Slot(uri=ISO42001.aims_relationship_responsibilities, name="aimsThirdPartyRelationship__aims_relationship_responsibilities", curie=ISO42001.curie('aims_relationship_responsibilities'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_responsibilities, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsThirdPartyRelationship__aims_relationship_pii_role = Slot(uri=ISO42001.aims_relationship_pii_role, name="aimsThirdPartyRelationship__aims_relationship_pii_role", curie=ISO42001.curie('aims_relationship_pii_role'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_pii_role, domain=None, range=Optional[Union[str, "AimsPiiRole"]])
+
+slots.aimsThirdPartyRelationship__aims_relationship_documentation = Slot(uri=ISO42001.aims_relationship_documentation, name="aimsThirdPartyRelationship__aims_relationship_documentation", curie=ISO42001.curie('aims_relationship_documentation'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_documentation, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsThirdPartyRelationship__aims_relationship_assurance_evidence = Slot(uri=ISO42001.aims_relationship_assurance_evidence, name="aimsThirdPartyRelationship__aims_relationship_assurance_evidence", curie=ISO42001.curie('aims_relationship_assurance_evidence'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_assurance_evidence, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsThirdPartyRelationship__aims_relationship_review_frequency = Slot(uri=ISO42001.aims_relationship_review_frequency, name="aimsThirdPartyRelationship__aims_relationship_review_frequency", curie=ISO42001.curie('aims_relationship_review_frequency'),
+                   model_uri=ISO42001.aimsThirdPartyRelationship__aims_relationship_review_frequency, domain=None, range=Optional[str])
+
+slots.aimsSupplierRelationship__aims_supplier_provides = Slot(uri=ISO42001.aims_supplier_provides, name="aimsSupplierRelationship__aims_supplier_provides", curie=ISO42001.curie('aims_supplier_provides'),
+                   model_uri=ISO42001.aimsSupplierRelationship__aims_supplier_provides, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsSupplierRelationship__aims_supplier_risk = Slot(uri=ISO42001.aims_supplier_risk, name="aimsSupplierRelationship__aims_supplier_risk", curie=ISO42001.curie('aims_supplier_risk'),
+                   model_uri=ISO42001.aimsSupplierRelationship__aims_supplier_risk, domain=None, range=Optional[Union[str, "AimsRiskLevel"]])
+
+slots.aimsSupplierRelationship__aims_supplier_requirements = Slot(uri=ISO42001.aims_supplier_requirements, name="aimsSupplierRelationship__aims_supplier_requirements", curie=ISO42001.curie('aims_supplier_requirements'),
+                   model_uri=ISO42001.aimsSupplierRelationship__aims_supplier_requirements, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsSupplierRelationship__aims_supplier_monitoring = Slot(uri=ISO42001.aims_supplier_monitoring, name="aimsSupplierRelationship__aims_supplier_monitoring", curie=ISO42001.curie('aims_supplier_monitoring'),
+                   model_uri=ISO42001.aimsSupplierRelationship__aims_supplier_monitoring, domain=None, range=Optional[str])
+
+slots.aimsSupplierRelationship__aims_supplier_integration = Slot(uri=ISO42001.aims_supplier_integration, name="aimsSupplierRelationship__aims_supplier_integration", curie=ISO42001.curie('aims_supplier_integration'),
+                   model_uri=ISO42001.aimsSupplierRelationship__aims_supplier_integration, domain=None, range=Optional[str])
+
+slots.aimsSupplierRelationship__aims_supplier_corrective_actions = Slot(uri=ISO42001.aims_supplier_corrective_actions, name="aimsSupplierRelationship__aims_supplier_corrective_actions", curie=ISO42001.curie('aims_supplier_corrective_actions'),
+                   model_uri=ISO42001.aimsSupplierRelationship__aims_supplier_corrective_actions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsCustomerRelationship__aims_customer_expectations = Slot(uri=ISO42001.aims_customer_expectations, name="aimsCustomerRelationship__aims_customer_expectations", curie=ISO42001.curie('aims_customer_expectations'),
+                   model_uri=ISO42001.aimsCustomerRelationship__aims_customer_expectations, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsCustomerRelationship__aims_customer_agreement = Slot(uri=ISO42001.aims_customer_agreement, name="aimsCustomerRelationship__aims_customer_agreement", curie=ISO42001.curie('aims_customer_agreement'),
+                   model_uri=ISO42001.aimsCustomerRelationship__aims_customer_agreement, domain=None, range=Optional[str])
+
+slots.aimsCustomerRelationship__aims_customer_responsibility_split = Slot(uri=ISO42001.aims_customer_responsibility_split, name="aimsCustomerRelationship__aims_customer_responsibility_split", curie=ISO42001.curie('aims_customer_responsibility_split'),
+                   model_uri=ISO42001.aimsCustomerRelationship__aims_customer_responsibility_split, domain=None, range=Optional[str])
+
+slots.aimsCustomerRelationship__aims_customer_communicated_limits = Slot(uri=ISO42001.aims_customer_communicated_limits, name="aimsCustomerRelationship__aims_customer_communicated_limits", curie=ISO42001.curie('aims_customer_communicated_limits'),
+                   model_uri=ISO42001.aimsCustomerRelationship__aims_customer_communicated_limits, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsSystemEvent__aims_event_type = Slot(uri=ISO42001.aims_event_type, name="aimsSystemEvent__aims_event_type", curie=ISO42001.curie('aims_event_type'),
+                   model_uri=ISO42001.aimsSystemEvent__aims_event_type, domain=None, range=Optional[str])
+
+slots.aimsSystemEvent__aims_event_occurred_at = Slot(uri=ISO42001.aims_event_occurred_at, name="aimsSystemEvent__aims_event_occurred_at", curie=ISO42001.curie('aims_event_occurred_at'),
+                   model_uri=ISO42001.aimsSystemEvent__aims_event_occurred_at, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.aimsSystemEvent__aims_event_reporter = Slot(uri=ISO42001.aims_event_reporter, name="aimsSystemEvent__aims_event_reporter", curie=ISO42001.curie('aims_event_reporter'),
+                   model_uri=ISO42001.aimsSystemEvent__aims_event_reporter, domain=None, range=Optional[str])
+
+slots.aimsSystemEvent__aims_event_source = Slot(uri=ISO42001.aims_event_source, name="aimsSystemEvent__aims_event_source", curie=ISO42001.curie('aims_event_source'),
+                   model_uri=ISO42001.aimsSystemEvent__aims_event_source, domain=None, range=Optional[str])
+
+slots.aimsSystemEvent__aims_event_adverse_impact = Slot(uri=ISO42001.aims_event_adverse_impact, name="aimsSystemEvent__aims_event_adverse_impact", curie=ISO42001.curie('aims_event_adverse_impact'),
+                   model_uri=ISO42001.aimsSystemEvent__aims_event_adverse_impact, domain=None, range=Optional[str])
+
+slots.aimsSystemEvent__aims_event_assessment = Slot(uri=ISO42001.aims_event_assessment, name="aimsSystemEvent__aims_event_assessment", curie=ISO42001.curie('aims_event_assessment'),
+                   model_uri=ISO42001.aimsSystemEvent__aims_event_assessment, domain=None, range=Optional[str])
+
+slots.aimsIncident__aims_incident_category = Slot(uri=ISO42001.aims_incident_category, name="aimsIncident__aims_incident_category", curie=ISO42001.curie('aims_incident_category'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_category, domain=None, range=Optional[Union[str, "AimsIncidentCategory"]])
+
+slots.aimsIncident__aims_incident_threats = Slot(uri=ISO42001.aims_incident_threats, name="aimsIncident__aims_incident_threats", curie=ISO42001.curie('aims_incident_threats'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_threats, domain=None, range=Optional[Union[Union[str, "AimsAiThreat"], list[Union[str, "AimsAiThreat"]]]])
+
+slots.aimsIncident__aims_incident_severity = Slot(uri=ISO42001.aims_incident_severity, name="aimsIncident__aims_incident_severity", curie=ISO42001.curie('aims_incident_severity'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_severity, domain=None, range=Optional[Union[str, "AimsRiskLevel"]])
+
+slots.aimsIncident__aims_incident_impact_areas = Slot(uri=ISO42001.aims_incident_impact_areas, name="aimsIncident__aims_incident_impact_areas", curie=ISO42001.curie('aims_incident_impact_areas'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_impact_areas, domain=None, range=Optional[Union[Union[str, "AimsImpactArea"], list[Union[str, "AimsImpactArea"]]]])
+
+slots.aimsIncident__aims_incident_detection_method = Slot(uri=ISO42001.aims_incident_detection_method, name="aimsIncident__aims_incident_detection_method", curie=ISO42001.curie('aims_incident_detection_method'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_detection_method, domain=None, range=Optional[str])
+
+slots.aimsIncident__aims_incident_response_actions = Slot(uri=ISO42001.aims_incident_response_actions, name="aimsIncident__aims_incident_response_actions", curie=ISO42001.curie('aims_incident_response_actions'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_response_actions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsIncident__aims_incident_recovery_actions = Slot(uri=ISO42001.aims_incident_recovery_actions, name="aimsIncident__aims_incident_recovery_actions", curie=ISO42001.curie('aims_incident_recovery_actions'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_recovery_actions, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsIncident__aims_incident_root_cause = Slot(uri=ISO42001.aims_incident_root_cause, name="aimsIncident__aims_incident_root_cause", curie=ISO42001.curie('aims_incident_root_cause'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_root_cause, domain=None, range=Optional[str])
+
+slots.aimsIncident__aims_incident_lessons_learned = Slot(uri=ISO42001.aims_incident_lessons_learned, name="aimsIncident__aims_incident_lessons_learned", curie=ISO42001.curie('aims_incident_lessons_learned'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_lessons_learned, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsIncident__aims_incident_notification_required = Slot(uri=ISO42001.aims_incident_notification_required, name="aimsIncident__aims_incident_notification_required", curie=ISO42001.curie('aims_incident_notification_required'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_notification_required, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.aimsIncident__aims_incident_notifications = Slot(uri=ISO42001.aims_incident_notifications, name="aimsIncident__aims_incident_notifications", curie=ISO42001.curie('aims_incident_notifications'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_notifications, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsIncident__aims_incident_corrective_actions = Slot(uri=ISO42001.aims_incident_corrective_actions, name="aimsIncident__aims_incident_corrective_actions", curie=ISO42001.curie('aims_incident_corrective_actions'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_corrective_actions, domain=None, range=Optional[Union[Union[str, AimsCorrectiveActionAimsId], list[Union[str, AimsCorrectiveActionAimsId]]]])
+
+slots.aimsIncident__aims_incident_closed_at = Slot(uri=ISO42001.aims_incident_closed_at, name="aimsIncident__aims_incident_closed_at", curie=ISO42001.curie('aims_incident_closed_at'),
+                   model_uri=ISO42001.aimsIncident__aims_incident_closed_at, domain=None, range=Optional[Union[str, XSDDateTime]])
+
+slots.aimsConcernReportingProcess__aims_concern_process_confidentiality = Slot(uri=ISO42001.aims_concern_process_confidentiality, name="aimsConcernReportingProcess__aims_concern_process_confidentiality", curie=ISO42001.curie('aims_concern_process_confidentiality'),
+                   model_uri=ISO42001.aimsConcernReportingProcess__aims_concern_process_confidentiality, domain=None, range=Optional[Union[str, list[str]]])
+
+slots.aimsConcernReportingProcess__aims_concern_process_audience = Slot(uri=ISO42001.aims_concern_process_audience, name="aimsConcernReportingProcess__aims_concern_process_audience", curie=ISO42001.curie('aims_concern_process_audience'),
+                   model_uri=ISO42001.aimsConcernReportingProcess__aims_concern_process_audience, domain=None, range=Optional[str])
+
+slots.aimsConcernReportingProcess__aims_concern_process_investigators = Slot(uri=ISO42001.aims_concern_process_investigators, name="aimsConcernReportingProcess__aims_concern_process_investigators", curie=ISO42001.curie('aims_concern_process_investigators'),
+                   model_uri=ISO42001.aimsConcernReportingProcess__aims_concern_process_investigators, domain=None, range=Optional[str])
+
+slots.aimsConcernReportingProcess__aims_concern_process_escalation = Slot(uri=ISO42001.aims_concern_process_escalation, name="aimsConcernReportingProcess__aims_concern_process_escalation", curie=ISO42001.curie('aims_concern_process_escalation'),
+                   model_uri=ISO42001.aimsConcernReportingProcess__aims_concern_process_escalation, domain=None, range=Optional[str])
+
+slots.aimsConcernReportingProcess__aims_concern_process_reprisal_protection = Slot(uri=ISO42001.aims_concern_process_reprisal_protection, name="aimsConcernReportingProcess__aims_concern_process_reprisal_protection", curie=ISO42001.curie('aims_concern_process_reprisal_protection'),
+                   model_uri=ISO42001.aimsConcernReportingProcess__aims_concern_process_reprisal_protection, domain=None, range=Optional[str])
+
+slots.aimsConcernReportingProcess__aims_concern_process_response_time = Slot(uri=ISO42001.aims_concern_process_response_time, name="aimsConcernReportingProcess__aims_concern_process_response_time", curie=ISO42001.curie('aims_concern_process_response_time'),
+                   model_uri=ISO42001.aimsConcernReportingProcess__aims_concern_process_response_time, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_reported_on = Slot(uri=ISO42001.aims_concern_reported_on, name="aimsConcernReport__aims_concern_reported_on", curie=ISO42001.curie('aims_concern_reported_on'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_reported_on, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsConcernReport__aims_concern_reporter = Slot(uri=ISO42001.aims_concern_reporter, name="aimsConcernReport__aims_concern_reporter", curie=ISO42001.curie('aims_concern_reporter'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_reporter, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_anonymous = Slot(uri=ISO42001.aims_concern_anonymous, name="aimsConcernReport__aims_concern_anonymous", curie=ISO42001.curie('aims_concern_anonymous'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_anonymous, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.aimsConcernReport__aims_concern_channel = Slot(uri=ISO42001.aims_concern_channel, name="aimsConcernReport__aims_concern_channel", curie=ISO42001.curie('aims_concern_channel'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_channel, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_life_cycle_stage = Slot(uri=ISO42001.aims_concern_life_cycle_stage, name="aimsConcernReport__aims_concern_life_cycle_stage", curie=ISO42001.curie('aims_concern_life_cycle_stage'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_life_cycle_stage, domain=None, range=Optional[Union[str, "AimsLifecycleStage"]])
+
+slots.aimsConcernReport__aims_concern_severity = Slot(uri=ISO42001.aims_concern_severity, name="aimsConcernReport__aims_concern_severity", curie=ISO42001.curie('aims_concern_severity'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_severity, domain=None, range=Optional[Union[str, "AimsRiskLevel"]])
+
+slots.aimsConcernReport__aims_concern_investigator = Slot(uri=ISO42001.aims_concern_investigator, name="aimsConcernReport__aims_concern_investigator", curie=ISO42001.curie('aims_concern_investigator'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_investigator, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_investigation_status = Slot(uri=ISO42001.aims_concern_investigation_status, name="aimsConcernReport__aims_concern_investigation_status", curie=ISO42001.curie('aims_concern_investigation_status'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_investigation_status, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_findings = Slot(uri=ISO42001.aims_concern_findings, name="aimsConcernReport__aims_concern_findings", curie=ISO42001.curie('aims_concern_findings'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_findings, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_escalation = Slot(uri=ISO42001.aims_concern_escalation, name="aimsConcernReport__aims_concern_escalation", curie=ISO42001.curie('aims_concern_escalation'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_escalation, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_response_due = Slot(uri=ISO42001.aims_concern_response_due, name="aimsConcernReport__aims_concern_response_due", curie=ISO42001.curie('aims_concern_response_due'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_response_due, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsConcernReport__aims_concern_responded_on = Slot(uri=ISO42001.aims_concern_responded_on, name="aimsConcernReport__aims_concern_responded_on", curie=ISO42001.curie('aims_concern_responded_on'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_responded_on, domain=None, range=Optional[Union[str, XSDDate]])
+
+slots.aimsConcernReport__aims_concern_resolution = Slot(uri=ISO42001.aims_concern_resolution, name="aimsConcernReport__aims_concern_resolution", curie=ISO42001.curie('aims_concern_resolution'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_resolution, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_reprisal_protection = Slot(uri=ISO42001.aims_concern_reprisal_protection, name="aimsConcernReport__aims_concern_reprisal_protection", curie=ISO42001.curie('aims_concern_reprisal_protection'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_reprisal_protection, domain=None, range=Optional[str])
+
+slots.aimsConcernReport__aims_concern_incidents = Slot(uri=ISO42001.aims_concern_incidents, name="aimsConcernReport__aims_concern_incidents", curie=ISO42001.curie('aims_concern_incidents'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_incidents, domain=None, range=Optional[Union[Union[str, AimsIncidentAimsId], list[Union[str, AimsIncidentAimsId]]]])
+
+slots.aimsConcernReport__aims_concern_nonconformities = Slot(uri=ISO42001.aims_concern_nonconformities, name="aimsConcernReport__aims_concern_nonconformities", curie=ISO42001.curie('aims_concern_nonconformities'),
+                   model_uri=ISO42001.aimsConcernReport__aims_concern_nonconformities, domain=None, range=Optional[Union[Union[str, AimsNonconformityAimsId], list[Union[str, AimsNonconformityAimsId]]]])
+
+slots.AimsRecordMixin_title = Slot(uri=SCHEMA.name, name="AimsRecordMixin_title", curie=SCHEMA.curie('name'),
+                   model_uri=ISO42001.AimsRecordMixin_title, domain=None, range=str,
+                   pattern=re.compile(r'^\s*\S'))
+
+slots.AimsIncludedControl_aims_implementation_state = Slot(uri=ISO42001.aims_implementation_state, name="AimsIncludedControl_aims_implementation_state", curie=ISO42001.curie('aims_implementation_state'),
+                   model_uri=ISO42001.AimsIncludedControl_aims_implementation_state, domain=AimsIncludedControl, range=Union[str, "AimsImplementationStatus"])
+
+slots.AimsExcludedControl_aims_entry_annex_a_control = Slot(uri=ISO42001.aims_entry_annex_a_control, name="AimsExcludedControl_aims_entry_annex_a_control", curie=ISO42001.curie('aims_entry_annex_a_control'),
+                   model_uri=ISO42001.AimsExcludedControl_aims_entry_annex_a_control, domain=AimsExcludedControl, range=Union[str, "AimsAnnexAControl"])

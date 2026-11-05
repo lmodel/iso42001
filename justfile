@@ -113,7 +113,7 @@ test: _test-schema _test-python _test-examples
 # Run linting
 [group('model development')]
 lint:
-  uv run linkml-lint {{source_schema_dir}}
+  uv run linkml-lint {{source_schema_path}}
 
 # Regenerate the empty overlay scaffold from the public schema.
 # Safe to commit - contains no copyrighted text. See src/iso42001/schema/OVERLAY.md

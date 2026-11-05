@@ -29,8 +29,8 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.11.0"
-version = "1.0.0"
+metamodel_version = "1.12.0"
+version = "2023"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -66,3604 +66,5885 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'annotations': {'amendment_reference': {'tag': 'amendment_reference',
-                                             'value': 'Forward-compatibility '
-                                                      'placeholder for tracking '
-                                                      'amendments (AMD) and '
-                                                      'technical corrigenda (Cor) '
-                                                      'to ISO/IEC 42001:2023. '
-                                                      'Update when ISO/IEC '
-                                                      'publishes amendments to the '
-                                                      'base edition.'},
-                     'developing_committee': {'tag': 'developing_committee',
-                                              'value': 'ISO/IEC JTC 1/SC 42 '
-                                                       '(Artificial Intelligence)'},
-                     'harmonized_structure': {'tag': 'harmonized_structure',
-                                              'value': True},
+linkml_meta = LinkMLMeta({'annotations': {'edition': {'tag': 'edition', 'value': '1'},
+                     'iso_open_data_date': {'tag': 'iso_open_data_date',
+                                            'value': '2026-11-05'},
                      'normative_reference': {'tag': 'normative_reference',
-                                             'value': 'ISO/IEC 22989:2022 (AI '
-                                                      'concepts and terminology)'},
-                     'related_standards': {'tag': 'related_standards',
-                                           'value': 'ISO/IEC 23894 (AI risk '
-                                                    'management guidance); ISO/IEC '
-                                                    '38507 (Governance of IT - AI '
-                                                    'governance implications); '
-                                                    'ISO/IEC 5259 (Data quality '
-                                                    'for analytics and ML); '
-                                                    'ISO/IEC 5338 (AI system life '
-                                                    'cycle process); ISO/IEC 27001 '
-                                                    '(Information security '
-                                                    'management); ISO/IEC 27701 '
-                                                    '(Privacy information '
-                                                    'management); ISO 9001 '
-                                                    '(Quality management); ISO '
-                                                    '31000 (Risk management)'},
-                     'rights_notice': {'tag': 'rights_notice',
-                                       'value': 'This project is licensed under '
-                                                'Apache-2.0 for original schema '
-                                                'structure and descriptions. '
-                                                'ISO/IEC standards text is owned '
-                                                'by ISO/IEC and is not reproduced '
-                                                'verbatim by this project.'},
-                     'schema_maintainer': {'tag': 'schema_maintainer',
-                                           'value': 'noel.mcloughlin@gmail.com'},
-                     'schema_status': {'tag': 'schema_status', 'value': 'stable'},
-                     'standard_date': {'tag': 'standard_date', 'value': '2023-12'},
-                     'standard_edition': {'tag': 'standard_edition',
-                                          'value': 'First edition'},
-                     'standard_reference': {'tag': 'standard_reference',
-                                            'value': 'ISO/IEC 42001:2023(E)'},
-                     'standard_title': {'tag': 'standard_title',
-                                        'value': 'Information technology - '
-                                                 'Artificial intelligence - '
-                                                 'Management system'}},
+                                             'value': 'ISO/IEC 22989:2022'},
+                     'publication_date': {'tag': 'publication_date',
+                                          'value': '2023-12-18'},
+                     'standard': {'tag': 'standard',
+                                  'value': 'ISO/IEC 42001:2023'}},
+     'comments': ['The version is the edition the schema models, and source is '
+                  "ISO's page for it. ISO Open Data's records of the edition and "
+                  'of its normative reference are copied to '
+                  'src/iso42001/schema/iso-open-data/ on the date the annotations '
+                  'give, and scripts/check_upstream_release.py reports when ISO '
+                  "changes them. The release tags are the schema's own versions.",
+                  'ISO/IEC 42001 is copyright ISO and IEC, and none of its text is '
+                  'reproduced here. An element cites what it models by number, in '
+                  'the iso42001_clause, annex_a_control, annex_b_item, '
+                  'annex_c_item or annex_d_item annotation, and its title and '
+                  "description are this project's own words. A licence holder can "
+                  "merge the standard's wording into a private copy with the "
+                  'overlay that src/iso42001/schema/OVERLAY.md describes.',
+                  'The terms follow ISO/IEC 22989:2022, the one normative '
+                  "reference, and so do the stages of a system's life and the "
+                  'kinds of AI role. Annexes C and D are informative and give '
+                  'examples, so an enum built from one of them has the value '
+                  'other.',
+                  'Every record that other records refer to has an aims_id, and a '
+                  'reference holds that identifier. AimsManagementSystem holds '
+                  'each kind of record in a list of its own.',
+                  'A close mapping to lmodel/iso27001 names the class that answers '
+                  'to the same clause number, since both standards follow the '
+                  'harmonized structure of management system standards. '
+                  'AimsOrganization and AimsRole are the same kind of thing as '
+                  "SPDX's Organization and OSCAL's Role. AimsControl is related to "
+                  "OSCAL's Control: both name a safeguard, but OSCAL's is a "
+                  "catalogue entry and this one is the organization's own."],
      'default_prefix': 'iso42001',
      'default_range': 'string',
-     'description': 'A comprehensive LinkML schema modeling AI Management System '
-                    '(AIMS) entities, workflows, and traceability links aligned to '
-                    'ISO/IEC 42001:2023 clause and Annex references. Designed for '
-                    'open data publication, automated validation, and integration '
-                    'with AI governance, risk, and compliance platforms.\n'
-                    'This schema captures: - AIMS lifecycle (establish, implement, '
-                    'maintain, improve) - AI risk assessment, treatment, and AI '
-                    'system impact assessment (Clause 6.1) - Annex A reference '
-                    'control catalog (A.2-A.10) for responsible AI - Audit, '
-                    'measurement, and continual improvement artifacts - Data '
-                    'resources, tooling, computing, and human resources for AI '
-                    'systems - Third-party, supplier, and customer relationships '
-                    'across the AI life cycle',
+     'description': 'A LinkML model of the records an organization keeps to run an '
+                    'artificial intelligence (AI) management system under ISO/IEC '
+                    '42001:2023. The records cover its context, leadership, '
+                    'planning and support, how it weighs and treats AI risks, and '
+                    'what its AI systems may do to people and society. They also '
+                    'cover those systems with their resources, data and documents, '
+                    'its audits and reviews, and what it corrects and improves. '
+                    'The reference controls of Annex A appear by number, with '
+                    "titles of this project's own.",
      'id': 'https://w3id.org/lmodel/iso42001',
      'imports': ['linkml:types'],
-     'license': 'https://www.apache.org/licenses/LICENSE-2.0',
+     'license': 'Apache-2.0',
      'name': 'iso42001',
-     'prefixes': {'dcterms': {'prefix_prefix': 'dcterms',
-                              'prefix_reference': 'http://purl.org/dc/terms/'},
-                  'iso22989': {'prefix_prefix': 'iso22989',
-                               'prefix_reference': 'https://w3id.org/lmodel/iso22989/'},
-                  'iso23894': {'prefix_prefix': 'iso23894',
-                               'prefix_reference': 'https://w3id.org/lmodel/iso23894/'},
-                  'iso27001': {'prefix_prefix': 'iso27001',
+     'prefixes': {'iso27001': {'prefix_prefix': 'iso27001',
                                'prefix_reference': 'https://w3id.org/lmodel/iso27001/'},
-                  'iso29100': {'prefix_prefix': 'iso29100',
-                               'prefix_reference': 'https://w3id.org/lmodel/iso29100/'},
                   'iso42001': {'prefix_prefix': 'iso42001',
                                'prefix_reference': 'https://w3id.org/lmodel/iso42001/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
-                  'nist_ai_100_1': {'prefix_prefix': 'nist_ai_100_1',
-                                    'prefix_reference': 'https://w3id.org/lmodel/nist-ai-100-1/'},
-                  'nist_ai_600_1': {'prefix_prefix': 'nist_ai_600_1',
-                                    'prefix_reference': 'https://w3id.org/lmodel/nist-ai-600-1/'},
-                  'nist_ai_rmf': {'prefix_prefix': 'nist_ai_rmf',
-                                  'prefix_reference': 'https://www.nist.gov/itl/ai-risk-management-framework/'},
-                  'prov': {'prefix_prefix': 'prov',
-                           'prefix_reference': 'http://www.w3.org/ns/prov#'},
+                  'oscal': {'prefix_prefix': 'oscal',
+                            'prefix_reference': 'https://w3id.org/lmodel/oscal/'},
                   'schema': {'prefix_prefix': 'schema',
                              'prefix_reference': 'http://schema.org/'},
-                  'skos': {'prefix_prefix': 'skos',
-                           'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'}},
+                  'spdx_core': {'prefix_prefix': 'spdx_core',
+                                'prefix_reference': 'https://spdx.org/rdf/3.0.1/terms/Core/'},
+                  'xsd': {'prefix_prefix': 'xsd',
+                          'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
      'see_also': ['https://lmodel.github.io/iso42001',
-                  'https://www.iso.org/standard/81230.html'],
+                  'https://www.iso.org/standard/81230.html',
+                  'https://www.iso.org/standard/74296.html'],
+     'source': 'https://www.iso.org/standard/81230.html',
      'source_file': 'src/iso42001/schema/iso42001.yaml',
-     'subsets': {'ai_data_management': {'description': 'Elements covering data '
-                                                       'resources, data '
-                                                       'acquisition, data quality, '
-                                                       'data provenance, and data '
-                                                       'preparation for AI systems '
-                                                       'per A.7.',
-                                        'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                        'name': 'ai_data_management'},
-                 'ai_risk_management': {'description': 'Elements supporting AI '
-                                                       'risk assessment (6.1.2), '
-                                                       'AI risk treatment (6.1.3), '
-                                                       'and AI system impact '
-                                                       'assessment (6.1.4). '
-                                                       'Aligned with ISO '
-                                                       '31000:2018 and ISO/IEC '
-                                                       '23894 guidance.',
-                                        'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                        'name': 'ai_risk_management'},
-                 'ai_system_lifecycle': {'description': 'Classes representing the '
-                                                        'AI system life cycle '
-                                                        'stages (design, '
-                                                        'development, '
-                                                        'verification, deployment, '
-                                                        'operation, monitoring, '
-                                                        'decommissioning) '
-                                                        'referenced in Annex A.6.',
-                                         'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                         'name': 'ai_system_lifecycle'},
-                 'aims_core': {'comments': ['Mandatory for any ISO/IEC 42001 '
-                                            'conformance dataset',
-                                            'Maps to requirement statements in the '
-                                            'standard'],
-                               'description': 'Core AIMS structural elements '
-                                              'required for conformity with '
-                                              'Clauses 4-10 of ISO/IEC 42001:2023. '
-                                              'These classes represent the minimum '
-                                              'viable data model for AIMS '
-                                              'documentation.',
+     'subsets': {'aims_ai_systems': {'description': 'The AI systems, their '
+                                                    'resources, data and '
+                                                    'documents, and what is told '
+                                                    'to those who use or depend on '
+                                                    'them (Annex A, areas A.4 and '
+                                                    'A.6 to A.9).',
+                                     'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                     'name': 'aims_ai_systems'},
+                 'aims_annex_a': {'description': 'The Annex A reference controls, '
+                                                 "the organization's own controls "
+                                                 'and the Statement of '
+                                                 'Applicability.',
+                                  'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                  'name': 'aims_annex_a'},
+                 'aims_core': {'description': "The records of the system's "
+                                              'context, leadership, planning and '
+                                              'support (clauses 4 to 7).',
                                'from_schema': 'https://w3id.org/lmodel/iso42001',
                                'name': 'aims_core'},
-                 'annex_a_controls': {'description': 'Classes and enumerations '
-                                                     'representing the reference '
-                                                     'controls in Annex A of '
-                                                     'ISO/IEC 42001:2023, grouped '
-                                                     'into nine control families '
-                                                     '(A.2 through A.10). '
-                                                     'Implementation guidance is '
-                                                     'provided in Annex B.',
-                                      'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                      'name': 'annex_a_controls'},
-                 'continual_improvement': {'description': 'Elements for '
-                                                          'nonconformity '
-                                                          'management, corrective '
-                                                          'actions, and '
-                                                          'improvement tracking '
-                                                          'per Clause 10.',
+                 'aims_documented_information': {'description': 'The records that '
+                                                                'are documented '
+                                                                'information under '
+                                                                'document control '
+                                                                '(clause 7.5).',
+                                                 'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                                 'name': 'aims_documented_information'},
+                 'aims_external_parties': {'description': 'The relationships with '
+                                                          'partners, suppliers and '
+                                                          'customers (Annex A, '
+                                                          'area A.10).',
                                            'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                           'name': 'continual_improvement'},
-                 'documented_information': {'description': 'Classes representing '
-                                                           'required documented '
-                                                           'information per Clause '
-                                                           '7.5. Supports document '
-                                                           'control and retention '
-                                                           'requirements.',
-                                            'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                            'name': 'documented_information'},
-                 'performance_evaluation': {'description': 'Classes for '
-                                                           'monitoring, '
-                                                           'measurement, internal '
-                                                           'audit, and management '
-                                                           'review per Clauses '
-                                                           '9.1-9.3.',
-                                            'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                            'name': 'performance_evaluation'},
-                 'third_party_management': {'description': 'Classes covering '
-                                                           'allocation of '
-                                                           'responsibilities to '
-                                                           'partners, suppliers, '
-                                                           'and customers across '
-                                                           'the AI system life '
-                                                           'cycle per A.10.',
-                                            'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                            'name': 'third_party_management'}},
-     'title': 'ISO 42001 / AIMS: LinkML Schema',
-     'types': {'duration type': {'base': 'str',
-                                 'description': 'ISO 8601 duration value such as '
-                                                'P1Y, P30D, or PT4H',
+                                           'name': 'aims_external_parties'},
+                 'aims_improvement': {'description': 'The records of getting '
+                                                     'better: improvements, '
+                                                     'nonconformities and what '
+                                                     'corrects them (clause 10).',
+                                      'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                      'name': 'aims_improvement'},
+                 'aims_performance_evaluation': {'description': 'The records of '
+                                                                'monitoring, '
+                                                                'internal audit '
+                                                                'and management '
+                                                                'review (clause '
+                                                                '9).',
+                                                 'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                                 'name': 'aims_performance_evaluation'},
+                 'aims_risk_management': {'description': 'The records of risk '
+                                                         'assessment, risk '
+                                                         'treatment and impact '
+                                                         'assessment (clauses 6.1, '
+                                                         '8.2, 8.3 and 8.4).',
+                                          'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                          'name': 'aims_risk_management'}},
+     'title': 'ISO/IEC 42001:2023 AI management system records',
+     'types': {'aims_duration': {'base': 'str',
+                                 'description': 'A length of time as ISO 8601 '
+                                                'writes it, such as P7Y for seven '
+                                                'years or P30D for thirty days.',
                                  'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                 'name': 'duration type',
-                                 'uri': 'xsd:duration'},
-               'positive integer type': {'base': 'int',
-                                         'description': 'integer greater than '
-                                                        'zero; natural number '
-                                                        'explicitly excluding zero',
-                                         'exact_mappings': ['wikidata:Q28920044'],
-                                         'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                         'name': 'positive integer type',
-                                         'uri': 'xsd:positiveInteger'},
-               'unsigned short type': {'base': 'int',
-                                       'description': 'data type for non-negative '
-                                                      'integers that can be '
-                                                      'represented with 16 bits',
-                                       'exact_mappings': ['wikidata:Q110650833'],
-                                       'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                       'name': 'unsigned short type',
-                                       'uri': 'xsd:unsignedShort'}}} )
+                                 'name': 'aims_duration',
+                                 'pattern': '^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$',
+                                 'typeof': 'string',
+                                 'uri': 'xsd:duration'}}} )
 
-class AIControlFamily(str, Enum):
+class AimsClause(str, Enum):
     """
-    The reference control families in Annex A of ISO/IEC 42001:2023.
+    The numbered clauses and subclauses of the standard from 4 to 10, by their numbers. A value's description is this project's own summary, and the clause headings and the requirements are ISO's.
     """
-    ai_policies = "ai_policies"
+    number_4 = "clause_4"
     """
-    Policies related to AI (Annex A.2) - management direction and support for AI systems according to business requirements.
+    Why the system exists and what it reaches.
     """
-    internal_organization = "internal_organization"
+    number_4FULL_STOP1 = "clause_4_1"
     """
-    Internal organization (Annex A.3) - accountability for responsible implementation, operation, and management of AI systems.
+    Matters inside and outside that bear on the system, climate among them, and the part the organization plays with AI.
     """
-    ai_resources = "ai_resources"
+    number_4FULL_STOP2 = "clause_4_2"
     """
-    Resources for AI systems (Annex A.4) - documentation of data, tooling, system/computing, and human resources for AI systems.
+    Who has a stake in the system, and what they want from it.
     """
-    impact_assessment = "impact_assessment"
+    number_4FULL_STOP3 = "clause_4_3"
     """
-    Assessing impacts of AI systems (Annex A.5) - evaluation of consequences for individuals, groups, and societies across the AI system life cycle.
+    Where the system stops, stated in writing.
     """
-    ai_system_lifecycle = "ai_system_lifecycle"
+    number_4FULL_STOP4 = "clause_4_4"
     """
-    AI system life cycle (Annex A.6) - responsible design, development, verification, deployment, operation, and technical documentation.
+    Having the system and its processes in place, and keeping them up.
     """
-    data_for_ai = "data_for_ai"
+    number_5 = "clause_5"
     """
-    Data for AI systems (Annex A.7) - data management, acquisition, quality, provenance, and preparation for AI.
+    What top management must do.
     """
-    information_for_parties = "information_for_parties"
+    number_5FULL_STOP1 = "clause_5_1"
     """
-    Information for interested parties (Annex A.8) - system documentation for users, external reporting, and incident communications.
+    How top management shows it leads and backs the system.
     """
-    use_of_ai = "use_of_ai"
+    number_5FULL_STOP2 = "clause_5_2"
     """
-    Use of AI systems (Annex A.9) - responsible-use processes, objectives, and intended-use enforcement.
+    Management's written direction on AI.
     """
-    third_party_relationships = "third_party_relationships"
+    number_5FULL_STOP3 = "clause_5_3"
     """
-    Third-party and customer relationships (Annex A.10) - allocating responsibilities, supplier management, and customer expectations.
+    Who holds which duty and power, including who checks conformity and who reports on performance.
     """
-
-
-class ImplementationStatus(str, Enum):
+    number_6 = "clause_6"
     """
-    Lifecycle status of a reference control, used in the AIMS Statement of Applicability and control tracking.
+    Deciding what to do before doing it.
     """
-    not_started = "not_started"
+    number_6FULL_STOP1 = "clause_6_1"
     """
-    Control identified but no implementation activities begun.
+    Dealing with what could go well or badly.
     """
-    planned = "planned"
+    number_6FULL_STOP1FULL_STOP1 = "clause_6_1_1"
     """
-    Control scheduled for implementation with defined timeline.
+    Criteria for risk, and the actions planned on risks and opportunities.
     """
-    in_progress = "in_progress"
+    number_6FULL_STOP1FULL_STOP2 = "clause_6_1_2"
     """
-    Implementation actively underway but not yet complete.
+    A repeatable way to find, analyse and rank AI risks.
     """
-    implemented = "implemented"
+    number_6FULL_STOP1FULL_STOP3 = "clause_6_1_3"
     """
-    Control fully implemented and operational.
+    Choosing treatments and controls, with the Statement of Applicability and the plan.
     """
-    not_applicable = "not_applicable"
+    number_6FULL_STOP1FULL_STOP4 = "clause_6_1_4"
     """
-    Control excluded from scope with documented justification per Clause 6.1.3 f).
+    A way to work out what AI systems may do to people and society.
     """
-
-
-class RiskTreatmentOption(str, Enum):
+    number_6FULL_STOP2 = "clause_6_2"
     """
-    Standard risk treatment options drawn from ISO 31000 and adapted for AI risk treatment per Clause 6.1.3.
+    Measurable aims for AI, and how each will be reached.
     """
-    modify = "modify"
+    number_6FULL_STOP3 = "clause_6_3"
     """
-    Apply controls to change the AI risk level (reduce likelihood or consequence).
+    Changing the system in an orderly way.
     """
-    accept = "accept"
+    number_7 = "clause_7"
     """
-    Accept the residual AI risk without further treatment, within risk appetite, with designated management approval.
+    What the system needs in order to run.
     """
-    avoid = "avoid"
+    number_7FULL_STOP1 = "clause_7_1"
     """
-    Eliminate the AI risk by not undertaking the activity that creates it (for example, not deploying a high-risk AI use case).
+    Providing what the system needs.
     """
-    share = "share"
+    number_7FULL_STOP2 = "clause_7_2"
     """
-    Transfer or share the AI risk with external parties (e.g., insurance, contractual transfer to a supplier or partner).
+    People's ability to do the work, and the evidence of it.
     """
-
-
-class RiskLevel(str, Enum):
+    number_7FULL_STOP3 = "clause_7_3"
     """
-    Qualitative AI risk rating derived from likelihood and consequence analysis.
+    What those who work for the organization must know.
     """
-    very_low = "very_low"
+    number_7FULL_STOP4 = "clause_7_4"
     """
-    Negligible AI risk requiring no immediate action.
+    Who is told what, when and how.
     """
-    low = "low"
+    number_7FULL_STOP5 = "clause_7_5"
     """
-    Minor AI risk manageable through routine procedures.
+    Keeping information under control.
     """
-    medium = "medium"
+    number_7FULL_STOP5FULL_STOP1 = "clause_7_5_1"
     """
-    Moderate AI risk requiring management attention and planned controls.
+    Which information the system holds.
     """
-    high = "high"
+    number_7FULL_STOP5FULL_STOP2 = "clause_7_5_2"
     """
-    Significant AI risk requiring priority treatment and escalation.
+    Naming, formatting, reviewing and approving it.
     """
-    critical = "critical"
+    number_7FULL_STOP5FULL_STOP3 = "clause_7_5_3"
     """
-    Severe AI risk threatening organizational objectives, individuals, or societies; requires immediate executive action.
+    Keeping it to hand and protected.
     """
-
-
-class LikelihoodRating(str, Enum):
+    number_8 = "clause_8"
     """
-    Qualitative likelihood scale for AI risk assessment.
+    Carrying out what was planned.
     """
-    rare = "rare"
+    number_8FULL_STOP1 = "clause_8_1"
     """
-    Highly unlikely to occur (< 5% probability).
+    Running and controlling the processes, including those from outside.
     """
-    unlikely = "unlikely"
+    number_8FULL_STOP2 = "clause_8_2"
     """
-    Not expected but possible (5-20% probability).
+    Carrying out risk assessments, on schedule and when things change.
     """
-    possible = "possible"
+    number_8FULL_STOP3 = "clause_8_3"
     """
-    May occur at some point (20-50% probability).
+    Carrying out the treatment plan and checking that it works.
     """
-    likely = "likely"
+    number_8FULL_STOP4 = "clause_8_4"
     """
-    Probably will occur (50-80% probability).
+    Carrying out impact assessments, on schedule and when things change.
     """
-    almost_certain = "almost_certain"
+    number_9 = "clause_9"
     """
-    Expected to occur in most circumstances (> 80% probability).
+    Checking how the system is doing.
     """
-
-
-class ImpactRating(str, Enum):
+    number_9FULL_STOP1 = "clause_9_1"
     """
-    Qualitative consequence scale for AI risk assessment, covering impact on the organization, individuals, groups, and societies.
+    What is measured, how and when, and what the results mean.
     """
-    negligible = "negligible"
+    number_9FULL_STOP2 = "clause_9_2"
     """
-    No significant impact on operations, individuals, or society.
+    Audits the organization runs on itself.
     """
-    minor = "minor"
+    number_9FULL_STOP2FULL_STOP1 = "clause_9_2_1"
     """
-    Limited impact, easily absorbed by normal operations.
+    What such an audit must establish, and how often.
     """
-    moderate = "moderate"
+    number_9FULL_STOP2FULL_STOP2 = "clause_9_2_2"
     """
-    Noticeable impact requiring management intervention.
+    The plan for those audits, and how impartial they are.
     """
-    major = "major"
+    number_9FULL_STOP3 = "clause_9_3"
     """
-    Serious impact on objectives, reputation, compliance, or identifiable groups of individuals.
+    Top management's own look at the system.
     """
-    severe = "severe"
+    number_9FULL_STOP3FULL_STOP1 = "clause_9_3_1"
     """
-    Catastrophic impact threatening organizational viability, broad societal harm, or fundamental rights of affected individuals.
+    How often it looks, and to what end.
+    """
+    number_9FULL_STOP3FULL_STOP2 = "clause_9_3_2"
+    """
+    What it must take in.
+    """
+    number_9FULL_STOP3FULL_STOP3 = "clause_9_3_3"
+    """
+    What it must produce.
+    """
+    number_10 = "clause_10"
+    """
+    Getting better and putting things right.
+    """
+    number_10FULL_STOP1 = "clause_10_1"
+    """
+    Making the system better over time.
+    """
+    number_10FULL_STOP2 = "clause_10_2"
+    """
+    Dealing with an unmet requirement and removing its cause.
     """
 
 
-class AISystemLifecycleStage(str, Enum):
+class AimsControlArea(str, Enum):
     """
-    Stages of the AI system life cycle referenced throughout Annex A.6 and defined in ISO/IEC 5338 / ISO/IEC 22989.
+    The nine areas Annex A sorts its controls into, under names of this project's own. An area's number is its annotation.
+    """
+    AFULL_STOP2 = "policy_direction"
+    """
+    Written direction from management on AI, and how it fits with other policies.
+    """
+    AFULL_STOP3 = "accountability"
+    """
+    Who answers for AI within the organization's walls, and the way worries are raised.
+    """
+    AFULL_STOP4 = "system_resources"
+    """
+    What each AI system draws on: components, data, tools, computing and people.
+    """
+    AFULL_STOP5 = "impact_assessment"
+    """
+    Working out what AI systems may do to people and society.
+    """
+    AFULL_STOP6 = "system_life_cycle"
+    """
+    Building and running AI systems, from the goals set for them to their logs.
+    """
+    AFULL_STOP7 = "data_management"
+    """
+    The data AI systems use: how it is managed, obtained, kept fit, traced and readied.
+    """
+    AFULL_STOP8 = "stakeholder_information"
+    """
+    What users and others are told about a system, and their way to report harm.
+    """
+    AFULL_STOP9 = "responsible_use"
+    """
+    How AI systems are put to use, against the organization's goals and the systems' documents.
+    """
+    AFULL_STOP10 = "external_relationships"
+    """
+    Duties shared with partners, suppliers and customers.
+    """
+
+
+class AimsAnnexAControl(str, Enum):
+    """
+    The 38 reference controls of Annex A. A value's title holds the control's number and a name of this project's own, and its description says in this project's words what the control asks for. The headings and the control text are ISO's.
+    """
+    AFULL_STOP2FULL_STOP2_Written_direction_on_AI = "a_2_2"
+    """
+    Set down in writing how the organization means to treat AI systems.
+    """
+    AFULL_STOP2FULL_STOP3_Fit_with_other_policies = "a_2_3"
+    """
+    Find where the organization's other policies touch its aims for AI, in either direction.
+    """
+    AFULL_STOP2FULL_STOP4_Regular_policy_check = "a_2_4"
+    """
+    Look at the AI policy again on a schedule and whenever the need arises, to see that it still serves.
+    """
+    AFULL_STOP3FULL_STOP2_Who_answers_for_what = "a_3_2"
+    """
+    Decide who carries which duty for AI, as the organization's needs dictate.
+    """
+    AFULL_STOP3FULL_STOP3_A_way_to_raise_worries = "a_3_3"
+    """
+    Give people a way to raise worries about the organization's part in a system, at any point in that system's life.
+    """
+    AFULL_STOP4FULL_STOP2_Inventory_of_what_is_needed = "a_4_2"
+    """
+    List what each stage of a system's life, and other AI work, draws on.
+    """
+    AFULL_STOP4FULL_STOP3_Record_of_data_used = "a_4_3"
+    """
+    Record facts about the data a system draws on.
+    """
+    AFULL_STOP4FULL_STOP4_Record_of_tools_used = "a_4_4"
+    """
+    Record facts about the tools a system draws on.
+    """
+    AFULL_STOP4FULL_STOP5_Record_of_infrastructure_used = "a_4_5"
+    """
+    Record facts about the hardware and computing a system draws on.
+    """
+    AFULL_STOP4FULL_STOP6_Record_of_people_used = "a_4_6"
+    """
+    Record who works on a system across its whole life, and what skills they bring.
+    """
+    AFULL_STOP5FULL_STOP2_Method_for_weighing_consequences = "a_5_2"
+    """
+    Set up a way to work out what a system could do to people and society over its life.
+    """
+    AFULL_STOP5FULL_STOP3_Keeping_assessment_results = "a_5_3"
+    """
+    Write down what each impact assessment found, and hold on to it for a set time.
+    """
+    AFULL_STOP5FULL_STOP4_Effects_on_people = "a_5_4"
+    """
+    Work out and record how a system could affect single persons or particular groups over its life.
+    """
+    AFULL_STOP5FULL_STOP5_Effects_on_society = "a_5_5"
+    """
+    Work out and record how a system could affect society over its life.
+    """
+    AFULL_STOP6FULL_STOP1FULL_STOP2_Goals_for_building = "a_6_1_2"
+    """
+    Set goals that steer responsible building, and work measures for them into the development cycle.
+    """
+    AFULL_STOP6FULL_STOP1FULL_STOP3_Defined_ways_of_building = "a_6_1_3"
+    """
+    Set down the particular processes for designing and building a system responsibly.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP2_What_a_system_must_do = "a_6_2_2"
+    """
+    Write down what a new system, or a large upgrade to one, must meet.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP3_Build_records = "a_6_2_3"
+    """
+    Write down how a system was designed and built, against the goals and the requirements.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP4_Checks_and_their_criteria = "a_6_2_4"
+    """
+    Set the checks that verify and validate a system, and say when each applies.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP5_Going_live = "a_6_2_5"
+    """
+    Keep a plan for putting a system into service, and meet its conditions first.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP6_Running_and_watching = "a_6_2_6"
+    """
+    Set down what keeping a system in service takes: at least watching it, fixing it, updating it and supporting it.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP7_Documents_per_audience = "a_6_2_7"
+    """
+    Decide what technical documents each kind of reader needs, and give them those documents in a suitable form.
+    """
+    AFULL_STOP6FULL_STOP2FULL_STOP8_Keeping_logs = "a_6_2_8"
+    """
+    Decide at which points in a system's life it keeps event logs, and keep them at least while it is in service.
+    """
+    AFULL_STOP7FULL_STOP2_Managing_data_for_building = "a_7_2"
+    """
+    Set down and follow processes that manage the data used to build systems.
+    """
+    AFULL_STOP7FULL_STOP3_Obtaining_and_choosing_data = "a_7_3"
+    """
+    Record how the data a system uses was obtained and picked.
+    """
+    AFULL_STOP7FULL_STOP4_Data_fit_for_purpose = "a_7_4"
+    """
+    State what quality data must have, and see that the data used to build and run a system has it.
+    """
+    AFULL_STOP7FULL_STOP5_Tracing_where_data_came_from = "a_7_5"
+    """
+    Keep a process that records where data came from and what happened to it, while it and the system last.
+    """
+    AFULL_STOP7FULL_STOP6_Readying_data = "a_7_6"
+    """
+    Set criteria for choosing how data is made ready, and name the methods to use.
+    """
+    AFULL_STOP8FULL_STOP2_What_users_are_told = "a_8_2"
+    """
+    Work out what those who use a system need to know, and tell them.
+    """
+    AFULL_STOP8FULL_STOP3_Letting_outsiders_report_harm = "a_8_3"
+    """
+    Give people outside the organization a way to report harm a system has done.
+    """
+    AFULL_STOP8FULL_STOP4_Telling_users_about_incidents = "a_8_4"
+    """
+    Keep a plan for telling those who use a system when something goes wrong.
+    """
+    AFULL_STOP8FULL_STOP5_Duties_to_inform_others = "a_8_5"
+    """
+    Work out what the organization owes others by way of reports about a system.
+    """
+    AFULL_STOP9FULL_STOP2_Defined_ways_of_using = "a_9_2"
+    """
+    Set down the processes for using AI systems responsibly.
+    """
+    AFULL_STOP9FULL_STOP3_Goals_for_use = "a_9_3"
+    """
+    Set goals that steer how AI systems are used responsibly.
+    """
+    AFULL_STOP9FULL_STOP4_Staying_within_documented_use = "a_9_4"
+    """
+    See that a system is used only as intended and as its documents say.
+    """
+    AFULL_STOP10FULL_STOP2_Sharing_out_duties = "a_10_2"
+    """
+    Settle who carries which duty across a system's life, among the organization and those it deals with.
+    """
+    AFULL_STOP10FULL_STOP3_What_is_bought_in = "a_10_3"
+    """
+    Keep a process that holds what suppliers provide to how the organization means to treat AI.
+    """
+    AFULL_STOP10FULL_STOP4_BuyersAPOSTROPHE_needs = "a_10_4"
+    """
+    See that how the organization treats AI takes account of what its customers expect and want.
+    """
+
+
+class AimsLifecycleStage(str, Enum):
+    """
+    The eight stages of the generic life cycle model that ISO/IEC 22989:2022 gives, which ISO/IEC 42001 points to.
     """
     inception = "inception"
     """
-    Initial conception, feasibility, and use-case definition.
+    Someone sees a need, weighs whether to meet it, and sets goals.
     """
-    design = "design"
+    design_and_development = "design_and_development"
     """
-    AI system design including requirements and architecture.
-    """
-    data_collection_and_preparation = "data_collection_and_preparation"
-    """
-    Acquiring, labelling, and preparing data resources.
-    """
-    development = "development"
-    """
-    Model and AI system development and training.
+    The system is designed and built.
     """
     verification_and_validation = "verification_and_validation"
     """
-    Verification and validation of the AI system.
+    The system is checked against what was asked of it.
     """
     deployment = "deployment"
     """
-    Release and integration into the production environment.
+    The system is put into service.
     """
     operation_and_monitoring = "operation_and_monitoring"
     """
-    Ongoing operation, monitoring, and support.
+    The system runs and is watched.
     """
     continuous_validation = "continuous_validation"
     """
-    Continuous validation, including drift detection and re-training triggers.
+    A system that goes on learning is checked again as it changes.
     """
     re_evaluation = "re_evaluation"
     """
-    Re-evaluation following significant changes or new evidence.
+    The system's results are weighed against its goals afresh.
     """
-    decommissioning = "decommissioning"
+    retirement = "retirement"
     """
-    Retirement, disposal, and post-decommissioning obligations.
+    The system is taken out of service.
     """
 
 
-class AIOrganizationalRole(str, Enum):
+class AimsAiRole(str, Enum):
     """
-    Roles an organization may take with respect to an AI system, paraphrased from the role taxonomy referenced in ISO/IEC 22989 and the NIST AI RMF.
+    The parts an organization or a person can play towards AI systems. The six families are those of ISO/IEC 22989:2022, and each more specific role names its family in an annotation.
     """
     ai_provider = "ai_provider"
     """
-    Organization providing AI platforms, products, or services to others.
+    Offers AI systems or platforms to others.
+    """
+    ai_platform_provider = "ai_platform_provider"
+    """
+    Offers a platform that others build AI services on.
+    """
+    ai_product_or_service_provider = "ai_product_or_service_provider"
+    """
+    Offers goods or services that hold an AI system.
     """
     ai_producer = "ai_producer"
     """
-    Organization or actor that develops, designs, operates, tests, evaluates, deploys, or governs AI systems.
-    """
-    ai_customer = "ai_customer"
-    """
-    Organization or individual that uses an AI product or service.
-    """
-    ai_partner = "ai_partner"
-    """
-    System integrators and data providers for AI systems.
-    """
-    ai_subject = "ai_subject"
-    """
-    Individuals or groups whose data or interests are affected by an AI system (e.g., data subjects).
-    """
-    relevant_authority = "relevant_authority"
-    """
-    Policymakers, regulators, and other oversight bodies.
-    """
-
-
-class DataResourceCategory(str, Enum):
-    """
-    Categories of data resources documented for AI systems per A.7 (Data for AI systems).
-    """
-    training = "training"
-    """
-    Data used to train machine learning models.
-    """
-    validation = "validation"
-    """
-    Data used for model selection and hyperparameter tuning.
-    """
-    test = "test"
-    """
-    Data used to evaluate model performance prior to deployment.
-    """
-    production = "production"
-    """
-    Live operational data processed by the deployed AI system.
-    """
-    reference = "reference"
-    """
-    Reference datasets used for benchmarking or comparison.
-    """
-
-
-class AIObjectiveCategory(str, Enum):
-    """
-    Categories of organizational objectives associated with responsible development and use of AI systems, paraphrased from Annex C of ISO/IEC 42001:2023.
-    """
-    accountability = "accountability"
-    """
-    Clear allocation of responsibility for AI-supported decisions.
-    """
-    ai_expertise = "ai_expertise"
-    """
-    Availability of interdisciplinary expertise for AI activities.
-    """
-    data_quality = "data_quality"
-    """
-    Adequate quality of training, validation, and test data.
-    """
-    environmental_impact = "environmental_impact"
-    """
-    Management of positive and negative environmental effects.
-    """
-    fairness = "fairness"
-    """
-    Avoiding inappropriate or unfair outcomes for individuals or groups.
-    """
-    maintainability = "maintainability"
-    """
-    Ability to correct defects and accommodate new requirements.
-    """
-    privacy = "privacy"
-    """
-    Protection of personal and sensitive data processed by AI systems.
-    """
-    robustness = "robustness"
-    """
-    Comparable performance on new and operational data.
-    """
-    safety = "safety"
-    """
-    Avoidance of harm to life, health, property, or the environment.
-    """
-    security = "security"
-    """
-    Protection from AI-specific and conventional security threats.
-    """
-    transparency = "transparency"
-    """
-    Visibility into organizational AI practices and AI system behaviour.
-    """
-    explainability = "explainability"
-    """
-    Comprehensible explanations of important factors driving AI outputs.
-    """
-    reliability = "reliability"
-    """
-    Consistent performance under defined conditions.
-    """
-    accessibility = "accessibility"
-    """
-    Usability of AI systems by people with diverse abilities.
-    """
-    availability_of_training_data = "availability_of_training_data"
-    """
-    Sufficient availability and quality of training, validation, and test data needed to train and verify AI systems (Annex C.2.3).
-    """
-
-
-class AIRiskSourceCategory(str, Enum):
-    """
-    Categories of AI risk sources, paraphrased from Annex C of ISO/IEC 42001:2023.
-    """
-    complexity_of_environment = "complexity_of_environment"
-    """
-    Performance uncertainty in complex or open operational environments (e.g., autonomous systems).
-    """
-    lack_of_transparency_or_explainability = "lack_of_transparency_or_explainability"
-    """
-    Inability to provide adequate information to interested parties, affecting trustworthiness and accountability.
-    """
-    level_of_automation = "level_of_automation"
-    """
-    Effects of automation on safety, fairness, security, or human oversight.
-    """
-    machine_learning_specific = "machine_learning_specific"
-    """
-    Risks tied to data collection, data quality, and ML-specific phenomena such as data poisoning.
-    """
-    hardware = "hardware"
-    """
-    Hardware errors or behavioural differences when transferring trained models between systems.
-    """
-    lifecycle = "lifecycle"
-    """
-    Risks introduced at any AI system life cycle stage, including design flaws, deployment issues, or decommissioning gaps.
-    """
-    technology_readiness = "technology_readiness"
-    """
-    Risks from immature technology with unknown limitations as well as mature technology subject to technology complacency.
-    """
-
-
-class DocumentType(str, Enum):
-    """
-    Categories of documented information referenced in or required by ISO/IEC 42001:2023.
-    """
-    policy = "policy"
-    """
-    High-level statement of intent and direction (e.g., AI policy per 5.2).
-    """
-    procedure = "procedure"
-    """
-    Documented steps for performing AIMS activities consistently.
-    """
-    standard = "standard"
-    """
-    Mandatory requirements for specific AI technologies or processes.
-    """
-    guideline = "guideline"
-    """
-    Recommended practices that support AI-related policies.
-    """
-    record = "record"
-    """
-    Evidence of AIMS activities performed or results achieved.
-    """
-    plan = "plan"
-    """
-    Documented approach for achieving objectives (e.g., AI risk treatment plan, deployment plan).
-    """
-    report = "report"
-    """
-    Formal output of assessment, audit, impact assessment, or review activities.
-    """
-    technical_documentation = "technical_documentation"
-    """
-    AI system technical documentation provided to users, partners, supervisory authorities, and other interested parties per A.6.2.7 and A.8.2.
-    """
-
-
-class AuditFindingType(str, Enum):
-    """
-    Classification of internal audit findings for the AIMS.
-    """
-    major_nonconformity = "major_nonconformity"
-    """
-    Significant failure to fulfill a requirement that affects the AIMS ability to achieve its intended outcomes.
-    """
-    minor_nonconformity = "minor_nonconformity"
-    """
-    Isolated lapse that does not significantly affect AIMS effectiveness.
-    """
-    observation = "observation"
-    """
-    Noted condition that could lead to a nonconformity if not addressed.
-    """
-    positive_finding = "positive_finding"
-    """
-    Evidence of effective implementation exceeding requirements.
-    """
-
-
-class ImpactAssessmentDimension(str, Enum):
-    """
-    Dimensions evaluated during an AI system impact assessment per Clause 6.1.4. Combines individual/group impacts (Annex A.5.4 / Annex B.5.4) with societal-scope impacts (Annex A.5.5 / Annex B.5.5).
-    """
-    individual = "individual"
-    """
-    Consequences for individual persons interacting with or affected by the AI system.
-    """
-    group = "group"
-    """
-    Consequences for identifiable groups of individuals.
-    """
-    societal = "societal"
-    """
-    Broader societal consequences.
-    """
-    fairness = "fairness"
-    """
-    Fair and non-discriminatory treatment of affected individuals and groups (B.5.4).
-    """
-    transparency = "transparency"
-    """
-    Transparency of organizational AI practices and AI system behaviour (B.5.4).
-    """
-    explainability = "explainability"
-    """
-    Comprehensibility of important factors driving AI outputs (B.5.4).
-    """
-    accountability = "accountability"
-    """
-    Clear allocation of accountability for AI-supported decisions (B.5.4).
-    """
-    accessibility = "accessibility"
-    """
-    Accessibility of the AI system for people with diverse abilities (B.5.4).
-    """
-    human_rights = "human_rights"
-    """
-    Effects on fundamental human rights (B.5.4).
-    """
-    financial = "financial"
-    """
-    Financial consequences for affected individuals or organizations (B.5.4).
-    """
-    health = "health"
-    """
-    Effects on physical or mental health (B.5.4).
-    """
-    environmental = "environmental"
-    """
-    Environmental consequences attributable to the AI system (B.5.5).
-    """
-    economic = "economic"
-    """
-    Wider economic consequences (B.5.5).
-    """
-    government = "government"
-    """
-    Consequences for democratic processes, governance, or rule of law (B.5.5).
-    """
-    cultural_norms = "cultural_norms"
-    """
-    Consequences for cultural norms, traditions, or values (B.5.5).
-    """
-    safety = "safety"
-    """
-    Safety-related consequences in the deployment context.
-    """
-    privacy = "privacy"
-    """
-    Privacy-related consequences for data subjects.
-    """
-    security = "security"
-    """
-    Information security consequences attributable to the AI system.
-    """
-
-
-class AnnexAControlId(str, Enum):
-    """
-    Normative reference control identifiers from Annex A of ISO/IEC 42001:2023 (38 controls across nine families A.2-A.10). Permissible value names use underscores in place of dots; the `meaning` slot preserves the Annex A dotted form. Control titles are paraphrased.
-    """
-    a_2_2 = "a_2_2"
-    """
-    AI policy - document a policy governing AI system development or use.
-    """
-    a_2_3 = "a_2_3"
-    """
-    Alignment with other organizational policies - reconcile AI objectives with related policies.
-    """
-    a_2_4 = "a_2_4"
-    """
-    Review of the AI policy - planned and event-driven policy review for suitability and effectiveness.
-    """
-    a_3_2 = "a_3_2"
-    """
-    AI roles and responsibilities - define and allocate AI-related roles per organizational needs.
-    """
-    a_3_3 = "a_3_3"
-    """
-    Reporting of concerns - process for raising concerns about the organization's role with respect to AI.
-    """
-    a_4_2 = "a_4_2"
-    """
-    Resource documentation - identify and document resources used at each AI lifecycle stage.
-    """
-    a_4_3 = "a_4_3"
-    """
-    Data resources - document data resources used by the AI system.
-    """
-    a_4_4 = "a_4_4"
-    """
-    Tooling resources - document tooling resources used by the AI system.
-    """
-    a_4_5 = "a_4_5"
-    """
-    System and computing resources - document system and computing resources used by the AI system.
-    """
-    a_4_6 = "a_4_6"
-    """
-    Human resources - document human resources and competences across the AI lifecycle.
-    """
-    a_5_2 = "a_5_2"
-    """
-    AI system impact assessment process - establish a process to assess consequences across the lifecycle.
-    """
-    a_5_3 = "a_5_3"
-    """
-    Documentation of AI system impact assessments - record and retain assessment results.
-    """
-    a_5_4 = "a_5_4"
-    """
-    Assessing AI system impact on individuals or groups - evaluate and document impacts to individuals.
-    """
-    a_5_5 = "a_5_5"
-    """
-    Assessing societal impacts of AI systems - evaluate and document broader societal impacts.
-    """
-    a_6_1_2 = "a_6_1_2"
-    """
-    Objectives for responsible development - identify objectives that guide responsible AI development.
-    """
-    a_6_1_3 = "a_6_1_3"
-    """
-    Processes for responsible AI system design and development - document the design and development processes.
-    """
-    a_6_2_2 = "a_6_2_2"
-    """
-    AI system requirements and specification - specify requirements for new or enhanced AI systems.
-    """
-    a_6_2_3 = "a_6_2_3"
-    """
-    Documentation of AI system design and development - document design and development against requirements.
-    """
-    a_6_2_4 = "a_6_2_4"
-    """
-    AI system verification and validation - define and document V&V measures and criteria.
-    """
-    a_6_2_5 = "a_6_2_5"
-    """
-    AI system deployment - document a deployment plan and verify pre-deployment requirements.
-    """
-    a_6_2_6 = "a_6_2_6"
-    """
-    AI system operation and monitoring - document operational and performance monitoring, repairs, updates, and support.
-    """
-    a_6_2_7 = "a_6_2_7"
-    """
-    AI system technical documentation - provide technical documentation tailored to each interested party.
-    """
-    a_6_2_8 = "a_6_2_8"
-    """
-    AI system recording of event logs - enable event log recording across relevant lifecycle phases.
-    """
-    a_7_2 = "a_7_2"
-    """
-    Data for development and enhancement - define and implement data management processes for AI development.
-    """
-    a_7_3 = "a_7_3"
-    """
-    Acquisition of data - document acquisition and selection details for data used in AI systems.
-    """
-    a_7_4 = "a_7_4"
-    """
-    Quality of data for AI systems - define and meet data quality requirements.
-    """
-    a_7_5 = "a_7_5"
-    """
-    Data provenance - record data provenance across the data and AI system life cycles.
-    """
-    a_7_6 = "a_7_6"
-    """
-    Data preparation - document criteria and methods used for data preparation.
-    """
-    a_8_2 = "a_8_2"
-    """
-    System documentation and information for users - provide information needed by AI system users.
-    """
-    a_8_3 = "a_8_3"
-    """
-    External reporting - enable interested parties to report adverse impacts.
-    """
-    a_8_4 = "a_8_4"
-    """
-    Communication of incidents - document a plan for communicating incidents to users.
-    """
-    a_8_5 = "a_8_5"
-    """
-    Information for interested parties - document obligations to report AI system information to interested parties.
-    """
-    a_9_2 = "a_9_2"
-    """
-    Processes for responsible use of AI systems - define and document responsible use processes.
-    """
-    a_9_3 = "a_9_3"
-    """
-    Objectives for responsible use of AI system - identify and document responsible-use objectives.
-    """
-    a_9_4 = "a_9_4"
-    """
-    Intended use of the AI system - ensure use aligns with the documented intended use.
-    """
-    a_10_2 = "a_10_2"
-    """
-    Allocating responsibilities - allocate AI lifecycle responsibilities across organization, partners, suppliers, customers, third parties.
-    """
-    a_10_3 = "a_10_3"
-    """
-    Suppliers - ensure supplier-provided services, products, and materials align with the organization's responsible AI approach.
-    """
-    a_10_4 = "a_10_4"
-    """
-    Customers - account for customer expectations and needs in the organization's responsible AI approach.
-    """
-
-
-class SectorDomain(str, Enum):
-    """
-    Application sectors referenced in Annex D of ISO/IEC 42001:2023 in which the AIMS can be deployed jointly with sector-specific management system standards (e.g., ISO 13485, ISO 22000, IEC 62304).
-    """
-    health = "health"
-    """
-    Health, medical devices, and healthcare delivery contexts.
-    """
-    defence = "defence"
-    """
-    Defence, security, and dual-use technology contexts.
-    """
-    transport = "transport"
-    """
-    Transport, mobility, and autonomous vehicle contexts.
-    """
-    finance = "finance"
-    """
-    Financial services, banking, insurance, and capital markets.
-    """
-    employment = "employment"
-    """
-    Hiring, workforce management, and employee evaluation.
-    """
-    energy = "energy"
-    """
-    Energy production, distribution, and grid management.
-    """
-    public_sector = "public_sector"
-    """
-    Government, public administration, and public-service delivery.
-    """
-    education = "education"
-    """
-    Education, training, and academic assessment contexts.
-    """
-    manufacturing = "manufacturing"
-    """
-    Industrial and manufacturing automation.
-    """
-    agriculture = "agriculture"
-    """
-    Agricultural production and food-supply contexts.
-    """
-    telecommunications = "telecommunications"
-    """
-    Telecommunications and network operations.
-    """
-    retail = "retail"
-    """
-    Retail, e-commerce, and consumer products.
-    """
-    other = "other"
-    """
-    Other sector not enumerated above.
-    """
-
-
-class LearningParadigm(str, Enum):
-    """
-    Learning paradigm of an AI system, informing risk considerations related to data provenance, drift, and behavioural change over time (see ISO/IEC 42001:2023 Introduction and Annex C.3.4).
-    """
-    static = "static"
-    """
-    Trained once and deployed without further learning during operation.
-    """
-    periodic_retraining = "periodic_retraining"
-    """
-    Retrained on a defined cadence with controlled release cycles.
-    """
-    continuous_learning = "continuous_learning"
-    """
-    Updates its behaviour during operation based on new data or feedback.
-    """
-    online_learning = "online_learning"
-    """
-    Continuously updates parameters from a stream of data.
-    """
-    transfer_learning = "transfer_learning"
-    """
-    Adapted from a pre-trained model to a new task or domain.
-    """
-    reinforcement_learning = "reinforcement_learning"
-    """
-    Learns a policy through interaction with an environment and reward signals.
-    """
-    hybrid = "hybrid"
-    """
-    Combines multiple learning paradigms (e.g., supervised plus reinforcement).
-    """
-    not_applicable = "not_applicable"
-    """
-    AI system that is not based on machine learning (e.g., rule-based).
-    """
-
-
-class AIIncidentCategory(str, Enum):
-    """
-    AI-specific incident categories supplementing classical information security incident classes. Supports incident triage and communication per Annex A.8.3 (External reporting) and A.8.4 (Communication of incidents).
-    """
-    data_poisoning = "data_poisoning"
-    """
-    Training or production data manipulated to compromise model behaviour.
-    """
-    model_stealing = "model_stealing"
-    """
-    Unauthorized extraction or reconstruction of a deployed model.
-    """
-    model_inversion = "model_inversion"
-    """
-    Reconstruction of sensitive training data via model queries.
-    """
-    membership_inference = "membership_inference"
-    """
-    Inference of whether a record was part of the training set.
-    """
-    prompt_injection = "prompt_injection"
-    """
-    Adversarial inputs causing the model to deviate from intended behaviour.
-    """
-    hallucination = "hallucination"
-    """
-    Confidently incorrect or fabricated outputs causing material harm.
-    """
-    model_drift = "model_drift"
-    """
-    Performance or behaviour degradation due to distribution shift.
-    """
-    bias_incident = "bias_incident"
-    """
-    Unfair or discriminatory outcomes affecting individuals or groups.
-    """
-    safety_incident = "safety_incident"
-    """
-    Harm to life, health, property, or the environment from AI behaviour.
-    """
-    privacy_breach = "privacy_breach"
-    """
-    Unauthorized disclosure of personal data via the AI system.
-    """
-    security_breach = "security_breach"
-    """
-    Compromise of confidentiality, integrity, or availability of the AI system.
-    """
-    misuse = "misuse"
-    """
-    Use of the AI system outside its documented intended use.
-    """
-    adverse_societal_impact = "adverse_societal_impact"
-    """
-    Broader societal harm reported by external interested parties.
-    """
-    other = "other"
-    """
-    Other AI incident category not enumerated above.
-    """
-
-
-class AuditType(str, Enum):
-    """
-    Type of audit conducted against the AIMS per Clause 9.2 and the ISO 19011 audit taxonomy.
-    """
-    internal = "internal"
-    """
-    First-party audit conducted by the organization itself or on its behalf.
-    """
-    external_second_party = "external_second_party"
-    """
-    Second-party audit conducted by an interested party (e.g., customer).
-    """
-    external_third_party = "external_third_party"
-    """
-    Third-party audit conducted by an independent certification body.
-    """
-    surveillance = "surveillance"
-    """
-    Ongoing surveillance audit during the certification cycle.
-    """
-    recertification = "recertification"
-    """
-    Audit performed to renew certification.
-    """
-    combined = "combined"
-    """
-    Combined audit covering two or more management system disciplines.
-    """
-
-
-class MLApproach(str, Enum):
-    """
-    Machine-learning approach used by the AI system, capturing the design-choice dimension referenced in B.6.2.3. Distinct from `LearningParadigm`, which describes how often the model updates.
-    """
-    supervised = "supervised"
-    """
-    Learns from labelled examples.
-    """
-    unsupervised = "unsupervised"
-    """
-    Discovers structure in unlabelled data.
-    """
-    semi_supervised = "semi_supervised"
-    """
-    Combines a small labelled set with a larger unlabelled set.
-    """
-    self_supervised = "self_supervised"
-    """
-    Generates supervisory signals from the data itself.
-    """
-    reinforcement = "reinforcement"
-    """
-    Learns a policy through interaction with an environment and reward signals.
-    """
-    transfer = "transfer"
-    """
-    Adapts a pre-trained model to a new task or domain.
-    """
-    federated = "federated"
-    """
-    Trains across distributed data holders without centralizing raw data.
-    """
-    generative = "generative"
-    """
-    Generative modelling approach (e.g., LLMs, diffusion models).
-    """
-    symbolic = "symbolic"
-    """
-    Rule-based or symbolic reasoning, not statistical ML.
-    """
-    hybrid = "hybrid"
-    """
-    Combines multiple ML approaches.
-    """
-    not_applicable = "not_applicable"
-    """
-    AI system not based on machine learning.
-    """
-
-
-class DataPreparationMethod(str, Enum):
-    """
-    Common data preparation and transformation methods documented per Annex A.7.6 and Annex B.7.6.
-    """
-    statistical_exploration = "statistical_exploration"
-    """
-    Distribution, mean, median, standard deviation, range, stratification, sampling.
-    """
-    cleaning = "cleaning"
-    """
-    Correcting entries and handling malformed records.
-    """
-    imputation = "imputation"
-    """
-    Filling in missing entries.
-    """
-    normalization = "normalization"
-    """
-    Re-scaling values to a common range or distribution.
-    """
-    scaling = "scaling"
-    """
-    Multiplicative re-scaling of feature values.
-    """
-    labelling = "labelling"
-    """
-    Assigning target labels to records.
-    """
-    encoding = "encoding"
-    """
-    Converting categorical variables to numeric representations.
-    """
-    augmentation = "augmentation"
-    """
-    Synthesising additional training samples from existing data.
-    """
-    deduplication = "deduplication"
-    """
-    Removing duplicate records.
-    """
-    anonymization = "anonymization"
-    """
-    Removing or transforming personally identifying information.
-    """
-    other = "other"
-    """
-    Other preparation method not enumerated above.
-    """
-
-
-class RelatedManagementSystem(str, Enum):
-    """
-    Related management-system standards with which the AIMS may be jointly implemented, per the Introduction (Compatibility with other management system standards) and Annex D.
-    """
-    iso_iec_27001 = "iso_iec_27001"
-    """
-    Information security management systems.
-    """
-    iso_iec_27701 = "iso_iec_27701"
-    """
-    Privacy information management.
-    """
-    iso_9001 = "iso_9001"
-    """
-    Quality management systems.
-    """
-    iso_22000 = "iso_22000"
-    """
-    Food safety management systems.
-    """
-    iso_13485 = "iso_13485"
-    """
-    Medical-device quality management systems.
-    """
-    iec_62304 = "iec_62304"
-    """
-    Medical device software life cycle processes.
-    """
-    iso_iec_5338 = "iso_iec_5338"
-    """
-    AI system life cycle process.
-    """
-    iso_iec_5259 = "iso_iec_5259"
-    """
-    Data quality for analytics and ML.
-    """
-    iso_iec_22989 = "iso_iec_22989"
-    """
-    AI concepts and terminology (normative reference).
-    """
-    iso_iec_23894 = "iso_iec_23894"
-    """
-    AI risk management guidance.
-    """
-    iso_iec_38507 = "iso_iec_38507"
-    """
-    Governance of IT - AI governance implications.
-    """
-    iso_iec_27000 = "iso_iec_27000"
-    """
-    Information security management - overview and vocabulary.
-    """
-    iso_iec_29100 = "iso_iec_29100"
-    """
-    Privacy framework.
-    """
-    iso_31000 = "iso_31000"
-    """
-    Risk management guidelines.
-    """
-    iso_iec_25024 = "iso_iec_25024"
-    """
-    Measurement of data quality.
-    """
-    iso_iec_25059 = "iso_iec_25059"
-    """
-    Quality model for AI systems.
-    """
-    iso_19011 = "iso_19011"
-    """
-    Guidelines for auditing management systems.
-    """
-    iso_37002 = "iso_37002"
-    """
-    Whistleblowing management systems (informs A.3.3 concern reporting).
-    """
-    other = "other"
-    """
-    Other management system standard not enumerated above.
-    """
-
-
-class GovernanceRoleType(str, Enum):
-    """
-    Governance role types within the AIMS, paraphrased from Clause 3.3 (top management), Clause 3.22 (governing body), Clause 5.3, and Annex A.3.2. Use this enum on `role_type` for normative governance positions; free-form strings remain accepted for organization-defined roles.
-    """
-    governing_body = "governing_body"
-    """
-    Board, trustees, or other body accountable for organizational performance (3.22).
-    """
-    top_management = "top_management"
-    """
-    Person or group directing and controlling the organization at the highest level (3.3).
-    """
-    designated_management = "designated_management"
-    """
-    Management designated to approve AI risk treatment plans and residual-risk acceptance (6.1.3).
-    """
-    chief_ai_officer = "chief_ai_officer"
-    """
-    Senior executive accountable for the AIMS.
-    """
-    ai_risk_owner = "ai_risk_owner"
-    """
-    Person accountable for managing a specific AI risk (6.1.2).
-    """
-    ai_policy_owner = "ai_policy_owner"
-    """
-    Role accountable for AI policy development and review (A.2.4).
-    """
-    ai_oversight_committee = "ai_oversight_committee"
-    """
-    Cross-functional committee providing oversight of AI systems.
-    """
-    data_steward = "data_steward"
-    """
-    Role accountable for data resources used by AI systems (A.4.3, A.7).
-    """
-    model_validator = "model_validator"
-    """
-    Role responsible for verification and validation of AI models (A.6.2.4).
-    """
-    human_oversight_reviewer = "human_oversight_reviewer"
-    """
-    Role performing human-in-the-loop review of AI outputs (B.9.3).
+    Makes AI systems.
     """
     ai_developer = "ai_developer"
     """
-    Role developing AI systems or components.
+    Writes and trains what goes into a system.
+    """
+    ai_designer = "ai_designer"
+    """
+    Decides how a system should work.
     """
     ai_operator = "ai_operator"
     """
-    Role operating and monitoring AI systems in production.
+    Keeps a system running.
+    """
+    ai_tester_or_evaluator = "ai_tester_or_evaluator"
+    """
+    Checks how well a system does.
+    """
+    ai_deployer = "ai_deployer"
+    """
+    Puts a system into service.
+    """
+    ai_human_factor_professional = "ai_human_factor_professional"
+    """
+    Looks after how people and a system work together.
+    """
+    domain_expert = "domain_expert"
+    """
+    Knows the field a system is used in.
     """
     ai_impact_assessor = "ai_impact_assessor"
     """
-    Role conducting AI system impact assessments (6.1.4).
+    Weighs what a system may do to people and society.
     """
-    auditor = "auditor"
+    procurer = "procurer"
     """
-    Internal or external auditor of the AIMS (9.2).
+    Buys systems or their parts.
+    """
+    ai_governance_professional = "ai_governance_professional"
+    """
+    Oversees how AI is run and held to account.
+    """
+    ai_customer = "ai_customer"
+    """
+    Takes AI systems from a provider.
+    """
+    ai_user = "ai_user"
+    """
+    Works with a system directly.
+    """
+    ai_partner = "ai_partner"
+    """
+    Helps others make or run AI systems.
+    """
+    ai_system_integrator = "ai_system_integrator"
+    """
+    Joins a system to others.
+    """
+    data_provider = "data_provider"
+    """
+    Supplies data for a system.
+    """
+    ai_subject = "ai_subject"
+    """
+    Is affected by what a system decides or does.
+    """
+    data_subject = "data_subject"
+    """
+    Is someone a system's data is about.
+    """
+    other_subject = "other_subject"
+    """
+    Is affected in some other way.
+    """
+    relevant_authority = "relevant_authority"
+    """
+    Sets or enforces rules for AI.
+    """
+    policymaker = "policymaker"
+    """
+    Sets the rules.
+    """
+    regulator = "regulator"
+    """
+    Enforces the rules.
+    """
+
+
+class AimsPiiRole(str, Enum):
+    """
+    The parts a party can play when personal data passes through AI, which ISO/IEC 29100 describes.
+    """
+    pii_controller = "pii_controller"
+    """
+    Decides why and how personal data is processed.
+    """
+    joint_pii_controller = "joint_pii_controller"
+    """
+    Makes those decisions together with another party.
+    """
+    pii_processor = "pii_processor"
+    """
+    Processes personal data on a controller's behalf.
+    """
+
+
+class AimsObjectivePurpose(str, Enum):
+    """
+    What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex A controls ask for objectives of a narrower kind.
+    """
+    organizational = "organizational"
+    """
+    An objective for the whole system.
+    """
+    responsible_development = "responsible_development"
+    """
+    A goal that steers how systems are built.
+    """
+    responsible_use = "responsible_use"
+    """
+    A goal that steers how systems are used.
+    """
+
+
+class AimsObjectiveCategory(str, Enum):
+    """
+    Kinds of objective an organization may set for AI: those Annex C lists, two more from the guidance on responsible use, and other.
+    """
+    accountability = "accountability"
+    """
+    Someone stays answerable for what a system helps to do.
+    """
+    ai_expertise = "ai_expertise"
+    """
+    The organization has people with the skills AI calls for.
+    """
+    training_and_test_data = "training_and_test_data"
+    """
+    Good data to train and check a system is to hand.
+    """
+    environmental_impact = "environmental_impact"
+    """
+    A system's effect on the environment is kept in view.
+    """
+    fairness = "fairness"
+    """
+    Automated decisions do not wrong particular persons or groups.
+    """
+    maintainability = "maintainability"
+    """
+    Defects can be mended and new needs met.
+    """
+    privacy = "privacy"
+    """
+    Data about people, sensitive data above all, is neither misused nor exposed.
+    """
+    robustness = "robustness"
+    """
+    A system does as well on unseen data as on what it was trained on.
+    """
+    safety = "safety"
+    """
+    Nobody's life or health, and no property or part of nature, comes to harm.
+    """
+    security = "security"
+    """
+    Threats peculiar to AI are met, beyond the usual ones.
+    """
+    transparency_and_explainability = "transparency_and_explainability"
+    """
+    Those concerned can see how a system works and why it gave a result.
+    """
+    reliability = "reliability"
+    """
+    A system keeps doing what it is meant to.
+    """
+    accessibility = "accessibility"
+    """
+    A system can be used by people with differing abilities.
     """
     other = "other"
     """
-    Other governance role not enumerated above.
+    A kind of objective the organization sets for itself.
+    """
+
+
+class AimsRiskSourceCategory(str, Enum):
+    """
+    Kinds of source a risk from AI can come from: those Annex C lists, and other.
+    """
+    complex_environment = "complex_environment"
+    """
+    A system works where situations vary widely, so its results are less sure.
+    """
+    opaque_system = "opaque_system"
+    """
+    The organization cannot tell people enough about a system.
+    """
+    level_of_automation = "level_of_automation"
+    """
+    How much a system does alone, which bears on safety or fairness among others.
+    """
+    machine_learning = "machine_learning"
+    """
+    The data a model learns from, or how it was gathered, is flawed.
+    """
+    hardware = "hardware"
+    """
+    Faulty parts, or moving a trained model to other equipment.
+    """
+    life_cycle = "life_cycle"
+    """
+    Flaws anywhere in a system's life, from design to retirement.
+    """
+    technology_readiness = "technology_readiness"
+    """
+    A technology is too new to know well, or so old it breeds complacency.
+    """
+    other = "other"
+    """
+    A source the organization names for itself.
+    """
+
+
+class AimsImpactSubject(str, Enum):
+    """
+    Who an AI system's impact falls on.
+    """
+    individuals = "individuals"
+    """
+    Particular persons.
+    """
+    groups_of_individuals = "groups_of_individuals"
+    """
+    Groups of persons, such as children or workers.
+    """
+    societies = "societies"
+    """
+    Society at large.
+    """
+
+
+class AimsImpactArea(str, Enum):
+    """
+    Areas where AI systems can touch people or society: those the guidance on impact assessment names as examples, and other.
+    """
+    fairness = "fairness"
+    """
+    Treating persons and groups even-handedly.
+    """
+    accountability = "accountability"
+    """
+    Someone staying answerable for the outcome.
+    """
+    transparency_and_explainability = "transparency_and_explainability"
+    """
+    Being able to see how a system works and why it gave a result.
+    """
+    security_and_privacy = "security_and_privacy"
+    """
+    Keeping people's information safe and private.
+    """
+    safety_and_health = "safety_and_health"
+    """
+    Physical and mental harm and wellbeing.
+    """
+    financial = "financial"
+    """
+    What people stand to gain or lose in money.
+    """
+    accessibility = "accessibility"
+    """
+    Whether people with differing abilities can use a system.
+    """
+    human_rights = "human_rights"
+    """
+    Rights everyone holds.
+    """
+    environmental_sustainability = "environmental_sustainability"
+    """
+    Natural resources and emissions.
+    """
+    economic = "economic"
+    """
+    Jobs, access to finance, taxes and trade.
+    """
+    government = "government"
+    """
+    Lawmaking, political falsehoods, defence of the state and the courts.
+    """
+    culture_and_values = "culture_and_values"
+    """
+    What a society holds to, and the biases a system can feed.
+    """
+    other = "other"
+    """
+    An area the organization names for itself.
+    """
+
+
+class AimsImpactDirection(str, Enum):
+    """
+    Whether an impact helps or harms.
+    """
+    positive = "positive"
+    """
+    It helps.
+    """
+    negative = "negative"
+    """
+    It harms.
+    """
+
+
+class AimsResourceProvider(str, Enum):
+    """
+    Who provides a resource an AI system draws on.
+    """
+    organization = "organization"
+    """
+    The organization itself.
+    """
+    customer = "customer"
+    """
+    One of its customers.
+    """
+    third_party = "third_party"
+    """
+    Someone else.
+    """
+
+
+class AimsDataCategory(str, Enum):
+    """
+    The parts data can play in machine learning.
+    """
+    training = "training"
+    """
+    Data a model learns from.
+    """
+    validation = "validation"
+    """
+    Data used to tune a model and compare versions of it.
+    """
+    test = "test"
+    """
+    Data held back to see how a finished model does.
+    """
+    production = "production"
+    """
+    Data a system meets in service.
+    """
+
+
+class AimsDataPreparationMethod(str, Enum):
+    """
+    Common ways of making data ready for AI: those the guidance names, and other.
+    """
+    statistical_exploration = "statistical_exploration"
+    """
+    Looking at how the values are spread, and describing them.
+    """
+    cleaning = "cleaning"
+    """
+    Mending wrong values and dealing with gaps.
+    """
+    imputation = "imputation"
+    """
+    Filling gaps by a method.
+    """
+    normalization = "normalization"
+    """
+    Reshaping values to a common distribution or range.
+    """
+    scaling = "scaling"
+    """
+    Bringing values to comparable sizes.
+    """
+    labelling = "labelling"
+    """
+    Marking the values a model is to predict.
+    """
+    encoding = "encoding"
+    """
+    Turning categories into numbers.
+    """
+    other = "other"
+    """
+    A method the organization names for itself.
+    """
+
+
+class AimsAiThreat(str, Enum):
+    """
+    Threats to information security peculiar to AI: those the guidance names, and other.
+    """
+    data_poisoning = "data_poisoning"
+    """
+    Slipping bad data in to spoil what a model learns.
+    """
+    model_stealing = "model_stealing"
+    """
+    Copying a model by querying it or by taking it.
+    """
+    model_inversion = "model_inversion"
+    """
+    Working back from a model to the data it learned from.
+    """
+    other = "other"
+    """
+    A threat the organization names for itself.
+    """
+
+
+class AimsImplementationStatus(str, Enum):
+    """
+    How far a control or a plan has been put into effect.
+    """
+    not_started = "not_started"
+    """
+    Nothing has been done yet.
+    """
+    planned = "planned"
+    """
+    The work is planned, with a timeline.
+    """
+    in_progress = "in_progress"
+    """
+    The work is under way.
+    """
+    implemented = "implemented"
+    """
+    The work is done and in operation.
+    """
+
+
+class AimsRiskTreatmentOption(str, Enum):
+    """
+    The ways of treating a risk, by the names ISO 31000 gives them.
+    """
+    modify = "modify"
+    """
+    Change the risk with controls that lower its likelihood or its consequences.
+    """
+    retain = "retain"
+    """
+    Keep the risk as it is, with management's approval.
+    """
+    avoid = "avoid"
+    """
+    Remove the risk by stopping or changing what gives rise to it.
+    """
+    share = "share"
+    """
+    Share the risk with another party, such as an insurer or a supplier.
+    """
+
+
+class AimsRiskLevel(str, Enum):
+    """
+    A five-point scale of risk level, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
+    """
+    very_low = "very_low"
+    """
+    Small enough to need no action.
+    """
+    low = "low"
+    """
+    Managed by routine procedures.
+    """
+    medium = "medium"
+    """
+    Needs management's attention and planned controls.
+    """
+    high = "high"
+    """
+    Needs treatment first and escalation.
+    """
+    critical = "critical"
+    """
+    Threatens the organization's objectives and needs action at once.
+    """
+
+
+class AimsLikelihood(str, Enum):
+    """
+    A five-point scale of likelihood, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
+    """
+    rare = "rare"
+    """
+    Not expected to happen.
+    """
+    unlikely = "unlikely"
+    """
+    Could happen, but is not expected to.
+    """
+    possible = "possible"
+    """
+    Might happen at some point.
+    """
+    likely = "likely"
+    """
+    Will probably happen.
+    """
+    almost_certain = "almost_certain"
+    """
+    Expected to happen.
+    """
+
+
+class AimsConsequence(str, Enum):
+    """
+    A five-point scale of consequence, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
+    """
+    negligible = "negligible"
+    """
+    No noticeable effect.
+    """
+    minor = "minor"
+    """
+    An effect normal operations absorb.
+    """
+    moderate = "moderate"
+    """
+    An effect that needs management to step in.
+    """
+    major = "major"
+    """
+    A serious effect on people, objectives or reputation.
+    """
+    severe = "severe"
+    """
+    An effect that threatens lives or the organization's survival.
+    """
+
+
+class AimsDocumentKind(str, Enum):
+    """
+    The kinds of documented information an AimsDocumentedInformation record holds. Policies have records of their own.
+    """
+    procedure = "procedure"
+    """
+    The steps for carrying out an activity the same way each time.
+    """
+    standard = "standard"
+    """
+    Mandatory requirements for a technology or a process.
+    """
+    guideline = "guideline"
+    """
+    Recommended practice that supports a policy or a procedure.
+    """
+    record = "record"
+    """
+    Evidence of what was done or achieved.
+    """
+    plan = "plan"
+    """
+    How the organization means to reach an objective.
+    """
+    report = "report"
+    """
+    The formal output of an assessment, audit or review.
+    """
+
+
+class AimsAuditType(str, Enum):
+    """
+    Who carries out an audit, relative to the organization audited, as ISO 19011 sorts audits.
+    """
+    first_party = "first_party"
+    """
+    The organization audits itself, or someone audits it on its behalf.
+    """
+    second_party = "second_party"
+    """
+    A party with an interest in the organization audits it, such as a customer.
+    """
+    third_party = "third_party"
+    """
+    An independent body audits it, such as a certification body or a regulator.
+    """
+
+
+class AimsAuditFindingType(str, Enum):
+    """
+    The kinds of audit finding.
+    """
+    major_nonconformity = "major_nonconformity"
+    """
+    A requirement not met in a way that puts the system's results in doubt.
+    """
+    minor_nonconformity = "minor_nonconformity"
+    """
+    A requirement not met in an isolated way that leaves its results in reach.
+    """
+    observation = "observation"
+    """
+    A condition that could lead to a nonconformity if left alone.
+    """
+    positive_finding = "positive_finding"
+    """
+    Evidence of practice that works well.
+    """
+
+
+class AimsIncidentCategory(str, Enum):
+    """
+    What an incident involving an AI system concerns. ISO/IEC 42001 tells apart an incident of the system itself from one about security of information or about privacy.
+    """
+    ai_system = "ai_system"
+    """
+    The system itself misbehaved or failed.
+    """
+    information_security = "information_security"
+    """
+    Information was exposed, altered or made unavailable.
+    """
+    privacy = "privacy"
+    """
+    Personal data was exposed or misused.
+    """
+    safety = "safety"
+    """
+    Someone or something was put in danger.
+    """
+    other = "other"
+    """
+    Something the organization names for itself.
+    """
+
+
+class AimsManagementSystemStandard(str, Enum):
+    """
+    Management system standards Annex D names as ones to run this system beside, and other.
+    """
+    iso_iec_27001 = "iso_iec_27001"
+    """
+    Managing information security.
+    """
+    iso_iec_27701 = "iso_iec_27701"
+    """
+    Managing privacy of information.
+    """
+    iso_9001 = "iso_9001"
+    """
+    Managing quality.
+    """
+    iso_22000 = "iso_22000"
+    """
+    Managing food safety.
+    """
+    iso_13485 = "iso_13485"
+    """
+    Managing quality of medical devices.
+    """
+    other = "other"
+    """
+    Another management system standard, generic or for one sector.
     """
 
 
 
-class NamedEntity(ConfiguredBaseModel):
+class AimsRecordMixin(ConfiguredBaseModel):
     """
-    Abstract base class for all entities with an identifier, name, and description. Provides common identification and documentation slots.
+    What every record of the system has, so that other records can refer to it: an identifier, a title and a description.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'comments': ['All concrete classes should inherit from this or a subclass'],
-         'exact_mappings': ['iso27001:NamedEntity'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['It is a mixin, not a base class, so that the adapt copy can '
+                      "re-root some record classes on LOKF's Concept and leave the "
+                      "others as they are. lokf adapt replaces aims_id with LOKF's id, "
+                      'and a class that declares id itself must descend from Concept.'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'slot_usage': {'id': {'description': 'Unique identifier for this entity '
-                                              'instance.',
-                               'identifier': True,
-                               'name': 'id',
-                               'required': True}}})
+         'mixin': True,
+         'slot_usage': {'title': {'name': 'title',
+                                  'pattern': '^\\s*\\S',
+                                  'required': True}}})
 
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
 
-
-class DocumentedInformation(NamedEntity):
-    """
-    Abstract class for documented information per Clause 7.5. Captures metadata required for document control under the AIMS.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.5'}},
-         'close_mappings': ['nist_ai_100_1:PlaybookEntry'],
-         'comments': ['Captures Clause 7.5 metadata needed for document control, '
-                      'review, and retention',
-                      'Sub-classes inherit document_type, owner, approval, and '
-                      'review-date slots'],
-         'exact_mappings': ['iso27001:DocumentedInformation'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['documented_information']})
-
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIManagementSystem(NamedEntity):
-    """
-    Top-level container representing an organization's complete AI Management System (AIMS) per ISO/IEC 42001:2023. Aggregates all components required to support the AIMS lifecycle.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.4'},
-                         'mandatory': {'tag': 'mandatory', 'value': 'true'}},
-         'close_mappings': ['iso27001:InformationSecurityManagementSystem',
-                            'nist_ai_100_1:AiRmfFramework'],
-         'comments': ['Root entity for any ISO/IEC 42001 conformance dataset',
-                      'Reference: ISO/IEC 42001:2023 Clause 4.4. ISO/IEC standards '
-                      'text is copyright ISO/IEC - not reproduced here.'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core'],
-         'related_mappings': ['iso29100:PrivacyFramework', 'nist_ai_600_1:GaiProfile']})
-
-    organization: Optional[str] = Field(default=None, description="""Reference to the organization operating the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:organization']} })
-    scope_statement: Optional[str] = Field(default=None, description="""Documented statement of AIMS scope per Clause 4.3.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.3'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:scope_statement']} })
-    scope_boundaries: Optional[list[str]] = Field(default=None, description="""Defined boundaries of the AIMS scope.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:scope_boundaries']} })
-    scope_exclusions: Optional[list[str]] = Field(default=None, description="""Any exclusions from scope with justification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:scope_exclusions']} })
-    context_internal_issues: Optional[list[str]] = Field(default=None, description="""Internal issues relevant to the AIMS per Clause 4.1.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:context_internal_issues']} })
-    context_external_issues: Optional[list[str]] = Field(default=None, description="""External issues relevant to the AIMS per Clause 4.1.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:context_external_issues']} })
-    organizational_roles_with_ai: Optional[list[AIOrganizationalRole]] = Field(default=None, description="""Documented set of roles the organization plays in the AI ecosystem within the AIMS scope.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    integrated_management_systems: Optional[list[RelatedManagementSystem]] = Field(default=None, description="""Related management-system standards with which the AIMS is jointly implemented or aligned (Introduction - Compatibility with other management system standards, Annex D).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:integrated_management_systems']} })
-    top_management: Optional[str] = Field(default=None, description="""Reference to the person or group exercising top management direction and control over the AIMS (Clause 3.3, 5.1).""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '3.3'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:top_management']} })
-    governing_body: Optional[str] = Field(default=None, description="""Reference to the governing body to which top management is accountable (Clause 3.22).""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '3.22'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:governing_body']} })
-    leadership_commitment_evidence: Optional[list[str]] = Field(default=None, description="""Records or references demonstrating top-management leadership and commitment to the AIMS per Clause 5.1.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.1'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:leadership_commitment_evidence']} })
-    planned_changes: Optional[list[str]] = Field(default=None, description="""Records of planned changes to the AIMS, including purpose, consequences, resource implications, and responsibilities per Clause 6.3.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '6.3'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:planned_changes']} })
-    interested_parties: Optional[list[str]] = Field(default=None, description="""Stakeholders relevant to the AIMS.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.2'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:interested_parties']} })
-    ai_policy: Optional[str] = Field(default=None, description="""Reference to the AI policy.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
-         'close_mappings': ['iso27001:information_security_policy'],
-         'domain_of': ['AIManagementSystem']} })
-    ai_objectives: Optional[list[str]] = Field(default=None, description="""AI objectives established by the organization.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:objectives'], 'domain_of': ['AIManagementSystem']} })
-    ai_risk_assessment_process: Optional[str] = Field(default=None, description="""Reference to the AI risk assessment process.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:risk_assessment_process'],
-         'domain_of': ['AIManagementSystem']} })
-    ai_risk_treatment_process: Optional[str] = Field(default=None, description="""Reference to the AI risk treatment process.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:risk_treatment_process'],
-         'domain_of': ['AIManagementSystem']} })
-    ai_system_impact_assessment_process: Optional[str] = Field(default=None, description="""Reference to the AI system impact assessment process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    statement_of_applicability: Optional[str] = Field(default=None, description="""Reference to the AIMS Statement of Applicability.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:statement_of_applicability']} })
-    reference_controls: Optional[list[str]] = Field(default=None, description="""AI reference controls applied within the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    ai_systems: Optional[list[str]] = Field(default=None, description="""AI systems within the AIMS scope.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    roles: Optional[list[str]] = Field(default=None, description="""AI-related roles defined in the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    resources: Optional[list[str]] = Field(default=None, description="""Resources provided for the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'], 'exact_mappings': ['iso27001:resources']} })
-    competence_records: Optional[list[str]] = Field(default=None, description="""Competence records for personnel.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:competence_records']} })
-    awareness_program: Optional[str] = Field(default=None, description="""Reference to the awareness program.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:awareness_program']} })
-    communication_plan: Optional[str] = Field(default=None, description="""Reference to the communication plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem', 'AIIncident'],
-         'exact_mappings': ['iso27001:communication_plan']} })
-    documented_information_register: Optional[list[str]] = Field(default=None, description="""Register of all documented information.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.5'}},
-         'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:documented_information_register']} })
-    operational_procedures: Optional[list[str]] = Field(default=None, description="""Operational procedures of the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:operational_procedures']} })
-    ai_risk_assessments: Optional[list[str]] = Field(default=None, description="""AI risk assessment instances.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:risk_assessments'],
-         'domain_of': ['AIManagementSystem']} })
-    ai_risk_treatment_plans: Optional[list[str]] = Field(default=None, description="""AI risk treatment plans.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:risk_treatment_plans'],
-         'domain_of': ['AIManagementSystem']} })
-    ai_system_impact_assessments: Optional[list[str]] = Field(default=None, description="""AI system impact assessment instances.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    monitoring_program: Optional[str] = Field(default=None, description="""Reference to the monitoring program.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:monitoring_program']} })
-    internal_audits: Optional[list[str]] = Field(default=None, description="""Internal audits conducted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:internal_audits']} })
-    management_reviews: Optional[list[str]] = Field(default=None, description="""Management reviews of the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:management_reviews']} })
-    nonconformities: Optional[list[str]] = Field(default=None, description="""Nonconformities identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:nonconformities']} })
-    corrective_actions: Optional[list[str]] = Field(default=None, description="""Corrective actions taken.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:corrective_actions']} })
-    improvements: Optional[list[str]] = Field(default=None, description="""Improvement opportunities being tracked.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:improvements']} })
-    third_party_relationships: Optional[list[str]] = Field(default=None, description="""Third-party relationships within the AIMS scope.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem']} })
-    certification_status: Optional[str] = Field(default=None, description="""Current certification status of the AIMS.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:certification_status']} })
-    certification_body: Optional[str] = Field(default=None, description="""Body that issued the certification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:certification_body']} })
-    certification_date: Optional[date] = Field(default=None, description="""Date the AIMS was certified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:certification_date']} })
-    recertification_date: Optional[date] = Field(default=None, description="""Date when recertification is due.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem'],
-         'exact_mappings': ['iso27001:recertification_date']} })
-    ai_system_events: Optional[list[str]] = Field(default=None, description="""AI system events recorded under the AIMS.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.6.2.8'}},
-         'domain_of': ['AIManagementSystem'],
-         'related_mappings': ['nist_ai_100_1:harms']} })
-    ai_incidents: Optional[list[str]] = Field(default=None, description="""AI incidents managed under the AIMS.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.8.4'}},
-         'domain_of': ['AIManagementSystem']} })
-    concern_reports: Optional[list[str]] = Field(default=None, description="""Concern reports raised and managed under the AIMS per A.3.3.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.3.3'}},
-         'domain_of': ['AIManagementSystem']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class Organization(NamedEntity):
-    """
-    The organization establishing and operating the AIMS. Captures the context required by Clause 4.1, including the organization's role(s) with respect to AI systems.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
-         'close_mappings': ['iso29100:PIIController', 'nist_ai_100_1:AiActor'],
-         'comments': ['Captures the organizational context required by Clause 4.1',
-                      'AI roles determine the applicability scope of Annex A controls'],
-         'exact_mappings': ['iso27001:Organization', 'iso22989:organization'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core'],
-         'related_mappings': ['iso29100:PIIProcessor']})
-
-    legal_name: Optional[str] = Field(default=None, description="""Legal registered name of the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    trading_names: Optional[list[str]] = Field(default=None, description="""Names under which the organization conducts business.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    organization_type: Optional[str] = Field(default=None, description="""Type of organization (e.g., corporation, government, nonprofit).""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    industry_sector: Optional[str] = Field(default=None, description="""Primary industry sector of the organization (free-form label).""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization'],
-         'examples': [{'value': 'Financial Services'},
-                      {'value': 'Healthcare'},
-                      {'value': 'Public Sector'}]} })
-    sector_domains: Optional[list[SectorDomain]] = Field(default=None, description="""Application sectors in which the organization deploys AI systems, drawn from the Annex D examples; supports identification of sector- specific management system standards that integrate with the AIMS.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': 'Annex D'}},
-         'domain_of': ['Organization']} })
-    size_category: Optional[str] = Field(default=None, description="""Organization size classification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization'],
-         'examples': [{'value': 'SME'}, {'value': 'Enterprise'}]} })
-    employee_count: Optional[int] = Field(default=None, description="""Approximate number of employees.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    geographic_locations: Optional[list[str]] = Field(default=None, description="""Countries or regions where the organization operates.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    regulatory_jurisdictions: Optional[list[str]] = Field(default=None, description="""Jurisdictions whose regulations apply to the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    parent_organization: Optional[str] = Field(default=None, description="""Parent organization if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    subsidiaries: Optional[list[str]] = Field(default=None, description="""Subsidiary organizations if applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
-    ai_roles: Optional[list[AIOrganizationalRole]] = Field(default=None, description="""Roles the organization takes with respect to AI systems (provider, producer, customer, partner, subject, authority).""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
-         'close_mappings': ['iso27001:roles'],
-         'domain_of': ['Organization']} })
-    climate_change_relevant: Optional[bool] = Field(default=None, description="""Whether climate change has been determined to be a relevant issue for the organization's context per Clause 4.1.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
-         'domain_of': ['Organization'],
-         'exact_mappings': ['iso27001:climate_change_relevant']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class InterestedParty(NamedEntity):
-    """
-    A stakeholder whose needs and expectations are relevant to the AIMS per Clause 4.2. Includes internal and external parties such as users, regulators, partners, suppliers, customers, AI subjects, and relevant authorities.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.2'}},
-         'close_mappings': ['iso29100:PrivacyStakeholder', 'nist_ai_100_1:AiActor'],
-         'comments': ['Drives the requirements analysis required by Clause 4.2',
-                      'Includes AI subjects and relevant authorities, not only '
-                      'customers/suppliers'],
-         'exact_mappings': ['iso27001:InterestedParty', 'iso22989:interested_party'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core']})
-
-    party_type: Optional[str] = Field(default=None, description="""Category of party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty', 'ThirdPartyRelationship'],
-         'examples': [{'value': 'internal'},
-                      {'value': 'external'},
-                      {'value': 'regulatory'},
-                      {'value': 'ai_subject'},
-                      {'value': 'supplier'},
-                      {'value': 'customer'}]} })
-    relationship: Optional[str] = Field(default=None, description="""Nature of the relationship with the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty']} })
-    requirements: Optional[list[str]] = Field(default=None, description="""Requirements of the interested party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty']} })
-    communication_needs: Optional[str] = Field(default=None, description="""Communication requirements for this party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty']} })
-    contact_information: Optional[str] = Field(default=None, description="""Contact details for the party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIPolicy(DocumentedInformation):
-    """
-    The AI policy established by top management per Clause 5.2. Provides a framework for setting AI objectives and demonstrates commitment to responsible AI.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.2'},
-                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'},
-                         'mandatory': {'tag': 'mandatory', 'value': 'true'}},
-         'close_mappings': ['iso27001:InformationSecurityPolicy',
-                            'iso29100:PrivacyPolicy'],
-         'comments': ['Top-management AI policy per Clause 5.2; framework for AI '
-                      'objectives',
-                      'Reviewed at planned intervals per Annex A.2.4'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core', 'documented_information']})
-
-    policy_statement: Optional[str] = Field(default=None, description="""The core policy statement text.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy']} })
-    policy_objectives_framework: Optional[str] = Field(default=None, description="""Framework for setting AI objectives.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy']} })
-    commitment_statements: Optional[list[str]] = Field(default=None, description="""Statements of commitment included in the policy.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy']} })
-    applicability_statement: Optional[str] = Field(default=None, description="""Statement of policy applicability.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy']} })
-    communication_date: Optional[date] = Field(default=None, description="""Date when the policy was communicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy']} })
-    acknowledgment_required: Optional[bool] = Field(default=None, description="""Whether acknowledgment is required from personnel.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy']} })
-    related_topic_policies: Optional[list[str]] = Field(default=None, description="""Topic-specific policies supporting this policy.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIPolicy'],
-         'exact_mappings': ['iso27001:related_topic_policies']} })
-    last_policy_review_date: Optional[date] = Field(default=None, description="""Date of the most recent AI policy review.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.2.4'}},
-         'domain_of': ['AIPolicy'],
-         'exact_mappings': ['iso27001:last_policy_review_date']} })
-    next_policy_review_date: Optional[date] = Field(default=None, description="""Planned date of the next AI policy review.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.2.4'}},
-         'domain_of': ['AIPolicy'],
-         'exact_mappings': ['iso27001:next_policy_review_date']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class TopicSpecificPolicy(DocumentedInformation):
-    """
-    A topic-specific policy supporting the overarching AI policy, for example covering data governance, fairness, transparency, supplier use, or human oversight of AI systems.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.2'}},
-         'comments': ['Supports the overarching AI policy with topic-specific guidance '
-                      '(data, fairness, oversight)',
-                      'Typical topics: data governance, transparency, human oversight, '
-                      'supplier use'],
-         'exact_mappings': ['iso27001:TopicSpecificPolicy'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['documented_information']})
-
-    topic_area: Optional[str] = Field(default=None, description="""The specific topic addressed by the policy.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TopicSpecificPolicy'],
-         'examples': [{'value': 'Data Governance'},
-                      {'value': 'Human Oversight'},
-                      {'value': 'Model Validation'},
-                      {'value': 'Transparency'}]} })
-    parent_policy: Optional[str] = Field(default=None, description="""The parent AI policy this topic-specific policy supports.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TopicSpecificPolicy']} })
-    applicable_controls: Optional[list[str]] = Field(default=None, description="""Reference controls related to this policy or AI system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TopicSpecificPolicy', 'AISystem']} })
-    target_audience: Optional[str] = Field(default=None, description="""Intended audience for the policy or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TopicSpecificPolicy', 'AwarenessProgram']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class Role(NamedEntity):
-    """
-    An AI-related role with defined responsibilities and authorities per Clause 5.3 and Annex A.3.2.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.3.2'},
-                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.3'}},
-         'close_mappings': ['nist_ai_100_1:AiActorTask'],
-         'comments': ['AI-related role per Clause 5.3 and Annex A.3.2',
-                      'Roles should be allocated according to organizational needs, '
-                      'with clear authorities and reporting lines'],
-         'exact_mappings': ['iso27001:Role'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core']})
-
-    role_type: Optional[Union[GovernanceRoleType, str]] = Field(default=None, description="""Category of the role. Use a `GovernanceRoleType` value for the normative AIMS governance positions; free-form strings remain accepted for organization-defined roles.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'GovernanceRoleType'}, {'range': 'string'}],
-         'domain_of': ['Role'],
-         'examples': [{'value': 'top_management'},
-                      {'value': 'governing_body'},
-                      {'value': 'ai_risk_owner'},
-                      {'value': 'Chief AI Officer'},
-                      {'value': 'Model Validator'}]} })
-    responsibilities: Optional[list[str]] = Field(default=None, description="""Responsibilities assigned to the role.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role']} })
-    authorities: Optional[list[str]] = Field(default=None, description="""Authorities granted to the role.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role']} })
-    accountability: Optional[str] = Field(default=None, description="""What the role is accountable for.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_ai_100_1:TrustworthinessCharacteristic'],
-         'domain_of': ['Role'],
-         'exact_mappings': ['iso29100:accountability']} })
-    assigned_to: Optional[list[str]] = Field(default=None, description="""Person(s) assigned to this role or resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role', 'HumanResource']} })
-    delegation_rules: Optional[str] = Field(default=None, description="""Rules for delegating responsibilities.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role']} })
-    reporting_line: Optional[str] = Field(default=None, description="""To whom this role reports.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIObjective(NamedEntity):
-    """
-    A measurable AI objective per Clause 6.2, established at relevant functions and levels and aligned with the AI policy.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '6.2'}},
-         'close_mappings': ['iso27001:InformationSecurityObjective'],
-         'comments': ['Measurable AI objective per Clause 6.2, consistent with the AI '
-                      'policy',
-                      'Examples align with Annex C objective categories (fairness, '
-                      'transparency, robustness, etc.)'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core']})
-
-    objective_statement: Optional[str] = Field(default=None, description="""Clear statement of the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    objective_category: Optional[AIObjectiveCategory] = Field(default=None, description="""Category of AI objective (e.g., fairness, transparency, robustness).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    target_value: Optional[str] = Field(default=None, description="""Target value for the objective metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    current_value: Optional[str] = Field(default=None, description="""Current measured value.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'MonitoringItem']} })
-    metric_definition: Optional[str] = Field(default=None, description="""Definition of how the objective is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    measurement_method: Optional[str] = Field(default=None, description="""Method used to measure the metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'MonitoringItem']} })
-    measurement_frequency: Optional[str] = Field(default=None, description="""How often measurement is performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'MonitoringItem']} })
-    responsible_role: Optional[str] = Field(default=None, description="""Role responsible for the objective or control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'SoAEntry']} })
-    resources_required: Optional[str] = Field(default=None, description="""Resources required for implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'AIRiskTreatmentPlan', 'CorrectiveAction']} })
-    target_date: Optional[date] = Field(default=None, description="""Target date for achieving the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'ImprovementOpportunity']} })
-    achievement_status: Optional[str] = Field(default=None, description="""Current status of objective achievement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    related_risks: Optional[list[str]] = Field(default=None, description="""Associated AI risks.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    related_controls: Optional[list[str]] = Field(default=None, description="""Other reference controls related to this one.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'AIReferenceControl', 'OperationalProcedure']} })
-    action_plan: Optional[str] = Field(default=None, description="""Plan for achieving the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIRiskAssessmentProcess(DocumentedInformation):
-    """
-    The documented AI risk assessment process per Clause 6.1.2, defining criteria and methodology for identifying, analysing, and evaluating AI risks. Aligned with ISO/IEC 23894.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.2'},
-                         'mandatory': {'tag': 'mandatory', 'value': 'true'}},
-         'close_mappings': ['iso27001:RiskAssessmentProcess', 'nist_ai_100_1:Function'],
-         'comments': ['Defines methodology for AI risk identification, analysis, and '
-                      'evaluation per Clause 6.1.2',
-                      'Aligned with ISO/IEC 23894 risk-management guidance'],
-         'exact_mappings': ['iso23894:risk_management_process',
-                            'iso27001:risk_assessment_process'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management', 'documented_information']})
-
-    risk_acceptance_criteria: Optional[str] = Field(default=None, description="""Criteria for accepting AI risks.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.1'}},
-         'domain_of': ['AIRiskAssessmentProcess']} })
-    assessment_criteria: Optional[str] = Field(default=None, description="""Criteria for performing AI risk or impact assessments.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    assessment_methodology: Optional[str] = Field(default=None, description="""Methodology used for assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    likelihood_scale: Optional[str] = Field(default=None, description="""Scale used for likelihood rating.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess']} })
-    impact_scale: Optional[str] = Field(default=None, description="""Scale used for impact rating.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess']} })
-    risk_matrix: Optional[str] = Field(default=None, description="""Risk matrix or calculation method.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess']} })
-    assessment_frequency: Optional[str] = Field(default=None, description="""Planned frequency of assessments.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    trigger_events: Optional[list[str]] = Field(default=None, description="""Events that trigger an assessment outside the planned schedule.""", json_schema_extra = { "linkml_meta": {'comments': ['Per 8.2 / 8.4 when significant changes are proposed or occur'],
-         'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    alignment_with_ai_policy: Optional[str] = Field(default=None, description="""Statement of how the process aligns with the AI policy.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.2 a)'}},
-         'domain_of': ['AIRiskAssessmentProcess']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIRiskAssessment(DocumentedInformation):
-    """
-    An instance of AI risk assessment performed per Clause 8.2, identifying and evaluating AI risks at planned intervals or following significant change.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.2'}},
-         'close_mappings': ['iso27001:RiskAssessment'],
-         'comments': ['Instance of an AI risk assessment per Clause 8.2',
-                      'Performed at planned intervals or on significant change'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management']})
-
-    assessment_scope: Optional[str] = Field(default=None, description="""Scope of the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    ai_systems_assessed: Optional[list[str]] = Field(default=None, description="""AI systems covered by this assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    assessment_date: Optional[date] = Field(default=None, description="""Date the assessment was conducted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    assessor: Optional[str] = Field(default=None, description="""Person or team who conducted the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    methodology_used: Optional[str] = Field(default=None, description="""Specific methodology applied in this assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment']} })
-    risks_identified: Optional[list[str]] = Field(default=None, description="""Risks identified in this assessment.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso29100:privacy_risks', 'nist_ai_100_1:risks'],
-         'domain_of': ['AIRiskAssessment']} })
-    linked_impact_assessment: Optional[str] = Field(default=None, description="""AI system impact assessment linked to this risk assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment']} })
-    summary_findings: Optional[str] = Field(default=None, description="""Summary of assessment findings.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment']} })
-    recommendations: Optional[list[str]] = Field(default=None, description="""Recommendations from the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment']} })
-    next_assessment_date: Optional[date] = Field(default=None, description="""Planned date for next assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIRisk(NamedEntity):
-    """
-    An identified AI risk that may affect achievement of AI objectives, individuals, groups, or societies within the AIMS scope.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.2'}},
-         'close_mappings': ['iso27001:Risk',
-                            'nist_ai_100_1:Risk',
-                            'nist_ai_600_1:GaiRisk'],
-         'comments': ['Risk source categories drawn from Annex C',
-                      'Affects organization, individuals, groups, or societies per '
-                      'Clause 6.1.2 d) 1)'],
-         'exact_mappings': ['iso23894:risk', 'iso27001:Risk'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management'],
-         'narrow_mappings': ['nist_ai_100_1:AiSpecificRisk', 'nist_ai_600_1:GaiRisk'],
-         'related_mappings': ['iso29100:PrivacyRisk']})
-
-    risk_source_category: Optional[AIRiskSourceCategory] = Field(default=None, description="""Category of AI risk source per Annex C.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    risk_source_description: Optional[str] = Field(default=None, description="""Description of the specific source of risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    affected_ai_systems: Optional[list[str]] = Field(default=None, description="""AI systems affected by this risk.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:affected_assets'],
-         'domain_of': ['AIRisk', 'AISystemEvent', 'AIIncident'],
-         'related_mappings': ['nist_ai_600_1:risk_scope']} })
-    affected_dimensions: Optional[list[ImpactAssessmentDimension]] = Field(default=None, description="""Dimensions of impact affected by the risk (individual, group, societal, safety, privacy, security, environmental).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk', 'AIIncident']} })
-    risk_owner: Optional[str] = Field(default=None, description="""Person accountable for managing the AI risk.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.2'}},
-         'close_mappings': ['iso29100:pii_controller'],
-         'domain_of': ['AIRisk']} })
-    likelihood: Optional[LikelihoodRating] = Field(default=None, description="""Assessed likelihood of risk occurrence.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.2 d) 2)'}},
-         'domain_of': ['AIRisk']} })
-    impact: Optional[ImpactRating] = Field(default=None, description="""Assessed consequence if the risk materializes.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.2 d) 1)'}},
-         'domain_of': ['AIRisk']} })
-    inherent_risk_level: Optional[RiskLevel] = Field(default=None, description="""Risk level before controls are applied.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    existing_controls: Optional[list[str]] = Field(default=None, description="""Controls currently in place affecting this risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    residual_risk_level: Optional[RiskLevel] = Field(default=None, description="""Risk level after controls are applied.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    risk_treatment_option: Optional[RiskTreatmentOption] = Field(default=None, description="""Selected treatment option for the AI risk.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_ai_100_1:risk_response'], 'domain_of': ['AIRisk']} })
-    treatment_priority: Optional[str] = Field(default=None, description="""Priority for treating this risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    related_treatment_plan: Optional[str] = Field(default=None, description="""Risk treatment plan addressing this risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    related_impact_assessment: Optional[str] = Field(default=None, description="""AI system impact assessment associated with this risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIRiskTreatmentProcess(DocumentedInformation):
-    """
-    The documented AI risk treatment process per Clause 6.1.3, defining how treatment options are selected, how Annex A controls are considered, and how the Statement of Applicability is produced.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3'},
-                         'mandatory': {'tag': 'mandatory', 'value': 'true'}},
-         'close_mappings': ['iso27001:RiskTreatmentProcess'],
-         'comments': ['Defines treatment-option selection and SoA production per '
-                      'Clause 6.1.3',
-                      'Annex A controls must be considered before custom controls are '
-                      'added'],
-         'exact_mappings': ['iso23894:risk_treatment_process',
-                            'iso27001:risk_treatment_process'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management', 'documented_information']})
-
-    treatment_options_guidance: Optional[str] = Field(default=None, description="""Guidance on selecting AI risk treatment options.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentProcess']} })
-    control_selection_criteria: Optional[str] = Field(default=None, description="""Criteria for selecting Annex A controls.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentProcess']} })
-    soa_template: Optional[str] = Field(default=None, description="""Template used for the Statement of Applicability.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentProcess']} })
-    approval_workflow: Optional[str] = Field(default=None, description="""Workflow for approving AI risk treatment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentProcess']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AIRiskTreatmentPlan(DocumentedInformation):
-    """
-    A plan documenting planned actions to address identified AI risks through selected controls. Requires approval by designated management per Clause 6.1.3.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3'}},
-         'close_mappings': ['iso27001:RiskTreatmentPlan'],
-         'comments': ['Requires approval by designated management and acceptance of '
-                      'residual risk per Clause 6.1.3',
-                      'Tracks controls, owners, timelines, and implementation status'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management', 'documented_information'],
-         'related_mappings': ['iso29100:PrivacySafeguardingRequirement',
-                              'nist_ai_100_1:RiskTolerance',
-                              'nist_ai_600_1:SuggestedAction']})
-
-    plan_scope: Optional[str] = Field(default=None, description="""Scope of the treatment plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    risks_addressed: Optional[list[str]] = Field(default=None, description="""Risks addressed by this plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    treatment_actions: Optional[list[str]] = Field(default=None, description="""Actions to be taken for treatment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    controls_to_implement: Optional[list[str]] = Field(default=None, description="""Controls to be implemented as part of treatment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    resources_required: Optional[str] = Field(default=None, description="""Resources required for implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'AIRiskTreatmentPlan', 'CorrectiveAction']} })
-    responsible_parties: Optional[list[str]] = Field(default=None, description="""Parties responsible for implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    implementation_timeline: Optional[str] = Field(default=None, description="""Timeline for implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    risk_owner_approval: Optional[str] = Field(default=None, description="""Risk owner who approved the plan.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3'}},
-         'domain_of': ['AIRiskTreatmentPlan']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    residual_risk_acceptance: Optional[str] = Field(default=None, description="""Documentation of residual AI risk acceptance.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3'}},
-         'close_mappings': ['nist_ai_100_1:residual_risk'],
-         'domain_of': ['AIRiskTreatmentPlan']} })
-    implementation_status: Optional[ImplementationStatus] = Field(default=None, description="""Current implementation status.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan', 'SoAEntry', 'AIReferenceControl']} })
-    completion_date: Optional[date] = Field(default=None, description="""Date when implementation was completed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AISystemImpactAssessmentProcess(DocumentedInformation):
-    """
-    The documented process for assessing the potential consequences for individuals, groups, and societies arising from the development, provision, or use of AI systems per Clause 6.1.4.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.5.2'},
-                         'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.4'}},
-         'comments': ['Documented process per Clause 6.1.4 and Annex A.5.2',
-                      'Outputs feed back into AI risk assessment per Clause 6.1.4'],
-         'exact_mappings': ['iso23894:impact_assessment_process'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management', 'documented_information'],
-         'related_mappings': ['iso27001:RiskAssessmentProcess']})
-
-    assessment_criteria: Optional[str] = Field(default=None, description="""Criteria for performing AI risk or impact assessments.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    assessment_methodology: Optional[str] = Field(default=None, description="""Methodology used for assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    dimensions_in_scope: Optional[list[ImpactAssessmentDimension]] = Field(default=None, description="""Impact dimensions evaluated by the process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessmentProcess']} })
-    assessment_frequency: Optional[str] = Field(default=None, description="""Planned frequency of assessments.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    trigger_events: Optional[list[str]] = Field(default=None, description="""Events that trigger an assessment outside the planned schedule.""", json_schema_extra = { "linkml_meta": {'comments': ['Per 8.2 / 8.4 when significant changes are proposed or occur'],
-         'domain_of': ['AIRiskAssessmentProcess', 'AISystemImpactAssessmentProcess']} })
-    linkage_to_risk_assessment: Optional[str] = Field(default=None, description="""Description of how impact assessment results feed into AI risk assessment per Clause 6.1.4.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessmentProcess']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AISystemImpactAssessment(DocumentedInformation):
-    """
-    An instance of an AI system impact assessment performed per Clause 6.1.4 and Clause 8.4. Documents consequences of deployment, intended use, and foreseeable misuse on individuals, groups, and societies.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.5'},
-                         'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.4'}},
-         'close_mappings': ['iso29100:PrivacyImpactAssessment',
-                            'nist_ai_100_1:Impact',
-                            'nist_ai_600_1:PrimaryGaiConsideration'],
-         'comments': ['Instance assessing consequences for individuals, groups, and '
-                      'societies per Clause 8.4',
-                      'Considers deployment context, intended use, and reasonably '
-                      'foreseeable misuse'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_risk_management', 'documented_information'],
-         'related_mappings': ['iso27001:RiskAssessment']})
-
-    assessment_scope: Optional[str] = Field(default=None, description="""Scope of the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    ai_systems_assessed: Optional[list[str]] = Field(default=None, description="""AI systems covered by this assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    assessment_date: Optional[date] = Field(default=None, description="""Date the assessment was conducted.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    assessor: Optional[str] = Field(default=None, description="""Person or team who conducted the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    technical_context: Optional[str] = Field(default=None, description="""Specific technical context in which the AI system is deployed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    societal_context: Optional[str] = Field(default=None, description="""Societal context relevant to the impact assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    applicable_jurisdictions: Optional[list[str]] = Field(default=None, description="""Jurisdictions relevant to the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    dimensions_assessed: Optional[list[ImpactAssessmentDimension]] = Field(default=None, description="""Impact dimensions actually assessed in this instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    identified_consequences: Optional[list[str]] = Field(default=None, description="""Identified positive or negative consequences.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    mitigations: Optional[list[str]] = Field(default=None, description="""Mitigations to address identified consequences.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    shared_with_parties: Optional[list[str]] = Field(default=None, description="""Interested parties with whom the results have been shared.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemImpactAssessment']} })
-    next_assessment_date: Optional[date] = Field(default=None, description="""Planned date for next assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskAssessment', 'AISystemImpactAssessment']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class StatementOfApplicability(DocumentedInformation):
-    """
-    The Statement of Applicability (SoA) for the AIMS recording which Annex A controls apply, justification for inclusion or exclusion, and current implementation state per Clause 6.1.3 f).
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3 f)'},
-                         'mandatory': {'tag': 'mandatory', 'value': 'true'}},
-         'comments': ['Records applicability, justification, and implementation status '
-                      'per Clause 6.1.3 f)',
-                      'Equivalent role to ISO/IEC 27001:2022 SoA'],
-         'exact_mappings': ['iso27001:StatementOfApplicability'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core', 'annex_a_controls', 'documented_information']})
-
-    soa_entries: Optional[list[SoAEntry]] = Field(default=None, description="""Individual control entries in the SoA.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StatementOfApplicability']} })
-    total_controls: Optional[int] = Field(default=None, description="""Total number of controls in scope.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StatementOfApplicability']} })
-    implemented_count: Optional[int] = Field(default=None, description="""Number of implemented controls.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StatementOfApplicability']} })
-    planned_count: Optional[int] = Field(default=None, description="""Number of controls planned for implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StatementOfApplicability']} })
-    not_applicable_count: Optional[int] = Field(default=None, description="""Number of controls marked not applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StatementOfApplicability']} })
-    last_review_date: Optional[date] = Field(default=None, description="""Date of last review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['StatementOfApplicability']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class SoAEntry(ConfiguredBaseModel):
-    """
-    A single entry in the AIMS Statement of Applicability documenting the applicability and implementation status of one reference control.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['One row of the SoA: links a control to applicability, '
-                      'justification, and status',
-                      'Exclusion justifications should reference risk assessment '
-                      'outputs or external requirements'],
-         'exact_mappings': ['iso27001:SoAEntry'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['annex_a_controls']})
-
-    control_reference: Optional[str] = Field(default=None, description="""Reference to an Annex A control (e.g., A.6.2.4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoAEntry', 'AuditFinding']} })
-    is_applicable: Optional[bool] = Field(default=None, description="""Whether the control is applicable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoAEntry']} })
-    inclusion_justification: Optional[str] = Field(default=None, description="""Justification for including the control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3 f)'}},
-         'domain_of': ['SoAEntry']} })
-    exclusion_justification: Optional[str] = Field(default=None, description="""Justification for excluding the control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3 f)'}},
-         'domain_of': ['SoAEntry']} })
-    implementation_status: Optional[ImplementationStatus] = Field(default=None, description="""Current implementation status.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan', 'SoAEntry', 'AIReferenceControl']} })
-    implementation_evidence: Optional[str] = Field(default=None, description="""Evidence of control implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoAEntry']} })
-    responsible_role: Optional[str] = Field(default=None, description="""Role responsible for the objective or control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'SoAEntry']} })
-    target_implementation_date: Optional[date] = Field(default=None, description="""Target date for implementing the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoAEntry']} })
-
-
-class AIReferenceControl(NamedEntity):
-    """
-    A reference control from Annex A of ISO/IEC 42001:2023. Controls are grouped into nine families (A.2 through A.10) and supported by implementation guidance in Annex B.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_reference': {'tag': 'annex_reference',
-                                             'value': 'Annex A'},
-                         'iso42001_clause': {'tag': 'iso42001_clause',
-                                             'value': '6.1.3'}},
-         'close_mappings': ['iso27001:SecurityControl',
-                            'iso29100:PrivacyControl',
-                            'nist_ai_100_1:Subcategory'],
-         'comments': ['Reference: ISO/IEC 42001:2023 Annex A and Annex B. ISO/IEC '
-                      'standards text is copyright ISO/IEC - not reproduced here.',
-                      'The control_text slot must contain organization-authored '
-                      'content only, not ISO/IEC standards text.'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['annex_a_controls'],
-         'related_mappings': ['nist_ai_600_1:SuggestedAction']})
-
-    control_id: Optional[Union[AnnexAControlId, str]] = Field(default=None, description="""Control identifier from Annex A (e.g., A.6.2.4). Accepts either an enumerated normative `AnnexAControlId` value or a free-form string for organization-defined controls beyond Annex A.""", json_schema_extra = { "linkml_meta": {'any_of': [{'range': 'AnnexAControlId'}, {'range': 'string'}],
-         'comments': ['Format matches Annex A numbering '
-                      '(A.<family>[.<subclause>][.<control>])',
-                      'Use AnnexAControlId for the 38 normative Annex A controls; use '
-                      'string for org-defined controls.'],
-         'domain_of': ['AIReferenceControl']} })
-    control_title: Optional[str] = Field(default=None, description="""Title of the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    control_family: Optional[AIControlFamily] = Field(default=None, description="""Family of the Annex A control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    control_text: Optional[str] = Field(default=None, description="""Organization-authored control statement or external control summary. Do not include verbatim ISO/IEC standards text.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    implementation_guidance: Optional[str] = Field(default=None, description="""Organization-authored implementation notes for the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    related_controls: Optional[list[str]] = Field(default=None, description="""Other reference controls related to this one.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'AIReferenceControl', 'OperationalProcedure']} })
-    applicable_risk_sources: Optional[list[AIRiskSourceCategory]] = Field(default=None, description="""Categories of AI risk source this control addresses.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    applicable_objectives: Optional[list[AIObjectiveCategory]] = Field(default=None, description="""AI objective categories this control supports.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    control_owner: Optional[str] = Field(default=None, description="""Person responsible for the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    implementation_status: Optional[ImplementationStatus] = Field(default=None, description="""Current implementation status.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRiskTreatmentPlan', 'SoAEntry', 'AIReferenceControl']} })
-    implementation_date: Optional[date] = Field(default=None, description="""Date the control was implemented.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    effectiveness_rating: Optional[str] = Field(default=None, description="""Rating of control effectiveness.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    last_test_date: Optional[date] = Field(default=None, description="""Date the control was last tested.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    evidence_references: Optional[list[str]] = Field(default=None, description="""References to evidence of implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIReferenceControl']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-    @field_validator('control_id')
-    def pattern_control_id(cls, v):
-        pattern=re.compile(r"^A\.[0-9]{1,2}(\.[0-9]{1,2})*$")
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
         if isinstance(v, list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid control_id format: {element}"
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
                     raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid control_id format: {v}"
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
             raise ValueError(err_msg)
         return v
 
 
-class AISystem(NamedEntity):
+class AimsDocumentControlMixin(ConfiguredBaseModel):
     """
-    An AI system within the AIMS scope. Captures life cycle stage, intended use, applicable domains, and references to data and tooling resources, technical documentation, and impact assessments.
+    The control that documented information is kept under: who wrote, owns and approved it, its format and medium, when it takes effect and is looked at again, how it is classified, handed out, stored and changed, how long it is kept, and whether it came from outside.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.6'}},
-         'comments': ['Captures life cycle stage, intended use, foreseeable misuse, '
-                      'and resource references per Annex A.6',
-                      'AI systems are the primary unit to which impact assessments and '
-                      'incidents attach'],
-         'exact_mappings': ['iso22989:ai_system', 'nist_ai_100_1:AiSystem'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.5'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_system_lifecycle'],
-         'related_mappings': ['iso27001:Asset', 'nist_ai_600_1:GaiProfile']})
+         'in_subset': ['aims_documented_information'],
+         'mixin': True})
 
-    ai_system_purpose: Optional[str] = Field(default=None, description="""Purpose of the AI system.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['nist_ai_100_1:application_domain'],
-         'domain_of': ['AISystem']} })
-    intended_uses: Optional[list[str]] = Field(default=None, description="""Documented intended uses of the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.9.4'}},
-         'close_mappings': ['nist_ai_100_1:intended_use'],
-         'domain_of': ['AISystem']} })
-    foreseeable_misuse: Optional[list[str]] = Field(default=None, description="""Reasonably foreseeable misuse of the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.5'}},
-         'close_mappings': ['nist_ai_100_1:potential_misuse'],
-         'domain_of': ['AISystem']} })
-    application_domain: Optional[str] = Field(default=None, description="""Domain in which the AI system is applied (e.g., health, finance).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    deployment_context: Optional[str] = Field(default=None, description="""Operational context in which the AI system is deployed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    lifecycle_stage: Optional[AISystemLifecycleStage] = Field(default=None, description="""Current life cycle stage of the AI system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem'], 'exact_mappings': ['nist_ai_100_1:lifecycle_stage']} })
-    organization_role: Optional[AIOrganizationalRole] = Field(default=None, description="""The organization's role with respect to this AI system (provider, producer, customer, partner).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    autonomy_level: Optional[str] = Field(default=None, description="""Description of the level of autonomy and human oversight required for this AI system. Free-form text complements `human_oversight_required` and `human_oversight_description`.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    ml_approach: Optional[MLApproach] = Field(default=None, description="""Machine-learning approach used by the AI system, capturing the design-choice dimension referenced in Annex B.6.2.3.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.6.2.3'}},
-         'domain_of': ['AISystem']} })
-    human_oversight_required: Optional[bool] = Field(default=None, description="""Whether human oversight is required for outputs of the AI system (Annex A.9, Annex B.9.3).""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.9'}},
-         'close_mappings': ['nist_ai_100_1:human_ai_configuration'],
-         'domain_of': ['AISystem']} })
-    human_oversight_description: Optional[str] = Field(default=None, description="""Description of human-oversight arrangements, including review points, escalation paths, and oversight authority (Annex B.9.3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    human_oversight_stages: Optional[list[AISystemLifecycleStage]] = Field(default=None, description="""AI system life cycle stages at which human oversight applies (Annex B.9.3).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    learning_mode: Optional[LearningParadigm] = Field(default=None, description="""Learning paradigm of the AI system (informs Clause 6.1 risk and Annex A.6.2.6 monitoring considerations).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    data_resources: Optional[list[str]] = Field(default=None, description="""Data resources used by the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.3'}},
-         'domain_of': ['AISystem']} })
-    tooling_resources: Optional[list[str]] = Field(default=None, description="""Tooling resources used by the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.4'}},
-         'domain_of': ['AISystem']} })
-    computing_resources: Optional[list[str]] = Field(default=None, description="""System and computing resources used by the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.5'}},
-         'domain_of': ['AISystem']} })
-    human_resources: Optional[list[str]] = Field(default=None, description="""Human resources involved with the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.6'}},
-         'domain_of': ['AISystem']} })
-    technical_documentation: Optional[list[str]] = Field(default=None, description="""Reference to AI system technical documentation.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.6.2.7'}},
-         'domain_of': ['AISystem']} })
-    event_log_policy: Optional[str] = Field(default=None, description="""Policy for AI system event log recording across life cycle phases.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.6.2.8'}},
-         'domain_of': ['AISystem']} })
-    applicable_controls: Optional[list[str]] = Field(default=None, description="""Reference controls related to this policy or AI system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TopicSpecificPolicy', 'AISystem']} })
-    related_impact_assessments: Optional[list[str]] = Field(default=None, description="""Impact assessments related to this AI system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    supplier_relationships: Optional[list[str]] = Field(default=None, description="""Supplier relationships relevant to this AI system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    customer_relationships: Optional[list[str]] = Field(default=None, description="""Customer relationships relevant to this AI system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystem']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
 
 
-class DataResource(NamedEntity):
+class AimsManagementSystem(AimsRecordMixin):
     """
-    A data resource used by an AI system per Annex A.7. Includes data acquisition, quality, provenance, and preparation metadata.
+    One organization's management system for AI: its scope and context, and every record it keeps, each kind in a list of its own.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.7'}},
-         'close_mappings': ['iso29100:PersonallyIdentifiableInformation'],
-         'comments': ['Data resource documentation per Annex A.4.3 and A.7',
-                      'Captures acquisition, quality, provenance, preparation, and '
-                      'known bias issues'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.4'}},
+         'close_mappings': ['iso27001:IsmsManagementSystem'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_data_management'],
-         'narrow_mappings': ['iso27001:Asset']})
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin'],
+         'tree_root': True})
 
-    data_resource_category: Optional[DataResourceCategory] = Field(default=None, description="""Category of data resource (training, validation, test, production).""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    source: Optional[str] = Field(default=None, description="""Source from which the data was obtained.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    acquisition_method: Optional[str] = Field(default=None, description="""How the data was acquired (e.g., collected, purchased, synthetic).""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    data_quality_requirements: Optional[list[str]] = Field(default=None, description="""Documented data quality requirements for the AI system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.7.4'}},
-         'domain_of': ['DataResource']} })
-    data_quality_metrics: Optional[list[str]] = Field(default=None, description="""Measured data quality metrics.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    data_provenance: Optional[str] = Field(default=None, description="""Provenance information for the data resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.7.5'}},
-         'domain_of': ['DataResource']} })
-    labelling_process: Optional[str] = Field(default=None, description="""Description of the data labelling process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    data_preparation_methods: Optional[list[DataPreparationMethod]] = Field(default=None, description="""Data preparation methods used (e.g., scaling, encoding, cleaning) per Annex A.7.6.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.7.6'}},
-         'domain_of': ['DataResource']} })
-    last_updated_date: Optional[date] = Field(default=None, description="""Date the data was last updated or modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    known_bias_issues: Optional[list[str]] = Field(default=None, description="""Known or potential bias issues in the data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    retention_policy: Optional[str] = Field(default=None, description="""Retention and disposal policy applicable to the data.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    data_classification: Optional[str] = Field(default=None, description="""Classification of the data resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataResource']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_organization: Optional[AimsOrganization] = Field(default=None, description="""The organization that runs the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_top_management: Optional[str] = Field(default=None, description="""The person or group that runs the organization from the very top.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_governing_body: Optional[str] = Field(default=None, description="""The body top management answers to, such as a board, where there is one.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_leadership_evidence: Optional[list[str]] = Field(default=None, description="""What shows that top management leads and commits to the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.1'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_scope: Optional[str] = Field(default=None, description="""How far the system reaches, in the organization's words.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.3'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_scope_boundaries: Optional[list[str]] = Field(default=None, description="""Where the system stops.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.3'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_scope_applicability: Optional[list[str]] = Field(default=None, description="""What in the organization's work the system applies to.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.3'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_processes: Optional[str] = Field(default=None, description="""The processes the system needs and how they work together.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.4'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_internal_issues: Optional[list[str]] = Field(default=None, description="""The matters inside the organization that bear on the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_external_issues: Optional[list[str]] = Field(default=None, description="""The matters outside the organization that bear on the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_planned_changes: Optional[list[str]] = Field(default=None, description="""The changes to the system that are planned.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '6.3'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_external_services: Optional[list[str]] = Field(default=None, description="""What the system takes from outside the organization and keeps under control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.1'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_integrated_standards: Optional[list[AimsManagementSystemStandard]] = Field(default=None, description="""Other standards for management systems that this one is run beside.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_d_item': {'tag': 'annex_d_item', 'value': 'D.2'}},
+         'domain_of': ['AimsManagementSystem']} })
+    aims_certification_status: Optional[str] = Field(default=None, description="""Where the system stands with certification, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_certification_body: Optional[str] = Field(default=None, description="""The body that certifies the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_certification_date: Optional[date] = Field(default=None, description="""When the system was certified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_recertification_date: Optional[date] = Field(default=None, description="""When the system is next due for recertification.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_interested_parties: Optional[list[AimsInterestedParty]] = Field(default=None, description="""The interested parties the system takes into account.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_policy: Optional[AimsPolicy] = Field(default=None, description="""The AI policy.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_topic_specific_policies: Optional[list[AimsTopicSpecificPolicy]] = Field(default=None, description="""The policies on single topics under the AI policy.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_roles: Optional[list[AimsRole]] = Field(default=None, description="""The roles that carry the system's duties and powers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_objectives: Optional[list[AimsObjective]] = Field(default=None, description="""The AI objectives.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_planned_actions: Optional[list[AimsPlannedAction]] = Field(default=None, description="""The actions planned on risks and opportunities.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_risk_assessment_process: Optional[AimsRiskAssessmentProcess] = Field(default=None, description="""The process for assessing AI risks.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_risk_treatment_process: Optional[AimsRiskTreatmentProcess] = Field(default=None, description="""The process for treating AI risks.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_impact_assessment_process: Optional[AimsImpactAssessmentProcess] = Field(default=None, description="""The process for assessing what AI systems may do to people and society.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_risk_assessments: Optional[list[AimsRiskAssessment]] = Field(default=None, description="""The risk assessments carried out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_risks: Optional[list[AimsRisk]] = Field(default=None, description="""The risks identified, the risk register.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_risk_treatment_plans: Optional[list[AimsRiskTreatmentPlan]] = Field(default=None, description="""The risk treatment plans.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_impact_assessments: Optional[list[AimsImpactAssessment]] = Field(default=None, description="""The impact assessments carried out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_statement_of_applicability: Optional[AimsStatementOfApplicability] = Field(default=None, description="""The Statement of Applicability.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_controls: Optional[list[AimsControl]] = Field(default=None, description="""The controls the organization has determined it needs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_systems: Optional[list[AimsAiSystem]] = Field(default=None, description="""The AI systems the management system covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_system_resources: Optional[list[Union[AimsComponentResource,AimsDataResource,AimsToolingResource,AimsComputingResource,AimsHumanResource]]] = Field(default=None, description="""The resources those AI systems draw on, each told apart by its type.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_development_processes: Optional[list[AimsDevelopmentProcess]] = Field(default=None, description="""The processes for designing and building AI systems responsibly.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_use_processes: Optional[list[AimsResponsibleUseProcess]] = Field(default=None, description="""The processes for using AI systems responsibly.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_technical_documentation: Optional[list[AimsTechnicalDocumentation]] = Field(default=None, description="""The technical documents kept for AI systems.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_user_information: Optional[list[AimsUserInformation]] = Field(default=None, description="""What users of AI systems are told.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_incident_communication_plans: Optional[list[AimsIncidentCommunicationPlan]] = Field(default=None, description="""The plans for telling users about incidents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_reporting_obligations: Optional[list[AimsReportingObligation]] = Field(default=None, description="""What the organization must report to others about AI systems.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_third_party_relationships: Optional[list[Union[AimsThirdPartyRelationship,AimsSupplierRelationship,AimsCustomerRelationship]]] = Field(default=None, description="""The relationships with partners, suppliers, buyers and others.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_resources: Optional[list[AimsResource]] = Field(default=None, description="""The resources provided for the management system itself.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_competence_records: Optional[list[AimsCompetenceRecord]] = Field(default=None, description="""The records of competence.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_awareness_programme: Optional[AimsAwarenessProgramme] = Field(default=None, description="""The awareness programme.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_communication_plan: Optional[AimsCommunicationPlan] = Field(default=None, description="""The plan for communication about the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_documented_information: Optional[list[AimsDocumentedInformation]] = Field(default=None, description="""The documented information the system keeps that no more specific list holds, such as procedures, plans and reports.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_operational_procedures: Optional[list[AimsOperationalProcedure]] = Field(default=None, description="""The procedures for planning and running operations.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_monitoring_programme: Optional[AimsMonitoringProgramme] = Field(default=None, description="""The programme of monitoring and measurement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_audit_programmes: Optional[list[AimsAuditProgramme]] = Field(default=None, description="""The audit programmes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_audits: Optional[list[AimsAudit]] = Field(default=None, description="""The audits of the system, internal and external.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_management_reviews: Optional[list[AimsManagementReview]] = Field(default=None, description="""The management reviews.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_nonconformities: Optional[list[AimsNonconformity]] = Field(default=None, description="""The nonconformities found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_corrective_actions: Optional[list[AimsCorrectiveAction]] = Field(default=None, description="""The corrective actions taken.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_improvements: Optional[list[AimsImprovementOpportunity]] = Field(default=None, description="""The opportunities for improvement identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_system_events: Optional[list[Union[AimsSystemEvent,AimsIncident]]] = Field(default=None, description="""The events reported about AI systems, the incidents among them.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_concern_reporting_process: Optional[AimsConcernReportingProcess] = Field(default=None, description="""The way people raise worries about the organization's part in AI.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_concern_reports: Optional[list[AimsConcernReport]] = Field(default=None, description="""The worries people have raised.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementSystem']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class ToolingResource(NamedEntity):
+class AimsOrganization(AimsRecordMixin):
     """
-    A tooling resource (algorithm, framework, model, library) used in an AI system per A.4.4.
+    The organization that runs the system, with what it needs to know about itself to understand its context and the parts it plays with AI.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.4'}},
-         'comments': ['Algorithm, framework, model, or library used by the AI system '
-                      'per Annex A.4.4',
-                      'Track vendor, version, and license terms to support third-party '
-                      'assurance'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'close_mappings': ['iso27001:IsmsOrganization', 'spdx_core:Organization'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_data_management', 'ai_system_lifecycle'],
-         'narrow_mappings': ['iso27001:Asset']})
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin']})
 
-    tool_category: Optional[str] = Field(default=None, description="""Category of tooling resource (algorithm, framework, model, library).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ToolingResource']} })
-    tool_version: Optional[str] = Field(default=None, description="""Version identifier for the tooling resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ToolingResource']} })
-    vendor: Optional[str] = Field(default=None, description="""Vendor or origin of the tooling resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ToolingResource']} })
-    license_terms: Optional[str] = Field(default=None, description="""License terms applicable to the tooling resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ToolingResource']} })
-    usage_purpose: Optional[str] = Field(default=None, description="""Purpose for which the tooling resource is used.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ToolingResource']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_organization_legal_name: Optional[str] = Field(default=None, description="""The organization's registered legal name.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_trading_names: Optional[list[str]] = Field(default=None, description="""Other names the organization trades under.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_kind: Optional[str] = Field(default=None, description="""What kind of organization it is, such as a company, an agency or a charity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_sectors: Optional[list[str]] = Field(default=None, description="""The sectors the organization works in, such as health or finance.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_d_item': {'tag': 'annex_d_item', 'value': 'D.1'}},
+         'domain_of': ['AimsOrganization']} })
+    aims_organization_size: Optional[str] = Field(default=None, description="""How the organization classes its own size.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_employee_count: Optional[int] = Field(default=None, description="""About how many people the organization employs.""", ge=1, json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_locations: Optional[list[str]] = Field(default=None, description="""The countries or regions the organization works in.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_jurisdictions: Optional[list[str]] = Field(default=None, description="""The jurisdictions whose laws and regulations apply to the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_parent: Optional[str] = Field(default=None, description="""The organization's parent, if it has one.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_subsidiaries: Optional[list[str]] = Field(default=None, description="""The organization's subsidiaries, if it has any.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOrganization']} })
+    aims_organization_ai_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the organization plays towards its AI systems.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsOrganization']} })
+    aims_organization_pii_roles: Optional[list[AimsPiiRole]] = Field(default=None, description="""The parts the organization plays when its AI systems process personal data.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsOrganization']} })
+    aims_organization_climate_change_relevant: Optional[bool] = Field(default=None, description="""Whether the organization has found climate change to matter for the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsOrganization']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class ComputingResource(NamedEntity):
+class AimsInterestedParty(AimsRecordMixin):
     """
-    A system or computing resource used in the development or operation of an AI system per A.4.5.
+    A person or organization whose needs and expectations bear on the system, or who may feel its decisions, inside the organization or outside it.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.5'}},
-         'comments': ['System and computing resource per Annex A.4.5',
-                      'Examples include GPU clusters, edge devices, cloud regions, and '
-                      'on-prem environments'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.2'}},
+         'close_mappings': ['iso27001:IsmsInterestedParty'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_system_lifecycle'],
-         'narrow_mappings': ['iso27001:Asset']})
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin']})
 
-    resource_class: Optional[str] = Field(default=None, description="""Class of computing resource (e.g., GPU cluster, edge device).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource']} })
-    quantity: Optional[str] = Field(default=None, description="""Quantity of the resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource', 'Resource']} })
-    location: Optional[str] = Field(default=None, description="""Physical or logical location of the resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource']} })
-    environment_type: Optional[str] = Field(default=None, description="""Type of environment (development, staging, production).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource']} })
-    cost: Optional[str] = Field(default=None, description="""Cost of the resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource', 'Resource']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_party_category: Optional[str] = Field(default=None, description="""What kind of interested party it is, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_party_ai_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the party plays towards the organization's AI systems.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_party_relationship: Optional[str] = Field(default=None, description="""How the party relates to the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_party_requirements: Optional[list[str]] = Field(default=None, description="""The party's requirements that bear on the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_party_addressed_requirements: Optional[list[str]] = Field(default=None, description="""Which of those requirements the system addresses.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_party_climate_change_requirements: Optional[list[str]] = Field(default=None, description="""The party's requirements that concern climate change.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.2'}},
+         'domain_of': ['AimsInterestedParty']} })
+    aims_party_communication_needs: Optional[str] = Field(default=None, description="""What the party needs to be told, and how.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_party_contact: Optional[str] = Field(default=None, description="""How to reach the party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsInterestedParty']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class HumanResource(NamedEntity):
+class AimsPolicy(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    A human resource (role, expertise area) involved in development, deployment, operation, maintenance, or oversight of an AI system per A.4.6.
+    The AI policy that top management sets: the organization's commitments and the frame for its AI objectives.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4.6'}},
-         'comments': ['Human-resource record per Annex A.4.6 covering competences and '
-                      'lifecycle responsibilities',
-                      'Supports Clause 7.2 competence determination'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.2.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
+         'close_mappings': ['iso27001:IsmsPolicy'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['ai_system_lifecycle'],
-         'narrow_mappings': ['iso27001:Asset']})
+         'in_subset': ['aims_core', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    required_competencies: Optional[list[str]] = Field(default=None, description="""Competencies required for the role.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HumanResource', 'CompetenceRecord']} })
-    assigned_to: Optional[list[str]] = Field(default=None, description="""Person(s) assigned to this role or resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Role', 'HumanResource']} })
-    lifecycle_responsibilities: Optional[list[str]] = Field(default=None, description="""Life cycle responsibilities allocated to this human resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HumanResource']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_cited_clauses: Optional[list[AimsClause]] = Field(default=None, description="""The clauses of the standard the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsDocumentedInformation',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_policy_statement: Optional[str] = Field(default=None, description="""The policy's own statement, in the organization's words.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy']} })
+    aims_policy_objectives_framework: Optional[str] = Field(default=None, description="""How the policy frames the setting of AI objectives.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_commitments: Optional[list[str]] = Field(default=None, description="""The commitments the policy makes, at least to meeting requirements and to improving.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_principles: Optional[list[str]] = Field(default=None, description="""The principles that guide what the organization does with AI.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.2.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_exceptions_process: Optional[str] = Field(default=None, description="""How departures from the policy are handled.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.2.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_influences: Optional[list[str]] = Field(default=None, description="""What shaped the policy, such as strategy, values, the law or the risks.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.2.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_related_policies: Optional[list[str]] = Field(default=None, description="""The organization's other policies this one refers to or touches.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.2.3'},
+                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_communication_date: Optional[date] = Field(default=None, description="""When the policy was made known inside the organization.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_availability: Optional[str] = Field(default=None, description="""How interested parties can get the policy, where that is fitting.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.2'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_review_role: Optional[str] = Field(default=None, description="""The role management approved to develop, review and evaluate the policy.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.2.4'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_policy_review_interval: Optional[str] = Field(default=None, description="""How often the policy is reviewed, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.2.4'}},
+         'domain_of': ['AimsPolicy']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class Resource(NamedEntity):
+class AimsTopicSpecificPolicy(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    A resource provided for the AIMS per Clause 7.1.
+    A policy on one topic that gives more guidance under the AI policy, such as assessing impacts or building systems.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.4'},
-                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.1'}},
-         'comments': ['Generic AIMS resource record per Clause 7.1',
-                      'Use specialized DataResource / ToolingResource / '
-                      'ComputingResource / HumanResource where applicable'],
-         'exact_mappings': ['iso27001:Resource'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.2.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core']})
+         'in_subset': ['aims_annex_a', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    resource_type: Optional[str] = Field(default=None, description="""Type of resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Resource'],
-         'examples': [{'value': 'personnel'},
-                      {'value': 'technology'},
-                      {'value': 'budget'},
-                      {'value': 'infrastructure'},
-                      {'value': 'data'},
-                      {'value': 'tooling'}]} })
-    quantity: Optional[str] = Field(default=None, description="""Quantity of the resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource', 'Resource']} })
-    allocation_date: Optional[date] = Field(default=None, description="""Date the resource was allocated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Resource']} })
-    allocated_to: Optional[str] = Field(default=None, description="""What the resource is allocated to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Resource']} })
-    cost: Optional[str] = Field(default=None, description="""Cost of the resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ComputingResource', 'Resource']} })
-    availability_status: Optional[str] = Field(default=None, description="""Current availability of the resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Resource']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_relevant_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls that the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy',
+                       'AimsObjective',
+                       'AimsControl',
+                       'AimsAiSystem',
+                       'AimsOperationalProcedure']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_topic_policy_topic: Optional[str] = Field(default=None, description="""The topic the policy covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy']} })
+    aims_topic_policy_parent: Optional[str] = Field(default=None, description="""The AI policy this policy supports.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy']} })
+    aims_topic_policy_audience: Optional[str] = Field(default=None, description="""Whom the policy is written for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class CompetenceRecord(DocumentedInformation):
+class AimsRole(AimsRecordMixin):
     """
-    Evidence of competence for personnel affecting AIMS performance per Clause 7.2.
+    A role in the system, with the duties and powers it carries and who holds it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.3.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.3'}},
+         'close_mappings': ['iso27001:IsmsRole', 'oscal:Role'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_role_category: Optional[str] = Field(default=None, description="""What kind of role it is, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_role_areas: Optional[list[str]] = Field(default=None, description="""The areas the role covers, such as privacy, safety or human oversight.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.2'}},
+         'domain_of': ['AimsRole']} })
+    aims_role_responsibilities: Optional[list[str]] = Field(default=None, description="""The duties assigned to the role.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_role_authorities: Optional[list[str]] = Field(default=None, description="""The powers the role carries.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_role_ensures_conformity: Optional[bool] = Field(default=None, description="""Whether the role sees that the system meets the standard.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.3'}},
+         'domain_of': ['AimsRole']} })
+    aims_role_reports_performance: Optional[bool] = Field(default=None, description="""Whether the role tells top management how the system is doing.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '5.3'}},
+         'domain_of': ['AimsRole']} })
+    aims_role_accountability: Optional[str] = Field(default=None, description="""What the role is accountable for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_role_holders: Optional[list[str]] = Field(default=None, description="""The people who hold the role.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_role_delegation: Optional[str] = Field(default=None, description="""How the role may delegate its duties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_role_reports_to: Optional[str] = Field(default=None, description="""The role this role reports to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRole']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsObjective(AimsRecordMixin):
+    """
+    An AI objective: a result the organization aims for, with how it plans to reach it and how it judges progress.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '6.2'}},
+         'close_mappings': ['iso27001:IsmsObjective'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_relevant_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls that the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy',
+                       'AimsObjective',
+                       'AimsControl',
+                       'AimsAiSystem',
+                       'AimsOperationalProcedure']} })
+    aims_objective_categories: Optional[list[AimsObjectiveCategory]] = Field(default=None, description="""The kinds of objective the record bears on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective', 'AimsControl']} })
+    aims_objective_purpose: Optional[AimsObjectivePurpose] = Field(default=None, description="""What the objective is for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_statement: Optional[str] = Field(default=None, description="""The objective, as the organization states it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_target: Optional[str] = Field(default=None, description="""The value the objective aims for, where it can be measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_current_value: Optional[str] = Field(default=None, description="""The value last measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_metric: Optional[str] = Field(default=None, description="""How the objective's value is defined.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_measurement_method: Optional[str] = Field(default=None, description="""How the value is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_measurement_frequency: Optional[str] = Field(default=None, description="""How often the value is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_target_date: Optional[date] = Field(default=None, description="""When the objective is to be reached.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_achievement: Optional[str] = Field(default=None, description="""How far the objective has been reached, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_risks: Optional[list[str]] = Field(default=None, description="""The risks that help or hinder the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_action_plan: Optional[str] = Field(default=None, description="""The steps that lead to the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_resources: Optional[str] = Field(default=None, description="""The resources needed to reach the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_evaluation: Optional[str] = Field(default=None, description="""How the outcome will be judged.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_objective_communication: Optional[str] = Field(default=None, description="""How the objective is made known.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsPlannedAction(AimsRecordMixin):
+    """
+    An action planned on a risk or an opportunity the system faces, with how it fits the system's processes and how its effect will be judged.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.1'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_planned_action_risks: Optional[list[str]] = Field(default=None, description="""The risks the action addresses.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction']} })
+    aims_planned_action_opportunities: Optional[list[str]] = Field(default=None, description="""The opportunities the action addresses.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction']} })
+    aims_planned_action_integration: Optional[str] = Field(default=None, description="""How the action fits into the system's processes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction']} })
+    aims_planned_action_effectiveness: Optional[str] = Field(default=None, description="""How the action's effect will be judged.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsRiskAssessmentProcess(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The organization's process for assessing AI risks: its criteria, scales and method, and when it runs.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.2'}},
+         'close_mappings': ['iso27001:IsmsRiskAssessmentProcess'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_risk_criteria: Optional[list[str]] = Field(default=None, description="""The criteria for AI risk, which tell acceptable risk from the rest and steer assessment, treatment and the weighing of impacts.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.1'}},
+         'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_policy_alignment: Optional[str] = Field(default=None, description="""How the process follows the AI policy and the AI objectives.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_comparability: Optional[str] = Field(default=None, description="""How the process keeps repeated assessments consistent and comparable.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_method: Optional[str] = Field(default=None, description="""The method used to identify, analyse and evaluate risks.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_likelihood_scale: Optional[str] = Field(default=None, description="""The scale for rating likelihood.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_consequence_scale: Optional[str] = Field(default=None, description="""The scale for rating consequences.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_matrix: Optional[str] = Field(default=None, description="""How likelihood and consequence combine into a risk level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_prioritization: Optional[str] = Field(default=None, description="""How the assessed risks are ranked for treatment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_assessment_interval: Optional[str] = Field(default=None, description="""How often risks are assessed, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.2'}},
+         'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_risk_assessment_triggers: Optional[list[str]] = Field(default=None, description="""The changes that start an assessment outside the schedule.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.2'}},
+         'domain_of': ['AimsRiskAssessmentProcess']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsRiskAssessment(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    One risk assessment carried out under the process, and what it found.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.2'}},
+         'close_mappings': ['iso27001:IsmsRiskAssessment'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_assessment_scope: Optional[str] = Field(default=None, description="""What the assessment covered.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_date: Optional[date] = Field(default=None, description="""When the assessment was carried out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_assessor: Optional[str] = Field(default=None, description="""Who carried out the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_method_used: Optional[str] = Field(default=None, description="""The method this assessment applied.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_risks: Optional[list[str]] = Field(default=None, description="""The risks the assessment identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_impact_assessments: Optional[list[str]] = Field(default=None, description="""The impact assessments the assessment drew on.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.2, 6.1.4'}},
+         'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_summary: Optional[str] = Field(default=None, description="""A summary of what the assessment found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_recommendations: Optional[list[str]] = Field(default=None, description="""What the assessment recommends.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_assessment_next_date: Optional[date] = Field(default=None, description="""When the next assessment is planned.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskAssessment']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsRisk(AimsRecordMixin):
+    """
+    An AI risk in the risk register: where it comes from, which objectives it helps or hinders, who could feel its consequences, how it is rated and how it is treated.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.2'}},
+         'close_mappings': ['iso27001:IsmsRisk'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_risk_source_categories: Optional[list[AimsRiskSourceCategory]] = Field(default=None, description="""The kinds of risk source the record bears on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk', 'AimsControl']} })
+    aims_risk_source: Optional[str] = Field(default=None, description="""Where the risk comes from, in the organization's words.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_objectives: Optional[list[str]] = Field(default=None, description="""The AI objectives the risk helps or hinders.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_consequences_for_organization: Optional[str] = Field(default=None, description="""What the organization could suffer if the risk came about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_consequences_for_individuals: Optional[str] = Field(default=None, description="""What persons could suffer if the risk came about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_consequences_for_societies: Optional[str] = Field(default=None, description="""What society could suffer if the risk came about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_owner: Optional[str] = Field(default=None, description="""The person who is accountable for the risk and has the authority to manage it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_likelihood: Optional[AimsLikelihood] = Field(default=None, description="""How likely the risk is, where that can be judged.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_consequence: Optional[AimsConsequence] = Field(default=None, description="""How severe the consequences would be.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_inherent_level: Optional[AimsRiskLevel] = Field(default=None, description="""The risk's level before controls.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_existing_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls already acting on the risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_residual_level: Optional[AimsRiskLevel] = Field(default=None, description="""The risk's level after controls.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_acceptable: Optional[bool] = Field(default=None, description="""Whether the risk is acceptable under the organization's criteria.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.1'}},
+         'domain_of': ['AimsRisk']} })
+    aims_risk_treatment_option: Optional[AimsRiskTreatmentOption] = Field(default=None, description="""The treatment chosen for the risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_treatment_priority: Optional[str] = Field(default=None, description="""How soon the risk is to be treated, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk']} })
+    aims_risk_impact_assessments: Optional[list[str]] = Field(default=None, description="""The impact assessments that inform the risk.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsRisk']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsRiskTreatmentProcess(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The organization's process for treating AI risks: how it chooses options and controls, checks them against Annex A and produces the Statement of Applicability and the plan.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3'}},
+         'close_mappings': ['iso27001:IsmsRiskTreatmentProcess'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_treatment_options_guidance: Optional[str] = Field(default=None, description="""How a treatment option is chosen for a risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_treatment_control_selection: Optional[str] = Field(default=None, description="""How the controls a treatment needs are chosen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_treatment_annex_a_comparison: Optional[str] = Field(default=None, description="""How the chosen controls are compared with Annex A, so that none is missed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_treatment_additional_controls: Optional[str] = Field(default=None, description="""How the organization decides it needs controls beyond Annex A, and where it gets them.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_treatment_annex_b_use: Optional[str] = Field(default=None, description="""How the guidance of Annex B is taken into account.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_treatment_soa_template: Optional[str] = Field(default=None, description="""The template the Statement of Applicability follows.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_treatment_approval_workflow: Optional[str] = Field(default=None, description="""How designated management approves a plan and accepts the risk left over.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentProcess']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsRiskTreatmentPlan(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    A plan to treat one or more risks: the actions and controls, who carries them out and when, and designated management's approval of the plan and of the risk left over.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3, 8.3'}},
+         'close_mappings': ['iso27001:IsmsRiskTreatmentPlan'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_implementation_state: Optional[AimsImplementationStatus] = Field(default=None, description="""How far the control or the plan has been put into effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan', 'AimsIncludedControl', 'AimsControl']} })
+    aims_plan_scope: Optional[str] = Field(default=None, description="""What the plan covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_risks: Optional[list[str]] = Field(default=None, description="""The risks the plan treats.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_actions: Optional[list[str]] = Field(default=None, description="""The actions the plan takes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_controls: Optional[list[str]] = Field(default=None, description="""The controls the plan puts in place.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_resources: Optional[str] = Field(default=None, description="""The resources the plan needs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_responsible_parties: Optional[list[str]] = Field(default=None, description="""Who carries out the plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_timeline: Optional[str] = Field(default=None, description="""When the plan's actions are to happen.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_approver: Optional[str] = Field(default=None, description="""The designated management that approved the plan.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3'}},
+         'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_residual_risk_acceptance: Optional[str] = Field(default=None, description="""How that management accepted the risk left over.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3'}},
+         'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_effectiveness: Optional[str] = Field(default=None, description="""What the check on whether the plan works found.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.3'}},
+         'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_revalidation: Optional[str] = Field(default=None, description="""How options that did not work were reviewed, and what changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.3'}},
+         'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_plan_completion_date: Optional[date] = Field(default=None, description="""When the plan was completed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsImpactAssessmentProcess(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The process for working out what AI systems may do to people and society: when it applies, what it takes in, who runs it and how the results are used.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.5.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_impact_process_triggers: Optional[list[str]] = Field(default=None, description="""What calls for an assessment, such as how critical the use is or a large change.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.4'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_interval: Optional[str] = Field(default=None, description="""How often assessments run, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.4'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_steps: Optional[list[str]] = Field(default=None, description="""The steps of an assessment, from finding impacts to reporting them.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.2'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_assessors: Optional[str] = Field(default=None, description="""Who carries out an assessment.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.2'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_use: Optional[str] = Field(default=None, description="""How results feed risk assessments and a system's design or use.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_subjects: Optional[list[AimsImpactSubject]] = Field(default=None, description="""Who the process looks at.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_areas: Optional[list[AimsImpactArea]] = Field(default=None, description="""The areas of impact the process looks at.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item',
+                                          'value': 'B.5.4, B.5.5'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_impact_process_retention: Optional[str] = Field(default=None, description="""How long results are kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.5.3'}},
+         'domain_of': ['AimsImpactAssessmentProcess']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsImpactAssessment(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    One impact assessment carried out under the process: the systems and the setting it looked at, and each impact it found.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.5.3'},
+                         'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4, 8.4'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_impact_scope: Optional[str] = Field(default=None, description="""What the assessment covered.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_discipline: Optional[str] = Field(default=None, description="""The discipline it was carried out for, if it was only one, such as privacy or safety.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_date: Optional[date] = Field(default=None, description="""When the assessment was carried out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_assessor: Optional[str] = Field(default=None, description="""Who carried out the assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_intended_use: Optional[str] = Field(default=None, description="""What the system is for.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_foreseeable_misuse: Optional[str] = Field(default=None, description="""How the system could predictably be misused.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'},
+                         'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_technical_context: Optional[str] = Field(default=None, description="""The technical setting the system runs in.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_societal_context: Optional[str] = Field(default=None, description="""The social setting the system runs in.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_jurisdictions: Optional[list[str]] = Field(default=None, description="""The jurisdictions that apply to where the system runs.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_demographic_groups: Optional[list[str]] = Field(default=None, description="""The groups of people the system is meant for or touches.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_system_complexity: Optional[str] = Field(default=None, description="""How complex the system is.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_human_role: Optional[str] = Field(default=None, description="""What part people play beside the system, and their means of oversight.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_failures: Optional[list[str]] = Field(default=None, description="""The failures that can be foreseen, their effects and what limits them.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_workforce: Optional[str] = Field(default=None, description="""What the system means for jobs and the skills of staff.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.5.3'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_findings: Optional[list[AimsIdentifiedImpact]] = Field(default=None, description="""The impacts the assessment found.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.5.4, A.5.5'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_shared_with: Optional[list[str]] = Field(default=None, description="""The interested parties told of the result.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsImpactAssessment']} })
+    aims_impact_next_date: Optional[date] = Field(default=None, description="""When the next assessment is planned.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImpactAssessment']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsIdentifiedImpact(ConfiguredBaseModel):
+    """
+    One impact an assessment found: on whom it falls, in what area, whether it helps or harms, and what limits the harm.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.5.4, A.5.5'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_risk_management']})
+
+    aims_identified_impact_subject: AimsImpactSubject = Field(default=..., description="""Who the impact falls on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIdentifiedImpact']} })
+    aims_identified_impact_area: Optional[AimsImpactArea] = Field(default=None, description="""The area the impact falls in.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIdentifiedImpact']} })
+    aims_identified_impact_direction: Optional[AimsImpactDirection] = Field(default=None, description="""Whether the impact helps or harms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIdentifiedImpact']} })
+    aims_identified_impact_text: str = Field(default=..., description="""What the impact is, in the organization's words.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIdentifiedImpact']} })
+    aims_identified_impact_mitigation: Optional[list[str]] = Field(default=None, description="""What is done to limit the harm.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIdentifiedImpact']} })
+
+    @field_validator('aims_identified_impact_text')
+    def pattern_aims_identified_impact_text(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid aims_identified_impact_text format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid aims_identified_impact_text format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsStatementOfApplicability(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The Statement of Applicability: each control the organization needs, with why it is included and whether it is in place, and each control it leaves out, with why.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3'}},
+         'close_mappings': ['iso27001:IsmsStatementOfApplicability'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_annex_a', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_soa_entries: Optional[list[Union[AimsIncludedControl,AimsExcludedControl]]] = Field(default=None, description="""The statement's entries, one for each control included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsStatementOfApplicability']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsApplicabilityEntry(ConfiguredBaseModel):
+    """
+    One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3'}},
+         'close_mappings': ['iso27001:IsmsApplicabilityEntry'],
+         'comments': ['An entry may hold for the whole system or for particular AI '
+                      'systems, which aims_ai_systems names.'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_annex_a']})
+
+    aims_entry_annex_a_control: Optional[AimsAnnexAControl] = Field(default=None, description="""The Annex A control a Statement of Applicability entry concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_entry_type: Literal["AimsApplicabilityEntry"] = Field(default="AimsApplicabilityEntry", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
+    aims_entry_justification: str = Field(default=..., description="""Why the control is included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
+
+    @field_validator('aims_entry_justification')
+    def pattern_aims_entry_justification(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid aims_entry_justification format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid aims_entry_justification format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsIncludedControl(AimsApplicabilityEntry):
+    """
+    An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for it and whether it is in place.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'any_of': [{'slot_conditions': {'aims_entry_annex_a_control': {'name': 'aims_entry_annex_a_control',
+                                                                        'required': True}}},
+                    {'slot_conditions': {'aims_included_control': {'name': 'aims_included_control',
+                                                                   'required': True}}}],
+         'close_mappings': ['iso27001:IsmsIncludedControl'],
+         'comments': ['An included control names an Annex A control, one of the '
+                      "organization's controls, or both."],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_annex_a'],
+         'slot_usage': {'aims_implementation_state': {'name': 'aims_implementation_state',
+                                                      'required': True}}})
+
+    aims_implementation_state: AimsImplementationStatus = Field(default=..., description="""How far the control or the plan has been put into effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan', 'AimsIncludedControl', 'AimsControl']} })
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_included_control: Optional[str] = Field(default=None, description="""The organization's control the entry includes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
+    aims_included_risks: Optional[list[str]] = Field(default=None, description="""The risks the control answers to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
+    aims_included_evidence: Optional[str] = Field(default=None, description="""What shows that the control is in place.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
+    aims_included_target_date: Optional[date] = Field(default=None, description="""When the control is to be in place, if it is not yet.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncludedControl']} })
+    aims_entry_annex_a_control: Optional[AimsAnnexAControl] = Field(default=None, description="""The Annex A control a Statement of Applicability entry concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_entry_type: Literal["AimsIncludedControl"] = Field(default="AimsIncludedControl", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
+    aims_entry_justification: str = Field(default=..., description="""Why the control is included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
+
+    @field_validator('aims_entry_justification')
+    def pattern_aims_entry_justification(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid aims_entry_justification format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid aims_entry_justification format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsExcludedControl(AimsApplicabilityEntry):
+    """
+    An entry that leaves out an Annex A control the organization does not need, and says why.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'close_mappings': ['iso27001:IsmsExcludedControl'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_annex_a'],
+         'slot_usage': {'aims_entry_annex_a_control': {'name': 'aims_entry_annex_a_control',
+                                                       'required': True}}})
+
+    aims_entry_annex_a_control: AimsAnnexAControl = Field(default=..., description="""The Annex A control a Statement of Applicability entry concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_entry_type: Literal["AimsExcludedControl"] = Field(default="AimsExcludedControl", description="""The kind of entry, AimsIncludedControl or AimsExcludedControl.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsApplicabilityEntry']} })
+    aims_entry_justification: str = Field(default=..., description="""Why the control is included or left out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsApplicabilityEntry']} })
+
+    @field_validator('aims_entry_justification')
+    def pattern_aims_entry_justification(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid aims_entry_justification format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid aims_entry_justification format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsControl(AimsRecordMixin):
+    """
+    A control the organization has found it needs to treat its risks: what it does in the organization's words, which Annex A controls it answers to, who owns it, how far it is in place and how well it works.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.3'}},
+         'close_mappings': ['iso27001:IsmsControl'],
+         'comments': ["The text and guidance are the organization's own words, never "
+                      'the text of ISO/IEC 42001. A control from another source names '
+                      'no Annex A control.'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_annex_a'],
+         'mixins': ['AimsRecordMixin'],
+         'related_mappings': ['oscal:Control']})
+
+    aims_relevant_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls that the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy',
+                       'AimsObjective',
+                       'AimsControl',
+                       'AimsAiSystem',
+                       'AimsOperationalProcedure']} })
+    aims_implementation_state: Optional[AimsImplementationStatus] = Field(default=None, description="""How far the control or the plan has been put into effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRiskTreatmentPlan', 'AimsIncludedControl', 'AimsControl']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_objective_categories: Optional[list[AimsObjectiveCategory]] = Field(default=None, description="""The kinds of objective the record bears on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective', 'AimsControl']} })
+    aims_risk_source_categories: Optional[list[AimsRiskSourceCategory]] = Field(default=None, description="""The kinds of risk source the record bears on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRisk', 'AimsControl']} })
+    aims_control_area: Optional[AimsControlArea] = Field(default=None, description="""Which of Annex A's nine areas the control belongs to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_control_text: Optional[str] = Field(default=None, description="""What the control does, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_control_guidance: Optional[str] = Field(default=None, description="""The organization's notes on putting the control in place.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_control_owner: Optional[str] = Field(default=None, description="""The person who owns the control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_control_implementation_date: Optional[date] = Field(default=None, description="""When the control was put in place.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_control_effectiveness: Optional[str] = Field(default=None, description="""How well the control works, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.1'}},
+         'domain_of': ['AimsControl']} })
+    aims_control_last_tested: Optional[date] = Field(default=None, description="""When the control was last tested.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_control_evidence: Optional[list[str]] = Field(default=None, description="""Where the evidence that the control is in place is kept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsControl']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsAiSystem(AimsRecordMixin):
+    """
+    One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on, and what is kept about it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.2'},
+                         'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_relevant_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls that the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy',
+                       'AimsObjective',
+                       'AimsControl',
+                       'AimsAiSystem',
+                       'AimsOperationalProcedure']} })
+    aims_system_intended_purpose: Optional[str] = Field(default=None, description="""What the system is for.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_intended_uses: Optional[list[str]] = Field(default=None, description="""The uses the system is meant for.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.9.4'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_foreseeable_misuse: Optional[list[str]] = Field(default=None, description="""The ways people could predictably misuse the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_domain: Optional[str] = Field(default=None, description="""The field the system is applied in.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.1'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_deployment_context: Optional[str] = Field(default=None, description="""The setting the system runs in.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '6.1.4'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_life_cycle_stage: Optional[AimsLifecycleStage] = Field(default=None, description="""The stage of its life the system is in now.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAiSystem']} })
+    aims_system_organization_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the organization plays towards this system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_pii_roles: Optional[list[AimsPiiRole]] = Field(default=None, description="""The parts the organization plays when this system processes personal data.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_rationale: Optional[str] = Field(default=None, description="""Why the system is being built, such as a business case or a customer's request.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.2'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_requirements: Optional[list[str]] = Field(default=None, description="""What the system must meet, across its whole life.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.2'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_ml_approach: Optional[str] = Field(default=None, description="""The machine learning approach it takes, such as supervised or unsupervised.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.3'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_model_types: Optional[list[str]] = Field(default=None, description="""The learning algorithms and kinds of model it uses.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.3'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_continuous_learning: Optional[bool] = Field(default=None, description="""Whether what it meets in service goes on changing its behaviour.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.6'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_automation_level: Optional[str] = Field(default=None, description="""How much the system does without people.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_c_item': {'tag': 'annex_c_item', 'value': 'C.3.3'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_threats: Optional[list[AimsAiThreat]] = Field(default=None, description="""The threats peculiar to AI that were considered for the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item',
+                                          'value': 'B.6.2.3, B.6.2.6'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_verification_measures: Optional[list[str]] = Field(default=None, description="""The tests, data and methods used to verify and validate the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.4'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_evaluation_criteria: Optional[list[str]] = Field(default=None, description="""What the system is judged against, such as a limit on its errors.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.4'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_release_criteria: Optional[list[str]] = Field(default=None, description="""What must hold before the system is released.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.5'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_deployment_plan: Optional[str] = Field(default=None, description="""The documented information that holds the plan for putting it into service.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.5'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_operation_elements: Optional[list[str]] = Field(default=None, description="""What keeping the system in service takes, such as watching, repairs and updates.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.6'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_performance_metrics: Optional[list[str]] = Field(default=None, description="""The measures of how the system does in service, with acceptable values.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.6'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_log_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of its life at which the system keeps event logs.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.8'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_log_contents: Optional[list[str]] = Field(default=None, description="""What the logs record, such as times of use or out-of-range results.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.8'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_log_retention: Optional[str] = Field(default=None, description="""How long the logs are kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.8'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_human_oversight_required: Optional[bool] = Field(default=None, description="""Whether the system may be used only with people watching over it.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.3'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_human_oversight: Optional[str] = Field(default=None, description="""How people watch over the system, and who may overrule it.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.3'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_human_oversight_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of its life at which people watch over the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.3'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_resources_used: Optional[list[str]] = Field(default=None, description="""The resources the system draws on.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.2'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_technical_documents: Optional[list[str]] = Field(default=None, description="""The technical documents kept for the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.7'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_system_impact_assessments: Optional[list[str]] = Field(default=None, description="""The impact assessments of the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAiSystem']} })
+    aims_system_relationships: Optional[list[str]] = Field(default=None, description="""The partners, suppliers and customers that deal with the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.2'}},
+         'domain_of': ['AimsAiSystem']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsSystemResource(AimsRecordMixin):
+    """
+    Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.2'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_resource_type: Literal["AimsSystemResource"] = Field(default="AimsSystemResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'domain_of': ['AimsSystemResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsComponentResource(AimsSystemResource):
+    """
+    A part of a system, and how it is joined to the rest.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems']})
+
+    aims_component_kind: Optional[str] = Field(default=None, description="""What kind of part it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsComponentResource']} })
+    aims_component_integration: Optional[str] = Field(default=None, description="""How the part is joined to the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsComponentResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_resource_type: Literal["AimsComponentResource"] = Field(default="AimsComponentResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'domain_of': ['AimsSystemResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsDataResource(AimsSystemResource):
+    """
+    Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged fit, and how long it is kept.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.3, A.7.3'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems']})
+
+    aims_data_categories: Optional[list[AimsDataCategory]] = Field(default=None, description="""The parts the data plays in machine learning.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_kinds: Optional[list[str]] = Field(default=None, description="""What kind of data it is, in a classification the organization names.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_intended_use: Optional[str] = Field(default=None, description="""What the data is for.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_quantity: Optional[str] = Field(default=None, description="""How much data is needed.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_sources: Optional[list[str]] = Field(default=None, description="""Where the data comes from, such as bought, shared, open or synthetic.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_source_characteristics: Optional[list[str]] = Field(default=None, description="""How the source behaves, such as fixed, streamed or made by machine.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_subject_demographics: Optional[list[str]] = Field(default=None, description="""Who the data is about, with any known bias or systematic error.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_prior_handling: Optional[str] = Field(default=None, description="""What was done with the data before, such as earlier uses.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_rights: Optional[list[str]] = Field(default=None, description="""The rights bearing on the data, such as personal data or copyright.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_metadata: Optional[list[str]] = Field(default=None, description="""The metadata that comes with it, such as details of labelling.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_provenance: Optional[str] = Field(default=None, description="""The record of where the data came from and what happened to it.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.7.5'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_provenance_verification: Optional[str] = Field(default=None, description="""How that record is checked, where it needs to be.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.5'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_quality_requirements: Optional[list[str]] = Field(default=None, description="""What quality the data must have.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.7.4'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_quality_results: Optional[list[str]] = Field(default=None, description="""How the data measures up to those requirements.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.7.4'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_bias_issues: Optional[list[str]] = Field(default=None, description="""Known or suspected bias in the data.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item',
+                                          'value': 'B.4.3, B.7.4'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_representativeness: Optional[str] = Field(default=None, description="""How well training data stands for what the system will meet in service.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.7.2'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_labelling_process: Optional[str] = Field(default=None, description="""How the data is labelled.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_preparation_criteria: Optional[str] = Field(default=None, description="""What decides how the data is made ready.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.7.6'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_preparation_methods: Optional[list[AimsDataPreparationMethod]] = Field(default=None, description="""The methods used to make the data ready.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.7.6'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_last_updated: Optional[date] = Field(default=None, description="""When the data last changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_retention: Optional[str] = Field(default=None, description="""How long the data is kept and how it is disposed of.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
+         'domain_of': ['AimsDataResource']} })
+    aims_data_classification: Optional[str] = Field(default=None, description="""The information classification the data carries.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDataResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_resource_type: Literal["AimsDataResource"] = Field(default="AimsDataResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'domain_of': ['AimsSystemResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsToolingResource(AimsSystemResource):
+    """
+    A tool an AI system draws on, such as an algorithm, a model or a development tool.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.4'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems']})
+
+    aims_tool_category: Optional[str] = Field(default=None, description="""What kind of tool it is, such as a model or an evaluation method.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.4'}},
+         'domain_of': ['AimsToolingResource']} })
+    aims_tool_version: Optional[str] = Field(default=None, description="""The version in use.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
+    aims_tool_vendor: Optional[str] = Field(default=None, description="""Who supplies the tool.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
+    aims_tool_licence: Optional[str] = Field(default=None, description="""The terms the tool is used under.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
+    aims_tool_purpose: Optional[str] = Field(default=None, description="""What the tool is used for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_resource_type: Literal["AimsToolingResource"] = Field(default="AimsToolingResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'domain_of': ['AimsSystemResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsComputingResource(AimsSystemResource):
+    """
+    Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.5'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems']})
+
+    aims_computing_requirements: Optional[str] = Field(default=None, description="""What the system needs in order to run, such as on a small device.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.5'}},
+         'domain_of': ['AimsComputingResource']} })
+    aims_computing_location: Optional[str] = Field(default=None, description="""Where it runs, such as on the premises, in a cloud or at the edge.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.5'}},
+         'domain_of': ['AimsComputingResource']} })
+    aims_computing_processing: Optional[str] = Field(default=None, description="""The processing it provides, network and storage included.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.5'}},
+         'domain_of': ['AimsComputingResource']} })
+    aims_computing_hardware_impact: Optional[str] = Field(default=None, description="""What the hardware costs, in money or to the environment.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.5'}},
+         'domain_of': ['AimsComputingResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_resource_type: Literal["AimsComputingResource"] = Field(default="AimsComputingResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'domain_of': ['AimsSystemResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsHumanResource(AimsSystemResource):
+    """
+    People an AI system draws on: their skills and the work they do on it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.6'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems']})
+
+    aims_human_role: Optional[str] = Field(default=None, description="""The role these people hold.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsHumanResource']} })
+    aims_human_competences: Optional[list[str]] = Field(default=None, description="""The skills they bring.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.6'}},
+         'domain_of': ['AimsHumanResource']} })
+    aims_human_activities: Optional[list[str]] = Field(default=None, description="""The work they do on the system, from building it to decommissioning it.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.4.6'}},
+         'domain_of': ['AimsHumanResource']} })
+    aims_human_diversity: Optional[str] = Field(default=None, description="""How the team's range of expertise was considered.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.6'}},
+         'domain_of': ['AimsHumanResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_resource_type: Literal["AimsHumanResource"] = Field(default="AimsHumanResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
+         'domain_of': ['AimsSystemResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsDevelopmentProcess(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    A process for designing and building an AI system responsibly: the life cycle it follows, and what it asks of testing, oversight, data and approvals.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.1.3'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_development_life_cycle_model: Optional[str] = Field(default=None, description="""The life cycle model followed, which may be the organization's own.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_testing: Optional[str] = Field(default=None, description="""What must be tested and how.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_human_oversight: Optional[str] = Field(default=None, description="""What oversight by people is asked for, with its tools and processes.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_impact_assessment_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages at which impact assessments run.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_training_data_rules: Optional[str] = Field(default=None, description="""What data may be used, from which suppliers, and how it is labelled.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_expertise: Optional[str] = Field(default=None, description="""The expertise or training developers need.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_release_criteria: Optional[list[str]] = Field(default=None, description="""What must hold before a release.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_approvals: Optional[list[str]] = Field(default=None, description="""Who must approve what, at each stage.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_change_control: Optional[str] = Field(default=None, description="""How changes are controlled.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_usability: Optional[str] = Field(default=None, description="""What is asked of how easy the system is to use and how far people stay in control.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_development_party_engagement: Optional[str] = Field(default=None, description="""How interested parties are brought in.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.1.3'}},
+         'domain_of': ['AimsDevelopmentProcess']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsResponsibleUseProcess(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    A process for using AI systems responsibly: what decides if a system may be used, built in-house or brought in.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.9.2'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_use_approvals: Optional[list[str]] = Field(default=None, description="""The approvals needed before use.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.2'}},
+         'domain_of': ['AimsResponsibleUseProcess']} })
+    aims_use_costs: Optional[str] = Field(default=None, description="""What use costs, ongoing upkeep included.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.2'}},
+         'domain_of': ['AimsResponsibleUseProcess']} })
+    aims_use_sourcing_requirements: Optional[list[str]] = Field(default=None, description="""What a system or its supplier must meet to be taken on.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.2'}},
+         'domain_of': ['AimsResponsibleUseProcess']} })
+    aims_use_legal_requirements: Optional[list[str]] = Field(default=None, description="""The laws that bear on use.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.9.2'}},
+         'domain_of': ['AimsResponsibleUseProcess']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsTechnicalDocumentation(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    Technical documents about an AI system for one kind of reader: what they hold, and the form they take.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.7'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_technical_doc_audiences: Optional[list[str]] = Field(default=None, description="""Who the documents are for, such as users or a supervisory authority.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.7'}},
+         'domain_of': ['AimsTechnicalDocumentation']} })
+    aims_technical_doc_form: Optional[str] = Field(default=None, description="""The form the documents take for those readers.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.6.2.7'}},
+         'domain_of': ['AimsTechnicalDocumentation']} })
+    aims_technical_doc_contents: Optional[list[str]] = Field(default=None, description="""What the documents hold, such as limits, design choices or test records.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.7'}},
+         'domain_of': ['AimsTechnicalDocumentation']} })
+    aims_technical_doc_failure_plan: Optional[str] = Field(default=None, description="""How failures are managed, such as rolling back or turning features off.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.6.2.7'}},
+         'domain_of': ['AimsTechnicalDocumentation']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsUserInformation(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    What those who use a system are told: the contents, how it reaches them, what decided it, and the check that they got it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.2'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_user_information_contents: Optional[list[str]] = Field(default=None, description="""What users are told, such as that AI is behind what they see and how to overrule it.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.2'}},
+         'domain_of': ['AimsUserInformation']} })
+    aims_user_information_channels: Optional[list[str]] = Field(default=None, description="""How it reaches them, such as instructions, alerts or a web page.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.2'}},
+         'domain_of': ['AimsUserInformation']} })
+    aims_user_information_criteria: Optional[list[str]] = Field(default=None, description="""What decided what they are told.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.2'}},
+         'domain_of': ['AimsUserInformation']} })
+    aims_user_information_validated: Optional[bool] = Field(default=None, description="""Whether the organization has checked that users can get it and that it is right.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.2'}},
+         'domain_of': ['AimsUserInformation']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsIncidentCommunicationPlan(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The plan for telling users when a system goes wrong: which incidents, how soon, to which authorities, and with what details.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.4'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_incident_plan_categories: Optional[list[AimsIncidentCategory]] = Field(default=None, description="""The kinds of incident the plan covers.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncidentCommunicationPlan']} })
+    aims_incident_plan_timeline: Optional[str] = Field(default=None, description="""How soon people must be told.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncidentCommunicationPlan']} })
+    aims_incident_plan_authorities: Optional[list[str]] = Field(default=None, description="""The authorities that must be told, if any.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncidentCommunicationPlan']} })
+    aims_incident_plan_details: Optional[list[str]] = Field(default=None, description="""What each notice must say.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncidentCommunicationPlan']} })
+    aims_incident_plan_integration: Optional[str] = Field(default=None, description="""How the plan fits the organization's wider handling of incidents.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncidentCommunicationPlan']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsReportingObligation(AimsRecordMixin):
+    """
+    Something the organization must report about a system to an interested party: to whom, under what rule, what and how soon.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.5'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_obligation_parties: Optional[list[str]] = Field(default=None, description="""Who must be told.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsReportingObligation']} })
+    aims_obligation_basis: Optional[str] = Field(default=None, description="""The law or agreement that creates the duty.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsReportingObligation']} })
+    aims_obligation_jurisdiction: Optional[str] = Field(default=None, description="""The jurisdiction the duty arises in.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsReportingObligation']} })
+    aims_obligation_contents: Optional[list[str]] = Field(default=None, description="""What must be reported, such as risks, assessments or logs.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.5'}},
+         'domain_of': ['AimsReportingObligation']} })
+    aims_obligation_timeframe: Optional[str] = Field(default=None, description="""How soon it must be reported.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.5'}},
+         'domain_of': ['AimsReportingObligation']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsResource(AimsRecordMixin):
+    """
+    A resource provided for the management system itself, such as people, time, tools or budget. What an AI system draws on is an AimsSystemResource.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.1'}},
+         'close_mappings': ['iso27001:IsmsResource'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_support_category: Optional[str] = Field(default=None, description="""What kind of resource it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsResource']} })
+    aims_support_quantity: Optional[str] = Field(default=None, description="""How much of the resource is provided.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsResource']} })
+    aims_support_allocation_date: Optional[date] = Field(default=None, description="""When the resource was allocated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsResource']} })
+    aims_support_allocated_to: Optional[str] = Field(default=None, description="""What the resource is allocated to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsResource']} })
+    aims_support_cost: Optional[str] = Field(default=None, description="""What the resource costs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsResource']} })
+    aims_support_availability: Optional[str] = Field(default=None, description="""Whether the resource is available now, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsResource']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsCompetenceRecord(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The evidence of one person's competence for work that affects AI performance, and what is done to close any gap.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.2'}},
-         'comments': ['Evidence of competence per Clause 7.2',
-                      'Captures education, training, experience, and identified '
-                      'competency gaps'],
-         'exact_mappings': ['iso27001:CompetenceRecord'],
+         'close_mappings': ['iso27001:IsmsCompetenceRecord'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core', 'documented_information']})
+         'in_subset': ['aims_core', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    person_name: Optional[str] = Field(default=None, description="""Name of the person.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    person_role: Optional[str] = Field(default=None, description="""Role of the person.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    required_competencies: Optional[list[str]] = Field(default=None, description="""Competencies required for the role.""", json_schema_extra = { "linkml_meta": {'domain_of': ['HumanResource', 'CompetenceRecord']} })
-    education_records: Optional[list[str]] = Field(default=None, description="""Education qualifications.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    training_records: Optional[list[str]] = Field(default=None, description="""Training completed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    experience_records: Optional[list[str]] = Field(default=None, description="""Relevant experience.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    competency_assessment_date: Optional[date] = Field(default=None, description="""Date of last competency assessment.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    competency_gaps: Optional[list[str]] = Field(default=None, description="""Identified competency gaps.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    development_actions: Optional[list[str]] = Field(default=None, description="""Actions to address competency gaps.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CompetenceRecord']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_competence_person: Optional[str] = Field(default=None, description="""The person the record is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_role: Optional[str] = Field(default=None, description="""The role the person holds.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_required: Optional[list[str]] = Field(default=None, description="""The competences the role needs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_education: Optional[list[str]] = Field(default=None, description="""The person's relevant education.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_training: Optional[list[str]] = Field(default=None, description="""The training the person has completed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_experience: Optional[list[str]] = Field(default=None, description="""The person's relevant experience.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_assessment_date: Optional[date] = Field(default=None, description="""When the person's competence was last assessed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_gaps: Optional[list[str]] = Field(default=None, description="""The gaps the assessment found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_competence_actions: Optional[list[str]] = Field(default=None, description="""What is done to close the gaps, and how well it worked.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCompetenceRecord']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class AwarenessProgram(DocumentedInformation):
+class AimsAwarenessProgramme(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    The awareness program ensuring personnel understand their AI-related responsibilities per Clause 7.3.
+    The programme that tells people working for the organization about the AI policy, their part in the system and what failing it would mean.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.3'}},
-         'comments': ['Personnel awareness of AI policy and AIMS contributions per '
-                      'Clause 7.3',
-                      'Tracks topics, audiences, frequency, and effectiveness '
-                      'measures'],
-         'exact_mappings': ['iso27001:AwarenessProgram'],
+         'close_mappings': ['iso27001:IsmsAwarenessProgramme'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_core'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_awareness_topics: Optional[list[str]] = Field(default=None, description="""The topics the programme covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAwarenessProgramme']} })
+    aims_awareness_methods: Optional[list[str]] = Field(default=None, description="""How the programme is delivered.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAwarenessProgramme']} })
+    aims_awareness_audience: Optional[str] = Field(default=None, description="""Whom the programme is for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAwarenessProgramme']} })
+    aims_awareness_frequency: Optional[str] = Field(default=None, description="""How often the programme runs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAwarenessProgramme']} })
+    aims_awareness_completion_tracking: Optional[str] = Field(default=None, description="""How completion is tracked.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAwarenessProgramme']} })
+    aims_awareness_effectiveness: Optional[str] = Field(default=None, description="""How the programme's effect is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAwarenessProgramme']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsCommunicationPlan(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    The plan for communication about the system, inside the organization and outside it.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.4'}},
+         'close_mappings': ['iso27001:IsmsCommunicationPlan'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_core', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
+
+    aims_communication_items: Optional[list[AimsCommunication]] = Field(default=None, description="""The communications the plan provides for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunicationPlan']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsCommunication(ConfiguredBaseModel):
+    """
+    One communication the plan provides for: what about, to whom, when, how, and who communicates.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.4'}},
+         'close_mappings': ['iso27001:IsmsCommunication'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_core']})
 
-    awareness_topics: Optional[list[str]] = Field(default=None, description="""Topics covered in the awareness program.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AwarenessProgram']} })
-    delivery_methods: Optional[list[str]] = Field(default=None, description="""Methods used to deliver awareness content.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AwarenessProgram']} })
-    target_audience: Optional[str] = Field(default=None, description="""Intended audience for the policy or document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['TopicSpecificPolicy', 'AwarenessProgram']} })
-    frequency: Optional[str] = Field(default=None, description="""Frequency of the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AwarenessProgram', 'CommunicationItem']} })
-    completion_tracking: Optional[str] = Field(default=None, description="""How completion is tracked.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AwarenessProgram']} })
-    effectiveness_measures: Optional[str] = Field(default=None, description="""How effectiveness is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AwarenessProgram']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_communication_subject: str = Field(default=..., description="""What the communication is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
+    aims_communication_purpose: Optional[str] = Field(default=None, description="""Why it is communicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
+    aims_communication_audience: Optional[str] = Field(default=None, description="""To whom it is communicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
+    aims_communication_external: Optional[bool] = Field(default=None, description="""Whether it goes outside the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
+    aims_communication_timing: Optional[str] = Field(default=None, description="""When it is communicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
+    aims_communication_method: Optional[str] = Field(default=None, description="""How it is communicated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
+    aims_communication_records_required: Optional[bool] = Field(default=None, description="""Whether a record of the communication is kept.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCommunication']} })
 
 
-class CommunicationPlan(DocumentedInformation):
+class AimsDocumentedInformation(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    Plan for internal and external communications relevant to the AIMS per Clause 7.4.
+    A document or record the system keeps under control that no more specific record describes, such as a procedure, a plan or a report.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.4'}},
-         'comments': ['Internal and external communication plan per Clause 7.4',
-                      'Aggregates individual CommunicationItem records'],
-         'exact_mappings': ['iso27001:CommunicationPlan'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.5'}},
+         'close_mappings': ['iso27001:IsmsDocumentedInformation'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core', 'documented_information']})
+         'in_subset': ['aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    communication_items: Optional[list[CommunicationItem]] = Field(default=None, description="""Communication items in the plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationPlan']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_cited_clauses: Optional[list[AimsClause]] = Field(default=None, description="""The clauses of the standard the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsDocumentedInformation',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_document_kind: AimsDocumentKind = Field(default=..., description="""What kind of documented information it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentedInformation']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class CommunicationItem(ConfiguredBaseModel):
+class AimsOperationalProcedure(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    A single communication requirement within the AIMS communication plan.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '7.4'}},
-         'comments': ['One row of the communication plan per Clause 7.4',
-                      'Captures what, when, with whom, and how to communicate'],
-         'exact_mappings': ['iso27001:CommunicationItem'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_core']})
-
-    subject: Optional[str] = Field(default=None, description="""Subject of the communication.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem']} })
-    purpose: Optional[str] = Field(default=None, description="""Purpose of the communication.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem']} })
-    audience: Optional[str] = Field(default=None, description="""Target audience.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem']} })
-    frequency: Optional[str] = Field(default=None, description="""Frequency of the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AwarenessProgram', 'CommunicationItem']} })
-    method: Optional[str] = Field(default=None, description="""Method of communication.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem']} })
-    responsible_party: Optional[str] = Field(default=None, description="""Party responsible for the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem',
-                       'MonitoringItem',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    records_required: Optional[str] = Field(default=None, description="""Records required to evidence the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem']} })
-
-
-class OperationalProcedure(DocumentedInformation):
-    """
-    A documented procedure for operational planning and control of AIMS processes per Clause 8.1, including AI system life cycle related controls.
+    A procedure by which the organization plans and controls the processes that meet its requirements, such as managing data for building or vetting suppliers.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '8.1'}},
-         'comments': ['Operational planning and control per Clause 8.1',
-                      'Should cover AI life-cycle controls implemented via 6.1.3'],
-         'exact_mappings': ['iso27001:OperationalProcedure'],
+         'close_mappings': ['iso27001:IsmsOperationalProcedure'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['documented_information'],
-         'related_mappings': ['iso29100:PIIProcessingActivity']})
+         'in_subset': ['aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    procedure_scope: Optional[str] = Field(default=None, description="""Scope of the procedure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OperationalProcedure']} })
-    process_criteria: Optional[str] = Field(default=None, description="""Criteria for the process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OperationalProcedure']} })
-    control_measures: Optional[list[str]] = Field(default=None, description="""Control measures applied.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OperationalProcedure']} })
-    responsible_roles: Optional[list[str]] = Field(default=None, description="""Roles responsible for the process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OperationalProcedure']} })
-    related_controls: Optional[list[str]] = Field(default=None, description="""Other reference controls related to this one.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'AIReferenceControl', 'OperationalProcedure']} })
-    change_control_requirements: Optional[str] = Field(default=None, description="""Requirements for controlling changes to the process.""", json_schema_extra = { "linkml_meta": {'domain_of': ['OperationalProcedure']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_relevant_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls that the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy',
+                       'AimsObjective',
+                       'AimsControl',
+                       'AimsAiSystem',
+                       'AimsOperationalProcedure']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_procedure_scope: Optional[str] = Field(default=None, description="""What the procedure covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOperationalProcedure']} })
+    aims_procedure_criteria: Optional[str] = Field(default=None, description="""The criteria the processes are run to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOperationalProcedure']} })
+    aims_procedure_control_measures: Optional[list[str]] = Field(default=None, description="""The measures that control the processes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOperationalProcedure']} })
+    aims_procedure_roles: Optional[list[str]] = Field(default=None, description="""The roles that carry out the procedure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOperationalProcedure']} })
+    aims_procedure_change_control: Optional[str] = Field(default=None, description="""How planned changes are controlled, and unplanned ones reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsOperationalProcedure']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class MonitoringProgram(DocumentedInformation):
+class AimsMonitoringProgramme(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    The program for monitoring, measurement, analysis, and evaluation of AIMS performance per Clause 9.1.
+    The programme that watches, measures, analyses and judges how well the system does and how well it works.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '9.1'}},
-         'comments': ['Defines what is monitored, how, and how often per Clause 9.1',
-                      'Aggregates individual MonitoringItem records'],
-         'exact_mappings': ['iso27001:MonitoringProgram'],
+         'close_mappings': ['iso27001:IsmsMonitoringProgramme'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation', 'documented_information']})
+         'in_subset': ['aims_performance_evaluation', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    monitoring_items: Optional[list[MonitoringItem]] = Field(default=None, description="""Items to be monitored.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringProgram']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_monitoring_items: Optional[list[AimsMonitoringItem]] = Field(default=None, description="""What the programme monitors and measures.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringProgramme']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class MonitoringItem(ConfiguredBaseModel):
+class AimsMonitoringItem(ConfiguredBaseModel):
     """
-    A single item to be monitored and measured per Clause 9.1.
+    One thing the monitoring programme measures: what, how, how often and by whom it is measured and analysed, and against what thresholds.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '9.1'}},
-         'comments': ['One metric monitored under Clause 9.1',
-                      'Thresholds and trends support performance evaluation and '
-                      'improvement triggers'],
-         'exact_mappings': ['iso27001:MonitoringItem'],
+         'close_mappings': ['iso27001:IsmsMonitoringItem'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation']})
+         'in_subset': ['aims_performance_evaluation']})
 
-    metric_name: Optional[str] = Field(default=None, description="""Name of the metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
-    metric_description: Optional[str] = Field(default=None, description="""Description of the metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
-    measurement_method: Optional[str] = Field(default=None, description="""Method used to measure the metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'MonitoringItem']} })
-    measurement_frequency: Optional[str] = Field(default=None, description="""How often measurement is performed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'MonitoringItem']} })
-    responsible_party: Optional[str] = Field(default=None, description="""Party responsible for the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem',
-                       'MonitoringItem',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    analysis_frequency: Optional[str] = Field(default=None, description="""Frequency of analysis.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
-    analyst: Optional[str] = Field(default=None, description="""Person performing the analysis.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
-    target_threshold: Optional[str] = Field(default=None, description="""Target threshold for the metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
-    alert_threshold: Optional[str] = Field(default=None, description="""Threshold that triggers an alert.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
-    current_value: Optional[str] = Field(default=None, description="""Current measured value.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'MonitoringItem']} })
-    trend: Optional[str] = Field(default=None, description="""Observed trend in the metric.""", json_schema_extra = { "linkml_meta": {'domain_of': ['MonitoringItem']} })
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_monitoring_metric: str = Field(default=..., description="""The name of what is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_description: Optional[str] = Field(default=None, description="""What the measurement shows.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_method: Optional[str] = Field(default=None, description="""How it is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_frequency: Optional[str] = Field(default=None, description="""How often it is measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_analysis_frequency: Optional[str] = Field(default=None, description="""How often the results are analysed and evaluated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_analyst: Optional[str] = Field(default=None, description="""Who analyses and evaluates the results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_target: Optional[str] = Field(default=None, description="""The value aimed for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_alert_threshold: Optional[str] = Field(default=None, description="""The value that calls for action.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_current_value: Optional[str] = Field(default=None, description="""The value last measured.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
+    aims_monitoring_trend: Optional[str] = Field(default=None, description="""Which way the value is moving.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsMonitoringItem']} })
 
 
-class InternalAudit(DocumentedInformation):
+class AimsAuditProgramme(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    An internal audit instance per Clause 9.2 assessing AIMS conformance and effectiveness.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '9.2'}},
-         'comments': ['Internal audit instance per Clause 9.2',
-                      'Audit type aligned with ISO 19011 (first-, second-, '
-                      'third-party, surveillance, recertification)'],
-         'exact_mappings': ['iso27001:InternalAudit'],
-         'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation', 'documented_information']})
-
-    audit_reference: Optional[str] = Field(default=None, description="""Unique reference identifier for the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_type: Optional[AuditType] = Field(default=None, description="""Type of audit (internal, external second-party, external third-party, surveillance, recertification, combined).""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_scope: Optional[str] = Field(default=None, description="""Scope of the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_criteria: Optional[str] = Field(default=None, description="""Criteria used for the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_objectives: Optional[str] = Field(default=None, description="""Objectives of the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_period_start: Optional[date] = Field(default=None, description="""Start date of the audit period.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_period_end: Optional[date] = Field(default=None, description="""End date of the audit period.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    lead_auditor: Optional[str] = Field(default=None, description="""Lead auditor for the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_team: Optional[list[str]] = Field(default=None, description="""Members of the audit team.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    auditee_representatives: Optional[list[str]] = Field(default=None, description="""Representatives of the auditee.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_plan: Optional[str] = Field(default=None, description="""Reference to the audit plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    findings: Optional[list[str]] = Field(default=None, description="""Findings from the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    positive_observations: Optional[list[str]] = Field(default=None, description="""Positive observations from the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    audit_conclusion: Optional[str] = Field(default=None, description="""Overall conclusion of the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    report_date: Optional[date] = Field(default=None, description="""Date the audit report was issued.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    report_distribution: Optional[list[str]] = Field(default=None, description="""Distribution list for the audit report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InternalAudit']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
-
-
-class AuditProgramme(DocumentedInformation):
-    """
-    The internal audit programme per Clause 9.2.2, planning AIMS audit activities over a defined period.
+    A programme of internal audits: the audits planned over a period, how often and why, and the resources and auditors they need.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
                                              'value': '9.2.2'}},
-         'comments': ['Audit programme per Clause 9.2.2',
-                      'Frequency rationale should reflect process importance and prior '
-                      'audit results'],
-         'exact_mappings': ['iso27001:AuditProgramme'],
+         'close_mappings': ['iso27001:IsmsAuditProgramme'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation', 'documented_information']})
+         'in_subset': ['aims_performance_evaluation', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    programme_period: Optional[str] = Field(default=None, description="""Period covered by the audit programme.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditProgramme']} })
-    planned_audits: Optional[list[str]] = Field(default=None, description="""Audits planned within the programme.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditProgramme']} })
-    audit_frequency_rationale: Optional[str] = Field(default=None, description="""Rationale for the audit cadence.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditProgramme']} })
-    resource_requirements: Optional[str] = Field(default=None, description="""Resources required for the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditProgramme']} })
-    auditor_qualifications: Optional[str] = Field(default=None, description="""Required auditor qualifications.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditProgramme']} })
-    programme_status: Optional[str] = Field(default=None, description="""Status of the audit programme.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditProgramme']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_programme_period: Optional[str] = Field(default=None, description="""The period the programme covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_audits: Optional[list[str]] = Field(default=None, description="""The audits the programme plans.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_frequency_rationale: Optional[str] = Field(default=None, description="""Why the audits happen as often as they do, given what matters most and past results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_methods: Optional[str] = Field(default=None, description="""How the audits are carried out.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_responsibilities: Optional[list[str]] = Field(default=None, description="""Who answers for planning, running and reporting them.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_resources: Optional[str] = Field(default=None, description="""The resources the programme needs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_auditor_selection: Optional[str] = Field(default=None, description="""How auditors are chosen so that they stay objective and impartial.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_programme_status: Optional[str] = Field(default=None, description="""Where the programme stands, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditProgramme']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class AuditFinding(NamedEntity):
+class AimsAudit(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    A finding from an AIMS internal audit, including nonconformities, observations, and positive findings.
+    An audit of the system: an internal audit, or one by a customer or a certification body, with its scope, criteria, team, findings and conclusion.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '9.2'}},
-         'comments': ['Finding from an internal audit per Clause 9.2',
-                      'Findings may be major or minor nonconformities, observations, '
-                      'or positive findings'],
-         'exact_mappings': ['iso27001:AuditFinding'],
+         'close_mappings': ['iso27001:IsmsAudit'],
+         'comments': ['A combined audit of several management systems at once lists '
+                      'each standard in aims_audit_standards.'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation']})
+         'in_subset': ['aims_performance_evaluation', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    finding_type: Optional[AuditFindingType] = Field(default=None, description="""Type of audit finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    clause_reference: Optional[str] = Field(default=None, description="""ISO/IEC 42001 clause referenced by the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    control_reference: Optional[str] = Field(default=None, description="""Reference to an Annex A control (e.g., A.6.2.4).""", json_schema_extra = { "linkml_meta": {'domain_of': ['SoAEntry', 'AuditFinding']} })
-    finding_description: Optional[str] = Field(default=None, description="""Description of the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    objective_evidence: Optional[str] = Field(default=None, description="""Objective evidence supporting the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    root_cause_analysis: Optional[str] = Field(default=None, description="""Analysis of the root cause.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    risk_implication: Optional[str] = Field(default=None, description="""AI risk implication of the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    recommended_action: Optional[str] = Field(default=None, description="""Recommended action to address the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    auditee_response: Optional[str] = Field(default=None, description="""Auditee's response to the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    linked_corrective_action: Optional[str] = Field(default=None, description="""Linked corrective action addressing the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    closure_status: Optional[str] = Field(default=None, description="""Closure status of the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding']} })
-    closure_date: Optional[date] = Field(default=None, description="""Date when the item was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding', 'Nonconformity']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_audit_type: AimsAuditType = Field(default=..., description="""Who carries out the audit, relative to the organization.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_standards: Optional[list[AimsManagementSystemStandard]] = Field(default=None, description="""Other standards for management systems the audit covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_scope: Optional[str] = Field(default=None, description="""What the audit covers.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_criteria: Optional[list[str]] = Field(default=None, description="""What the audit compares the system against.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_objectives: Optional[list[str]] = Field(default=None, description="""What the audit sets out to establish.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_period_start: Optional[date] = Field(default=None, description="""When the audit began.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_period_end: Optional[date] = Field(default=None, description="""When the audit ended.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_lead: Optional[str] = Field(default=None, description="""Who led the audit.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_team: Optional[list[str]] = Field(default=None, description="""Who else audited.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_auditees: Optional[list[str]] = Field(default=None, description="""Who represented the parts of the organization audited.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_plan: Optional[str] = Field(default=None, description="""The documented information that holds the audit plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_findings: Optional[list[str]] = Field(default=None, description="""What the audit found, good and bad.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_conclusion: Optional[str] = Field(default=None, description="""The audit's overall conclusion.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_report_date: Optional[date] = Field(default=None, description="""When the audit report was issued.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_report_distribution: Optional[list[str]] = Field(default=None, description="""Who received the audit report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class ManagementReview(DocumentedInformation):
+class AimsAuditFinding(AimsRecordMixin):
     """
-    A management review per Clause 9.3, conducted by top management to evaluate ongoing AIMS suitability, adequacy, and effectiveness.
+    One finding of an audit: a nonconformity, an observation or a strength, with the requirement or control it concerns, its evidence and how it is closed.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '9.2'}},
+         'close_mappings': ['iso27001:IsmsAuditFinding'],
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_performance_evaluation'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_cited_clauses: Optional[list[AimsClause]] = Field(default=None, description="""The clauses of the standard the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsDocumentedInformation',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_finding_type: AimsAuditFindingType = Field(default=..., description="""What kind of finding it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_control: Optional[str] = Field(default=None, description="""The organization's control the finding concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_evidence: Optional[str] = Field(default=None, description="""The objective evidence for the finding.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_root_cause: Optional[str] = Field(default=None, description="""What the analysis of the finding's cause found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_risk: Optional[str] = Field(default=None, description="""What the finding means for risk.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_recommendation: Optional[str] = Field(default=None, description="""What the auditor recommends.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_auditee_response: Optional[str] = Field(default=None, description="""How the auditee responded.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_corrective_action: Optional[str] = Field(default=None, description="""The corrective action the finding led to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_closure_status: Optional[str] = Field(default=None, description="""Whether the finding is closed, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_closure_date: Optional[date] = Field(default=None, description="""When the finding was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsManagementReview(AimsDocumentControlMixin, AimsRecordMixin):
+    """
+    A review of the system by top management: what it took in, what it decided and what it asked to be done.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause', 'value': '9.3'}},
-         'comments': ['Top-management review per Clause 9.3 to ensure ongoing '
-                      'suitability, adequacy, effectiveness',
-                      'Required inputs include nonconformities, monitoring, audits, '
-                      'and interested-party changes'],
-         'exact_mappings': ['iso27001:ManagementReview'],
+         'close_mappings': ['iso27001:IsmsManagementReview'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation', 'documented_information']})
+         'in_subset': ['aims_performance_evaluation', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    review_date: Optional[date] = Field(default=None, description="""Date when the document is due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'ManagementReview']} })
-    attendees: Optional[list[str]] = Field(default=None, description="""Attendees of the review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    previous_actions_status: Optional[str] = Field(default=None, description="""Status of actions from previous reviews.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    context_changes: Optional[list[str]] = Field(default=None, description="""Changes in external or internal context.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    interested_party_changes: Optional[list[str]] = Field(default=None, description="""Changes in interested party needs and expectations.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    performance_trends: Optional[str] = Field(default=None, description="""Trends in AIMS performance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    audit_results_summary: Optional[str] = Field(default=None, description="""Summary of audit results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    risk_assessment_results: Optional[str] = Field(default=None, description="""Summary of AI risk assessment results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    impact_assessment_results: Optional[str] = Field(default=None, description="""Summary of AI system impact assessment results.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    improvement_opportunities: Optional[list[str]] = Field(default=None, description="""Improvement opportunities identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    decisions: Optional[list[str]] = Field(default=None, description="""Decisions made during the review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    action_items: Optional[list[str]] = Field(default=None, description="""Action items resulting from the review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    next_review_date: Optional[date] = Field(default=None, description="""Date of the next review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ManagementReview']} })
-    document_type: Optional[DocumentType] = Field(default=None, description="""Classification of the documented information.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'in_subset': ['documented_information']} })
-    document_reference: Optional[str] = Field(default=None, description="""Unique reference number for document control.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'AIMS-POL-001'}, {'value': 'AISIA-2025-003'}]} })
-    author: Optional[str] = Field(default=None, description="""Person who created the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    owner: Optional[str] = Field(default=None, description="""Person accountable for the document content and maintenance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    approved_by: Optional[str] = Field(default=None, description="""Person who approved the document.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'StatementOfApplicability']} })
-    approved_date: Optional[date] = Field(default=None, description="""Date when the document was approved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation', 'AIRiskTreatmentPlan']} })
-    effective_date: Optional[date] = Field(default=None, description="""Date when the document becomes effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    classification: Optional[str] = Field(default=None, description="""Information classification level.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DocumentedInformation'],
-         'examples': [{'value': 'confidential'},
-                      {'value': 'internal'},
-                      {'value': 'public'}]} })
-    retention_period: Optional[str] = Field(default=None, description="""Duration for which the document is retained.""", json_schema_extra = { "linkml_meta": {'comments': ['Use ISO 8601 duration notation such as P1Y or P90D'],
-         'domain_of': ['DocumentedInformation']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_review_held_on: date = Field(default=..., description="""When the review was held.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementReview']} })
+    aims_review_attendees: Optional[list[str]] = Field(default=None, description="""Who attended the review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementReview']} })
+    aims_review_previous_actions: Optional[str] = Field(default=None, description="""Where the actions from earlier reviews stand.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_context_changes: Optional[str] = Field(default=None, description="""How the matters that bear on the system have changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_interested_party_changes: Optional[str] = Field(default=None, description="""How interested parties' needs and expectations have changed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_nonconformity_trends: Optional[str] = Field(default=None, description="""How nonconformities and their corrections have been trending.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_monitoring_trends: Optional[str] = Field(default=None, description="""The trends in what was monitored and measured.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_audit_trends: Optional[str] = Field(default=None, description="""The trends in audit results.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_improvement_opportunities: Optional[list[str]] = Field(default=None, description="""The opportunities for improvement raised.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.2'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_decisions: Optional[list[str]] = Field(default=None, description="""What the review decided about improving.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.3'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_system_changes: Optional[list[str]] = Field(default=None, description="""The changes to the system the review found were needed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '9.3.3'}},
+         'domain_of': ['AimsManagementReview']} })
+    aims_review_actions: Optional[list[str]] = Field(default=None, description="""What the review asked to be done.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementReview']} })
+    aims_review_next_date: Optional[date] = Field(default=None, description="""When the next review is planned.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsManagementReview']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class Nonconformity(NamedEntity):
+class AimsNonconformity(AimsRecordMixin):
     """
-    A nonconformity identified per Clause 10.2 representing failure to fulfill an AIMS requirement.
+    A nonconformity: a requirement not met, how it was found and contained, its consequences and cause, and how it was closed.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
                                              'value': '10.2'}},
-         'comments': ['Nonconformity per Clause 10.2; triggers corrective-action '
-                      'workflow',
-                      'Equivalent in structure to ISO/IEC 27001:2022 Nonconformity'],
-         'exact_mappings': ['iso27001:Nonconformity'],
+         'close_mappings': ['iso27001:IsmsNonconformity'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['continual_improvement']})
+         'in_subset': ['aims_improvement'],
+         'mixins': ['AimsRecordMixin']})
 
-    nonconformity_source: Optional[str] = Field(default=None, description="""Source from which the nonconformity was identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    detection_date: Optional[date] = Field(default=None, description="""Date the nonconformity was detected.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    detected_by: Optional[str] = Field(default=None, description="""Person or process that detected the nonconformity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    requirement_violated: Optional[str] = Field(default=None, description="""Requirement that was violated.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    nonconformity_description: Optional[str] = Field(default=None, description="""Description of the nonconformity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    immediate_actions: Optional[list[str]] = Field(default=None, description="""Immediate actions taken.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    consequences_addressed: Optional[str] = Field(default=None, description="""How consequences were addressed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    root_cause: Optional[str] = Field(default=None, description="""Identified root cause.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity', 'AIIncident']} })
-    similar_nonconformities_check: Optional[str] = Field(default=None, description="""Check for similar nonconformities.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    linked_corrective_actions: Optional[list[str]] = Field(default=None, description="""Linked corrective actions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity', 'AIIncident']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    closure_date: Optional[date] = Field(default=None, description="""Date when the item was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AuditFinding', 'Nonconformity']} })
-    closure_evidence: Optional[str] = Field(default=None, description="""Evidence of closure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_cited_clauses: Optional[list[AimsClause]] = Field(default=None, description="""The clauses of the standard the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsDocumentedInformation',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_cited_annex_a_controls: Optional[list[AimsAnnexAControl]] = Field(default=None, description="""The controls of Annex A the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
+                       'AimsTopicSpecificPolicy',
+                       'AimsControl',
+                       'AimsDocumentedInformation',
+                       'AimsOperationalProcedure',
+                       'AimsAuditFinding',
+                       'AimsNonconformity']} })
+    aims_nonconformity_source: Optional[str] = Field(default=None, description="""How the nonconformity came to light, such as an audit, a review or an incident.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_detected_on: Optional[date] = Field(default=None, description="""When the nonconformity was found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_detected_by: Optional[str] = Field(default=None, description="""Who or what found it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_requirement: Optional[str] = Field(default=None, description="""The requirement not met, of the organization or of an interested party, in words.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_immediate_actions: Optional[list[str]] = Field(default=None, description="""What was done at once to contain and fix it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_consequences: Optional[str] = Field(default=None, description="""How its consequences were dealt with.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_root_cause: Optional[str] = Field(default=None, description="""What caused it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_similar_check: Optional[str] = Field(default=None, description="""Whether it could happen, or has happened, elsewhere.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_status: Optional[str] = Field(default=None, description="""Where the nonconformity stands, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_closure_date: Optional[date] = Field(default=None, description="""When it was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_nonconformity_closure_evidence: Optional[str] = Field(default=None, description="""What shows that it is closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsNonconformity']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class CorrectiveAction(NamedEntity):
+class AimsCorrectiveAction(AimsRecordMixin):
     """
-    A corrective action per Clause 10.2 to address the root cause of an AIMS nonconformity and reduce the likelihood of recurrence.
+    An action that removes the cause of one or more nonconformities so that they do not recur, and the check that it worked.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
                                              'value': '10.2'}},
-         'close_mappings': ['nist_ai_600_1:SuggestedAction'],
-         'comments': ['Corrective action per Clause 10.2 addressing the root cause of '
-                      'a nonconformity',
-                      'Effectiveness must be reviewed and any required AIMS changes '
-                      'recorded'],
-         'exact_mappings': ['iso27001:CorrectiveAction'],
+         'close_mappings': ['iso27001:IsmsCorrectiveAction'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['continual_improvement']})
+         'in_subset': ['aims_improvement'],
+         'mixins': ['AimsRecordMixin']})
 
-    linked_nonconformity: Optional[str] = Field(default=None, description="""Linked nonconformity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    action_description: Optional[str] = Field(default=None, description="""Description of the action.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    root_cause_addressed: Optional[str] = Field(default=None, description="""Root cause addressed by the action.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    responsible_party: Optional[str] = Field(default=None, description="""Party responsible for the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem',
-                       'MonitoringItem',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    target_completion_date: Optional[date] = Field(default=None, description="""Target completion date.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    actual_completion_date: Optional[date] = Field(default=None, description="""Actual completion date.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction', 'ImprovementOpportunity']} })
-    resources_required: Optional[str] = Field(default=None, description="""Resources required for implementation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'AIRiskTreatmentPlan', 'CorrectiveAction']} })
-    effectiveness_criteria: Optional[str] = Field(default=None, description="""Criteria for assessing effectiveness.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    effectiveness_review_date: Optional[date] = Field(default=None, description="""Date when effectiveness was reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    effectiveness_verified: Optional[bool] = Field(default=None, description="""Whether effectiveness was verified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction']} })
-    aims_changes_required: Optional[bool] = Field(default=None, description="""Whether AIMS changes are required as a result of the action.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:isms_changes_required'],
-         'domain_of': ['CorrectiveAction']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_action_nonconformities: Optional[list[str]] = Field(default=None, description="""The nonconformities the action addresses.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_root_cause: Optional[str] = Field(default=None, description="""The cause the action removes.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_target_date: Optional[date] = Field(default=None, description="""When the action is to be complete.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_completion_date: Optional[date] = Field(default=None, description="""When the action was complete.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_resources: Optional[str] = Field(default=None, description="""The resources the action needs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_effectiveness_criteria: Optional[str] = Field(default=None, description="""How the action's effect will be judged.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_effectiveness_review_date: Optional[date] = Field(default=None, description="""When the action's effect was reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_effective: Optional[bool] = Field(default=None, description="""Whether the review found the action effective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_system_changes: Optional[str] = Field(default=None, description="""The changes to the system the action needs.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_action_status: Optional[str] = Field(default=None, description="""Where the action stands, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsCorrectiveAction']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class ImprovementOpportunity(NamedEntity):
+class AimsImprovementOpportunity(AimsRecordMixin):
     """
-    An opportunity for continual improvement of the AIMS per Clause 10.1.
+    An opportunity to make the system more suitable, adequate or effective, and what came of it.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
                                              'value': '10.1'}},
-         'comments': ['Continual improvement opportunity per Clause 10.1',
-                      'May originate from audit, review, monitoring, or '
-                      'interested-party feedback'],
-         'exact_mappings': ['iso27001:ImprovementOpportunity'],
+         'close_mappings': ['iso27001:IsmsImprovementOpportunity'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['continual_improvement']})
+         'in_subset': ['aims_improvement'],
+         'mixins': ['AimsRecordMixin']})
 
-    improvement_source: Optional[str] = Field(default=None, description="""Source of the improvement opportunity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    identification_date: Optional[date] = Field(default=None, description="""Date the improvement opportunity was identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    identified_by: Optional[str] = Field(default=None, description="""Person who identified the improvement opportunity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    improvement_description: Optional[str] = Field(default=None, description="""Description of the improvement opportunity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    expected_benefit: Optional[str] = Field(default=None, description="""Expected benefit of the improvement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    priority: Optional[RiskLevel] = Field(default=None, description="""Priority assigned (qualitative level).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    implementation_plan: Optional[str] = Field(default=None, description="""Plan for implementing the improvement.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    responsible_party: Optional[str] = Field(default=None, description="""Party responsible for the activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CommunicationItem',
-                       'MonitoringItem',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    target_date: Optional[date] = Field(default=None, description="""Target date for achieving the objective.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIObjective', 'ImprovementOpportunity']} })
-    actual_completion_date: Optional[date] = Field(default=None, description="""Actual completion date.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CorrectiveAction', 'ImprovementOpportunity']} })
-    outcome_assessment: Optional[str] = Field(default=None, description="""Assessment of the outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ImprovementOpportunity']} })
-    status: Optional[str] = Field(default=None, description="""Current status of the document or entity.""", json_schema_extra = { "linkml_meta": {'comments': ['Examples include draft, approved, active, superseded, archived'],
-         'domain_of': ['DocumentedInformation',
-                       'Nonconformity',
-                       'CorrectiveAction',
-                       'ImprovementOpportunity']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_responsible_role: Optional[str] = Field(default=None, description="""The role that answers for the record's activity or outcome.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsObjective',
+                       'AimsPlannedAction',
+                       'AimsIncludedControl',
+                       'AimsCommunication',
+                       'AimsMonitoringItem',
+                       'AimsCorrectiveAction',
+                       'AimsImprovementOpportunity']} })
+    aims_improvement_source: Optional[str] = Field(default=None, description="""Where the opportunity came from, such as a review, an audit or daily work.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_identified_on: Optional[date] = Field(default=None, description="""When the opportunity was identified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_identified_by: Optional[str] = Field(default=None, description="""Who identified it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_benefit: Optional[str] = Field(default=None, description="""What the improvement is expected to bring.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_priority: Optional[str] = Field(default=None, description="""How soon it is to be acted on, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_plan: Optional[str] = Field(default=None, description="""How the improvement is to be made.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_target_date: Optional[date] = Field(default=None, description="""When the improvement is to be made.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_completion_date: Optional[date] = Field(default=None, description="""When it was made.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_outcome: Optional[str] = Field(default=None, description="""What the improvement brought.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_improvement_status: Optional[str] = Field(default=None, description="""Where it stands, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsImprovementOpportunity']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class ThirdPartyRelationship(NamedEntity):
+class AimsThirdPartyRelationship(AimsRecordMixin):
     """
-    A documented relationship with a third party (supplier, partner, or customer) involved in the AI system life cycle per A.10.
+    A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what assures the organization of that.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10'}},
-         'comments': ['Documented relationship per Annex A.10 capturing responsibility '
-                      'allocation',
-                      'Specialized into SupplierRelationship and CustomerRelationship'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['third_party_management'],
-         'related_mappings': ['iso27001:InterestedParty']})
+         'in_subset': ['aims_external_parties'],
+         'mixins': ['AimsRecordMixin']})
 
-    party_type: Optional[str] = Field(default=None, description="""Category of party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty', 'ThirdPartyRelationship'],
-         'examples': [{'value': 'internal'},
-                      {'value': 'external'},
-                      {'value': 'regulatory'},
-                      {'value': 'ai_subject'},
-                      {'value': 'supplier'},
-                      {'value': 'customer'}]} })
-    party_name: Optional[str] = Field(default=None, description="""Name of the third party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    contractual_basis: Optional[str] = Field(default=None, description="""Contractual basis of the relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    allocated_responsibilities: Optional[list[str]] = Field(default=None, description="""Responsibilities allocated to the third party.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.2'}},
-         'domain_of': ['ThirdPartyRelationship']} })
-    data_processing_role: Optional[str] = Field(default=None, description="""Role of the third party in data processing (e.g., PII controller, PII processor).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    ai_systems_involved: Optional[list[str]] = Field(default=None, description="""AI systems involved in the third-party relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    lifecycle_stages_involved: Optional[list[AISystemLifecycleStage]] = Field(default=None, description="""AI life cycle stages where the third party is involved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    assurance_evidence: Optional[list[str]] = Field(default=None, description="""Evidence of assurance over the third party's conformance with the organization's responsible AI approach.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    review_frequency: Optional[str] = Field(default=None, description="""Frequency at which the relationship is reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_relationship_type: Literal["AimsThirdPartyRelationship"] = Field(default="AimsThirdPartyRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_party: Optional[str] = Field(default=None, description="""The other party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_party_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the other party plays towards the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_contract: Optional[str] = Field(default=None, description="""The agreement the relationship rests on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_responsibilities: Optional[list[str]] = Field(default=None, description="""The duties each side carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_pii_role: Optional[AimsPiiRole] = Field(default=None, description="""The part the other party plays when personal data is processed.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_documentation: Optional[list[str]] = Field(default=None, description="""The documents one side owes the other about the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_assurance_evidence: Optional[list[str]] = Field(default=None, description="""What assures the organization that the party meets its duties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_review_frequency: Optional[str] = Field(default=None, description="""How often the relationship is reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class SupplierRelationship(ThirdPartyRelationship):
+class AimsSupplierRelationship(AimsThirdPartyRelationship):
     """
-    A supplier relationship covering services, products, or materials (e.g., datasets, models, libraries, full AI systems) provided to the organization per A.10.3.
+    A relationship with a supplier to the organization's AI work: what it provides, the risk that brings, and how it is held to the organization's approach.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.3'}},
-         'comments': ['Supplier relationship per Annex A.10.3',
-                      'Includes assessment criteria, monitoring method, and corrective '
-                      'actions required'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['third_party_management'],
-         'related_mappings': ['iso27001:InterestedParty']})
+         'in_subset': ['aims_external_parties']})
 
-    supplier_assessment_criteria: Optional[list[str]] = Field(default=None, description="""Criteria for assessing the supplier.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.3'}},
-         'domain_of': ['SupplierRelationship']} })
-    monitoring_method: Optional[str] = Field(default=None, description="""How the supplier or customer relationship is monitored.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SupplierRelationship']} })
-    corrective_actions_required: Optional[list[str]] = Field(default=None, description="""Corrective actions required of the supplier.""", json_schema_extra = { "linkml_meta": {'domain_of': ['SupplierRelationship']} })
-    party_type: Optional[str] = Field(default=None, description="""Category of party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty', 'ThirdPartyRelationship'],
-         'examples': [{'value': 'internal'},
-                      {'value': 'external'},
-                      {'value': 'regulatory'},
-                      {'value': 'ai_subject'},
-                      {'value': 'supplier'},
-                      {'value': 'customer'}]} })
-    party_name: Optional[str] = Field(default=None, description="""Name of the third party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    contractual_basis: Optional[str] = Field(default=None, description="""Contractual basis of the relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    allocated_responsibilities: Optional[list[str]] = Field(default=None, description="""Responsibilities allocated to the third party.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.2'}},
-         'domain_of': ['ThirdPartyRelationship']} })
-    data_processing_role: Optional[str] = Field(default=None, description="""Role of the third party in data processing (e.g., PII controller, PII processor).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    ai_systems_involved: Optional[list[str]] = Field(default=None, description="""AI systems involved in the third-party relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    lifecycle_stages_involved: Optional[list[AISystemLifecycleStage]] = Field(default=None, description="""AI life cycle stages where the third party is involved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    assurance_evidence: Optional[list[str]] = Field(default=None, description="""Evidence of assurance over the third party's conformance with the organization's responsible AI approach.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    review_frequency: Optional[str] = Field(default=None, description="""Frequency at which the relationship is reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_supplier_provides: Optional[list[str]] = Field(default=None, description="""What it provides, such as data, models, software or a whole system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsSupplierRelationship']} })
+    aims_supplier_risk: Optional[AimsRiskLevel] = Field(default=None, description="""How much risk what it provides brings.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsSupplierRelationship']} })
+    aims_supplier_requirements: Optional[list[str]] = Field(default=None, description="""What the organization asks of the supplier.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsSupplierRelationship']} })
+    aims_supplier_monitoring: Optional[str] = Field(default=None, description="""How the supplier is watched and judged over time.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsSupplierRelationship']} })
+    aims_supplier_integration: Optional[str] = Field(default=None, description="""How what it provides is joined to the organization's systems.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsSupplierRelationship']} })
+    aims_supplier_corrective_actions: Optional[list[str]] = Field(default=None, description="""What the supplier was asked to put right.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
+         'domain_of': ['AimsSupplierRelationship']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_relationship_type: Literal["AimsSupplierRelationship"] = Field(default="AimsSupplierRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_party: Optional[str] = Field(default=None, description="""The other party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_party_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the other party plays towards the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_contract: Optional[str] = Field(default=None, description="""The agreement the relationship rests on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_responsibilities: Optional[list[str]] = Field(default=None, description="""The duties each side carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_pii_role: Optional[AimsPiiRole] = Field(default=None, description="""The part the other party plays when personal data is processed.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_documentation: Optional[list[str]] = Field(default=None, description="""The documents one side owes the other about the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_assurance_evidence: Optional[list[str]] = Field(default=None, description="""What assures the organization that the party meets its duties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_review_frequency: Optional[str] = Field(default=None, description="""How often the relationship is reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class CustomerRelationship(ThirdPartyRelationship):
+class AimsCustomerRelationship(AimsThirdPartyRelationship):
     """
-    A customer relationship for an AI product or service supplied by the organization per A.10.4.
+    A relationship with a customer of the organization's AI work: what it expects, who answers for what, and which limits it was told of.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.4'}},
-         'comments': ['Customer relationship per Annex A.10.4',
-                      'Captures customer expectations and communicated AI system '
-                      'limitations'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.4'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['third_party_management'],
-         'related_mappings': ['iso27001:InterestedParty']})
+         'in_subset': ['aims_external_parties']})
 
-    customer_expectations: Optional[list[str]] = Field(default=None, description="""Documented customer expectations and needs.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.4'}},
-         'domain_of': ['CustomerRelationship']} })
-    usage_agreement_reference: Optional[str] = Field(default=None, description="""Reference to the usage agreement with the customer.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CustomerRelationship']} })
-    communicated_limitations: Optional[list[str]] = Field(default=None, description="""Limitations of the AI system that are communicated to the customer.""", json_schema_extra = { "linkml_meta": {'domain_of': ['CustomerRelationship']} })
-    party_type: Optional[str] = Field(default=None, description="""Category of party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['InterestedParty', 'ThirdPartyRelationship'],
-         'examples': [{'value': 'internal'},
-                      {'value': 'external'},
-                      {'value': 'regulatory'},
-                      {'value': 'ai_subject'},
-                      {'value': 'supplier'},
-                      {'value': 'customer'}]} })
-    party_name: Optional[str] = Field(default=None, description="""Name of the third party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    contractual_basis: Optional[str] = Field(default=None, description="""Contractual basis of the relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    allocated_responsibilities: Optional[list[str]] = Field(default=None, description="""Responsibilities allocated to the third party.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.10.2'}},
-         'domain_of': ['ThirdPartyRelationship']} })
-    data_processing_role: Optional[str] = Field(default=None, description="""Role of the third party in data processing (e.g., PII controller, PII processor).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    ai_systems_involved: Optional[list[str]] = Field(default=None, description="""AI systems involved in the third-party relationship.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    lifecycle_stages_involved: Optional[list[AISystemLifecycleStage]] = Field(default=None, description="""AI life cycle stages where the third party is involved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    assurance_evidence: Optional[list[str]] = Field(default=None, description="""Evidence of assurance over the third party's conformance with the organization's responsible AI approach.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    review_frequency: Optional[str] = Field(default=None, description="""Frequency at which the relationship is reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ThirdPartyRelationship']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_customer_expectations: Optional[list[str]] = Field(default=None, description="""What the customer expects and wants.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.4'}},
+         'domain_of': ['AimsCustomerRelationship']} })
+    aims_customer_agreement: Optional[str] = Field(default=None, description="""The contract or terms of use that apply.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.4'}},
+         'domain_of': ['AimsCustomerRelationship']} })
+    aims_customer_responsibility_split: Optional[str] = Field(default=None, description="""What the provider answers for, and what the customer answers for.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.4'}},
+         'domain_of': ['AimsCustomerRelationship']} })
+    aims_customer_communicated_limits: Optional[list[str]] = Field(default=None, description="""What the customer was told the system cannot do, or where it stops being valid.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.4'}},
+         'domain_of': ['AimsCustomerRelationship']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
+    aims_relationship_type: Literal["AimsCustomerRelationship"] = Field(default="AimsCustomerRelationship", description="""The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_party: Optional[str] = Field(default=None, description="""The other party.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_party_roles: Optional[list[AimsAiRole]] = Field(default=None, description="""The parts the other party plays towards the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_contract: Optional[str] = Field(default=None, description="""The agreement the relationship rests on.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_responsibilities: Optional[list[str]] = Field(default=None, description="""The duties each side carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_pii_role: Optional[AimsPiiRole] = Field(default=None, description="""The part the other party plays when personal data is processed.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_documentation: Optional[list[str]] = Field(default=None, description="""The documents one side owes the other about the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.2'}},
+         'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_assurance_evidence: Optional[list[str]] = Field(default=None, description="""What assures the organization that the party meets its duties.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_relationship_review_frequency: Optional[str] = Field(default=None, description="""How often the relationship is reviewed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsThirdPartyRelationship']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class AISystemEvent(NamedEntity):
+class AimsSystemEvent(AimsRecordMixin):
     """
-    An AI system event detected by monitoring, users, or external reporting channels. Events may or may not be subsequently classified as incidents. Supports A.6.2.8 event log capture and A.8.3 external reporting workflows.
+    Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.6.2.8, A.8.3'}},
-         'close_mappings': ['iso27001:InformationSecurityEvent'],
-         'comments': ['First-class entity allowing event records to attach to A.6.2.8 '
-                      'logs and A.8.3 reports',
-                      'Reference: ISO/IEC 42001:2023 Annex A controls A.6.2.8, A.8.3. '
-                      'ISO/IEC standards text is copyright ISO/IEC - not reproduced '
-                      'here.'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation', 'annex_a_controls']})
+         'in_subset': ['aims_ai_systems'],
+         'mixins': ['AimsRecordMixin']})
 
-    event_datetime: Optional[datetime ] = Field(default=None, description="""Date and time the event was observed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent']} })
-    reporter: Optional[str] = Field(default=None, description="""Identifier or description of the person or system that reported the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent', 'ConcernReport']} })
-    reporter_party_type: Optional[str] = Field(default=None, description="""Type of party that reported the event (internal user, external interested party, monitoring system, etc.).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent', 'ConcernReport']} })
-    event_source: Optional[str] = Field(default=None, description="""Source channel through which the event was raised (monitoring, user report, external report, audit).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent']} })
-    event_description: Optional[str] = Field(default=None, description="""Free-text description of the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent']} })
-    affected_ai_systems: Optional[list[str]] = Field(default=None, description="""AI systems affected by this risk.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:affected_assets'],
-         'domain_of': ['AIRisk', 'AISystemEvent', 'AIIncident'],
-         'related_mappings': ['nist_ai_600_1:risk_scope']} })
-    initial_assessment: Optional[str] = Field(default=None, description="""Initial triage assessment of the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent']} })
-    categorized_as_incident: Optional[bool] = Field(default=None, description="""Whether the event has been categorized as an incident requiring response.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent']} })
-    linked_incident: Optional[str] = Field(default=None, description="""AI incident linked to the originating event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_event_type: Literal["AimsSystemEvent"] = Field(default="AimsSystemEvent", description="""The kind of record, AimsSystemEvent or AimsIncident.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemEvent']} })
+    aims_event_occurred_at: Optional[datetime ] = Field(default=None, description="""When the event happened, or when it was first noticed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_event_reporter: Optional[str] = Field(default=None, description="""Who reported the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_event_source: Optional[str] = Field(default=None, description="""How the event came to light, such as a log, monitoring or a report from outside.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_event_adverse_impact: Optional[str] = Field(default=None, description="""The harm that was reported, if any.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.3'}},
+         'domain_of': ['AimsSystemEvent']} })
+    aims_event_assessment: Optional[str] = Field(default=None, description="""What the assessment of the event found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class AIIncident(NamedEntity):
+class AimsIncident(AimsSystemEvent):
     """
-    An AI incident, i.e., an AI system event determined to require response, escalation, or external communication. Captures triage, response lifecycle, and communications to users and other interested parties per A.8.4 and A.8.3.
+    An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was learned.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.8.3, A.8.4'}},
-         'close_mappings': ['iso27001:InformationSecurityIncident',
-                            'iso29100:PrivacyBreach',
-                            'nist_ai_100_1:Harm',
-                            'nist_ai_600_1:GaiRisk'],
-         'comments': ['Provides the entity to which A.8.4 communication plans and '
-                      'A.8.3 external reports attach',
-                      'AI-specific categories (data poisoning, model stealing, prompt '
-                      'injection, etc.) supplement classical infosec incident classes',
-                      'Reference: ISO/IEC 42001:2023 Annex A controls A.8.3, A.8.4. '
-                      'ISO/IEC standards text is copyright ISO/IEC - not reproduced '
-                      'here.'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.4'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['performance_evaluation',
-                       'annex_a_controls',
-                       'continual_improvement']})
+         'in_subset': ['aims_ai_systems']})
 
-    incident_datetime: Optional[datetime ] = Field(default=None, description="""Date and time the incident was declared or detected.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    incident_category: Optional[AIIncidentCategory] = Field(default=None, description="""AI-specific category of the incident.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.8.4'}},
-         'domain_of': ['AIIncident']} })
-    severity: Optional[RiskLevel] = Field(default=None, description="""Severity rating of the incident.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident', 'ConcernReport']} })
-    affected_ai_systems: Optional[list[str]] = Field(default=None, description="""AI systems affected by this risk.""", json_schema_extra = { "linkml_meta": {'close_mappings': ['iso27001:affected_assets'],
-         'domain_of': ['AIRisk', 'AISystemEvent', 'AIIncident'],
-         'related_mappings': ['nist_ai_600_1:risk_scope']} })
-    affected_dimensions: Optional[list[ImpactAssessmentDimension]] = Field(default=None, description="""Dimensions of impact affected by the risk (individual, group, societal, safety, privacy, security, environmental).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIRisk', 'AIIncident']} })
-    incident_description: Optional[str] = Field(default=None, description="""Free-text description of the incident.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    detection_method: Optional[str] = Field(default=None, description="""How the incident was detected (monitoring alert, user report, external report).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    response_actions: Optional[list[str]] = Field(default=None, description="""Response actions taken for the incident.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    containment_actions: Optional[list[str]] = Field(default=None, description="""Containment actions taken to limit incident impact.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    recovery_actions: Optional[list[str]] = Field(default=None, description="""Recovery actions taken to restore normal AI system operation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    root_cause: Optional[str] = Field(default=None, description="""Identified root cause.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity', 'AIIncident']} })
-    lessons_learned: Optional[list[str]] = Field(default=None, description="""Lessons learned recorded after incident closure.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    evidence_collected: Optional[list[str]] = Field(default=None, description="""References to evidence collected during incident response.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    notification_required: Optional[bool] = Field(default=None, description="""Whether notification to interested parties or authorities is required.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    notifications_made: Optional[list[str]] = Field(default=None, description="""Notifications actually made (user communications, regulator filings).""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.8.4'}},
-         'domain_of': ['AIIncident']} })
-    external_reports: Optional[list[str]] = Field(default=None, description="""External reports received or filed regarding the incident.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.8.3'}},
-         'domain_of': ['AIIncident']} })
-    communication_plan: Optional[str] = Field(default=None, description="""Reference to the communication plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIManagementSystem', 'AIIncident'],
-         'exact_mappings': ['iso27001:communication_plan']} })
-    linked_corrective_actions: Optional[list[str]] = Field(default=None, description="""Linked corrective actions.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Nonconformity', 'AIIncident']} })
-    closure_datetime: Optional[datetime ] = Field(default=None, description="""Date and time the incident was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident', 'ConcernReport']} })
-    post_incident_review: Optional[str] = Field(default=None, description="""Reference to the post-incident review record.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_incident_category: Optional[AimsIncidentCategory] = Field(default=None, description="""What the incident concerns.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncident']} })
+    aims_incident_threats: Optional[list[AimsAiThreat]] = Field(default=None, description="""The threats peculiar to AI that the incident involved.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_severity: Optional[AimsRiskLevel] = Field(default=None, description="""How severe the incident is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_impact_areas: Optional[list[AimsImpactArea]] = Field(default=None, description="""The areas of impact the incident touched.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_detection_method: Optional[str] = Field(default=None, description="""How the incident was detected.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_response_actions: Optional[list[str]] = Field(default=None, description="""What was done in response.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_recovery_actions: Optional[list[str]] = Field(default=None, description="""What was done to restore normal operation.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_root_cause: Optional[str] = Field(default=None, description="""What caused the incident.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_lessons_learned: Optional[list[str]] = Field(default=None, description="""What the organization learned from it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_notification_required: Optional[bool] = Field(default=None, description="""Whether users, authorities or others had to be told.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
+         'domain_of': ['AimsIncident']} })
+    aims_incident_notifications: Optional[list[str]] = Field(default=None, description="""Whom the organization told, and when.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.4'}},
+         'domain_of': ['AimsIncident']} })
+    aims_incident_corrective_actions: Optional[list[str]] = Field(default=None, description="""The corrective actions the incident led to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_incident_closed_at: Optional[datetime ] = Field(default=None, description="""When the incident was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsIncident']} })
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_event_type: Literal["AimsIncident"] = Field(default="AimsIncident", description="""The kind of record, AimsSystemEvent or AimsIncident.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemEvent']} })
+    aims_event_occurred_at: Optional[datetime ] = Field(default=None, description="""When the event happened, or when it was first noticed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_event_reporter: Optional[str] = Field(default=None, description="""Who reported the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_event_source: Optional[str] = Field(default=None, description="""How the event came to light, such as a log, monitoring or a report from outside.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_event_adverse_impact: Optional[str] = Field(default=None, description="""The harm that was reported, if any.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.8.3'}},
+         'domain_of': ['AimsSystemEvent']} })
+    aims_event_assessment: Optional[str] = Field(default=None, description="""What the assessment of the event found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemEvent']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
-class ConcernReport(NamedEntity):
+class AimsConcernReportingProcess(AimsDocumentControlMixin, AimsRecordMixin):
     """
-    A concern raised by employees, contractors, users, or other interested parties about the organization's role with respect to an AI system. Operationalises Annex A.3.3 (Reporting of concerns). Confidentiality, anonymity, anti-reprisal protection, escalation, and timely response are core attributes; informed by ISO 37002.
+    The way people raise worries about the organization's part in a system: how it keeps them safe, who looks into a worry, and how fast it answers.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_reference': {'tag': 'annex_a_reference',
-                                               'value': 'A.3.3'}},
-         'comments': ['First-class entity supporting A.3.3 concern-reporting workflows '
-                      'distinct from AIIncident',
-                      'Anonymity and anti-reprisal protections are required even when '
-                      'reporter identity is captured',
-                      'Reference: ISO/IEC 42001:2023 Annex A.3.3 (paraphrased); '
-                      'related guidance ISO 37002. ISO standards text is copyright '
-                      'ISO/IEC - not reproduced here.'],
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.3.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['annex_a_controls', 'performance_evaluation'],
-         'related_mappings': ['iso27001:Nonconformity',
-                              'nist_ai_100_1:Harm',
-                              'nist_ai_600_1:StructuredPublicFeedback']})
+         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
-    reported_date: Optional[date] = Field(default=None, description="""Date the concern was reported.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    reporter: Optional[str] = Field(default=None, description="""Identifier or description of the person or system that reported the event.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent', 'ConcernReport']} })
-    reporter_party_type: Optional[str] = Field(default=None, description="""Type of party that reported the event (internal user, external interested party, monitoring system, etc.).""", json_schema_extra = { "linkml_meta": {'domain_of': ['AISystemEvent', 'ConcernReport']} })
-    reporter_anonymous: Optional[bool] = Field(default=None, description="""Whether the reporter chose to remain anonymous.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    confidentiality_level: Optional[str] = Field(default=None, description="""Confidentiality classification applied to the concern record (e.g., confidential, restricted, internal).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    reporting_channel: Optional[str] = Field(default=None, description="""Channel through which the concern was reported (e.g., hotline, web form, manager, ombudsperson, external auditor).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    concern_description: Optional[str] = Field(default=None, description="""Paraphrased summary of the concern raised.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    concern_ai_systems: Optional[list[str]] = Field(default=None, description="""AI systems referenced in the concern report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    concern_lifecycle_stage: Optional[list[AISystemLifecycleStage]] = Field(default=None, description="""AI system life cycle stage(s) at which the concern arose.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    severity: Optional[RiskLevel] = Field(default=None, description="""Severity rating of the incident.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident', 'ConcernReport']} })
-    investigator: Optional[str] = Field(default=None, description="""Identifier or description of the investigator assigned to the concern.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    investigation_status: Optional[str] = Field(default=None, description="""Status of the investigation (e.g., opened, in_progress, closed, escalated, referred_external).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    investigation_findings: Optional[str] = Field(default=None, description="""Paraphrased summary of investigation findings.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    escalation_status: Optional[str] = Field(default=None, description="""Whether and how the concern was escalated (internal management, governing body, external authority).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    response_due_date: Optional[date] = Field(default=None, description="""Target date by which a response is owed to the reporter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    response_provided_date: Optional[date] = Field(default=None, description="""Date a response was provided to the reporter.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    resolution: Optional[str] = Field(default=None, description="""Paraphrased description of the resolution provided.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    reprisal_protection_actions: Optional[list[str]] = Field(default=None, description="""Actions taken to protect the reporter from reprisals or detriment (informed by ISO 37002).""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    related_incidents: Optional[list[str]] = Field(default=None, description="""AI incidents linked to this concern report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    related_nonconformities: Optional[list[str]] = Field(default=None, description="""Nonconformities linked to this concern report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['ConcernReport']} })
-    closure_datetime: Optional[datetime ] = Field(default=None, description="""Date and time the incident was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AIIncident', 'ConcernReport']} })
-    id: str = Field(default=..., description="""Unique identifier for this entity instance.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:id'],
-         'examples': [{'value': 'iso42001:ai-risk-001'},
-                      {'value': 'iso42001:control-A.6.2.4'}]} })
-    name: str = Field(default=..., description="""Human-readable name or title.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:name']} })
-    description: Optional[str] = Field(default=None, description="""Detailed description of the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'], 'exact_mappings': ['iso27001:description']} })
-    created_date: Optional[date] = Field(default=None, description="""Date when the entity was created.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    modified_date: Optional[date] = Field(default=None, description="""Date when the entity was last modified.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity']} })
-    version: Optional[str] = Field(default=None, description="""Version identifier for the entity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['NamedEntity'],
-         'exact_mappings': ['iso27001:version'],
-         'examples': [{'value': '1.0'}, {'value': '2.3.1'}]} })
+    aims_concern_process_confidentiality: Optional[list[str]] = Field(default=None, description="""The ways a person can stay unnamed or keep a report private.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
+         'domain_of': ['AimsConcernReportingProcess']} })
+    aims_concern_process_audience: Optional[str] = Field(default=None, description="""How staff and contractors learn of it and reach it.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
+         'domain_of': ['AimsConcernReportingProcess']} })
+    aims_concern_process_investigators: Optional[str] = Field(default=None, description="""Who looks into a report, and what powers they hold.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
+         'domain_of': ['AimsConcernReportingProcess']} })
+    aims_concern_process_escalation: Optional[str] = Field(default=None, description="""How a report reaches management in good time.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
+         'domain_of': ['AimsConcernReportingProcess']} })
+    aims_concern_process_reprisal_protection: Optional[str] = Field(default=None, description="""How those who report or investigate are shielded from reprisal.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
+         'domain_of': ['AimsConcernReportingProcess']} })
+    aims_concern_process_response_time: Optional[str] = Field(default=None, description="""How soon a report is answered.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
+         'domain_of': ['AimsConcernReportingProcess']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+    aims_document_reference: Optional[str] = Field(default=None, description="""The reference the organization's document control gives it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_version: Optional[str] = Field(default=None, description="""The version of the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_author: Optional[str] = Field(default=None, description="""Who wrote the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_owner: Optional[str] = Field(default=None, description="""Who answers for the document's content and upkeep.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_format: Optional[str] = Field(default=None, description="""The document's format, such as its language or software version.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_medium: Optional[str] = Field(default=None, description="""What the document is held on, such as paper or an electronic system.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approver: Optional[str] = Field(default=None, description="""Who approved the document.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_approval_date: Optional[date] = Field(default=None, description="""When the document was approved.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_effective_date: Optional[date] = Field(default=None, description="""When the document takes effect.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_last_review_date: Optional[date] = Field(default=None, description="""When the document was last reviewed.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.2'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_next_review_date: Optional[date] = Field(default=None, description="""When the document is next due for review.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_status: Optional[str] = Field(default=None, description="""Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_classification: Optional[str] = Field(default=None, description="""The information classification the document carries.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_retention: Optional[str] = Field(default=None, description="""How long the document is kept, as an ISO 8601 duration.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_disposition: Optional[str] = Field(default=None, description="""What becomes of the document when that time is up.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_distribution: Optional[list[str]] = Field(default=None, description="""Who gets the document, how they reach it and what they may do with it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_storage: Optional[str] = Field(default=None, description="""How the document is stored so that it stays legible.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_change_control: Optional[str] = Field(default=None, description="""How changes to the document are controlled, such as version control.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_origin: Optional[bool] = Field(default=None, description="""Whether the document comes from outside the organization and is kept because the system needs it.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+    aims_document_external_source: Optional[str] = Field(default=None, description="""Who the document came from, when it comes from outside.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '7.5.3'}},
+         'domain_of': ['AimsDocumentControlMixin']} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class AimsConcernReport(AimsRecordMixin):
+    """
+    One worry someone raised about the organization's part in a system, and how it was looked into and settled.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
+                                             'value': 'A.3.3'}},
+         'from_schema': 'https://w3id.org/lmodel/iso42001',
+         'in_subset': ['aims_ai_systems'],
+         'mixins': ['AimsRecordMixin']})
+
+    aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
+                       'AimsRiskAssessment',
+                       'AimsRisk',
+                       'AimsImpactAssessment',
+                       'AimsApplicabilityEntry',
+                       'AimsControl',
+                       'AimsDevelopmentProcess',
+                       'AimsResponsibleUseProcess',
+                       'AimsTechnicalDocumentation',
+                       'AimsUserInformation',
+                       'AimsIncidentCommunicationPlan',
+                       'AimsReportingObligation',
+                       'AimsThirdPartyRelationship',
+                       'AimsSystemEvent',
+                       'AimsConcernReport']} })
+    aims_concern_reported_on: Optional[date] = Field(default=None, description="""When the worry was raised.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_reporter: Optional[str] = Field(default=None, description="""Who raised it, unless they stayed unnamed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_anonymous: Optional[bool] = Field(default=None, description="""Whether the person stayed unnamed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_channel: Optional[str] = Field(default=None, description="""How it was raised.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_life_cycle_stage: Optional[AimsLifecycleStage] = Field(default=None, description="""The stage of the system's life it concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_severity: Optional[AimsRiskLevel] = Field(default=None, description="""How serious it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_investigator: Optional[str] = Field(default=None, description="""Who looked into it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_investigation_status: Optional[str] = Field(default=None, description="""Where the inquiry stands, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_findings: Optional[str] = Field(default=None, description="""What the inquiry found.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_escalation: Optional[str] = Field(default=None, description="""Whether and how it went up to management.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_response_due: Optional[date] = Field(default=None, description="""When an answer is due.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_responded_on: Optional[date] = Field(default=None, description="""When it was answered.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_resolution: Optional[str] = Field(default=None, description="""How it was settled.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_reprisal_protection: Optional[str] = Field(default=None, description="""What was done to shield those involved from reprisal.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_incidents: Optional[list[str]] = Field(default=None, description="""The incidents it relates to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_concern_nonconformities: Optional[list[str]] = Field(default=None, description="""The nonconformities it relates to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsConcernReport']} })
+    aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
+    title: str = Field(default=..., description="""The name the organization gives the record.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's title means and carries the same IRI, so "
+                      "lokf adapt folds it into LOKF's slot and a knowledge bundle "
+                      'reads one title key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:name'} })
+    description: Optional[str] = Field(default=None, description="""What the record says or describes, in the organization's own words.""", json_schema_extra = { "linkml_meta": {'comments': ["It means what LOKF's description means and carries the same "
+                      "IRI, so lokf adapt folds it into LOKF's slot and a knowledge "
+                      'bundle reads one description key.'],
+         'domain_of': ['AimsRecordMixin'],
+         'slot_uri': 'schema:description'} })
+
+    @field_validator('title')
+    def pattern_title(cls, v):
+        pattern=re.compile(r"^\s*\S")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.search(element):
+                    err_msg = f"Invalid title format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.search(v):
+            err_msg = f"Invalid title format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
-NamedEntity.model_rebuild()
-DocumentedInformation.model_rebuild()
-AIManagementSystem.model_rebuild()
-Organization.model_rebuild()
-InterestedParty.model_rebuild()
-AIPolicy.model_rebuild()
-TopicSpecificPolicy.model_rebuild()
-Role.model_rebuild()
-AIObjective.model_rebuild()
-AIRiskAssessmentProcess.model_rebuild()
-AIRiskAssessment.model_rebuild()
-AIRisk.model_rebuild()
-AIRiskTreatmentProcess.model_rebuild()
-AIRiskTreatmentPlan.model_rebuild()
-AISystemImpactAssessmentProcess.model_rebuild()
-AISystemImpactAssessment.model_rebuild()
-StatementOfApplicability.model_rebuild()
-SoAEntry.model_rebuild()
-AIReferenceControl.model_rebuild()
-AISystem.model_rebuild()
-DataResource.model_rebuild()
-ToolingResource.model_rebuild()
-ComputingResource.model_rebuild()
-HumanResource.model_rebuild()
-Resource.model_rebuild()
-CompetenceRecord.model_rebuild()
-AwarenessProgram.model_rebuild()
-CommunicationPlan.model_rebuild()
-CommunicationItem.model_rebuild()
-OperationalProcedure.model_rebuild()
-MonitoringProgram.model_rebuild()
-MonitoringItem.model_rebuild()
-InternalAudit.model_rebuild()
-AuditProgramme.model_rebuild()
-AuditFinding.model_rebuild()
-ManagementReview.model_rebuild()
-Nonconformity.model_rebuild()
-CorrectiveAction.model_rebuild()
-ImprovementOpportunity.model_rebuild()
-ThirdPartyRelationship.model_rebuild()
-SupplierRelationship.model_rebuild()
-CustomerRelationship.model_rebuild()
-AISystemEvent.model_rebuild()
-AIIncident.model_rebuild()
-ConcernReport.model_rebuild()
+AimsRecordMixin.model_rebuild()
+AimsDocumentControlMixin.model_rebuild()
+AimsManagementSystem.model_rebuild()
+AimsOrganization.model_rebuild()
+AimsInterestedParty.model_rebuild()
+AimsPolicy.model_rebuild()
+AimsTopicSpecificPolicy.model_rebuild()
+AimsRole.model_rebuild()
+AimsObjective.model_rebuild()
+AimsPlannedAction.model_rebuild()
+AimsRiskAssessmentProcess.model_rebuild()
+AimsRiskAssessment.model_rebuild()
+AimsRisk.model_rebuild()
+AimsRiskTreatmentProcess.model_rebuild()
+AimsRiskTreatmentPlan.model_rebuild()
+AimsImpactAssessmentProcess.model_rebuild()
+AimsImpactAssessment.model_rebuild()
+AimsIdentifiedImpact.model_rebuild()
+AimsStatementOfApplicability.model_rebuild()
+AimsApplicabilityEntry.model_rebuild()
+AimsIncludedControl.model_rebuild()
+AimsExcludedControl.model_rebuild()
+AimsControl.model_rebuild()
+AimsAiSystem.model_rebuild()
+AimsSystemResource.model_rebuild()
+AimsComponentResource.model_rebuild()
+AimsDataResource.model_rebuild()
+AimsToolingResource.model_rebuild()
+AimsComputingResource.model_rebuild()
+AimsHumanResource.model_rebuild()
+AimsDevelopmentProcess.model_rebuild()
+AimsResponsibleUseProcess.model_rebuild()
+AimsTechnicalDocumentation.model_rebuild()
+AimsUserInformation.model_rebuild()
+AimsIncidentCommunicationPlan.model_rebuild()
+AimsReportingObligation.model_rebuild()
+AimsResource.model_rebuild()
+AimsCompetenceRecord.model_rebuild()
+AimsAwarenessProgramme.model_rebuild()
+AimsCommunicationPlan.model_rebuild()
+AimsCommunication.model_rebuild()
+AimsDocumentedInformation.model_rebuild()
+AimsOperationalProcedure.model_rebuild()
+AimsMonitoringProgramme.model_rebuild()
+AimsMonitoringItem.model_rebuild()
+AimsAuditProgramme.model_rebuild()
+AimsAudit.model_rebuild()
+AimsAuditFinding.model_rebuild()
+AimsManagementReview.model_rebuild()
+AimsNonconformity.model_rebuild()
+AimsCorrectiveAction.model_rebuild()
+AimsImprovementOpportunity.model_rebuild()
+AimsThirdPartyRelationship.model_rebuild()
+AimsSupplierRelationship.model_rebuild()
+AimsCustomerRelationship.model_rebuild()
+AimsSystemEvent.model_rebuild()
+AimsIncident.model_rebuild()
+AimsConcernReportingProcess.model_rebuild()
+AimsConcernReport.model_rebuild()
