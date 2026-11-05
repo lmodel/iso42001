@@ -1,6 +1,6 @@
 """iso42001.
 
-ISO 42001 / AI Management System - LinkML Schema
+ISO/IEC 42001:2023 AI management system records (LinkML)
 """
 
 try:
