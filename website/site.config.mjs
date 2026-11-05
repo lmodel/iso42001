@@ -56,7 +56,8 @@ export const DOCS = { dir: "docs", exclude: ["templates-linkml"] };
 // the addresses a retired mkdocs site gave its pages and a w3id rule still
 // names. An entry whose key and value both end in /[...slug] stands for one
 // redirect per schema page.
-//   export const REDIRECTS = {
+//   export const REDIRECTS = { "/elements": "/schema/", "/elements/[...slug]": "/schema/[...slug]", "/about": "/docs/about/" };
+export const REDIRECTS = {
   "/elements": "/schema/",
   // The retired schema's class and enum pages, each to its successor's
   // schema page.
