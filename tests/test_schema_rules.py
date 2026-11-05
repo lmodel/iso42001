@@ -182,7 +182,8 @@ def test_mappings_use_a_bound_prefix():
 
 
 @pytest.mark.parametrize(
-    "prefix, file", [("oscal", "oscal"), ("iso27001", "iso27001"), ("spdx_core", "spdx")]
+    "prefix, file",
+    [("oscal", "oscal"), ("iso27001", "iso27001"), ("spdx_core", "spdx")],
 )
 def test_mappings_name_a_class_of_the_neighbour(prefix, file):
     """Every mapping to a released neighbour names a class of its copy: its

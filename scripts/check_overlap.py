@@ -152,7 +152,9 @@ def main(argv: list[str] | None = None) -> int:
         if number == "Annex A":
             continue
         if not re.search(rf"^\s*{re.escape(number)}\s", raw, flags=re.M):
-            problems.append(f"schema cites {number}, which starts no line of the source")
+            problems.append(
+                f"schema cites {number}, which starts no line of the source"
+            )
 
     print("\n".join(problems) if problems else "OK: nothing shared, every number found")
     return 1 if problems else 0

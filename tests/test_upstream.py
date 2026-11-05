@@ -124,9 +124,7 @@ def test_header_pins_match_the_watch():
     assert notes["edition"] == str(edition["edition"])
     assert notes["publication_date"] == edition["publicationDate"]
     assert notes["iso_open_data_date"] == watch.PINNED_DATE
-    assert notes["normative_reference"] in {
-        r["reference"] for r in _records().values()
-    }
+    assert notes["normative_reference"] in {r["reference"] for r in _records().values()}
 
 
 def test_published_records_and_supplements_in_development():
@@ -161,9 +159,7 @@ def test_areas_count_their_controls():
     names an area whose number starts its own."""
     areas = _values("AimsControlArea")
     assert len(areas) == 9
-    numbers = {
-        name: pv["annotations"]["annex_a_clause"] for name, pv in areas.items()
-    }
+    numbers = {name: pv["annotations"]["annex_a_clause"] for name, pv in areas.items()}
     counts = dict.fromkeys(areas, 0)
     for name, control in _values("AimsAnnexAControl").items():
         area = control["annotations"]["area"]
@@ -224,9 +220,7 @@ def test_each_citation_names_something_the_schema_lists():
     area, since Annex B numbers its guidance as Annex A numbers its controls."""
     schema = _schema()
     clauses = {v["title"] for v in _values("AimsClause").values()}
-    controls = {
-        v["title"].split()[0] for v in _values("AimsAnnexAControl").values()
-    }
+    controls = {v["title"].split()[0] for v in _values("AimsAnnexAControl").values()}
     for number in _annotated(schema, "iso42001_clause"):
         assert number in clauses | {"Annex A"}, number
     for number in _annotated(schema, "annex_a_control"):

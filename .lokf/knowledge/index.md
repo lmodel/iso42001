@@ -17,4 +17,3 @@ publisher:
 A [LOKF](https://lokf.nolan-nichols.com) knowledge base for iso42001. Every Markdown file under `knowledge/` is one concept; together they form a queryable knowledge graph, derived from this repository's code and docs.
 
 # Services
-

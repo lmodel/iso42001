@@ -117,7 +117,10 @@ def test_merge_changes_only_descriptive_keys(tmp_path, monkeypatch):
     assert policy["mixins"] == public["classes"]["AimsPolicy"]["mixins"]
     pv = merged["enums"]["AimsAnnexAControl"]["permissible_values"]["a_2_2"]
     assert pv["description"] == "LICENSED VALUE TEXT"
-    assert pv["title"] == public["enums"]["AimsAnnexAControl"]["permissible_values"]["a_2_2"]["title"]
+    assert (
+        pv["title"]
+        == public["enums"]["AimsAnnexAControl"]["permissible_values"]["a_2_2"]["title"]
+    )
 
 
 def test_merge_writes_only_under_tmp(tmp_path):

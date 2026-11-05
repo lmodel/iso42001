@@ -160,7 +160,10 @@ def test_examples_keep_the_rules_no_validator_checks(filepath):
         annex_a = data.get("aims_cited_annex_a_controls") or []
         if area and annex_a:
             assert area in {AREAS[c] for c in annex_a}, data.get("aims_id")
-        start, end = data.get("aims_audit_period_start"), data.get("aims_audit_period_end")
+        start, end = (
+            data.get("aims_audit_period_start"),
+            data.get("aims_audit_period_end"),
+        )
         if start and end:
             assert str(start) <= str(end), data.get("aims_id")
         controls = [
