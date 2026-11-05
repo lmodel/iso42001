@@ -15,7 +15,6 @@ Closes #
 - [ ] Generated files were regenerated with `just gen-project`, `just gen-doc` and `just lokf-adapt`, not edited by hand
 - [ ] Each new or changed element names the clause or Annex A control of ISO/IEC 42001:2023 it models, in this project's own words, with no text copied from the standard
 - [ ] `src/iso42001/schema/iso-open-data/` is unchanged, or replaced whole from one day's ISO Open Data with the pins in `scripts/check_upstream_release.py` updated
-- [ ] A schema change regenerates `src/iso42001/schema/iso42001-overlay.template.yaml` with `just create-empty-overlay`
 - [ ] If `.lokf/` changed, `cd .lokf && just lokf-validate` passes
 - [ ] A behaviour change has an entry under `## [Unreleased]` in `CHANGELOG.md`
 

@@ -16,7 +16,7 @@ It releases a LinkML schema and the Python datamodel generated from it. Nothing 
 
 `scripts/check_upstream_release.py` runs only in `upstream-watch.yaml`. It streams ISO Open Data's daily metadata file line by line, parses only the lines that name the pinned standards, follows a redirect only over https to a listed host, caps what it reads, and writes nothing but its report. The tests read the pinned extract with the standard library's JSON parser.
 
-The overlay scripts under `scripts/` and `scripts/check_overlap.py` read YAML with `yaml.safe_load`, and that last script, which no workflow runs, refuses a source inside the repository. `overlay_populated_text.py`, which merges a licence holder's private text, writes only under `tmp/`, and `.gitignore` keeps the private overlay out of every commit.
+`scripts/check_overlap.py`, which no workflow runs, reads YAML with `yaml.safe_load` and refuses a source inside the repository.
 
 ## What executes here
 

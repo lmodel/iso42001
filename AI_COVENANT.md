@@ -26,7 +26,7 @@ That makes two failure modes worse here than elsewhere. One is a requirement or 
 So:
 
 - **An element names its clause, never quotes it.** Every class, slot and enum under `src/iso42001/schema/` models a clause or Annex A control of ISO/IEC 42001:2023 at the pinned edition, in this project's own words. Cite the clause or control by number in the pull request, and never give an ISO term a meaning its source does not carry. "The model said so" is not a source.
-- **No ISO text, anywhere.** Not in the schema, the examples, the docs or the knowledge bundle, and not in a paraphrase so close it is a copy. A licence holder who wants the standard's wording merges it into a private copy with the overlay that `src/iso42001/schema/OVERLAY.md` describes, and never commits it.
+- **No ISO text, anywhere.** Not in the schema, the examples, the docs or the knowledge bundle, and not in a paraphrase so close it is a copy. A reader who wants the standard's wording looks it up in a licensed copy, by the number the element cites.
 - **The metadata copy is upstream data.** `src/iso42001/schema/iso-open-data/` holds ISO Open Data's records for the pinned edition, as published, under ISO's ODC Attribution License. Never edit it; replace it from one day's dataset, and `upstream-watch.yaml` checks it still matches.
 - **The namespace is this project's.** Everything the schema defines lives under `iso42001:` (`https://w3id.org/lmodel/iso42001/`). The standard's own identifiers, such as `A.2.2`, appear only as values the schema documents.
 

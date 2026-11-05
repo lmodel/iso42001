@@ -14,9 +14,9 @@ ISO/IEC 42001:2023 AI management system records (LinkML)
 
 ## What it models
 
-The schema models the records an organization keeps to run an artificial intelligence (AI) management system under [ISO/IEC 42001:2023](https://www.iso.org/standard/81230.html), first edition. It holds no text of the standard. Elements cite clauses, Annex A controls and annex items by number.
+The schema models the records an organization keeps to run an artificial intelligence (AI) management system under [ISO/IEC 42001:2023](https://www.iso.org/standard/81230.html), first edition. It holds no text of the standard. Elements cite clauses, Annex A controls and annex items by number, and a record's `title` and `description` hold the organization's own words.
 
-ISO sells the standard's text, so [src/iso42001/schema/iso-open-data/](src/iso42001/schema/iso-open-data) pins ISO Open Data's records of the edition and of its normative reference, ISO/IEC 22989:2022, instead. A weekly workflow opens an issue when one of those records changes or ISO lists another supplement or edition. A licence holder can merge the standard's wording into a private copy of the schema with the overlay in [OVERLAY.md](src/iso42001/schema/OVERLAY.md).
+ISO sells the standard's text, so [src/iso42001/schema/iso-open-data/](src/iso42001/schema/iso-open-data) pins ISO Open Data's records of the edition and of its normative reference, ISO/IEC 22989:2022, instead. A weekly workflow opens an issue when one of those records changes or ISO lists another supplement or edition.
 
 ## Influences
 
@@ -34,8 +34,8 @@ The schema is the one home for mappings. The seven SSSOM sets are gone: a matchi
 
 * [docs/](docs/): the website's own pages
 * [project/](project/): generated project files (do not edit them)
-* [scripts/](scripts/): the upstream watch, the overlay and a licence holder's check for shared words
-* [src/iso42001/schema/](src/iso42001/schema): the LinkML schema (edit it), the overlay scaffold and ISO Open Data's records
+* [scripts/](scripts/): the upstream watch and a licence holder's check for shared words
+* [src/iso42001/schema/](src/iso42001/schema): the LinkML schema (edit it) and ISO Open Data's records
 * [src/iso42001/datamodel/](src/iso42001/datamodel): the generated Python datamodel
 * [tests/](tests/): Python tests, with example data in [data/](tests/data) and the neighbours' adapt copies in [neighbours/](tests/neighbours)
 * [website/](website/): the Astro Starlight site built from the README, `docs/`, the schema's pages and the knowledge bundle

@@ -23,5 +23,6 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 
 ### Removed
 
+- **The private text overlay**: its scaffold, scripts and page. An element cites the standard by number, and a reader with a licensed copy looks the text up there.
 - **The seven SSSOM sets**, whose rows a matching tool wrote and many of whose targets do not exist.
 - **The mkdocs site**, with redirects from its addresses to the new site.

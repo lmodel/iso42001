@@ -13,8 +13,6 @@ ignore:
   - .lokf/lokf.yaml
   - .lokf/iso42001.yaml
   - tests/neighbours/*.yaml
-  # Written by `just create-empty-overlay`, not by hand.
-  - src/iso42001/schema/iso42001-overlay.template.yaml
 
 rules:
   document-start: disable  # Don't check if document has a start marker (---).

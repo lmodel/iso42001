@@ -85,9 +85,9 @@ linkml_meta = LinkMLMeta({'annotations': {'edition': {'tag': 'edition', 'value':
                   'reproduced here. An element cites what it models by number, in '
                   'the iso42001_clause, annex_a_control, annex_b_item, '
                   'annex_c_item or annex_d_item annotation, and its title and '
-                  "description are this project's own words. A licence holder can "
-                  "merge the standard's wording into a private copy with the "
-                  'overlay that src/iso42001/schema/OVERLAY.md describes.',
+                  "description are this project's own words. A reader with a "
+                  "licensed copy looks the text up by that number, and a record's "
+                  "title and description hold the organization's own words.",
                   'The terms follow ISO/IEC 22989:2022, the one normative '
                   "reference, and so do the stages of a system's life and the "
                   'kinds of AI role. Annexes C and D are informative and give '

@@ -30,12 +30,12 @@ text. Obtain the standard and any licence to reuse its text from ISO or your
 national standards body. A title or description slot holds whatever its user
 writes: fill it only with text you have the right to use.
 
-src/iso42001/schema/iso42001-overlay.template.yaml lists the schema's elements
-with empty placeholders and holds no text of the standard. A licence holder may
-fill a private copy of it, which .gitignore keeps out of this repository; that
-copy must never be committed or distributed. scripts/check_overlap.py lets a
-licence holder test this repository's words against their own copy, which stays
-outside the repository.
+Each element cites the clause, Annex A control or annex item it models by
+number, so a reader with a licensed copy can look the text up there. ISO's
+Customer Licence Agreement also restricts use of the text with AI tools, so the
+standard is never given to the agents that maintain this repository's knowledge
+bundle. scripts/check_overlap.py lets a licence holder test this repository's
+words against their own copy, which stays outside the repository.
 
 ISO Open Data
 -------------
