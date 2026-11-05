@@ -1,0 +1,9 @@
+# Datasets
+
+* [The iso42001 LinkML schema](iso42001-linkml-schema.md) - `src/iso42001/schema/iso42001.yaml`: the records an organization keeps to run an AI management system under ISO/IEC 42001:2023, with the `Aims` class prefix, the `aims_` slot prefix and `AimsManagementSystem` as its root.
+* [The schema's adapt copy](adapt-copy.md) - `.lokf/iso42001.yaml`, the copy `just lokf-adapt` writes from the schema so that it sits beside LOKF's `lokf.yaml`: ten classes rooted on `Concept`, `aims_id` dropped for LOKF's `id`, `title` and `description` folded into LOKF's, and the four designators demoted.
+* [ISO Open Data's records](iso-open-data-records.md) - `src/iso42001/schema/iso-open-data/`: ISO's records of the edition, its normative reference ISO/IEC 22989:2022 and that reference's two pending amendments as of 2026-11-05, under ODC-By v1.0, each without its scope and pinned by hash.
+* [The generated artefacts](generated-artefacts.md) - What `just gen-project` and `just gen-doc` generate from the schema: the projections in `project/`, the Python models in `src/iso42001/datamodel/`, and the merged schema in `docs/schema/`. None is edited by hand.
+* [The example data](example-data.md) - `tests/data/`: a valid example per class and a counter-example per constraint, each counter-example naming on its first line where it must fail. `AimsManagementSystem-acme` is one whole management system.
+* [An AI policy as a concept](example-policy.md) - An example written as a concept of type `AimsPolicy` in the adapt copy's keys. It shows that the domain schema admits a policy as a concept, citing the clause and the Annex A control it answers to by number.
+* [The neighbours' adapt copies](neighbour-copies.md) - The adapt copies of 22 released lmodel repositories in `tests/neighbours/`, each pinned by its SHA-256, which tests hold this schema's names and mappings to.
