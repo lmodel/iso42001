@@ -16,8 +16,8 @@ import lombok.*;
 @EqualsAndHashCode(callSuper=false)
 public abstract class AimsSystemResource  {
 
-  private List<String> aimsLifeCycleStages;
   private String aimsResourceType;
+  private List<String> aimsLifeCycleStages;
   private String aimsResourceProvider;
   private URI aimsId;
   private String title;

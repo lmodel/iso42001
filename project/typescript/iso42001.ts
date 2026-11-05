@@ -1444,10 +1444,10 @@ export interface AimsAiSystem extends AimsRecordMixin {
  * Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it.
  */
 export interface AimsSystemResource extends AimsRecordMixin {
-    /** The stages of an AI system's life the record applies to. */
-    aims_life_cycle_stages?: string,
     /** The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource. */
     aims_resource_type: string,
+    /** The stages of an AI system's life the record applies to. */
+    aims_life_cycle_stages?: string,
     /** Who provides the resource. */
     aims_resource_provider?: string,
 }
@@ -1899,7 +1899,7 @@ export interface AimsAudit extends AimsRecordMixin, AimsDocumentControlMixin {
     /** The documented information that holds the audit plan. */
     aims_audit_plan?: AimsDocumentedInformationAimsId,
     /** What the audit found, good and bad. */
-    aims_audit_findings?: AimsAuditFindingAimsId[],
+    aims_audit_findings?: AimsAuditFinding[],
     /** The audit's overall conclusion. */
     aims_audit_conclusion?: string,
     /** When the audit report was issued. */

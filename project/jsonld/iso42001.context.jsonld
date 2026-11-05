@@ -66,6 +66,9 @@
          "@type": "@id",
          "@id": "aims_relevant_controls"
       },
+      "aims_resource_type": {
+         "@id": "aims_resource_type"
+      },
       "aims_responsible_role": {
          "@type": "@id",
          "@id": "aims_responsible_role"
@@ -1895,9 +1898,6 @@
             "meaning": "@id"
          },
          "@id": "aims_resource_provider"
-      },
-      "aims_resource_type": {
-         "@id": "aims_resource_type"
       },
       "aims_technical_doc_audiences": {
          "@id": "aims_technical_doc_audiences"

@@ -2098,6 +2098,7 @@ linkml:Sparqlpath xsd:string
 <AimsSystemResource_struct> {
     (  $<AimsSystemResource_tes> (  &<AimsRecordMixin_tes> ;
           rdf:type [ <AimsRecordMixin> ] ? ;
+          <aims_resource_type> @linkml:String ;
           <aims_life_cycle_stages> [ <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#inception>
              <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#design_and_development>
              <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#verification_and_validation>
@@ -2106,7 +2107,6 @@ linkml:Sparqlpath xsd:string
              <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#continuous_validation>
              <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#re_evaluation>
              <https://w3id.org/lmodel/iso42001/AimsLifecycleStage#retirement> ] * ;
-          <aims_resource_type> @linkml:String ;
           <aims_resource_provider> [ <https://w3id.org/lmodel/iso42001/AimsResourceProvider#organization>
              <https://w3id.org/lmodel/iso42001/AimsResourceProvider#customer>
              <https://w3id.org/lmodel/iso42001/AimsResourceProvider#third_party> ] ? ;

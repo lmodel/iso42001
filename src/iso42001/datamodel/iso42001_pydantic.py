@@ -3226,10 +3226,12 @@ class AimsSystemResource(AimsRecordMixin):
                                              'value': 'A.4.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_ai_systems'],
-         'mixins': ['AimsRecordMixin']})
+         'mixins': ['AimsRecordMixin'],
+         'slot_usage': {'aims_resource_type': {'name': 'aims_resource_type',
+                                               'required': True}}})
 
-    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_type: Literal["AimsSystemResource"] = Field(default="AimsSystemResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'domain_of': ['AimsSystemResource']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
@@ -3269,8 +3271,8 @@ class AimsComponentResource(AimsSystemResource):
     aims_component_kind: Optional[str] = Field(default=None, description="""What kind of part it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsComponentResource']} })
     aims_component_integration: Optional[str] = Field(default=None, description="""How the part is joined to the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
          'domain_of': ['AimsComponentResource']} })
-    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_type: Literal["AimsComponentResource"] = Field(default="AimsComponentResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'domain_of': ['AimsSystemResource']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
@@ -3357,8 +3359,8 @@ class AimsDataResource(AimsSystemResource):
     aims_data_retention: Optional[str] = Field(default=None, description="""How long the data is kept and how it is disposed of.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
          'domain_of': ['AimsDataResource']} })
     aims_data_classification: Optional[str] = Field(default=None, description="""The information classification the data carries.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsDataResource']} })
-    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_type: Literal["AimsDataResource"] = Field(default="AimsDataResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'domain_of': ['AimsSystemResource']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
@@ -3402,8 +3404,8 @@ class AimsToolingResource(AimsSystemResource):
     aims_tool_vendor: Optional[str] = Field(default=None, description="""Who supplies the tool.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
     aims_tool_licence: Optional[str] = Field(default=None, description="""The terms the tool is used under.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
     aims_tool_purpose: Optional[str] = Field(default=None, description="""What the tool is used for.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsToolingResource']} })
-    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_type: Literal["AimsToolingResource"] = Field(default="AimsToolingResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'domain_of': ['AimsSystemResource']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
@@ -3449,8 +3451,8 @@ class AimsComputingResource(AimsSystemResource):
          'domain_of': ['AimsComputingResource']} })
     aims_computing_hardware_impact: Optional[str] = Field(default=None, description="""What the hardware costs, in money or to the environment.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.5'}},
          'domain_of': ['AimsComputingResource']} })
-    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_type: Literal["AimsComputingResource"] = Field(default="AimsComputingResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'domain_of': ['AimsSystemResource']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
@@ -3497,8 +3499,8 @@ class AimsHumanResource(AimsSystemResource):
          'domain_of': ['AimsHumanResource']} })
     aims_human_diversity: Optional[str] = Field(default=None, description="""How the team's range of expertise was considered.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.6'}},
          'domain_of': ['AimsHumanResource']} })
-    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_type: Literal["AimsHumanResource"] = Field(default="AimsHumanResource", description="""The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.""", json_schema_extra = { "linkml_meta": {'designates_type': True, 'domain_of': ['AimsSystemResource']} })
+    aims_life_cycle_stages: Optional[list[AimsLifecycleStage]] = Field(default=None, description="""The stages of an AI system's life the record applies to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsSystemResource', 'AimsThirdPartyRelationship']} })
     aims_resource_provider: Optional[AimsResourceProvider] = Field(default=None, description="""Who provides the resource.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'domain_of': ['AimsSystemResource']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })
@@ -4947,7 +4949,7 @@ class AimsAudit(AimsDocumentControlMixin, AimsRecordMixin):
     aims_audit_team: Optional[list[str]] = Field(default=None, description="""Who else audited.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
     aims_audit_auditees: Optional[list[str]] = Field(default=None, description="""Who represented the parts of the organization audited.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
     aims_audit_plan: Optional[str] = Field(default=None, description="""The documented information that holds the audit plan.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
-    aims_audit_findings: Optional[list[str]] = Field(default=None, description="""What the audit found, good and bad.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
+    aims_audit_findings: Optional[list[AimsAuditFinding]] = Field(default=None, description="""What the audit found, good and bad.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
     aims_audit_conclusion: Optional[str] = Field(default=None, description="""The audit's overall conclusion.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
     aims_audit_report_date: Optional[date] = Field(default=None, description="""When the audit report was issued.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })
     aims_audit_report_distribution: Optional[list[str]] = Field(default=None, description="""Who received the audit report.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAudit']} })

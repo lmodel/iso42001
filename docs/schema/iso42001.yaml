@@ -2121,6 +2121,18 @@ slots:
     domain_of:
     - AimsRecordMixin
     range: string
+  aims_resource_type:
+    name: aims_resource_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_resource_type
+    description: 'The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource,
+      AimsComputingResource or AimsHumanResource.'
+    from_schema: https://w3id.org/lmodel/iso42001
+    slot_uri: iso42001:aims_resource_type
+    designates_type: true
+    owner: AimsSystemResource
+    domain_of:
+    - AimsSystemResource
+    range: string
   aims_responsible_role:
     name: aims_responsible_role
     definition_uri: https://w3id.org/lmodel/iso42001/aims_responsible_role
@@ -5612,19 +5624,6 @@ slots:
     - AimsAiSystem
     range: AimsThirdPartyRelationship
     multivalued: true
-  aimsSystemResource__aims_resource_type:
-    name: aimsSystemResource__aims_resource_type
-    description: 'The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource,
-      AimsComputingResource or AimsHumanResource.'
-    from_schema: https://w3id.org/lmodel/iso42001
-    slot_uri: iso42001:aims_resource_type
-    designates_type: true
-    alias: aims_resource_type
-    owner: AimsSystemResource
-    domain_of:
-    - AimsSystemResource
-    range: string
-    required: true
   aimsSystemResource__aims_resource_provider:
     name: aimsSystemResource__aims_resource_provider
     annotations:
@@ -7303,6 +7302,8 @@ slots:
     - AimsAudit
     range: AimsAuditFinding
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   aimsAudit__aims_audit_conclusion:
     name: aimsAudit__aims_audit_conclusion
     description: The audit's overall conclusion.
@@ -8691,6 +8692,24 @@ slots:
     is_usage_slot: true
     usage_slot_name: aims_entry_annex_a_control
     range: AimsAnnexAControl
+    required: true
+  AimsSystemResource_aims_resource_type:
+    name: AimsSystemResource_aims_resource_type
+    definition_uri: https://w3id.org/lmodel/iso42001/aims_resource_type
+    description: 'The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource,
+      AimsComputingResource or AimsHumanResource.'
+    from_schema: https://w3id.org/lmodel/iso42001
+    is_a: aims_resource_type
+    domain: AimsSystemResource
+    slot_uri: iso42001:aims_resource_type
+    designates_type: true
+    alias: aims_resource_type
+    owner: AimsSystemResource
+    domain_of:
+    - AimsSystemResource
+    is_usage_slot: true
+    usage_slot_name: aims_resource_type
+    range: string
     required: true
 classes:
   AimsRecordMixin:
@@ -11326,20 +11345,17 @@ classes:
     mixins:
     - AimsRecordMixin
     slots:
+    - AimsSystemResource_aims_resource_type
     - aims_life_cycle_stages
-    - aimsSystemResource__aims_resource_type
     - aimsSystemResource__aims_resource_provider
     - aims_id
     - AimsRecordMixin_title
     - description
-    attributes:
+    slot_usage:
       aims_resource_type:
         name: aims_resource_type
-        description: 'The kind of resource: AimsComponentResource, AimsDataResource,
-          AimsToolingResource, AimsComputingResource or AimsHumanResource.'
-        designates_type: true
-        range: string
         required: true
+    attributes:
       aims_resource_provider:
         name: aims_resource_provider
         annotations:
@@ -11362,8 +11378,8 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsSystemResource
     slots:
+    - AimsSystemResource_aims_resource_type
     - aims_life_cycle_stages
-    - aimsSystemResource__aims_resource_type
     - aimsSystemResource__aims_resource_provider
     - aims_id
     - AimsRecordMixin_title
@@ -11396,8 +11412,8 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsSystemResource
     slots:
+    - AimsSystemResource_aims_resource_type
     - aims_life_cycle_stages
-    - aimsSystemResource__aims_resource_type
     - aimsSystemResource__aims_resource_provider
     - aims_id
     - AimsRecordMixin_title
@@ -11606,8 +11622,8 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsSystemResource
     slots:
+    - AimsSystemResource_aims_resource_type
     - aims_life_cycle_stages
-    - aimsSystemResource__aims_resource_type
     - aimsSystemResource__aims_resource_provider
     - aims_id
     - AimsRecordMixin_title
@@ -11652,8 +11668,8 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsSystemResource
     slots:
+    - AimsSystemResource_aims_resource_type
     - aims_life_cycle_stages
-    - aimsSystemResource__aims_resource_type
     - aimsSystemResource__aims_resource_provider
     - aims_id
     - AimsRecordMixin_title
@@ -11707,8 +11723,8 @@ classes:
     from_schema: https://w3id.org/lmodel/iso42001
     is_a: AimsSystemResource
     slots:
+    - AimsSystemResource_aims_resource_type
     - aims_life_cycle_stages
-    - aimsSystemResource__aims_resource_type
     - aimsSystemResource__aims_resource_provider
     - aims_id
     - AimsRecordMixin_title
@@ -12987,6 +13003,8 @@ classes:
         description: What the audit found, good and bad.
         range: AimsAuditFinding
         multivalued: true
+        inlined: true
+        inlined_as_list: true
       aims_audit_conclusion:
         name: aims_audit_conclusion
         description: The audit's overall conclusion.
@@ -13991,6 +14009,6 @@ classes:
     class_uri: iso42001:AimsConcernReport
 metamodel_version: 1.12.0
 source_file: iso42001.yaml
-source_file_date: '2026-11-05T09:48:21'
-source_file_size: 149316
+source_file_date: '2026-11-05T09:58:15'
+source_file_size: 149547
 

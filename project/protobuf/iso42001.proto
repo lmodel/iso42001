@@ -463,10 +463,10 @@ message AimsCompetenceRecord {
 }
 // A part of a system, and how it is joined to the rest.
 message AimsComponentResource {
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 1;
   // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
-  string aims_resource_type = 2;
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // Who provides the resource.
   AimsResourceProvider aims_resource_provider = 3;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
@@ -482,10 +482,10 @@ message AimsComponentResource {
 }
 // Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs.
 message AimsComputingResource {
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 1;
   // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
-  string aims_resource_type = 2;
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // Who provides the resource.
   AimsResourceProvider aims_resource_provider = 3;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
@@ -716,10 +716,10 @@ message AimsCustomerRelationship {
 }
 // Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged fit, and how long it is kept.
 message AimsDataResource {
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 1;
   // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
-  string aims_resource_type = 2;
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // Who provides the resource.
   AimsResourceProvider aims_resource_provider = 3;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
@@ -957,10 +957,10 @@ message AimsExcludedControl {
 }
 // People an AI system draws on: their skills and the work they do on it.
 message AimsHumanResource {
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 1;
   // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
-  string aims_resource_type = 2;
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // Who provides the resource.
   AimsResourceProvider aims_resource_provider = 3;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
@@ -2453,10 +2453,10 @@ message AimsSystemEvent {
 }
 // Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it.
 message AimsSystemResource {
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 1;
   // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
-  string aims_resource_type = 2;
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // Who provides the resource.
   AimsResourceProvider aims_resource_provider = 3;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
@@ -2558,10 +2558,10 @@ message AimsThirdPartyRelationship {
 }
 // A tool an AI system draws on, such as an algorithm, a model or a development tool.
 message AimsToolingResource {
-  // The stages of an AI system's life the record applies to.
-  repeated AimsLifecycleStage aims_life_cycle_stages = 1;
   // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
-  string aims_resource_type = 2;
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
   // Who provides the resource.
   AimsResourceProvider aims_resource_provider = 3;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.

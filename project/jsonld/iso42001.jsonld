@@ -2696,6 +2696,20 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "aims_resource_type",
+      "definition_uri": "https://w3id.org/lmodel/iso42001/aims_resource_type",
+      "description": "The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.",
+      "from_schema": "https://w3id.org/lmodel/iso42001",
+      "slot_uri": "https://w3id.org/lmodel/iso42001/aims_resource_type",
+      "designates_type": true,
+      "owner": "AimsSystemResource",
+      "domain_of": [
+        "AimsSystemResource"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "aims_responsible_role",
       "definition_uri": "https://w3id.org/lmodel/iso42001/aims_responsible_role",
       "description": "The role that answers for the record's activity or outcome.",
@@ -7310,21 +7324,6 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "aimsSystemResource__aims_resource_type",
-      "description": "The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.",
-      "from_schema": "https://w3id.org/lmodel/iso42001",
-      "slot_uri": "https://w3id.org/lmodel/iso42001/aims_resource_type",
-      "designates_type": true,
-      "alias": "aims_resource_type",
-      "owner": "AimsSystemResource",
-      "domain_of": [
-        "AimsSystemResource"
-      ],
-      "range": "string",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "aimsSystemResource__aims_resource_provider",
       "annotations": [
         {
@@ -9587,6 +9586,8 @@
       ],
       "range": "AimsAuditFinding",
       "multivalued": true,
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -11426,6 +11427,26 @@
       "is_usage_slot": true,
       "usage_slot_name": "aims_entry_annex_a_control",
       "range": "AimsAnnexAControl",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "AimsSystemResource_aims_resource_type",
+      "definition_uri": "https://w3id.org/lmodel/iso42001/aims_resource_type",
+      "description": "The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.",
+      "from_schema": "https://w3id.org/lmodel/iso42001",
+      "is_a": "aims_resource_type",
+      "domain": "AimsSystemResource",
+      "slot_uri": "https://w3id.org/lmodel/iso42001/aims_resource_type",
+      "designates_type": true,
+      "alias": "aims_resource_type",
+      "owner": "AimsSystemResource",
+      "domain_of": [
+        "AimsSystemResource"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "aims_resource_type",
+      "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     }
@@ -15106,8 +15127,8 @@
         "AimsRecordMixin"
       ],
       "slots": [
+        "AimsSystemResource_aims_resource_type",
         "aims_life_cycle_stages",
-        "aimsSystemResource__aims_resource_type",
         "aimsSystemResource__aims_resource_provider",
         "aims_id",
         "AimsRecordMixin_title",
@@ -15115,14 +15136,6 @@
       ],
       "slot_usage": {},
       "attributes": [
-        {
-          "name": "aims_resource_type",
-          "description": "The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.",
-          "designates_type": true,
-          "range": "string",
-          "required": true,
-          "@type": "SlotDefinition"
-        },
         {
           "name": "aims_resource_provider",
           "annotations": [
@@ -15157,8 +15170,8 @@
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
       "slots": [
+        "AimsSystemResource_aims_resource_type",
         "aims_life_cycle_stages",
-        "aimsSystemResource__aims_resource_type",
         "aimsSystemResource__aims_resource_provider",
         "aims_id",
         "AimsRecordMixin_title",
@@ -15206,8 +15219,8 @@
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
       "slots": [
+        "AimsSystemResource_aims_resource_type",
         "aims_life_cycle_stages",
-        "aimsSystemResource__aims_resource_type",
         "aimsSystemResource__aims_resource_provider",
         "aims_id",
         "AimsRecordMixin_title",
@@ -15529,8 +15542,8 @@
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
       "slots": [
+        "AimsSystemResource_aims_resource_type",
         "aims_life_cycle_stages",
-        "aimsSystemResource__aims_resource_type",
         "aimsSystemResource__aims_resource_provider",
         "aims_id",
         "AimsRecordMixin_title",
@@ -15596,8 +15609,8 @@
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
       "slots": [
+        "AimsSystemResource_aims_resource_type",
         "aims_life_cycle_stages",
-        "aimsSystemResource__aims_resource_type",
         "aimsSystemResource__aims_resource_provider",
         "aims_id",
         "AimsRecordMixin_title",
@@ -15678,8 +15691,8 @@
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
       "slots": [
+        "AimsSystemResource_aims_resource_type",
         "aims_life_cycle_stages",
-        "aimsSystemResource__aims_resource_type",
         "aimsSystemResource__aims_resource_provider",
         "aims_id",
         "AimsRecordMixin_title",
@@ -17416,6 +17429,8 @@
           "description": "What the audit found, good and bad.",
           "range": "AimsAuditFinding",
           "multivalued": true,
+          "inlined": true,
+          "inlined_as_list": true,
           "@type": "SlotDefinition"
         },
         {
@@ -18857,8 +18872,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "iso42001.yaml",
-  "source_file_date": "2026-11-05T09:48:21",
-  "source_file_size": 149316,
+  "source_file_date": "2026-11-05T09:58:15",
+  "source_file_size": 149547,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/iso42001.context.jsonld",

@@ -1238,8 +1238,6 @@ classes:
     attributes:
       aims_resource_provider:
         description: ''
-      aims_resource_type:
-        description: ''
   AimsTechnicalDocumentation:
     description: ''
     comments: []
@@ -1328,6 +1326,8 @@ slots:
   aims_objective_categories:
     description: ''
   aims_relevant_controls:
+    description: ''
+  aims_resource_type:
     description: ''
   aims_responsible_role:
     description: ''

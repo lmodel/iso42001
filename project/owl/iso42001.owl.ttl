@@ -3479,6 +3479,7 @@ iso42001:aims_resource_provider a owl:ObjectProperty ;
 	iso42001:annex_b_item "B.4.2" .
 iso42001:aims_resource_type a owl:DatatypeProperty ;
 	rdfs:label "aims_resource_type" ;
+	rdfs:range xsd:string ;
 	skos:definition "The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> .
 iso42001:aims_resources a owl:ObjectProperty ;

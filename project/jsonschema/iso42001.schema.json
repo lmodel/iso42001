@@ -486,7 +486,7 @@
                 "aims_audit_findings": {
                     "description": "What the audit found, good and bad.",
                     "items": {
-                        "type": "string"
+                        "$ref": "#/$defs/AimsAuditFinding"
                     },
                     "type": [
                         "array",

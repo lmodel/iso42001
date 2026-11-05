@@ -593,8 +593,8 @@ type AimsCompetenceRecord implements AimsRecordMixin, AimsDocumentControlMixin
 
 type AimsComponentResource
   {
-    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceType: String!
+    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceProvider: AimsResourceProvider
     aimsId: String!
     title: String!
@@ -605,8 +605,8 @@ type AimsComponentResource
 
 type AimsComputingResource
   {
-    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceType: String!
+    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceProvider: AimsResourceProvider
     aimsId: String!
     title: String!
@@ -737,8 +737,8 @@ type AimsCustomerRelationship
 
 type AimsDataResource
   {
-    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceType: String!
+    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceProvider: AimsResourceProvider
     aimsId: String!
     title: String!
@@ -870,8 +870,8 @@ type AimsExcludedControl
 
 type AimsHumanResource
   {
-    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceType: String!
+    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceProvider: AimsResourceProvider
     aimsId: String!
     title: String!
@@ -1698,8 +1698,8 @@ type AimsSystemEvent implements AimsRecordMixin
 
 type AimsSystemResource implements AimsRecordMixin
   {
-    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceType: String!
+    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceProvider: AimsResourceProvider
     aimsId: String!
     title: String!
@@ -1758,8 +1758,8 @@ type AimsThirdPartyRelationship implements AimsRecordMixin
 
 type AimsToolingResource
   {
-    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceType: String!
+    aimsLifeCycleStages: [AimsLifecycleStage]
     aimsResourceProvider: AimsResourceProvider
     aimsId: String!
     title: String!

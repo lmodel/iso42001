@@ -3063,9 +3063,9 @@ class AimsSystemResource(YAMLRoot):
             self.description = str(self.description)
 
         super().__post_init__(**kwargs)
-        if self._is_empty(self.unknown_aims_resource_type):
-            self.MissingRequiredField("unknown_aims_resource_type")
-        self.unknown_aims_resource_type = str(self.class_name)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
 
     def __new__(cls, *args, **kwargs):
@@ -3116,9 +3116,9 @@ class AimsComponentResource(AimsSystemResource):
             self.aims_component_integration = str(self.aims_component_integration)
 
         super().__post_init__(**kwargs)
-        if self._is_empty(self.unknown_aims_resource_type):
-            self.MissingRequiredField("unknown_aims_resource_type")
-        self.unknown_aims_resource_type = str(self.class_name)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -3244,9 +3244,9 @@ class AimsDataResource(AimsSystemResource):
             self.aims_data_classification = str(self.aims_data_classification)
 
         super().__post_init__(**kwargs)
-        if self._is_empty(self.unknown_aims_resource_type):
-            self.MissingRequiredField("unknown_aims_resource_type")
-        self.unknown_aims_resource_type = str(self.class_name)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -3292,9 +3292,9 @@ class AimsToolingResource(AimsSystemResource):
             self.aims_tool_purpose = str(self.aims_tool_purpose)
 
         super().__post_init__(**kwargs)
-        if self._is_empty(self.unknown_aims_resource_type):
-            self.MissingRequiredField("unknown_aims_resource_type")
-        self.unknown_aims_resource_type = str(self.class_name)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -3336,9 +3336,9 @@ class AimsComputingResource(AimsSystemResource):
             self.aims_computing_hardware_impact = str(self.aims_computing_hardware_impact)
 
         super().__post_init__(**kwargs)
-        if self._is_empty(self.unknown_aims_resource_type):
-            self.MissingRequiredField("unknown_aims_resource_type")
-        self.unknown_aims_resource_type = str(self.class_name)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -3382,9 +3382,9 @@ class AimsHumanResource(AimsSystemResource):
             self.aims_human_diversity = str(self.aims_human_diversity)
 
         super().__post_init__(**kwargs)
-        if self._is_empty(self.unknown_aims_resource_type):
-            self.MissingRequiredField("unknown_aims_resource_type")
-        self.unknown_aims_resource_type = str(self.class_name)
+        if self._is_empty(self.aims_resource_type):
+            self.MissingRequiredField("aims_resource_type")
+        self.aims_resource_type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -5329,7 +5329,7 @@ class AimsAudit(YAMLRoot):
     aims_audit_team: Optional[Union[str, list[str]]] = empty_list()
     aims_audit_auditees: Optional[Union[str, list[str]]] = empty_list()
     aims_audit_plan: Optional[Union[str, AimsDocumentedInformationAimsId]] = None
-    aims_audit_findings: Optional[Union[Union[str, AimsAuditFindingAimsId], list[Union[str, AimsAuditFindingAimsId]]]] = empty_list()
+    aims_audit_findings: Optional[Union[dict[Union[str, AimsAuditFindingAimsId], Union[dict, "AimsAuditFinding"]], list[Union[dict, "AimsAuditFinding"]]]] = empty_dict()
     aims_audit_conclusion: Optional[str] = None
     aims_audit_report_date: Optional[Union[str, XSDDate]] = None
     aims_audit_report_distribution: Optional[Union[str, list[str]]] = empty_list()
@@ -5406,9 +5406,7 @@ class AimsAudit(YAMLRoot):
         if self.aims_audit_plan is not None and not isinstance(self.aims_audit_plan, AimsDocumentedInformationAimsId):
             self.aims_audit_plan = AimsDocumentedInformationAimsId(self.aims_audit_plan)
 
-        if not isinstance(self.aims_audit_findings, list):
-            self.aims_audit_findings = [self.aims_audit_findings] if self.aims_audit_findings is not None else []
-        self.aims_audit_findings = [v if isinstance(v, AimsAuditFindingAimsId) else AimsAuditFindingAimsId(v) for v in self.aims_audit_findings]
+        self._normalize_inlined_as_list(slot_name="aims_audit_findings", slot_type=AimsAuditFinding, key_name="aims_id", keyed=True)
 
         if self.aims_audit_conclusion is not None and not isinstance(self.aims_audit_conclusion, str):
             self.aims_audit_conclusion = str(self.aims_audit_conclusion)
@@ -7679,6 +7677,9 @@ slots.title = Slot(uri=SCHEMA.name, name="title", curie=SCHEMA.curie('name'),
 slots.description = Slot(uri=SCHEMA.description, name="description", curie=SCHEMA.curie('description'),
                    model_uri=ISO42001.description, domain=None, range=Optional[str])
 
+slots.aims_resource_type = Slot(uri=ISO42001.aims_resource_type, name="aims_resource_type", curie=ISO42001.curie('aims_resource_type'),
+                   model_uri=ISO42001.aims_resource_type, domain=None, range=Optional[str])
+
 slots.aims_responsible_role = Slot(uri=ISO42001.aims_responsible_role, name="aims_responsible_role", curie=ISO42001.curie('aims_responsible_role'),
                    model_uri=ISO42001.aims_responsible_role, domain=None, range=Optional[Union[str, AimsRoleAimsId]])
 
@@ -8518,9 +8519,6 @@ slots.aimsAiSystem__aims_system_impact_assessments = Slot(uri=ISO42001.aims_syst
 slots.aimsAiSystem__aims_system_relationships = Slot(uri=ISO42001.aims_system_relationships, name="aimsAiSystem__aims_system_relationships", curie=ISO42001.curie('aims_system_relationships'),
                    model_uri=ISO42001.aimsAiSystem__aims_system_relationships, domain=None, range=Optional[Union[Union[str, AimsThirdPartyRelationshipAimsId], list[Union[str, AimsThirdPartyRelationshipAimsId]]]])
 
-slots.aimsSystemResource__aims_resource_type = Slot(uri=ISO42001.aims_resource_type, name="aimsSystemResource__aims_resource_type", curie=ISO42001.curie('aims_resource_type'),
-                   model_uri=ISO42001.aimsSystemResource__aims_resource_type, domain=None, range=str)
-
 slots.aimsSystemResource__aims_resource_provider = Slot(uri=ISO42001.aims_resource_provider, name="aimsSystemResource__aims_resource_provider", curie=ISO42001.curie('aims_resource_provider'),
                    model_uri=ISO42001.aimsSystemResource__aims_resource_provider, domain=None, range=Optional[Union[str, "AimsResourceProvider"]])
 
@@ -8930,7 +8928,7 @@ slots.aimsAudit__aims_audit_plan = Slot(uri=ISO42001.aims_audit_plan, name="aims
                    model_uri=ISO42001.aimsAudit__aims_audit_plan, domain=None, range=Optional[Union[str, AimsDocumentedInformationAimsId]])
 
 slots.aimsAudit__aims_audit_findings = Slot(uri=ISO42001.aims_audit_findings, name="aimsAudit__aims_audit_findings", curie=ISO42001.curie('aims_audit_findings'),
-                   model_uri=ISO42001.aimsAudit__aims_audit_findings, domain=None, range=Optional[Union[Union[str, AimsAuditFindingAimsId], list[Union[str, AimsAuditFindingAimsId]]]])
+                   model_uri=ISO42001.aimsAudit__aims_audit_findings, domain=None, range=Optional[Union[dict[Union[str, AimsAuditFindingAimsId], Union[dict, AimsAuditFinding]], list[Union[dict, AimsAuditFinding]]]])
 
 slots.aimsAudit__aims_audit_conclusion = Slot(uri=ISO42001.aims_audit_conclusion, name="aimsAudit__aims_audit_conclusion", curie=ISO42001.curie('aims_audit_conclusion'),
                    model_uri=ISO42001.aimsAudit__aims_audit_conclusion, domain=None, range=Optional[str])
@@ -9292,3 +9290,6 @@ slots.AimsIncludedControl_aims_implementation_state = Slot(uri=ISO42001.aims_imp
 
 slots.AimsExcludedControl_aims_entry_annex_a_control = Slot(uri=ISO42001.aims_entry_annex_a_control, name="AimsExcludedControl_aims_entry_annex_a_control", curie=ISO42001.curie('aims_entry_annex_a_control'),
                    model_uri=ISO42001.AimsExcludedControl_aims_entry_annex_a_control, domain=AimsExcludedControl, range=Union[str, "AimsAnnexAControl"])
+
+slots.AimsSystemResource_aims_resource_type = Slot(uri=ISO42001.aims_resource_type, name="AimsSystemResource_aims_resource_type", curie=ISO42001.curie('aims_resource_type'),
+                   model_uri=ISO42001.AimsSystemResource_aims_resource_type, domain=AimsSystemResource, range=str)

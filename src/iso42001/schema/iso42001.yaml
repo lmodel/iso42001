@@ -136,6 +136,15 @@ slots:
         It means what LOKF's description means and carries the same IRI, so lokf adapt
         folds it into LOKF's slot and a knowledge bundle reads one description key.
 
+  # A slot, not an attribute: the generated dataclasses cannot load a required
+  # designator that a class declares as an attribute.
+  aims_resource_type:
+    description: >-
+      The kind of resource: AimsComponentResource, AimsDataResource,
+      AimsToolingResource, AimsComputingResource or AimsHumanResource.
+    designates_type: true
+    range: string
+
   aims_responsible_role:
     description: The role that answers for the record's activity or outcome.
     range: AimsRole
@@ -2896,15 +2905,12 @@ classes:
     annotations:
       annex_a_control: A.4.2
     slots:
+      - aims_resource_type
       - aims_life_cycle_stages
-    attributes:
+    slot_usage:
       aims_resource_type:
-        description: >-
-          The kind of resource: AimsComponentResource, AimsDataResource,
-          AimsToolingResource, AimsComputingResource or AimsHumanResource.
-        designates_type: true
-        range: string
         required: true
+    attributes:
       aims_resource_provider:
         description: Who provides the resource.
         range: AimsResourceProvider
@@ -3723,6 +3729,8 @@ classes:
         description: What the audit found, good and bad.
         range: AimsAuditFinding
         multivalued: true
+        inlined: true
+        inlined_as_list: true
       aims_audit_conclusion:
         description: The audit's overall conclusion.
       aims_audit_report_date:
