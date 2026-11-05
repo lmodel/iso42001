@@ -1,0 +1,13 @@
+aims_id: acme:technical-triage
+title: Technical file for hospital IT teams
+aims_ai_systems:
+  - acme:system-triage
+aims_technical_doc_audiences:
+  - Hospital IT teams
+  - The notified body
+aims_technical_doc_form: A versioned PDF on the customer portal
+aims_technical_doc_contents:
+  - Run-time environment
+  - Limits on accuracy
+  - Test records
+aims_technical_doc_failure_plan: Roll back to the last version and tell hospitals.

@@ -1,0 +1,18 @@
+aims_id: acme:soa-2026
+title: Statement of Applicability, 2026
+aims_soa_entries:
+  - aims_entry_type: AimsIncludedControl
+    aims_entry_annex_a_control: a_5_4
+    aims_entry_justification: The tool affects patients directly.
+    aims_implementation_state: implemented
+    aims_responsible_role: acme:role-ai-lead
+    aims_included_control: acme:control-impact
+    aims_included_risks:
+      - acme:risk-age-bias
+    aims_included_evidence: The assessment of February 2026
+    aims_ai_systems:
+      - acme:system-triage
+  - aims_entry_type: AimsExcludedControl
+    aims_entry_annex_a_control: a_10_3
+    aims_entry_justification: Acme buys no AI components, so the risk assessment found no
+      need.

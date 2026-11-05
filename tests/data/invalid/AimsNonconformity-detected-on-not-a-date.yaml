@@ -1,0 +1,5 @@
+# Fails at: /aims_nonconformity_detected_on
+# Invalid: A detection date is a date.
+aims_id: acme:x
+title: A record
+aims_nonconformity_detected_on: May

@@ -1,0 +1,16 @@
+aims_id: acme:org
+title: Acme Clinical Analytics Ltd
+aims_organization_legal_name: Acme Clinical Analytics Limited
+aims_organization_kind: company
+aims_organization_sectors:
+  - health
+aims_organization_employee_count: 240
+aims_organization_jurisdictions:
+  - Ireland
+  - European Union
+aims_organization_ai_roles:
+  - ai_provider
+  - ai_developer
+aims_organization_pii_roles:
+  - pii_processor
+aims_organization_climate_change_relevant: false

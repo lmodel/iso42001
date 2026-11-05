@@ -1,0 +1,18 @@
+aims_id: acme:nonconformity-1
+title: A release skipped its impact review
+aims_cited_clauses:
+  - clause_8_1
+aims_cited_annex_a_controls:
+  - a_6_2_5
+aims_nonconformity_source: Internal audit
+aims_nonconformity_detected_on: '2026-05-12'
+aims_nonconformity_detected_by: Sam Example
+aims_nonconformity_requirement: Our release procedure, step 4
+aims_nonconformity_immediate_actions:
+  - The review was held the same week
+aims_nonconformity_consequences: No harm found on the affected cases.
+aims_nonconformity_root_cause: The gate could be skipped by hand.
+aims_nonconformity_similar_check: Other releases were checked; none skipped it.
+aims_nonconformity_status: closed
+aims_nonconformity_closure_date: '2026-07-01'
+aims_nonconformity_closure_evidence: Change record 77

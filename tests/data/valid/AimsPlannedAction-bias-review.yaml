@@ -1,0 +1,11 @@
+aims_id: acme:action-bias-review
+title: Quarterly bias review
+aims_responsible_role: acme:role-ai-lead
+aims_ai_systems:
+  - acme:system-triage
+aims_planned_action_risks:
+  - acme:risk-age-bias
+aims_planned_action_opportunities:
+  - Earlier triage for older patients
+aims_planned_action_integration: It runs as a gate in the release process.
+aims_planned_action_effectiveness: The gap falls quarter on quarter.

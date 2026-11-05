@@ -1,0 +1,6 @@
+# Fails at: /aims_party_ai_roles/0
+# Invalid: No such AI role.
+aims_id: acme:x
+title: A record
+aims_party_ai_roles:
+  - stakeholder

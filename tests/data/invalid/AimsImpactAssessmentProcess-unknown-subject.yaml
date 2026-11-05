@@ -1,0 +1,6 @@
+# Fails at: /aims_impact_process_subjects/0
+# Invalid: No such subject.
+aims_id: acme:x
+title: A record
+aims_impact_process_subjects:
+  - customers

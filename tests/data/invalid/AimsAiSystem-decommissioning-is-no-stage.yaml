@@ -1,0 +1,6 @@
+# Fails at: /aims_system_log_stages/0
+# Invalid: ISO/IEC 22989 calls the last stage retirement.
+aims_id: acme:x
+title: A record
+aims_system_log_stages:
+  - decommissioning

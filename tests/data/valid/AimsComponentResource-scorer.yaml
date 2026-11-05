@@ -1,0 +1,8 @@
+aims_id: acme:component-scorer
+title: Scoring service
+aims_resource_type: AimsComponentResource
+aims_life_cycle_stages:
+  - deployment
+aims_resource_provider: organization
+aims_component_kind: Software service
+aims_component_integration: Called by the worklist over a local interface.

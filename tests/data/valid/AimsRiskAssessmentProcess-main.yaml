@@ -1,0 +1,14 @@
+aims_id: acme:process-risk
+title: AI risk assessment process
+aims_risk_criteria:
+  - A risk rated high or above is not acceptable untreated
+aims_risk_policy_alignment: Criteria follow the AI policy and the objectives.
+aims_risk_comparability: One scale, one template and one reviewer panel.
+aims_risk_method: Workshop with clinical and technical staff
+aims_risk_likelihood_scale: Five points, rare to almost certain
+aims_risk_consequence_scale: Five points, negligible to severe
+aims_risk_prioritization: Highest level first, then earliest deadline
+aims_risk_assessment_interval: P6M
+aims_risk_assessment_triggers:
+  - A new model version
+  - A new customer group

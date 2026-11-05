@@ -1,0 +1,5 @@
+# Fails at: /aims_entry_justification
+# Invalid: An exclusion says why.
+aims_entry_type: AimsExcludedControl
+aims_entry_annex_a_control: a_10_3
+aims_entry_justification: ' '

@@ -1,0 +1,13 @@
+aims_id: acme:assessment-2026-h1
+title: Risk assessment, first half of 2026
+aims_ai_systems:
+  - acme:system-triage
+aims_assessment_scope: The triage tool
+aims_assessment_date: '2026-03-02'
+aims_assessment_assessor: Dana Example
+aims_assessment_risks:
+  - acme:risk-age-bias
+aims_assessment_impact_assessments:
+  - acme:impact-triage-2026
+aims_assessment_summary: One high risk found.
+aims_assessment_next_date: '2026-09-01'

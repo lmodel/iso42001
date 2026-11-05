@@ -1,0 +1,13 @@
+aims_id: acme:supplier-labels
+title: Labelling supplier
+aims_relationship_type: AimsSupplierRelationship
+aims_relationship_party: Example Labels Ltd
+aims_supplier_provides:
+  - Labels for training images
+aims_supplier_risk: medium
+aims_supplier_requirements:
+  - Two readers per image
+aims_supplier_monitoring: A sample of labels is rechecked monthly.
+aims_supplier_integration: Labels arrive as signed batches.
+aims_supplier_corrective_actions:
+  - Retrain readers after the March sample

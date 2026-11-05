@@ -1,0 +1,28 @@
+aims_id: acme:impact-triage-2026
+title: Impact assessment of the triage tool, 2026
+aims_ai_systems:
+  - acme:system-triage
+aims_impact_date: '2026-02-20'
+aims_impact_assessor: Dana Example
+aims_impact_intended_use: Ordering cases for clinicians to read
+aims_impact_foreseeable_misuse: Reading the score as a diagnosis
+aims_impact_technical_context: Hospital network, on site
+aims_impact_societal_context: Public hospitals under staff pressure
+aims_impact_jurisdictions:
+  - Ireland
+aims_impact_demographic_groups:
+  - Patients over 75
+aims_impact_human_role: A clinician reads every case and may overrule the order.
+aims_impact_failures:
+  - 'The tool is down: cases fall back to arrival order'
+aims_impact_workforce: Radiologists train for one day.
+aims_impact_findings:
+  - aims_identified_impact_subject: groups_of_individuals
+    aims_identified_impact_area: fairness
+    aims_identified_impact_direction: negative
+    aims_identified_impact_text: Older patients wait longer when the tool misses them.
+    aims_identified_impact_mitigation:
+      - A clinician reviews each low score for patients over 75
+aims_impact_shared_with:
+  - acme:party-hospitals
+aims_impact_next_date: '2027-02-20'

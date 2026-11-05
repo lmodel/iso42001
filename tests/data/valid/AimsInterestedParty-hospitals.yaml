@@ -1,0 +1,11 @@
+aims_id: acme:party-hospitals
+title: Partner hospitals
+aims_party_category: customer
+aims_party_ai_roles:
+  - ai_customer
+aims_party_relationship: They buy triage software from Acme.
+aims_party_requirements:
+  - Clear limits on when the triage tool may be used
+aims_party_addressed_requirements:
+  - Clear limits on when the triage tool may be used
+aims_party_contact: clinical-liaison@example.org

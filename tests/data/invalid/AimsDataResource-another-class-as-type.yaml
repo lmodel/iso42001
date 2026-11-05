@@ -1,0 +1,5 @@
+# Fails at: /aims_resource_type
+# Invalid: The designator names the class.
+aims_id: acme:x
+title: A record
+aims_resource_type: AimsToolingResource

@@ -1,0 +1,7 @@
+# Fails at: /aims_audit_standards/0
+# Invalid: Annex D names no such standard.
+aims_id: acme:x
+title: A record
+aims_audit_type: first_party
+aims_audit_standards:
+  - iso_31000

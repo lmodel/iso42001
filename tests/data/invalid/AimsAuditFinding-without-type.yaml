@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: A finding says what kind it is.
+aims_id: acme:x
+title: A record

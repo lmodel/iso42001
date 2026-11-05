@@ -1,0 +1,6 @@
+# Fails at: /aims_roles/0
+# Invalid: A record has an identifier.
+aims_id: acme:aims
+title: A record
+aims_roles:
+  - title: A role

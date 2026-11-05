@@ -1,0 +1,5 @@
+# Fails at: /aims_objective_target_date
+# Invalid: A target date is a date.
+aims_id: acme:x
+title: A record
+aims_objective_target_date: next year

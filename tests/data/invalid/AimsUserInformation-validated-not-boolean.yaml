@@ -1,0 +1,5 @@
+# Fails at: /aims_user_information_validated
+# Invalid: It is yes or no.
+aims_id: acme:x
+title: A record
+aims_user_information_validated: checked

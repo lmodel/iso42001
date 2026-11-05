@@ -1,0 +1,7 @@
+# Fails at: /aims_cited_clauses/0
+# Invalid: A clause is cited by its value name, not its number.
+aims_id: acme:x
+title: A record
+aims_finding_type: observation
+aims_cited_clauses:
+  - '8.1'

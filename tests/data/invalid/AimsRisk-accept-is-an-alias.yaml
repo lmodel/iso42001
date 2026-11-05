@@ -1,0 +1,5 @@
+# Fails at: /aims_risk_treatment_option
+# Invalid: accept is an alias of retain, and data writes the value.
+aims_id: acme:x
+title: A record
+aims_risk_treatment_option: accept

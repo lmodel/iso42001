@@ -1,0 +1,26 @@
+aims_id: acme:policy-ai
+title: Acme AI policy
+aims_cited_clauses:
+  - clause_5_2
+aims_cited_annex_a_controls:
+  - a_2_2
+aims_policy_statement: Acme builds AI to help clinicians, who stay in charge.
+aims_policy_objectives_framework: Each year the board sets objectives under this policy.
+aims_policy_commitments:
+  - Meet the rules that apply to us
+  - Keep making the system better
+aims_policy_principles:
+  - A clinician can always overrule the tool
+aims_policy_exceptions_process: The AI lead records and approves any departure.
+aims_policy_related_policies:
+  - Information security policy
+aims_policy_communication_date: '2026-02-01'
+aims_policy_availability: Published on the customer portal.
+aims_policy_review_role: acme:role-ai-lead
+aims_policy_review_interval: P1Y
+aims_document_reference: POL-AI-01
+aims_document_version: '2'
+aims_document_format: English, PDF
+aims_document_medium: electronic
+aims_document_retention: P7Y
+aims_document_disposition: Archived, then deleted.

@@ -1,0 +1,6 @@
+# Fails at: /aims_impact_findings/0
+# Invalid: An impact says who it falls on.
+aims_id: acme:x
+title: A record
+aims_impact_findings:
+  - aims_identified_impact_text: Longer waits

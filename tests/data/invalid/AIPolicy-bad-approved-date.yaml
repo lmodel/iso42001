@@ -1,3 +1,0 @@
-id: iso42001:policy-bad-date
-name: Policy With Invalid Approved Date
-approved_date: not-a-date

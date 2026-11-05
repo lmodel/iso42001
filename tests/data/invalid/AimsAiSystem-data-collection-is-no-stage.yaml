@@ -1,0 +1,5 @@
+# Fails at: /aims_system_life_cycle_stage
+# Invalid: ISO/IEC 22989 has eight stages, and this is not one.
+aims_id: acme:x
+title: A record
+aims_system_life_cycle_stage: data_collection_and_preparation

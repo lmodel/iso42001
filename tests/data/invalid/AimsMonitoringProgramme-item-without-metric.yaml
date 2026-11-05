@@ -1,0 +1,6 @@
+# Fails at: /aims_monitoring_items/0
+# Invalid: An item says what is measured.
+aims_id: acme:x
+title: A record
+aims_monitoring_items:
+  - aims_monitoring_method: Sampling

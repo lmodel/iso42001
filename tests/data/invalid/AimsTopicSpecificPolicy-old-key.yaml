@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: The key carries the prefix, and the class is closed.
+aims_id: acme:x
+title: A record
+topic_policy_topic: Impacts

@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: An inclusion names an Annex A control, one of the organization's, or both.
+aims_entry_type: AimsIncludedControl
+aims_entry_justification: Needed.
+aims_implementation_state: planned

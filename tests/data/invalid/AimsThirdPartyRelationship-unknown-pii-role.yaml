@@ -1,0 +1,5 @@
+# Fails at: /aims_relationship_pii_role
+# Invalid: No such personal data role.
+aims_id: acme:x
+title: A record
+aims_relationship_pii_role: pii_owner

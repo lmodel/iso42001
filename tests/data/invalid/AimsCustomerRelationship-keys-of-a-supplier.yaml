@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: Each kind of relationship holds its own keys.
+aims_id: acme:x
+title: A record
+aims_supplier_risk: low

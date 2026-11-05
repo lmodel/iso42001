@@ -1,0 +1,6 @@
+# Fails at: /aims_communication_items/0
+# Invalid: A communication says what it is about.
+aims_id: acme:x
+title: A record
+aims_communication_items:
+  - aims_communication_method: Portal

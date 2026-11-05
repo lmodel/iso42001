@@ -1,0 +1,4 @@
+# Fails at: /title
+# Invalid: A title holds more than white space.
+aims_id: acme:x
+title: '   '

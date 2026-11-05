@@ -1,0 +1,14 @@
+aims_id: acme:role-ai-lead
+title: AI management lead
+aims_role_category: management
+aims_role_areas:
+  - risk management
+  - human oversight
+aims_role_responsibilities:
+  - Run the management system
+aims_role_authorities:
+  - Stop a release that fails its criteria
+aims_role_ensures_conformity: true
+aims_role_reports_performance: true
+aims_role_holders:
+  - Dana Example

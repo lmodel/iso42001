@@ -1,0 +1,5 @@
+# Fails at: /aims_organization_climate_change_relevant
+# Invalid: It is yes or no.
+aims_id: acme:x
+title: A record
+aims_organization_climate_change_relevant: maybe

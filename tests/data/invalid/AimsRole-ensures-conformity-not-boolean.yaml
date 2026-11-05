@@ -1,0 +1,5 @@
+# Fails at: /aims_role_ensures_conformity
+# Invalid: It is yes or no.
+aims_id: acme:x
+title: A record
+aims_role_ensures_conformity: 'yes'

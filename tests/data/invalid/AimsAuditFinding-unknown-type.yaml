@@ -1,0 +1,5 @@
+# Fails at: /aims_finding_type
+# Invalid: No such kind of finding.
+aims_id: acme:x
+title: A record
+aims_finding_type: remark

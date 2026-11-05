@@ -1,0 +1,5 @@
+# Fails at: /aims_relationship_type
+# Invalid: The designator names the class.
+aims_id: acme:x
+title: A record
+aims_relationship_type: AimsPartnerRelationship

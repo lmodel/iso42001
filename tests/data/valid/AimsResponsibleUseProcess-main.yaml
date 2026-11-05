@@ -1,0 +1,11 @@
+aims_id: acme:process-use
+title: How we use AI systems
+aims_ai_systems:
+  - acme:system-triage
+aims_use_approvals:
+  - AI management lead
+aims_use_costs: Yearly licence and monitoring time
+aims_use_sourcing_requirements:
+  - Supplier documents limits and test results
+aims_use_legal_requirements:
+  - EU medical device rules

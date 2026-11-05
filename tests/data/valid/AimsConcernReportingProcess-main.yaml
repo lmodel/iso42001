@@ -1,0 +1,10 @@
+aims_id: acme:process-concerns
+title: Raising concerns
+aims_concern_process_confidentiality:
+  - A form that asks for no name
+aims_concern_process_audience: Staff and contractors, from day one
+aims_concern_process_investigators: The quality lead, who may see any record
+aims_concern_process_escalation: To the board within five days
+aims_concern_process_reprisal_protection: Those who report cannot be moved or dismissed for
+  it.
+aims_concern_process_response_time: Ten working days

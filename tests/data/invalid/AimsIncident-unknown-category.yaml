@@ -1,0 +1,5 @@
+# Fails at: /aims_incident_category
+# Invalid: No such category.
+aims_id: acme:x
+title: A record
+aims_incident_category: outage

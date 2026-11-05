@@ -1,0 +1,5 @@
+# Fails at: /aims_impact_date
+# Invalid: An assessment date is a date.
+aims_id: acme:x
+title: A record
+aims_impact_date: February

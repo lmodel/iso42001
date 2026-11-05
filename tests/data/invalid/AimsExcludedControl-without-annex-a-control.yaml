@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: An exclusion names the Annex A control it leaves out.
+aims_entry_type: AimsExcludedControl
+aims_entry_justification: Not needed.

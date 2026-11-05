@@ -1,0 +1,14 @@
+aims_id: acme:incident-plan-triage
+title: Telling hospitals about incidents
+aims_ai_systems:
+  - acme:system-triage
+aims_incident_plan_categories:
+  - ai_system
+  - privacy
+aims_incident_plan_timeline: Within one working day
+aims_incident_plan_authorities:
+  - The data protection authority
+aims_incident_plan_details:
+  - What happened
+  - Which cases it touched
+aims_incident_plan_integration: It runs under the security incident process.

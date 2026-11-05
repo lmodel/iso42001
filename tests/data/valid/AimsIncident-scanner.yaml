@@ -1,0 +1,28 @@
+aims_id: acme:incident-1
+title: Scores wrong for one scanner
+aims_event_type: AimsIncident
+aims_ai_systems:
+  - acme:system-triage
+aims_event_occurred_at: '2026-09-10T14:00:00Z'
+aims_event_source: Monitoring
+aims_event_assessment: Urgent cases sank down the list.
+aims_incident_category: ai_system
+aims_incident_threats:
+  - other
+aims_incident_severity: high
+aims_incident_impact_areas:
+  - safety_and_health
+aims_incident_detection_method: The drift alert
+aims_incident_response_actions:
+  - Fell back to arrival order
+aims_incident_recovery_actions:
+  - Rolled back the model
+aims_incident_root_cause: A new scanner gave darker images.
+aims_incident_lessons_learned:
+  - Test each new scanner first
+aims_incident_notification_required: true
+aims_incident_notifications:
+  - Hospital IT, the same day
+aims_incident_corrective_actions:
+  - acme:corrective-gate
+aims_incident_closed_at: '2026-09-14T12:00:00Z'

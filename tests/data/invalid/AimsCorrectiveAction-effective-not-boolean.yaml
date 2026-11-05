@@ -1,0 +1,5 @@
+# Fails at: /aims_action_effective
+# Invalid: It is yes or no.
+aims_id: acme:x
+title: A record
+aims_action_effective: mostly

@@ -1,0 +1,17 @@
+aims_id: acme:competence-dana
+title: Competence of Dana Example
+aims_competence_person: Dana Example
+aims_competence_role: acme:role-ai-lead
+aims_competence_required:
+  - Risk management for AI
+aims_competence_education:
+  - MSc in data science
+aims_competence_training:
+  - Lead auditor course
+aims_competence_experience:
+  - Five years in medical software
+aims_competence_assessment_date: '2026-01-15'
+aims_competence_gaps:
+  - Medical device regulation
+aims_competence_actions:
+  - Course booked; effect checked in June

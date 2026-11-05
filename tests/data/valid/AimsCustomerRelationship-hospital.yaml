@@ -1,0 +1,10 @@
+aims_id: acme:customer-st-example
+title: St Example's Hospital
+aims_relationship_type: AimsCustomerRelationship
+aims_relationship_party: St Example's Hospital
+aims_customer_expectations:
+  - Urgent reads within the hour
+aims_customer_agreement: Licence 44
+aims_customer_responsibility_split: Acme answers for the model; the hospital for how it reads.
+aims_customer_communicated_limits:
+  - Chest X-rays of adults only

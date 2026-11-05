@@ -1,0 +1,6 @@
+# Fails at: /
+# Invalid: Clause 9.3.2 lists no such input, and the class is closed.
+aims_id: acme:x
+title: A record
+aims_review_held_on: '2026-06-15'
+aims_review_risk_assessment_results: None

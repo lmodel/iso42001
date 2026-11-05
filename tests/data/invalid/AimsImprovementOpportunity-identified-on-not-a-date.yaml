@@ -1,0 +1,5 @@
+# Fails at: /aims_improvement_identified_on
+# Invalid: An identification date is a date.
+aims_id: acme:x
+title: A record
+aims_improvement_identified_on: June

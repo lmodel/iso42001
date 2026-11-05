@@ -1,0 +1,6 @@
+aims_identified_impact_subject: groups_of_individuals
+aims_identified_impact_area: fairness
+aims_identified_impact_direction: negative
+aims_identified_impact_text: Older patients wait longer when the tool misses them.
+aims_identified_impact_mitigation:
+  - A clinician reviews each low score for patients over 75

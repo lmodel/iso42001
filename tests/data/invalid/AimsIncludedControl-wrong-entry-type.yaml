@@ -1,0 +1,6 @@
+# Fails at: /aims_entry_type
+# Invalid: The designator names the class.
+aims_entry_type: AimsExcludedControl
+aims_entry_annex_a_control: a_5_4
+aims_entry_justification: Needed.
+aims_implementation_state: planned

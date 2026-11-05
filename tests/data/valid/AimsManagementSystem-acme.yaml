@@ -1,0 +1,875 @@
+aims_id: acme:aims
+title: Acme's AI management system
+aims_organization:
+  aims_id: acme:org
+  title: Acme Clinical Analytics Ltd
+  aims_organization_legal_name: Acme Clinical Analytics Limited
+  aims_organization_kind: company
+  aims_organization_sectors:
+    - health
+  aims_organization_employee_count: 240
+  aims_organization_jurisdictions:
+    - Ireland
+    - European Union
+  aims_organization_ai_roles:
+    - ai_provider
+    - ai_developer
+  aims_organization_pii_roles:
+    - pii_processor
+  aims_organization_climate_change_relevant: false
+aims_top_management: The executive team
+aims_governing_body: The board
+aims_leadership_evidence:
+  - Board minutes that fund the system
+aims_scope: The triage tool and the teams that build and run it
+aims_scope_boundaries:
+  - Stops at the hospital network
+aims_scope_applicability:
+  - All building and release work on the tool
+aims_processes: Shown on the process map
+aims_internal_issues:
+  - A small clinical team
+aims_external_issues:
+  - New rules for medical devices
+aims_planned_changes:
+  - Add a second AI system next year
+aims_external_services:
+  - Labelling
+aims_integrated_standards:
+  - iso_iec_27001
+aims_interested_parties:
+  - aims_id: acme:party-hospitals
+    title: Partner hospitals
+    aims_party_category: customer
+    aims_party_ai_roles:
+      - ai_customer
+    aims_party_relationship: They buy triage software from Acme.
+    aims_party_requirements:
+      - Clear limits on when the triage tool may be used
+    aims_party_addressed_requirements:
+      - Clear limits on when the triage tool may be used
+    aims_party_contact: clinical-liaison@example.org
+aims_policy:
+  aims_id: acme:policy-ai
+  title: Acme AI policy
+  aims_cited_clauses:
+    - clause_5_2
+  aims_cited_annex_a_controls:
+    - a_2_2
+  aims_policy_statement: Acme builds AI to help clinicians, who stay in charge.
+  aims_policy_objectives_framework: Each year the board sets objectives under this policy.
+  aims_policy_commitments:
+    - Meet the rules that apply to us
+    - Keep making the system better
+  aims_policy_principles:
+    - A clinician can always overrule the tool
+  aims_policy_exceptions_process: The AI lead records and approves any departure.
+  aims_policy_related_policies:
+    - Information security policy
+  aims_policy_communication_date: '2026-02-01'
+  aims_policy_availability: Published on the customer portal.
+  aims_policy_review_role: acme:role-ai-lead
+  aims_policy_review_interval: P1Y
+  aims_document_reference: POL-AI-01
+  aims_document_version: '2'
+  aims_document_format: English, PDF
+  aims_document_medium: electronic
+  aims_document_retention: P7Y
+  aims_document_disposition: Archived, then deleted.
+aims_topic_specific_policies:
+  - aims_id: acme:policy-impact
+    title: Policy on assessing impacts
+    aims_cited_annex_a_controls:
+      - a_5_2
+    aims_relevant_controls:
+      - acme:control-impact
+    aims_topic_policy_topic: Assessing what our systems do to people
+    aims_topic_policy_parent: acme:policy-ai
+    aims_topic_policy_audience: Product and clinical staff
+aims_roles:
+  - aims_id: acme:role-ai-lead
+    title: AI management lead
+    aims_role_category: management
+    aims_role_areas:
+      - risk management
+      - human oversight
+    aims_role_responsibilities:
+      - Run the management system
+    aims_role_authorities:
+      - Stop a release that fails its criteria
+    aims_role_ensures_conformity: true
+    aims_role_reports_performance: true
+    aims_role_holders:
+      - Dana Example
+  - aims_id: acme:role-clinical-reviewer
+    title: Clinical reviewer
+    aims_role_reports_to: acme:role-ai-lead
+    aims_role_responsibilities:
+      - Check what the triage tool suggests
+aims_objectives:
+  - aims_id: acme:objective-fairness
+    title: Even triage across age groups
+    aims_responsible_role: acme:role-ai-lead
+    aims_relevant_controls:
+      - acme:control-impact
+    aims_objective_categories:
+      - fairness
+    aims_objective_purpose: responsible_development
+    aims_objective_statement: Keep the gap in missed cases across age groups under 2%.
+    aims_objective_target: 2%
+    aims_objective_metric: Gap in false negative rate between age bands
+    aims_objective_target_date: '2026-12-31'
+    aims_objective_risks:
+      - acme:risk-age-bias
+    aims_objective_action_plan: Rebalance the training data each quarter.
+    aims_objective_resources: One data scientist, half time
+    aims_objective_evaluation: Measured on the held-back test set.
+    aims_objective_communication: Shared at the quarterly all-hands.
+aims_planned_actions:
+  - aims_id: acme:action-bias-review
+    title: Quarterly bias review
+    aims_responsible_role: acme:role-ai-lead
+    aims_ai_systems:
+      - acme:system-triage
+    aims_planned_action_risks:
+      - acme:risk-age-bias
+    aims_planned_action_opportunities:
+      - Earlier triage for older patients
+    aims_planned_action_integration: It runs as a gate in the release process.
+    aims_planned_action_effectiveness: The gap falls quarter on quarter.
+aims_risk_assessment_process:
+  aims_id: acme:process-risk
+  title: AI risk assessment process
+  aims_risk_criteria:
+    - A risk rated high or above is not acceptable untreated
+  aims_risk_policy_alignment: Criteria follow the AI policy and the objectives.
+  aims_risk_comparability: One scale, one template and one reviewer panel.
+  aims_risk_method: Workshop with clinical and technical staff
+  aims_risk_likelihood_scale: Five points, rare to almost certain
+  aims_risk_consequence_scale: Five points, negligible to severe
+  aims_risk_prioritization: Highest level first, then earliest deadline
+  aims_risk_assessment_interval: P6M
+  aims_risk_assessment_triggers:
+    - A new model version
+    - A new customer group
+aims_risk_treatment_process:
+  aims_id: acme:process-treatment
+  title: AI risk treatment process
+  aims_treatment_options_guidance: Modify where a control can bring the risk under the line.
+  aims_treatment_control_selection: Start from the failure the risk describes.
+  aims_treatment_annex_a_comparison: Each treatment is checked against the Annex A list.
+  aims_treatment_additional_controls: We add our own where the list has no match.
+  aims_treatment_annex_b_use: The control owner reads the matching guidance.
+  aims_treatment_soa_template: SOA-TEMPLATE-02
+  aims_treatment_approval_workflow: The executive team signs each plan.
+aims_impact_assessment_process:
+  aims_id: acme:process-impact
+  title: AI system impact assessment process
+  aims_impact_process_triggers:
+    - A new intended use
+    - A change in how much the tool does alone
+  aims_impact_process_interval: P1Y
+  aims_impact_process_steps:
+    - Find
+    - Analyse
+    - Evaluate
+    - Treat
+    - Report
+  aims_impact_process_assessors: A clinician and a data scientist
+  aims_impact_process_use: Results feed the risk register and the release gate.
+  aims_impact_process_subjects:
+    - individuals
+    - groups_of_individuals
+    - societies
+  aims_impact_process_areas:
+    - fairness
+    - safety_and_health
+  aims_impact_process_retention: P10Y
+aims_risk_assessments:
+  - aims_id: acme:assessment-2026-h1
+    title: Risk assessment, first half of 2026
+    aims_ai_systems:
+      - acme:system-triage
+    aims_assessment_scope: The triage tool
+    aims_assessment_date: '2026-03-02'
+    aims_assessment_assessor: Dana Example
+    aims_assessment_risks:
+      - acme:risk-age-bias
+    aims_assessment_impact_assessments:
+      - acme:impact-triage-2026
+    aims_assessment_summary: One high risk found.
+    aims_assessment_next_date: '2026-09-01'
+aims_risks:
+  - aims_id: acme:risk-age-bias
+    title: Triage misses cases in older patients
+    aims_ai_systems:
+      - acme:system-triage
+    aims_risk_source_categories:
+      - machine_learning
+    aims_risk_source: Too few older patients in the training data
+    aims_risk_objectives:
+      - acme:objective-fairness
+    aims_risk_consequences_for_organization: Lost contracts and regulatory action
+    aims_risk_consequences_for_individuals: Delayed care
+    aims_risk_consequences_for_societies: Less trust in screening
+    aims_risk_owner: Dana Example
+    aims_risk_likelihood: possible
+    aims_risk_consequence: major
+    aims_risk_inherent_level: high
+    aims_risk_existing_controls:
+      - acme:control-impact
+    aims_risk_residual_level: medium
+    aims_risk_acceptable: false
+    aims_risk_treatment_option: modify
+    aims_risk_impact_assessments:
+      - acme:impact-triage-2026
+aims_risk_treatment_plans:
+  - aims_id: acme:plan-age-bias
+    title: Plan for the age bias risk
+    aims_implementation_state: in_progress
+    aims_plan_risks:
+      - acme:risk-age-bias
+    aims_plan_actions:
+      - Rebalance the training data
+    aims_plan_controls:
+      - acme:control-impact
+    aims_plan_approver: Executive team
+    aims_plan_residual_risk_acceptance: Accepted at medium on 2026-03-20
+    aims_plan_effectiveness: Gap fell from 5% to 3% in the first quarter.
+    aims_plan_completion_date: '2026-12-31'
+aims_impact_assessments:
+  - aims_id: acme:impact-triage-2026
+    title: Impact assessment of the triage tool, 2026
+    aims_ai_systems:
+      - acme:system-triage
+    aims_impact_date: '2026-02-20'
+    aims_impact_assessor: Dana Example
+    aims_impact_intended_use: Ordering cases for clinicians to read
+    aims_impact_foreseeable_misuse: Reading the score as a diagnosis
+    aims_impact_technical_context: Hospital network, on site
+    aims_impact_societal_context: Public hospitals under staff pressure
+    aims_impact_jurisdictions:
+      - Ireland
+    aims_impact_demographic_groups:
+      - Patients over 75
+    aims_impact_human_role: A clinician reads every case and may overrule the order.
+    aims_impact_failures:
+      - 'The tool is down: cases fall back to arrival order'
+    aims_impact_workforce: Radiologists train for one day.
+    aims_impact_findings:
+      - aims_identified_impact_subject: groups_of_individuals
+        aims_identified_impact_area: fairness
+        aims_identified_impact_direction: negative
+        aims_identified_impact_text: Older patients wait longer when the tool misses them.
+        aims_identified_impact_mitigation:
+          - A clinician reviews each low score for patients over 75
+    aims_impact_shared_with:
+      - acme:party-hospitals
+    aims_impact_next_date: '2027-02-20'
+aims_statement_of_applicability:
+  aims_id: acme:soa-2026
+  title: Statement of Applicability, 2026
+  aims_soa_entries:
+    - aims_entry_type: AimsIncludedControl
+      aims_entry_annex_a_control: a_5_4
+      aims_entry_justification: The tool affects patients directly.
+      aims_implementation_state: implemented
+      aims_responsible_role: acme:role-ai-lead
+      aims_included_control: acme:control-impact
+      aims_included_risks:
+        - acme:risk-age-bias
+      aims_included_evidence: The assessment of February 2026
+      aims_ai_systems:
+        - acme:system-triage
+    - aims_entry_type: AimsExcludedControl
+      aims_entry_annex_a_control: a_10_3
+      aims_entry_justification: Acme buys no AI components, so the risk assessment found no
+        need.
+aims_controls:
+  - aims_id: acme:control-impact
+    title: Impact review before each release
+    aims_implementation_state: implemented
+    aims_cited_annex_a_controls:
+      - a_5_2
+      - a_5_4
+    aims_ai_systems:
+      - acme:system-triage
+    aims_objective_categories:
+      - fairness
+    aims_risk_source_categories:
+      - machine_learning
+    aims_control_area: impact_assessment
+    aims_control_text: No release goes out until its impact review is signed.
+    aims_control_owner: Dana Example
+    aims_control_implementation_date: '2026-01-10'
+    aims_control_effectiveness: effective
+    aims_control_last_tested: '2026-06-01'
+    aims_control_evidence:
+      - Release gate log
+aims_systems:
+  - aims_id: acme:system-triage
+    title: Chest X-ray triage tool
+    aims_relevant_controls:
+      - acme:control-impact
+    aims_system_intended_purpose: Order chest X-rays so that urgent ones are read first
+    aims_system_intended_uses:
+      - Ordering a radiologist worklist
+    aims_system_foreseeable_misuse:
+      - Reading the score as a diagnosis
+    aims_system_domain: Radiology
+    aims_system_deployment_context: Public hospitals
+    aims_system_life_cycle_stage: operation_and_monitoring
+    aims_system_organization_roles:
+      - ai_provider
+      - ai_developer
+    aims_system_pii_roles:
+      - pii_processor
+    aims_system_rationale: A customer asked for shorter waits on urgent reads.
+    aims_system_requirements:
+      - At least 95% sensitivity on urgent cases
+    aims_system_ml_approach: supervised
+    aims_system_model_types:
+      - Convolutional neural network
+    aims_system_continuous_learning: false
+    aims_system_automation_level: Suggests an order; a person decides
+    aims_system_threats:
+      - data_poisoning
+    aims_system_verification_measures:
+      - Held-back test set from three hospitals
+    aims_system_evaluation_criteria:
+      - False negative rate under 5%
+    aims_system_release_criteria:
+      - Criteria met, impact review signed
+    aims_system_deployment_plan: acme:doc-deployment-plan
+    aims_system_operation_elements:
+      - Watching drift
+      - Monthly updates
+      - Support line
+    aims_system_performance_metrics:
+      - Sensitivity on urgent cases, at least 95%
+    aims_system_log_stages:
+      - deployment
+      - operation_and_monitoring
+    aims_system_log_contents:
+      - Time of use
+      - Scores out of the expected range
+    aims_system_log_retention: P2Y
+    aims_system_human_oversight_required: true
+    aims_system_human_oversight: A radiologist reads every case and may change the order.
+    aims_system_human_oversight_stages:
+      - operation_and_monitoring
+    aims_system_resources_used:
+      - acme:data-xrays
+      - acme:tool-trainer
+      - acme:computing-gpu
+      - acme:team-ml
+      - acme:component-scorer
+    aims_system_technical_documents:
+      - acme:technical-triage
+    aims_system_impact_assessments:
+      - acme:impact-triage-2026
+    aims_system_relationships:
+      - acme:relationship-integrator
+      - acme:supplier-labels
+      - acme:customer-st-example
+aims_system_resources:
+  - aims_id: acme:component-scorer
+    title: Scoring service
+    aims_resource_type: AimsComponentResource
+    aims_life_cycle_stages:
+      - deployment
+    aims_resource_provider: organization
+    aims_component_kind: Software service
+    aims_component_integration: Called by the worklist over a local interface.
+  - aims_id: acme:data-xrays
+    title: De-identified chest X-rays
+    aims_resource_type: AimsDataResource
+    aims_life_cycle_stages:
+      - design_and_development
+      - verification_and_validation
+    aims_resource_provider: customer
+    aims_data_categories:
+      - training
+      - validation
+      - test
+    aims_data_kinds:
+      - Medical images
+    aims_data_intended_use: Training and checking the triage model
+    aims_data_quantity: About 200,000 images
+    aims_data_sources:
+      - Shared by partner hospitals
+    aims_data_source_characteristics:
+      - Gathered in batches
+    aims_data_subject_demographics:
+      - Adults; few over 75
+    aims_data_prior_handling: Removed of identifiers by each hospital
+    aims_data_rights:
+      - Used under each hospital agreement
+    aims_data_metadata:
+      - Who labelled each image, and when
+    aims_data_provenance: Each batch is logged by hospital, date and transformation.
+    aims_data_provenance_verification: Batches are checked against signed manifests.
+    aims_data_quality_requirements:
+      - No more than 1% unreadable images
+    aims_data_quality_results:
+      - 0.4% unreadable in the 2026 batch
+    aims_data_bias_issues:
+      - Patients over 75 are too few
+    aims_data_representativeness: Close to the case mix, but for age.
+    aims_data_labelling_process: Two radiologists label each image.
+    aims_data_preparation_criteria: Methods are chosen to keep clinical detail.
+    aims_data_preparation_methods:
+      - normalization
+      - labelling
+    aims_data_last_updated: '2026-01-31'
+    aims_data_retention: Five years, then deleted
+    aims_data_classification: Confidential
+  - aims_id: acme:tool-trainer
+    title: Model training framework
+    aims_resource_type: AimsToolingResource
+    aims_life_cycle_stages:
+      - design_and_development
+    aims_tool_category: Tools to build models
+    aims_tool_version: '2.3'
+    aims_tool_vendor: Example Software
+    aims_tool_licence: Apache-2.0
+    aims_tool_purpose: Training the triage model
+  - aims_id: acme:computing-gpu
+    title: Training servers
+    aims_resource_type: AimsComputingResource
+    aims_life_cycle_stages:
+      - design_and_development
+    aims_computing_requirements: Four GPUs for a day per training run
+    aims_computing_location: On the premises
+    aims_computing_processing: Includes 20 TB of storage
+    aims_computing_hardware_impact: About 400 kWh per training run
+  - aims_id: acme:team-ml
+    title: Machine learning team
+    aims_resource_type: AimsHumanResource
+    aims_life_cycle_stages:
+      - design_and_development
+      - retirement
+    aims_human_role: acme:role-ai-lead
+    aims_human_competences:
+      - Medical imaging
+      - Model evaluation
+    aims_human_activities:
+      - Building the model
+      - Decommissioning it
+    aims_human_diversity: A radiologist sits on the team.
+aims_development_processes:
+  - aims_id: acme:process-development
+    title: How we build AI systems
+    aims_ai_systems:
+      - acme:system-triage
+    aims_development_life_cycle_model: The eight stages of ISO/IEC 22989
+    aims_development_testing: Each release runs on data held back from three hospitals.
+    aims_development_human_oversight: A radiologist signs off the release.
+    aims_development_impact_assessment_stages:
+      - inception
+      - re_evaluation
+    aims_development_training_data_rules: Only data under a signed agreement, labelled twice.
+    aims_development_expertise: One clinician on every team
+    aims_development_release_criteria:
+      - Criteria met, impact review signed
+    aims_development_approvals:
+      - Clinical lead
+      - AI management lead
+    aims_development_change_control: Each change has a ticket and a review.
+    aims_development_usability: Radiologists try each interface change first.
+    aims_development_party_engagement: A panel of partner hospitals meets twice a year.
+aims_use_processes:
+  - aims_id: acme:process-use
+    title: How we use AI systems
+    aims_ai_systems:
+      - acme:system-triage
+    aims_use_approvals:
+      - AI management lead
+    aims_use_costs: Yearly licence and monitoring time
+    aims_use_sourcing_requirements:
+      - Supplier documents limits and test results
+    aims_use_legal_requirements:
+      - EU medical device rules
+aims_technical_documentation:
+  - aims_id: acme:technical-triage
+    title: Technical file for hospital IT teams
+    aims_ai_systems:
+      - acme:system-triage
+    aims_technical_doc_audiences:
+      - Hospital IT teams
+      - The notified body
+    aims_technical_doc_form: A versioned PDF on the customer portal
+    aims_technical_doc_contents:
+      - Run-time environment
+      - Limits on accuracy
+      - Test records
+    aims_technical_doc_failure_plan: Roll back to the last version and tell hospitals.
+aims_user_information:
+  - aims_id: acme:user-information-triage
+    title: Guide for radiologists
+    aims_ai_systems:
+      - acme:system-triage
+    aims_user_information_contents:
+      - That AI sets the order
+      - How to change the order
+    aims_user_information_channels:
+      - Instructions
+      - A banner in the worklist
+    aims_user_information_criteria:
+      - What a radiologist needs to read safely
+    aims_user_information_validated: true
+aims_incident_communication_plans:
+  - aims_id: acme:incident-plan-triage
+    title: Telling hospitals about incidents
+    aims_ai_systems:
+      - acme:system-triage
+    aims_incident_plan_categories:
+      - ai_system
+      - privacy
+    aims_incident_plan_timeline: Within one working day
+    aims_incident_plan_authorities:
+      - The data protection authority
+    aims_incident_plan_details:
+      - What happened
+      - Which cases it touched
+    aims_incident_plan_integration: It runs under the security incident process.
+aims_reporting_obligations:
+  - aims_id: acme:obligation-vigilance
+    title: Serious incident reports
+    aims_ai_systems:
+      - acme:system-triage
+    aims_obligation_parties:
+      - acme:party-hospitals
+    aims_obligation_basis: EU medical device rules
+    aims_obligation_jurisdiction: European Union
+    aims_obligation_contents:
+      - What happened
+      - Results of impact assessments
+    aims_obligation_timeframe: Within 15 days
+aims_third_party_relationships:
+  - aims_id: acme:relationship-integrator
+    title: Worklist integrator
+    aims_relationship_type: AimsThirdPartyRelationship
+    aims_ai_systems:
+      - acme:system-triage
+    aims_life_cycle_stages:
+      - deployment
+    aims_relationship_party: Example Integrations Ltd
+    aims_relationship_party_roles:
+      - ai_system_integrator
+    aims_relationship_contract: Master agreement 12
+    aims_relationship_responsibilities:
+      - They install; Acme answers for the model
+    aims_relationship_pii_role: pii_processor
+    aims_relationship_documentation:
+      - Interface guide
+    aims_relationship_assurance_evidence:
+      - Yearly audit report
+    aims_relationship_review_frequency: Yearly
+  - aims_id: acme:supplier-labels
+    title: Labelling supplier
+    aims_relationship_type: AimsSupplierRelationship
+    aims_relationship_party: Example Labels Ltd
+    aims_supplier_provides:
+      - Labels for training images
+    aims_supplier_risk: medium
+    aims_supplier_requirements:
+      - Two readers per image
+    aims_supplier_monitoring: A sample of labels is rechecked monthly.
+    aims_supplier_integration: Labels arrive as signed batches.
+    aims_supplier_corrective_actions:
+      - Retrain readers after the March sample
+  - aims_id: acme:customer-st-example
+    title: St Example's Hospital
+    aims_relationship_type: AimsCustomerRelationship
+    aims_relationship_party: St Example's Hospital
+    aims_customer_expectations:
+      - Urgent reads within the hour
+    aims_customer_agreement: Licence 44
+    aims_customer_responsibility_split: Acme answers for the model; the hospital for how it
+      reads.
+    aims_customer_communicated_limits:
+      - Chest X-rays of adults only
+aims_resources:
+  - aims_id: acme:resource-lead-time
+    title: Time of the AI management lead
+    aims_support_category: People
+    aims_support_quantity: Half time
+    aims_support_allocation_date: '2026-01-01'
+    aims_support_allocated_to: Running the system
+    aims_support_availability: available
+aims_competence_records:
+  - aims_id: acme:competence-dana
+    title: Competence of Dana Example
+    aims_competence_person: Dana Example
+    aims_competence_role: acme:role-ai-lead
+    aims_competence_required:
+      - Risk management for AI
+    aims_competence_education:
+      - MSc in data science
+    aims_competence_training:
+      - Lead auditor course
+    aims_competence_experience:
+      - Five years in medical software
+    aims_competence_assessment_date: '2026-01-15'
+    aims_competence_gaps:
+      - Medical device regulation
+    aims_competence_actions:
+      - Course booked; effect checked in June
+aims_awareness_programme:
+  aims_id: acme:awareness-2026
+  title: Awareness programme, 2026
+  aims_awareness_topics:
+    - The AI policy
+    - What happens if we skip the gate
+  aims_awareness_methods:
+    - Induction
+    - Yearly talk
+  aims_awareness_audience: All staff and contractors
+  aims_awareness_frequency: Yearly
+  aims_awareness_completion_tracking: Learning system
+  aims_awareness_effectiveness: A short quiz
+aims_communication_plan:
+  aims_id: acme:communication-2026
+  title: Communication plan, 2026
+  aims_communication_items:
+    - aims_communication_subject: Results of the yearly impact assessment
+      aims_communication_purpose: To let hospitals weigh the tool
+      aims_communication_audience: Partner hospitals
+      aims_communication_external: true
+      aims_communication_timing: Each March
+      aims_communication_method: Customer portal
+      aims_responsible_role: acme:role-ai-lead
+      aims_communication_records_required: true
+aims_documented_information:
+  - aims_id: acme:doc-deployment-plan
+    title: Deployment plan for the triage tool
+    aims_document_kind: plan
+    aims_cited_annex_a_controls:
+      - a_6_2_5
+    aims_document_version: '1'
+  - aims_id: acme:doc-audit-plan
+    title: Plan of the spring audit
+    aims_document_kind: plan
+aims_operational_procedures:
+  - aims_id: acme:procedure-data
+    title: Managing data for building models
+    aims_relevant_controls:
+      - acme:control-impact
+    aims_cited_annex_a_controls:
+      - a_7_2
+    aims_procedure_scope: All training data
+    aims_procedure_criteria: No data without a signed agreement
+    aims_procedure_control_measures:
+      - A data register
+      - Quarterly checks
+    aims_procedure_roles:
+      - acme:role-ai-lead
+    aims_procedure_change_control: Changes are reviewed at the monthly board.
+aims_monitoring_programme:
+  aims_id: acme:monitoring-2026
+  title: Monitoring programme, 2026
+  aims_monitoring_items:
+    - aims_monitoring_metric: Sensitivity on urgent cases
+      aims_monitoring_description: How many urgent cases rise to the top
+      aims_monitoring_method: Weekly sample read by a radiologist
+      aims_monitoring_frequency: Weekly
+      aims_monitoring_analysis_frequency: Monthly
+      aims_monitoring_analyst: Dana Example
+      aims_monitoring_target: At least 95%
+      aims_monitoring_alert_threshold: Under 92%
+      aims_monitoring_current_value: 96%
+      aims_monitoring_trend: steady
+      aims_responsible_role: acme:role-ai-lead
+aims_audit_programmes:
+  - aims_id: acme:audit-programme-2026
+    title: Audit programme, 2026
+    aims_programme_period: '2026'
+    aims_programme_audits:
+      - acme:audit-2026
+    aims_programme_frequency_rationale: Twice a year, since the release gate matters most.
+    aims_programme_methods: Interviews and sampled records
+    aims_programme_responsibilities:
+      - The quality lead plans and reports
+    aims_programme_resources: Twenty days a year
+    aims_programme_auditor_selection: Auditors never audit their own team.
+    aims_programme_status: on track
+aims_audits:
+  - aims_id: acme:audit-2026
+    title: Internal audit, spring 2026
+    aims_audit_type: first_party
+    aims_audit_scope: Clauses 8 and 9, and the release gate
+    aims_audit_criteria:
+      - ISO/IEC 42001:2023
+      - Our release procedure
+    aims_audit_objectives:
+      - See whether the gate holds
+    aims_audit_period_start: '2026-05-11'
+    aims_audit_period_end: '2026-05-15'
+    aims_audit_lead: Sam Example
+    aims_audit_team:
+      - Lee Example
+    aims_audit_auditees:
+      - Dana Example
+    aims_audit_plan: acme:doc-audit-plan
+    aims_audit_findings:
+      - aims_id: acme:finding-1
+        title: A release went out with no signed review
+        aims_finding_type: minor_nonconformity
+        aims_cited_clauses:
+          - clause_8_1
+        aims_cited_annex_a_controls:
+          - a_6_2_5
+        aims_finding_control: acme:control-impact
+        aims_finding_evidence: Release log, 12 May
+        aims_finding_root_cause: The gate could be skipped by hand.
+        aims_finding_risk: A flawed release could reach hospitals.
+        aims_finding_recommendation: Make the gate automatic.
+        aims_finding_auditee_response: Agreed
+        aims_finding_corrective_action: acme:corrective-gate
+        aims_finding_closure_status: closed
+        aims_finding_closure_date: '2026-07-01'
+    aims_audit_conclusion: The system conforms, but for one finding.
+    aims_audit_report_date: '2026-05-22'
+    aims_audit_report_distribution:
+      - Executive team
+aims_management_reviews:
+  - aims_id: acme:review-2026
+    title: Management review, 2026
+    aims_review_held_on: '2026-06-15'
+    aims_review_attendees:
+      - Executive team
+      - Dana Example
+    aims_review_previous_actions: All closed.
+    aims_review_context_changes: New medical device guidance.
+    aims_review_interested_party_changes: Hospitals now ask for yearly impact results.
+    aims_review_nonconformity_trends: One minor this year, none last year.
+    aims_review_monitoring_trends: Sensitivity steady at 96%.
+    aims_review_audit_trends: Findings are falling.
+    aims_review_improvement_opportunities:
+      - Automate the release gate
+    aims_review_decisions:
+      - Fund the automatic gate
+    aims_review_system_changes:
+      - Add the gate to the process map
+    aims_review_actions:
+      - The AI lead reports back in December
+    aims_review_next_date: '2027-06-15'
+aims_nonconformities:
+  - aims_id: acme:nonconformity-1
+    title: A release skipped its impact review
+    aims_cited_clauses:
+      - clause_8_1
+    aims_cited_annex_a_controls:
+      - a_6_2_5
+    aims_nonconformity_source: Internal audit
+    aims_nonconformity_detected_on: '2026-05-12'
+    aims_nonconformity_detected_by: Sam Example
+    aims_nonconformity_requirement: Our release procedure, step 4
+    aims_nonconformity_immediate_actions:
+      - The review was held the same week
+    aims_nonconformity_consequences: No harm found on the affected cases.
+    aims_nonconformity_root_cause: The gate could be skipped by hand.
+    aims_nonconformity_similar_check: Other releases were checked; none skipped it.
+    aims_nonconformity_status: closed
+    aims_nonconformity_closure_date: '2026-07-01'
+    aims_nonconformity_closure_evidence: Change record 77
+aims_corrective_actions:
+  - aims_id: acme:corrective-gate
+    title: Make the release gate automatic
+    aims_responsible_role: acme:role-ai-lead
+    aims_action_nonconformities:
+      - acme:nonconformity-1
+    aims_action_root_cause: The gate could be skipped by hand.
+    aims_action_target_date: '2026-06-30'
+    aims_action_completion_date: '2026-06-25'
+    aims_action_resources: Two engineering days
+    aims_action_effectiveness_criteria: No release passes without a signed review.
+    aims_action_effectiveness_review_date: '2026-09-01'
+    aims_action_effective: true
+    aims_action_system_changes: The process map shows the gate.
+    aims_action_status: complete
+aims_improvements:
+  - aims_id: acme:improvement-drift
+    title: Spot drift sooner
+    aims_responsible_role: acme:role-ai-lead
+    aims_improvement_source: Management review
+    aims_improvement_identified_on: '2026-06-15'
+    aims_improvement_identified_by: Executive team
+    aims_improvement_benefit: Earlier warning of worse results
+    aims_improvement_priority: medium
+    aims_improvement_plan: A daily drift check
+    aims_improvement_target_date: '2026-10-01'
+    aims_improvement_status: in progress
+aims_system_events:
+  - aims_id: acme:event-1
+    title: A hospital reported odd scores
+    aims_event_type: AimsSystemEvent
+    aims_ai_systems:
+      - acme:system-triage
+    aims_event_occurred_at: '2026-08-03T09:15:00Z'
+    aims_event_reporter: St Example's Hospital
+    aims_event_source: Report from a customer
+    aims_event_adverse_impact: None found
+    aims_event_assessment: A scanner setting had changed; not an incident.
+  - aims_id: acme:incident-1
+    title: Scores wrong for one scanner
+    aims_event_type: AimsIncident
+    aims_ai_systems:
+      - acme:system-triage
+    aims_event_occurred_at: '2026-09-10T14:00:00Z'
+    aims_event_source: Monitoring
+    aims_event_assessment: Urgent cases sank down the list.
+    aims_incident_category: ai_system
+    aims_incident_threats:
+      - other
+    aims_incident_severity: high
+    aims_incident_impact_areas:
+      - safety_and_health
+    aims_incident_detection_method: The drift alert
+    aims_incident_response_actions:
+      - Fell back to arrival order
+    aims_incident_recovery_actions:
+      - Rolled back the model
+    aims_incident_root_cause: A new scanner gave darker images.
+    aims_incident_lessons_learned:
+      - Test each new scanner first
+    aims_incident_notification_required: true
+    aims_incident_notifications:
+      - Hospital IT, the same day
+    aims_incident_corrective_actions:
+      - acme:corrective-gate
+    aims_incident_closed_at: '2026-09-14T12:00:00Z'
+aims_concern_reporting_process:
+  aims_id: acme:process-concerns
+  title: Raising concerns
+  aims_concern_process_confidentiality:
+    - A form that asks for no name
+  aims_concern_process_audience: Staff and contractors, from day one
+  aims_concern_process_investigators: The quality lead, who may see any record
+  aims_concern_process_escalation: To the board within five days
+  aims_concern_process_reprisal_protection: Those who report cannot be moved or dismissed
+    for it.
+  aims_concern_process_response_time: Ten working days
+aims_concern_reports:
+  - aims_id: acme:concern-1
+    title: Worry about pressure to skip reviews
+    aims_ai_systems:
+      - acme:system-triage
+    aims_concern_reported_on: '2026-05-02'
+    aims_concern_anonymous: true
+    aims_concern_channel: The anonymous form
+    aims_concern_life_cycle_stage: deployment
+    aims_concern_severity: medium
+    aims_concern_investigator: Sam Example
+    aims_concern_investigation_status: closed
+    aims_concern_findings: It led to the audit in May.
+    aims_concern_escalation: Reached the board within the week.
+    aims_concern_response_due: '2026-05-16'
+    aims_concern_responded_on: '2026-05-14'
+    aims_concern_resolution: The gate was made automatic.
+    aims_concern_reprisal_protection: The report stayed anonymous.
+    aims_concern_incidents:
+      - acme:incident-1
+    aims_concern_nonconformities:
+      - acme:nonconformity-1

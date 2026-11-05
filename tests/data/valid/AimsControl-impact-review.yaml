@@ -1,0 +1,20 @@
+aims_id: acme:control-impact
+title: Impact review before each release
+aims_implementation_state: implemented
+aims_cited_annex_a_controls:
+  - a_5_2
+  - a_5_4
+aims_ai_systems:
+  - acme:system-triage
+aims_objective_categories:
+  - fairness
+aims_risk_source_categories:
+  - machine_learning
+aims_control_area: impact_assessment
+aims_control_text: No release goes out until its impact review is signed.
+aims_control_owner: Dana Example
+aims_control_implementation_date: '2026-01-10'
+aims_control_effectiveness: effective
+aims_control_last_tested: '2026-06-01'
+aims_control_evidence:
+  - Release gate log

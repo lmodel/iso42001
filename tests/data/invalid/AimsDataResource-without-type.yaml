@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: A resource says which kind it is.
+aims_id: acme:x
+title: A record

@@ -1,0 +1,13 @@
+aims_id: acme:user-information-triage
+title: Guide for radiologists
+aims_ai_systems:
+  - acme:system-triage
+aims_user_information_contents:
+  - That AI sets the order
+  - How to change the order
+aims_user_information_channels:
+  - Instructions
+  - A banner in the worklist
+aims_user_information_criteria:
+  - What a radiologist needs to read safely
+aims_user_information_validated: true

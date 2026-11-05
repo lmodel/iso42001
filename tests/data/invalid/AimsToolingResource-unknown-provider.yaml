@@ -1,0 +1,6 @@
+# Fails at: /aims_resource_provider
+# Invalid: No such provider.
+aims_id: acme:x
+title: A record
+aims_resource_type: AimsToolingResource
+aims_resource_provider: vendor

@@ -1,0 +1,19 @@
+aims_id: acme:relationship-integrator
+title: Worklist integrator
+aims_relationship_type: AimsThirdPartyRelationship
+aims_ai_systems:
+  - acme:system-triage
+aims_life_cycle_stages:
+  - deployment
+aims_relationship_party: Example Integrations Ltd
+aims_relationship_party_roles:
+  - ai_system_integrator
+aims_relationship_contract: Master agreement 12
+aims_relationship_responsibilities:
+  - They install; Acme answers for the model
+aims_relationship_pii_role: pii_processor
+aims_relationship_documentation:
+  - Interface guide
+aims_relationship_assurance_evidence:
+  - Yearly audit report
+aims_relationship_review_frequency: Yearly
