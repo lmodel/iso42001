@@ -8,6 +8,10 @@
 * **Changed**: Mappings and the SSSOM sets names the mappings to lmodel/nist-ai-100-1 and lmodel/iso29100, from README.md.
 * **Changed**: Upstream watch reports a pinned amendment that ISO publishes, as the script's docstring now says.
 
+## 2026-11-06
+
+* **Changed**: `lokf.yaml` and `iso42001.yaml` moved into `.lokf/schema/`, where KTL v0.62.0 keeps a sidecar's schema files, and the concepts that name them follow.
+
 ## 2026-11-05
 
 * **Added**: ISO/IEC 42001:2023, from ISO Open Data's records and NOTICE.
