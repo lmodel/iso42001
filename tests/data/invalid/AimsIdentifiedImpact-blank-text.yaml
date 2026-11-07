@@ -1,0 +1,4 @@
+# Fails at: /aims_identified_impact_text
+# Invalid: An impact says what it is.
+aims_identified_impact_subject: individuals
+aims_identified_impact_text: ' '

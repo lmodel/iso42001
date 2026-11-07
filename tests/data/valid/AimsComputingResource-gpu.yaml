@@ -1,0 +1,9 @@
+aims_id: acme:computing-gpu
+title: Training servers
+aims_resource_type: AimsComputingResource
+aims_life_cycle_stages:
+  - design_and_development
+aims_computing_requirements: Four GPUs for a day per training run
+aims_computing_location: On the premises
+aims_computing_processing: Includes 20 TB of storage
+aims_computing_hardware_impact: About 400 kWh per training run

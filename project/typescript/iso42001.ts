@@ -1,1887 +1,2245 @@
-export type NamedEntityId = string;
-export type DocumentedInformationId = string;
-export type AIManagementSystemId = string;
-export type OrganizationId = string;
-export type InterestedPartyId = string;
-export type AIPolicyId = string;
-export type TopicSpecificPolicyId = string;
-export type RoleId = string;
-export type AIObjectiveId = string;
-export type AIRiskAssessmentProcessId = string;
-export type AIRiskAssessmentId = string;
-export type AIRiskId = string;
-export type AIRiskTreatmentProcessId = string;
-export type AIRiskTreatmentPlanId = string;
-export type AISystemImpactAssessmentProcessId = string;
-export type AISystemImpactAssessmentId = string;
-export type StatementOfApplicabilityId = string;
-export type AIReferenceControlId = string;
-export type AISystemId = string;
-export type DataResourceId = string;
-export type ToolingResourceId = string;
-export type ComputingResourceId = string;
-export type HumanResourceId = string;
-export type ResourceId = string;
-export type CompetenceRecordId = string;
-export type AwarenessProgramId = string;
-export type CommunicationPlanId = string;
-export type OperationalProcedureId = string;
-export type MonitoringProgramId = string;
-export type InternalAuditId = string;
-export type AuditProgrammeId = string;
-export type AuditFindingId = string;
-export type ManagementReviewId = string;
-export type NonconformityId = string;
-export type CorrectiveActionId = string;
-export type ImprovementOpportunityId = string;
-export type ThirdPartyRelationshipId = string;
-export type SupplierRelationshipId = string;
-export type CustomerRelationshipId = string;
-export type AISystemEventId = string;
-export type AIIncidentId = string;
-export type ConcernReportId = string;
+export type AimsRecordMixinAimsId = string;
+export type AimsManagementSystemAimsId = string;
+export type AimsOrganizationAimsId = string;
+export type AimsInterestedPartyAimsId = string;
+export type AimsPolicyAimsId = string;
+export type AimsTopicSpecificPolicyAimsId = string;
+export type AimsRoleAimsId = string;
+export type AimsObjectiveAimsId = string;
+export type AimsPlannedActionAimsId = string;
+export type AimsRiskAssessmentProcessAimsId = string;
+export type AimsRiskAssessmentAimsId = string;
+export type AimsRiskAimsId = string;
+export type AimsRiskTreatmentProcessAimsId = string;
+export type AimsRiskTreatmentPlanAimsId = string;
+export type AimsImpactAssessmentProcessAimsId = string;
+export type AimsImpactAssessmentAimsId = string;
+export type AimsStatementOfApplicabilityAimsId = string;
+export type AimsControlAimsId = string;
+export type AimsAiSystemAimsId = string;
+export type AimsSystemResourceAimsId = string;
+export type AimsComponentResourceAimsId = string;
+export type AimsDataResourceAimsId = string;
+export type AimsToolingResourceAimsId = string;
+export type AimsComputingResourceAimsId = string;
+export type AimsHumanResourceAimsId = string;
+export type AimsDevelopmentProcessAimsId = string;
+export type AimsResponsibleUseProcessAimsId = string;
+export type AimsTechnicalDocumentationAimsId = string;
+export type AimsUserInformationAimsId = string;
+export type AimsIncidentCommunicationPlanAimsId = string;
+export type AimsReportingObligationAimsId = string;
+export type AimsResourceAimsId = string;
+export type AimsCompetenceRecordAimsId = string;
+export type AimsAwarenessProgrammeAimsId = string;
+export type AimsCommunicationPlanAimsId = string;
+export type AimsDocumentedInformationAimsId = string;
+export type AimsOperationalProcedureAimsId = string;
+export type AimsMonitoringProgrammeAimsId = string;
+export type AimsAuditProgrammeAimsId = string;
+export type AimsAuditAimsId = string;
+export type AimsAuditFindingAimsId = string;
+export type AimsManagementReviewAimsId = string;
+export type AimsNonconformityAimsId = string;
+export type AimsCorrectiveActionAimsId = string;
+export type AimsImprovementOpportunityAimsId = string;
+export type AimsThirdPartyRelationshipAimsId = string;
+export type AimsSupplierRelationshipAimsId = string;
+export type AimsCustomerRelationshipAimsId = string;
+export type AimsSystemEventAimsId = string;
+export type AimsIncidentAimsId = string;
+export type AimsConcernReportingProcessAimsId = string;
+export type AimsConcernReportAimsId = string;
 /**
-* The reference control families in Annex A of ISO/IEC 42001:2023.
+* The numbered clauses and subclauses of the standard from 4 to 10, by their numbers. A value's description is this project's own summary, and the clause headings and the requirements are ISO's.
 */
-export enum AIControlFamily {
+export enum AimsClause {
     
-    /** Policies related to AI (Annex A.2) - management direction and support for AI systems according to business requirements. */
-    ai_policies = "ai_policies",
-    /** Internal organization (Annex A.3) - accountability for responsible implementation, operation, and management of AI systems. */
-    internal_organization = "internal_organization",
-    /** Resources for AI systems (Annex A.4) - documentation of data, tooling, system/computing, and human resources for AI systems. */
-    ai_resources = "ai_resources",
-    /** Assessing impacts of AI systems (Annex A.5) - evaluation of consequences for individuals, groups, and societies across the AI system life cycle. */
-    impact_assessment = "impact_assessment",
-    /** AI system life cycle (Annex A.6) - responsible design, development, verification, deployment, operation, and technical documentation. */
-    ai_system_lifecycle = "ai_system_lifecycle",
-    /** Data for AI systems (Annex A.7) - data management, acquisition, quality, provenance, and preparation for AI. */
-    data_for_ai = "data_for_ai",
-    /** Information for interested parties (Annex A.8) - system documentation for users, external reporting, and incident communications. */
-    information_for_parties = "information_for_parties",
-    /** Use of AI systems (Annex A.9) - responsible-use processes, objectives, and intended-use enforcement. */
-    use_of_ai = "use_of_ai",
-    /** Third-party and customer relationships (Annex A.10) - allocating responsibilities, supplier management, and customer expectations. */
-    third_party_relationships = "third_party_relationships",
+    /** Why the system exists and what it reaches. */
+    number_4 = "clause_4",
+    /** Matters inside and outside that bear on the system, climate among them, and the part the organization plays with AI. */
+    number_4FULL_STOP1 = "clause_4_1",
+    /** Who has a stake in the system, and what they want from it. */
+    number_4FULL_STOP2 = "clause_4_2",
+    /** Where the system stops, stated in writing. */
+    number_4FULL_STOP3 = "clause_4_3",
+    /** Having the system and its processes in place, and keeping them up. */
+    number_4FULL_STOP4 = "clause_4_4",
+    /** What top management must do. */
+    number_5 = "clause_5",
+    /** How top management shows it leads and backs the system. */
+    number_5FULL_STOP1 = "clause_5_1",
+    /** Management's written direction on AI. */
+    number_5FULL_STOP2 = "clause_5_2",
+    /** Who holds which duty and power, including who checks conformity and who reports on performance. */
+    number_5FULL_STOP3 = "clause_5_3",
+    /** Deciding what to do before doing it. */
+    number_6 = "clause_6",
+    /** Dealing with what could go well or badly. */
+    number_6FULL_STOP1 = "clause_6_1",
+    /** Criteria for risk, and the actions planned on risks and opportunities. */
+    number_6FULL_STOP1FULL_STOP1 = "clause_6_1_1",
+    /** A repeatable way to find, analyse and rank AI risks. */
+    number_6FULL_STOP1FULL_STOP2 = "clause_6_1_2",
+    /** Choosing treatments and controls, with the Statement of Applicability and the plan. */
+    number_6FULL_STOP1FULL_STOP3 = "clause_6_1_3",
+    /** A way to work out what AI systems may do to people and society. */
+    number_6FULL_STOP1FULL_STOP4 = "clause_6_1_4",
+    /** Measurable aims for AI, and how each will be reached. */
+    number_6FULL_STOP2 = "clause_6_2",
+    /** Changing the system in an orderly way. */
+    number_6FULL_STOP3 = "clause_6_3",
+    /** What the system needs in order to run. */
+    number_7 = "clause_7",
+    /** Providing what the system needs. */
+    number_7FULL_STOP1 = "clause_7_1",
+    /** People's ability to do the work, and the evidence of it. */
+    number_7FULL_STOP2 = "clause_7_2",
+    /** What those who work for the organization must know. */
+    number_7FULL_STOP3 = "clause_7_3",
+    /** Who is told what, when and how. */
+    number_7FULL_STOP4 = "clause_7_4",
+    /** Keeping information under control. */
+    number_7FULL_STOP5 = "clause_7_5",
+    /** Which information the system holds. */
+    number_7FULL_STOP5FULL_STOP1 = "clause_7_5_1",
+    /** Naming, formatting, reviewing and approving it. */
+    number_7FULL_STOP5FULL_STOP2 = "clause_7_5_2",
+    /** Keeping it to hand and protected. */
+    number_7FULL_STOP5FULL_STOP3 = "clause_7_5_3",
+    /** Carrying out what was planned. */
+    number_8 = "clause_8",
+    /** Running and controlling the processes, including those from outside. */
+    number_8FULL_STOP1 = "clause_8_1",
+    /** Carrying out risk assessments, on schedule and when things change. */
+    number_8FULL_STOP2 = "clause_8_2",
+    /** Carrying out the treatment plan and checking that it works. */
+    number_8FULL_STOP3 = "clause_8_3",
+    /** Carrying out impact assessments, on schedule and when things change. */
+    number_8FULL_STOP4 = "clause_8_4",
+    /** Checking how the system is doing. */
+    number_9 = "clause_9",
+    /** What is measured, how and when, and what the results mean. */
+    number_9FULL_STOP1 = "clause_9_1",
+    /** Audits the organization runs on itself. */
+    number_9FULL_STOP2 = "clause_9_2",
+    /** What such an audit must establish, and how often. */
+    number_9FULL_STOP2FULL_STOP1 = "clause_9_2_1",
+    /** The plan for those audits, and how impartial they are. */
+    number_9FULL_STOP2FULL_STOP2 = "clause_9_2_2",
+    /** Top management's own look at the system. */
+    number_9FULL_STOP3 = "clause_9_3",
+    /** How often it looks, and to what end. */
+    number_9FULL_STOP3FULL_STOP1 = "clause_9_3_1",
+    /** What it must take in. */
+    number_9FULL_STOP3FULL_STOP2 = "clause_9_3_2",
+    /** What it must produce. */
+    number_9FULL_STOP3FULL_STOP3 = "clause_9_3_3",
+    /** Getting better and putting things right. */
+    number_10 = "clause_10",
+    /** Making the system better over time. */
+    number_10FULL_STOP1 = "clause_10_1",
+    /** Dealing with an unmet requirement and removing its cause. */
+    number_10FULL_STOP2 = "clause_10_2",
 };
 /**
-* Lifecycle status of a reference control, used in the AIMS Statement of Applicability and control tracking.
+* The nine areas Annex A sorts its controls into, under names of this project's own. An area's number is its annotation.
 */
-export enum ImplementationStatus {
+export enum AimsControlArea {
     
-    /** Control identified but no implementation activities begun. */
+    /** Written direction from management on AI, and how it fits with other policies. */
+    AFULL_STOP2 = "policy_direction",
+    /** Who answers for AI within the organization's walls, and the way worries are raised. */
+    AFULL_STOP3 = "accountability",
+    /** What each AI system draws on: components, data, tools, computing and people. */
+    AFULL_STOP4 = "system_resources",
+    /** Working out what AI systems may do to people and society. */
+    AFULL_STOP5 = "impact_assessment",
+    /** Building and running AI systems, from the goals set for them to their logs. */
+    AFULL_STOP6 = "system_life_cycle",
+    /** The data AI systems use: how it is managed, obtained, kept fit, traced and readied. */
+    AFULL_STOP7 = "data_management",
+    /** What users and others are told about a system, and their way to report harm. */
+    AFULL_STOP8 = "stakeholder_information",
+    /** How AI systems are put to use, against the organization's goals and the systems' documents. */
+    AFULL_STOP9 = "responsible_use",
+    /** Duties shared with partners, suppliers and customers. */
+    AFULL_STOP10 = "external_relationships",
+};
+/**
+* The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.
+*/
+export enum AimsAnnexAControl {
+    
+    /** Set down in writing how the organization means to treat AI systems. */
+    AFULL_STOP2FULL_STOP2_Written_direction_on_AI = "a_2_2",
+    /** Find where the organization's other policies touch its aims for AI, in either direction. */
+    AFULL_STOP2FULL_STOP3_Fit_with_other_policies = "a_2_3",
+    /** Look at the AI policy again on a schedule and whenever the need arises, to see that it still serves. */
+    AFULL_STOP2FULL_STOP4_Regular_policy_check = "a_2_4",
+    /** Decide who carries which duty for AI, as the organization's needs dictate. */
+    AFULL_STOP3FULL_STOP2_Who_answers_for_what = "a_3_2",
+    /** Give people a way to raise worries about the organization's part in a system, at any point in that system's life. */
+    AFULL_STOP3FULL_STOP3_A_way_to_raise_worries = "a_3_3",
+    /** List what each stage of a system's life, and other AI work, draws on. */
+    AFULL_STOP4FULL_STOP2_Inventory_of_what_is_needed = "a_4_2",
+    /** Record facts about the data a system draws on. */
+    AFULL_STOP4FULL_STOP3_Record_of_data_used = "a_4_3",
+    /** Record facts about the tools a system draws on. */
+    AFULL_STOP4FULL_STOP4_Record_of_tools_used = "a_4_4",
+    /** Record facts about the hardware and computing a system draws on. */
+    AFULL_STOP4FULL_STOP5_Record_of_infrastructure_used = "a_4_5",
+    /** Record who works on a system across its whole life, and what skills they bring. */
+    AFULL_STOP4FULL_STOP6_Record_of_the_people_involved = "a_4_6",
+    /** Set up a way to work out what a system could do to people and society over its life. */
+    AFULL_STOP5FULL_STOP2_Method_for_weighing_consequences = "a_5_2",
+    /** Write down what each impact assessment found, and hold on to it for a set time. */
+    AFULL_STOP5FULL_STOP3_Keeping_assessment_results = "a_5_3",
+    /** Work out and record how a system could affect single persons or particular groups over its life. */
+    AFULL_STOP5FULL_STOP4_Effects_on_people = "a_5_4",
+    /** Work out and record how a system could affect society over its life. */
+    AFULL_STOP5FULL_STOP5_Effects_on_society = "a_5_5",
+    /** Set goals that steer responsible building, and work measures for them into the development cycle. */
+    AFULL_STOP6FULL_STOP1FULL_STOP2_Goals_for_building = "a_6_1_2",
+    /** Set down the particular processes for designing and building a system responsibly. */
+    AFULL_STOP6FULL_STOP1FULL_STOP3_Defined_ways_of_building = "a_6_1_3",
+    /** Write down what a new system, or a large upgrade to one, must meet. */
+    AFULL_STOP6FULL_STOP2FULL_STOP2_What_a_system_must_do = "a_6_2_2",
+    /** Write down how a system was designed and built, against the goals and the requirements. */
+    AFULL_STOP6FULL_STOP2FULL_STOP3_Build_records = "a_6_2_3",
+    /** Set the checks that verify and validate a system, and say when each applies. */
+    AFULL_STOP6FULL_STOP2FULL_STOP4_Checks_and_their_criteria = "a_6_2_4",
+    /** Keep a plan for putting a system into service, and meet its conditions first. */
+    AFULL_STOP6FULL_STOP2FULL_STOP5_Going_live = "a_6_2_5",
+    /** Set down what keeping a system in service takes: at least watching it, fixing it, updating it and supporting it. */
+    AFULL_STOP6FULL_STOP2FULL_STOP6_Running_and_watching = "a_6_2_6",
+    /** Decide what technical documents each kind of reader needs, and give them those documents in a suitable form. */
+    AFULL_STOP6FULL_STOP2FULL_STOP7_Documents_per_audience = "a_6_2_7",
+    /** Decide at which points in a system's life it keeps event logs, and keep them at least while it is in service. */
+    AFULL_STOP6FULL_STOP2FULL_STOP8_Keeping_logs = "a_6_2_8",
+    /** Set down and follow processes that manage the data used to build systems. */
+    AFULL_STOP7FULL_STOP2_Managing_data_for_building = "a_7_2",
+    /** Record how the data a system uses was obtained and picked. */
+    AFULL_STOP7FULL_STOP3_Obtaining_and_choosing_data = "a_7_3",
+    /** State what quality data must have, and see that the data used to build and run a system has it. */
+    AFULL_STOP7FULL_STOP4_Data_fit_for_purpose = "a_7_4",
+    /** Keep a process that records where data came from and what happened to it, while it and the system last. */
+    AFULL_STOP7FULL_STOP5_Tracing_where_data_came_from = "a_7_5",
+    /** Set criteria for choosing how data is made ready, and name the methods to use. */
+    AFULL_STOP7FULL_STOP6_Readying_data = "a_7_6",
+    /** Work out what those who use a system need to know, and tell them. */
+    AFULL_STOP8FULL_STOP2_What_users_are_told = "a_8_2",
+    /** Give people outside the organization a way to report harm a system has done. */
+    AFULL_STOP8FULL_STOP3_Letting_outsiders_report_harm = "a_8_3",
+    /** Keep a plan for telling those who use a system when something goes wrong. */
+    AFULL_STOP8FULL_STOP4_Telling_users_about_incidents = "a_8_4",
+    /** Work out what the organization owes others by way of reports about a system. */
+    AFULL_STOP8FULL_STOP5_Duties_to_inform_others = "a_8_5",
+    /** Set down the processes for using AI systems responsibly. */
+    AFULL_STOP9FULL_STOP2_Defined_ways_of_using = "a_9_2",
+    /** Set goals that steer how AI systems are used responsibly. */
+    AFULL_STOP9FULL_STOP3_Goals_for_use = "a_9_3",
+    /** See that a system is used only as intended and as its documents say. */
+    AFULL_STOP9FULL_STOP4_Staying_within_documented_use = "a_9_4",
+    /** Settle who carries which duty across a system's life, among the organization and those it deals with. */
+    AFULL_STOP10FULL_STOP2_Sharing_out_duties = "a_10_2",
+    /** Keep a process that holds what suppliers provide to how the organization means to treat AI. */
+    AFULL_STOP10FULL_STOP3_What_is_bought_in = "a_10_3",
+    /** See that how the organization treats AI takes account of what its customers expect and want. */
+    AFULL_STOP10FULL_STOP4_BuyersAPOSTROPHE_needs = "a_10_4",
+};
+/**
+* The eight stages of the generic life cycle model that ISO/IEC 22989:2022 gives, which ISO/IEC 42001 points to.
+*/
+export enum AimsLifecycleStage {
+    
+    /** Someone sees a need, weighs whether to meet it, and sets goals. */
+    inception = "inception",
+    /** The system is designed and built. */
+    design_and_development = "design_and_development",
+    /** The system is checked against what was asked of it. */
+    verification_and_validation = "verification_and_validation",
+    /** The system is put into service. */
+    deployment = "deployment",
+    /** The system runs and is watched. */
+    operation_and_monitoring = "operation_and_monitoring",
+    /** A system that goes on learning is checked again as it changes. */
+    continuous_validation = "continuous_validation",
+    /** The system's results are weighed against its goals afresh. */
+    re_evaluation = "re_evaluation",
+    /** The system is taken out of service. */
+    retirement = "retirement",
+};
+/**
+* The parts an organization or a person can play towards AI systems. The six families are those of ISO/IEC 22989:2022, and each more specific role names its family in an annotation.
+*/
+export enum AimsAiRole {
+    
+    /** Offers AI systems or platforms to others. */
+    ai_provider = "ai_provider",
+    /** Offers a platform that others build AI services on. */
+    ai_platform_provider = "ai_platform_provider",
+    /** Offers goods or services that hold an AI system. */
+    ai_product_or_service_provider = "ai_product_or_service_provider",
+    /** Makes AI systems. */
+    ai_producer = "ai_producer",
+    /** Writes and trains what goes into a system. */
+    ai_developer = "ai_developer",
+    /** Decides how a system should work. */
+    ai_designer = "ai_designer",
+    /** Keeps a system running. */
+    ai_operator = "ai_operator",
+    /** Checks how well a system does. */
+    ai_tester_or_evaluator = "ai_tester_or_evaluator",
+    /** Puts a system into service. */
+    ai_deployer = "ai_deployer",
+    /** Looks after how people and a system work together. */
+    ai_human_factor_professional = "ai_human_factor_professional",
+    /** Knows the field a system is used in. */
+    domain_expert = "domain_expert",
+    /** Weighs what a system may do to people and society. */
+    ai_impact_assessor = "ai_impact_assessor",
+    /** Buys systems or their parts. */
+    procurer = "procurer",
+    /** Oversees how AI is run and held to account. */
+    ai_governance_professional = "ai_governance_professional",
+    /** Takes AI systems from a provider. */
+    ai_customer = "ai_customer",
+    /** Works with a system directly. */
+    ai_user = "ai_user",
+    /** Helps others make or run AI systems. */
+    ai_partner = "ai_partner",
+    /** Joins a system to others. */
+    ai_system_integrator = "ai_system_integrator",
+    /** Supplies data for a system. */
+    data_provider = "data_provider",
+    /** Is affected by what a system decides or does. */
+    ai_subject = "ai_subject",
+    /** Is someone a system's data is about. */
+    data_subject = "data_subject",
+    /** Is affected in some other way. */
+    other_subject = "other_subject",
+    /** Sets or enforces rules for AI. */
+    relevant_authority = "relevant_authority",
+    /** Sets the rules. */
+    policy_maker = "policy_maker",
+    /** Enforces the rules. */
+    regulator = "regulator",
+};
+/**
+* The parts a party can play when personal data passes through AI, which ISO/IEC 29100 describes.
+*/
+export enum AimsPiiRole {
+    
+    /** Decides why and how personal data is processed. */
+    pii_controller = "pii_controller",
+    /** Makes those decisions together with another party. */
+    joint_pii_controller = "joint_pii_controller",
+    /** Processes personal data on a controller's behalf. */
+    pii_processor = "pii_processor",
+};
+/**
+* What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex A controls ask for objectives of a narrower kind.
+*/
+export enum AimsObjectivePurpose {
+    
+    /** An objective for the whole system. */
+    organizational = "organizational",
+    /** A goal that steers how systems are built. */
+    responsible_development = "responsible_development",
+    /** A goal that steers how systems are used. */
+    responsible_use = "responsible_use",
+};
+/**
+* Kinds of objective an organization may set for AI: those Annex C lists, two more from the guidance on responsible use, and other.
+*/
+export enum AimsObjectiveCategory {
+    
+    /** Someone stays answerable for what a system helps to do. */
+    accountability = "accountability",
+    /** The organization has people with the skills AI calls for. */
+    ai_expertise = "ai_expertise",
+    /** Good data to train and check a system is to hand. */
+    training_and_test_data = "training_and_test_data",
+    /** A system's effect on the environment is kept in view. */
+    environmental_impact = "environmental_impact",
+    /** Automated decisions do not wrong particular persons or groups. */
+    fairness = "fairness",
+    /** Defects can be mended and new needs met. */
+    maintainability = "maintainability",
+    /** Data about people, sensitive data above all, is neither misused nor exposed. */
+    privacy = "privacy",
+    /** A system does as well on unseen data as on what it was trained on. */
+    robustness = "robustness",
+    /** Nobody's life or health, and no property or part of nature, comes to harm. */
+    safety = "safety",
+    /** Threats peculiar to AI are met, beyond the usual ones. */
+    security = "security",
+    /** Those concerned can see how a system works and why it gave a result. */
+    transparency_and_explainability = "transparency_and_explainability",
+    /** A system keeps doing what it is meant to. */
+    reliability = "reliability",
+    /** A system can be used by people with differing abilities. */
+    accessibility = "accessibility",
+    /** A kind of objective the organization sets for itself. */
+    other = "other",
+};
+/**
+* Kinds of source a risk from AI can come from: those Annex C lists, and other.
+*/
+export enum AimsRiskSourceCategory {
+    
+    /** A system works where situations vary widely, so its results are less sure. */
+    complex_environment = "complex_environment",
+    /** The organization cannot tell people enough about a system. */
+    opaque_system = "opaque_system",
+    /** How much a system does alone, which bears on safety or fairness among others. */
+    level_of_automation = "level_of_automation",
+    /** The data a model learns from, or how it was gathered, is flawed. */
+    machine_learning = "machine_learning",
+    /** Faulty parts, or moving a trained model to other equipment. */
+    hardware = "hardware",
+    /** Flaws anywhere in a system's life, from design to retirement. */
+    life_cycle = "life_cycle",
+    /** A technology is too new to know well, or so old it breeds complacency. */
+    technology_readiness = "technology_readiness",
+    /** A source the organization names for itself. */
+    other = "other",
+};
+/**
+* Who an AI system's impact falls on.
+*/
+export enum AimsImpactSubject {
+    
+    /** Particular persons. */
+    individuals = "individuals",
+    /** Groups of persons, such as children or workers. */
+    groups_of_individuals = "groups_of_individuals",
+    /** Society at large. */
+    societies = "societies",
+};
+/**
+* Areas where AI systems can touch people or society: those the guidance on impact assessment names as examples, and other.
+*/
+export enum AimsImpactArea {
+    
+    /** Treating persons and groups even-handedly. */
+    fairness = "fairness",
+    /** Someone staying answerable for the outcome. */
+    accountability = "accountability",
+    /** Being able to see how a system works and why it gave a result. */
+    transparency_and_explainability = "transparency_and_explainability",
+    /** Keeping people's information safe and private. */
+    security_and_privacy = "security_and_privacy",
+    /** Physical and mental harm and wellbeing. */
+    safety_and_health = "safety_and_health",
+    /** What people stand to gain or lose in money. */
+    financial = "financial",
+    /** Whether people with differing abilities can use a system. */
+    accessibility = "accessibility",
+    /** Rights everyone holds. */
+    human_rights = "human_rights",
+    /** Natural resources and emissions. */
+    environmental_sustainability = "environmental_sustainability",
+    /** Jobs, access to finance, taxes and trade. */
+    economic = "economic",
+    /** Lawmaking, political falsehoods, defence of the state and the courts. */
+    government = "government",
+    /** What a society holds to, and the biases a system can feed. */
+    culture_and_values = "culture_and_values",
+    /** An area the organization names for itself. */
+    other = "other",
+};
+/**
+* Whether an impact helps or harms.
+*/
+export enum AimsImpactDirection {
+    
+    /** It helps. */
+    positive = "positive",
+    /** It harms. */
+    negative = "negative",
+};
+/**
+* Who provides a resource an AI system draws on.
+*/
+export enum AimsResourceProvider {
+    
+    /** The organization itself. */
+    organization = "organization",
+    /** One of its customers. */
+    customer = "customer",
+    /** Someone else. */
+    third_party = "third_party",
+};
+/**
+* The parts data can play in machine learning.
+*/
+export enum AimsDataCategory {
+    
+    /** Data a model learns from. */
+    training = "training",
+    /** Data used to tune a model and compare versions of it. */
+    validation = "validation",
+    /** Data held back to see how a finished model does. */
+    test = "test",
+    /** Data a system meets in service. */
+    production = "production",
+};
+/**
+* Common ways of making data ready for AI: those the guidance names, and other.
+*/
+export enum AimsDataPreparationMethod {
+    
+    /** Looking at how the values are spread, and describing them. */
+    statistical_exploration = "statistical_exploration",
+    /** Mending wrong values and dealing with gaps. */
+    cleaning = "cleaning",
+    /** Filling gaps by a method. */
+    imputation = "imputation",
+    /** Reshaping values to a common distribution or range. */
+    normalization = "normalization",
+    /** Bringing values to comparable sizes. */
+    scaling = "scaling",
+    /** Marking the values a model is to predict. */
+    labelling = "labelling",
+    /** Turning categories into numbers. */
+    encoding = "encoding",
+    /** A method the organization names for itself. */
+    other = "other",
+};
+/**
+* Threats to information security peculiar to AI: those the guidance names, and other.
+*/
+export enum AimsAiThreat {
+    
+    /** Slipping bad data in to spoil what a model learns. */
+    data_poisoning = "data_poisoning",
+    /** Copying a model by querying it or by taking it. */
+    model_stealing = "model_stealing",
+    /** Working back from a model to the data it learned from. */
+    model_inversion = "model_inversion",
+    /** A threat the organization names for itself. */
+    other = "other",
+};
+/**
+* How far a control or a plan has been put into effect.
+*/
+export enum AimsImplementationStatus {
+    
+    /** Nothing has been done yet. */
     not_started = "not_started",
-    /** Control scheduled for implementation with defined timeline. */
+    /** The work is planned, with a timeline. */
     planned = "planned",
-    /** Implementation actively underway but not yet complete. */
+    /** The work is under way. */
     in_progress = "in_progress",
-    /** Control fully implemented and operational. */
+    /** The work is done and in operation. */
     implemented = "implemented",
-    /** Control excluded from scope with documented justification per Clause 6.1.3 f). */
-    not_applicable = "not_applicable",
 };
 /**
-* Standard risk treatment options drawn from ISO 31000 and adapted for AI risk treatment per Clause 6.1.3.
+* The ways of treating a risk, by the names ISO 31000 gives them.
 */
-export enum RiskTreatmentOption {
+export enum AimsRiskTreatmentOption {
     
-    /** Apply controls to change the AI risk level (reduce likelihood or consequence). */
+    /** Change the risk with controls that lower its likelihood or its consequences. */
     modify = "modify",
-    /** Accept the residual AI risk without further treatment, within risk appetite, with designated management approval. */
-    accept = "accept",
-    /** Eliminate the AI risk by not undertaking the activity that creates it (for example, not deploying a high-risk AI use case). */
+    /** Keep the risk as it is, with management's approval. */
+    retain = "retain",
+    /** Remove the risk by stopping or changing what gives rise to it. */
     avoid = "avoid",
-    /** Transfer or share the AI risk with external parties (e.g., insurance, contractual transfer to a supplier or partner). */
+    /** Share the risk with another party, such as an insurer or a supplier. */
     share = "share",
 };
 /**
-* Qualitative AI risk rating derived from likelihood and consequence analysis.
+* A five-point scale of risk level, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
 */
-export enum RiskLevel {
+export enum AimsRiskLevel {
     
-    /** Negligible AI risk requiring no immediate action. */
+    /** Small enough to need no action. */
     very_low = "very_low",
-    /** Minor AI risk manageable through routine procedures. */
+    /** Managed by routine procedures. */
     low = "low",
-    /** Moderate AI risk requiring management attention and planned controls. */
+    /** Needs management's attention and planned controls. */
     medium = "medium",
-    /** Significant AI risk requiring priority treatment and escalation. */
+    /** Needs treatment first and escalation. */
     high = "high",
-    /** Severe AI risk threatening organizational objectives, individuals, or societies; requires immediate executive action. */
+    /** Threatens the organization's objectives and needs action at once. */
     critical = "critical",
 };
 /**
-* Qualitative likelihood scale for AI risk assessment.
+* A five-point scale of likelihood, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
 */
-export enum LikelihoodRating {
+export enum AimsLikelihood {
     
-    /** Highly unlikely to occur (< 5% probability). */
+    /** Not expected to happen. */
     rare = "rare",
-    /** Not expected but possible (5-20% probability). */
+    /** Could happen, but is not expected to. */
     unlikely = "unlikely",
-    /** May occur at some point (20-50% probability). */
+    /** Might happen at some point. */
     possible = "possible",
-    /** Probably will occur (50-80% probability). */
+    /** Will probably happen. */
     likely = "likely",
-    /** Expected to occur in most circumstances (> 80% probability). */
+    /** Expected to happen. */
     almost_certain = "almost_certain",
 };
 /**
-* Qualitative consequence scale for AI risk assessment, covering impact on the organization, individuals, groups, and societies.
+* A five-point scale of consequence, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
 */
-export enum ImpactRating {
+export enum AimsConsequence {
     
-    /** No significant impact on operations, individuals, or society. */
+    /** No noticeable effect. */
     negligible = "negligible",
-    /** Limited impact, easily absorbed by normal operations. */
+    /** An effect normal operations absorb. */
     minor = "minor",
-    /** Noticeable impact requiring management intervention. */
+    /** An effect that needs management to step in. */
     moderate = "moderate",
-    /** Serious impact on objectives, reputation, compliance, or identifiable groups of individuals. */
+    /** A serious effect on people, objectives or reputation. */
     major = "major",
-    /** Catastrophic impact threatening organizational viability, broad societal harm, or fundamental rights of affected individuals. */
+    /** An effect that threatens lives or the organization's survival. */
     severe = "severe",
 };
 /**
-* Stages of the AI system life cycle referenced throughout Annex A.6 and defined in ISO/IEC 5338 / ISO/IEC 22989.
+* The kinds of documented information an AimsDocumentedInformation record holds. Policies have records of their own.
 */
-export enum AISystemLifecycleStage {
+export enum AimsDocumentKind {
     
-    /** Initial conception, feasibility, and use-case definition. */
-    inception = "inception",
-    /** AI system design including requirements and architecture. */
-    design = "design",
-    /** Acquiring, labelling, and preparing data resources. */
-    data_collection_and_preparation = "data_collection_and_preparation",
-    /** Model and AI system development and training. */
-    development = "development",
-    /** Verification and validation of the AI system. */
-    verification_and_validation = "verification_and_validation",
-    /** Release and integration into the production environment. */
-    deployment = "deployment",
-    /** Ongoing operation, monitoring, and support. */
-    operation_and_monitoring = "operation_and_monitoring",
-    /** Continuous validation, including drift detection and re-training triggers. */
-    continuous_validation = "continuous_validation",
-    /** Re-evaluation following significant changes or new evidence. */
-    re_evaluation = "re_evaluation",
-    /** Retirement, disposal, and post-decommissioning obligations. */
-    decommissioning = "decommissioning",
-};
-/**
-* Roles an organization may take with respect to an AI system, paraphrased from the role taxonomy referenced in ISO/IEC 22989 and the NIST AI RMF.
-*/
-export enum AIOrganizationalRole {
-    
-    /** Organization providing AI platforms, products, or services to others. */
-    ai_provider = "ai_provider",
-    /** Organization or actor that develops, designs, operates, tests, evaluates, deploys, or governs AI systems. */
-    ai_producer = "ai_producer",
-    /** Organization or individual that uses an AI product or service. */
-    ai_customer = "ai_customer",
-    /** System integrators and data providers for AI systems. */
-    ai_partner = "ai_partner",
-    /** Individuals or groups whose data or interests are affected by an AI system (e.g., data subjects). */
-    ai_subject = "ai_subject",
-    /** Policymakers, regulators, and other oversight bodies. */
-    relevant_authority = "relevant_authority",
-};
-/**
-* Categories of data resources documented for AI systems per A.7 (Data for AI systems).
-*/
-export enum DataResourceCategory {
-    
-    /** Data used to train machine learning models. */
-    training = "training",
-    /** Data used for model selection and hyperparameter tuning. */
-    validation = "validation",
-    /** Data used to evaluate model performance prior to deployment. */
-    test = "test",
-    /** Live operational data processed by the deployed AI system. */
-    production = "production",
-    /** Reference datasets used for benchmarking or comparison. */
-    reference = "reference",
-};
-/**
-* Categories of organizational objectives associated with responsible development and use of AI systems, paraphrased from Annex C of ISO/IEC 42001:2023.
-*/
-export enum AIObjectiveCategory {
-    
-    /** Clear allocation of responsibility for AI-supported decisions. */
-    accountability = "accountability",
-    /** Availability of interdisciplinary expertise for AI activities. */
-    ai_expertise = "ai_expertise",
-    /** Adequate quality of training, validation, and test data. */
-    data_quality = "data_quality",
-    /** Management of positive and negative environmental effects. */
-    environmental_impact = "environmental_impact",
-    /** Avoiding inappropriate or unfair outcomes for individuals or groups. */
-    fairness = "fairness",
-    /** Ability to correct defects and accommodate new requirements. */
-    maintainability = "maintainability",
-    /** Protection of personal and sensitive data processed by AI systems. */
-    privacy = "privacy",
-    /** Comparable performance on new and operational data. */
-    robustness = "robustness",
-    /** Avoidance of harm to life, health, property, or the environment. */
-    safety = "safety",
-    /** Protection from AI-specific and conventional security threats. */
-    security = "security",
-    /** Visibility into organizational AI practices and AI system behaviour. */
-    transparency = "transparency",
-    /** Comprehensible explanations of important factors driving AI outputs. */
-    explainability = "explainability",
-    /** Consistent performance under defined conditions. */
-    reliability = "reliability",
-    /** Usability of AI systems by people with diverse abilities. */
-    accessibility = "accessibility",
-    /** Sufficient availability and quality of training, validation, and test data needed to train and verify AI systems (Annex C.2.3). */
-    availability_of_training_data = "availability_of_training_data",
-};
-/**
-* Categories of AI risk sources, paraphrased from Annex C of ISO/IEC 42001:2023.
-*/
-export enum AIRiskSourceCategory {
-    
-    /** Performance uncertainty in complex or open operational environments (e.g., autonomous systems). */
-    complexity_of_environment = "complexity_of_environment",
-    /** Inability to provide adequate information to interested parties, affecting trustworthiness and accountability. */
-    lack_of_transparency_or_explainability = "lack_of_transparency_or_explainability",
-    /** Effects of automation on safety, fairness, security, or human oversight. */
-    level_of_automation = "level_of_automation",
-    /** Risks tied to data collection, data quality, and ML-specific phenomena such as data poisoning. */
-    machine_learning_specific = "machine_learning_specific",
-    /** Hardware errors or behavioural differences when transferring trained models between systems. */
-    hardware = "hardware",
-    /** Risks introduced at any AI system life cycle stage, including design flaws, deployment issues, or decommissioning gaps. */
-    lifecycle = "lifecycle",
-    /** Risks from immature technology with unknown limitations as well as mature technology subject to technology complacency. */
-    technology_readiness = "technology_readiness",
-};
-/**
-* Categories of documented information referenced in or required by ISO/IEC 42001:2023.
-*/
-export enum DocumentType {
-    
-    /** High-level statement of intent and direction (e.g., AI policy per 5.2). */
-    policy = "policy",
-    /** Documented steps for performing AIMS activities consistently. */
+    /** The steps for carrying out an activity the same way each time. */
     procedure = "procedure",
-    /** Mandatory requirements for specific AI technologies or processes. */
+    /** Mandatory requirements for a technology or a process. */
     standard = "standard",
-    /** Recommended practices that support AI-related policies. */
+    /** Recommended practice that supports a policy or a procedure. */
     guideline = "guideline",
-    /** Evidence of AIMS activities performed or results achieved. */
+    /** Evidence of what was done or achieved. */
     record = "record",
-    /** Documented approach for achieving objectives (e.g., AI risk treatment plan, deployment plan). */
+    /** How the organization means to reach an objective. */
     plan = "plan",
-    /** Formal output of assessment, audit, impact assessment, or review activities. */
+    /** The formal output of an assessment, audit or review. */
     report = "report",
-    /** AI system technical documentation provided to users, partners, supervisory authorities, and other interested parties per A.6.2.7 and A.8.2. */
-    technical_documentation = "technical_documentation",
 };
 /**
-* Classification of internal audit findings for the AIMS.
+* Who carries out an audit, relative to the organization audited, as ISO 19011 sorts audits.
 */
-export enum AuditFindingType {
+export enum AimsAuditType {
     
-    /** Significant failure to fulfill a requirement that affects the AIMS ability to achieve its intended outcomes. */
+    /** The organization audits itself, or someone audits it on its behalf. */
+    first_party = "first_party",
+    /** A party with an interest in the organization audits it, such as a customer. */
+    second_party = "second_party",
+    /** An independent body audits it, such as a certification body or a regulator. */
+    third_party = "third_party",
+};
+/**
+* The kinds of audit finding.
+*/
+export enum AimsAuditFindingType {
+    
+    /** A requirement not met in a way that puts the system's results in doubt. */
     major_nonconformity = "major_nonconformity",
-    /** Isolated lapse that does not significantly affect AIMS effectiveness. */
+    /** A requirement not met in an isolated way that leaves its results in reach. */
     minor_nonconformity = "minor_nonconformity",
-    /** Noted condition that could lead to a nonconformity if not addressed. */
+    /** A condition that could lead to a nonconformity if left alone. */
     observation = "observation",
-    /** Evidence of effective implementation exceeding requirements. */
+    /** Evidence of practice that works well. */
     positive_finding = "positive_finding",
 };
 /**
-* Dimensions evaluated during an AI system impact assessment per Clause 6.1.4. Combines individual/group impacts (Annex A.5.4 / Annex B.5.4) with societal-scope impacts (Annex A.5.5 / Annex B.5.5).
+* What an incident involving an AI system concerns. ISO/IEC 42001 tells apart an incident of the system itself from one about security of information or about privacy.
 */
-export enum ImpactAssessmentDimension {
+export enum AimsIncidentCategory {
     
-    /** Consequences for individual persons interacting with or affected by the AI system. */
-    individual = "individual",
-    /** Consequences for identifiable groups of individuals. */
-    group = "group",
-    /** Broader societal consequences. */
-    societal = "societal",
-    /** Fair and non-discriminatory treatment of affected individuals and groups (B.5.4). */
-    fairness = "fairness",
-    /** Transparency of organizational AI practices and AI system behaviour (B.5.4). */
-    transparency = "transparency",
-    /** Comprehensibility of important factors driving AI outputs (B.5.4). */
-    explainability = "explainability",
-    /** Clear allocation of accountability for AI-supported decisions (B.5.4). */
-    accountability = "accountability",
-    /** Accessibility of the AI system for people with diverse abilities (B.5.4). */
-    accessibility = "accessibility",
-    /** Effects on fundamental human rights (B.5.4). */
-    human_rights = "human_rights",
-    /** Financial consequences for affected individuals or organizations (B.5.4). */
-    financial = "financial",
-    /** Effects on physical or mental health (B.5.4). */
-    health = "health",
-    /** Environmental consequences attributable to the AI system (B.5.5). */
-    environmental = "environmental",
-    /** Wider economic consequences (B.5.5). */
-    economic = "economic",
-    /** Consequences for democratic processes, governance, or rule of law (B.5.5). */
-    government = "government",
-    /** Consequences for cultural norms, traditions, or values (B.5.5). */
-    cultural_norms = "cultural_norms",
-    /** Safety-related consequences in the deployment context. */
-    safety = "safety",
-    /** Privacy-related consequences for data subjects. */
+    /** The system itself misbehaved or failed. */
+    ai_system = "ai_system",
+    /** Information was exposed, altered or made unavailable. */
+    information_security = "information_security",
+    /** Personal data was exposed or misused. */
     privacy = "privacy",
-    /** Information security consequences attributable to the AI system. */
-    security = "security",
-};
-/**
-* Normative reference control identifiers from Annex A of ISO/IEC 42001:2023 (38 controls across nine families A.2-A.10). Permissible value names use underscores in place of dots; the `meaning` slot preserves the Annex A dotted form. Control titles are paraphrased.
-*/
-export enum AnnexAControlId {
-    
-    /** AI policy - document a policy governing AI system development or use. */
-    a_2_2 = "a_2_2",
-    /** Alignment with other organizational policies - reconcile AI objectives with related policies. */
-    a_2_3 = "a_2_3",
-    /** Review of the AI policy - planned and event-driven policy review for suitability and effectiveness. */
-    a_2_4 = "a_2_4",
-    /** AI roles and responsibilities - define and allocate AI-related roles per organizational needs. */
-    a_3_2 = "a_3_2",
-    /** Reporting of concerns - process for raising concerns about the organization's role with respect to AI. */
-    a_3_3 = "a_3_3",
-    /** Resource documentation - identify and document resources used at each AI lifecycle stage. */
-    a_4_2 = "a_4_2",
-    /** Data resources - document data resources used by the AI system. */
-    a_4_3 = "a_4_3",
-    /** Tooling resources - document tooling resources used by the AI system. */
-    a_4_4 = "a_4_4",
-    /** System and computing resources - document system and computing resources used by the AI system. */
-    a_4_5 = "a_4_5",
-    /** Human resources - document human resources and competences across the AI lifecycle. */
-    a_4_6 = "a_4_6",
-    /** AI system impact assessment process - establish a process to assess consequences across the lifecycle. */
-    a_5_2 = "a_5_2",
-    /** Documentation of AI system impact assessments - record and retain assessment results. */
-    a_5_3 = "a_5_3",
-    /** Assessing AI system impact on individuals or groups - evaluate and document impacts to individuals. */
-    a_5_4 = "a_5_4",
-    /** Assessing societal impacts of AI systems - evaluate and document broader societal impacts. */
-    a_5_5 = "a_5_5",
-    /** Objectives for responsible development - identify objectives that guide responsible AI development. */
-    a_6_1_2 = "a_6_1_2",
-    /** Processes for responsible AI system design and development - document the design and development processes. */
-    a_6_1_3 = "a_6_1_3",
-    /** AI system requirements and specification - specify requirements for new or enhanced AI systems. */
-    a_6_2_2 = "a_6_2_2",
-    /** Documentation of AI system design and development - document design and development against requirements. */
-    a_6_2_3 = "a_6_2_3",
-    /** AI system verification and validation - define and document V&V measures and criteria. */
-    a_6_2_4 = "a_6_2_4",
-    /** AI system deployment - document a deployment plan and verify pre-deployment requirements. */
-    a_6_2_5 = "a_6_2_5",
-    /** AI system operation and monitoring - document operational and performance monitoring, repairs, updates, and support. */
-    a_6_2_6 = "a_6_2_6",
-    /** AI system technical documentation - provide technical documentation tailored to each interested party. */
-    a_6_2_7 = "a_6_2_7",
-    /** AI system recording of event logs - enable event log recording across relevant lifecycle phases. */
-    a_6_2_8 = "a_6_2_8",
-    /** Data for development and enhancement - define and implement data management processes for AI development. */
-    a_7_2 = "a_7_2",
-    /** Acquisition of data - document acquisition and selection details for data used in AI systems. */
-    a_7_3 = "a_7_3",
-    /** Quality of data for AI systems - define and meet data quality requirements. */
-    a_7_4 = "a_7_4",
-    /** Data provenance - record data provenance across the data and AI system life cycles. */
-    a_7_5 = "a_7_5",
-    /** Data preparation - document criteria and methods used for data preparation. */
-    a_7_6 = "a_7_6",
-    /** System documentation and information for users - provide information needed by AI system users. */
-    a_8_2 = "a_8_2",
-    /** External reporting - enable interested parties to report adverse impacts. */
-    a_8_3 = "a_8_3",
-    /** Communication of incidents - document a plan for communicating incidents to users. */
-    a_8_4 = "a_8_4",
-    /** Information for interested parties - document obligations to report AI system information to interested parties. */
-    a_8_5 = "a_8_5",
-    /** Processes for responsible use of AI systems - define and document responsible use processes. */
-    a_9_2 = "a_9_2",
-    /** Objectives for responsible use of AI system - identify and document responsible-use objectives. */
-    a_9_3 = "a_9_3",
-    /** Intended use of the AI system - ensure use aligns with the documented intended use. */
-    a_9_4 = "a_9_4",
-    /** Allocating responsibilities - allocate AI lifecycle responsibilities across organization, partners, suppliers, customers, third parties. */
-    a_10_2 = "a_10_2",
-    /** Suppliers - ensure supplier-provided services, products, and materials align with the organization's responsible AI approach. */
-    a_10_3 = "a_10_3",
-    /** Customers - account for customer expectations and needs in the organization's responsible AI approach. */
-    a_10_4 = "a_10_4",
-};
-/**
-* Application sectors referenced in Annex D of ISO/IEC 42001:2023 in which the AIMS can be deployed jointly with sector-specific management system standards (e.g., ISO 13485, ISO 22000, IEC 62304).
-*/
-export enum SectorDomain {
-    
-    /** Health, medical devices, and healthcare delivery contexts. */
-    health = "health",
-    /** Defence, security, and dual-use technology contexts. */
-    defence = "defence",
-    /** Transport, mobility, and autonomous vehicle contexts. */
-    transport = "transport",
-    /** Financial services, banking, insurance, and capital markets. */
-    finance = "finance",
-    /** Hiring, workforce management, and employee evaluation. */
-    employment = "employment",
-    /** Energy production, distribution, and grid management. */
-    energy = "energy",
-    /** Government, public administration, and public-service delivery. */
-    public_sector = "public_sector",
-    /** Education, training, and academic assessment contexts. */
-    education = "education",
-    /** Industrial and manufacturing automation. */
-    manufacturing = "manufacturing",
-    /** Agricultural production and food-supply contexts. */
-    agriculture = "agriculture",
-    /** Telecommunications and network operations. */
-    telecommunications = "telecommunications",
-    /** Retail, e-commerce, and consumer products. */
-    retail = "retail",
-    /** Other sector not enumerated above. */
+    /** Someone or something was put in danger. */
+    safety = "safety",
+    /** Something the organization names for itself. */
     other = "other",
 };
 /**
-* Learning paradigm of an AI system, informing risk considerations related to data provenance, drift, and behavioural change over time (see ISO/IEC 42001:2023 Introduction and Annex C.3.4).
+* Management system standards Annex D names as ones to run this system beside, and other.
 */
-export enum LearningParadigm {
+export enum AimsManagementSystemStandard {
     
-    /** Trained once and deployed without further learning during operation. */
-    static = "static",
-    /** Retrained on a defined cadence with controlled release cycles. */
-    periodic_retraining = "periodic_retraining",
-    /** Updates its behaviour during operation based on new data or feedback. */
-    continuous_learning = "continuous_learning",
-    /** Continuously updates parameters from a stream of data. */
-    online_learning = "online_learning",
-    /** Adapted from a pre-trained model to a new task or domain. */
-    transfer_learning = "transfer_learning",
-    /** Learns a policy through interaction with an environment and reward signals. */
-    reinforcement_learning = "reinforcement_learning",
-    /** Combines multiple learning paradigms (e.g., supervised plus reinforcement). */
-    hybrid = "hybrid",
-    /** AI system that is not based on machine learning (e.g., rule-based). */
-    not_applicable = "not_applicable",
-};
-/**
-* AI-specific incident categories supplementing classical information security incident classes. Supports incident triage and communication per Annex A.8.3 (External reporting) and A.8.4 (Communication of incidents).
-*/
-export enum AIIncidentCategory {
-    
-    /** Training or production data manipulated to compromise model behaviour. */
-    data_poisoning = "data_poisoning",
-    /** Unauthorized extraction or reconstruction of a deployed model. */
-    model_stealing = "model_stealing",
-    /** Reconstruction of sensitive training data via model queries. */
-    model_inversion = "model_inversion",
-    /** Inference of whether a record was part of the training set. */
-    membership_inference = "membership_inference",
-    /** Adversarial inputs causing the model to deviate from intended behaviour. */
-    prompt_injection = "prompt_injection",
-    /** Confidently incorrect or fabricated outputs causing material harm. */
-    hallucination = "hallucination",
-    /** Performance or behaviour degradation due to distribution shift. */
-    model_drift = "model_drift",
-    /** Unfair or discriminatory outcomes affecting individuals or groups. */
-    bias_incident = "bias_incident",
-    /** Harm to life, health, property, or the environment from AI behaviour. */
-    safety_incident = "safety_incident",
-    /** Unauthorized disclosure of personal data via the AI system. */
-    privacy_breach = "privacy_breach",
-    /** Compromise of confidentiality, integrity, or availability of the AI system. */
-    security_breach = "security_breach",
-    /** Use of the AI system outside its documented intended use. */
-    misuse = "misuse",
-    /** Broader societal harm reported by external interested parties. */
-    adverse_societal_impact = "adverse_societal_impact",
-    /** Other AI incident category not enumerated above. */
-    other = "other",
-};
-/**
-* Type of audit conducted against the AIMS per Clause 9.2 and the ISO 19011 audit taxonomy.
-*/
-export enum AuditType {
-    
-    /** First-party audit conducted by the organization itself or on its behalf. */
-    internal = "internal",
-    /** Second-party audit conducted by an interested party (e.g., customer). */
-    external_second_party = "external_second_party",
-    /** Third-party audit conducted by an independent certification body. */
-    external_third_party = "external_third_party",
-    /** Ongoing surveillance audit during the certification cycle. */
-    surveillance = "surveillance",
-    /** Audit performed to renew certification. */
-    recertification = "recertification",
-    /** Combined audit covering two or more management system disciplines. */
-    combined = "combined",
-};
-/**
-* Machine-learning approach used by the AI system, capturing the design-choice dimension referenced in B.6.2.3. Distinct from `LearningParadigm`, which describes how often the model updates.
-*/
-export enum MLApproach {
-    
-    /** Learns from labelled examples. */
-    supervised = "supervised",
-    /** Discovers structure in unlabelled data. */
-    unsupervised = "unsupervised",
-    /** Combines a small labelled set with a larger unlabelled set. */
-    semi_supervised = "semi_supervised",
-    /** Generates supervisory signals from the data itself. */
-    self_supervised = "self_supervised",
-    /** Learns a policy through interaction with an environment and reward signals. */
-    reinforcement = "reinforcement",
-    /** Adapts a pre-trained model to a new task or domain. */
-    transfer = "transfer",
-    /** Trains across distributed data holders without centralizing raw data. */
-    federated = "federated",
-    /** Generative modelling approach (e.g., LLMs, diffusion models). */
-    generative = "generative",
-    /** Rule-based or symbolic reasoning, not statistical ML. */
-    symbolic = "symbolic",
-    /** Combines multiple ML approaches. */
-    hybrid = "hybrid",
-    /** AI system not based on machine learning. */
-    not_applicable = "not_applicable",
-};
-/**
-* Common data preparation and transformation methods documented per Annex A.7.6 and Annex B.7.6.
-*/
-export enum DataPreparationMethod {
-    
-    /** Distribution, mean, median, standard deviation, range, stratification, sampling. */
-    statistical_exploration = "statistical_exploration",
-    /** Correcting entries and handling malformed records. */
-    cleaning = "cleaning",
-    /** Filling in missing entries. */
-    imputation = "imputation",
-    /** Re-scaling values to a common range or distribution. */
-    normalization = "normalization",
-    /** Multiplicative re-scaling of feature values. */
-    scaling = "scaling",
-    /** Assigning target labels to records. */
-    labelling = "labelling",
-    /** Converting categorical variables to numeric representations. */
-    encoding = "encoding",
-    /** Synthesising additional training samples from existing data. */
-    augmentation = "augmentation",
-    /** Removing duplicate records. */
-    deduplication = "deduplication",
-    /** Removing or transforming personally identifying information. */
-    anonymization = "anonymization",
-    /** Other preparation method not enumerated above. */
-    other = "other",
-};
-/**
-* Related management-system standards with which the AIMS may be jointly implemented, per the Introduction (Compatibility with other management system standards) and Annex D.
-*/
-export enum RelatedManagementSystem {
-    
-    /** Information security management systems. */
+    /** Managing information security. */
     iso_iec_27001 = "iso_iec_27001",
-    /** Privacy information management. */
+    /** Managing privacy of information. */
     iso_iec_27701 = "iso_iec_27701",
-    /** Quality management systems. */
+    /** Managing quality. */
     iso_9001 = "iso_9001",
-    /** Food safety management systems. */
+    /** Managing food safety. */
     iso_22000 = "iso_22000",
-    /** Medical-device quality management systems. */
+    /** Managing quality of medical devices. */
     iso_13485 = "iso_13485",
-    /** Medical device software life cycle processes. */
-    iec_62304 = "iec_62304",
-    /** AI system life cycle process. */
-    iso_iec_5338 = "iso_iec_5338",
-    /** Data quality for analytics and ML. */
-    iso_iec_5259 = "iso_iec_5259",
-    /** AI concepts and terminology (normative reference). */
-    iso_iec_22989 = "iso_iec_22989",
-    /** AI risk management guidance. */
-    iso_iec_23894 = "iso_iec_23894",
-    /** Governance of IT - AI governance implications. */
-    iso_iec_38507 = "iso_iec_38507",
-    /** Information security management - overview and vocabulary. */
-    iso_iec_27000 = "iso_iec_27000",
-    /** Privacy framework. */
-    iso_iec_29100 = "iso_iec_29100",
-    /** Risk management guidelines. */
-    iso_31000 = "iso_31000",
-    /** Measurement of data quality. */
-    iso_iec_25024 = "iso_iec_25024",
-    /** Quality model for AI systems. */
-    iso_iec_25059 = "iso_iec_25059",
-    /** Guidelines for auditing management systems. */
-    iso_19011 = "iso_19011",
-    /** Whistleblowing management systems (informs A.3.3 concern reporting). */
-    iso_37002 = "iso_37002",
-    /** Other management system standard not enumerated above. */
-    other = "other",
-};
-/**
-* Governance role types within the AIMS, paraphrased from Clause 3.3 (top management), Clause 3.22 (governing body), Clause 5.3, and Annex A.3.2. Use this enum on `role_type` for normative governance positions; free-form strings remain accepted for organization-defined roles.
-*/
-export enum GovernanceRoleType {
-    
-    /** Board, trustees, or other body accountable for organizational performance (3.22). */
-    governing_body = "governing_body",
-    /** Person or group directing and controlling the organization at the highest level (3.3). */
-    top_management = "top_management",
-    /** Management designated to approve AI risk treatment plans and residual-risk acceptance (6.1.3). */
-    designated_management = "designated_management",
-    /** Senior executive accountable for the AIMS. */
-    chief_ai_officer = "chief_ai_officer",
-    /** Person accountable for managing a specific AI risk (6.1.2). */
-    ai_risk_owner = "ai_risk_owner",
-    /** Role accountable for AI policy development and review (A.2.4). */
-    ai_policy_owner = "ai_policy_owner",
-    /** Cross-functional committee providing oversight of AI systems. */
-    ai_oversight_committee = "ai_oversight_committee",
-    /** Role accountable for data resources used by AI systems (A.4.3, A.7). */
-    data_steward = "data_steward",
-    /** Role responsible for verification and validation of AI models (A.6.2.4). */
-    model_validator = "model_validator",
-    /** Role performing human-in-the-loop review of AI outputs (B.9.3). */
-    human_oversight_reviewer = "human_oversight_reviewer",
-    /** Role developing AI systems or components. */
-    ai_developer = "ai_developer",
-    /** Role operating and monitoring AI systems in production. */
-    ai_operator = "ai_operator",
-    /** Role conducting AI system impact assessments (6.1.4). */
-    ai_impact_assessor = "ai_impact_assessor",
-    /** Internal or external auditor of the AIMS (9.2). */
-    auditor = "auditor",
-    /** Other governance role not enumerated above. */
+    /** Another management system standard, generic or for one sector. */
     other = "other",
 };
 
 
 /**
- * Abstract base class for all entities with an identifier, name, and description. Provides common identification and documentation slots.
+ * What every record of the system has, so that other records can refer to it: an identifier, a title and a description.
  */
-export interface NamedEntity {
-    /** Unique identifier for this entity instance. */
-    id: string,
-    /** Human-readable name or title. */
-    name: string,
-    /** Detailed description of the entity. */
+export interface AimsRecordMixin {
+    /** The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it. */
+    aims_id: string,
+    /** The name the organization gives the record. */
+    title: string,
+    /** What the record says or describes, in the organization's own words. */
     description?: string,
-    /** Date when the entity was created. */
-    created_date?: date,
-    /** Date when the entity was last modified. */
-    modified_date?: date,
-    /** Version identifier for the entity. */
-    version?: string,
 }
 
 
 /**
- * Abstract class for documented information per Clause 7.5. Captures metadata required for document control under the AIMS.
+ * The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.
  */
-export interface DocumentedInformation extends NamedEntity {
-    /** Classification of the documented information. */
-    document_type?: string,
-    /** Unique reference number for document control. */
-    document_reference?: string,
-    /** Person who created the document. */
-    author?: string,
-    /** Person accountable for the document content and maintenance. */
-    owner?: string,
-    /** Person who approved the document. */
-    approved_by?: string,
-    /** Date when the document was approved. */
-    approved_date?: date,
-    /** Date when the document becomes effective. */
-    effective_date?: date,
-    /** Date when the document is due for review. */
-    review_date?: date,
-    /** Current status of the document or entity. */
-    status?: string,
-    /** Information classification level. */
-    classification?: string,
-    /** Duration for which the document is retained. */
-    retention_period?: string,
+export interface AimsDocumentControlMixin {
+    /** The reference the organization's document control gives it. */
+    aims_document_reference?: string,
+    /** The version of the document. */
+    aims_document_version?: string,
+    /** Who wrote the document. */
+    aims_document_author?: string,
+    /** Who answers for the document's content and upkeep. */
+    aims_document_owner?: string,
+    /** The document's format, such as its language or software version. */
+    aims_document_format?: string,
+    /** What the document is held on, such as paper or an electronic system. */
+    aims_document_medium?: string,
+    /** Who approved the document. */
+    aims_document_approver?: string,
+    /** When the document was approved. */
+    aims_document_approval_date?: date,
+    /** When the document takes effect. */
+    aims_document_effective_date?: date,
+    /** When the document was last reviewed. */
+    aims_document_last_review_date?: date,
+    /** When the document is next due for review. */
+    aims_document_next_review_date?: date,
+    /** Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn. */
+    aims_document_status?: string,
+    /** The information classification the document carries. */
+    aims_document_classification?: string,
+    /** How long the document is kept, as an ISO 8601 duration. */
+    aims_document_retention?: string,
+    /** What becomes of the document when that time is up. */
+    aims_document_disposition?: string,
+    /** Who gets the document, how they reach it and what they may do with it. */
+    aims_document_distribution?: string[],
+    /** How the document is stored so that it stays legible. */
+    aims_document_storage?: string,
+    /** How changes to the document are controlled, such as version control. */
+    aims_document_change_control?: string,
+    /** Whether the document comes from outside the organization and is kept because the system needs it. */
+    aims_document_external_origin?: boolean,
+    /** Who the document came from, when it comes from outside. */
+    aims_document_external_source?: string,
 }
 
 
 /**
- * Top-level container representing an organization's complete AI Management System (AIMS) per ISO/IEC 42001:2023. Aggregates all components required to support the AIMS lifecycle.
+ * One organization's management system for AI: its scope and context, and every record it keeps, each kind in a list of its own.
  */
-export interface AIManagementSystem extends NamedEntity {
-    /** Reference to the organization operating the AIMS. */
-    organization?: OrganizationId,
-    /** Documented statement of AIMS scope per Clause 4.3. */
-    scope_statement?: string,
-    /** Defined boundaries of the AIMS scope. */
-    scope_boundaries?: string[],
-    /** Any exclusions from scope with justification. */
-    scope_exclusions?: string[],
-    /** Internal issues relevant to the AIMS per Clause 4.1. */
-    context_internal_issues?: string[],
-    /** External issues relevant to the AIMS per Clause 4.1. */
-    context_external_issues?: string[],
-    /** Documented set of roles the organization plays in the AI ecosystem within the AIMS scope. */
-    organizational_roles_with_ai?: string,
-    /** Related management-system standards with which the AIMS is jointly implemented or aligned (Introduction - Compatibility with other management system standards, Annex D). */
-    integrated_management_systems?: string,
-    /** Reference to the person or group exercising top management direction and control over the AIMS (Clause 3.3, 5.1). */
-    top_management?: string,
-    /** Reference to the governing body to which top management is accountable (Clause 3.22). */
-    governing_body?: string,
-    /** Records or references demonstrating top-management leadership and commitment to the AIMS per Clause 5.1. */
-    leadership_commitment_evidence?: string[],
-    /** Records of planned changes to the AIMS, including purpose, consequences, resource implications, and responsibilities per Clause 6.3. */
-    planned_changes?: string[],
-    /** Stakeholders relevant to the AIMS. */
-    interested_parties?: InterestedPartyId[],
-    /** Reference to the AI policy. */
-    ai_policy?: AIPolicyId,
-    /** AI objectives established by the organization. */
-    ai_objectives?: AIObjectiveId[],
-    /** Reference to the AI risk assessment process. */
-    ai_risk_assessment_process?: AIRiskAssessmentProcessId,
-    /** Reference to the AI risk treatment process. */
-    ai_risk_treatment_process?: AIRiskTreatmentProcessId,
-    /** Reference to the AI system impact assessment process. */
-    ai_system_impact_assessment_process?: AISystemImpactAssessmentProcessId,
-    /** Reference to the AIMS Statement of Applicability. */
-    statement_of_applicability?: StatementOfApplicabilityId,
-    /** AI reference controls applied within the AIMS. */
-    reference_controls?: AIReferenceControlId[],
-    /** AI systems within the AIMS scope. */
-    ai_systems?: AISystemId[],
-    /** AI-related roles defined in the AIMS. */
-    roles?: RoleId[],
-    /** Resources provided for the AIMS. */
-    resources?: ResourceId[],
-    /** Competence records for personnel. */
-    competence_records?: CompetenceRecordId[],
-    /** Reference to the awareness program. */
-    awareness_program?: AwarenessProgramId,
-    /** Reference to the communication plan. */
-    communication_plan?: CommunicationPlanId,
-    /** Register of all documented information. */
-    documented_information_register?: DocumentedInformationId[],
-    /** Operational procedures of the AIMS. */
-    operational_procedures?: OperationalProcedureId[],
-    /** AI risk assessment instances. */
-    ai_risk_assessments?: AIRiskAssessmentId[],
-    /** AI risk treatment plans. */
-    ai_risk_treatment_plans?: AIRiskTreatmentPlanId[],
-    /** AI system impact assessment instances. */
-    ai_system_impact_assessments?: AISystemImpactAssessmentId[],
-    /** Reference to the monitoring program. */
-    monitoring_program?: MonitoringProgramId,
-    /** Internal audits conducted. */
-    internal_audits?: InternalAuditId[],
-    /** Management reviews of the AIMS. */
-    management_reviews?: ManagementReviewId[],
-    /** Nonconformities identified. */
-    nonconformities?: NonconformityId[],
-    /** Corrective actions taken. */
-    corrective_actions?: CorrectiveActionId[],
-    /** Improvement opportunities being tracked. */
-    improvements?: ImprovementOpportunityId[],
-    /** Third-party relationships within the AIMS scope. */
-    third_party_relationships?: ThirdPartyRelationshipId[],
-    /** Current certification status of the AIMS. */
-    certification_status?: string,
-    /** Body that issued the certification. */
-    certification_body?: string,
-    /** Date the AIMS was certified. */
-    certification_date?: date,
-    /** Date when recertification is due. */
-    recertification_date?: date,
-    /** AI system events recorded under the AIMS. */
-    ai_system_events?: AISystemEventId[],
-    /** AI incidents managed under the AIMS. */
-    ai_incidents?: AIIncidentId[],
-    /** Concern reports raised and managed under the AIMS per A.3.3. */
-    concern_reports?: ConcernReportId[],
+export interface AimsManagementSystem extends AimsRecordMixin {
+    /** The organization that runs the system. */
+    aims_organization?: AimsOrganization,
+    /** The person or group that runs the organization from the very top. */
+    aims_top_management?: string,
+    /** The body top management answers to, such as a board, where there is one. */
+    aims_governing_body?: string,
+    /** What shows that top management leads and commits to the system. */
+    aims_leadership_evidence?: string[],
+    /** How far the system reaches, in the organization's words. */
+    aims_scope?: string,
+    /** Where the system stops. */
+    aims_scope_boundaries?: string[],
+    /** What in the organization's work the system applies to. */
+    aims_scope_applicability?: string[],
+    /** The processes the system needs and how they work together. */
+    aims_processes?: string,
+    /** The matters inside the organization that bear on the system. */
+    aims_internal_issues?: string[],
+    /** The matters outside the organization that bear on the system. */
+    aims_external_issues?: string[],
+    /** The changes to the system that are planned. */
+    aims_planned_changes?: string[],
+    /** What the system takes from outside the organization and keeps under control. */
+    aims_external_services?: string[],
+    /** Other standards for management systems that this one is run beside. */
+    aims_integrated_standards?: string,
+    /** Where the system stands with certification, in the organization's own terms. */
+    aims_certification_status?: string,
+    /** The body that certifies the system. */
+    aims_certification_body?: string,
+    /** When the system was certified. */
+    aims_certification_date?: date,
+    /** When the system is next due for recertification. */
+    aims_recertification_date?: date,
+    /** The interested parties the system takes into account. */
+    aims_interested_parties?: AimsInterestedParty[],
+    /** The AI policy. */
+    aims_policy?: AimsPolicy,
+    /** The policies on single topics under the AI policy. */
+    aims_topic_specific_policies?: AimsTopicSpecificPolicy[],
+    /** The roles that carry the system's duties and powers. */
+    aims_roles?: AimsRole[],
+    /** The AI objectives. */
+    aims_objectives?: AimsObjective[],
+    /** The actions planned on risks and opportunities. */
+    aims_planned_actions?: AimsPlannedAction[],
+    /** The process for assessing AI risks. */
+    aims_risk_assessment_process?: AimsRiskAssessmentProcess,
+    /** The process for treating AI risks. */
+    aims_risk_treatment_process?: AimsRiskTreatmentProcess,
+    /** The process for assessing what AI systems may do to people and society. */
+    aims_impact_assessment_process?: AimsImpactAssessmentProcess,
+    /** The risk assessments carried out. */
+    aims_risk_assessments?: AimsRiskAssessment[],
+    /** The risks identified, the risk register. */
+    aims_risks?: AimsRisk[],
+    /** The risk treatment plans. */
+    aims_risk_treatment_plans?: AimsRiskTreatmentPlan[],
+    /** The impact assessments carried out. */
+    aims_impact_assessments?: AimsImpactAssessment[],
+    /** The Statement of Applicability. */
+    aims_statement_of_applicability?: AimsStatementOfApplicability,
+    /** The controls the organization has determined it needs. */
+    aims_controls?: AimsControl[],
+    /** The AI systems the management system covers. */
+    aims_systems?: AimsAiSystem[],
+    /** The resources those AI systems draw on, each told apart by its type. */
+    aims_system_resources?: AimsSystemResource[],
+    /** The processes for designing and building AI systems responsibly. */
+    aims_development_processes?: AimsDevelopmentProcess[],
+    /** The processes for using AI systems responsibly. */
+    aims_use_processes?: AimsResponsibleUseProcess[],
+    /** The technical documents kept for AI systems. */
+    aims_technical_documentation?: AimsTechnicalDocumentation[],
+    /** What users of AI systems are told. */
+    aims_user_information?: AimsUserInformation[],
+    /** The plans for telling users about incidents. */
+    aims_incident_communication_plans?: AimsIncidentCommunicationPlan[],
+    /** What the organization must report to others about AI systems. */
+    aims_reporting_obligations?: AimsReportingObligation[],
+    /** The relationships with partners, suppliers, buyers and others. */
+    aims_third_party_relationships?: AimsThirdPartyRelationship[],
+    /** The resources provided for the management system itself. */
+    aims_resources?: AimsResource[],
+    /** The records of competence. */
+    aims_competence_records?: AimsCompetenceRecord[],
+    /** The awareness programme. */
+    aims_awareness_programme?: AimsAwarenessProgramme,
+    /** The plan for communication about the system. */
+    aims_communication_plan?: AimsCommunicationPlan,
+    /** The documented information the system keeps that no more specific list holds, such as procedures, plans and reports. */
+    aims_documented_information?: AimsDocumentedInformation[],
+    /** The procedures for planning and running operations. */
+    aims_operational_procedures?: AimsOperationalProcedure[],
+    /** The programme of monitoring and measurement. */
+    aims_monitoring_programme?: AimsMonitoringProgramme,
+    /** The audit programmes. */
+    aims_audit_programmes?: AimsAuditProgramme[],
+    /** The audits of the system, internal and external. */
+    aims_audits?: AimsAudit[],
+    /** The management reviews. */
+    aims_management_reviews?: AimsManagementReview[],
+    /** The nonconformities found. */
+    aims_nonconformities?: AimsNonconformity[],
+    /** The corrective actions taken. */
+    aims_corrective_actions?: AimsCorrectiveAction[],
+    /** The opportunities for improvement identified. */
+    aims_improvements?: AimsImprovementOpportunity[],
+    /** The events reported about AI systems, the incidents among them. */
+    aims_system_events?: AimsSystemEvent[],
+    /** The way people raise worries about the organization's part in AI. */
+    aims_concern_reporting_process?: AimsConcernReportingProcess,
+    /** The worries people have raised. */
+    aims_concern_reports?: AimsConcernReport[],
 }
 
 
 /**
- * The organization establishing and operating the AIMS. Captures the context required by Clause 4.1, including the organization's role(s) with respect to AI systems.
+ * The organization that runs the system, with what it needs to know about itself to understand its context and the parts it plays with AI.
  */
-export interface Organization extends NamedEntity {
-    /** Legal registered name of the organization. */
-    legal_name?: string,
-    /** Names under which the organization conducts business. */
-    trading_names?: string[],
-    /** Type of organization (e.g., corporation, government, nonprofit). */
-    organization_type?: string,
-    /** Primary industry sector of the organization (free-form label). */
-    industry_sector?: string,
-    /** Application sectors in which the organization deploys AI systems, drawn from the Annex D examples; supports identification of sector- specific management system standards that integrate with the AIMS. */
-    sector_domains?: string,
-    /** Organization size classification. */
-    size_category?: string,
-    /** Approximate number of employees. */
-    employee_count?: number,
-    /** Countries or regions where the organization operates. */
-    geographic_locations?: string[],
-    /** Jurisdictions whose regulations apply to the organization. */
-    regulatory_jurisdictions?: string[],
-    /** Parent organization if applicable. */
-    parent_organization?: string,
-    /** Subsidiary organizations if applicable. */
-    subsidiaries?: string[],
-    /** Roles the organization takes with respect to AI systems (provider, producer, customer, partner, subject, authority). */
-    ai_roles?: string,
-    /** Whether climate change has been determined to be a relevant issue for the organization's context per Clause 4.1. */
-    climate_change_relevant?: boolean,
+export interface AimsOrganization extends AimsRecordMixin {
+    /** The organization's registered legal name. */
+    aims_organization_legal_name?: string,
+    /** Other names the organization trades under. */
+    aims_organization_trading_names?: string[],
+    /** What kind of organization it is, such as a company, an agency or a charity. */
+    aims_organization_kind?: string,
+    /** The sectors the organization works in, such as health or finance. */
+    aims_organization_sectors?: string[],
+    /** How the organization classes its own size. */
+    aims_organization_size?: string,
+    /** About how many people the organization employs. */
+    aims_organization_employee_count?: number,
+    /** The countries or regions the organization works in. */
+    aims_organization_locations?: string[],
+    /** The jurisdictions whose laws and regulations apply to the organization. */
+    aims_organization_jurisdictions?: string[],
+    /** The organization's parent, if it has one. */
+    aims_organization_parent?: string,
+    /** The organization's subsidiaries, if it has any. */
+    aims_organization_subsidiaries?: string[],
+    /** The parts the organization plays towards its AI systems. */
+    aims_organization_ai_roles?: string,
+    /** The parts the organization plays when its AI systems process personal data. */
+    aims_organization_pii_roles?: string,
+    /** Whether the organization has found climate change to matter for the system. */
+    aims_organization_climate_change_relevant?: boolean,
 }
 
 
 /**
- * A stakeholder whose needs and expectations are relevant to the AIMS per Clause 4.2. Includes internal and external parties such as users, regulators, partners, suppliers, customers, AI subjects, and relevant authorities.
+ * A person or organization whose needs and expectations bear on the system, or who may feel its decisions, inside the organization or outside it.
  */
-export interface InterestedParty extends NamedEntity {
-    /** Category of party. */
-    party_type?: string,
-    /** Nature of the relationship with the organization. */
-    relationship?: string,
-    /** Requirements of the interested party. */
-    requirements?: string[],
-    /** Communication requirements for this party. */
-    communication_needs?: string,
-    /** Contact details for the party. */
-    contact_information?: string,
+export interface AimsInterestedParty extends AimsRecordMixin {
+    /** What kind of interested party it is, in the organization's own terms. */
+    aims_party_category?: string,
+    /** The parts the party plays towards the organization's AI systems. */
+    aims_party_ai_roles?: string,
+    /** How the party relates to the organization. */
+    aims_party_relationship?: string,
+    /** The party's requirements that bear on the system. */
+    aims_party_requirements?: string[],
+    /** Which of those requirements the system addresses. */
+    aims_party_addressed_requirements?: string[],
+    /** The party's requirements that concern climate change. */
+    aims_party_climate_change_requirements?: string[],
+    /** What the party needs to be told, and how. */
+    aims_party_communication_needs?: string,
+    /** How to reach the party. */
+    aims_party_contact?: string,
 }
 
 
 /**
- * The AI policy established by top management per Clause 5.2. Provides a framework for setting AI objectives and demonstrates commitment to responsible AI.
+ * The AI policy that top management sets: the organization's commitments and the frame for its AI objectives.
  */
-export interface AIPolicy extends DocumentedInformation {
-    /** The core policy statement text. */
-    policy_statement?: string,
-    /** Framework for setting AI objectives. */
-    policy_objectives_framework?: string,
-    /** Statements of commitment included in the policy. */
-    commitment_statements?: string[],
-    /** Statement of policy applicability. */
-    applicability_statement?: string,
-    /** Date when the policy was communicated. */
-    communication_date?: date,
-    /** Whether acknowledgment is required from personnel. */
-    acknowledgment_required?: boolean,
-    /** Topic-specific policies supporting this policy. */
-    related_topic_policies?: TopicSpecificPolicyId[],
-    /** Date of the most recent AI policy review. */
-    last_policy_review_date?: date,
-    /** Planned date of the next AI policy review. */
-    next_policy_review_date?: date,
+export interface AimsPolicy extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The clauses of the standard the record answers to or concerns. */
+    aims_cited_clauses?: string,
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** The policy's own statement, in the organization's words. */
+    aims_policy_statement?: string,
+    /** How the policy frames the setting of AI objectives. */
+    aims_policy_objectives_framework?: string,
+    /** The commitments the policy makes, at least to meeting requirements and to improving. */
+    aims_policy_commitments?: string[],
+    /** The principles that guide what the organization does with AI. */
+    aims_policy_principles?: string[],
+    /** How departures from the policy are handled. */
+    aims_policy_exceptions_process?: string,
+    /** What shaped the policy, such as strategy, values, the law or the risks. */
+    aims_policy_influences?: string[],
+    /** The organization's other policies this one refers to or touches. */
+    aims_policy_related_policies?: string[],
+    /** When the policy was made known inside the organization. */
+    aims_policy_communication_date?: date,
+    /** How interested parties can get the policy, where that is fitting. */
+    aims_policy_availability?: string,
+    /** The role management approved to develop, review and evaluate the policy. */
+    aims_policy_review_role?: AimsRoleAimsId,
+    /** How often the policy is reviewed, as an ISO 8601 duration. */
+    aims_policy_review_interval?: string,
 }
 
 
 /**
- * A topic-specific policy supporting the overarching AI policy, for example covering data governance, fairness, transparency, supplier use, or human oversight of AI systems.
+ * A policy on one topic that gives more guidance under the AI policy, such as assessing impacts or building systems.
  */
-export interface TopicSpecificPolicy extends DocumentedInformation {
-    /** The specific topic addressed by the policy. */
-    topic_area?: string,
-    /** The parent AI policy this topic-specific policy supports. */
-    parent_policy?: AIPolicyId,
-    /** Reference controls related to this policy or AI system. */
-    applicable_controls?: AIReferenceControlId[],
-    /** Intended audience for the policy or document. */
-    target_audience?: string,
+export interface AimsTopicSpecificPolicy extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The organization's controls that the record concerns. */
+    aims_relevant_controls?: AimsControlAimsId[],
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** The topic the policy covers. */
+    aims_topic_policy_topic?: string,
+    /** The AI policy this policy supports. */
+    aims_topic_policy_parent?: AimsPolicyAimsId,
+    /** Whom the policy is written for. */
+    aims_topic_policy_audience?: string,
 }
 
 
 /**
- * An AI-related role with defined responsibilities and authorities per Clause 5.3 and Annex A.3.2.
+ * A role in the system, with the duties and powers it carries and who holds it.
  */
-export interface Role extends NamedEntity {
-    /** Category of the role. Use a `GovernanceRoleType` value for the normative AIMS governance positions; free-form strings remain accepted for organization-defined roles. */
-    role_type?: string,
-    /** Responsibilities assigned to the role. */
-    responsibilities?: string[],
-    /** Authorities granted to the role. */
-    authorities?: string[],
+export interface AimsRole extends AimsRecordMixin {
+    /** What kind of role it is, in the organization's own terms. */
+    aims_role_category?: string,
+    /** The areas the role covers, such as privacy, safety or human oversight. */
+    aims_role_areas?: string[],
+    /** The duties assigned to the role. */
+    aims_role_responsibilities?: string[],
+    /** The powers the role carries. */
+    aims_role_authorities?: string[],
+    /** Whether the role sees that the system meets the standard. */
+    aims_role_ensures_conformity?: boolean,
+    /** Whether the role tells top management how the system is doing. */
+    aims_role_reports_performance?: boolean,
     /** What the role is accountable for. */
-    accountability?: string,
-    /** Person(s) assigned to this role or resource. */
-    assigned_to?: string[],
-    /** Rules for delegating responsibilities. */
-    delegation_rules?: string,
-    /** To whom this role reports. */
-    reporting_line?: string,
+    aims_role_accountability?: string,
+    /** The people who hold the role. */
+    aims_role_holders?: string[],
+    /** How the role may delegate its duties. */
+    aims_role_delegation?: string,
+    /** The role this role reports to. */
+    aims_role_reports_to?: AimsRoleAimsId,
 }
 
 
 /**
- * A measurable AI objective per Clause 6.2, established at relevant functions and levels and aligned with the AI policy.
+ * An AI objective: a result the organization aims for, with how it plans to reach it and how it judges progress.
  */
-export interface AIObjective extends NamedEntity {
-    /** Clear statement of the objective. */
-    objective_statement?: string,
-    /** Category of AI objective (e.g., fairness, transparency, robustness). */
-    objective_category?: string,
-    /** Target value for the objective metric. */
-    target_value?: string,
-    /** Current measured value. */
-    current_value?: string,
-    /** Definition of how the objective is measured. */
-    metric_definition?: string,
-    /** Method used to measure the metric. */
-    measurement_method?: string,
-    /** How often measurement is performed. */
-    measurement_frequency?: string,
-    /** Role responsible for the objective or control. */
-    responsible_role?: RoleId,
-    /** Resources required for implementation. */
-    resources_required?: string,
-    /** Target date for achieving the objective. */
-    target_date?: date,
-    /** Current status of objective achievement. */
-    achievement_status?: string,
-    /** Associated AI risks. */
-    related_risks?: AIRiskId[],
-    /** Other reference controls related to this one. */
-    related_controls?: AIReferenceControlId[],
-    /** Plan for achieving the objective. */
-    action_plan?: string,
+export interface AimsObjective extends AimsRecordMixin {
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** The organization's controls that the record concerns. */
+    aims_relevant_controls?: AimsControlAimsId[],
+    /** The kinds of objective the record bears on. */
+    aims_objective_categories?: string,
+    /** What the objective is for. */
+    aims_objective_purpose?: string,
+    /** The objective, as the organization states it. */
+    aims_objective_statement?: string,
+    /** The value the objective aims for, where it can be measured. */
+    aims_objective_target?: string,
+    /** The value last measured. */
+    aims_objective_current_value?: string,
+    /** How the objective's value is defined. */
+    aims_objective_metric?: string,
+    /** How the value is measured. */
+    aims_objective_measurement_method?: string,
+    /** How often the value is measured. */
+    aims_objective_measurement_frequency?: string,
+    /** When the objective is to be reached. */
+    aims_objective_target_date?: date,
+    /** How far the objective has been reached, in the organization's own terms. */
+    aims_objective_achievement?: string,
+    /** The risks that help or hinder the objective. */
+    aims_objective_risks?: AimsRiskAimsId[],
+    /** The steps that lead to the objective. */
+    aims_objective_action_plan?: string,
+    /** The resources needed to reach the objective. */
+    aims_objective_resources?: string,
+    /** How the outcome will be judged. */
+    aims_objective_evaluation?: string,
+    /** How the objective is made known. */
+    aims_objective_communication?: string,
 }
 
 
 /**
- * The documented AI risk assessment process per Clause 6.1.2, defining criteria and methodology for identifying, analysing, and evaluating AI risks. Aligned with ISO/IEC 23894.
+ * An action planned on a risk or an opportunity the system faces, with how it fits the system's processes and how its effect will be judged.
  */
-export interface AIRiskAssessmentProcess extends DocumentedInformation {
-    /** Criteria for accepting AI risks. */
-    risk_acceptance_criteria?: string,
-    /** Criteria for performing AI risk or impact assessments. */
-    assessment_criteria?: string,
-    /** Methodology used for assessment. */
-    assessment_methodology?: string,
-    /** Scale used for likelihood rating. */
-    likelihood_scale?: string,
-    /** Scale used for impact rating. */
-    impact_scale?: string,
-    /** Risk matrix or calculation method. */
-    risk_matrix?: string,
-    /** Planned frequency of assessments. */
-    assessment_frequency?: string,
-    /** Events that trigger an assessment outside the planned schedule. */
-    trigger_events?: string[],
-    /** Statement of how the process aligns with the AI policy. */
-    alignment_with_ai_policy?: string,
+export interface AimsPlannedAction extends AimsRecordMixin {
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The risks the action addresses. */
+    aims_planned_action_risks?: AimsRiskAimsId[],
+    /** The opportunities the action addresses. */
+    aims_planned_action_opportunities?: string[],
+    /** How the action fits into the system's processes. */
+    aims_planned_action_integration?: string,
+    /** How the action's effect will be judged. */
+    aims_planned_action_effectiveness?: string,
 }
 
 
 /**
- * An instance of AI risk assessment performed per Clause 8.2, identifying and evaluating AI risks at planned intervals or following significant change.
+ * The organization's process for assessing AI risks: its criteria, scales and method, and when it runs.
  */
-export interface AIRiskAssessment extends DocumentedInformation {
-    /** Scope of the assessment. */
-    assessment_scope?: string,
-    /** AI systems covered by this assessment. */
-    ai_systems_assessed?: AISystemId[],
-    /** Date the assessment was conducted. */
-    assessment_date?: date,
-    /** Person or team who conducted the assessment. */
-    assessor?: string,
-    /** Specific methodology applied in this assessment. */
-    methodology_used?: string,
-    /** Risks identified in this assessment. */
-    risks_identified?: AIRiskId[],
-    /** AI system impact assessment linked to this risk assessment. */
-    linked_impact_assessment?: AISystemImpactAssessmentId,
-    /** Summary of assessment findings. */
-    summary_findings?: string,
-    /** Recommendations from the assessment. */
-    recommendations?: string[],
-    /** Planned date for next assessment. */
-    next_assessment_date?: date,
+export interface AimsRiskAssessmentProcess extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The criteria for AI risk, which tell acceptable risk from the rest and steer assessment, treatment and the weighing of impacts. */
+    aims_risk_criteria?: string[],
+    /** How the process follows the AI policy and the AI objectives. */
+    aims_risk_policy_alignment?: string,
+    /** How the process keeps repeated assessments consistent and comparable. */
+    aims_risk_comparability?: string,
+    /** The method used to identify, analyse and evaluate risks. */
+    aims_risk_method?: string,
+    /** The scale for rating likelihood. */
+    aims_risk_likelihood_scale?: string,
+    /** The scale for rating consequences. */
+    aims_risk_consequence_scale?: string,
+    /** How likelihood and consequence combine into a risk level. */
+    aims_risk_matrix?: string,
+    /** How the assessed risks are ranked for treatment. */
+    aims_risk_prioritization?: string,
+    /** How often risks are assessed, as an ISO 8601 duration. */
+    aims_risk_assessment_interval?: string,
+    /** The changes that start an assessment outside the schedule. */
+    aims_risk_assessment_triggers?: string[],
 }
 
 
 /**
- * An identified AI risk that may affect achievement of AI objectives, individuals, groups, or societies within the AIMS scope.
+ * One risk assessment carried out under the process, and what it found.
  */
-export interface AIRisk extends NamedEntity {
-    /** Category of AI risk source per Annex C. */
-    risk_source_category?: string,
-    /** Description of the specific source of risk. */
-    risk_source_description?: string,
-    /** AI systems affected by this risk. */
-    affected_ai_systems?: AISystemId[],
-    /** Dimensions of impact affected by the risk (individual, group, societal, safety, privacy, security, environmental). */
-    affected_dimensions?: string,
-    /** Person accountable for managing the AI risk. */
-    risk_owner?: string,
-    /** Assessed likelihood of risk occurrence. */
-    likelihood?: string,
-    /** Assessed consequence if the risk materializes. */
-    impact?: string,
-    /** Risk level before controls are applied. */
-    inherent_risk_level?: string,
-    /** Controls currently in place affecting this risk. */
-    existing_controls?: AIReferenceControlId[],
-    /** Risk level after controls are applied. */
-    residual_risk_level?: string,
-    /** Selected treatment option for the AI risk. */
-    risk_treatment_option?: string,
-    /** Priority for treating this risk. */
-    treatment_priority?: string,
-    /** Risk treatment plan addressing this risk. */
-    related_treatment_plan?: AIRiskTreatmentPlanId,
-    /** AI system impact assessment associated with this risk. */
-    related_impact_assessment?: AISystemImpactAssessmentId,
+export interface AimsRiskAssessment extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** What the assessment covered. */
+    aims_assessment_scope?: string,
+    /** When the assessment was carried out. */
+    aims_assessment_date?: date,
+    /** Who carried out the assessment. */
+    aims_assessment_assessor?: string,
+    /** The method this assessment applied. */
+    aims_assessment_method_used?: string,
+    /** The risks the assessment identified. */
+    aims_assessment_risks?: AimsRiskAimsId[],
+    /** The impact assessments the assessment drew on. */
+    aims_assessment_impact_assessments?: AimsImpactAssessmentAimsId[],
+    /** A summary of what the assessment found. */
+    aims_assessment_summary?: string,
+    /** What the assessment recommends. */
+    aims_assessment_recommendations?: string[],
+    /** When the next assessment is planned. */
+    aims_assessment_next_date?: date,
 }
 
 
 /**
- * The documented AI risk treatment process per Clause 6.1.3, defining how treatment options are selected, how Annex A controls are considered, and how the Statement of Applicability is produced.
+ * An AI risk in the risk register: where it comes from, which objectives it helps or hinders, who could feel its consequences, how it is rated and how it is treated.
  */
-export interface AIRiskTreatmentProcess extends DocumentedInformation {
-    /** Guidance on selecting AI risk treatment options. */
-    treatment_options_guidance?: string,
-    /** Criteria for selecting Annex A controls. */
-    control_selection_criteria?: string,
-    /** Template used for the Statement of Applicability. */
-    soa_template?: string,
-    /** Workflow for approving AI risk treatment. */
-    approval_workflow?: string,
+export interface AimsRisk extends AimsRecordMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The kinds of risk source the record bears on. */
+    aims_risk_source_categories?: string,
+    /** Where the risk comes from, in the organization's words. */
+    aims_risk_source?: string,
+    /** The AI objectives the risk helps or hinders. */
+    aims_risk_objectives?: AimsObjectiveAimsId[],
+    /** What the organization could suffer if the risk came about. */
+    aims_risk_consequences_for_organization?: string,
+    /** What persons could suffer if the risk came about. */
+    aims_risk_consequences_for_individuals?: string,
+    /** What society could suffer if the risk came about. */
+    aims_risk_consequences_for_societies?: string,
+    /** The person who is accountable for the risk and has the authority to manage it. */
+    aims_risk_owner?: string,
+    /** How likely the risk is, where that can be judged. */
+    aims_risk_likelihood?: string,
+    /** How severe the consequences would be. */
+    aims_risk_consequence?: string,
+    /** The risk's level before controls. */
+    aims_risk_inherent_level?: string,
+    /** The organization's controls already acting on the risk. */
+    aims_risk_existing_controls?: AimsControlAimsId[],
+    /** The risk's level after controls. */
+    aims_risk_residual_level?: string,
+    /** Whether the risk is acceptable under the organization's criteria. */
+    aims_risk_acceptable?: boolean,
+    /** The treatment chosen for the risk. */
+    aims_risk_treatment_option?: string,
+    /** How soon the risk is to be treated, in the organization's own terms. */
+    aims_risk_treatment_priority?: string,
+    /** The impact assessments that inform the risk. */
+    aims_risk_impact_assessments?: AimsImpactAssessmentAimsId[],
 }
 
 
 /**
- * A plan documenting planned actions to address identified AI risks through selected controls. Requires approval by designated management per Clause 6.1.3.
+ * The organization's process for treating AI risks: how it chooses options and controls, checks them against Annex A and produces the Statement of Applicability and the plan.
  */
-export interface AIRiskTreatmentPlan extends DocumentedInformation {
-    /** Scope of the treatment plan. */
-    plan_scope?: string,
-    /** Risks addressed by this plan. */
-    risks_addressed?: AIRiskId[],
-    /** Actions to be taken for treatment. */
-    treatment_actions?: string[],
-    /** Controls to be implemented as part of treatment. */
-    controls_to_implement?: AIReferenceControlId[],
-    /** Resources required for implementation. */
-    resources_required?: string,
-    /** Parties responsible for implementation. */
-    responsible_parties?: string[],
-    /** Timeline for implementation. */
-    implementation_timeline?: string,
-    /** Risk owner who approved the plan. */
-    risk_owner_approval?: string,
-    /** Date when the document was approved. */
-    approved_date?: date,
-    /** Documentation of residual AI risk acceptance. */
-    residual_risk_acceptance?: string,
-    /** Current implementation status. */
-    implementation_status?: string,
-    /** Date when implementation was completed. */
-    completion_date?: date,
+export interface AimsRiskTreatmentProcess extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** How a treatment option is chosen for a risk. */
+    aims_treatment_options_guidance?: string,
+    /** How the controls a treatment needs are chosen. */
+    aims_treatment_control_selection?: string,
+    /** How the chosen controls are compared with Annex A, so that none is missed. */
+    aims_treatment_annex_a_comparison?: string,
+    /** How the organization decides it needs controls beyond Annex A, and where it gets them. */
+    aims_treatment_additional_controls?: string,
+    /** How the guidance of Annex B is taken into account. */
+    aims_treatment_annex_b_use?: string,
+    /** The template the Statement of Applicability follows. */
+    aims_treatment_soa_template?: string,
+    /** How designated management approves a plan and accepts the risk left over. */
+    aims_treatment_approval_workflow?: string,
 }
 
 
 /**
- * The documented process for assessing the potential consequences for individuals, groups, and societies arising from the development, provision, or use of AI systems per Clause 6.1.4.
+ * A plan to treat one or more risks: the actions and controls, who carries them out and when, and designated management's approval of the plan and of the risk left over.
  */
-export interface AISystemImpactAssessmentProcess extends DocumentedInformation {
-    /** Criteria for performing AI risk or impact assessments. */
-    assessment_criteria?: string,
-    /** Methodology used for assessment. */
-    assessment_methodology?: string,
-    /** Impact dimensions evaluated by the process. */
-    dimensions_in_scope?: string,
-    /** Planned frequency of assessments. */
-    assessment_frequency?: string,
-    /** Events that trigger an assessment outside the planned schedule. */
-    trigger_events?: string[],
-    /** Description of how impact assessment results feed into AI risk assessment per Clause 6.1.4. */
-    linkage_to_risk_assessment?: string,
+export interface AimsRiskTreatmentPlan extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** How far the control or the plan has been put into effect. */
+    aims_implementation_state?: string,
+    /** What the plan covers. */
+    aims_plan_scope?: string,
+    /** The risks the plan treats. */
+    aims_plan_risks?: AimsRiskAimsId[],
+    /** The actions the plan takes. */
+    aims_plan_actions?: string[],
+    /** The controls the plan puts in place. */
+    aims_plan_controls?: AimsControlAimsId[],
+    /** The resources the plan needs. */
+    aims_plan_resources?: string,
+    /** Who carries out the plan. */
+    aims_plan_responsible_parties?: string[],
+    /** When the plan's actions are to happen. */
+    aims_plan_timeline?: string,
+    /** The designated management that approved the plan. */
+    aims_plan_approver?: string,
+    /** How that management accepted the risk left over. */
+    aims_plan_residual_risk_acceptance?: string,
+    /** What the check on whether the plan works found. */
+    aims_plan_effectiveness?: string,
+    /** How options that did not work were reviewed, and what changed. */
+    aims_plan_revalidation?: string,
+    /** When the plan was completed. */
+    aims_plan_completion_date?: date,
 }
 
 
 /**
- * An instance of an AI system impact assessment performed per Clause 6.1.4 and Clause 8.4. Documents consequences of deployment, intended use, and foreseeable misuse on individuals, groups, and societies.
+ * The process for working out what AI systems may do to people and society: when it applies, what it takes in, who runs it and how the results are used.
  */
-export interface AISystemImpactAssessment extends DocumentedInformation {
-    /** Scope of the assessment. */
-    assessment_scope?: string,
-    /** AI systems covered by this assessment. */
-    ai_systems_assessed?: AISystemId[],
-    /** Date the assessment was conducted. */
-    assessment_date?: date,
-    /** Person or team who conducted the assessment. */
-    assessor?: string,
-    /** Specific technical context in which the AI system is deployed. */
-    technical_context?: string,
-    /** Societal context relevant to the impact assessment. */
-    societal_context?: string,
-    /** Jurisdictions relevant to the assessment. */
-    applicable_jurisdictions?: string[],
-    /** Impact dimensions actually assessed in this instance. */
-    dimensions_assessed?: string,
-    /** Identified positive or negative consequences. */
-    identified_consequences?: string[],
-    /** Mitigations to address identified consequences. */
-    mitigations?: string[],
-    /** Interested parties with whom the results have been shared. */
-    shared_with_parties?: string[],
-    /** Planned date for next assessment. */
-    next_assessment_date?: date,
+export interface AimsImpactAssessmentProcess extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** What calls for an assessment, such as how critical the use is or a large change. */
+    aims_impact_process_triggers?: string[],
+    /** How often assessments run, as an ISO 8601 duration. */
+    aims_impact_process_interval?: string,
+    /** The steps of an assessment, from finding impacts to reporting them. */
+    aims_impact_process_steps?: string[],
+    /** Who carries out an assessment. */
+    aims_impact_process_assessors?: string,
+    /** How results feed risk assessments and a system's design or use. */
+    aims_impact_process_use?: string,
+    /** Who the process looks at. */
+    aims_impact_process_subjects?: string,
+    /** The areas of impact the process looks at. */
+    aims_impact_process_areas?: string,
+    /** How long results are kept, as an ISO 8601 duration. */
+    aims_impact_process_retention?: string,
 }
 
 
 /**
- * The Statement of Applicability (SoA) for the AIMS recording which Annex A controls apply, justification for inclusion or exclusion, and current implementation state per Clause 6.1.3 f).
+ * One impact assessment carried out under the process: the systems and the setting it looked at, and each impact it found.
  */
-export interface StatementOfApplicability extends DocumentedInformation {
-    /** Individual control entries in the SoA. */
-    soa_entries?: SoAEntry[],
-    /** Total number of controls in scope. */
-    total_controls?: number,
-    /** Number of implemented controls. */
-    implemented_count?: number,
-    /** Number of controls planned for implementation. */
-    planned_count?: number,
-    /** Number of controls marked not applicable. */
-    not_applicable_count?: number,
-    /** Date of last review. */
-    last_review_date?: date,
-    /** Person who approved the document. */
-    approved_by?: string,
+export interface AimsImpactAssessment extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** What the assessment covered. */
+    aims_impact_scope?: string,
+    /** The discipline it was carried out for, if it was only one, such as privacy or safety. */
+    aims_impact_discipline?: string,
+    /** When the assessment was carried out. */
+    aims_impact_date?: date,
+    /** Who carried out the assessment. */
+    aims_impact_assessor?: string,
+    /** What the system is for. */
+    aims_impact_intended_use?: string,
+    /** How the system could predictably be misused. */
+    aims_impact_foreseeable_misuse?: string,
+    /** The technical setting the system runs in. */
+    aims_impact_technical_context?: string,
+    /** The social setting the system runs in. */
+    aims_impact_societal_context?: string,
+    /** The jurisdictions that apply to where the system runs. */
+    aims_impact_jurisdictions?: string[],
+    /** The groups of people the system is meant for or touches. */
+    aims_impact_demographic_groups?: string[],
+    /** How complex the system is. */
+    aims_impact_system_complexity?: string,
+    /** What part people play beside the system, and their means of oversight. */
+    aims_impact_human_role?: string,
+    /** The failures that can be foreseen, their effects and what limits them. */
+    aims_impact_failures?: string[],
+    /** What the system means for jobs and the skills of staff. */
+    aims_impact_workforce?: string,
+    /** The impacts the assessment found. */
+    aims_impact_findings?: AimsIdentifiedImpact[],
+    /** The interested parties told of the result. */
+    aims_impact_shared_with?: AimsInterestedPartyAimsId[],
+    /** When the next assessment is planned. */
+    aims_impact_next_date?: date,
 }
 
 
 /**
- * A single entry in the AIMS Statement of Applicability documenting the applicability and implementation status of one reference control.
+ * One impact an assessment found: on whom it falls, in what area, whether it helps or harms, and what limits the harm.
  */
-export interface SoAEntry {
-    /** Reference to an Annex A control (e.g., A.6.2.4). */
-    control_reference?: AIReferenceControlId,
-    /** Whether the control is applicable. */
-    is_applicable?: boolean,
-    /** Justification for including the control. */
-    inclusion_justification?: string,
-    /** Justification for excluding the control. */
-    exclusion_justification?: string,
-    /** Current implementation status. */
-    implementation_status?: string,
-    /** Evidence of control implementation. */
-    implementation_evidence?: string,
-    /** Role responsible for the objective or control. */
-    responsible_role?: RoleId,
-    /** Target date for implementing the control. */
-    target_implementation_date?: date,
+export interface AimsIdentifiedImpact {
+    /** Who the impact falls on. */
+    aims_identified_impact_subject: string,
+    /** The area the impact falls in. */
+    aims_identified_impact_area?: string,
+    /** Whether the impact helps or harms. */
+    aims_identified_impact_direction?: string,
+    /** What the impact is, in the organization's words. */
+    aims_identified_impact_text: string,
+    /** What is done to limit the harm. */
+    aims_identified_impact_mitigation?: string[],
 }
 
 
 /**
- * A reference control from Annex A of ISO/IEC 42001:2023. Controls are grouped into nine families (A.2 through A.10) and supported by implementation guidance in Annex B.
+ * The Statement of Applicability: each control the organization needs, with why it is included and whether it is in place, and each control it leaves out, with why.
  */
-export interface AIReferenceControl extends NamedEntity {
-    /** Control identifier from Annex A (e.g., A.6.2.4). Accepts either an enumerated normative `AnnexAControlId` value or a free-form string for organization-defined controls beyond Annex A. */
-    control_id?: string,
-    /** Title of the control. */
-    control_title?: string,
-    /** Family of the Annex A control. */
-    control_family?: string,
-    /** Organization-authored control statement or external control summary. Do not include verbatim ISO/IEC standards text. */
-    control_text?: string,
-    /** Organization-authored implementation notes for the control. */
-    implementation_guidance?: string,
-    /** Other reference controls related to this one. */
-    related_controls?: AIReferenceControlId[],
-    /** Categories of AI risk source this control addresses. */
-    applicable_risk_sources?: string,
-    /** AI objective categories this control supports. */
-    applicable_objectives?: string,
-    /** Person responsible for the control. */
-    control_owner?: string,
-    /** Current implementation status. */
-    implementation_status?: string,
-    /** Date the control was implemented. */
-    implementation_date?: date,
-    /** Rating of control effectiveness. */
-    effectiveness_rating?: string,
-    /** Date the control was last tested. */
-    last_test_date?: date,
-    /** References to evidence of implementation. */
-    evidence_references?: string[],
+export interface AimsStatementOfApplicability extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The statement's entries, one for each control included or left out. */
+    aims_soa_entries?: AimsApplicabilityEntry[],
 }
 
 
 /**
- * An AI system within the AIMS scope. Captures life cycle stage, intended use, applicable domains, and references to data and tooling resources, technical documentation, and impact assessments.
+ * One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
  */
-export interface AISystem extends NamedEntity {
-    /** Purpose of the AI system. */
-    ai_system_purpose?: string,
-    /** Documented intended uses of the AI system. */
-    intended_uses?: string[],
-    /** Reasonably foreseeable misuse of the AI system. */
-    foreseeable_misuse?: string[],
-    /** Domain in which the AI system is applied (e.g., health, finance). */
-    application_domain?: string,
-    /** Operational context in which the AI system is deployed. */
-    deployment_context?: string,
-    /** Current life cycle stage of the AI system. */
-    lifecycle_stage?: string,
-    /** The organization's role with respect to this AI system (provider, producer, customer, partner). */
-    organization_role?: string,
-    /** Description of the level of autonomy and human oversight required for this AI system. Free-form text complements `human_oversight_required` and `human_oversight_description`. */
-    autonomy_level?: string,
-    /** Machine-learning approach used by the AI system, capturing the design-choice dimension referenced in Annex B.6.2.3. */
-    ml_approach?: string,
-    /** Whether human oversight is required for outputs of the AI system (Annex A.9, Annex B.9.3). */
-    human_oversight_required?: boolean,
-    /** Description of human-oversight arrangements, including review points, escalation paths, and oversight authority (Annex B.9.3). */
-    human_oversight_description?: string,
-    /** AI system life cycle stages at which human oversight applies (Annex B.9.3). */
-    human_oversight_stages?: string,
-    /** Learning paradigm of the AI system (informs Clause 6.1 risk and Annex A.6.2.6 monitoring considerations). */
-    learning_mode?: string,
-    /** Data resources used by the AI system. */
-    data_resources?: DataResourceId[],
-    /** Tooling resources used by the AI system. */
-    tooling_resources?: ToolingResourceId[],
-    /** System and computing resources used by the AI system. */
-    computing_resources?: ComputingResourceId[],
-    /** Human resources involved with the AI system. */
-    human_resources?: HumanResourceId[],
-    /** Reference to AI system technical documentation. */
-    technical_documentation?: string[],
-    /** Policy for AI system event log recording across life cycle phases. */
-    event_log_policy?: string,
-    /** Reference controls related to this policy or AI system. */
-    applicable_controls?: AIReferenceControlId[],
-    /** Impact assessments related to this AI system. */
-    related_impact_assessments?: AISystemImpactAssessmentId[],
-    /** Supplier relationships relevant to this AI system. */
-    supplier_relationships?: SupplierRelationshipId[],
-    /** Customer relationships relevant to this AI system. */
-    customer_relationships?: CustomerRelationshipId[],
+export interface AimsApplicabilityEntry {
+    /** The kind of entry, AimsIncludedControl or AimsExcludedControl. */
+    aims_entry_type: string,
+    /** The Annex A control a Statement of Applicability entry concerns. */
+    aims_entry_annex_a_control?: string,
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** Why the control is included or left out. */
+    aims_entry_justification: string,
 }
 
 
 /**
- * A data resource used by an AI system per Annex A.7. Includes data acquisition, quality, provenance, and preparation metadata.
+ * An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for it and whether it is in place.
  */
-export interface DataResource extends NamedEntity {
-    /** Category of data resource (training, validation, test, production). */
-    data_resource_category?: string,
-    /** Source from which the data was obtained. */
-    source?: string,
-    /** How the data was acquired (e.g., collected, purchased, synthetic). */
-    acquisition_method?: string,
-    /** Documented data quality requirements for the AI system. */
-    data_quality_requirements?: string[],
-    /** Measured data quality metrics. */
-    data_quality_metrics?: string[],
-    /** Provenance information for the data resource. */
-    data_provenance?: string,
-    /** Description of the data labelling process. */
-    labelling_process?: string,
-    /** Data preparation methods used (e.g., scaling, encoding, cleaning) per Annex A.7.6. */
-    data_preparation_methods?: string,
-    /** Date the data was last updated or modified. */
-    last_updated_date?: date,
-    /** Known or potential bias issues in the data. */
-    known_bias_issues?: string[],
-    /** Retention and disposal policy applicable to the data. */
-    retention_policy?: string,
-    /** Classification of the data resource. */
-    data_classification?: string,
+export interface AimsIncludedControl extends AimsApplicabilityEntry {
+    /** How far the control or the plan has been put into effect. */
+    aims_implementation_state: string,
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** The organization's control the entry includes. */
+    aims_included_control?: AimsControlAimsId,
+    /** The risks the control answers to. */
+    aims_included_risks?: AimsRiskAimsId[],
+    /** What shows that the control is in place. */
+    aims_included_evidence?: string,
+    /** When the control is to be in place, if it is not yet. */
+    aims_included_target_date?: date,
 }
 
 
 /**
- * A tooling resource (algorithm, framework, model, library) used in an AI system per A.4.4.
+ * An entry that leaves out an Annex A control the organization does not need, and says why.
  */
-export interface ToolingResource extends NamedEntity {
-    /** Category of tooling resource (algorithm, framework, model, library). */
-    tool_category?: string,
-    /** Version identifier for the tooling resource. */
-    tool_version?: string,
-    /** Vendor or origin of the tooling resource. */
-    vendor?: string,
-    /** License terms applicable to the tooling resource. */
-    license_terms?: string,
-    /** Purpose for which the tooling resource is used. */
-    usage_purpose?: string,
+export interface AimsExcludedControl extends AimsApplicabilityEntry {
 }
 
 
 /**
- * A system or computing resource used in the development or operation of an AI system per A.4.5.
+ * A control the organization has found it needs to treat its risks: what it does in the organization's words, which Annex A controls it answers to, who owns it, how far it is in place and how well it works.
  */
-export interface ComputingResource extends NamedEntity {
-    /** Class of computing resource (e.g., GPU cluster, edge device). */
-    resource_class?: string,
-    /** Quantity of the resource. */
-    quantity?: string,
-    /** Physical or logical location of the resource. */
-    location?: string,
-    /** Type of environment (development, staging, production). */
-    environment_type?: string,
-    /** Cost of the resource. */
-    cost?: string,
+export interface AimsControl extends AimsRecordMixin {
+    /** The organization's controls that the record concerns. */
+    aims_relevant_controls?: AimsControlAimsId[],
+    /** How far the control or the plan has been put into effect. */
+    aims_implementation_state?: string,
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The kinds of objective the record bears on. */
+    aims_objective_categories?: string,
+    /** The kinds of risk source the record bears on. */
+    aims_risk_source_categories?: string,
+    /** Which of Annex A's nine areas the control belongs to. */
+    aims_control_area?: string,
+    /** What the control does, in the organization's own words. */
+    aims_control_text?: string,
+    /** The organization's notes on putting the control in place. */
+    aims_control_guidance?: string,
+    /** The person who owns the control. */
+    aims_control_owner?: string,
+    /** When the control was put in place. */
+    aims_control_implementation_date?: date,
+    /** How well the control works, in the organization's own terms. */
+    aims_control_effectiveness?: string,
+    /** When the control was last tested. */
+    aims_control_last_tested?: date,
+    /** Where the evidence that the control is in place is kept. */
+    aims_control_evidence?: string[],
 }
 
 
 /**
- * A human resource (role, expertise area) involved in development, deployment, operation, maintenance, or oversight of an AI system per A.4.6.
+ * One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on, and what is kept about it.
  */
-export interface HumanResource extends NamedEntity {
-    /** Competencies required for the role. */
-    required_competencies?: string[],
-    /** Person(s) assigned to this role or resource. */
-    assigned_to?: string[],
-    /** Life cycle responsibilities allocated to this human resource. */
-    lifecycle_responsibilities?: string[],
+export interface AimsAiSystem extends AimsRecordMixin {
+    /** The organization's controls that the record concerns. */
+    aims_relevant_controls?: AimsControlAimsId[],
+    /** What the system is for. */
+    aims_system_intended_purpose?: string,
+    /** The uses the system is meant for. */
+    aims_system_intended_uses?: string[],
+    /** The ways people could predictably misuse the system. */
+    aims_system_foreseeable_misuse?: string[],
+    /** The field the system is applied in. */
+    aims_system_domain?: string,
+    /** The setting the system runs in. */
+    aims_system_deployment_context?: string,
+    /** The stage of its life the system is in now. */
+    aims_system_life_cycle_stage?: string,
+    /** The parts the organization plays towards this system. */
+    aims_system_organization_roles?: string,
+    /** The parts the organization plays when this system processes personal data. */
+    aims_system_pii_roles?: string,
+    /** Why the system is being built, such as a business case or a customer's request. */
+    aims_system_rationale?: string,
+    /** What the system must meet, across its whole life. */
+    aims_system_requirements?: string[],
+    /** The machine learning approach it takes, such as supervised or unsupervised. */
+    aims_system_ml_approach?: string,
+    /** The learning algorithms and kinds of model it uses. */
+    aims_system_model_types?: string[],
+    /** Whether what it meets in service goes on changing its behaviour. */
+    aims_system_continuous_learning?: boolean,
+    /** How much the system does without people. */
+    aims_system_automation_level?: string,
+    /** The threats peculiar to AI that were considered for the system. */
+    aims_system_threats?: string,
+    /** The tests, data and methods used to verify and validate the system. */
+    aims_system_verification_measures?: string[],
+    /** What the system is judged against, such as a limit on its errors. */
+    aims_system_evaluation_criteria?: string[],
+    /** What must hold before the system is released. */
+    aims_system_release_criteria?: string[],
+    /** The documented information that holds the plan for putting it into service. */
+    aims_system_deployment_plan?: AimsDocumentedInformationAimsId,
+    /** What keeping the system in service takes, such as watching, repairs and updates. */
+    aims_system_operation_elements?: string[],
+    /** The measures of how the system does in service, with acceptable values. */
+    aims_system_performance_metrics?: string[],
+    /** The stages of its life at which the system keeps event logs. */
+    aims_system_log_stages?: string,
+    /** What the logs record, such as times of use or out-of-range results. */
+    aims_system_log_contents?: string[],
+    /** How long the logs are kept, as an ISO 8601 duration. */
+    aims_system_log_retention?: string,
+    /** Whether the system may be used only with people watching over it. */
+    aims_system_human_oversight_required?: boolean,
+    /** How people watch over the system, and who may overrule it. */
+    aims_system_human_oversight?: string,
+    /** The stages of its life at which people watch over the system. */
+    aims_system_human_oversight_stages?: string,
+    /** The resources the system draws on. */
+    aims_system_resources_used?: AimsSystemResourceAimsId[],
+    /** The technical documents kept for the system. */
+    aims_system_technical_documents?: AimsTechnicalDocumentationAimsId[],
+    /** The impact assessments of the system. */
+    aims_system_impact_assessments?: AimsImpactAssessmentAimsId[],
+    /** The partners, suppliers and customers that deal with the system. */
+    aims_system_relationships?: AimsThirdPartyRelationshipAimsId[],
 }
 
 
 /**
- * A resource provided for the AIMS per Clause 7.1.
+ * Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it.
  */
-export interface Resource extends NamedEntity {
-    /** Type of resource. */
-    resource_type?: string,
-    /** Quantity of the resource. */
-    quantity?: string,
-    /** Date the resource was allocated. */
-    allocation_date?: date,
+export interface AimsSystemResource extends AimsRecordMixin {
+    /** The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource. */
+    aims_resource_type: string,
+    /** The stages of an AI system's life the record applies to. */
+    aims_life_cycle_stages?: string,
+    /** Who provides the resource. */
+    aims_resource_provider?: string,
+}
+
+
+/**
+ * A part of a system, and how it is joined to the rest.
+ */
+export interface AimsComponentResource extends AimsSystemResource {
+    /** What kind of part it is. */
+    aims_component_kind?: string,
+    /** How the part is joined to the system. */
+    aims_component_integration?: string,
+}
+
+
+/**
+ * Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged fit, and how long it is kept.
+ */
+export interface AimsDataResource extends AimsSystemResource {
+    /** The parts the data plays in machine learning. */
+    aims_data_categories?: string,
+    /** What kind of data it is, in a classification the organization names. */
+    aims_data_kinds?: string[],
+    /** What the data is for. */
+    aims_data_intended_use?: string,
+    /** How much data is needed. */
+    aims_data_quantity?: string,
+    /** Where the data comes from, such as bought, shared, open or synthetic. */
+    aims_data_sources?: string[],
+    /** How the source behaves, such as fixed, streamed or made by machine. */
+    aims_data_source_characteristics?: string[],
+    /** Who the data is about, with any known bias or systematic error. */
+    aims_data_subject_demographics?: string[],
+    /** What was done with the data before, such as earlier uses. */
+    aims_data_prior_handling?: string,
+    /** The rights bearing on the data, such as personal data or copyright. */
+    aims_data_rights?: string[],
+    /** The metadata that comes with it, such as details of labelling. */
+    aims_data_metadata?: string[],
+    /** The record of where the data came from and what happened to it. */
+    aims_data_provenance?: string,
+    /** How that record is checked, where it needs to be. */
+    aims_data_provenance_verification?: string,
+    /** What quality the data must have. */
+    aims_data_quality_requirements?: string[],
+    /** How the data measures up to those requirements. */
+    aims_data_quality_results?: string[],
+    /** Known or suspected bias in the data. */
+    aims_data_bias_issues?: string[],
+    /** How well training data stands for what the system will meet in service. */
+    aims_data_representativeness?: string,
+    /** How the data is labelled. */
+    aims_data_labelling_process?: string,
+    /** What decides how the data is made ready. */
+    aims_data_preparation_criteria?: string,
+    /** The methods used to make the data ready. */
+    aims_data_preparation_methods?: string,
+    /** When the data last changed. */
+    aims_data_last_updated?: date,
+    /** How long the data is kept and how it is disposed of. */
+    aims_data_retention?: string,
+    /** The information classification the data carries. */
+    aims_data_classification?: string,
+}
+
+
+/**
+ * A tool an AI system draws on, such as an algorithm, a model or a development tool.
+ */
+export interface AimsToolingResource extends AimsSystemResource {
+    /** What kind of tool it is, such as a model or an evaluation method. */
+    aims_tool_category?: string,
+    /** The version in use. */
+    aims_tool_version?: string,
+    /** Who supplies the tool. */
+    aims_tool_vendor?: string,
+    /** The terms the tool is used under. */
+    aims_tool_licence?: string,
+    /** What the tool is used for. */
+    aims_tool_purpose?: string,
+}
+
+
+/**
+ * Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs.
+ */
+export interface AimsComputingResource extends AimsSystemResource {
+    /** What the system needs in order to run, such as on a small device. */
+    aims_computing_requirements?: string,
+    /** Where it runs, such as on the premises, in a cloud or at the edge. */
+    aims_computing_location?: string,
+    /** The processing it provides, network and storage included. */
+    aims_computing_processing?: string,
+    /** What the hardware costs, in money or to the environment. */
+    aims_computing_hardware_impact?: string,
+}
+
+
+/**
+ * People an AI system draws on: their skills and the work they do on it.
+ */
+export interface AimsHumanResource extends AimsSystemResource {
+    /** The role these people hold. */
+    aims_human_role?: AimsRoleAimsId,
+    /** The skills they bring. */
+    aims_human_competences?: string[],
+    /** The work they do on the system, from building it to decommissioning it. */
+    aims_human_activities?: string[],
+    /** How the team's range of expertise was considered. */
+    aims_human_diversity?: string,
+}
+
+
+/**
+ * A process for designing and building an AI system responsibly: the life cycle it follows, and what it asks of testing, oversight, data and approvals.
+ */
+export interface AimsDevelopmentProcess extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The life cycle model followed, which may be the organization's own. */
+    aims_development_life_cycle_model?: string,
+    /** What must be tested and how. */
+    aims_development_testing?: string,
+    /** What oversight by people is asked for, with its tools and processes. */
+    aims_development_human_oversight?: string,
+    /** The stages at which impact assessments run. */
+    aims_development_impact_assessment_stages?: string,
+    /** What data may be used, from which suppliers, and how it is labelled. */
+    aims_development_training_data_rules?: string,
+    /** The expertise or training developers need. */
+    aims_development_expertise?: string,
+    /** What must hold before a release. */
+    aims_development_release_criteria?: string[],
+    /** Who must approve what, at each stage. */
+    aims_development_approvals?: string[],
+    /** How changes are controlled. */
+    aims_development_change_control?: string,
+    /** What is asked of how easy the system is to use and how far people stay in control. */
+    aims_development_usability?: string,
+    /** How interested parties are brought in. */
+    aims_development_party_engagement?: string,
+}
+
+
+/**
+ * A process for using AI systems responsibly: what decides if a system may be used, built in-house or brought in.
+ */
+export interface AimsResponsibleUseProcess extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The approvals needed before use. */
+    aims_use_approvals?: string[],
+    /** What use costs, ongoing upkeep included. */
+    aims_use_costs?: string,
+    /** What a system or its supplier must meet to be taken on. */
+    aims_use_sourcing_requirements?: string[],
+    /** The laws that bear on use. */
+    aims_use_legal_requirements?: string[],
+}
+
+
+/**
+ * Technical documents about an AI system for one kind of reader: what they hold, and the form they take.
+ */
+export interface AimsTechnicalDocumentation extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** Who the documents are for, such as users or a supervisory authority. */
+    aims_technical_doc_audiences?: string[],
+    /** The form the documents take for those readers. */
+    aims_technical_doc_form?: string,
+    /** What the documents hold, such as limits, design choices or test records. */
+    aims_technical_doc_contents?: string[],
+    /** How failures are managed, such as rolling back or turning features off. */
+    aims_technical_doc_failure_plan?: string,
+}
+
+
+/**
+ * What those who use a system are told: the contents, how it reaches them, what decided it, and the check that they got it.
+ */
+export interface AimsUserInformation extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** What users are told, such as that AI is behind what they see and how to overrule it. */
+    aims_user_information_contents?: string[],
+    /** How it reaches them, such as instructions, alerts or a web page. */
+    aims_user_information_channels?: string[],
+    /** What decided what they are told. */
+    aims_user_information_criteria?: string[],
+    /** Whether the organization has checked that users can get it and that it is right. */
+    aims_user_information_validated?: boolean,
+}
+
+
+/**
+ * The plan for telling users when a system goes wrong: which incidents, how soon, to which authorities, and with what details.
+ */
+export interface AimsIncidentCommunicationPlan extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The kinds of incident the plan covers. */
+    aims_incident_plan_categories?: string,
+    /** How soon people must be told. */
+    aims_incident_plan_timeline?: string,
+    /** The authorities that must be told, if any. */
+    aims_incident_plan_authorities?: string[],
+    /** What each notice must say. */
+    aims_incident_plan_details?: string[],
+    /** How the plan fits the organization's wider handling of incidents. */
+    aims_incident_plan_integration?: string,
+}
+
+
+/**
+ * Something the organization must report about a system to an interested party: to whom, under what rule, what and how soon.
+ */
+export interface AimsReportingObligation extends AimsRecordMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** Who must be told. */
+    aims_obligation_parties?: AimsInterestedPartyAimsId[],
+    /** The law or agreement that creates the duty. */
+    aims_obligation_basis?: string,
+    /** The jurisdiction the duty arises in. */
+    aims_obligation_jurisdiction?: string,
+    /** What must be reported, such as risks, assessments or logs. */
+    aims_obligation_contents?: string[],
+    /** How soon it must be reported. */
+    aims_obligation_timeframe?: string,
+}
+
+
+/**
+ * A resource provided for the management system itself, such as people, time, tools or budget. What an AI system draws on is an AimsSystemResource.
+ */
+export interface AimsResource extends AimsRecordMixin {
+    /** What kind of resource it is. */
+    aims_support_category?: string,
+    /** How much of the resource is provided. */
+    aims_support_quantity?: string,
+    /** When the resource was allocated. */
+    aims_support_allocation_date?: date,
     /** What the resource is allocated to. */
-    allocated_to?: string,
-    /** Cost of the resource. */
-    cost?: string,
-    /** Current availability of the resource. */
-    availability_status?: string,
+    aims_support_allocated_to?: string,
+    /** What the resource costs. */
+    aims_support_cost?: string,
+    /** Whether the resource is available now, in the organization's own terms. */
+    aims_support_availability?: string,
 }
 
 
 /**
- * Evidence of competence for personnel affecting AIMS performance per Clause 7.2.
+ * The evidence of one person's competence for work that affects AI performance, and what is done to close any gap.
  */
-export interface CompetenceRecord extends DocumentedInformation {
-    /** Name of the person. */
-    person_name?: string,
-    /** Role of the person. */
-    person_role?: string,
-    /** Competencies required for the role. */
-    required_competencies?: string[],
-    /** Education qualifications. */
-    education_records?: string[],
-    /** Training completed. */
-    training_records?: string[],
-    /** Relevant experience. */
-    experience_records?: string[],
-    /** Date of last competency assessment. */
-    competency_assessment_date?: date,
-    /** Identified competency gaps. */
-    competency_gaps?: string[],
-    /** Actions to address competency gaps. */
-    development_actions?: string[],
+export interface AimsCompetenceRecord extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The person the record is about. */
+    aims_competence_person?: string,
+    /** The role the person holds. */
+    aims_competence_role?: AimsRoleAimsId,
+    /** The competences the role needs. */
+    aims_competence_required?: string[],
+    /** The person's relevant education. */
+    aims_competence_education?: string[],
+    /** The training the person has completed. */
+    aims_competence_training?: string[],
+    /** The person's relevant experience. */
+    aims_competence_experience?: string[],
+    /** When the person's competence was last assessed. */
+    aims_competence_assessment_date?: date,
+    /** The gaps the assessment found. */
+    aims_competence_gaps?: string[],
+    /** What is done to close the gaps, and how well it worked. */
+    aims_competence_actions?: string[],
 }
 
 
 /**
- * The awareness program ensuring personnel understand their AI-related responsibilities per Clause 7.3.
+ * The programme that tells people working for the organization about the AI policy, their part in the system and what failing it would mean.
  */
-export interface AwarenessProgram extends DocumentedInformation {
-    /** Topics covered in the awareness program. */
-    awareness_topics?: string[],
-    /** Methods used to deliver awareness content. */
-    delivery_methods?: string[],
-    /** Intended audience for the policy or document. */
-    target_audience?: string,
-    /** Frequency of the activity. */
-    frequency?: string,
+export interface AimsAwarenessProgramme extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The topics the programme covers. */
+    aims_awareness_topics?: string[],
+    /** How the programme is delivered. */
+    aims_awareness_methods?: string[],
+    /** Whom the programme is for. */
+    aims_awareness_audience?: string,
+    /** How often the programme runs. */
+    aims_awareness_frequency?: string,
     /** How completion is tracked. */
-    completion_tracking?: string,
-    /** How effectiveness is measured. */
-    effectiveness_measures?: string,
+    aims_awareness_completion_tracking?: string,
+    /** How the programme's effect is measured. */
+    aims_awareness_effectiveness?: string,
 }
 
 
 /**
- * Plan for internal and external communications relevant to the AIMS per Clause 7.4.
+ * The plan for communication about the system, inside the organization and outside it.
  */
-export interface CommunicationPlan extends DocumentedInformation {
-    /** Communication items in the plan. */
-    communication_items?: CommunicationItem[],
+export interface AimsCommunicationPlan extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The communications the plan provides for. */
+    aims_communication_items?: AimsCommunication[],
 }
 
 
 /**
- * A single communication requirement within the AIMS communication plan.
+ * One communication the plan provides for: what about, to whom, when, how, and who communicates.
  */
-export interface CommunicationItem {
-    /** Subject of the communication. */
-    subject?: string,
-    /** Purpose of the communication. */
-    purpose?: string,
-    /** Target audience. */
-    audience?: string,
-    /** Frequency of the activity. */
-    frequency?: string,
-    /** Method of communication. */
-    method?: string,
-    /** Party responsible for the activity. */
-    responsible_party?: string,
-    /** Records required to evidence the activity. */
-    records_required?: string,
+export interface AimsCommunication {
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** What the communication is about. */
+    aims_communication_subject: string,
+    /** Why it is communicated. */
+    aims_communication_purpose?: string,
+    /** To whom it is communicated. */
+    aims_communication_audience?: string,
+    /** Whether it goes outside the organization. */
+    aims_communication_external?: boolean,
+    /** When it is communicated. */
+    aims_communication_timing?: string,
+    /** How it is communicated. */
+    aims_communication_method?: string,
+    /** Whether a record of the communication is kept. */
+    aims_communication_records_required?: boolean,
 }
 
 
 /**
- * A documented procedure for operational planning and control of AIMS processes per Clause 8.1, including AI system life cycle related controls.
+ * A document or record the system keeps under control that no more specific record describes, such as a procedure, a plan or a report.
  */
-export interface OperationalProcedure extends DocumentedInformation {
-    /** Scope of the procedure. */
-    procedure_scope?: string,
-    /** Criteria for the process. */
-    process_criteria?: string,
-    /** Control measures applied. */
-    control_measures?: string[],
-    /** Roles responsible for the process. */
-    responsible_roles?: RoleId[],
-    /** Other reference controls related to this one. */
-    related_controls?: AIReferenceControlId[],
-    /** Requirements for controlling changes to the process. */
-    change_control_requirements?: string,
+export interface AimsDocumentedInformation extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The clauses of the standard the record answers to or concerns. */
+    aims_cited_clauses?: string,
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** What kind of documented information it is. */
+    aims_document_kind: string,
 }
 
 
 /**
- * The program for monitoring, measurement, analysis, and evaluation of AIMS performance per Clause 9.1.
+ * A procedure by which the organization plans and controls the processes that meet its requirements, such as managing data for building or vetting suppliers.
  */
-export interface MonitoringProgram extends DocumentedInformation {
-    /** Items to be monitored. */
-    monitoring_items?: MonitoringItem[],
+export interface AimsOperationalProcedure extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The organization's controls that the record concerns. */
+    aims_relevant_controls?: AimsControlAimsId[],
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** What the procedure covers. */
+    aims_procedure_scope?: string,
+    /** The criteria the processes are run to. */
+    aims_procedure_criteria?: string,
+    /** The measures that control the processes. */
+    aims_procedure_control_measures?: string[],
+    /** The roles that carry out the procedure. */
+    aims_procedure_roles?: AimsRoleAimsId[],
+    /** How planned changes are controlled, and unplanned ones reviewed. */
+    aims_procedure_change_control?: string,
 }
 
 
 /**
- * A single item to be monitored and measured per Clause 9.1.
+ * The programme that watches, measures, analyses and judges how well the system does and how well it works.
  */
-export interface MonitoringItem {
-    /** Name of the metric. */
-    metric_name?: string,
-    /** Description of the metric. */
-    metric_description?: string,
-    /** Method used to measure the metric. */
-    measurement_method?: string,
-    /** How often measurement is performed. */
-    measurement_frequency?: string,
-    /** Party responsible for the activity. */
-    responsible_party?: string,
-    /** Frequency of analysis. */
-    analysis_frequency?: string,
-    /** Person performing the analysis. */
-    analyst?: string,
-    /** Target threshold for the metric. */
-    target_threshold?: string,
-    /** Threshold that triggers an alert. */
-    alert_threshold?: string,
-    /** Current measured value. */
-    current_value?: string,
-    /** Observed trend in the metric. */
-    trend?: string,
+export interface AimsMonitoringProgramme extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** What the programme monitors and measures. */
+    aims_monitoring_items?: AimsMonitoringItem[],
 }
 
 
 /**
- * An internal audit instance per Clause 9.2 assessing AIMS conformance and effectiveness.
+ * One thing the monitoring programme measures: what, how, how often and by whom it is measured and analysed, and against what thresholds.
  */
-export interface InternalAudit extends DocumentedInformation {
-    /** Unique reference identifier for the audit. */
-    audit_reference?: string,
-    /** Type of audit (internal, external second-party, external third-party, surveillance, recertification, combined). */
-    audit_type?: string,
-    /** Scope of the audit. */
-    audit_scope?: string,
-    /** Criteria used for the audit. */
-    audit_criteria?: string,
-    /** Objectives of the audit. */
-    audit_objectives?: string,
-    /** Start date of the audit period. */
-    audit_period_start?: date,
-    /** End date of the audit period. */
-    audit_period_end?: date,
-    /** Lead auditor for the audit. */
-    lead_auditor?: string,
-    /** Members of the audit team. */
-    audit_team?: string[],
-    /** Representatives of the auditee. */
-    auditee_representatives?: string[],
-    /** Reference to the audit plan. */
-    audit_plan?: string,
-    /** Findings from the audit. */
-    findings?: AuditFindingId[],
-    /** Positive observations from the audit. */
-    positive_observations?: string[],
-    /** Overall conclusion of the audit. */
-    audit_conclusion?: string,
-    /** Date the audit report was issued. */
-    report_date?: date,
-    /** Distribution list for the audit report. */
-    report_distribution?: string[],
+export interface AimsMonitoringItem {
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** The name of what is measured. */
+    aims_monitoring_metric: string,
+    /** What the measurement shows. */
+    aims_monitoring_description?: string,
+    /** How it is measured. */
+    aims_monitoring_method?: string,
+    /** How often it is measured. */
+    aims_monitoring_frequency?: string,
+    /** How often the results are analysed and evaluated. */
+    aims_monitoring_analysis_frequency?: string,
+    /** Who analyses and evaluates the results. */
+    aims_monitoring_analyst?: string,
+    /** The value aimed for. */
+    aims_monitoring_target?: string,
+    /** The value that calls for action. */
+    aims_monitoring_alert_threshold?: string,
+    /** The value last measured. */
+    aims_monitoring_current_value?: string,
+    /** Which way the value is moving. */
+    aims_monitoring_trend?: string,
 }
 
 
 /**
- * The internal audit programme per Clause 9.2.2, planning AIMS audit activities over a defined period.
+ * A programme of internal audits: the audits planned over a period, how often and why, and the resources and auditors they need.
  */
-export interface AuditProgramme extends DocumentedInformation {
-    /** Period covered by the audit programme. */
-    programme_period?: string,
-    /** Audits planned within the programme. */
-    planned_audits?: InternalAuditId[],
-    /** Rationale for the audit cadence. */
-    audit_frequency_rationale?: string,
-    /** Resources required for the activity. */
-    resource_requirements?: string,
-    /** Required auditor qualifications. */
-    auditor_qualifications?: string,
-    /** Status of the audit programme. */
-    programme_status?: string,
+export interface AimsAuditProgramme extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The period the programme covers. */
+    aims_programme_period?: string,
+    /** The audits the programme plans. */
+    aims_programme_audits?: AimsAuditAimsId[],
+    /** Why the audits happen as often as they do, given what matters most and past results. */
+    aims_programme_frequency_rationale?: string,
+    /** How the audits are carried out. */
+    aims_programme_methods?: string,
+    /** Who answers for planning, running and reporting them. */
+    aims_programme_responsibilities?: string[],
+    /** The resources the programme needs. */
+    aims_programme_resources?: string,
+    /** How auditors are chosen so that they stay objective and impartial. */
+    aims_programme_auditor_selection?: string,
+    /** Where the programme stands, in the organization's own terms. */
+    aims_programme_status?: string,
 }
 
 
 /**
- * A finding from an AIMS internal audit, including nonconformities, observations, and positive findings.
+ * An audit of the system: an internal audit, or one by a customer or a certification body, with its scope, criteria, team, findings and conclusion.
  */
-export interface AuditFinding extends NamedEntity {
-    /** Type of audit finding. */
-    finding_type?: string,
-    /** ISO/IEC 42001 clause referenced by the finding. */
-    clause_reference?: string,
-    /** Reference to an Annex A control (e.g., A.6.2.4). */
-    control_reference?: AIReferenceControlId,
-    /** Description of the finding. */
-    finding_description?: string,
-    /** Objective evidence supporting the finding. */
-    objective_evidence?: string,
-    /** Analysis of the root cause. */
-    root_cause_analysis?: string,
-    /** AI risk implication of the finding. */
-    risk_implication?: string,
-    /** Recommended action to address the finding. */
-    recommended_action?: string,
-    /** Auditee's response to the finding. */
-    auditee_response?: string,
-    /** Linked corrective action addressing the finding. */
-    linked_corrective_action?: CorrectiveActionId,
-    /** Closure status of the finding. */
-    closure_status?: string,
-    /** Date when the item was closed. */
-    closure_date?: date,
+export interface AimsAudit extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** Who carries out the audit, relative to the organization. */
+    aims_audit_type: string,
+    /** Other standards for management systems the audit covers. */
+    aims_audit_standards?: string,
+    /** What the audit covers. */
+    aims_audit_scope?: string,
+    /** What the audit compares the system against. */
+    aims_audit_criteria?: string[],
+    /** What the audit sets out to establish. */
+    aims_audit_objectives?: string[],
+    /** When the audit began. */
+    aims_audit_period_start?: date,
+    /** When the audit ended. */
+    aims_audit_period_end?: date,
+    /** Who led the audit. */
+    aims_audit_lead?: string,
+    /** Who else audited. */
+    aims_audit_team?: string[],
+    /** Who represented the parts of the organization audited. */
+    aims_audit_auditees?: string[],
+    /** The documented information that holds the audit plan. */
+    aims_audit_plan?: AimsDocumentedInformationAimsId,
+    /** What the audit found, good and bad. */
+    aims_audit_findings?: AimsAuditFinding[],
+    /** The audit's overall conclusion. */
+    aims_audit_conclusion?: string,
+    /** When the audit report was issued. */
+    aims_audit_report_date?: date,
+    /** Who received the audit report. */
+    aims_audit_report_distribution?: string[],
 }
 
 
 /**
- * A management review per Clause 9.3, conducted by top management to evaluate ongoing AIMS suitability, adequacy, and effectiveness.
+ * One finding of an audit: a nonconformity, an observation or a strength, with the requirement or control it concerns, its evidence and how it is closed.
  */
-export interface ManagementReview extends DocumentedInformation {
-    /** Date when the document is due for review. */
-    review_date?: date,
-    /** Attendees of the review. */
-    attendees?: string[],
-    /** Status of actions from previous reviews. */
-    previous_actions_status?: string,
-    /** Changes in external or internal context. */
-    context_changes?: string[],
-    /** Changes in interested party needs and expectations. */
-    interested_party_changes?: string[],
-    /** Trends in AIMS performance. */
-    performance_trends?: string,
-    /** Summary of audit results. */
-    audit_results_summary?: string,
-    /** Summary of AI risk assessment results. */
-    risk_assessment_results?: string,
-    /** Summary of AI system impact assessment results. */
-    impact_assessment_results?: string,
-    /** Improvement opportunities identified. */
-    improvement_opportunities?: ImprovementOpportunityId[],
-    /** Decisions made during the review. */
-    decisions?: string[],
-    /** Action items resulting from the review. */
-    action_items?: string[],
-    /** Date of the next review. */
-    next_review_date?: date,
+export interface AimsAuditFinding extends AimsRecordMixin {
+    /** The clauses of the standard the record answers to or concerns. */
+    aims_cited_clauses?: string,
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** What kind of finding it is. */
+    aims_finding_type: string,
+    /** The organization's control the finding concerns. */
+    aims_finding_control?: AimsControlAimsId,
+    /** The objective evidence for the finding. */
+    aims_finding_evidence?: string,
+    /** What the analysis of the finding's cause found. */
+    aims_finding_root_cause?: string,
+    /** What the finding means for risk. */
+    aims_finding_risk?: string,
+    /** What the auditor recommends. */
+    aims_finding_recommendation?: string,
+    /** How the auditee responded. */
+    aims_finding_auditee_response?: string,
+    /** The corrective action the finding led to. */
+    aims_finding_corrective_action?: AimsCorrectiveActionAimsId,
+    /** The nonconformity the finding recorded, for a finding of one. */
+    aims_finding_nonconformity?: AimsNonconformityAimsId,
+    /** Whether the finding is closed, in the organization's own terms. */
+    aims_finding_closure_status?: string,
+    /** When the finding was closed. */
+    aims_finding_closure_date?: date,
 }
 
 
 /**
- * A nonconformity identified per Clause 10.2 representing failure to fulfill an AIMS requirement.
+ * A review of the system by top management: what it took in, what it decided and what it asked to be done.
  */
-export interface Nonconformity extends NamedEntity {
-    /** Source from which the nonconformity was identified. */
-    nonconformity_source?: string,
-    /** Date the nonconformity was detected. */
-    detection_date?: date,
-    /** Person or process that detected the nonconformity. */
-    detected_by?: string,
-    /** Requirement that was violated. */
-    requirement_violated?: string,
-    /** Description of the nonconformity. */
-    nonconformity_description?: string,
-    /** Immediate actions taken. */
-    immediate_actions?: string[],
-    /** How consequences were addressed. */
-    consequences_addressed?: string,
-    /** Identified root cause. */
-    root_cause?: string,
-    /** Check for similar nonconformities. */
-    similar_nonconformities_check?: string,
-    /** Linked corrective actions. */
-    linked_corrective_actions?: CorrectiveActionId[],
-    /** Current status of the document or entity. */
-    status?: string,
-    /** Date when the item was closed. */
-    closure_date?: date,
-    /** Evidence of closure. */
-    closure_evidence?: string,
+export interface AimsManagementReview extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** When the review was held. */
+    aims_review_held_on: date,
+    /** Who attended the review. */
+    aims_review_attendees?: string[],
+    /** Where the actions from earlier reviews stand. */
+    aims_review_previous_actions?: string,
+    /** How the matters that bear on the system have changed. */
+    aims_review_context_changes?: string,
+    /** How interested parties' needs and expectations have changed. */
+    aims_review_interested_party_changes?: string,
+    /** How nonconformities and their corrections have been trending. */
+    aims_review_nonconformity_trends?: string,
+    /** The trends in what was monitored and measured. */
+    aims_review_monitoring_trends?: string,
+    /** The trends in audit results. */
+    aims_review_audit_trends?: string,
+    /** The opportunities for improvement raised. */
+    aims_review_improvement_opportunities?: string[],
+    /** What the review decided about improving. */
+    aims_review_decisions?: string[],
+    /** The changes to the system the review found were needed. */
+    aims_review_system_changes?: string[],
+    /** What the review asked to be done. */
+    aims_review_actions?: string[],
+    /** When the next review is planned. */
+    aims_review_next_date?: date,
 }
 
 
 /**
- * A corrective action per Clause 10.2 to address the root cause of an AIMS nonconformity and reduce the likelihood of recurrence.
+ * A nonconformity: a requirement not met, how it was found and contained, its consequences and cause, and how it was closed.
  */
-export interface CorrectiveAction extends NamedEntity {
-    /** Linked nonconformity. */
-    linked_nonconformity?: NonconformityId,
-    /** Description of the action. */
-    action_description?: string,
-    /** Root cause addressed by the action. */
-    root_cause_addressed?: string,
-    /** Party responsible for the activity. */
-    responsible_party?: string,
-    /** Target completion date. */
-    target_completion_date?: date,
-    /** Actual completion date. */
-    actual_completion_date?: date,
-    /** Resources required for implementation. */
-    resources_required?: string,
-    /** Criteria for assessing effectiveness. */
-    effectiveness_criteria?: string,
-    /** Date when effectiveness was reviewed. */
-    effectiveness_review_date?: date,
-    /** Whether effectiveness was verified. */
-    effectiveness_verified?: boolean,
-    /** Whether AIMS changes are required as a result of the action. */
-    aims_changes_required?: boolean,
-    /** Current status of the document or entity. */
-    status?: string,
+export interface AimsNonconformity extends AimsRecordMixin {
+    /** The clauses of the standard the record answers to or concerns. */
+    aims_cited_clauses?: string,
+    /** The controls of Annex A the record answers to or concerns. */
+    aims_cited_annex_a_controls?: string,
+    /** How the nonconformity came to light, such as an audit, a review or an incident. */
+    aims_nonconformity_source?: string,
+    /** When the nonconformity was found. */
+    aims_nonconformity_detected_on?: date,
+    /** Who or what found it. */
+    aims_nonconformity_detected_by?: string,
+    /** The requirement not met, of the organization or of an interested party, in words. */
+    aims_nonconformity_requirement?: string,
+    /** What was done at once to contain and fix it. */
+    aims_nonconformity_immediate_actions?: string[],
+    /** How its consequences were dealt with. */
+    aims_nonconformity_consequences?: string,
+    /** What caused it. */
+    aims_nonconformity_root_cause?: string,
+    /** Whether it could happen, or has happened, elsewhere. */
+    aims_nonconformity_similar_check?: string,
+    /** Where the nonconformity stands, in the organization's own terms. */
+    aims_nonconformity_status?: string,
+    /** When it was closed. */
+    aims_nonconformity_closure_date?: date,
+    /** What shows that it is closed. */
+    aims_nonconformity_closure_evidence?: string,
 }
 
 
 /**
- * An opportunity for continual improvement of the AIMS per Clause 10.1.
+ * An action that removes the cause of one or more nonconformities so that they do not recur, and the check that it worked.
  */
-export interface ImprovementOpportunity extends NamedEntity {
-    /** Source of the improvement opportunity. */
-    improvement_source?: string,
-    /** Date the improvement opportunity was identified. */
-    identification_date?: date,
-    /** Person who identified the improvement opportunity. */
-    identified_by?: string,
-    /** Description of the improvement opportunity. */
-    improvement_description?: string,
-    /** Expected benefit of the improvement. */
-    expected_benefit?: string,
-    /** Priority assigned (qualitative level). */
-    priority?: string,
-    /** Plan for implementing the improvement. */
-    implementation_plan?: string,
-    /** Party responsible for the activity. */
-    responsible_party?: string,
-    /** Target date for achieving the objective. */
-    target_date?: date,
-    /** Actual completion date. */
-    actual_completion_date?: date,
-    /** Assessment of the outcome. */
-    outcome_assessment?: string,
-    /** Current status of the document or entity. */
-    status?: string,
+export interface AimsCorrectiveAction extends AimsRecordMixin {
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** The nonconformities the action addresses. */
+    aims_action_nonconformities?: AimsNonconformityAimsId[],
+    /** The cause the action removes. */
+    aims_action_root_cause?: string,
+    /** When the action is to be complete. */
+    aims_action_target_date?: date,
+    /** When the action was complete. */
+    aims_action_completion_date?: date,
+    /** The resources the action needs. */
+    aims_action_resources?: string,
+    /** How the action's effect will be judged. */
+    aims_action_effectiveness_criteria?: string,
+    /** When the action's effect was reviewed. */
+    aims_action_effectiveness_review_date?: date,
+    /** Whether the review found the action effective. */
+    aims_action_effective?: boolean,
+    /** The changes to the system the action needs. */
+    aims_action_system_changes?: string,
+    /** Where the action stands, in the organization's own terms. */
+    aims_action_status?: string,
 }
 
 
 /**
- * A documented relationship with a third party (supplier, partner, or customer) involved in the AI system life cycle per A.10.
+ * An opportunity to make the system more suitable, adequate or effective, and what came of it.
  */
-export interface ThirdPartyRelationship extends NamedEntity {
-    /** Category of party. */
-    party_type?: string,
-    /** Name of the third party. */
-    party_name?: string,
-    /** Contractual basis of the relationship. */
-    contractual_basis?: string,
-    /** Responsibilities allocated to the third party. */
-    allocated_responsibilities?: string[],
-    /** Role of the third party in data processing (e.g., PII controller, PII processor). */
-    data_processing_role?: string,
-    /** AI systems involved in the third-party relationship. */
-    ai_systems_involved?: AISystemId[],
-    /** AI life cycle stages where the third party is involved. */
-    lifecycle_stages_involved?: string,
-    /** Evidence of assurance over the third party's conformance with the organization's responsible AI approach. */
-    assurance_evidence?: string[],
-    /** Frequency at which the relationship is reviewed. */
-    review_frequency?: string,
+export interface AimsImprovementOpportunity extends AimsRecordMixin {
+    /** The role that answers for the record's activity or outcome. */
+    aims_responsible_role?: AimsRoleAimsId,
+    /** Where the opportunity came from, such as a review, an audit or daily work. */
+    aims_improvement_source?: string,
+    /** When the opportunity was identified. */
+    aims_improvement_identified_on?: date,
+    /** Who identified it. */
+    aims_improvement_identified_by?: string,
+    /** What the improvement is expected to bring. */
+    aims_improvement_benefit?: string,
+    /** How soon it is to be acted on, in the organization's own terms. */
+    aims_improvement_priority?: string,
+    /** How the improvement is to be made. */
+    aims_improvement_plan?: string,
+    /** When the improvement is to be made. */
+    aims_improvement_target_date?: date,
+    /** When it was made. */
+    aims_improvement_completion_date?: date,
+    /** What the improvement brought. */
+    aims_improvement_outcome?: string,
+    /** Where it stands, in the organization's own terms. */
+    aims_improvement_status?: string,
 }
 
 
 /**
- * A supplier relationship covering services, products, or materials (e.g., datasets, models, libraries, full AI systems) provided to the organization per A.10.3.
+ * A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what assures the organization of that.
  */
-export interface SupplierRelationship extends ThirdPartyRelationship {
-    /** Criteria for assessing the supplier. */
-    supplier_assessment_criteria?: string[],
-    /** How the supplier or customer relationship is monitored. */
-    monitoring_method?: string,
-    /** Corrective actions required of the supplier. */
-    corrective_actions_required?: string[],
+export interface AimsThirdPartyRelationship extends AimsRecordMixin {
+    /** The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship. */
+    aims_relationship_type: string,
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** The stages of an AI system's life the record applies to. */
+    aims_life_cycle_stages?: string,
+    /** The other party. */
+    aims_relationship_party?: string,
+    /** The parts the other party plays towards the system. */
+    aims_relationship_party_roles?: string,
+    /** The agreement the relationship rests on. */
+    aims_relationship_contract?: string,
+    /** The duties each side carries. */
+    aims_relationship_responsibilities?: string[],
+    /** The part the other party plays when personal data is processed. */
+    aims_relationship_pii_role?: string,
+    /** The documents one side owes the other about the system. */
+    aims_relationship_documentation?: string[],
+    /** What assures the organization that the party meets its duties. */
+    aims_relationship_assurance_evidence?: string[],
+    /** How often the relationship is reviewed. */
+    aims_relationship_review_frequency?: string,
 }
 
 
 /**
- * A customer relationship for an AI product or service supplied by the organization per A.10.4.
+ * A relationship with a supplier to the organization's AI work: what it provides, the risk that brings, and how it is held to the organization's approach.
  */
-export interface CustomerRelationship extends ThirdPartyRelationship {
-    /** Documented customer expectations and needs. */
-    customer_expectations?: string[],
-    /** Reference to the usage agreement with the customer. */
-    usage_agreement_reference?: string,
-    /** Limitations of the AI system that are communicated to the customer. */
-    communicated_limitations?: string[],
+export interface AimsSupplierRelationship extends AimsThirdPartyRelationship {
+    /** What it provides, such as data, models, software or a whole system. */
+    aims_supplier_provides?: string[],
+    /** How much risk what it provides brings. */
+    aims_supplier_risk?: string,
+    /** What the organization asks of the supplier. */
+    aims_supplier_requirements?: string[],
+    /** How the supplier is watched and judged over time. */
+    aims_supplier_monitoring?: string,
+    /** How what it provides is joined to the organization's systems. */
+    aims_supplier_integration?: string,
+    /** What the supplier was asked to put right. */
+    aims_supplier_corrective_actions?: string[],
 }
 
 
 /**
- * An AI system event detected by monitoring, users, or external reporting channels. Events may or may not be subsequently classified as incidents. Supports A.6.2.8 event log capture and A.8.3 external reporting workflows.
+ * A relationship with a customer of the organization's AI work: what it expects, who answers for what, and which limits it was told of.
  */
-export interface AISystemEvent extends NamedEntity {
-    /** Date and time the event was observed. */
-    event_datetime?: string,
-    /** Identifier or description of the person or system that reported the event. */
-    reporter?: string,
-    /** Type of party that reported the event (internal user, external interested party, monitoring system, etc.). */
-    reporter_party_type?: string,
-    /** Source channel through which the event was raised (monitoring, user report, external report, audit). */
-    event_source?: string,
-    /** Free-text description of the event. */
-    event_description?: string,
-    /** AI systems affected by this risk. */
-    affected_ai_systems?: AISystemId[],
-    /** Initial triage assessment of the event. */
-    initial_assessment?: string,
-    /** Whether the event has been categorized as an incident requiring response. */
-    categorized_as_incident?: boolean,
-    /** AI incident linked to the originating event. */
-    linked_incident?: AIIncidentId,
+export interface AimsCustomerRelationship extends AimsThirdPartyRelationship {
+    /** What the customer expects and wants. */
+    aims_customer_expectations?: string[],
+    /** The contract or terms of use that apply. */
+    aims_customer_agreement?: string,
+    /** What the provider answers for, and what the customer answers for. */
+    aims_customer_responsibility_split?: string,
+    /** What the customer was told the system cannot do, or where it stops being valid. */
+    aims_customer_communicated_limits?: string[],
 }
 
 
 /**
- * An AI incident, i.e., an AI system event determined to require response, escalation, or external communication. Captures triage, response lifecycle, and communications to users and other interested parties per A.8.4 and A.8.3.
+ * Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.
  */
-export interface AIIncident extends NamedEntity {
-    /** Date and time the incident was declared or detected. */
-    incident_datetime?: string,
-    /** AI-specific category of the incident. */
-    incident_category?: string,
-    /** Severity rating of the incident. */
-    severity?: string,
-    /** AI systems affected by this risk. */
-    affected_ai_systems?: AISystemId[],
-    /** Dimensions of impact affected by the risk (individual, group, societal, safety, privacy, security, environmental). */
-    affected_dimensions?: string,
-    /** Free-text description of the incident. */
-    incident_description?: string,
-    /** How the incident was detected (monitoring alert, user report, external report). */
-    detection_method?: string,
-    /** Response actions taken for the incident. */
-    response_actions?: string[],
-    /** Containment actions taken to limit incident impact. */
-    containment_actions?: string[],
-    /** Recovery actions taken to restore normal AI system operation. */
-    recovery_actions?: string[],
-    /** Identified root cause. */
-    root_cause?: string,
-    /** Lessons learned recorded after incident closure. */
-    lessons_learned?: string[],
-    /** References to evidence collected during incident response. */
-    evidence_collected?: string[],
-    /** Whether notification to interested parties or authorities is required. */
-    notification_required?: boolean,
-    /** Notifications actually made (user communications, regulator filings). */
-    notifications_made?: string[],
-    /** External reports received or filed regarding the incident. */
-    external_reports?: string[],
-    /** Reference to the communication plan. */
-    communication_plan?: CommunicationPlanId,
-    /** Linked corrective actions. */
-    linked_corrective_actions?: CorrectiveActionId[],
-    /** Date and time the incident was closed. */
-    closure_datetime?: string,
-    /** Reference to the post-incident review record. */
-    post_incident_review?: string,
+export interface AimsSystemEvent extends AimsRecordMixin {
+    /** The kind of record, AimsSystemEvent or AimsIncident. */
+    aims_event_type: string,
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** When the event happened, or when it was first noticed. */
+    aims_event_occurred_at?: string,
+    /** Who reported the event. */
+    aims_event_reporter?: string,
+    /** How the event came to light, such as a log, monitoring or a report from outside. */
+    aims_event_source?: string,
+    /** The harm that was reported, if any. */
+    aims_event_adverse_impact?: string,
+    /** What the assessment of the event found. */
+    aims_event_assessment?: string,
 }
 
 
 /**
- * A concern raised by employees, contractors, users, or other interested parties about the organization's role with respect to an AI system. Operationalises Annex A.3.3 (Reporting of concerns). Confidentiality, anonymity, anti-reprisal protection, escalation, and timely response are core attributes; informed by ISO 37002.
+ * An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was learned.
  */
-export interface ConcernReport extends NamedEntity {
-    /** Date the concern was reported. */
-    reported_date?: date,
-    /** Identifier or description of the person or system that reported the event. */
-    reporter?: string,
-    /** Type of party that reported the event (internal user, external interested party, monitoring system, etc.). */
-    reporter_party_type?: string,
-    /** Whether the reporter chose to remain anonymous. */
-    reporter_anonymous?: boolean,
-    /** Confidentiality classification applied to the concern record (e.g., confidential, restricted, internal). */
-    confidentiality_level?: string,
-    /** Channel through which the concern was reported (e.g., hotline, web form, manager, ombudsperson, external auditor). */
-    reporting_channel?: string,
-    /** Paraphrased summary of the concern raised. */
-    concern_description?: string,
-    /** AI systems referenced in the concern report. */
-    concern_ai_systems?: AISystemId[],
-    /** AI system life cycle stage(s) at which the concern arose. */
-    concern_lifecycle_stage?: string,
-    /** Severity rating of the incident. */
-    severity?: string,
-    /** Identifier or description of the investigator assigned to the concern. */
-    investigator?: string,
-    /** Status of the investigation (e.g., opened, in_progress, closed, escalated, referred_external). */
-    investigation_status?: string,
-    /** Paraphrased summary of investigation findings. */
-    investigation_findings?: string,
-    /** Whether and how the concern was escalated (internal management, governing body, external authority). */
-    escalation_status?: string,
-    /** Target date by which a response is owed to the reporter. */
-    response_due_date?: date,
-    /** Date a response was provided to the reporter. */
-    response_provided_date?: date,
-    /** Paraphrased description of the resolution provided. */
-    resolution?: string,
-    /** Actions taken to protect the reporter from reprisals or detriment (informed by ISO 37002). */
-    reprisal_protection_actions?: string[],
-    /** AI incidents linked to this concern report. */
-    related_incidents?: AIIncidentId[],
-    /** Nonconformities linked to this concern report. */
-    related_nonconformities?: NonconformityId[],
-    /** Date and time the incident was closed. */
-    closure_datetime?: string,
+export interface AimsIncident extends AimsSystemEvent {
+    /** What the incident concerns. */
+    aims_incident_category?: string,
+    /** The threats peculiar to AI that the incident involved. */
+    aims_incident_threats?: string,
+    /** How severe the incident is. */
+    aims_incident_severity?: string,
+    /** The areas of impact the incident touched. */
+    aims_incident_impact_areas?: string,
+    /** How the incident was detected. */
+    aims_incident_detection_method?: string,
+    /** What was done in response. */
+    aims_incident_response_actions?: string[],
+    /** What was done to restore normal operation. */
+    aims_incident_recovery_actions?: string[],
+    /** What caused the incident. */
+    aims_incident_root_cause?: string,
+    /** What the organization learned from it. */
+    aims_incident_lessons_learned?: string[],
+    /** Whether users, authorities or others had to be told. */
+    aims_incident_notification_required?: boolean,
+    /** Whom the organization told, and when. */
+    aims_incident_notifications?: string[],
+    /** The corrective actions the incident led to. */
+    aims_incident_corrective_actions?: AimsCorrectiveActionAimsId[],
+    /** When the incident was closed. */
+    aims_incident_closed_at?: string,
+}
+
+
+/**
+ * The way people raise worries about the organization's part in a system: how it keeps them safe, who looks into a worry, and how fast it answers.
+ */
+export interface AimsConcernReportingProcess extends AimsRecordMixin, AimsDocumentControlMixin {
+    /** The ways a person can stay unnamed or keep a report private. */
+    aims_concern_process_confidentiality?: string[],
+    /** How staff and contractors learn of it and reach it. */
+    aims_concern_process_audience?: string,
+    /** Who looks into a report, and what powers they hold. */
+    aims_concern_process_investigators?: string,
+    /** How a report reaches management in good time. */
+    aims_concern_process_escalation?: string,
+    /** How those who report or investigate are shielded from reprisal. */
+    aims_concern_process_reprisal_protection?: string,
+    /** How soon a report is answered. */
+    aims_concern_process_response_time?: string,
+}
+
+
+/**
+ * One worry someone raised about the organization's part in a system, and how it was looked into and settled.
+ */
+export interface AimsConcernReport extends AimsRecordMixin {
+    /** The AI systems the record concerns. */
+    aims_ai_systems?: AimsAiSystemAimsId[],
+    /** When the worry was raised. */
+    aims_concern_reported_on?: date,
+    /** Who raised it, unless they stayed unnamed. */
+    aims_concern_reporter?: string,
+    /** Whether the person stayed unnamed. */
+    aims_concern_anonymous?: boolean,
+    /** How it was raised. */
+    aims_concern_channel?: string,
+    /** The stage of the system's life it concerns. */
+    aims_concern_life_cycle_stage?: string,
+    /** How serious it is. */
+    aims_concern_severity?: string,
+    /** Who looked into it. */
+    aims_concern_investigator?: string,
+    /** Where the inquiry stands, in the organization's own terms. */
+    aims_concern_investigation_status?: string,
+    /** What the inquiry found. */
+    aims_concern_findings?: string,
+    /** Whether and how it went up to management. */
+    aims_concern_escalation?: string,
+    /** When an answer is due. */
+    aims_concern_response_due?: date,
+    /** When it was answered. */
+    aims_concern_responded_on?: date,
+    /** How it was settled. */
+    aims_concern_resolution?: string,
+    /** What was done to shield those involved from reprisal. */
+    aims_concern_reprisal_protection?: string,
+    /** The incidents it relates to. */
+    aims_concern_incidents?: AimsIncidentAimsId[],
+    /** The nonconformities it relates to. */
+    aims_concern_nonconformities?: AimsNonconformityAimsId[],
 }
 
 

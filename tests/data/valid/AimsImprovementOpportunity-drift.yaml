@@ -1,0 +1,11 @@
+aims_id: acme:improvement-drift
+title: Spot drift sooner
+aims_responsible_role: acme:role-ai-lead
+aims_improvement_source: Management review
+aims_improvement_identified_on: '2026-06-15'
+aims_improvement_identified_by: Executive team
+aims_improvement_benefit: Earlier warning of worse results
+aims_improvement_priority: medium
+aims_improvement_plan: A daily drift check
+aims_improvement_target_date: '2026-10-01'
+aims_improvement_status: in progress

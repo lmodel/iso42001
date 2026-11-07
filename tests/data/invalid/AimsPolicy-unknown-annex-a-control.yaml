@@ -1,0 +1,6 @@
+# Fails at: /aims_cited_annex_a_controls/0
+# Invalid: A.2.1 is an objective, and no control carries that number.
+aims_id: acme:x
+title: A record
+aims_cited_annex_a_controls:
+  - a_2_1

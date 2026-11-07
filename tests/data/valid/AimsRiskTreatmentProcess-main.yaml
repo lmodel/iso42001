@@ -1,0 +1,9 @@
+aims_id: acme:process-treatment
+title: AI risk treatment process
+aims_treatment_options_guidance: Modify where a control can bring the risk under the line.
+aims_treatment_control_selection: Start from the failure the risk describes.
+aims_treatment_annex_a_comparison: Each treatment is checked against the Annex A list.
+aims_treatment_additional_controls: We add our own where the list has no match.
+aims_treatment_annex_b_use: The control owner reads the matching guidance.
+aims_treatment_soa_template: SOA-TEMPLATE-02
+aims_treatment_approval_workflow: The executive team signs each plan.

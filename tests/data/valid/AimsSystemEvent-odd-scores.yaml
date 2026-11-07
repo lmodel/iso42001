@@ -1,0 +1,10 @@
+aims_id: acme:event-1
+title: A hospital reported odd scores
+aims_event_type: AimsSystemEvent
+aims_ai_systems:
+  - acme:system-triage
+aims_event_occurred_at: '2026-08-03T09:15:00Z'
+aims_event_reporter: St Example's Hospital
+aims_event_source: Report from a customer
+aims_event_adverse_impact: None found
+aims_event_assessment: A scanner setting had changed; not an incident.

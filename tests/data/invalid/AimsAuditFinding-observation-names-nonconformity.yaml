@@ -1,0 +1,6 @@
+# Fails at: /aims_finding_type
+# Invalid: A finding that names a nonconformity record is a finding of a nonconformity.
+aims_id: acme:finding-2
+title: The gate log is kept by hand
+aims_finding_type: observation
+aims_finding_nonconformity: acme:nonconformity-1

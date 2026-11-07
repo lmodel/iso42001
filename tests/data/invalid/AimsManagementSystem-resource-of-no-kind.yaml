@@ -1,0 +1,8 @@
+# Fails at: /aims_system_resources/0
+# Invalid: A resource says which kind it is.
+aims_id: acme:aims
+title: A record
+aims_system_resources:
+  - aims_id: acme:r
+    title: A record
+    aims_resource_type: AimsAiSystem

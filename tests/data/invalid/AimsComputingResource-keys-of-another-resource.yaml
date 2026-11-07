@@ -1,0 +1,6 @@
+# Fails at: /
+# Invalid: Each kind of resource holds its own keys.
+aims_id: acme:x
+title: A record
+aims_resource_type: AimsComputingResource
+aims_tool_vendor: Example

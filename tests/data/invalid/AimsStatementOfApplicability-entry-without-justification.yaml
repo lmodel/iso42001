@@ -1,0 +1,7 @@
+# Fails at: /aims_soa_entries/0
+# Invalid: every entry says why the control is included or left out. The
+# validator tries each kind, so it reports the entry, not the key.
+aims_id: acme:x
+title: A record
+aims_soa_entries:
+  - aims_entry_annex_a_control: a_10_3

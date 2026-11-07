@@ -1,0 +1,7 @@
+# Fails at: /aims_life_cycle_stages/0
+# Invalid: ISO/IEC 22989 has no such stage.
+aims_id: acme:x
+title: A record
+aims_resource_type: AimsHumanResource
+aims_life_cycle_stages:
+  - design

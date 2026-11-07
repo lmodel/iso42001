@@ -1,0 +1,21 @@
+aims_id: acme:review-2026
+title: Management review, 2026
+aims_review_held_on: '2026-06-15'
+aims_review_attendees:
+  - Executive team
+  - Dana Example
+aims_review_previous_actions: All closed.
+aims_review_context_changes: New medical device guidance.
+aims_review_interested_party_changes: Hospitals now ask for yearly impact results.
+aims_review_nonconformity_trends: One minor this year, none last year.
+aims_review_monitoring_trends: Sensitivity steady at 96%.
+aims_review_audit_trends: Findings are falling.
+aims_review_improvement_opportunities:
+  - Automate the release gate
+aims_review_decisions:
+  - Fund the automatic gate
+aims_review_system_changes:
+  - Add the gate to the process map
+aims_review_actions:
+  - The AI lead reports back in December
+aims_review_next_date: '2027-06-15'

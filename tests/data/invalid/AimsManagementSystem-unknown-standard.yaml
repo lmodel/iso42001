@@ -1,0 +1,6 @@
+# Fails at: /aims_integrated_standards/0
+# Invalid: Annex D names no such standard.
+aims_id: acme:aims
+title: A record
+aims_integrated_standards:
+  - iso_31000

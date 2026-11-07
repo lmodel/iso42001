@@ -1,0 +1,65 @@
+aims_id: acme:system-triage
+title: Chest X-ray triage tool
+aims_relevant_controls:
+  - acme:control-impact
+aims_system_intended_purpose: Order chest X-rays so that urgent ones are read first
+aims_system_intended_uses:
+  - Ordering a radiologist worklist
+aims_system_foreseeable_misuse:
+  - Reading the score as a diagnosis
+aims_system_domain: Radiology
+aims_system_deployment_context: Public hospitals
+aims_system_life_cycle_stage: operation_and_monitoring
+aims_system_organization_roles:
+  - ai_provider
+  - ai_developer
+aims_system_pii_roles:
+  - pii_processor
+aims_system_rationale: A customer asked for shorter waits on urgent reads.
+aims_system_requirements:
+  - At least 95% sensitivity on urgent cases
+aims_system_ml_approach: supervised
+aims_system_model_types:
+  - Convolutional neural network
+aims_system_continuous_learning: false
+aims_system_automation_level: Suggests an order; a person decides
+aims_system_threats:
+  - data_poisoning
+aims_system_verification_measures:
+  - Held-back test set from three hospitals
+aims_system_evaluation_criteria:
+  - False negative rate under 5%
+aims_system_release_criteria:
+  - Criteria met, impact review signed
+aims_system_deployment_plan: acme:doc-deployment-plan
+aims_system_operation_elements:
+  - Watching drift
+  - Monthly updates
+  - Support line
+aims_system_performance_metrics:
+  - Sensitivity on urgent cases, at least 95%
+aims_system_log_stages:
+  - deployment
+  - operation_and_monitoring
+aims_system_log_contents:
+  - Time of use
+  - Scores out of the expected range
+aims_system_log_retention: P2Y
+aims_system_human_oversight_required: true
+aims_system_human_oversight: A radiologist reads every case and may change the order.
+aims_system_human_oversight_stages:
+  - operation_and_monitoring
+aims_system_resources_used:
+  - acme:data-xrays
+  - acme:tool-trainer
+  - acme:computing-gpu
+  - acme:team-ml
+  - acme:component-scorer
+aims_system_technical_documents:
+  - acme:technical-triage
+aims_system_impact_assessments:
+  - acme:impact-triage-2026
+aims_system_relationships:
+  - acme:relationship-integrator
+  - acme:supplier-labels
+  - acme:customer-st-example

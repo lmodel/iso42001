@@ -1,0 +1,5 @@
+# Fails at: /aims_document_kind
+# Invalid: A policy has a record of its own.
+aims_id: acme:x
+title: A record
+aims_document_kind: policy

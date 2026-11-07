@@ -1,0 +1,21 @@
+aims_id: acme:concern-1
+title: Worry about pressure to skip reviews
+aims_ai_systems:
+  - acme:system-triage
+aims_concern_reported_on: '2026-05-02'
+aims_concern_anonymous: true
+aims_concern_channel: The anonymous form
+aims_concern_life_cycle_stage: deployment
+aims_concern_severity: medium
+aims_concern_investigator: Sam Example
+aims_concern_investigation_status: closed
+aims_concern_findings: It led to the audit in May.
+aims_concern_escalation: Reached the board within the week.
+aims_concern_response_due: '2026-05-16'
+aims_concern_responded_on: '2026-05-14'
+aims_concern_resolution: The gate was made automatic.
+aims_concern_reprisal_protection: The report stayed anonymous.
+aims_concern_incidents:
+  - acme:incident-1
+aims_concern_nonconformities:
+  - acme:nonconformity-1

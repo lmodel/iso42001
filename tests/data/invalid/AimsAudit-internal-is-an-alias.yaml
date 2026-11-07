@@ -1,0 +1,5 @@
+# Fails at: /aims_audit_type
+# Invalid: internal is an alias of first_party, and data writes the value.
+aims_id: acme:x
+title: A record
+aims_audit_type: internal

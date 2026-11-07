@@ -1,0 +1,17 @@
+aims_id: acme:finding-1
+title: A release went out with no signed review
+aims_finding_type: minor_nonconformity
+aims_cited_clauses:
+  - clause_8_1
+aims_cited_annex_a_controls:
+  - a_6_2_5
+aims_finding_control: acme:control-impact
+aims_finding_evidence: Release log, 12 May
+aims_finding_root_cause: The gate could be skipped by hand.
+aims_finding_risk: A flawed release could reach hospitals.
+aims_finding_recommendation: Make the gate automatic.
+aims_finding_auditee_response: Agreed
+aims_finding_corrective_action: acme:corrective-gate
+aims_finding_nonconformity: acme:nonconformity-1
+aims_finding_closure_status: closed
+aims_finding_closure_date: '2026-07-01'

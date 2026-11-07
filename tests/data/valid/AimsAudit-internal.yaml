@@ -1,0 +1,38 @@
+aims_id: acme:audit-2026
+title: Internal audit, spring 2026
+aims_audit_type: first_party
+aims_audit_scope: Clauses 8 and 9, and the release gate
+aims_audit_criteria:
+  - ISO/IEC 42001:2023
+  - Our release procedure
+aims_audit_objectives:
+  - See whether the gate holds
+aims_audit_period_start: '2026-05-11'
+aims_audit_period_end: '2026-05-15'
+aims_audit_lead: Sam Example
+aims_audit_team:
+  - Lee Example
+aims_audit_auditees:
+  - Dana Example
+aims_audit_plan: acme:doc-audit-plan
+aims_audit_findings:
+  - aims_id: acme:finding-1
+    title: A release went out with no signed review
+    aims_finding_type: minor_nonconformity
+    aims_cited_clauses:
+      - clause_8_1
+    aims_cited_annex_a_controls:
+      - a_6_2_5
+    aims_finding_control: acme:control-impact
+    aims_finding_evidence: Release log, 12 May
+    aims_finding_root_cause: The gate could be skipped by hand.
+    aims_finding_risk: A flawed release could reach hospitals.
+    aims_finding_recommendation: Make the gate automatic.
+    aims_finding_auditee_response: Agreed
+    aims_finding_corrective_action: acme:corrective-gate
+    aims_finding_closure_status: closed
+    aims_finding_closure_date: '2026-07-01'
+aims_audit_conclusion: The system conforms, but for one finding.
+aims_audit_report_date: '2026-05-22'
+aims_audit_report_distribution:
+  - Executive team

@@ -1,0 +1,22 @@
+aims_id: acme:process-impact
+title: AI system impact assessment process
+aims_impact_process_triggers:
+  - A new intended use
+  - A change in how much the tool does alone
+aims_impact_process_interval: P1Y
+aims_impact_process_steps:
+  - Find
+  - Analyse
+  - Evaluate
+  - Treat
+  - Report
+aims_impact_process_assessors: A clinician and a data scientist
+aims_impact_process_use: Results feed the risk register and the release gate.
+aims_impact_process_subjects:
+  - individuals
+  - groups_of_individuals
+  - societies
+aims_impact_process_areas:
+  - fairness
+  - safety_and_health
+aims_impact_process_retention: P10Y

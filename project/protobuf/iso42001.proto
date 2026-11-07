@@ -1,1055 +1,3043 @@
- syntax="proto3";
- package
-// metamodel_version: 1.11.0
-// version: 1.0.0
-// An AI incident, i.e., an AI system event determined to require response, escalation, or external communication. Captures triage, response lifecycle, and communications to users and other interested parties per A.8.4 and A.8.3.
-message AIIncident
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  datetime incidentDatetime = 0
-  aIIncidentCategory incidentCategory = 0
-  riskLevel severity = 0
- repeated  aISystem affectedAiSystems = 0
- repeated  impactAssessmentDimension affectedDimensions = 0
-  string incidentDescription = 0
-  string detectionMethod = 0
- repeated  string responseActions = 0
- repeated  string containmentActions = 0
- repeated  string recoveryActions = 0
-  string rootCause = 0
- repeated  string lessonsLearned = 0
- repeated  string evidenceCollected = 0
-  boolean notificationRequired = 0
- repeated  string notificationsMade = 0
- repeated  string externalReports = 0
-  communicationPlan communicationPlan = 0
- repeated  correctiveAction linkedCorrectiveActions = 0
-  datetime closureDatetime = 0
-  string postIncidentReview = 0
- }
-// Top-level container representing an organization's complete AI Management System (AIMS) per ISO/IEC 42001:2023. Aggregates all components required to support the AIMS lifecycle.
-message AIManagementSystem
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  organization organization = 0
-  string scopeStatement = 0
- repeated  string scopeBoundaries = 0
- repeated  string scopeExclusions = 0
- repeated  string contextInternalIssues = 0
- repeated  string contextExternalIssues = 0
- repeated  aIOrganizationalRole organizationalRolesWithAi = 0
- repeated  relatedManagementSystem integratedManagementSystems = 0
-  string topManagement = 0
-  string governingBody = 0
- repeated  string leadershipCommitmentEvidence = 0
- repeated  string plannedChanges = 0
- repeated  interestedParty interestedParties = 0
-  aIPolicy aiPolicy = 0
- repeated  aIObjective aiObjectives = 0
-  aIRiskAssessmentProcess aiRiskAssessmentProcess = 0
-  aIRiskTreatmentProcess aiRiskTreatmentProcess = 0
-  aISystemImpactAssessmentProcess aiSystemImpactAssessmentProcess = 0
-  statementOfApplicability statementOfApplicability = 0
- repeated  aIReferenceControl referenceControls = 0
- repeated  aISystem aiSystems = 0
- repeated  role roles = 0
- repeated  resource resources = 0
- repeated  competenceRecord competenceRecords = 0
-  awarenessProgram awarenessProgram = 0
-  communicationPlan communicationPlan = 0
- repeated  documentedInformation documentedInformationRegister = 0
- repeated  operationalProcedure operationalProcedures = 0
- repeated  aIRiskAssessment aiRiskAssessments = 0
- repeated  aIRiskTreatmentPlan aiRiskTreatmentPlans = 0
- repeated  aISystemImpactAssessment aiSystemImpactAssessments = 0
-  monitoringProgram monitoringProgram = 0
- repeated  internalAudit internalAudits = 0
- repeated  managementReview managementReviews = 0
- repeated  nonconformity nonconformities = 0
- repeated  correctiveAction correctiveActions = 0
- repeated  improvementOpportunity improvements = 0
- repeated  thirdPartyRelationship thirdPartyRelationships = 0
-  string certificationStatus = 0
-  string certificationBody = 0
-  date certificationDate = 0
-  date recertificationDate = 0
- repeated  aISystemEvent aiSystemEvents = 0
- repeated  aIIncident aiIncidents = 0
- repeated  concernReport concernReports = 0
- }
-// A measurable AI objective per Clause 6.2, established at relevant functions and levels and aligned with the AI policy.
-message AIObjective
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string objectiveStatement = 0
-  aIObjectiveCategory objectiveCategory = 0
-  string targetValue = 0
-  string currentValue = 0
-  string metricDefinition = 0
-  string measurementMethod = 0
-  string measurementFrequency = 0
-  role responsibleRole = 0
-  string resourcesRequired = 0
-  date targetDate = 0
-  string achievementStatus = 0
- repeated  aIRisk relatedRisks = 0
- repeated  aIReferenceControl relatedControls = 0
-  string actionPlan = 0
- }
-// The AI policy established by top management per Clause 5.2. Provides a framework for setting AI objectives and demonstrates commitment to responsible AI.
-message AIPolicy
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string policyStatement = 0
-  string policyObjectivesFramework = 0
- repeated  string commitmentStatements = 0
-  string applicabilityStatement = 0
-  date communicationDate = 0
-  boolean acknowledgmentRequired = 0
- repeated  topicSpecificPolicy relatedTopicPolicies = 0
-  date lastPolicyReviewDate = 0
-  date nextPolicyReviewDate = 0
- }
-// A reference control from Annex A of ISO/IEC 42001:2023. Controls are grouped into nine families (A.2 through A.10) and supported by implementation guidance in Annex B.
-message AIReferenceControl
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string controlId = 0
-  string controlTitle = 0
-  aIControlFamily controlFamily = 0
-  string controlText = 0
-  string implementationGuidance = 0
- repeated  aIReferenceControl relatedControls = 0
- repeated  aIRiskSourceCategory applicableRiskSources = 0
- repeated  aIObjectiveCategory applicableObjectives = 0
-  string controlOwner = 0
-  implementationStatus implementationStatus = 0
-  date implementationDate = 0
-  string effectivenessRating = 0
-  date lastTestDate = 0
- repeated  string evidenceReferences = 0
- }
-// An identified AI risk that may affect achievement of AI objectives, individuals, groups, or societies within the AIMS scope.
-message AIRisk
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  aIRiskSourceCategory riskSourceCategory = 0
-  string riskSourceDescription = 0
- repeated  aISystem affectedAiSystems = 0
- repeated  impactAssessmentDimension affectedDimensions = 0
-  string riskOwner = 0
-  likelihoodRating likelihood = 0
-  impactRating impact = 0
-  riskLevel inherentRiskLevel = 0
- repeated  aIReferenceControl existingControls = 0
-  riskLevel residualRiskLevel = 0
-  riskTreatmentOption riskTreatmentOption = 0
-  string treatmentPriority = 0
-  aIRiskTreatmentPlan relatedTreatmentPlan = 0
-  aISystemImpactAssessment relatedImpactAssessment = 0
- }
-// An instance of AI risk assessment performed per Clause 8.2, identifying and evaluating AI risks at planned intervals or following significant change.
-message AIRiskAssessment
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string assessmentScope = 0
- repeated  aISystem aiSystemsAssessed = 0
-  date assessmentDate = 0
-  string assessor = 0
-  string methodologyUsed = 0
- repeated  aIRisk risksIdentified = 0
-  aISystemImpactAssessment linkedImpactAssessment = 0
-  string summaryFindings = 0
- repeated  string recommendations = 0
-  date nextAssessmentDate = 0
- }
-// The documented AI risk assessment process per Clause 6.1.2, defining criteria and methodology for identifying, analysing, and evaluating AI risks. Aligned with ISO/IEC 23894.
-message AIRiskAssessmentProcess
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string riskAcceptanceCriteria = 0
-  string assessmentCriteria = 0
-  string assessmentMethodology = 0
-  string likelihoodScale = 0
-  string impactScale = 0
-  string riskMatrix = 0
-  string assessmentFrequency = 0
- repeated  string triggerEvents = 0
-  string alignmentWithAiPolicy = 0
- }
-// A plan documenting planned actions to address identified AI risks through selected controls. Requires approval by designated management per Clause 6.1.3.
-message AIRiskTreatmentPlan
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string planScope = 0
- repeated  aIRisk risksAddressed = 0
- repeated  string treatmentActions = 0
- repeated  aIReferenceControl controlsToImplement = 0
-  string resourcesRequired = 0
- repeated  string responsibleParties = 0
-  string implementationTimeline = 0
-  string riskOwnerApproval = 0
-  date approvedDate = 0
-  string residualRiskAcceptance = 0
-  implementationStatus implementationStatus = 0
-  date completionDate = 0
- }
-// The documented AI risk treatment process per Clause 6.1.3, defining how treatment options are selected, how Annex A controls are considered, and how the Statement of Applicability is produced.
-message AIRiskTreatmentProcess
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string treatmentOptionsGuidance = 0
-  string controlSelectionCriteria = 0
-  string soaTemplate = 0
-  string approvalWorkflow = 0
- }
-// An AI system within the AIMS scope. Captures life cycle stage, intended use, applicable domains, and references to data and tooling resources, technical documentation, and impact assessments.
-message AISystem
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string aiSystemPurpose = 0
- repeated  string intendedUses = 0
- repeated  string foreseeableMisuse = 0
-  string applicationDomain = 0
-  string deploymentContext = 0
-  aISystemLifecycleStage lifecycleStage = 0
-  aIOrganizationalRole organizationRole = 0
-  string autonomyLevel = 0
-  mLApproach mlApproach = 0
-  boolean humanOversightRequired = 0
-  string humanOversightDescription = 0
- repeated  aISystemLifecycleStage humanOversightStages = 0
-  learningParadigm learningMode = 0
- repeated  dataResource dataResources = 0
- repeated  toolingResource toolingResources = 0
- repeated  computingResource computingResources = 0
- repeated  humanResource humanResources = 0
- repeated  string technicalDocumentation = 0
-  string eventLogPolicy = 0
- repeated  aIReferenceControl applicableControls = 0
- repeated  aISystemImpactAssessment relatedImpactAssessments = 0
- repeated  supplierRelationship supplierRelationships = 0
- repeated  customerRelationship customerRelationships = 0
- }
-// An AI system event detected by monitoring, users, or external reporting channels. Events may or may not be subsequently classified as incidents. Supports A.6.2.8 event log capture and A.8.3 external reporting workflows.
-message AISystemEvent
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  datetime eventDatetime = 0
-  string reporter = 0
-  string reporterPartyType = 0
-  string eventSource = 0
-  string eventDescription = 0
- repeated  aISystem affectedAiSystems = 0
-  string initialAssessment = 0
-  boolean categorizedAsIncident = 0
-  aIIncident linkedIncident = 0
- }
-// An instance of an AI system impact assessment performed per Clause 6.1.4 and Clause 8.4. Documents consequences of deployment, intended use, and foreseeable misuse on individuals, groups, and societies.
-message AISystemImpactAssessment
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string assessmentScope = 0
- repeated  aISystem aiSystemsAssessed = 0
-  date assessmentDate = 0
-  string assessor = 0
-  string technicalContext = 0
-  string societalContext = 0
- repeated  string applicableJurisdictions = 0
- repeated  impactAssessmentDimension dimensionsAssessed = 0
- repeated  string identifiedConsequences = 0
- repeated  string mitigations = 0
- repeated  string sharedWithParties = 0
-  date nextAssessmentDate = 0
- }
-// The documented process for assessing the potential consequences for individuals, groups, and societies arising from the development, provision, or use of AI systems per Clause 6.1.4.
-message AISystemImpactAssessmentProcess
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string assessmentCriteria = 0
-  string assessmentMethodology = 0
- repeated  impactAssessmentDimension dimensionsInScope = 0
-  string assessmentFrequency = 0
- repeated  string triggerEvents = 0
-  string linkageToRiskAssessment = 0
- }
-// A finding from an AIMS internal audit, including nonconformities, observations, and positive findings.
-message AuditFinding
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  auditFindingType findingType = 0
-  string clauseReference = 0
-  aIReferenceControl controlReference = 0
-  string findingDescription = 0
-  string objectiveEvidence = 0
-  string rootCauseAnalysis = 0
-  string riskImplication = 0
-  string recommendedAction = 0
-  string auditeeResponse = 0
-  correctiveAction linkedCorrectiveAction = 0
-  string closureStatus = 0
-  date closureDate = 0
- }
-// The internal audit programme per Clause 9.2.2, planning AIMS audit activities over a defined period.
-message AuditProgramme
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string programmePeriod = 0
- repeated  internalAudit plannedAudits = 0
-  string auditFrequencyRationale = 0
-  string resourceRequirements = 0
-  string auditorQualifications = 0
-  string programmeStatus = 0
- }
-// The awareness program ensuring personnel understand their AI-related responsibilities per Clause 7.3.
-message AwarenessProgram
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
- repeated  string awarenessTopics = 0
- repeated  string deliveryMethods = 0
-  string targetAudience = 0
-  string frequency = 0
-  string completionTracking = 0
-  string effectivenessMeasures = 0
- }
-// A single communication requirement within the AIMS communication plan.
-message CommunicationItem
- {
-  string subject = 0
-  string purpose = 0
-  string audience = 0
-  string frequency = 0
-  string method = 0
-  string responsibleParty = 0
-  string recordsRequired = 0
- }
-// Plan for internal and external communications relevant to the AIMS per Clause 7.4.
-message CommunicationPlan
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
- repeated  communicationItem communicationItems = 0
- }
-// Evidence of competence for personnel affecting AIMS performance per Clause 7.2.
-message CompetenceRecord
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string personName = 0
-  string personRole = 0
- repeated  string requiredCompetencies = 0
- repeated  string educationRecords = 0
- repeated  string trainingRecords = 0
- repeated  string experienceRecords = 0
-  date competencyAssessmentDate = 0
- repeated  string competencyGaps = 0
- repeated  string developmentActions = 0
- }
-// A system or computing resource used in the development or operation of an AI system per A.4.5.
-message ComputingResource
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string resourceClass = 0
-  string quantity = 0
-  string location = 0
-  string environmentType = 0
-  string cost = 0
- }
-// A concern raised by employees, contractors, users, or other interested parties about the organization's role with respect to an AI system. Operationalises Annex A.3.3 (Reporting of concerns). Confidentiality, anonymity, anti-reprisal protection, escalation, and timely response are core attributes; informed by ISO 37002.
-message ConcernReport
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  date reportedDate = 0
-  string reporter = 0
-  string reporterPartyType = 0
-  boolean reporterAnonymous = 0
-  string confidentialityLevel = 0
-  string reportingChannel = 0
-  string concernDescription = 0
- repeated  aISystem concernAiSystems = 0
- repeated  aISystemLifecycleStage concernLifecycleStage = 0
-  riskLevel severity = 0
-  string investigator = 0
-  string investigationStatus = 0
-  string investigationFindings = 0
-  string escalationStatus = 0
-  date responseDueDate = 0
-  date responseProvidedDate = 0
-  string resolution = 0
- repeated  string reprisalProtectionActions = 0
- repeated  aIIncident relatedIncidents = 0
- repeated  nonconformity relatedNonconformities = 0
-  datetime closureDatetime = 0
- }
-// A corrective action per Clause 10.2 to address the root cause of an AIMS nonconformity and reduce the likelihood of recurrence.
-message CorrectiveAction
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  nonconformity linkedNonconformity = 0
-  string actionDescription = 0
-  string rootCauseAddressed = 0
-  string responsibleParty = 0
-  date targetCompletionDate = 0
-  date actualCompletionDate = 0
-  string resourcesRequired = 0
-  string effectivenessCriteria = 0
-  date effectivenessReviewDate = 0
-  boolean effectivenessVerified = 0
-  boolean aimsChangesRequired = 0
-  string status = 0
- }
-// A customer relationship for an AI product or service supplied by the organization per A.10.4.
-message CustomerRelationship
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string partyType = 0
-  string partyName = 0
-  string contractualBasis = 0
- repeated  string allocatedResponsibilities = 0
-  string dataProcessingRole = 0
- repeated  aISystem aiSystemsInvolved = 0
- repeated  aISystemLifecycleStage lifecycleStagesInvolved = 0
- repeated  string assuranceEvidence = 0
-  string reviewFrequency = 0
- repeated  string customerExpectations = 0
-  string usageAgreementReference = 0
- repeated  string communicatedLimitations = 0
- }
-// A data resource used by an AI system per Annex A.7. Includes data acquisition, quality, provenance, and preparation metadata.
-message DataResource
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  dataResourceCategory dataResourceCategory = 0
-  string source = 0
-  string acquisitionMethod = 0
- repeated  string dataQualityRequirements = 0
- repeated  string dataQualityMetrics = 0
-  string dataProvenance = 0
-  string labellingProcess = 0
- repeated  dataPreparationMethod dataPreparationMethods = 0
-  date lastUpdatedDate = 0
- repeated  string knownBiasIssues = 0
-  string retentionPolicy = 0
-  string dataClassification = 0
- }
-// A human resource (role, expertise area) involved in development, deployment, operation, maintenance, or oversight of an AI system per A.4.6.
-message HumanResource
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
- repeated  string requiredCompetencies = 0
- repeated  string assignedTo = 0
- repeated  string lifecycleResponsibilities = 0
- }
-// An opportunity for continual improvement of the AIMS per Clause 10.1.
-message ImprovementOpportunity
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string improvementSource = 0
-  date identificationDate = 0
-  string identifiedBy = 0
-  string improvementDescription = 0
-  string expectedBenefit = 0
-  riskLevel priority = 0
-  string implementationPlan = 0
-  string responsibleParty = 0
-  date targetDate = 0
-  date actualCompletionDate = 0
-  string outcomeAssessment = 0
-  string status = 0
- }
-// A stakeholder whose needs and expectations are relevant to the AIMS per Clause 4.2. Includes internal and external parties such as users, regulators, partners, suppliers, customers, AI subjects, and relevant authorities.
-message InterestedParty
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string partyType = 0
-  string relationship = 0
- repeated  string requirements = 0
-  string communicationNeeds = 0
-  string contactInformation = 0
- }
-// An internal audit instance per Clause 9.2 assessing AIMS conformance and effectiveness.
-message InternalAudit
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string auditReference = 0
-  auditType auditType = 0
-  string auditScope = 0
-  string auditCriteria = 0
-  string auditObjectives = 0
-  date auditPeriodStart = 0
-  date auditPeriodEnd = 0
-  string leadAuditor = 0
- repeated  string auditTeam = 0
- repeated  string auditeeRepresentatives = 0
-  string auditPlan = 0
- repeated  auditFinding findings = 0
- repeated  string positiveObservations = 0
-  string auditConclusion = 0
-  date reportDate = 0
- repeated  string reportDistribution = 0
- }
-// A management review per Clause 9.3, conducted by top management to evaluate ongoing AIMS suitability, adequacy, and effectiveness.
-message ManagementReview
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  date reviewDate = 0
- repeated  string attendees = 0
-  string previousActionsStatus = 0
- repeated  string contextChanges = 0
- repeated  string interestedPartyChanges = 0
-  string performanceTrends = 0
-  string auditResultsSummary = 0
-  string riskAssessmentResults = 0
-  string impactAssessmentResults = 0
- repeated  improvementOpportunity improvementOpportunities = 0
- repeated  string decisions = 0
- repeated  string actionItems = 0
-  date nextReviewDate = 0
- }
-// A single item to be monitored and measured per Clause 9.1.
-message MonitoringItem
- {
-  string metricName = 0
-  string metricDescription = 0
-  string measurementMethod = 0
-  string measurementFrequency = 0
-  string responsibleParty = 0
-  string analysisFrequency = 0
-  string analyst = 0
-  string targetThreshold = 0
-  string alertThreshold = 0
-  string currentValue = 0
-  string trend = 0
- }
-// The program for monitoring, measurement, analysis, and evaluation of AIMS performance per Clause 9.1.
-message MonitoringProgram
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
- repeated  monitoringItem monitoringItems = 0
- }
-// A nonconformity identified per Clause 10.2 representing failure to fulfill an AIMS requirement.
-message Nonconformity
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string nonconformitySource = 0
-  date detectionDate = 0
-  string detectedBy = 0
-  string requirementViolated = 0
-  string nonconformityDescription = 0
- repeated  string immediateActions = 0
-  string consequencesAddressed = 0
-  string rootCause = 0
-  string similarNonconformitiesCheck = 0
- repeated  correctiveAction linkedCorrectiveActions = 0
-  string status = 0
-  date closureDate = 0
-  string closureEvidence = 0
- }
-// A documented procedure for operational planning and control of AIMS processes per Clause 8.1, including AI system life cycle related controls.
-message OperationalProcedure
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string procedureScope = 0
-  string processCriteria = 0
- repeated  string controlMeasures = 0
- repeated  role responsibleRoles = 0
- repeated  aIReferenceControl relatedControls = 0
-  string changeControlRequirements = 0
- }
-// The organization establishing and operating the AIMS. Captures the context required by Clause 4.1, including the organization's role(s) with respect to AI systems.
-message Organization
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string legalName = 0
- repeated  string tradingNames = 0
-  string organizationType = 0
-  string industrySector = 0
- repeated  sectorDomain sectorDomains = 0
-  string sizeCategory = 0
-  positiveIntegerType employeeCount = 0
- repeated  string geographicLocations = 0
- repeated  string regulatoryJurisdictions = 0
-  string parentOrganization = 0
- repeated  string subsidiaries = 0
- repeated  aIOrganizationalRole aiRoles = 0
-  boolean climateChangeRelevant = 0
- }
-// A resource provided for the AIMS per Clause 7.1.
-message Resource
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string resourceType = 0
-  string quantity = 0
-  date allocationDate = 0
-  string allocatedTo = 0
-  string cost = 0
-  string availabilityStatus = 0
- }
-// An AI-related role with defined responsibilities and authorities per Clause 5.3 and Annex A.3.2.
-message Role
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string roleType = 0
- repeated  string responsibilities = 0
- repeated  string authorities = 0
-  string accountability = 0
- repeated  string assignedTo = 0
-  string delegationRules = 0
-  string reportingLine = 0
- }
-// A single entry in the AIMS Statement of Applicability documenting the applicability and implementation status of one reference control.
-message SoAEntry
- {
-  aIReferenceControl controlReference = 0
-  boolean isApplicable = 0
-  string inclusionJustification = 0
-  string exclusionJustification = 0
-  implementationStatus implementationStatus = 0
-  string implementationEvidence = 0
-  role responsibleRole = 0
-  date targetImplementationDate = 0
- }
-// The Statement of Applicability (SoA) for the AIMS recording which Annex A controls apply, justification for inclusion or exclusion, and current implementation state per Clause 6.1.3 f).
-message StatementOfApplicability
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
- repeated  soAEntry soaEntries = 0
-  unsignedShortType totalControls = 0
-  unsignedShortType implementedCount = 0
-  unsignedShortType plannedCount = 0
-  unsignedShortType notApplicableCount = 0
-  date lastReviewDate = 0
-  string approvedBy = 0
- }
-// A supplier relationship covering services, products, or materials (e.g., datasets, models, libraries, full AI systems) provided to the organization per A.10.3.
-message SupplierRelationship
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string partyType = 0
-  string partyName = 0
-  string contractualBasis = 0
- repeated  string allocatedResponsibilities = 0
-  string dataProcessingRole = 0
- repeated  aISystem aiSystemsInvolved = 0
- repeated  aISystemLifecycleStage lifecycleStagesInvolved = 0
- repeated  string assuranceEvidence = 0
-  string reviewFrequency = 0
- repeated  string supplierAssessmentCriteria = 0
-  string monitoringMethod = 0
- repeated  string correctiveActionsRequired = 0
- }
-// A documented relationship with a third party (supplier, partner, or customer) involved in the AI system life cycle per A.10.
-message ThirdPartyRelationship
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string partyType = 0
-  string partyName = 0
-  string contractualBasis = 0
- repeated  string allocatedResponsibilities = 0
-  string dataProcessingRole = 0
- repeated  aISystem aiSystemsInvolved = 0
- repeated  aISystemLifecycleStage lifecycleStagesInvolved = 0
- repeated  string assuranceEvidence = 0
-  string reviewFrequency = 0
- }
-// A tooling resource (algorithm, framework, model, library) used in an AI system per A.4.4.
-message ToolingResource
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  string toolCategory = 0
-  string toolVersion = 0
-  string vendor = 0
-  string licenseTerms = 0
-  string usagePurpose = 0
- }
-// A topic-specific policy supporting the overarching AI policy, for example covering data governance, fairness, transparency, supplier use, or human oversight of AI systems.
-message TopicSpecificPolicy
- {
-  uriorcurie id = 0
-  string name = 0
-  string description = 0
-  date createdDate = 0
-  date modifiedDate = 0
-  string version = 0
-  documentType documentType = 0
-  string documentReference = 0
-  string author = 0
-  string owner = 0
-  string approvedBy = 0
-  date approvedDate = 0
-  date effectiveDate = 0
-  date reviewDate = 0
-  string status = 0
-  string classification = 0
-  durationType retentionPeriod = 0
-  string topicArea = 0
-  aIPolicy parentPolicy = 0
- repeated  aIReferenceControl applicableControls = 0
-  string targetAudience = 0
- }
+syntax = "proto3";
+package iso42001;
+// metamodel_version: 1.12.0
+// version: 2023
+// One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on, and what is kept about it.
+message AimsAiSystem {
+  // The organization's controls that the record concerns.
+  repeated AimsControl aims_relevant_controls = 1;
+  // What the system is for.
+  string aims_system_intended_purpose = 2;
+  // The uses the system is meant for.
+  repeated string aims_system_intended_uses = 3;
+  // The ways people could predictably misuse the system.
+  repeated string aims_system_foreseeable_misuse = 4;
+  // The field the system is applied in.
+  string aims_system_domain = 5;
+  // The setting the system runs in.
+  string aims_system_deployment_context = 6;
+  // The stage of its life the system is in now.
+  AimsLifecycleStage aims_system_life_cycle_stage = 7;
+  // The parts the organization plays towards this system.
+  repeated AimsAiRole aims_system_organization_roles = 8;
+  // The parts the organization plays when this system processes personal data.
+  repeated AimsPiiRole aims_system_pii_roles = 9;
+  // Why the system is being built, such as a business case or a customer's request.
+  string aims_system_rationale = 10;
+  // What the system must meet, across its whole life.
+  repeated string aims_system_requirements = 11;
+  // The machine learning approach it takes, such as supervised or unsupervised.
+  string aims_system_ml_approach = 12;
+  // The learning algorithms and kinds of model it uses.
+  repeated string aims_system_model_types = 13;
+  // Whether what it meets in service goes on changing its behaviour.
+  bool aims_system_continuous_learning = 14;
+  // How much the system does without people.
+  string aims_system_automation_level = 15;
+  // The threats peculiar to AI that were considered for the system.
+  repeated AimsAiThreat aims_system_threats = 16;
+  // The tests, data and methods used to verify and validate the system.
+  repeated string aims_system_verification_measures = 17;
+  // What the system is judged against, such as a limit on its errors.
+  repeated string aims_system_evaluation_criteria = 18;
+  // What must hold before the system is released.
+  repeated string aims_system_release_criteria = 19;
+  // The documented information that holds the plan for putting it into service.
+  AimsDocumentedInformation aims_system_deployment_plan = 20;
+  // What keeping the system in service takes, such as watching, repairs and updates.
+  repeated string aims_system_operation_elements = 21;
+  // The measures of how the system does in service, with acceptable values.
+  repeated string aims_system_performance_metrics = 22;
+  // The stages of its life at which the system keeps event logs.
+  repeated AimsLifecycleStage aims_system_log_stages = 23;
+  // What the logs record, such as times of use or out-of-range results.
+  repeated string aims_system_log_contents = 24;
+  // How long the logs are kept, as an ISO 8601 duration.
+  string aims_system_log_retention = 25;
+  // Whether the system may be used only with people watching over it.
+  bool aims_system_human_oversight_required = 26;
+  // How people watch over the system, and who may overrule it.
+  string aims_system_human_oversight = 27;
+  // The stages of its life at which people watch over the system.
+  repeated AimsLifecycleStage aims_system_human_oversight_stages = 28;
+  // The resources the system draws on.
+  repeated AimsSystemResource aims_system_resources_used = 29;
+  // The technical documents kept for the system.
+  repeated AimsTechnicalDocumentation aims_system_technical_documents = 30;
+  // The impact assessments of the system.
+  repeated AimsImpactAssessment aims_system_impact_assessments = 31;
+  // The partners, suppliers and customers that deal with the system.
+  repeated AimsThirdPartyRelationship aims_system_relationships = 32;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 33;
+  // The name the organization gives the record.
+  string title = 34;
+  // What the record says or describes, in the organization's own words.
+  string description = 35;
+}
+// One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why.
+message AimsApplicabilityEntry {
+  // The kind of entry, AimsIncludedControl or AimsExcludedControl.
+  string aims_entry_type = 1;
+  // The Annex A control a Statement of Applicability entry concerns.
+  AimsAnnexAControl aims_entry_annex_a_control = 2;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 3;
+  // Why the control is included or left out.
+  string aims_entry_justification = 4;
+}
+// An audit of the system: an internal audit, or one by a customer or a certification body, with its scope, criteria, team, findings and conclusion.
+message AimsAudit {
+  // Who carries out the audit, relative to the organization.
+  AimsAuditType aims_audit_type = 1;
+  // Other standards for management systems the audit covers.
+  repeated AimsManagementSystemStandard aims_audit_standards = 2;
+  // What the audit covers.
+  string aims_audit_scope = 3;
+  // What the audit compares the system against.
+  repeated string aims_audit_criteria = 4;
+  // What the audit sets out to establish.
+  repeated string aims_audit_objectives = 5;
+  // When the audit began.
+  string aims_audit_period_start = 6;
+  // When the audit ended.
+  string aims_audit_period_end = 7;
+  // Who led the audit.
+  string aims_audit_lead = 8;
+  // Who else audited.
+  repeated string aims_audit_team = 9;
+  // Who represented the parts of the organization audited.
+  repeated string aims_audit_auditees = 10;
+  // The documented information that holds the audit plan.
+  AimsDocumentedInformation aims_audit_plan = 11;
+  // What the audit found, good and bad.
+  repeated AimsAuditFinding aims_audit_findings = 12;
+  // The audit's overall conclusion.
+  string aims_audit_conclusion = 13;
+  // When the audit report was issued.
+  string aims_audit_report_date = 14;
+  // Who received the audit report.
+  repeated string aims_audit_report_distribution = 15;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 16;
+  // The name the organization gives the record.
+  string title = 17;
+  // What the record says or describes, in the organization's own words.
+  string description = 18;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 19;
+  // The version of the document.
+  string aims_document_version = 20;
+  // Who wrote the document.
+  string aims_document_author = 21;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 22;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 23;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 24;
+  // Who approved the document.
+  string aims_document_approver = 25;
+  // When the document was approved.
+  string aims_document_approval_date = 26;
+  // When the document takes effect.
+  string aims_document_effective_date = 27;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 28;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 29;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 30;
+  // The information classification the document carries.
+  string aims_document_classification = 31;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 32;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 33;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 34;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 35;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 36;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 37;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 38;
+}
+// One finding of an audit: a nonconformity, an observation or a strength, with the requirement or control it concerns, its evidence and how it is closed.
+message AimsAuditFinding {
+  // The clauses of the standard the record answers to or concerns.
+  repeated AimsClause aims_cited_clauses = 1;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 2;
+  // What kind of finding it is.
+  AimsAuditFindingType aims_finding_type = 3;
+  // The organization's control the finding concerns.
+  AimsControl aims_finding_control = 4;
+  // The objective evidence for the finding.
+  string aims_finding_evidence = 5;
+  // What the analysis of the finding's cause found.
+  string aims_finding_root_cause = 6;
+  // What the finding means for risk.
+  string aims_finding_risk = 7;
+  // What the auditor recommends.
+  string aims_finding_recommendation = 8;
+  // How the auditee responded.
+  string aims_finding_auditee_response = 9;
+  // The corrective action the finding led to.
+  AimsCorrectiveAction aims_finding_corrective_action = 10;
+  // The nonconformity the finding recorded, for a finding of one.
+  AimsNonconformity aims_finding_nonconformity = 11;
+  // Whether the finding is closed, in the organization's own terms.
+  string aims_finding_closure_status = 12;
+  // When the finding was closed.
+  string aims_finding_closure_date = 13;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 14;
+  // The name the organization gives the record.
+  string title = 15;
+  // What the record says or describes, in the organization's own words.
+  string description = 16;
+}
+// A programme of internal audits: the audits planned over a period, how often and why, and the resources and auditors they need.
+message AimsAuditProgramme {
+  // The period the programme covers.
+  string aims_programme_period = 1;
+  // The audits the programme plans.
+  repeated AimsAudit aims_programme_audits = 2;
+  // Why the audits happen as often as they do, given what matters most and past results.
+  string aims_programme_frequency_rationale = 3;
+  // How the audits are carried out.
+  string aims_programme_methods = 4;
+  // Who answers for planning, running and reporting them.
+  repeated string aims_programme_responsibilities = 5;
+  // The resources the programme needs.
+  string aims_programme_resources = 6;
+  // How auditors are chosen so that they stay objective and impartial.
+  string aims_programme_auditor_selection = 7;
+  // Where the programme stands, in the organization's own terms.
+  string aims_programme_status = 8;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 9;
+  // The name the organization gives the record.
+  string title = 10;
+  // What the record says or describes, in the organization's own words.
+  string description = 11;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 12;
+  // The version of the document.
+  string aims_document_version = 13;
+  // Who wrote the document.
+  string aims_document_author = 14;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 15;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 16;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 17;
+  // Who approved the document.
+  string aims_document_approver = 18;
+  // When the document was approved.
+  string aims_document_approval_date = 19;
+  // When the document takes effect.
+  string aims_document_effective_date = 20;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 21;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 22;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 23;
+  // The information classification the document carries.
+  string aims_document_classification = 24;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 25;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 26;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 27;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 28;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 29;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 30;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 31;
+}
+// The programme that tells people working for the organization about the AI policy, their part in the system and what failing it would mean.
+message AimsAwarenessProgramme {
+  // The topics the programme covers.
+  repeated string aims_awareness_topics = 1;
+  // How the programme is delivered.
+  repeated string aims_awareness_methods = 2;
+  // Whom the programme is for.
+  string aims_awareness_audience = 3;
+  // How often the programme runs.
+  string aims_awareness_frequency = 4;
+  // How completion is tracked.
+  string aims_awareness_completion_tracking = 5;
+  // How the programme's effect is measured.
+  string aims_awareness_effectiveness = 6;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 7;
+  // The name the organization gives the record.
+  string title = 8;
+  // What the record says or describes, in the organization's own words.
+  string description = 9;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 10;
+  // The version of the document.
+  string aims_document_version = 11;
+  // Who wrote the document.
+  string aims_document_author = 12;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 13;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 14;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 15;
+  // Who approved the document.
+  string aims_document_approver = 16;
+  // When the document was approved.
+  string aims_document_approval_date = 17;
+  // When the document takes effect.
+  string aims_document_effective_date = 18;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 19;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 20;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 21;
+  // The information classification the document carries.
+  string aims_document_classification = 22;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 23;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 24;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 25;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 26;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 27;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 28;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 29;
+}
+// One communication the plan provides for: what about, to whom, when, how, and who communicates.
+message AimsCommunication {
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 1;
+  // What the communication is about.
+  string aims_communication_subject = 2;
+  // Why it is communicated.
+  string aims_communication_purpose = 3;
+  // To whom it is communicated.
+  string aims_communication_audience = 4;
+  // Whether it goes outside the organization.
+  bool aims_communication_external = 5;
+  // When it is communicated.
+  string aims_communication_timing = 6;
+  // How it is communicated.
+  string aims_communication_method = 7;
+  // Whether a record of the communication is kept.
+  bool aims_communication_records_required = 8;
+}
+// The plan for communication about the system, inside the organization and outside it.
+message AimsCommunicationPlan {
+  // The communications the plan provides for.
+  repeated AimsCommunication aims_communication_items = 1;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 2;
+  // The name the organization gives the record.
+  string title = 3;
+  // What the record says or describes, in the organization's own words.
+  string description = 4;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 5;
+  // The version of the document.
+  string aims_document_version = 6;
+  // Who wrote the document.
+  string aims_document_author = 7;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 8;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 9;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 10;
+  // Who approved the document.
+  string aims_document_approver = 11;
+  // When the document was approved.
+  string aims_document_approval_date = 12;
+  // When the document takes effect.
+  string aims_document_effective_date = 13;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 14;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 15;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 16;
+  // The information classification the document carries.
+  string aims_document_classification = 17;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 18;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 19;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 20;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 21;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 22;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 23;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 24;
+}
+// The evidence of one person's competence for work that affects AI performance, and what is done to close any gap.
+message AimsCompetenceRecord {
+  // The person the record is about.
+  string aims_competence_person = 1;
+  // The role the person holds.
+  AimsRole aims_competence_role = 2;
+  // The competences the role needs.
+  repeated string aims_competence_required = 3;
+  // The person's relevant education.
+  repeated string aims_competence_education = 4;
+  // The training the person has completed.
+  repeated string aims_competence_training = 5;
+  // The person's relevant experience.
+  repeated string aims_competence_experience = 6;
+  // When the person's competence was last assessed.
+  string aims_competence_assessment_date = 7;
+  // The gaps the assessment found.
+  repeated string aims_competence_gaps = 8;
+  // What is done to close the gaps, and how well it worked.
+  repeated string aims_competence_actions = 9;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 10;
+  // The name the organization gives the record.
+  string title = 11;
+  // What the record says or describes, in the organization's own words.
+  string description = 12;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 13;
+  // The version of the document.
+  string aims_document_version = 14;
+  // Who wrote the document.
+  string aims_document_author = 15;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 16;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 17;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 18;
+  // Who approved the document.
+  string aims_document_approver = 19;
+  // When the document was approved.
+  string aims_document_approval_date = 20;
+  // When the document takes effect.
+  string aims_document_effective_date = 21;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 22;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 23;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 24;
+  // The information classification the document carries.
+  string aims_document_classification = 25;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 26;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 27;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 28;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 29;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 30;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 31;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 32;
+}
+// A part of a system, and how it is joined to the rest.
+message AimsComponentResource {
+  // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
+  // Who provides the resource.
+  AimsResourceProvider aims_resource_provider = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+  // What kind of part it is.
+  string aims_component_kind = 7;
+  // How the part is joined to the system.
+  string aims_component_integration = 8;
+}
+// Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs.
+message AimsComputingResource {
+  // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
+  // Who provides the resource.
+  AimsResourceProvider aims_resource_provider = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+  // What the system needs in order to run, such as on a small device.
+  string aims_computing_requirements = 7;
+  // Where it runs, such as on the premises, in a cloud or at the edge.
+  string aims_computing_location = 8;
+  // The processing it provides, network and storage included.
+  string aims_computing_processing = 9;
+  // What the hardware costs, in money or to the environment.
+  string aims_computing_hardware_impact = 10;
+}
+// One worry someone raised about the organization's part in a system, and how it was looked into and settled.
+message AimsConcernReport {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // When the worry was raised.
+  string aims_concern_reported_on = 2;
+  // Who raised it, unless they stayed unnamed.
+  string aims_concern_reporter = 3;
+  // Whether the person stayed unnamed.
+  bool aims_concern_anonymous = 4;
+  // How it was raised.
+  string aims_concern_channel = 5;
+  // The stage of the system's life it concerns.
+  AimsLifecycleStage aims_concern_life_cycle_stage = 6;
+  // How serious it is.
+  AimsRiskLevel aims_concern_severity = 7;
+  // Who looked into it.
+  string aims_concern_investigator = 8;
+  // Where the inquiry stands, in the organization's own terms.
+  string aims_concern_investigation_status = 9;
+  // What the inquiry found.
+  string aims_concern_findings = 10;
+  // Whether and how it went up to management.
+  string aims_concern_escalation = 11;
+  // When an answer is due.
+  string aims_concern_response_due = 12;
+  // When it was answered.
+  string aims_concern_responded_on = 13;
+  // How it was settled.
+  string aims_concern_resolution = 14;
+  // What was done to shield those involved from reprisal.
+  string aims_concern_reprisal_protection = 15;
+  // The incidents it relates to.
+  repeated AimsIncident aims_concern_incidents = 16;
+  // The nonconformities it relates to.
+  repeated AimsNonconformity aims_concern_nonconformities = 17;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 18;
+  // The name the organization gives the record.
+  string title = 19;
+  // What the record says or describes, in the organization's own words.
+  string description = 20;
+}
+// The way people raise worries about the organization's part in a system: how it keeps them safe, who looks into a worry, and how fast it answers.
+message AimsConcernReportingProcess {
+  // The ways a person can stay unnamed or keep a report private.
+  repeated string aims_concern_process_confidentiality = 1;
+  // How staff and contractors learn of it and reach it.
+  string aims_concern_process_audience = 2;
+  // Who looks into a report, and what powers they hold.
+  string aims_concern_process_investigators = 3;
+  // How a report reaches management in good time.
+  string aims_concern_process_escalation = 4;
+  // How those who report or investigate are shielded from reprisal.
+  string aims_concern_process_reprisal_protection = 5;
+  // How soon a report is answered.
+  string aims_concern_process_response_time = 6;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 7;
+  // The name the organization gives the record.
+  string title = 8;
+  // What the record says or describes, in the organization's own words.
+  string description = 9;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 10;
+  // The version of the document.
+  string aims_document_version = 11;
+  // Who wrote the document.
+  string aims_document_author = 12;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 13;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 14;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 15;
+  // Who approved the document.
+  string aims_document_approver = 16;
+  // When the document was approved.
+  string aims_document_approval_date = 17;
+  // When the document takes effect.
+  string aims_document_effective_date = 18;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 19;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 20;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 21;
+  // The information classification the document carries.
+  string aims_document_classification = 22;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 23;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 24;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 25;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 26;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 27;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 28;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 29;
+}
+// A control the organization has found it needs to treat its risks: what it does in the organization's words, which Annex A controls it answers to, who owns it, how far it is in place and how well it works.
+message AimsControl {
+  // The organization's controls that the record concerns.
+  repeated AimsControl aims_relevant_controls = 1;
+  // How far the control or the plan has been put into effect.
+  AimsImplementationStatus aims_implementation_state = 2;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 3;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 4;
+  // The kinds of objective the record bears on.
+  repeated AimsObjectiveCategory aims_objective_categories = 5;
+  // The kinds of risk source the record bears on.
+  repeated AimsRiskSourceCategory aims_risk_source_categories = 6;
+  // Which of Annex A's nine areas the control belongs to.
+  AimsControlArea aims_control_area = 7;
+  // What the control does, in the organization's own words.
+  string aims_control_text = 8;
+  // The organization's notes on putting the control in place.
+  string aims_control_guidance = 9;
+  // The person who owns the control.
+  string aims_control_owner = 10;
+  // When the control was put in place.
+  string aims_control_implementation_date = 11;
+  // How well the control works, in the organization's own terms.
+  string aims_control_effectiveness = 12;
+  // When the control was last tested.
+  string aims_control_last_tested = 13;
+  // Where the evidence that the control is in place is kept.
+  repeated string aims_control_evidence = 14;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 15;
+  // The name the organization gives the record.
+  string title = 16;
+  // What the record says or describes, in the organization's own words.
+  string description = 17;
+}
+// An action that removes the cause of one or more nonconformities so that they do not recur, and the check that it worked.
+message AimsCorrectiveAction {
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 1;
+  // The nonconformities the action addresses.
+  repeated AimsNonconformity aims_action_nonconformities = 2;
+  // The cause the action removes.
+  string aims_action_root_cause = 3;
+  // When the action is to be complete.
+  string aims_action_target_date = 4;
+  // When the action was complete.
+  string aims_action_completion_date = 5;
+  // The resources the action needs.
+  string aims_action_resources = 6;
+  // How the action's effect will be judged.
+  string aims_action_effectiveness_criteria = 7;
+  // When the action's effect was reviewed.
+  string aims_action_effectiveness_review_date = 8;
+  // Whether the review found the action effective.
+  bool aims_action_effective = 9;
+  // The changes to the system the action needs.
+  string aims_action_system_changes = 10;
+  // Where the action stands, in the organization's own terms.
+  string aims_action_status = 11;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 12;
+  // The name the organization gives the record.
+  string title = 13;
+  // What the record says or describes, in the organization's own words.
+  string description = 14;
+}
+// A relationship with a customer of the organization's AI work: what it expects, who answers for what, and which limits it was told of.
+message AimsCustomerRelationship {
+  // The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.
+  string aims_relationship_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 3;
+  // The other party.
+  string aims_relationship_party = 4;
+  // The parts the other party plays towards the system.
+  repeated AimsAiRole aims_relationship_party_roles = 5;
+  // The agreement the relationship rests on.
+  string aims_relationship_contract = 6;
+  // The duties each side carries.
+  repeated string aims_relationship_responsibilities = 7;
+  // The part the other party plays when personal data is processed.
+  AimsPiiRole aims_relationship_pii_role = 8;
+  // The documents one side owes the other about the system.
+  repeated string aims_relationship_documentation = 9;
+  // What assures the organization that the party meets its duties.
+  repeated string aims_relationship_assurance_evidence = 10;
+  // How often the relationship is reviewed.
+  string aims_relationship_review_frequency = 11;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 12;
+  // The name the organization gives the record.
+  string title = 13;
+  // What the record says or describes, in the organization's own words.
+  string description = 14;
+  // What the customer expects and wants.
+  repeated string aims_customer_expectations = 15;
+  // The contract or terms of use that apply.
+  string aims_customer_agreement = 16;
+  // What the provider answers for, and what the customer answers for.
+  string aims_customer_responsibility_split = 17;
+  // What the customer was told the system cannot do, or where it stops being valid.
+  repeated string aims_customer_communicated_limits = 18;
+}
+// Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged fit, and how long it is kept.
+message AimsDataResource {
+  // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
+  // Who provides the resource.
+  AimsResourceProvider aims_resource_provider = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+  // The parts the data plays in machine learning.
+  repeated AimsDataCategory aims_data_categories = 7;
+  // What kind of data it is, in a classification the organization names.
+  repeated string aims_data_kinds = 8;
+  // What the data is for.
+  string aims_data_intended_use = 9;
+  // How much data is needed.
+  string aims_data_quantity = 10;
+  // Where the data comes from, such as bought, shared, open or synthetic.
+  repeated string aims_data_sources = 11;
+  // How the source behaves, such as fixed, streamed or made by machine.
+  repeated string aims_data_source_characteristics = 12;
+  // Who the data is about, with any known bias or systematic error.
+  repeated string aims_data_subject_demographics = 13;
+  // What was done with the data before, such as earlier uses.
+  string aims_data_prior_handling = 14;
+  // The rights bearing on the data, such as personal data or copyright.
+  repeated string aims_data_rights = 15;
+  // The metadata that comes with it, such as details of labelling.
+  repeated string aims_data_metadata = 16;
+  // The record of where the data came from and what happened to it.
+  string aims_data_provenance = 17;
+  // How that record is checked, where it needs to be.
+  string aims_data_provenance_verification = 18;
+  // What quality the data must have.
+  repeated string aims_data_quality_requirements = 19;
+  // How the data measures up to those requirements.
+  repeated string aims_data_quality_results = 20;
+  // Known or suspected bias in the data.
+  repeated string aims_data_bias_issues = 21;
+  // How well training data stands for what the system will meet in service.
+  string aims_data_representativeness = 22;
+  // How the data is labelled.
+  string aims_data_labelling_process = 23;
+  // What decides how the data is made ready.
+  string aims_data_preparation_criteria = 24;
+  // The methods used to make the data ready.
+  repeated AimsDataPreparationMethod aims_data_preparation_methods = 25;
+  // When the data last changed.
+  string aims_data_last_updated = 26;
+  // How long the data is kept and how it is disposed of.
+  string aims_data_retention = 27;
+  // The information classification the data carries.
+  string aims_data_classification = 28;
+}
+// A process for designing and building an AI system responsibly: the life cycle it follows, and what it asks of testing, oversight, data and approvals.
+message AimsDevelopmentProcess {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // The life cycle model followed, which may be the organization's own.
+  string aims_development_life_cycle_model = 2;
+  // What must be tested and how.
+  string aims_development_testing = 3;
+  // What oversight by people is asked for, with its tools and processes.
+  string aims_development_human_oversight = 4;
+  // The stages at which impact assessments run.
+  repeated AimsLifecycleStage aims_development_impact_assessment_stages = 5;
+  // What data may be used, from which suppliers, and how it is labelled.
+  string aims_development_training_data_rules = 6;
+  // The expertise or training developers need.
+  string aims_development_expertise = 7;
+  // What must hold before a release.
+  repeated string aims_development_release_criteria = 8;
+  // Who must approve what, at each stage.
+  repeated string aims_development_approvals = 9;
+  // How changes are controlled.
+  string aims_development_change_control = 10;
+  // What is asked of how easy the system is to use and how far people stay in control.
+  string aims_development_usability = 11;
+  // How interested parties are brought in.
+  string aims_development_party_engagement = 12;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 13;
+  // The name the organization gives the record.
+  string title = 14;
+  // What the record says or describes, in the organization's own words.
+  string description = 15;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 16;
+  // The version of the document.
+  string aims_document_version = 17;
+  // Who wrote the document.
+  string aims_document_author = 18;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 19;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 20;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 21;
+  // Who approved the document.
+  string aims_document_approver = 22;
+  // When the document was approved.
+  string aims_document_approval_date = 23;
+  // When the document takes effect.
+  string aims_document_effective_date = 24;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 25;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 26;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 27;
+  // The information classification the document carries.
+  string aims_document_classification = 28;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 29;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 30;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 31;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 32;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 33;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 34;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 35;
+}
+// The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside.
+message AimsDocumentControlMixin {
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 1;
+  // The version of the document.
+  string aims_document_version = 2;
+  // Who wrote the document.
+  string aims_document_author = 3;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 4;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 5;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 6;
+  // Who approved the document.
+  string aims_document_approver = 7;
+  // When the document was approved.
+  string aims_document_approval_date = 8;
+  // When the document takes effect.
+  string aims_document_effective_date = 9;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 10;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 11;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 12;
+  // The information classification the document carries.
+  string aims_document_classification = 13;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 14;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 15;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 16;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 17;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 18;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 19;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 20;
+}
+// A document or record the system keeps under control that no more specific record describes, such as a procedure, a plan or a report.
+message AimsDocumentedInformation {
+  // The clauses of the standard the record answers to or concerns.
+  repeated AimsClause aims_cited_clauses = 1;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 2;
+  // What kind of documented information it is.
+  AimsDocumentKind aims_document_kind = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 7;
+  // The version of the document.
+  string aims_document_version = 8;
+  // Who wrote the document.
+  string aims_document_author = 9;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 10;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 11;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 12;
+  // Who approved the document.
+  string aims_document_approver = 13;
+  // When the document was approved.
+  string aims_document_approval_date = 14;
+  // When the document takes effect.
+  string aims_document_effective_date = 15;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 16;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 17;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 18;
+  // The information classification the document carries.
+  string aims_document_classification = 19;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 20;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 21;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 22;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 23;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 24;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 25;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 26;
+}
+// An entry that leaves out an Annex A control the organization does not need, and says why.
+message AimsExcludedControl {
+  // The kind of entry, AimsIncludedControl or AimsExcludedControl.
+  string aims_entry_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // Why the control is included or left out.
+  string aims_entry_justification = 3;
+  // The Annex A control a Statement of Applicability entry concerns.
+  AimsAnnexAControl aims_entry_annex_a_control = 4;
+}
+// People an AI system draws on: their skills and the work they do on it.
+message AimsHumanResource {
+  // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
+  // Who provides the resource.
+  AimsResourceProvider aims_resource_provider = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+  // The role these people hold.
+  AimsRole aims_human_role = 7;
+  // The skills they bring.
+  repeated string aims_human_competences = 8;
+  // The work they do on the system, from building it to decommissioning it.
+  repeated string aims_human_activities = 9;
+  // How the team's range of expertise was considered.
+  string aims_human_diversity = 10;
+}
+// One impact an assessment found: on whom it falls, in what area, whether it helps or harms, and what limits the harm.
+message AimsIdentifiedImpact {
+  // Who the impact falls on.
+  AimsImpactSubject aims_identified_impact_subject = 1;
+  // The area the impact falls in.
+  AimsImpactArea aims_identified_impact_area = 2;
+  // Whether the impact helps or harms.
+  AimsImpactDirection aims_identified_impact_direction = 3;
+  // What the impact is, in the organization's words.
+  string aims_identified_impact_text = 4;
+  // What is done to limit the harm.
+  repeated string aims_identified_impact_mitigation = 5;
+}
+// One impact assessment carried out under the process: the systems and the setting it looked at, and each impact it found.
+message AimsImpactAssessment {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // What the assessment covered.
+  string aims_impact_scope = 2;
+  // The discipline it was carried out for, if it was only one, such as privacy or safety.
+  string aims_impact_discipline = 3;
+  // When the assessment was carried out.
+  string aims_impact_date = 4;
+  // Who carried out the assessment.
+  string aims_impact_assessor = 5;
+  // What the system is for.
+  string aims_impact_intended_use = 6;
+  // How the system could predictably be misused.
+  string aims_impact_foreseeable_misuse = 7;
+  // The technical setting the system runs in.
+  string aims_impact_technical_context = 8;
+  // The social setting the system runs in.
+  string aims_impact_societal_context = 9;
+  // The jurisdictions that apply to where the system runs.
+  repeated string aims_impact_jurisdictions = 10;
+  // The groups of people the system is meant for or touches.
+  repeated string aims_impact_demographic_groups = 11;
+  // How complex the system is.
+  string aims_impact_system_complexity = 12;
+  // What part people play beside the system, and their means of oversight.
+  string aims_impact_human_role = 13;
+  // The failures that can be foreseen, their effects and what limits them.
+  repeated string aims_impact_failures = 14;
+  // What the system means for jobs and the skills of staff.
+  string aims_impact_workforce = 15;
+  // The impacts the assessment found.
+  repeated AimsIdentifiedImpact aims_impact_findings = 16;
+  // The interested parties told of the result.
+  repeated AimsInterestedParty aims_impact_shared_with = 17;
+  // When the next assessment is planned.
+  string aims_impact_next_date = 18;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 19;
+  // The name the organization gives the record.
+  string title = 20;
+  // What the record says or describes, in the organization's own words.
+  string description = 21;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 22;
+  // The version of the document.
+  string aims_document_version = 23;
+  // Who wrote the document.
+  string aims_document_author = 24;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 25;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 26;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 27;
+  // Who approved the document.
+  string aims_document_approver = 28;
+  // When the document was approved.
+  string aims_document_approval_date = 29;
+  // When the document takes effect.
+  string aims_document_effective_date = 30;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 31;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 32;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 33;
+  // The information classification the document carries.
+  string aims_document_classification = 34;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 35;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 36;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 37;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 38;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 39;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 40;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 41;
+}
+// The process for working out what AI systems may do to people and society: when it applies, what it takes in, who runs it and how the results are used.
+message AimsImpactAssessmentProcess {
+  // What calls for an assessment, such as how critical the use is or a large change.
+  repeated string aims_impact_process_triggers = 1;
+  // How often assessments run, as an ISO 8601 duration.
+  string aims_impact_process_interval = 2;
+  // The steps of an assessment, from finding impacts to reporting them.
+  repeated string aims_impact_process_steps = 3;
+  // Who carries out an assessment.
+  string aims_impact_process_assessors = 4;
+  // How results feed risk assessments and a system's design or use.
+  string aims_impact_process_use = 5;
+  // Who the process looks at.
+  repeated AimsImpactSubject aims_impact_process_subjects = 6;
+  // The areas of impact the process looks at.
+  repeated AimsImpactArea aims_impact_process_areas = 7;
+  // How long results are kept, as an ISO 8601 duration.
+  string aims_impact_process_retention = 8;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 9;
+  // The name the organization gives the record.
+  string title = 10;
+  // What the record says or describes, in the organization's own words.
+  string description = 11;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 12;
+  // The version of the document.
+  string aims_document_version = 13;
+  // Who wrote the document.
+  string aims_document_author = 14;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 15;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 16;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 17;
+  // Who approved the document.
+  string aims_document_approver = 18;
+  // When the document was approved.
+  string aims_document_approval_date = 19;
+  // When the document takes effect.
+  string aims_document_effective_date = 20;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 21;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 22;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 23;
+  // The information classification the document carries.
+  string aims_document_classification = 24;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 25;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 26;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 27;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 28;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 29;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 30;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 31;
+}
+// An opportunity to make the system more suitable, adequate or effective, and what came of it.
+message AimsImprovementOpportunity {
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 1;
+  // Where the opportunity came from, such as a review, an audit or daily work.
+  string aims_improvement_source = 2;
+  // When the opportunity was identified.
+  string aims_improvement_identified_on = 3;
+  // Who identified it.
+  string aims_improvement_identified_by = 4;
+  // What the improvement is expected to bring.
+  string aims_improvement_benefit = 5;
+  // How soon it is to be acted on, in the organization's own terms.
+  string aims_improvement_priority = 6;
+  // How the improvement is to be made.
+  string aims_improvement_plan = 7;
+  // When the improvement is to be made.
+  string aims_improvement_target_date = 8;
+  // When it was made.
+  string aims_improvement_completion_date = 9;
+  // What the improvement brought.
+  string aims_improvement_outcome = 10;
+  // Where it stands, in the organization's own terms.
+  string aims_improvement_status = 11;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 12;
+  // The name the organization gives the record.
+  string title = 13;
+  // What the record says or describes, in the organization's own words.
+  string description = 14;
+}
+// An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was learned.
+message AimsIncident {
+  // The kind of record, AimsSystemEvent or AimsIncident.
+  string aims_event_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // When the event happened, or when it was first noticed.
+  string aims_event_occurred_at = 3;
+  // Who reported the event.
+  string aims_event_reporter = 4;
+  // How the event came to light, such as a log, monitoring or a report from outside.
+  string aims_event_source = 5;
+  // The harm that was reported, if any.
+  string aims_event_adverse_impact = 6;
+  // What the assessment of the event found.
+  string aims_event_assessment = 7;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 8;
+  // The name the organization gives the record.
+  string title = 9;
+  // What the record says or describes, in the organization's own words.
+  string description = 10;
+  // What the incident concerns.
+  AimsIncidentCategory aims_incident_category = 11;
+  // The threats peculiar to AI that the incident involved.
+  repeated AimsAiThreat aims_incident_threats = 12;
+  // How severe the incident is.
+  AimsRiskLevel aims_incident_severity = 13;
+  // The areas of impact the incident touched.
+  repeated AimsImpactArea aims_incident_impact_areas = 14;
+  // How the incident was detected.
+  string aims_incident_detection_method = 15;
+  // What was done in response.
+  repeated string aims_incident_response_actions = 16;
+  // What was done to restore normal operation.
+  repeated string aims_incident_recovery_actions = 17;
+  // What caused the incident.
+  string aims_incident_root_cause = 18;
+  // What the organization learned from it.
+  repeated string aims_incident_lessons_learned = 19;
+  // Whether users, authorities or others had to be told.
+  bool aims_incident_notification_required = 20;
+  // Whom the organization told, and when.
+  repeated string aims_incident_notifications = 21;
+  // The corrective actions the incident led to.
+  repeated AimsCorrectiveAction aims_incident_corrective_actions = 22;
+  // When the incident was closed.
+  string aims_incident_closed_at = 23;
+}
+// The plan for telling users when a system goes wrong: which incidents, how soon, to which authorities, and with what details.
+message AimsIncidentCommunicationPlan {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // The kinds of incident the plan covers.
+  repeated AimsIncidentCategory aims_incident_plan_categories = 2;
+  // How soon people must be told.
+  string aims_incident_plan_timeline = 3;
+  // The authorities that must be told, if any.
+  repeated string aims_incident_plan_authorities = 4;
+  // What each notice must say.
+  repeated string aims_incident_plan_details = 5;
+  // How the plan fits the organization's wider handling of incidents.
+  string aims_incident_plan_integration = 6;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 7;
+  // The name the organization gives the record.
+  string title = 8;
+  // What the record says or describes, in the organization's own words.
+  string description = 9;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 10;
+  // The version of the document.
+  string aims_document_version = 11;
+  // Who wrote the document.
+  string aims_document_author = 12;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 13;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 14;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 15;
+  // Who approved the document.
+  string aims_document_approver = 16;
+  // When the document was approved.
+  string aims_document_approval_date = 17;
+  // When the document takes effect.
+  string aims_document_effective_date = 18;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 19;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 20;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 21;
+  // The information classification the document carries.
+  string aims_document_classification = 22;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 23;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 24;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 25;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 26;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 27;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 28;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 29;
+}
+// An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for it and whether it is in place.
+message AimsIncludedControl {
+  // The kind of entry, AimsIncludedControl or AimsExcludedControl.
+  string aims_entry_type = 1;
+  // The Annex A control a Statement of Applicability entry concerns.
+  AimsAnnexAControl aims_entry_annex_a_control = 2;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 3;
+  // Why the control is included or left out.
+  string aims_entry_justification = 4;
+  // How far the control or the plan has been put into effect.
+  AimsImplementationStatus aims_implementation_state = 5;
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 6;
+  // The organization's control the entry includes.
+  AimsControl aims_included_control = 7;
+  // The risks the control answers to.
+  repeated AimsRisk aims_included_risks = 8;
+  // What shows that the control is in place.
+  string aims_included_evidence = 9;
+  // When the control is to be in place, if it is not yet.
+  string aims_included_target_date = 10;
+}
+// A person or organization whose needs and expectations bear on the system, or who may feel its decisions, inside the organization or outside it.
+message AimsInterestedParty {
+  // What kind of interested party it is, in the organization's own terms.
+  string aims_party_category = 1;
+  // The parts the party plays towards the organization's AI systems.
+  repeated AimsAiRole aims_party_ai_roles = 2;
+  // How the party relates to the organization.
+  string aims_party_relationship = 3;
+  // The party's requirements that bear on the system.
+  repeated string aims_party_requirements = 4;
+  // Which of those requirements the system addresses.
+  repeated string aims_party_addressed_requirements = 5;
+  // The party's requirements that concern climate change.
+  repeated string aims_party_climate_change_requirements = 6;
+  // What the party needs to be told, and how.
+  string aims_party_communication_needs = 7;
+  // How to reach the party.
+  string aims_party_contact = 8;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 9;
+  // The name the organization gives the record.
+  string title = 10;
+  // What the record says or describes, in the organization's own words.
+  string description = 11;
+}
+// A review of the system by top management: what it took in, what it decided and what it asked to be done.
+message AimsManagementReview {
+  // When the review was held.
+  string aims_review_held_on = 1;
+  // Who attended the review.
+  repeated string aims_review_attendees = 2;
+  // Where the actions from earlier reviews stand.
+  string aims_review_previous_actions = 3;
+  // How the matters that bear on the system have changed.
+  string aims_review_context_changes = 4;
+  // How interested parties' needs and expectations have changed.
+  string aims_review_interested_party_changes = 5;
+  // How nonconformities and their corrections have been trending.
+  string aims_review_nonconformity_trends = 6;
+  // The trends in what was monitored and measured.
+  string aims_review_monitoring_trends = 7;
+  // The trends in audit results.
+  string aims_review_audit_trends = 8;
+  // The opportunities for improvement raised.
+  repeated string aims_review_improvement_opportunities = 9;
+  // What the review decided about improving.
+  repeated string aims_review_decisions = 10;
+  // The changes to the system the review found were needed.
+  repeated string aims_review_system_changes = 11;
+  // What the review asked to be done.
+  repeated string aims_review_actions = 12;
+  // When the next review is planned.
+  string aims_review_next_date = 13;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 14;
+  // The name the organization gives the record.
+  string title = 15;
+  // What the record says or describes, in the organization's own words.
+  string description = 16;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 17;
+  // The version of the document.
+  string aims_document_version = 18;
+  // Who wrote the document.
+  string aims_document_author = 19;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 20;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 21;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 22;
+  // Who approved the document.
+  string aims_document_approver = 23;
+  // When the document was approved.
+  string aims_document_approval_date = 24;
+  // When the document takes effect.
+  string aims_document_effective_date = 25;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 26;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 27;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 28;
+  // The information classification the document carries.
+  string aims_document_classification = 29;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 30;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 31;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 32;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 33;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 34;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 35;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 36;
+}
+// One organization's management system for AI: its scope and context, and every record it keeps, each kind in a list of its own.
+message AimsManagementSystem {
+  // The organization that runs the system.
+  AimsOrganization aims_organization = 1;
+  // The person or group that runs the organization from the very top.
+  string aims_top_management = 2;
+  // The body top management answers to, such as a board, where there is one.
+  string aims_governing_body = 3;
+  // What shows that top management leads and commits to the system.
+  repeated string aims_leadership_evidence = 4;
+  // How far the system reaches, in the organization's words.
+  string aims_scope = 5;
+  // Where the system stops.
+  repeated string aims_scope_boundaries = 6;
+  // What in the organization's work the system applies to.
+  repeated string aims_scope_applicability = 7;
+  // The processes the system needs and how they work together.
+  string aims_processes = 8;
+  // The matters inside the organization that bear on the system.
+  repeated string aims_internal_issues = 9;
+  // The matters outside the organization that bear on the system.
+  repeated string aims_external_issues = 10;
+  // The changes to the system that are planned.
+  repeated string aims_planned_changes = 11;
+  // What the system takes from outside the organization and keeps under control.
+  repeated string aims_external_services = 12;
+  // Other standards for management systems that this one is run beside.
+  repeated AimsManagementSystemStandard aims_integrated_standards = 13;
+  // Where the system stands with certification, in the organization's own terms.
+  string aims_certification_status = 14;
+  // The body that certifies the system.
+  string aims_certification_body = 15;
+  // When the system was certified.
+  string aims_certification_date = 16;
+  // When the system is next due for recertification.
+  string aims_recertification_date = 17;
+  // The interested parties the system takes into account.
+  repeated AimsInterestedParty aims_interested_parties = 18;
+  // The AI policy.
+  AimsPolicy aims_policy = 19;
+  // The policies on single topics under the AI policy.
+  repeated AimsTopicSpecificPolicy aims_topic_specific_policies = 20;
+  // The roles that carry the system's duties and powers.
+  repeated AimsRole aims_roles = 21;
+  // The AI objectives.
+  repeated AimsObjective aims_objectives = 22;
+  // The actions planned on risks and opportunities.
+  repeated AimsPlannedAction aims_planned_actions = 23;
+  // The process for assessing AI risks.
+  AimsRiskAssessmentProcess aims_risk_assessment_process = 24;
+  // The process for treating AI risks.
+  AimsRiskTreatmentProcess aims_risk_treatment_process = 25;
+  // The process for assessing what AI systems may do to people and society.
+  AimsImpactAssessmentProcess aims_impact_assessment_process = 26;
+  // The risk assessments carried out.
+  repeated AimsRiskAssessment aims_risk_assessments = 27;
+  // The risks identified, the risk register.
+  repeated AimsRisk aims_risks = 28;
+  // The risk treatment plans.
+  repeated AimsRiskTreatmentPlan aims_risk_treatment_plans = 29;
+  // The impact assessments carried out.
+  repeated AimsImpactAssessment aims_impact_assessments = 30;
+  // The Statement of Applicability.
+  AimsStatementOfApplicability aims_statement_of_applicability = 31;
+  // The controls the organization has determined it needs.
+  repeated AimsControl aims_controls = 32;
+  // The AI systems the management system covers.
+  repeated AimsAiSystem aims_systems = 33;
+  // The resources those AI systems draw on, each told apart by its type.
+  repeated AimsSystemResource aims_system_resources = 34;
+  // The processes for designing and building AI systems responsibly.
+  repeated AimsDevelopmentProcess aims_development_processes = 35;
+  // The processes for using AI systems responsibly.
+  repeated AimsResponsibleUseProcess aims_use_processes = 36;
+  // The technical documents kept for AI systems.
+  repeated AimsTechnicalDocumentation aims_technical_documentation = 37;
+  // What users of AI systems are told.
+  repeated AimsUserInformation aims_user_information = 38;
+  // The plans for telling users about incidents.
+  repeated AimsIncidentCommunicationPlan aims_incident_communication_plans = 39;
+  // What the organization must report to others about AI systems.
+  repeated AimsReportingObligation aims_reporting_obligations = 40;
+  // The relationships with partners, suppliers, buyers and others.
+  repeated AimsThirdPartyRelationship aims_third_party_relationships = 41;
+  // The resources provided for the management system itself.
+  repeated AimsResource aims_resources = 42;
+  // The records of competence.
+  repeated AimsCompetenceRecord aims_competence_records = 43;
+  // The awareness programme.
+  AimsAwarenessProgramme aims_awareness_programme = 44;
+  // The plan for communication about the system.
+  AimsCommunicationPlan aims_communication_plan = 45;
+  // The documented information the system keeps that no more specific list holds, such as procedures, plans and reports.
+  repeated AimsDocumentedInformation aims_documented_information = 46;
+  // The procedures for planning and running operations.
+  repeated AimsOperationalProcedure aims_operational_procedures = 47;
+  // The programme of monitoring and measurement.
+  AimsMonitoringProgramme aims_monitoring_programme = 48;
+  // The audit programmes.
+  repeated AimsAuditProgramme aims_audit_programmes = 49;
+  // The audits of the system, internal and external.
+  repeated AimsAudit aims_audits = 50;
+  // The management reviews.
+  repeated AimsManagementReview aims_management_reviews = 51;
+  // The nonconformities found.
+  repeated AimsNonconformity aims_nonconformities = 52;
+  // The corrective actions taken.
+  repeated AimsCorrectiveAction aims_corrective_actions = 53;
+  // The opportunities for improvement identified.
+  repeated AimsImprovementOpportunity aims_improvements = 54;
+  // The events reported about AI systems, the incidents among them.
+  repeated AimsSystemEvent aims_system_events = 55;
+  // The way people raise worries about the organization's part in AI.
+  AimsConcernReportingProcess aims_concern_reporting_process = 56;
+  // The worries people have raised.
+  repeated AimsConcernReport aims_concern_reports = 57;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 58;
+  // The name the organization gives the record.
+  string title = 59;
+  // What the record says or describes, in the organization's own words.
+  string description = 60;
+}
+// One thing the monitoring programme measures: what, how, how often and by whom it is measured and analysed, and against what thresholds.
+message AimsMonitoringItem {
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 1;
+  // The name of what is measured.
+  string aims_monitoring_metric = 2;
+  // What the measurement shows.
+  string aims_monitoring_description = 3;
+  // How it is measured.
+  string aims_monitoring_method = 4;
+  // How often it is measured.
+  string aims_monitoring_frequency = 5;
+  // How often the results are analysed and evaluated.
+  string aims_monitoring_analysis_frequency = 6;
+  // Who analyses and evaluates the results.
+  string aims_monitoring_analyst = 7;
+  // The value aimed for.
+  string aims_monitoring_target = 8;
+  // The value that calls for action.
+  string aims_monitoring_alert_threshold = 9;
+  // The value last measured.
+  string aims_monitoring_current_value = 10;
+  // Which way the value is moving.
+  string aims_monitoring_trend = 11;
+}
+// The programme that watches, measures, analyses and judges how well the system does and how well it works.
+message AimsMonitoringProgramme {
+  // What the programme monitors and measures.
+  repeated AimsMonitoringItem aims_monitoring_items = 1;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 2;
+  // The name the organization gives the record.
+  string title = 3;
+  // What the record says or describes, in the organization's own words.
+  string description = 4;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 5;
+  // The version of the document.
+  string aims_document_version = 6;
+  // Who wrote the document.
+  string aims_document_author = 7;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 8;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 9;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 10;
+  // Who approved the document.
+  string aims_document_approver = 11;
+  // When the document was approved.
+  string aims_document_approval_date = 12;
+  // When the document takes effect.
+  string aims_document_effective_date = 13;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 14;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 15;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 16;
+  // The information classification the document carries.
+  string aims_document_classification = 17;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 18;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 19;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 20;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 21;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 22;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 23;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 24;
+}
+// A nonconformity: a requirement not met, how it was found and contained, its consequences and cause, and how it was closed.
+message AimsNonconformity {
+  // The clauses of the standard the record answers to or concerns.
+  repeated AimsClause aims_cited_clauses = 1;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 2;
+  // How the nonconformity came to light, such as an audit, a review or an incident.
+  string aims_nonconformity_source = 3;
+  // When the nonconformity was found.
+  string aims_nonconformity_detected_on = 4;
+  // Who or what found it.
+  string aims_nonconformity_detected_by = 5;
+  // The requirement not met, of the organization or of an interested party, in words.
+  string aims_nonconformity_requirement = 6;
+  // What was done at once to contain and fix it.
+  repeated string aims_nonconformity_immediate_actions = 7;
+  // How its consequences were dealt with.
+  string aims_nonconformity_consequences = 8;
+  // What caused it.
+  string aims_nonconformity_root_cause = 9;
+  // Whether it could happen, or has happened, elsewhere.
+  string aims_nonconformity_similar_check = 10;
+  // Where the nonconformity stands, in the organization's own terms.
+  string aims_nonconformity_status = 11;
+  // When it was closed.
+  string aims_nonconformity_closure_date = 12;
+  // What shows that it is closed.
+  string aims_nonconformity_closure_evidence = 13;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 14;
+  // The name the organization gives the record.
+  string title = 15;
+  // What the record says or describes, in the organization's own words.
+  string description = 16;
+}
+// An AI objective: a result the organization aims for, with how it plans to reach it and how it judges progress.
+message AimsObjective {
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 1;
+  // The organization's controls that the record concerns.
+  repeated AimsControl aims_relevant_controls = 2;
+  // The kinds of objective the record bears on.
+  repeated AimsObjectiveCategory aims_objective_categories = 3;
+  // What the objective is for.
+  AimsObjectivePurpose aims_objective_purpose = 4;
+  // The objective, as the organization states it.
+  string aims_objective_statement = 5;
+  // The value the objective aims for, where it can be measured.
+  string aims_objective_target = 6;
+  // The value last measured.
+  string aims_objective_current_value = 7;
+  // How the objective's value is defined.
+  string aims_objective_metric = 8;
+  // How the value is measured.
+  string aims_objective_measurement_method = 9;
+  // How often the value is measured.
+  string aims_objective_measurement_frequency = 10;
+  // When the objective is to be reached.
+  string aims_objective_target_date = 11;
+  // How far the objective has been reached, in the organization's own terms.
+  string aims_objective_achievement = 12;
+  // The risks that help or hinder the objective.
+  repeated AimsRisk aims_objective_risks = 13;
+  // The steps that lead to the objective.
+  string aims_objective_action_plan = 14;
+  // The resources needed to reach the objective.
+  string aims_objective_resources = 15;
+  // How the outcome will be judged.
+  string aims_objective_evaluation = 16;
+  // How the objective is made known.
+  string aims_objective_communication = 17;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 18;
+  // The name the organization gives the record.
+  string title = 19;
+  // What the record says or describes, in the organization's own words.
+  string description = 20;
+}
+// A procedure by which the organization plans and controls the processes that meet its requirements, such as managing data for building or vetting suppliers.
+message AimsOperationalProcedure {
+  // The organization's controls that the record concerns.
+  repeated AimsControl aims_relevant_controls = 1;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 2;
+  // What the procedure covers.
+  string aims_procedure_scope = 3;
+  // The criteria the processes are run to.
+  string aims_procedure_criteria = 4;
+  // The measures that control the processes.
+  repeated string aims_procedure_control_measures = 5;
+  // The roles that carry out the procedure.
+  repeated AimsRole aims_procedure_roles = 6;
+  // How planned changes are controlled, and unplanned ones reviewed.
+  string aims_procedure_change_control = 7;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 8;
+  // The name the organization gives the record.
+  string title = 9;
+  // What the record says or describes, in the organization's own words.
+  string description = 10;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 11;
+  // The version of the document.
+  string aims_document_version = 12;
+  // Who wrote the document.
+  string aims_document_author = 13;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 14;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 15;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 16;
+  // Who approved the document.
+  string aims_document_approver = 17;
+  // When the document was approved.
+  string aims_document_approval_date = 18;
+  // When the document takes effect.
+  string aims_document_effective_date = 19;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 20;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 21;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 22;
+  // The information classification the document carries.
+  string aims_document_classification = 23;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 24;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 25;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 26;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 27;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 28;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 29;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 30;
+}
+// The organization that runs the system, with what it needs to know about itself to understand its context and the parts it plays with AI.
+message AimsOrganization {
+  // The organization's registered legal name.
+  string aims_organization_legal_name = 1;
+  // Other names the organization trades under.
+  repeated string aims_organization_trading_names = 2;
+  // What kind of organization it is, such as a company, an agency or a charity.
+  string aims_organization_kind = 3;
+  // The sectors the organization works in, such as health or finance.
+  repeated string aims_organization_sectors = 4;
+  // How the organization classes its own size.
+  string aims_organization_size = 5;
+  // About how many people the organization employs.
+  int32 aims_organization_employee_count = 6;
+  // The countries or regions the organization works in.
+  repeated string aims_organization_locations = 7;
+  // The jurisdictions whose laws and regulations apply to the organization.
+  repeated string aims_organization_jurisdictions = 8;
+  // The organization's parent, if it has one.
+  string aims_organization_parent = 9;
+  // The organization's subsidiaries, if it has any.
+  repeated string aims_organization_subsidiaries = 10;
+  // The parts the organization plays towards its AI systems.
+  repeated AimsAiRole aims_organization_ai_roles = 11;
+  // The parts the organization plays when its AI systems process personal data.
+  repeated AimsPiiRole aims_organization_pii_roles = 12;
+  // Whether the organization has found climate change to matter for the system.
+  bool aims_organization_climate_change_relevant = 13;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 14;
+  // The name the organization gives the record.
+  string title = 15;
+  // What the record says or describes, in the organization's own words.
+  string description = 16;
+}
+// An action planned on a risk or an opportunity the system faces, with how it fits the system's processes and how its effect will be judged.
+message AimsPlannedAction {
+  // The role that answers for the record's activity or outcome.
+  AimsRole aims_responsible_role = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The risks the action addresses.
+  repeated AimsRisk aims_planned_action_risks = 3;
+  // The opportunities the action addresses.
+  repeated string aims_planned_action_opportunities = 4;
+  // How the action fits into the system's processes.
+  string aims_planned_action_integration = 5;
+  // How the action's effect will be judged.
+  string aims_planned_action_effectiveness = 6;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 7;
+  // The name the organization gives the record.
+  string title = 8;
+  // What the record says or describes, in the organization's own words.
+  string description = 9;
+}
+// The AI policy that top management sets: the organization's commitments and the frame for its AI objectives.
+message AimsPolicy {
+  // The clauses of the standard the record answers to or concerns.
+  repeated AimsClause aims_cited_clauses = 1;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 2;
+  // The policy's own statement, in the organization's words.
+  string aims_policy_statement = 3;
+  // How the policy frames the setting of AI objectives.
+  string aims_policy_objectives_framework = 4;
+  // The commitments the policy makes, at least to meeting requirements and to improving.
+  repeated string aims_policy_commitments = 5;
+  // The principles that guide what the organization does with AI.
+  repeated string aims_policy_principles = 6;
+  // How departures from the policy are handled.
+  string aims_policy_exceptions_process = 7;
+  // What shaped the policy, such as strategy, values, the law or the risks.
+  repeated string aims_policy_influences = 8;
+  // The organization's other policies this one refers to or touches.
+  repeated string aims_policy_related_policies = 9;
+  // When the policy was made known inside the organization.
+  string aims_policy_communication_date = 10;
+  // How interested parties can get the policy, where that is fitting.
+  string aims_policy_availability = 11;
+  // The role management approved to develop, review and evaluate the policy.
+  AimsRole aims_policy_review_role = 12;
+  // How often the policy is reviewed, as an ISO 8601 duration.
+  string aims_policy_review_interval = 13;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 14;
+  // The name the organization gives the record.
+  string title = 15;
+  // What the record says or describes, in the organization's own words.
+  string description = 16;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 17;
+  // The version of the document.
+  string aims_document_version = 18;
+  // Who wrote the document.
+  string aims_document_author = 19;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 20;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 21;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 22;
+  // Who approved the document.
+  string aims_document_approver = 23;
+  // When the document was approved.
+  string aims_document_approval_date = 24;
+  // When the document takes effect.
+  string aims_document_effective_date = 25;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 26;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 27;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 28;
+  // The information classification the document carries.
+  string aims_document_classification = 29;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 30;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 31;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 32;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 33;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 34;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 35;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 36;
+}
+// What every record of the system has, so that other records can refer to it: an identifier, a title and a description.
+message AimsRecordMixin {
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 1;
+  // The name the organization gives the record.
+  string title = 2;
+  // What the record says or describes, in the organization's own words.
+  string description = 3;
+}
+// Something the organization must report about a system to an interested party: to whom, under what rule, what and how soon.
+message AimsReportingObligation {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // Who must be told.
+  repeated AimsInterestedParty aims_obligation_parties = 2;
+  // The law or agreement that creates the duty.
+  string aims_obligation_basis = 3;
+  // The jurisdiction the duty arises in.
+  string aims_obligation_jurisdiction = 4;
+  // What must be reported, such as risks, assessments or logs.
+  repeated string aims_obligation_contents = 5;
+  // How soon it must be reported.
+  string aims_obligation_timeframe = 6;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 7;
+  // The name the organization gives the record.
+  string title = 8;
+  // What the record says or describes, in the organization's own words.
+  string description = 9;
+}
+// A resource provided for the management system itself, such as people, time, tools or budget. What an AI system draws on is an AimsSystemResource.
+message AimsResource {
+  // What kind of resource it is.
+  string aims_support_category = 1;
+  // How much of the resource is provided.
+  string aims_support_quantity = 2;
+  // When the resource was allocated.
+  string aims_support_allocation_date = 3;
+  // What the resource is allocated to.
+  string aims_support_allocated_to = 4;
+  // What the resource costs.
+  string aims_support_cost = 5;
+  // Whether the resource is available now, in the organization's own terms.
+  string aims_support_availability = 6;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 7;
+  // The name the organization gives the record.
+  string title = 8;
+  // What the record says or describes, in the organization's own words.
+  string description = 9;
+}
+// A process for using AI systems responsibly: what decides if a system may be used, built in-house or brought in.
+message AimsResponsibleUseProcess {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // The approvals needed before use.
+  repeated string aims_use_approvals = 2;
+  // What use costs, ongoing upkeep included.
+  string aims_use_costs = 3;
+  // What a system or its supplier must meet to be taken on.
+  repeated string aims_use_sourcing_requirements = 4;
+  // The laws that bear on use.
+  repeated string aims_use_legal_requirements = 5;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 6;
+  // The name the organization gives the record.
+  string title = 7;
+  // What the record says or describes, in the organization's own words.
+  string description = 8;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 9;
+  // The version of the document.
+  string aims_document_version = 10;
+  // Who wrote the document.
+  string aims_document_author = 11;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 12;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 13;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 14;
+  // Who approved the document.
+  string aims_document_approver = 15;
+  // When the document was approved.
+  string aims_document_approval_date = 16;
+  // When the document takes effect.
+  string aims_document_effective_date = 17;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 18;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 19;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 20;
+  // The information classification the document carries.
+  string aims_document_classification = 21;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 22;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 23;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 24;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 25;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 26;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 27;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 28;
+}
+// An AI risk in the risk register: where it comes from, which objectives it helps or hinders, who could feel its consequences, how it is rated and how it is treated.
+message AimsRisk {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // The kinds of risk source the record bears on.
+  repeated AimsRiskSourceCategory aims_risk_source_categories = 2;
+  // Where the risk comes from, in the organization's words.
+  string aims_risk_source = 3;
+  // The AI objectives the risk helps or hinders.
+  repeated AimsObjective aims_risk_objectives = 4;
+  // What the organization could suffer if the risk came about.
+  string aims_risk_consequences_for_organization = 5;
+  // What persons could suffer if the risk came about.
+  string aims_risk_consequences_for_individuals = 6;
+  // What society could suffer if the risk came about.
+  string aims_risk_consequences_for_societies = 7;
+  // The person who is accountable for the risk and has the authority to manage it.
+  string aims_risk_owner = 8;
+  // How likely the risk is, where that can be judged.
+  AimsLikelihood aims_risk_likelihood = 9;
+  // How severe the consequences would be.
+  AimsConsequence aims_risk_consequence = 10;
+  // The risk's level before controls.
+  AimsRiskLevel aims_risk_inherent_level = 11;
+  // The organization's controls already acting on the risk.
+  repeated AimsControl aims_risk_existing_controls = 12;
+  // The risk's level after controls.
+  AimsRiskLevel aims_risk_residual_level = 13;
+  // Whether the risk is acceptable under the organization's criteria.
+  bool aims_risk_acceptable = 14;
+  // The treatment chosen for the risk.
+  AimsRiskTreatmentOption aims_risk_treatment_option = 15;
+  // How soon the risk is to be treated, in the organization's own terms.
+  string aims_risk_treatment_priority = 16;
+  // The impact assessments that inform the risk.
+  repeated AimsImpactAssessment aims_risk_impact_assessments = 17;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 18;
+  // The name the organization gives the record.
+  string title = 19;
+  // What the record says or describes, in the organization's own words.
+  string description = 20;
+}
+// One risk assessment carried out under the process, and what it found.
+message AimsRiskAssessment {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // What the assessment covered.
+  string aims_assessment_scope = 2;
+  // When the assessment was carried out.
+  string aims_assessment_date = 3;
+  // Who carried out the assessment.
+  string aims_assessment_assessor = 4;
+  // The method this assessment applied.
+  string aims_assessment_method_used = 5;
+  // The risks the assessment identified.
+  repeated AimsRisk aims_assessment_risks = 6;
+  // The impact assessments the assessment drew on.
+  repeated AimsImpactAssessment aims_assessment_impact_assessments = 7;
+  // A summary of what the assessment found.
+  string aims_assessment_summary = 8;
+  // What the assessment recommends.
+  repeated string aims_assessment_recommendations = 9;
+  // When the next assessment is planned.
+  string aims_assessment_next_date = 10;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 11;
+  // The name the organization gives the record.
+  string title = 12;
+  // What the record says or describes, in the organization's own words.
+  string description = 13;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 14;
+  // The version of the document.
+  string aims_document_version = 15;
+  // Who wrote the document.
+  string aims_document_author = 16;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 17;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 18;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 19;
+  // Who approved the document.
+  string aims_document_approver = 20;
+  // When the document was approved.
+  string aims_document_approval_date = 21;
+  // When the document takes effect.
+  string aims_document_effective_date = 22;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 23;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 24;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 25;
+  // The information classification the document carries.
+  string aims_document_classification = 26;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 27;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 28;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 29;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 30;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 31;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 32;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 33;
+}
+// The organization's process for assessing AI risks: its criteria, scales and method, and when it runs.
+message AimsRiskAssessmentProcess {
+  // The criteria for AI risk, which tell acceptable risk from the rest and steer assessment, treatment and the weighing of impacts.
+  repeated string aims_risk_criteria = 1;
+  // How the process follows the AI policy and the AI objectives.
+  string aims_risk_policy_alignment = 2;
+  // How the process keeps repeated assessments consistent and comparable.
+  string aims_risk_comparability = 3;
+  // The method used to identify, analyse and evaluate risks.
+  string aims_risk_method = 4;
+  // The scale for rating likelihood.
+  string aims_risk_likelihood_scale = 5;
+  // The scale for rating consequences.
+  string aims_risk_consequence_scale = 6;
+  // How likelihood and consequence combine into a risk level.
+  string aims_risk_matrix = 7;
+  // How the assessed risks are ranked for treatment.
+  string aims_risk_prioritization = 8;
+  // How often risks are assessed, as an ISO 8601 duration.
+  string aims_risk_assessment_interval = 9;
+  // The changes that start an assessment outside the schedule.
+  repeated string aims_risk_assessment_triggers = 10;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 11;
+  // The name the organization gives the record.
+  string title = 12;
+  // What the record says or describes, in the organization's own words.
+  string description = 13;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 14;
+  // The version of the document.
+  string aims_document_version = 15;
+  // Who wrote the document.
+  string aims_document_author = 16;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 17;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 18;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 19;
+  // Who approved the document.
+  string aims_document_approver = 20;
+  // When the document was approved.
+  string aims_document_approval_date = 21;
+  // When the document takes effect.
+  string aims_document_effective_date = 22;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 23;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 24;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 25;
+  // The information classification the document carries.
+  string aims_document_classification = 26;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 27;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 28;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 29;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 30;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 31;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 32;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 33;
+}
+// A plan to treat one or more risks: the actions and controls, who carries them out and when, and designated management's approval of the plan and of the risk left over.
+message AimsRiskTreatmentPlan {
+  // How far the control or the plan has been put into effect.
+  AimsImplementationStatus aims_implementation_state = 1;
+  // What the plan covers.
+  string aims_plan_scope = 2;
+  // The risks the plan treats.
+  repeated AimsRisk aims_plan_risks = 3;
+  // The actions the plan takes.
+  repeated string aims_plan_actions = 4;
+  // The controls the plan puts in place.
+  repeated AimsControl aims_plan_controls = 5;
+  // The resources the plan needs.
+  string aims_plan_resources = 6;
+  // Who carries out the plan.
+  repeated string aims_plan_responsible_parties = 7;
+  // When the plan's actions are to happen.
+  string aims_plan_timeline = 8;
+  // The designated management that approved the plan.
+  string aims_plan_approver = 9;
+  // How that management accepted the risk left over.
+  string aims_plan_residual_risk_acceptance = 10;
+  // What the check on whether the plan works found.
+  string aims_plan_effectiveness = 11;
+  // How options that did not work were reviewed, and what changed.
+  string aims_plan_revalidation = 12;
+  // When the plan was completed.
+  string aims_plan_completion_date = 13;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 14;
+  // The name the organization gives the record.
+  string title = 15;
+  // What the record says or describes, in the organization's own words.
+  string description = 16;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 17;
+  // The version of the document.
+  string aims_document_version = 18;
+  // Who wrote the document.
+  string aims_document_author = 19;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 20;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 21;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 22;
+  // Who approved the document.
+  string aims_document_approver = 23;
+  // When the document was approved.
+  string aims_document_approval_date = 24;
+  // When the document takes effect.
+  string aims_document_effective_date = 25;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 26;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 27;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 28;
+  // The information classification the document carries.
+  string aims_document_classification = 29;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 30;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 31;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 32;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 33;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 34;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 35;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 36;
+}
+// The organization's process for treating AI risks: how it chooses options and controls, checks them against Annex A and produces the Statement of Applicability and the plan.
+message AimsRiskTreatmentProcess {
+  // How a treatment option is chosen for a risk.
+  string aims_treatment_options_guidance = 1;
+  // How the controls a treatment needs are chosen.
+  string aims_treatment_control_selection = 2;
+  // How the chosen controls are compared with Annex A, so that none is missed.
+  string aims_treatment_annex_a_comparison = 3;
+  // How the organization decides it needs controls beyond Annex A, and where it gets them.
+  string aims_treatment_additional_controls = 4;
+  // How the guidance of Annex B is taken into account.
+  string aims_treatment_annex_b_use = 5;
+  // The template the Statement of Applicability follows.
+  string aims_treatment_soa_template = 6;
+  // How designated management approves a plan and accepts the risk left over.
+  string aims_treatment_approval_workflow = 7;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 8;
+  // The name the organization gives the record.
+  string title = 9;
+  // What the record says or describes, in the organization's own words.
+  string description = 10;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 11;
+  // The version of the document.
+  string aims_document_version = 12;
+  // Who wrote the document.
+  string aims_document_author = 13;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 14;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 15;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 16;
+  // Who approved the document.
+  string aims_document_approver = 17;
+  // When the document was approved.
+  string aims_document_approval_date = 18;
+  // When the document takes effect.
+  string aims_document_effective_date = 19;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 20;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 21;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 22;
+  // The information classification the document carries.
+  string aims_document_classification = 23;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 24;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 25;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 26;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 27;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 28;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 29;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 30;
+}
+// A role in the system, with the duties and powers it carries and who holds it.
+message AimsRole {
+  // What kind of role it is, in the organization's own terms.
+  string aims_role_category = 1;
+  // The areas the role covers, such as privacy, safety or human oversight.
+  repeated string aims_role_areas = 2;
+  // The duties assigned to the role.
+  repeated string aims_role_responsibilities = 3;
+  // The powers the role carries.
+  repeated string aims_role_authorities = 4;
+  // Whether the role sees that the system meets the standard.
+  bool aims_role_ensures_conformity = 5;
+  // Whether the role tells top management how the system is doing.
+  bool aims_role_reports_performance = 6;
+  // What the role is accountable for.
+  string aims_role_accountability = 7;
+  // The people who hold the role.
+  repeated string aims_role_holders = 8;
+  // How the role may delegate its duties.
+  string aims_role_delegation = 9;
+  // The role this role reports to.
+  AimsRole aims_role_reports_to = 10;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 11;
+  // The name the organization gives the record.
+  string title = 12;
+  // What the record says or describes, in the organization's own words.
+  string description = 13;
+}
+// The Statement of Applicability: each control the organization needs, with why it is included and whether it is in place, and each control it leaves out, with why.
+message AimsStatementOfApplicability {
+  // The statement's entries, one for each control included or left out.
+  repeated AimsApplicabilityEntry aims_soa_entries = 1;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 2;
+  // The name the organization gives the record.
+  string title = 3;
+  // What the record says or describes, in the organization's own words.
+  string description = 4;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 5;
+  // The version of the document.
+  string aims_document_version = 6;
+  // Who wrote the document.
+  string aims_document_author = 7;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 8;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 9;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 10;
+  // Who approved the document.
+  string aims_document_approver = 11;
+  // When the document was approved.
+  string aims_document_approval_date = 12;
+  // When the document takes effect.
+  string aims_document_effective_date = 13;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 14;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 15;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 16;
+  // The information classification the document carries.
+  string aims_document_classification = 17;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 18;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 19;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 20;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 21;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 22;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 23;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 24;
+}
+// A relationship with a supplier to the organization's AI work: what it provides, the risk that brings, and how it is held to the organization's approach.
+message AimsSupplierRelationship {
+  // The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.
+  string aims_relationship_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 3;
+  // The other party.
+  string aims_relationship_party = 4;
+  // The parts the other party plays towards the system.
+  repeated AimsAiRole aims_relationship_party_roles = 5;
+  // The agreement the relationship rests on.
+  string aims_relationship_contract = 6;
+  // The duties each side carries.
+  repeated string aims_relationship_responsibilities = 7;
+  // The part the other party plays when personal data is processed.
+  AimsPiiRole aims_relationship_pii_role = 8;
+  // The documents one side owes the other about the system.
+  repeated string aims_relationship_documentation = 9;
+  // What assures the organization that the party meets its duties.
+  repeated string aims_relationship_assurance_evidence = 10;
+  // How often the relationship is reviewed.
+  string aims_relationship_review_frequency = 11;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 12;
+  // The name the organization gives the record.
+  string title = 13;
+  // What the record says or describes, in the organization's own words.
+  string description = 14;
+  // What it provides, such as data, models, software or a whole system.
+  repeated string aims_supplier_provides = 15;
+  // How much risk what it provides brings.
+  AimsRiskLevel aims_supplier_risk = 16;
+  // What the organization asks of the supplier.
+  repeated string aims_supplier_requirements = 17;
+  // How the supplier is watched and judged over time.
+  string aims_supplier_monitoring = 18;
+  // How what it provides is joined to the organization's systems.
+  string aims_supplier_integration = 19;
+  // What the supplier was asked to put right.
+  repeated string aims_supplier_corrective_actions = 20;
+}
+// Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.
+message AimsSystemEvent {
+  // The kind of record, AimsSystemEvent or AimsIncident.
+  string aims_event_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // When the event happened, or when it was first noticed.
+  string aims_event_occurred_at = 3;
+  // Who reported the event.
+  string aims_event_reporter = 4;
+  // How the event came to light, such as a log, monitoring or a report from outside.
+  string aims_event_source = 5;
+  // The harm that was reported, if any.
+  string aims_event_adverse_impact = 6;
+  // What the assessment of the event found.
+  string aims_event_assessment = 7;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 8;
+  // The name the organization gives the record.
+  string title = 9;
+  // What the record says or describes, in the organization's own words.
+  string description = 10;
+}
+// Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it.
+message AimsSystemResource {
+  // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
+  // Who provides the resource.
+  AimsResourceProvider aims_resource_provider = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+}
+// Technical documents about an AI system for one kind of reader: what they hold, and the form they take.
+message AimsTechnicalDocumentation {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // Who the documents are for, such as users or a supervisory authority.
+  repeated string aims_technical_doc_audiences = 2;
+  // The form the documents take for those readers.
+  string aims_technical_doc_form = 3;
+  // What the documents hold, such as limits, design choices or test records.
+  repeated string aims_technical_doc_contents = 4;
+  // How failures are managed, such as rolling back or turning features off.
+  string aims_technical_doc_failure_plan = 5;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 6;
+  // The name the organization gives the record.
+  string title = 7;
+  // What the record says or describes, in the organization's own words.
+  string description = 8;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 9;
+  // The version of the document.
+  string aims_document_version = 10;
+  // Who wrote the document.
+  string aims_document_author = 11;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 12;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 13;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 14;
+  // Who approved the document.
+  string aims_document_approver = 15;
+  // When the document was approved.
+  string aims_document_approval_date = 16;
+  // When the document takes effect.
+  string aims_document_effective_date = 17;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 18;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 19;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 20;
+  // The information classification the document carries.
+  string aims_document_classification = 21;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 22;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 23;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 24;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 25;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 26;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 27;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 28;
+}
+// A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what assures the organization of that.
+message AimsThirdPartyRelationship {
+  // The kind of record: AimsThirdPartyRelationship, AimsSupplierRelationship or AimsCustomerRelationship.
+  string aims_relationship_type = 1;
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 2;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 3;
+  // The other party.
+  string aims_relationship_party = 4;
+  // The parts the other party plays towards the system.
+  repeated AimsAiRole aims_relationship_party_roles = 5;
+  // The agreement the relationship rests on.
+  string aims_relationship_contract = 6;
+  // The duties each side carries.
+  repeated string aims_relationship_responsibilities = 7;
+  // The part the other party plays when personal data is processed.
+  AimsPiiRole aims_relationship_pii_role = 8;
+  // The documents one side owes the other about the system.
+  repeated string aims_relationship_documentation = 9;
+  // What assures the organization that the party meets its duties.
+  repeated string aims_relationship_assurance_evidence = 10;
+  // How often the relationship is reviewed.
+  string aims_relationship_review_frequency = 11;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 12;
+  // The name the organization gives the record.
+  string title = 13;
+  // What the record says or describes, in the organization's own words.
+  string description = 14;
+}
+// A tool an AI system draws on, such as an algorithm, a model or a development tool.
+message AimsToolingResource {
+  // The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource, AimsComputingResource or AimsHumanResource.
+  string aims_resource_type = 1;
+  // The stages of an AI system's life the record applies to.
+  repeated AimsLifecycleStage aims_life_cycle_stages = 2;
+  // Who provides the resource.
+  AimsResourceProvider aims_resource_provider = 3;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 4;
+  // The name the organization gives the record.
+  string title = 5;
+  // What the record says or describes, in the organization's own words.
+  string description = 6;
+  // What kind of tool it is, such as a model or an evaluation method.
+  string aims_tool_category = 7;
+  // The version in use.
+  string aims_tool_version = 8;
+  // Who supplies the tool.
+  string aims_tool_vendor = 9;
+  // The terms the tool is used under.
+  string aims_tool_licence = 10;
+  // What the tool is used for.
+  string aims_tool_purpose = 11;
+}
+// A policy on one topic that gives more guidance under the AI policy, such as assessing impacts or building systems.
+message AimsTopicSpecificPolicy {
+  // The organization's controls that the record concerns.
+  repeated AimsControl aims_relevant_controls = 1;
+  // The controls of Annex A the record answers to or concerns.
+  repeated AimsAnnexAControl aims_cited_annex_a_controls = 2;
+  // The topic the policy covers.
+  string aims_topic_policy_topic = 3;
+  // The AI policy this policy supports.
+  AimsPolicy aims_topic_policy_parent = 4;
+  // Whom the policy is written for.
+  string aims_topic_policy_audience = 5;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 6;
+  // The name the organization gives the record.
+  string title = 7;
+  // What the record says or describes, in the organization's own words.
+  string description = 8;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 9;
+  // The version of the document.
+  string aims_document_version = 10;
+  // Who wrote the document.
+  string aims_document_author = 11;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 12;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 13;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 14;
+  // Who approved the document.
+  string aims_document_approver = 15;
+  // When the document was approved.
+  string aims_document_approval_date = 16;
+  // When the document takes effect.
+  string aims_document_effective_date = 17;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 18;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 19;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 20;
+  // The information classification the document carries.
+  string aims_document_classification = 21;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 22;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 23;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 24;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 25;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 26;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 27;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 28;
+}
+// What those who use a system are told: the contents, how it reaches them, what decided it, and the check that they got it.
+message AimsUserInformation {
+  // The AI systems the record concerns.
+  repeated AimsAiSystem aims_ai_systems = 1;
+  // What users are told, such as that AI is behind what they see and how to overrule it.
+  repeated string aims_user_information_contents = 2;
+  // How it reaches them, such as instructions, alerts or a web page.
+  repeated string aims_user_information_channels = 3;
+  // What decided what they are told.
+  repeated string aims_user_information_criteria = 4;
+  // Whether the organization has checked that users can get it and that it is right.
+  bool aims_user_information_validated = 5;
+  // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
+  string aims_id = 6;
+  // The name the organization gives the record.
+  string title = 7;
+  // What the record says or describes, in the organization's own words.
+  string description = 8;
+  // The reference the organization's document control gives it.
+  string aims_document_reference = 9;
+  // The version of the document.
+  string aims_document_version = 10;
+  // Who wrote the document.
+  string aims_document_author = 11;
+  // Who answers for the document's content and upkeep.
+  string aims_document_owner = 12;
+  // The document's format, such as its language or software version.
+  string aims_document_format = 13;
+  // What the document is held on, such as paper or an electronic system.
+  string aims_document_medium = 14;
+  // Who approved the document.
+  string aims_document_approver = 15;
+  // When the document was approved.
+  string aims_document_approval_date = 16;
+  // When the document takes effect.
+  string aims_document_effective_date = 17;
+  // When the document was last reviewed.
+  string aims_document_last_review_date = 18;
+  // When the document is next due for review.
+  string aims_document_next_review_date = 19;
+  // Where the document stands in its life, in the organization's own terms, such as draft, approved or withdrawn.
+  string aims_document_status = 20;
+  // The information classification the document carries.
+  string aims_document_classification = 21;
+  // How long the document is kept, as an ISO 8601 duration.
+  string aims_document_retention = 22;
+  // What becomes of the document when that time is up.
+  string aims_document_disposition = 23;
+  // Who gets the document, how they reach it and what they may do with it.
+  repeated string aims_document_distribution = 24;
+  // How the document is stored so that it stays legible.
+  string aims_document_storage = 25;
+  // How changes to the document are controlled, such as version control.
+  string aims_document_change_control = 26;
+  // Whether the document comes from outside the organization and is kept because the system needs it.
+  bool aims_document_external_origin = 27;
+  // Who the document came from, when it comes from outside.
+  string aims_document_external_source = 28;
+}
+
+// The parts an organization or a person can play towards AI systems. The six families are those of ISO/IEC 22989:2022, and each more specific role names its family in an annotation.
+enum AimsAiRole {
+  AIMS_AI_ROLE_UNSPECIFIED = 0;
+  AIMS_AI_ROLE_AI_PROVIDER = 1;
+  AIMS_AI_ROLE_AI_PLATFORM_PROVIDER = 2;
+  AIMS_AI_ROLE_AI_PRODUCT_OR_SERVICE_PROVIDER = 3;
+  AIMS_AI_ROLE_AI_PRODUCER = 4;
+  AIMS_AI_ROLE_AI_DEVELOPER = 5;
+  AIMS_AI_ROLE_AI_DESIGNER = 6;
+  AIMS_AI_ROLE_AI_OPERATOR = 7;
+  AIMS_AI_ROLE_AI_TESTER_OR_EVALUATOR = 8;
+  AIMS_AI_ROLE_AI_DEPLOYER = 9;
+  AIMS_AI_ROLE_AI_HUMAN_FACTOR_PROFESSIONAL = 10;
+  AIMS_AI_ROLE_DOMAIN_EXPERT = 11;
+  AIMS_AI_ROLE_AI_IMPACT_ASSESSOR = 12;
+  AIMS_AI_ROLE_PROCURER = 13;
+  AIMS_AI_ROLE_AI_GOVERNANCE_PROFESSIONAL = 14;
+  AIMS_AI_ROLE_AI_CUSTOMER = 15;
+  AIMS_AI_ROLE_AI_USER = 16;
+  AIMS_AI_ROLE_AI_PARTNER = 17;
+  AIMS_AI_ROLE_AI_SYSTEM_INTEGRATOR = 18;
+  AIMS_AI_ROLE_DATA_PROVIDER = 19;
+  AIMS_AI_ROLE_AI_SUBJECT = 20;
+  AIMS_AI_ROLE_DATA_SUBJECT = 21;
+  AIMS_AI_ROLE_OTHER_SUBJECT = 22;
+  AIMS_AI_ROLE_RELEVANT_AUTHORITY = 23;
+  AIMS_AI_ROLE_POLICY_MAKER = 24;
+  AIMS_AI_ROLE_REGULATOR = 25;
+}
+// Threats to information security peculiar to AI: those the guidance names, and other.
+enum AimsAiThreat {
+  AIMS_AI_THREAT_UNSPECIFIED = 0;
+  AIMS_AI_THREAT_DATA_POISONING = 1;
+  AIMS_AI_THREAT_MODEL_STEALING = 2;
+  AIMS_AI_THREAT_MODEL_INVERSION = 3;
+  AIMS_AI_THREAT_OTHER = 4;
+}
+// The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for.
+enum AimsAnnexAControl {
+  AIMS_ANNEX_ACONTROL_UNSPECIFIED = 0;
+  AIMS_ANNEX_ACONTROL_A_N2_N2 = 1;
+  AIMS_ANNEX_ACONTROL_A_N2_N3 = 2;
+  AIMS_ANNEX_ACONTROL_A_N2_N4 = 3;
+  AIMS_ANNEX_ACONTROL_A_N3_N2 = 4;
+  AIMS_ANNEX_ACONTROL_A_N3_N3 = 5;
+  AIMS_ANNEX_ACONTROL_A_N4_N2 = 6;
+  AIMS_ANNEX_ACONTROL_A_N4_N3 = 7;
+  AIMS_ANNEX_ACONTROL_A_N4_N4 = 8;
+  AIMS_ANNEX_ACONTROL_A_N4_N5 = 9;
+  AIMS_ANNEX_ACONTROL_A_N4_N6 = 10;
+  AIMS_ANNEX_ACONTROL_A_N5_N2 = 11;
+  AIMS_ANNEX_ACONTROL_A_N5_N3 = 12;
+  AIMS_ANNEX_ACONTROL_A_N5_N4 = 13;
+  AIMS_ANNEX_ACONTROL_A_N5_N5 = 14;
+  AIMS_ANNEX_ACONTROL_A_N6_N1_N2 = 15;
+  AIMS_ANNEX_ACONTROL_A_N6_N1_N3 = 16;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N2 = 17;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N3 = 18;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N4 = 19;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N5 = 20;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N6 = 21;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N7 = 22;
+  AIMS_ANNEX_ACONTROL_A_N6_N2_N8 = 23;
+  AIMS_ANNEX_ACONTROL_A_N7_N2 = 24;
+  AIMS_ANNEX_ACONTROL_A_N7_N3 = 25;
+  AIMS_ANNEX_ACONTROL_A_N7_N4 = 26;
+  AIMS_ANNEX_ACONTROL_A_N7_N5 = 27;
+  AIMS_ANNEX_ACONTROL_A_N7_N6 = 28;
+  AIMS_ANNEX_ACONTROL_A_N8_N2 = 29;
+  AIMS_ANNEX_ACONTROL_A_N8_N3 = 30;
+  AIMS_ANNEX_ACONTROL_A_N8_N4 = 31;
+  AIMS_ANNEX_ACONTROL_A_N8_N5 = 32;
+  AIMS_ANNEX_ACONTROL_A_N9_N2 = 33;
+  AIMS_ANNEX_ACONTROL_A_N9_N3 = 34;
+  AIMS_ANNEX_ACONTROL_A_N9_N4 = 35;
+  AIMS_ANNEX_ACONTROL_A_N10_N2 = 36;
+  AIMS_ANNEX_ACONTROL_A_N10_N3 = 37;
+  AIMS_ANNEX_ACONTROL_A_N10_N4 = 38;
+}
+// The kinds of audit finding.
+enum AimsAuditFindingType {
+  AIMS_AUDIT_FINDING_TYPE_UNSPECIFIED = 0;
+  AIMS_AUDIT_FINDING_TYPE_MAJOR_NONCONFORMITY = 1;
+  AIMS_AUDIT_FINDING_TYPE_MINOR_NONCONFORMITY = 2;
+  AIMS_AUDIT_FINDING_TYPE_OBSERVATION = 3;
+  AIMS_AUDIT_FINDING_TYPE_POSITIVE_FINDING = 4;
+}
+// Who carries out an audit, relative to the organization audited, as ISO 19011 sorts audits.
+enum AimsAuditType {
+  AIMS_AUDIT_TYPE_UNSPECIFIED = 0;
+  AIMS_AUDIT_TYPE_FIRST_PARTY = 1;
+  AIMS_AUDIT_TYPE_SECOND_PARTY = 2;
+  AIMS_AUDIT_TYPE_THIRD_PARTY = 3;
+}
+// The numbered clauses and subclauses of the standard from 4 to 10, by their numbers. A value's description is this project's own summary, and the clause headings and the requirements are ISO's.
+enum AimsClause {
+  AIMS_CLAUSE_UNSPECIFIED = 0;
+  AIMS_CLAUSE_CLAUSE_N4 = 1;
+  AIMS_CLAUSE_CLAUSE_N4_N1 = 2;
+  AIMS_CLAUSE_CLAUSE_N4_N2 = 3;
+  AIMS_CLAUSE_CLAUSE_N4_N3 = 4;
+  AIMS_CLAUSE_CLAUSE_N4_N4 = 5;
+  AIMS_CLAUSE_CLAUSE_N5 = 6;
+  AIMS_CLAUSE_CLAUSE_N5_N1 = 7;
+  AIMS_CLAUSE_CLAUSE_N5_N2 = 8;
+  AIMS_CLAUSE_CLAUSE_N5_N3 = 9;
+  AIMS_CLAUSE_CLAUSE_N6 = 10;
+  AIMS_CLAUSE_CLAUSE_N6_N1 = 11;
+  AIMS_CLAUSE_CLAUSE_N6_N1_N1 = 12;
+  AIMS_CLAUSE_CLAUSE_N6_N1_N2 = 13;
+  AIMS_CLAUSE_CLAUSE_N6_N1_N3 = 14;
+  AIMS_CLAUSE_CLAUSE_N6_N1_N4 = 15;
+  AIMS_CLAUSE_CLAUSE_N6_N2 = 16;
+  AIMS_CLAUSE_CLAUSE_N6_N3 = 17;
+  AIMS_CLAUSE_CLAUSE_N7 = 18;
+  AIMS_CLAUSE_CLAUSE_N7_N1 = 19;
+  AIMS_CLAUSE_CLAUSE_N7_N2 = 20;
+  AIMS_CLAUSE_CLAUSE_N7_N3 = 21;
+  AIMS_CLAUSE_CLAUSE_N7_N4 = 22;
+  AIMS_CLAUSE_CLAUSE_N7_N5 = 23;
+  AIMS_CLAUSE_CLAUSE_N7_N5_N1 = 24;
+  AIMS_CLAUSE_CLAUSE_N7_N5_N2 = 25;
+  AIMS_CLAUSE_CLAUSE_N7_N5_N3 = 26;
+  AIMS_CLAUSE_CLAUSE_N8 = 27;
+  AIMS_CLAUSE_CLAUSE_N8_N1 = 28;
+  AIMS_CLAUSE_CLAUSE_N8_N2 = 29;
+  AIMS_CLAUSE_CLAUSE_N8_N3 = 30;
+  AIMS_CLAUSE_CLAUSE_N8_N4 = 31;
+  AIMS_CLAUSE_CLAUSE_N9 = 32;
+  AIMS_CLAUSE_CLAUSE_N9_N1 = 33;
+  AIMS_CLAUSE_CLAUSE_N9_N2 = 34;
+  AIMS_CLAUSE_CLAUSE_N9_N2_N1 = 35;
+  AIMS_CLAUSE_CLAUSE_N9_N2_N2 = 36;
+  AIMS_CLAUSE_CLAUSE_N9_N3 = 37;
+  AIMS_CLAUSE_CLAUSE_N9_N3_N1 = 38;
+  AIMS_CLAUSE_CLAUSE_N9_N3_N2 = 39;
+  AIMS_CLAUSE_CLAUSE_N9_N3_N3 = 40;
+  AIMS_CLAUSE_CLAUSE_N10 = 41;
+  AIMS_CLAUSE_CLAUSE_N10_N1 = 42;
+  AIMS_CLAUSE_CLAUSE_N10_N2 = 43;
+}
+// A five-point scale of consequence, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
+enum AimsConsequence {
+  AIMS_CONSEQUENCE_UNSPECIFIED = 0;
+  AIMS_CONSEQUENCE_NEGLIGIBLE = 1;
+  AIMS_CONSEQUENCE_MINOR = 2;
+  AIMS_CONSEQUENCE_MODERATE = 3;
+  AIMS_CONSEQUENCE_MAJOR = 4;
+  AIMS_CONSEQUENCE_SEVERE = 5;
+}
+// The nine areas Annex A sorts its controls into, under names of this project's own. An area's number is its annotation.
+enum AimsControlArea {
+  AIMS_CONTROL_AREA_UNSPECIFIED = 0;
+  AIMS_CONTROL_AREA_POLICY_DIRECTION = 1;
+  AIMS_CONTROL_AREA_ACCOUNTABILITY = 2;
+  AIMS_CONTROL_AREA_SYSTEM_RESOURCES = 3;
+  AIMS_CONTROL_AREA_IMPACT_ASSESSMENT = 4;
+  AIMS_CONTROL_AREA_SYSTEM_LIFE_CYCLE = 5;
+  AIMS_CONTROL_AREA_DATA_MANAGEMENT = 6;
+  AIMS_CONTROL_AREA_STAKEHOLDER_INFORMATION = 7;
+  AIMS_CONTROL_AREA_RESPONSIBLE_USE = 8;
+  AIMS_CONTROL_AREA_EXTERNAL_RELATIONSHIPS = 9;
+}
+// The parts data can play in machine learning.
+enum AimsDataCategory {
+  AIMS_DATA_CATEGORY_UNSPECIFIED = 0;
+  AIMS_DATA_CATEGORY_TRAINING = 1;
+  AIMS_DATA_CATEGORY_VALIDATION = 2;
+  AIMS_DATA_CATEGORY_TEST = 3;
+  AIMS_DATA_CATEGORY_PRODUCTION = 4;
+}
+// Common ways of making data ready for AI: those the guidance names, and other.
+enum AimsDataPreparationMethod {
+  AIMS_DATA_PREPARATION_METHOD_UNSPECIFIED = 0;
+  AIMS_DATA_PREPARATION_METHOD_STATISTICAL_EXPLORATION = 1;
+  AIMS_DATA_PREPARATION_METHOD_CLEANING = 2;
+  AIMS_DATA_PREPARATION_METHOD_IMPUTATION = 3;
+  AIMS_DATA_PREPARATION_METHOD_NORMALIZATION = 4;
+  AIMS_DATA_PREPARATION_METHOD_SCALING = 5;
+  AIMS_DATA_PREPARATION_METHOD_LABELLING = 6;
+  AIMS_DATA_PREPARATION_METHOD_ENCODING = 7;
+  AIMS_DATA_PREPARATION_METHOD_OTHER = 8;
+}
+// The kinds of documented information an AimsDocumentedInformation record holds. Policies have records of their own.
+enum AimsDocumentKind {
+  AIMS_DOCUMENT_KIND_UNSPECIFIED = 0;
+  AIMS_DOCUMENT_KIND_PROCEDURE = 1;
+  AIMS_DOCUMENT_KIND_STANDARD = 2;
+  AIMS_DOCUMENT_KIND_GUIDELINE = 3;
+  AIMS_DOCUMENT_KIND_RECORD = 4;
+  AIMS_DOCUMENT_KIND_PLAN = 5;
+  AIMS_DOCUMENT_KIND_REPORT = 6;
+}
+// Areas where AI systems can touch people or society: those the guidance on impact assessment names as examples, and other.
+enum AimsImpactArea {
+  AIMS_IMPACT_AREA_UNSPECIFIED = 0;
+  AIMS_IMPACT_AREA_FAIRNESS = 1;
+  AIMS_IMPACT_AREA_ACCOUNTABILITY = 2;
+  AIMS_IMPACT_AREA_TRANSPARENCY_AND_EXPLAINABILITY = 3;
+  AIMS_IMPACT_AREA_SECURITY_AND_PRIVACY = 4;
+  AIMS_IMPACT_AREA_SAFETY_AND_HEALTH = 5;
+  AIMS_IMPACT_AREA_FINANCIAL = 6;
+  AIMS_IMPACT_AREA_ACCESSIBILITY = 7;
+  AIMS_IMPACT_AREA_HUMAN_RIGHTS = 8;
+  AIMS_IMPACT_AREA_ENVIRONMENTAL_SUSTAINABILITY = 9;
+  AIMS_IMPACT_AREA_ECONOMIC = 10;
+  AIMS_IMPACT_AREA_GOVERNMENT = 11;
+  AIMS_IMPACT_AREA_CULTURE_AND_VALUES = 12;
+  AIMS_IMPACT_AREA_OTHER = 13;
+}
+// Whether an impact helps or harms.
+enum AimsImpactDirection {
+  AIMS_IMPACT_DIRECTION_UNSPECIFIED = 0;
+  AIMS_IMPACT_DIRECTION_POSITIVE = 1;
+  AIMS_IMPACT_DIRECTION_NEGATIVE = 2;
+}
+// Who an AI system's impact falls on.
+enum AimsImpactSubject {
+  AIMS_IMPACT_SUBJECT_UNSPECIFIED = 0;
+  AIMS_IMPACT_SUBJECT_INDIVIDUALS = 1;
+  AIMS_IMPACT_SUBJECT_GROUPS_OF_INDIVIDUALS = 2;
+  AIMS_IMPACT_SUBJECT_SOCIETIES = 3;
+}
+// How far a control or a plan has been put into effect.
+enum AimsImplementationStatus {
+  AIMS_IMPLEMENTATION_STATUS_UNSPECIFIED = 0;
+  AIMS_IMPLEMENTATION_STATUS_NOT_STARTED = 1;
+  AIMS_IMPLEMENTATION_STATUS_PLANNED = 2;
+  AIMS_IMPLEMENTATION_STATUS_IN_PROGRESS = 3;
+  AIMS_IMPLEMENTATION_STATUS_IMPLEMENTED = 4;
+}
+// What an incident involving an AI system concerns. ISO/IEC 42001 tells apart an incident of the system itself from one about security of information or about privacy.
+enum AimsIncidentCategory {
+  AIMS_INCIDENT_CATEGORY_UNSPECIFIED = 0;
+  AIMS_INCIDENT_CATEGORY_AI_SYSTEM = 1;
+  AIMS_INCIDENT_CATEGORY_INFORMATION_SECURITY = 2;
+  AIMS_INCIDENT_CATEGORY_PRIVACY = 3;
+  AIMS_INCIDENT_CATEGORY_SAFETY = 4;
+  AIMS_INCIDENT_CATEGORY_OTHER = 5;
+}
+// The eight stages of the generic life cycle model that ISO/IEC 22989:2022 gives, which ISO/IEC 42001 points to.
+enum AimsLifecycleStage {
+  AIMS_LIFECYCLE_STAGE_UNSPECIFIED = 0;
+  AIMS_LIFECYCLE_STAGE_INCEPTION = 1;
+  AIMS_LIFECYCLE_STAGE_DESIGN_AND_DEVELOPMENT = 2;
+  AIMS_LIFECYCLE_STAGE_VERIFICATION_AND_VALIDATION = 3;
+  AIMS_LIFECYCLE_STAGE_DEPLOYMENT = 4;
+  AIMS_LIFECYCLE_STAGE_OPERATION_AND_MONITORING = 5;
+  AIMS_LIFECYCLE_STAGE_CONTINUOUS_VALIDATION = 6;
+  AIMS_LIFECYCLE_STAGE_RE_EVALUATION = 7;
+  AIMS_LIFECYCLE_STAGE_RETIREMENT = 8;
+}
+// A five-point scale of likelihood, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
+enum AimsLikelihood {
+  AIMS_LIKELIHOOD_UNSPECIFIED = 0;
+  AIMS_LIKELIHOOD_RARE = 1;
+  AIMS_LIKELIHOOD_UNLIKELY = 2;
+  AIMS_LIKELIHOOD_POSSIBLE = 3;
+  AIMS_LIKELIHOOD_LIKELY = 4;
+  AIMS_LIKELIHOOD_ALMOST_CERTAIN = 5;
+}
+// Management system standards Annex D names as ones to run this system beside, and other.
+enum AimsManagementSystemStandard {
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_UNSPECIFIED = 0;
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_ISO_IEC_N27001 = 1;
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_ISO_IEC_N27701 = 2;
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_ISO_N9001 = 3;
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_ISO_N22000 = 4;
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_ISO_N13485 = 5;
+  AIMS_MANAGEMENT_SYSTEM_STANDARD_OTHER = 6;
+}
+// Kinds of objective an organization may set for AI: those Annex C lists, two more from the guidance on responsible use, and other.
+enum AimsObjectiveCategory {
+  AIMS_OBJECTIVE_CATEGORY_UNSPECIFIED = 0;
+  AIMS_OBJECTIVE_CATEGORY_ACCOUNTABILITY = 1;
+  AIMS_OBJECTIVE_CATEGORY_AI_EXPERTISE = 2;
+  AIMS_OBJECTIVE_CATEGORY_TRAINING_AND_TEST_DATA = 3;
+  AIMS_OBJECTIVE_CATEGORY_ENVIRONMENTAL_IMPACT = 4;
+  AIMS_OBJECTIVE_CATEGORY_FAIRNESS = 5;
+  AIMS_OBJECTIVE_CATEGORY_MAINTAINABILITY = 6;
+  AIMS_OBJECTIVE_CATEGORY_PRIVACY = 7;
+  AIMS_OBJECTIVE_CATEGORY_ROBUSTNESS = 8;
+  AIMS_OBJECTIVE_CATEGORY_SAFETY = 9;
+  AIMS_OBJECTIVE_CATEGORY_SECURITY = 10;
+  AIMS_OBJECTIVE_CATEGORY_TRANSPARENCY_AND_EXPLAINABILITY = 11;
+  AIMS_OBJECTIVE_CATEGORY_RELIABILITY = 12;
+  AIMS_OBJECTIVE_CATEGORY_ACCESSIBILITY = 13;
+  AIMS_OBJECTIVE_CATEGORY_OTHER = 14;
+}
+// What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex A controls ask for objectives of a narrower kind.
+enum AimsObjectivePurpose {
+  AIMS_OBJECTIVE_PURPOSE_UNSPECIFIED = 0;
+  AIMS_OBJECTIVE_PURPOSE_ORGANIZATIONAL = 1;
+  AIMS_OBJECTIVE_PURPOSE_RESPONSIBLE_DEVELOPMENT = 2;
+  AIMS_OBJECTIVE_PURPOSE_RESPONSIBLE_USE = 3;
+}
+// The parts a party can play when personal data passes through AI, which ISO/IEC 29100 describes.
+enum AimsPiiRole {
+  AIMS_PII_ROLE_UNSPECIFIED = 0;
+  AIMS_PII_ROLE_PII_CONTROLLER = 1;
+  AIMS_PII_ROLE_JOINT_PII_CONTROLLER = 2;
+  AIMS_PII_ROLE_PII_PROCESSOR = 3;
+}
+// Who provides a resource an AI system draws on.
+enum AimsResourceProvider {
+  AIMS_RESOURCE_PROVIDER_UNSPECIFIED = 0;
+  AIMS_RESOURCE_PROVIDER_ORGANIZATION = 1;
+  AIMS_RESOURCE_PROVIDER_CUSTOMER = 2;
+  AIMS_RESOURCE_PROVIDER_THIRD_PARTY = 3;
+}
+// A five-point scale of risk level, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization.
+enum AimsRiskLevel {
+  AIMS_RISK_LEVEL_UNSPECIFIED = 0;
+  AIMS_RISK_LEVEL_VERY_LOW = 1;
+  AIMS_RISK_LEVEL_LOW = 2;
+  AIMS_RISK_LEVEL_MEDIUM = 3;
+  AIMS_RISK_LEVEL_HIGH = 4;
+  AIMS_RISK_LEVEL_CRITICAL = 5;
+}
+// Kinds of source a risk from AI can come from: those Annex C lists, and other.
+enum AimsRiskSourceCategory {
+  AIMS_RISK_SOURCE_CATEGORY_UNSPECIFIED = 0;
+  AIMS_RISK_SOURCE_CATEGORY_COMPLEX_ENVIRONMENT = 1;
+  AIMS_RISK_SOURCE_CATEGORY_OPAQUE_SYSTEM = 2;
+  AIMS_RISK_SOURCE_CATEGORY_LEVEL_OF_AUTOMATION = 3;
+  AIMS_RISK_SOURCE_CATEGORY_MACHINE_LEARNING = 4;
+  AIMS_RISK_SOURCE_CATEGORY_HARDWARE = 5;
+  AIMS_RISK_SOURCE_CATEGORY_LIFE_CYCLE = 6;
+  AIMS_RISK_SOURCE_CATEGORY_TECHNOLOGY_READINESS = 7;
+  AIMS_RISK_SOURCE_CATEGORY_OTHER = 8;
+}
+// The ways of treating a risk, by the names ISO 31000 gives them.
+enum AimsRiskTreatmentOption {
+  AIMS_RISK_TREATMENT_OPTION_UNSPECIFIED = 0;
+  AIMS_RISK_TREATMENT_OPTION_MODIFY = 1;
+  AIMS_RISK_TREATMENT_OPTION_RETAIN = 2;
+  AIMS_RISK_TREATMENT_OPTION_AVOID = 3;
+  AIMS_RISK_TREATMENT_OPTION_SHARE = 4;
+}

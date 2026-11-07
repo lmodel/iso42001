@@ -1,0 +1,5 @@
+# Fails at: /aims_policy_review_interval
+# Invalid: An xsd:duration has no weeks, so two weeks is P14D.
+aims_id: acme:policy-ai
+title: Acme AI policy
+aims_policy_review_interval: P2W

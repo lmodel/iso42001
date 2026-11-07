@@ -1,0 +1,7 @@
+# Fails at: /aims_soa_entries/0
+# Invalid: An entry is one of the two kinds.
+aims_id: acme:x
+title: A record
+aims_soa_entries:
+  - aims_entry_type: AimsControl
+    aims_entry_justification: Needed.

@@ -1,0 +1,20 @@
+aims_id: acme:process-development
+title: How we build AI systems
+aims_ai_systems:
+  - acme:system-triage
+aims_development_life_cycle_model: The eight stages of ISO/IEC 22989
+aims_development_testing: Each release runs on data held back from three hospitals.
+aims_development_human_oversight: A radiologist signs off the release.
+aims_development_impact_assessment_stages:
+  - inception
+  - re_evaluation
+aims_development_training_data_rules: Only data under a signed agreement, labelled twice.
+aims_development_expertise: One clinician on every team
+aims_development_release_criteria:
+  - Criteria met, impact review signed
+aims_development_approvals:
+  - Clinical lead
+  - AI management lead
+aims_development_change_control: Each change has a ticket and a review.
+aims_development_usability: Radiologists try each interface change first.
+aims_development_party_engagement: A panel of partner hospitals meets twice a year.

@@ -1,0 +1,5 @@
+# Fails at: /aims_objective_purpose
+# Invalid: No such purpose.
+aims_id: acme:x
+title: A record
+aims_objective_purpose: strategic

@@ -1,0 +1,9 @@
+aims_id: acme:policy-impact
+title: Policy on assessing impacts
+aims_cited_annex_a_controls:
+  - a_5_2
+aims_relevant_controls:
+  - acme:control-impact
+aims_topic_policy_topic: Assessing what our systems do to people
+aims_topic_policy_parent: acme:policy-ai
+aims_topic_policy_audience: Product and clinical staff

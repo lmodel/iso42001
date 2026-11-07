@@ -1,0 +1,14 @@
+aims_id: acme:team-ml
+title: Machine learning team
+aims_resource_type: AimsHumanResource
+aims_life_cycle_stages:
+  - design_and_development
+  - retirement
+aims_human_role: acme:role-ai-lead
+aims_human_competences:
+  - Medical imaging
+  - Model evaluation
+aims_human_activities:
+  - Building the model
+  - Decommissioning it
+aims_human_diversity: A radiologist sits on the team.

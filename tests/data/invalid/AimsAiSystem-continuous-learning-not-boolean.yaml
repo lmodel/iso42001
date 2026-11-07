@@ -1,0 +1,5 @@
+# Fails at: /aims_system_continuous_learning
+# Invalid: It is yes or no.
+aims_id: acme:x
+title: A record
+aims_system_continuous_learning: sometimes

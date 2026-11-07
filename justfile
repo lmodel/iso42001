@@ -106,11 +106,6 @@ clean: _wsl2_compat_check _clean_project
 [group('model development')]
 site: gen-project gen-doc
 
-# Deploy documentation site to Github Pages
-[group('deployment')]
-deploy: site
-  mkd-gh-deploy
-
 # Run all tests
 [group('model development')]
 test: _test-schema _test-python _test-examples
@@ -118,34 +113,14 @@ test: _test-schema _test-python _test-examples
 # Run linting
 [group('model development')]
 lint:
-  uv run linkml-lint {{source_schema_dir}}
-
-# Regenerate the empty overlay scaffold from the public schema.
-# Safe to commit - contains no copyrighted text. See src/iso42001/schema/OVERLAY.md
-[group('overlay')]
-create-empty-overlay:
-  uv run python scripts/create_overlay_template.py \
-    --public {{source_schema_path}} \
-    --output {{source_schema_dir}}/{{schema_name}}-overlay.template.yaml
-
-# Deep-merge the license-holder's local overlay onto the public schema.
-# Requires src/iso42001/schema/iso42001-overlay.yaml (git-ignored).
-# Output is written to tmp/iso42001-merged.yaml (also git-ignored).
-[group('overlay')]
-overlay-licensed-text:
-  mkdir -p tmp
-  uv run python scripts/overlay_populated_text.py \
-    --public  {{source_schema_path}} \
-    --overlay {{source_schema_dir}}/{{schema_name}}-overlay.yaml \
-    --output  tmp/{{schema_name}}-merged.yaml
-  uv run linkml-lint tmp/{{schema_name}}-merged.yaml || true
+  uv run linkml-lint {{source_schema_path}}
 
 # Generate md documentation for the schema and add artifacts
 [group('model development')]
 gen-doc: _gen-yaml && _add-artifacts
   uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
 
-# Build docs and run test server
+# Build docs and serve the website locally
 [group('model development')]
 testdoc: gen-doc _serve
 
@@ -259,9 +234,9 @@ _gen-yaml:
 # Overridable recipe to add project-specific artifacts to the distribution schema path
 _add-artifacts:
 
-# Run documentation server
+# Run the website's development server
 _serve:
-  uv run mkdocs serve
+  cd website && npm ci --ignore-scripts && npm run dev
 
 # Initialize git repository
 _git-init:

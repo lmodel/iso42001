@@ -1,3 +1,0 @@
-id: iso42001:event-bad-datetime
-name: AI System Event With Invalid Datetime
-event_datetime: "yesterday"

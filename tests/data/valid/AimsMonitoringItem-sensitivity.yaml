@@ -1,0 +1,11 @@
+aims_monitoring_metric: Sensitivity on urgent cases
+aims_monitoring_description: How many urgent cases rise to the top
+aims_monitoring_method: Weekly sample read by a radiologist
+aims_monitoring_frequency: Weekly
+aims_monitoring_analysis_frequency: Monthly
+aims_monitoring_analyst: Dana Example
+aims_monitoring_target: At least 95%
+aims_monitoring_alert_threshold: Under 92%
+aims_monitoring_current_value: 96%
+aims_monitoring_trend: steady
+aims_responsible_role: acme:role-ai-lead

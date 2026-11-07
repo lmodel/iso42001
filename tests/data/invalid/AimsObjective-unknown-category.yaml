@@ -1,0 +1,6 @@
+# Fails at: /aims_objective_categories/0
+# Invalid: Neither Annex C nor the guidance lists it, and other is the way out.
+aims_id: acme:x
+title: A record
+aims_objective_categories:
+  - profitability

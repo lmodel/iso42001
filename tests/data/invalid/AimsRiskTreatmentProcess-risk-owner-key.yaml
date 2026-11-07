@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: Designated management approves here, and the class is closed.
+aims_id: acme:x
+title: A record
+treatment_risk_owner_approval: Dana

@@ -1,0 +1,4 @@
+# Fails at: /
+# Invalid: A record needs a title.
+aims_id: acme:x
+aims_resource_type: AimsComponentResource

@@ -1,0 +1,6 @@
+# Fails at: /aims_cited_clauses/0
+# Invalid: Clause 5.4 does not exist.
+aims_id: acme:x
+title: A record
+aims_cited_clauses:
+  - clause_5_4

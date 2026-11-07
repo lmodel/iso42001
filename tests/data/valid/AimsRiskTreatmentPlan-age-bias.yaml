@@ -1,0 +1,13 @@
+aims_id: acme:plan-age-bias
+title: Plan for the age bias risk
+aims_implementation_state: in_progress
+aims_plan_risks:
+  - acme:risk-age-bias
+aims_plan_actions:
+  - Rebalance the training data
+aims_plan_controls:
+  - acme:control-impact
+aims_plan_approver: Executive team
+aims_plan_residual_risk_acceptance: Accepted at medium on 2026-03-20
+aims_plan_effectiveness: Gap fell from 5% to 3% in the first quarter.
+aims_plan_completion_date: '2026-12-31'

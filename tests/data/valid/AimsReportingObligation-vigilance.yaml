@@ -1,0 +1,12 @@
+aims_id: acme:obligation-vigilance
+title: Serious incident reports
+aims_ai_systems:
+  - acme:system-triage
+aims_obligation_parties:
+  - acme:party-hospitals
+aims_obligation_basis: EU medical device rules
+aims_obligation_jurisdiction: European Union
+aims_obligation_contents:
+  - What happened
+  - Results of impact assessments
+aims_obligation_timeframe: Within 15 days

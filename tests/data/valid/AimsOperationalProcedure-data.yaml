@@ -1,0 +1,14 @@
+aims_id: acme:procedure-data
+title: Managing data for building models
+aims_relevant_controls:
+  - acme:control-impact
+aims_cited_annex_a_controls:
+  - a_7_2
+aims_procedure_scope: All training data
+aims_procedure_criteria: No data without a signed agreement
+aims_procedure_control_measures:
+  - A data register
+  - Quarterly checks
+aims_procedure_roles:
+  - acme:role-ai-lead
+aims_procedure_change_control: Changes are reviewed at the monthly board.

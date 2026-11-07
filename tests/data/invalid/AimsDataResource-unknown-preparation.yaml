@@ -1,0 +1,7 @@
+# Fails at: /aims_data_preparation_methods/0
+# Invalid: The guidance names no such method, and other is the way out.
+aims_id: acme:x
+title: A record
+aims_resource_type: AimsDataResource
+aims_data_preparation_methods:
+  - anonymization

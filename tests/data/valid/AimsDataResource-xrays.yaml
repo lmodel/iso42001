@@ -1,0 +1,43 @@
+aims_id: acme:data-xrays
+title: De-identified chest X-rays
+aims_resource_type: AimsDataResource
+aims_life_cycle_stages:
+  - design_and_development
+  - verification_and_validation
+aims_resource_provider: customer
+aims_data_categories:
+  - training
+  - validation
+  - test
+aims_data_kinds:
+  - Medical images
+aims_data_intended_use: Training and checking the triage model
+aims_data_quantity: About 200,000 images
+aims_data_sources:
+  - Shared by partner hospitals
+aims_data_source_characteristics:
+  - Gathered in batches
+aims_data_subject_demographics:
+  - Adults; few over 75
+aims_data_prior_handling: Removed of identifiers by each hospital
+aims_data_rights:
+  - Used under each hospital agreement
+aims_data_metadata:
+  - Who labelled each image, and when
+aims_data_provenance: Each batch is logged by hospital, date and transformation.
+aims_data_provenance_verification: Batches are checked against signed manifests.
+aims_data_quality_requirements:
+  - No more than 1% unreadable images
+aims_data_quality_results:
+  - 0.4% unreadable in the 2026 batch
+aims_data_bias_issues:
+  - Patients over 75 are too few
+aims_data_representativeness: Close to the case mix, but for age.
+aims_data_labelling_process: Two radiologists label each image.
+aims_data_preparation_criteria: Methods are chosen to keep clinical detail.
+aims_data_preparation_methods:
+  - normalization
+  - labelling
+aims_data_last_updated: '2026-01-31'
+aims_data_retention: Five years, then deleted
+aims_data_classification: Confidential

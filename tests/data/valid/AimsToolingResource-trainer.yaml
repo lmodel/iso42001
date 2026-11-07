@@ -1,0 +1,10 @@
+aims_id: acme:tool-trainer
+title: Model training framework
+aims_resource_type: AimsToolingResource
+aims_life_cycle_stages:
+  - design_and_development
+aims_tool_category: Tools to build models
+aims_tool_version: '2.3'
+aims_tool_vendor: Example Software
+aims_tool_licence: Apache-2.0
+aims_tool_purpose: Training the triage model

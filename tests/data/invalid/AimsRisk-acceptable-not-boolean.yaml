@@ -1,0 +1,5 @@
+# Fails at: /aims_risk_acceptable
+# Invalid: It is yes or no.
+aims_id: acme:x
+title: A record
+aims_risk_acceptable: sometimes

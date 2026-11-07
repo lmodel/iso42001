@@ -1,0 +1,6 @@
+# Fails at: /aims_impact_process_areas/0
+# Invalid: The guidance names no such area, and other is the way out.
+aims_id: acme:x
+title: A record
+aims_impact_process_areas:
+  - brand

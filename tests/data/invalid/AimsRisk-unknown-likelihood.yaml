@@ -1,0 +1,5 @@
+# Fails at: /aims_risk_likelihood
+# Invalid: Not on the scale.
+aims_id: acme:x
+title: A record
+aims_risk_likelihood: probably

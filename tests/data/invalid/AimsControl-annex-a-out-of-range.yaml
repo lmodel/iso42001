@@ -1,0 +1,6 @@
+# Fails at: /aims_cited_annex_a_controls/0
+# Invalid: Annex A ends at A.10.4.
+aims_id: acme:x
+title: A record
+aims_cited_annex_a_controls:
+  - a_11_1

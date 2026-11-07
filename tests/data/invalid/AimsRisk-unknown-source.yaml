@@ -1,0 +1,6 @@
+# Fails at: /aims_risk_source_categories/0
+# Invalid: Annex C lists no such source, and other is the way out.
+aims_id: acme:x
+title: A record
+aims_risk_source_categories:
+  - vendor

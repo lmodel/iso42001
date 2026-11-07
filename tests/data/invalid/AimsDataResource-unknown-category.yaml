@@ -1,0 +1,7 @@
+# Fails at: /aims_data_categories/0
+# Invalid: No such part in machine learning.
+aims_id: acme:x
+title: A record
+aims_resource_type: AimsDataResource
+aims_data_categories:
+  - reference

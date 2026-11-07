@@ -1,0 +1,5 @@
+# Fails at: /aims_event_occurred_at
+# Invalid: A time of day and a date are both needed.
+aims_id: acme:x
+title: A record
+aims_event_occurred_at: yesterday

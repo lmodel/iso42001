@@ -1,0 +1,5 @@
+# Fails at: /aims_impact_process_retention
+# Invalid: A retention is an ISO 8601 duration.
+aims_id: acme:x
+title: A record
+aims_impact_process_retention: ten years

@@ -1,0 +1,5 @@
+# Fails at: /aims_concern_life_cycle_stage
+# Invalid: ISO/IEC 22989 has no such stage.
+aims_id: acme:x
+title: A record
+aims_concern_life_cycle_stage: operation

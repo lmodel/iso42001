@@ -1,0 +1,23 @@
+aims_id: acme:risk-age-bias
+title: Triage misses cases in older patients
+aims_ai_systems:
+  - acme:system-triage
+aims_risk_source_categories:
+  - machine_learning
+aims_risk_source: Too few older patients in the training data
+aims_risk_objectives:
+  - acme:objective-fairness
+aims_risk_consequences_for_organization: Lost contracts and regulatory action
+aims_risk_consequences_for_individuals: Delayed care
+aims_risk_consequences_for_societies: Less trust in screening
+aims_risk_owner: Dana Example
+aims_risk_likelihood: possible
+aims_risk_consequence: major
+aims_risk_inherent_level: high
+aims_risk_existing_controls:
+  - acme:control-impact
+aims_risk_residual_level: medium
+aims_risk_acceptable: false
+aims_risk_treatment_option: modify
+aims_risk_impact_assessments:
+  - acme:impact-triage-2026

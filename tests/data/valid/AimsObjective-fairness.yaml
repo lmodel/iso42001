@@ -1,0 +1,18 @@
+aims_id: acme:objective-fairness
+title: Even triage across age groups
+aims_responsible_role: acme:role-ai-lead
+aims_relevant_controls:
+  - acme:control-impact
+aims_objective_categories:
+  - fairness
+aims_objective_purpose: responsible_development
+aims_objective_statement: Keep the gap in missed cases across age groups under 2%.
+aims_objective_target: 2%
+aims_objective_metric: Gap in false negative rate between age bands
+aims_objective_target_date: '2026-12-31'
+aims_objective_risks:
+  - acme:risk-age-bias
+aims_objective_action_plan: Rebalance the training data each quarter.
+aims_objective_resources: One data scientist, half time
+aims_objective_evaluation: Measured on the held-back test set.
+aims_objective_communication: Shared at the quarterly all-hands.

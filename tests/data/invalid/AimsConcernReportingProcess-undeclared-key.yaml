@@ -1,0 +1,5 @@
+# Fails at: /
+# Invalid: The class is closed.
+aims_id: acme:x
+title: A record
+concern_channel: A form

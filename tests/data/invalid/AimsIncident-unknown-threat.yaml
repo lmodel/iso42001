@@ -1,0 +1,6 @@
+# Fails at: /aims_incident_threats/0
+# Invalid: The guidance names no such threat, and other is the way out.
+aims_id: acme:x
+title: A record
+aims_incident_threats:
+  - prompt_injection

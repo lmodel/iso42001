@@ -1,0 +1,12 @@
+aims_id: acme:audit-programme-2026
+title: Audit programme, 2026
+aims_programme_period: '2026'
+aims_programme_audits:
+  - acme:audit-2026
+aims_programme_frequency_rationale: Twice a year, since the release gate matters most.
+aims_programme_methods: Interviews and sampled records
+aims_programme_responsibilities:
+  - The quality lead plans and reports
+aims_programme_resources: Twenty days a year
+aims_programme_auditor_selection: Auditors never audit their own team.
+aims_programme_status: on track

@@ -1,0 +1,6 @@
+# Fails at: /
+# Invalid: The class is closed.
+aims_id: acme:x
+title: A record
+awareness_topics:
+  - The policy

@@ -1,0 +1,14 @@
+aims_id: acme:corrective-gate
+title: Make the release gate automatic
+aims_responsible_role: acme:role-ai-lead
+aims_action_nonconformities:
+  - acme:nonconformity-1
+aims_action_root_cause: The gate could be skipped by hand.
+aims_action_target_date: '2026-06-30'
+aims_action_completion_date: '2026-06-25'
+aims_action_resources: Two engineering days
+aims_action_effectiveness_criteria: No release passes without a signed review.
+aims_action_effectiveness_review_date: '2026-09-01'
+aims_action_effective: true
+aims_action_system_changes: The process map shows the gate.
+aims_action_status: complete
