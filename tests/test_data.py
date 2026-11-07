@@ -154,7 +154,7 @@ def test_a_system_names_each_record_once_and_resolves_its_references(filepath):
 def test_examples_keep_the_rules_no_validator_checks(filepath):
     """A control's area is the area of one of the Annex A controls it answers to,
     an audit ends on or after the day it begins, and a Statement of Applicability
-    lists each Annex A control once."""
+    lists no Annex A control twice."""
     for _, data in _all_records(filepath):
         area = data.get("aims_control_area")
         annex_a = data.get("aims_cited_annex_a_controls") or []
