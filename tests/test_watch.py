@@ -4,8 +4,8 @@ scripts/check_upstream_release.py streams ISO Open Data's metadata file and
 reads ISO's open data page. These tests replace its two network calls,
 `_lines` and `_get`, with canned answers built from the extract, so they run
 offline. They show what the report says when ISO adds a supplement, changes a
-stage, publishes a new edition, drops a record or changes the licence, and when
-the network fails.
+stage, publishes a new edition, drops a record or changes the licence, when the
+network fails, and when an address or an answer is not one the watch accepts.
 """
 
 import gzip

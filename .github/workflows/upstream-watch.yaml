@@ -1,12 +1,12 @@
 name: Upstream watch
 
-# A weekly check on what this repository is built from but does not control:
-# ISO's records of ISO/IEC 42001:2023 and of its normative reference, ISO/IEC
-# 22989:2022, with that reference's amendments in development, in ISO Open Data,
-# and the dataset's licence. Nothing in a pull request can change them, so it runs
-# on a schedule. A failing check fails the run and opens an issue, or comments on
-# the one already open, so the finding does not depend on anyone reading the run
-# log.
+# This workflow checks, each week, what this repository is built from but does
+# not control: the dataset's licence, and ISO Open Data's records of ISO/IEC
+# 42001:2023 and of its normative reference, ISO/IEC 22989:2022, with that
+# reference's amendments in development. Nothing in a pull request can change
+# them, so it runs on a schedule. A failing check fails the run and opens an
+# issue, or comments on the one already open, so the finding does not depend on
+# anyone reading the run log.
 on:  # yamllint disable-line rule:truthy
   schedule:
     - cron: "0 7 * * 1"  # Mondays at 07:00 UTC, after the knowledge workflows.

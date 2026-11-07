@@ -190,7 +190,7 @@ def _lines(url: str):
 
 def _code(text: object) -> str:
     """Text a site chose, such as an address it redirected to or a record's
-    field, as a code span on one line, so it cannot mention a person, add a
+    field, as a code span on one line. The span cannot mention a person, add a
     link or start a new line in the issue the watch opens."""
     return "`" + " ".join(str(text).replace("`", "'").split()) + "`"
 

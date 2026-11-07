@@ -215,9 +215,9 @@ def test_annex_c_values_are_numbered_without_gaps():
 
 
 def test_each_citation_names_something_the_schema_lists():
-    """A clause annotation names a clause of the enum, a control annotation a
-    control of the enum, and an Annex B item one that answers to a control or
-    area, since Annex B numbers its guidance as Annex A numbers its controls."""
+    """A clause annotation names a clause of the enum, and a control annotation
+    a control of the enum. An Annex B item names one that answers to a control
+    or area, since Annex B numbers its guidance as Annex A numbers its controls."""
     schema = _schema()
     clauses = {v["title"] for v in _values("AimsClause").values()}
     controls = {v["title"].split()[0] for v in _values("AimsAnnexAControl").values()}

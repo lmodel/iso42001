@@ -1,10 +1,12 @@
 ---
 # https://pre-commit.com/
-# No hook may rewrite a file this repository does not write by hand: ISO
-# Open Data's records, kept byte for byte so their hashes match; what the LinkML generators and `lokf adapt`
-# write, which the next run would rewrite back; the neighbours' released
-# copies; npm's lockfile for the release tools; and the KTL sidecar's
-# scripts, which the weekly sync replaces.
+# No hook may rewrite a file this repository does not write by hand:
+# - ISO Open Data's records, kept byte for byte so their hashes match;
+# - what the LinkML generators and `lokf adapt` write, which the next run
+#   would rewrite back;
+# - the neighbours' released copies;
+# - npm's lockfile for the release tools;
+# - the KTL sidecar's scripts, which the weekly sync replaces.
 exclude: >-
   (?x)^(
     src/iso42001/schema/iso-open-data/|
