@@ -20,7 +20,7 @@ status: draft
 
 # Mappings and the SSSOM sets
 
-The README lists each mapping, and the schema is the only place that holds them. A class maps closely to the class of lmodel/iso27001 that cites the same clause number, since both standards follow the harmonized structure.[^readme.md] `tests/test_schema_rules.py` checks that each mapping names a class of a released copy, and that each iso27001 mapping cites the same clause number.[^test_schema_rules.py]
+The README lists each mapping, and the schema is the only place they are maintained. A class maps closely to the class of lmodel/iso27001 that cites the same clause number, since both standards follow the harmonized structure.[^readme.md] `tests/test_schema_rules.py` checks that each mapping names a class of a released copy, and that each iso27001 mapping names a class that cites the same clause number.[^test_schema_rules.py]
 
 The seven SSSOM sets were removed: a matching tool wrote their rows, and many named terms or repositories that do not exist.[^readme.md]
 

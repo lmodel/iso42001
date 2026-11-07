@@ -26,12 +26,12 @@ status: draft
 
 File names follow `ClassName-suffix.yaml`.[^readme] A counter-example's first line, `# Fails at: <pointer>`, names where it must fail, so a file that starts failing for another reason fails the test. Every class that is neither abstract nor a mixin has a valid example.[^test_data.py]
 
-The same test file checks the rules no validator checks:
+The same test file checks the rules no validator checks:[^test_data.py]
 
 - within a whole system, no two records share an `aims_id`, and each reference names a record the system holds, of the class it ranges over;
 - a control's area is the area of one of the Annex A controls it answers to;
 - an audit ends on or after the day it begins;
-- a Statement of Applicability lists no Annex A control twice.[^test_data.py]
+- a Statement of Applicability lists no Annex A control twice.
 
 The overview lists those rules for a reader.[^index.md]
 

@@ -21,11 +21,11 @@ status: draft
 
 # Scope
 
-The model leaves out:
+The model leaves out:[^about.md]
 
 - the text of the standard;
 - certification itself, beyond the system's own record of an audit and its status;
-- a fixed method of risk assessment.[^about.md]
+- a fixed method of risk assessment.
 
 The overview lists the rules no validator checks, which the tests check over the examples instead.[^index.md]
 
