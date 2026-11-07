@@ -8,8 +8,10 @@ stage, publishes a new edition, drops a record or changes the licence, and when
 the network fails.
 """
 
+import gzip
 import importlib.util
 import http.client
+import io
 import json
 import urllib.error
 from pathlib import Path
@@ -335,8 +337,6 @@ def test_a_cut_connection_or_short_page_could_not_finish(watch, tmp_path):
 
 def test_a_gzipped_page_is_read(watch, tmp_path):
     """The Internet Archive serves the page gzipped; `_get` unpacks it."""
-    import gzip
-
     body = gzip.compress(b"<p>ok</p>")
 
     class Response:
@@ -410,13 +410,60 @@ def test_an_oversized_dataset_is_refused(watch):
     """The watch stops streaming the dataset at its cap."""
     watch.MAX_DATASET_BYTES = 8
 
-    class Response(list):
-        def __enter__(self):
-            return self
-
-        def __exit__(self, *exc):
-            return False
-
-    watch._open = lambda url: Response([b"{}\n"] * 9)
+    watch._open = lambda url: _Response(b"{}\n" * 9)
     with pytest.raises(ValueError, match="more than 8 bytes"):
+        list(watch._lines(watch.DATASET))
+
+
+class _Response:
+    """A response that serves `body` to `read` and, line by line, to
+    `readline`."""
+
+    def __init__(self, body, url="https://web.archive.org/x"):
+        self.body, self.url = body, url
+        self.stream = io.BytesIO(body)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def read(self, size=-1):
+        return self.body if size < 0 else self.body[:size]
+
+    def readline(self, size=-1):
+        return self.stream.readline(size)
+
+    def geturl(self):
+        return self.url
+
+
+def test_a_page_that_unpacks_past_the_cap_is_refused(watch):
+    """A gzipped page is held to the cap once unpacked, so a small answer
+    cannot unpack to fill memory."""
+    watch.MAX_PAGE_BYTES = 64
+    watch._open = lambda url: _Response(gzip.compress(b"a" * 1000))
+    with pytest.raises(ValueError, match="unpacks to more than 64 bytes"):
+        watch._get("https://web.archive.org/x")
+
+
+def test_a_corrupt_gzipped_page_could_not_finish(watch, tmp_path):
+    """A gzipped page whose data is corrupt is a check that could not finish."""
+    # A gzip header, then a deflate block of a type that does not exist.
+    body = gzip.compress(b"")[:10] + b"\xff" * 16
+    watch._open = lambda url: _Response(body)
+    with pytest.raises(watch.zlib.error):
+        watch._get("https://web.archive.org/x")
+    _stub(watch, _records(), page_error=watch.zlib.error("invalid stored block"))
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert "**The licence check could not finish: `invalid stored block`.**" in text
+
+
+def test_an_overlong_dataset_line_is_refused(watch):
+    """The watch reads no line of the dataset past its own cap."""
+    watch.MAX_LINE_BYTES = 10
+    watch._open = lambda url: _Response(b'{"id":1}\n{"id":2,"long":true}\n')
+    with pytest.raises(ValueError, match="a line of more than 10 bytes"):
         list(watch._lines(watch.DATASET))

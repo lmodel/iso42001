@@ -46,7 +46,6 @@ Usage::
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import html
 import http.client
@@ -56,6 +55,7 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+import zlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -114,7 +114,10 @@ PINNED_LICENCE_URL = "https://opendatacommons.org/licenses/by/1-0/"
 PUBLISHED = 6060
 
 
-# The hosts the script may reach, and the most it reads from each answer.
+# The hosts the script may reach, and the most it reads from each answer. A
+# page is also held to its cap once unpacked, and a dataset line to a cap of
+# its own, since a record is a few kilobytes and a line with no end would
+# fill memory.
 ALLOWED_HOSTS = {
     "isopublicstorageprod.blob.core.windows.net",
     "web.archive.org",
@@ -122,6 +125,7 @@ ALLOWED_HOSTS = {
 }
 MAX_DATASET_BYTES = 300 * 1024 * 1024
 MAX_PAGE_BYTES = 20 * 1024 * 1024
+MAX_LINE_BYTES = 1024 * 1024
 
 
 class _HttpsOnly(urllib.request.HTTPRedirectHandler):
@@ -152,19 +156,34 @@ def _get(url: str) -> tuple[str, bytes]:
     if len(body) > MAX_PAGE_BYTES:
         raise ValueError(f"{url} answered with more than {MAX_PAGE_BYTES} bytes")
     if body[:2] == b"\x1f\x8b":
-        body = gzip.decompress(body)
+        body = _gunzip(body, url)
     return final, body
+
+
+def _gunzip(body: bytes, url: str) -> bytes:
+    """A gzipped body, unpacked to no more than the page cap."""
+    unpack = zlib.decompressobj(wbits=16 + zlib.MAX_WBITS)
+    text = unpack.decompress(body, MAX_PAGE_BYTES + 1)
+    if len(text) > MAX_PAGE_BYTES:
+        raise ValueError(f"{url} unpacks to more than {MAX_PAGE_BYTES} bytes")
+    if not unpack.eof:
+        raise EOFError("Compressed file ended before the end-of-stream marker")
+    return text
 
 
 def _lines(url: str):
     """The dataset's lines, read one at a time from the response."""
     read = 0
     with _open(url) as resp:
-        for raw in resp:
+        while raw := resp.readline(MAX_LINE_BYTES + 1):
             read += len(raw)
             if read > MAX_DATASET_BYTES:
                 raise ValueError(
                     f"{url} answered with more than {MAX_DATASET_BYTES} bytes"
+                )
+            if len(raw) > MAX_LINE_BYTES:
+                raise ValueError(
+                    f"{url} sent a line of more than {MAX_LINE_BYTES} bytes"
                 )
             yield raw.decode("utf-8")
 
@@ -401,8 +420,15 @@ def main(argv: list[str] | None = None) -> int:
             found, needs = check()
         # OSError covers a refused or failed fetch and a timeout,
         # HTTPException a connection cut off mid-dataset, EOFError a gzipped
-        # page cut short, and ValueError a line that is not JSON or UTF-8.
-        except (OSError, http.client.HTTPException, EOFError, ValueError) as err:
+        # page cut short, zlib.error a gzipped page that is corrupt, and
+        # ValueError an answer over a cap or a line that is not JSON or UTF-8.
+        except (
+            OSError,
+            http.client.HTTPException,
+            EOFError,
+            zlib.error,
+            ValueError,
+        ) as err:
             found = [f"- **The {label} check could not finish: {_code(err)}.**"]
             needs = True
         lines += found
