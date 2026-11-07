@@ -79,7 +79,7 @@ subsets:
     description: >-
       The Annex A reference controls, the organization's own controls and the Statement
       of Applicability.
-  aims_ai_systems:
+  aims_ai_system_records:
     description: >-
       The AI systems, their resources, data and documents, and what is told to those who
       use or depend on them (Annex A, areas A.4 and A.6 to A.9).
@@ -747,7 +747,7 @@ enums:
         The standard lets an organization set its own stages, so a process can name its
         own model in aims_development_life_cycle_model.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.6.1.3
     permissible_values:
@@ -1106,7 +1106,7 @@ enums:
   AimsResourceProvider:
     description: Who provides a resource an AI system draws on.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.4.2
     permissible_values:
@@ -1120,7 +1120,7 @@ enums:
   AimsDataCategory:
     description: The parts data can play in machine learning.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.4.3
     permissible_values:
@@ -1137,7 +1137,7 @@ enums:
     description: >-
       Common ways of making data ready for AI: those the guidance names, and other.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.7.6
     permissible_values:
@@ -1163,7 +1163,7 @@ enums:
       Threats to information security peculiar to AI: those the guidance names, and
       other.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.6.2.3, B.6.2.6
     permissible_values:
@@ -1361,7 +1361,7 @@ enums:
       incident of the system itself from one about security of information or about
       privacy.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.8.4
     permissible_values:
@@ -2743,7 +2743,7 @@ classes:
       One AI system under the management system: what it is for, how it is built, run
       and overseen, what it draws on, and what is kept about it.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       iso42001_clause: "4.1"
       annex_a_control: A.6.2.2
@@ -2920,7 +2920,7 @@ classes:
       Something an AI system draws on, told apart by its type, with the stages of the
       system's life that need it and who provides it.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.4.2
     slots:
@@ -2940,7 +2940,7 @@ classes:
     is_a: AimsSystemResource
     description: A part of a system, and how it is joined to the rest.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_b_item: B.4.2
     attributes:
@@ -2957,7 +2957,7 @@ classes:
       Data an AI system draws on: where it came from, what part it plays, how it was
       obtained, made ready and judged fit, and how long it is kept.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.4.3, A.7.3
     attributes:
@@ -3070,7 +3070,7 @@ classes:
     description: >-
       A tool an AI system draws on, such as an algorithm, a model or a development tool.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.4.4
     attributes:
@@ -3093,7 +3093,7 @@ classes:
       Hardware or computing an AI system draws on: what it needs, where it runs and what
       the hardware costs.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.4.5
     attributes:
@@ -3119,7 +3119,7 @@ classes:
     description: >-
       People an AI system draws on: their skills and the work they do on it.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.4.6
     attributes:
@@ -3150,7 +3150,7 @@ classes:
       A process for designing and building an AI system responsibly: the life cycle it
       follows, and what it asks of testing, oversight, data and approvals.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
       - aims_documented_information
     annotations:
       annex_a_control: A.6.1.3
@@ -3218,7 +3218,7 @@ classes:
       A process for using AI systems responsibly: what decides if a system may be used,
       built in-house or brought in.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
       - aims_documented_information
     annotations:
       annex_a_control: A.9.2
@@ -3253,7 +3253,7 @@ classes:
       Technical documents about an AI system for one kind of reader: what they hold, and
       the form they take.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
       - aims_documented_information
     annotations:
       annex_a_control: A.6.2.7
@@ -3290,7 +3290,7 @@ classes:
       What those who use a system are told: the contents, how it reaches them, what
       decided it, and the check that they got it.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
       - aims_documented_information
     annotations:
       annex_a_control: A.8.2
@@ -3330,7 +3330,7 @@ classes:
       The plan for telling users when a system goes wrong: which incidents, how soon, to
       which authorities, and with what details.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
       - aims_documented_information
     annotations:
       annex_a_control: A.8.4
@@ -3369,7 +3369,7 @@ classes:
       Something the organization must report about a system to an interested party: to
       whom, under what rule, what and how soon.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.8.5
     slots:
@@ -4122,7 +4122,7 @@ classes:
       or by someone outside, and the assessment of whether it is an incident. An event
       assessed as an incident is recorded as an AimsIncident.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.8.3
     slots:
@@ -4154,7 +4154,7 @@ classes:
       An event assessed as an incident: what it concerns, how severe it is, what was
       done, who was told, and what was learned.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.8.4
     attributes:
@@ -4213,7 +4213,7 @@ classes:
       The way people raise worries about the organization's part in a system: how it
       keeps them safe, who looks into a worry, and how fast it answers.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
       - aims_documented_information
     annotations:
       annex_a_control: A.3.3
@@ -4251,7 +4251,7 @@ classes:
       One worry someone raised about the organization's part in a system, and how it was
       looked into and settled.
     in_subset:
-      - aims_ai_systems
+      - aims_ai_system_records
     annotations:
       annex_a_control: A.3.3
     slots:

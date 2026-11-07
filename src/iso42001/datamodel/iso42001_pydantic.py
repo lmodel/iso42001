@@ -137,14 +137,15 @@ linkml_meta = LinkMLMeta({'annotations': {'edition': {'tag': 'edition', 'value':
                   'https://www.iso.org/standard/74296.html'],
      'source': 'https://www.iso.org/standard/81230.html',
      'source_file': 'src/iso42001/schema/iso42001.yaml',
-     'subsets': {'aims_ai_systems': {'description': 'The AI systems, their '
-                                                    'resources, data and '
-                                                    'documents, and what is told '
-                                                    'to those who use or depend on '
-                                                    'them (Annex A, areas A.4 and '
-                                                    'A.6 to A.9).',
-                                     'from_schema': 'https://w3id.org/lmodel/iso42001',
-                                     'name': 'aims_ai_systems'},
+     'subsets': {'aims_ai_system_records': {'description': 'The AI systems, their '
+                                                           'resources, data and '
+                                                           'documents, and what is '
+                                                           'told to those who use '
+                                                           'or depend on them '
+                                                           '(Annex A, areas A.4 '
+                                                           'and A.6 to A.9).',
+                                            'from_schema': 'https://w3id.org/lmodel/iso42001',
+                                            'name': 'aims_ai_system_records'},
                  'aims_annex_a': {'description': 'The Annex A reference controls, '
                                                  "the organization's own controls "
                                                  'and the Statement of '
@@ -3112,7 +3113,7 @@ class AimsAiSystem(AimsRecordMixin):
                                              'value': 'A.6.2.2'},
                          'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems'],
+         'in_subset': ['aims_ai_system_records'],
          'mixins': ['AimsRecordMixin']})
 
     aims_relevant_controls: Optional[list[str]] = Field(default=None, description="""The organization's controls that the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsTopicSpecificPolicy',
@@ -3227,7 +3228,7 @@ class AimsSystemResource(AimsRecordMixin):
          'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.4.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems'],
+         'in_subset': ['aims_ai_system_records'],
          'mixins': ['AimsRecordMixin'],
          'slot_usage': {'aims_resource_type': {'name': 'aims_resource_type',
                                                'required': True}}})
@@ -3268,7 +3269,7 @@ class AimsComponentResource(AimsSystemResource):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems']})
+         'in_subset': ['aims_ai_system_records']})
 
     aims_component_kind: Optional[str] = Field(default=None, description="""What kind of part it is.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsComponentResource']} })
     aims_component_integration: Optional[str] = Field(default=None, description="""How the part is joined to the system.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.10.3'}},
@@ -3310,7 +3311,7 @@ class AimsDataResource(AimsSystemResource):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.4.3, A.7.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems']})
+         'in_subset': ['aims_ai_system_records']})
 
     aims_data_categories: Optional[list[AimsDataCategory]] = Field(default=None, description="""The parts the data plays in machine learning.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.3'}},
          'domain_of': ['AimsDataResource']} })
@@ -3398,7 +3399,7 @@ class AimsToolingResource(AimsSystemResource):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.4.4'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems']})
+         'in_subset': ['aims_ai_system_records']})
 
     aims_tool_category: Optional[str] = Field(default=None, description="""What kind of tool it is, such as a model or an evaluation method.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.4'}},
          'domain_of': ['AimsToolingResource']} })
@@ -3443,7 +3444,7 @@ class AimsComputingResource(AimsSystemResource):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.4.5'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems']})
+         'in_subset': ['aims_ai_system_records']})
 
     aims_computing_requirements: Optional[str] = Field(default=None, description="""What the system needs in order to run, such as on a small device.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.4.5'}},
          'domain_of': ['AimsComputingResource']} })
@@ -3490,7 +3491,7 @@ class AimsHumanResource(AimsSystemResource):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.4.6'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems']})
+         'in_subset': ['aims_ai_system_records']})
 
     aims_human_role: Optional[str] = Field(default=None, description="""The role these people hold.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsHumanResource']} })
     aims_human_competences: Optional[list[str]] = Field(default=None, description="""The skills they bring.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_a_control': {'tag': 'annex_a_control',
@@ -3538,7 +3539,7 @@ class AimsDevelopmentProcess(AimsDocumentControlMixin, AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.6.1.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'in_subset': ['aims_ai_system_records', 'aims_documented_information'],
          'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
@@ -3663,7 +3664,7 @@ class AimsResponsibleUseProcess(AimsDocumentControlMixin, AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.9.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'in_subset': ['aims_ai_system_records', 'aims_documented_information'],
          'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
@@ -3774,7 +3775,7 @@ class AimsTechnicalDocumentation(AimsDocumentControlMixin, AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.6.2.7'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'in_subset': ['aims_ai_system_records', 'aims_documented_information'],
          'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
@@ -3887,7 +3888,7 @@ class AimsUserInformation(AimsDocumentControlMixin, AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.8.2'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'in_subset': ['aims_ai_system_records', 'aims_documented_information'],
          'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
@@ -3998,7 +3999,7 @@ class AimsIncidentCommunicationPlan(AimsDocumentControlMixin, AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.8.4'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'in_subset': ['aims_ai_system_records', 'aims_documented_information'],
          'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
@@ -4111,7 +4112,7 @@ class AimsReportingObligation(AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.8.5'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems'],
+         'in_subset': ['aims_ai_system_records'],
          'mixins': ['AimsRecordMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
@@ -5599,7 +5600,7 @@ class AimsSystemEvent(AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.8.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems'],
+         'in_subset': ['aims_ai_system_records'],
          'mixins': ['AimsRecordMixin'],
          'slot_usage': {'aims_event_type': {'name': 'aims_event_type',
                                             'required': True}}})
@@ -5660,7 +5661,7 @@ class AimsIncident(AimsSystemEvent):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.8.4'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems']})
+         'in_subset': ['aims_ai_system_records']})
 
     aims_incident_category: Optional[AimsIncidentCategory] = Field(default=None, description="""What the incident concerns.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.8.4'}},
          'domain_of': ['AimsIncident']} })
@@ -5735,7 +5736,7 @@ class AimsConcernReportingProcess(AimsDocumentControlMixin, AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.3.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems', 'aims_documented_information'],
+         'in_subset': ['aims_ai_system_records', 'aims_documented_information'],
          'mixins': ['AimsRecordMixin', 'AimsDocumentControlMixin']})
 
     aims_concern_process_confidentiality: Optional[list[str]] = Field(default=None, description="""The ways a person can stay unnamed or keep a report private.""", json_schema_extra = { "linkml_meta": {'annotations': {'annex_b_item': {'tag': 'annex_b_item', 'value': 'B.3.3'}},
@@ -5835,7 +5836,7 @@ class AimsConcernReport(AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.3.3'}},
          'from_schema': 'https://w3id.org/lmodel/iso42001',
-         'in_subset': ['aims_ai_systems'],
+         'in_subset': ['aims_ai_system_records'],
          'mixins': ['AimsRecordMixin']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',

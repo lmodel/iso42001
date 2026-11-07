@@ -98,8 +98,8 @@
       "@type": "SubsetDefinition"
     },
     {
-      "name": "aims_ai_systems",
-      "definition_uri": "https://w3id.org/lmodel/iso42001/AimsAiSystems",
+      "name": "aims_ai_system_records",
+      "definition_uri": "https://w3id.org/lmodel/iso42001/AimsAiSystemRecords",
       "description": "The AI systems, their resources, data and documents, and what is told to those who use or depend on them (Annex A, areas A.4 and A.6 to A.9).",
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "@type": "SubsetDefinition"
@@ -1319,7 +1319,7 @@
         "The standard lets an organization set its own stages, so a process can name its own model in aims_development_life_cycle_model."
       ],
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "permissible_values": [
@@ -2109,7 +2109,7 @@
       ],
       "description": "Who provides a resource an AI system draws on.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "permissible_values": [
@@ -2138,7 +2138,7 @@
       ],
       "description": "The parts data can play in machine learning.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "permissible_values": [
@@ -2171,7 +2171,7 @@
       ],
       "description": "Common ways of making data ready for AI: those the guidance names, and other.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "permissible_values": [
@@ -2220,7 +2220,7 @@
       ],
       "description": "Threats to information security peculiar to AI: those the guidance names, and other.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "permissible_values": [
@@ -2576,7 +2576,7 @@
       ],
       "description": "What an incident involving an AI system concerns. ISO/IEC 42001 tells apart an incident of the system itself from one about security of information or about privacy.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "permissible_values": [
@@ -14723,7 +14723,7 @@
       ],
       "description": "One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on, and what is kept about it.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "mixins": [
@@ -15175,7 +15175,7 @@
       ],
       "description": "Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "abstract": true,
@@ -15221,7 +15221,7 @@
       ],
       "description": "A part of a system, and how it is joined to the rest.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
@@ -15270,7 +15270,7 @@
       ],
       "description": "Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged fit, and how long it is kept.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
@@ -15593,7 +15593,7 @@
       ],
       "description": "A tool an AI system draws on, such as an algorithm, a model or a development tool.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
@@ -15660,7 +15660,7 @@
       ],
       "description": "Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
@@ -15742,7 +15742,7 @@
       ],
       "description": "People an AI system draws on: their skills and the work they do on it.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemResource",
@@ -15820,7 +15820,7 @@
       ],
       "description": "A process for designing and building an AI system responsibly: the life cycle it follows, and what it asks of testing, oversight, data and approvals.",
       "in_subset": [
-        "aims_ai_systems",
+        "aims_ai_system_records",
         "aims_documented_information"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -16019,7 +16019,7 @@
       ],
       "description": "A process for using AI systems responsibly: what decides if a system may be used, built in-house or brought in.",
       "in_subset": [
-        "aims_ai_systems",
+        "aims_ai_system_records",
         "aims_documented_information"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -16126,7 +16126,7 @@
       ],
       "description": "Technical documents about an AI system for one kind of reader: what they hold, and the form they take.",
       "in_subset": [
-        "aims_ai_systems",
+        "aims_ai_system_records",
         "aims_documented_information"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -16232,7 +16232,7 @@
       ],
       "description": "What those who use a system are told: the contents, how it reaches them, what decided it, and the check that they got it.",
       "in_subset": [
-        "aims_ai_systems",
+        "aims_ai_system_records",
         "aims_documented_information"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -16340,7 +16340,7 @@
       ],
       "description": "The plan for telling users when a system goes wrong: which incidents, how soon, to which authorities, and with what details.",
       "in_subset": [
-        "aims_ai_systems",
+        "aims_ai_system_records",
         "aims_documented_information"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -16461,7 +16461,7 @@
       ],
       "description": "Something the organization must report about a system to an interested party: to whom, under what rule, what and how soon.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "mixins": [
@@ -18441,7 +18441,7 @@
       ],
       "description": "Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "mixins": [
@@ -18510,7 +18510,7 @@
       ],
       "description": "An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was learned.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "is_a": "AimsSystemEvent",
@@ -18657,7 +18657,7 @@
       ],
       "description": "The way people raise worries about the organization's part in a system: how it keeps them safe, who looks into a worry, and how fast it answers.",
       "in_subset": [
-        "aims_ai_systems",
+        "aims_ai_system_records",
         "aims_documented_information"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -18787,7 +18787,7 @@
       ],
       "description": "One worry someone raised about the organization's part in a system, and how it was looked into and settled.",
       "in_subset": [
-        "aims_ai_systems"
+        "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "mixins": [
@@ -18914,8 +18914,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "iso42001.yaml",
-  "source_file_date": "2026-11-05T10:56:34",
-  "source_file_size": 149820,
+  "source_file_date": "2026-11-07T00:56:52",
+  "source_file_size": 149988,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/iso42001.context.jsonld",
