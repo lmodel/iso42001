@@ -50,14 +50,21 @@ NUMBER_KEYS = {
 }
 # A value of a number key that names no single number.
 NOT_A_NUMBER = {"Annex A"}
+# The enums whose values cite the standard by the number that opens their title,
+# such as "6.1.2" or "A.2.2 Written direction on AI".
+NUMBERED_ENUMS = ("AimsClause", "AimsControlArea", "AimsAnnexAControl")
+TITLE_NUMBER = re.compile(r"(?:A\.)?\d+(?:\.\d+)*")
 
-# The Markdown this project writes, and its NOTICE.
+# The Markdown this project writes, its NOTICE and llms.txt, and the example
+# records, whose titles and descriptions are this project's words too.
 PROSE = (
-    "README.md",
+    "*.md",
     "NOTICE",
+    "llms.txt",
     "docs/*.md",
     "src/iso42001/schema/*.md",
     ".lokf/knowledge/**/*.md",
+    "tests/data/**/*.yaml",
 )
 
 
@@ -95,17 +102,25 @@ def schema_texts(node, path: str = "schema"):
             yield from schema_texts(item, path)
 
 
-def schema_numbers(node):
-    """Each clause, control or annex item number the schema cites."""
+def schema_numbers(node, top: bool = True):
+    """Each clause, control or annex item number the schema cites, in an
+    annotation or as the number that opens a numbered enum value's title."""
+    if top and isinstance(node, dict):
+        for enum in NUMBERED_ENUMS:
+            values = (node.get("enums") or {}).get(enum, {}).get("permissible_values")
+            for value in (values or {}).values():
+                found = TITLE_NUMBER.match(str((value or {}).get("title", "")))
+                if found:
+                    yield found.group()
     if isinstance(node, dict):
         for key, value in node.items():
             if key in NUMBER_KEYS and isinstance(value, str):
                 yield from (n for n in value.split(", ") if n not in NOT_A_NUMBER)
             else:
-                yield from schema_numbers(value)
+                yield from schema_numbers(value, top=False)
     elif isinstance(node, list):
         for item in node:
-            yield from schema_numbers(item)
+            yield from schema_numbers(item, top=False)
 
 
 def repository_texts(root: Path = ROOT):

@@ -82,6 +82,8 @@ def test_the_script_reads_the_schema_text_and_the_prose(overlap):
     assert "schema/enums/AimsAnnexAControl/permissible_values/a_2_2/title" in places
     assert "README.md" in places
     assert "NOTICE" in places
+    assert {"CHANGELOG.md", "CONTRIBUTING.md", "llms.txt"} <= places
+    assert any(where.startswith("tests/data/valid/") for where in places)
 
 
 def test_every_cited_number_is_checked(overlap):
@@ -92,6 +94,18 @@ def test_every_cited_number_is_checked(overlap):
     assert {"4.1", "A.2.2", "A.2", "A.6.1", "B.5.4", "C.2.1", "D.2"} <= numbers
     assert "Annex A" not in numbers
     assert all(" " not in number for number in numbers)
+
+
+def test_the_numbered_enums_cite_by_title(overlap):
+    """Every value of the clause, area and control enums gives the number that
+    opens its title, so a number the source lacks is caught there too."""
+    schema = yaml.safe_load(overlap.SCHEMA.read_text(encoding="utf-8"))
+    numbers = set(overlap.schema_numbers(schema))
+    for enum in overlap.NUMBERED_ENUMS:
+        values = schema["enums"][enum]["permissible_values"].values()
+        titles = {overlap.TITLE_NUMBER.match(v["title"]).group() for v in values}
+        assert titles <= numbers, enum
+    assert {"6.1.2", "9.3.3", "10.2", "A.10.4"} <= numbers
 
 
 def _source_with_every_number(overlap):
