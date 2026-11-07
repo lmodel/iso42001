@@ -155,7 +155,7 @@ iso42001:AimsAiRole a owl:Class ;
 	iso42001:iso42001_clause "4.1" .
 iso42001:AimsAiSystem a owl:Class ;
 	rdfs:label "AimsAiSystem" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1031 , _:c14n1069 , _:c14n1110 , _:c14n1116 , _:c14n1135 , _:c14n1201 , _:c14n1226 , _:c14n1238 , _:c14n1265 , _:c14n1301 , _:c14n1307 , _:c14n1351 , _:c14n1376 , _:c14n1404 , _:c14n1412 , _:c14n1428 , _:c14n1472 , _:c14n1512 , _:c14n1526 , _:c14n1554 , _:c14n1564 , _:c14n1569 , _:c14n1578 , _:c14n1598 , _:c14n1630 , _:c14n1638 , _:c14n1642 , _:c14n1655 , _:c14n1670 , _:c14n1684 , _:c14n1686 , _:c14n1698 , _:c14n170 , _:c14n1701 , _:c14n1729 , _:c14n1764 , _:c14n1765 , _:c14n1768 , _:c14n187 , _:c14n191 , _:c14n205 , _:c14n243 , _:c14n250 , _:c14n276 , _:c14n291 , _:c14n335 , _:c14n348 , _:c14n358 , _:c14n39 , _:c14n4 , _:c14n410 , _:c14n473 , _:c14n483 , _:c14n488 , _:c14n506 , _:c14n517 , _:c14n522 , _:c14n526 , _:c14n623 , _:c14n65 , _:c14n664 , _:c14n684 , _:c14n711 , _:c14n75 , _:c14n77 , _:c14n777 , _:c14n795 , _:c14n809 , _:c14n826 , _:c14n837 , _:c14n89 , _:c14n894 , _:c14n913 , _:c14n959 , _:c14n962 , _:c14n987 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1031 , _:c14n1069 , _:c14n1110 , _:c14n1116 , _:c14n1135 , _:c14n1201 , _:c14n1226 , _:c14n1238 , _:c14n1265 , _:c14n1301 , _:c14n1307 , _:c14n1351 , _:c14n1376 , _:c14n1404 , _:c14n1412 , _:c14n1428 , _:c14n1472 , _:c14n1512 , _:c14n1526 , _:c14n1554 , _:c14n1564 , _:c14n1569 , _:c14n1578 , _:c14n1598 , _:c14n1630 , _:c14n1638 , _:c14n1642 , _:c14n1655 , _:c14n1670 , _:c14n1684 , _:c14n1686 , _:c14n1698 , _:c14n170 , _:c14n1701 , _:c14n1729 , _:c14n1764 , _:c14n1765 , _:c14n1768 , _:c14n187 , _:c14n191 , _:c14n205 , _:c14n243 , _:c14n250 , _:c14n276 , _:c14n291 , _:c14n335 , _:c14n348 , _:c14n358 , _:c14n39 , _:c14n4 , _:c14n410 , _:c14n474 , _:c14n484 , _:c14n489 , _:c14n507 , _:c14n518 , _:c14n523 , _:c14n527 , _:c14n624 , _:c14n65 , _:c14n665 , _:c14n685 , _:c14n712 , _:c14n75 , _:c14n77 , _:c14n778 , _:c14n796 , _:c14n810 , _:c14n827 , _:c14n838 , _:c14n89 , _:c14n895 , _:c14n914 , _:c14n960 , _:c14n963 , _:c14n988 ;
 	skos:definition "One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on, and what is kept about it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.6.2.2" ;
@@ -178,7 +178,7 @@ iso42001:AimsAiThreat\#other a owl:Class ;
 	skos:definition "A threat the organization names for itself." .
 iso42001:AimsAiThreat a owl:Class ;
 	rdfs:label "AimsAiThreat" ;
-	owl:unionOf _:c14n765 ;
+	owl:unionOf _:c14n766 ;
 	skos:definition "Threats to information security peculiar to AI: those the guidance names, and other." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsAiThreat\#data_poisoning , iso42001:AimsAiThreat\#model_inversion , iso42001:AimsAiThreat\#model_stealing , iso42001:AimsAiThreat\#other ;
@@ -422,7 +422,7 @@ iso42001:AimsAnnexAControl\#a_9_4 dcterms:title "A.9.4 Staying within documented
 	iso42001:area "responsible_use" .
 iso42001:AimsAnnexAControl a owl:Class ;
 	rdfs:label "AimsAnnexAControl" ;
-	owl:unionOf _:c14n513 ;
+	owl:unionOf _:c14n514 ;
 	skos:definition "The 38 reference controls of Annex A, by number. A value's title holds the number and a name of this project's own, and its description says in this project's words what the control asks for." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	skos:note "The headings and the control text are ISO's, and appear nowhere here." ;
@@ -431,7 +431,7 @@ iso42001:AimsAnnexAControl a owl:Class ;
 	iso42001:iso42001_clause "Annex A" .
 iso42001:AimsApplicabilityEntry a owl:Class ;
 	rdfs:label "AimsApplicabilityEntry" ;
-	rdfs:subClassOf _:c14n1035 , _:c14n1271 , _:c14n1350 , _:c14n137 , _:c14n1432 , _:c14n1514 , _:c14n1628 , _:c14n449 , _:c14n591 , _:c14n709 , _:c14n72 , _:c14n980 ;
+	rdfs:subClassOf _:c14n1035 , _:c14n1271 , _:c14n1350 , _:c14n137 , _:c14n1432 , _:c14n1514 , _:c14n1628 , _:c14n449 , _:c14n592 , _:c14n710 , _:c14n72 , _:c14n981 ;
 	skos:closeMatch iso27001:IsmsApplicabilityEntry ;
 	skos:definition "One entry of the Statement of Applicability, which either includes a control or leaves one out, and says why." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -439,7 +439,7 @@ iso42001:AimsApplicabilityEntry a owl:Class ;
 	iso42001:iso42001_clause "6.1.3" .
 iso42001:AimsAudit a owl:Class ;
 	rdfs:label "AimsAudit" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1015 , _:c14n1039 , _:c14n1052 , _:c14n107 , _:c14n1084 , _:c14n1149 , _:c14n1182 , _:c14n119 , _:c14n1285 , _:c14n1357 , _:c14n1392 , _:c14n1431 , _:c14n1468 , _:c14n1476 , _:c14n1510 , _:c14n1547 , _:c14n1611 , _:c14n1647 , _:c14n1679 , _:c14n1688 , _:c14n1707 , _:c14n1743 , _:c14n193 , _:c14n227 , _:c14n281 , _:c14n337 , _:c14n338 , _:c14n380 , _:c14n5 , _:c14n514 , _:c14n545 , _:c14n824 , _:c14n88 , _:c14n908 , _:c14n921 , _:c14n925 , _:c14n956 , _:c14n965 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1015 , _:c14n1039 , _:c14n1052 , _:c14n107 , _:c14n1084 , _:c14n1149 , _:c14n1182 , _:c14n119 , _:c14n1285 , _:c14n1357 , _:c14n1392 , _:c14n1431 , _:c14n1468 , _:c14n1476 , _:c14n1510 , _:c14n1547 , _:c14n1611 , _:c14n1647 , _:c14n1679 , _:c14n1688 , _:c14n1707 , _:c14n1743 , _:c14n193 , _:c14n227 , _:c14n281 , _:c14n337 , _:c14n338 , _:c14n380 , _:c14n5 , _:c14n515 , _:c14n546 , _:c14n825 , _:c14n88 , _:c14n909 , _:c14n922 , _:c14n926 , _:c14n957 , _:c14n966 ;
 	skos:closeMatch iso27001:IsmsAudit ;
 	skos:definition "An audit of the system: an internal audit, or one by a customer or a certification body, with its scope, criteria, team, findings and conclusion." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -447,7 +447,7 @@ iso42001:AimsAudit a owl:Class ;
 	iso42001:iso42001_clause "9.2" .
 iso42001:AimsAuditFinding a owl:Class ;
 	rdfs:label "AimsAuditFinding" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1002 , _:c14n1007 , _:c14n1041 , _:c14n1082 , _:c14n11 , _:c14n110 , _:c14n1125 , _:c14n1127 , _:c14n1188 , _:c14n1375 , _:c14n1378 , _:c14n1395 , _:c14n1420 , _:c14n1447 , _:c14n1500 , _:c14n1523 , _:c14n156 , _:c14n157 , _:c14n1573 , _:c14n1618 , _:c14n1631 , _:c14n1661 , _:c14n1676 , _:c14n1726 , _:c14n1775 , _:c14n20 , _:c14n301 , _:c14n495 , _:c14n530 , _:c14n563 , _:c14n600 , _:c14n700 , _:c14n713 , _:c14n990 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1003 , _:c14n1007 , _:c14n1041 , _:c14n1082 , _:c14n11 , _:c14n110 , _:c14n1125 , _:c14n1127 , _:c14n1188 , _:c14n1375 , _:c14n1378 , _:c14n1395 , _:c14n1420 , _:c14n1447 , _:c14n1500 , _:c14n1523 , _:c14n156 , _:c14n157 , _:c14n1573 , _:c14n1618 , _:c14n1631 , _:c14n1661 , _:c14n1676 , _:c14n1726 , _:c14n1775 , _:c14n20 , _:c14n301 , _:c14n496 , _:c14n531 , _:c14n564 , _:c14n601 , _:c14n701 , _:c14n714 , _:c14n991 ;
 	skos:closeMatch iso27001:IsmsAuditFinding ;
 	skos:definition "One finding of an audit: a nonconformity, an observation or a strength, with the requirement or control it concerns, its evidence and how it is closed." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -477,7 +477,7 @@ iso42001:AimsAuditFindingType a owl:Class ;
 	linkml:permissible_values iso42001:AimsAuditFindingType\#major_nonconformity , iso42001:AimsAuditFindingType\#minor_nonconformity , iso42001:AimsAuditFindingType\#observation , iso42001:AimsAuditFindingType\#positive_finding .
 iso42001:AimsAuditProgramme a owl:Class ;
 	rdfs:label "AimsAuditProgramme" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1145 , _:c14n1204 , _:c14n121 , _:c14n1294 , _:c14n1502 , _:c14n1558 , _:c14n1572 , _:c14n1658 , _:c14n210 , _:c14n283 , _:c14n32 , _:c14n408 , _:c14n520 , _:c14n532 , _:c14n559 , _:c14n571 , _:c14n675 , _:c14n693 , _:c14n712 , _:c14n715 , _:c14n85 , _:c14n880 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1145 , _:c14n1204 , _:c14n121 , _:c14n1294 , _:c14n1502 , _:c14n1558 , _:c14n1572 , _:c14n1658 , _:c14n210 , _:c14n283 , _:c14n32 , _:c14n408 , _:c14n521 , _:c14n533 , _:c14n560 , _:c14n572 , _:c14n676 , _:c14n694 , _:c14n713 , _:c14n716 , _:c14n85 , _:c14n881 ;
 	skos:closeMatch iso27001:IsmsAuditProgramme ;
 	skos:definition "A programme of internal audits: the audits planned over a period, how often and why, and the resources and auditors they need." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -504,7 +504,7 @@ iso42001:AimsAuditType a owl:Class ;
 	iso42001:iso42001_clause "9.2" .
 iso42001:AimsAwarenessProgramme a owl:Class ;
 	rdfs:label "AimsAwarenessProgramme" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1252 , _:c14n1281 , _:c14n1302 , _:c14n1313 , _:c14n1434 , _:c14n1449 , _:c14n1520 , _:c14n174 , _:c14n357 , _:c14n36 , _:c14n493 , _:c14n565 , _:c14n666 , _:c14n699 , _:c14n760 , _:c14n945 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1252 , _:c14n1281 , _:c14n1302 , _:c14n1313 , _:c14n1434 , _:c14n1449 , _:c14n1520 , _:c14n174 , _:c14n357 , _:c14n36 , _:c14n494 , _:c14n566 , _:c14n667 , _:c14n700 , _:c14n761 , _:c14n946 ;
 	skos:closeMatch iso27001:IsmsAwarenessProgramme ;
 	skos:definition "The programme that tells people working for the organization about the AI policy, their part in the system and what failing it would mean." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -732,46 +732,46 @@ iso42001:AimsClause a owl:Class ;
 	linkml:permissible_values iso42001:AimsClause\#clause_10 , iso42001:AimsClause\#clause_10_1 , iso42001:AimsClause\#clause_10_2 , iso42001:AimsClause\#clause_4 , iso42001:AimsClause\#clause_4_1 , iso42001:AimsClause\#clause_4_2 , iso42001:AimsClause\#clause_4_3 , iso42001:AimsClause\#clause_4_4 , iso42001:AimsClause\#clause_5 , iso42001:AimsClause\#clause_5_1 , iso42001:AimsClause\#clause_5_2 , iso42001:AimsClause\#clause_5_3 , iso42001:AimsClause\#clause_6 , iso42001:AimsClause\#clause_6_1 , iso42001:AimsClause\#clause_6_1_1 , iso42001:AimsClause\#clause_6_1_2 , iso42001:AimsClause\#clause_6_1_3 , iso42001:AimsClause\#clause_6_1_4 , iso42001:AimsClause\#clause_6_2 , iso42001:AimsClause\#clause_6_3 , iso42001:AimsClause\#clause_7 , iso42001:AimsClause\#clause_7_1 , iso42001:AimsClause\#clause_7_2 , iso42001:AimsClause\#clause_7_3 , iso42001:AimsClause\#clause_7_4 , iso42001:AimsClause\#clause_7_5 , iso42001:AimsClause\#clause_7_5_1 , iso42001:AimsClause\#clause_7_5_2 , iso42001:AimsClause\#clause_7_5_3 , iso42001:AimsClause\#clause_8 , iso42001:AimsClause\#clause_8_1 , iso42001:AimsClause\#clause_8_2 , iso42001:AimsClause\#clause_8_3 , iso42001:AimsClause\#clause_8_4 , iso42001:AimsClause\#clause_9 , iso42001:AimsClause\#clause_9_1 , iso42001:AimsClause\#clause_9_2 , iso42001:AimsClause\#clause_9_2_1 , iso42001:AimsClause\#clause_9_2_2 , iso42001:AimsClause\#clause_9_3 , iso42001:AimsClause\#clause_9_3_1 , iso42001:AimsClause\#clause_9_3_2 , iso42001:AimsClause\#clause_9_3_3 .
 iso42001:AimsCommunication a owl:Class ;
 	rdfs:label "AimsCommunication" ;
-	rdfs:subClassOf _:c14n1045 , _:c14n1144 , _:c14n1162 , _:c14n1290 , _:c14n1397 , _:c14n1427 , _:c14n1456 , _:c14n1480 , _:c14n1521 , _:c14n1609 , _:c14n207 , _:c14n244 , _:c14n28 , _:c14n305 , _:c14n352 , _:c14n370 , _:c14n451 , _:c14n457 , _:c14n590 , _:c14n649 , _:c14n702 , _:c14n763 , _:c14n841 , _:c14n885 ;
+	rdfs:subClassOf _:c14n1045 , _:c14n1144 , _:c14n1162 , _:c14n1290 , _:c14n1397 , _:c14n1427 , _:c14n1456 , _:c14n1480 , _:c14n1521 , _:c14n1609 , _:c14n207 , _:c14n244 , _:c14n28 , _:c14n305 , _:c14n352 , _:c14n370 , _:c14n451 , _:c14n458 , _:c14n591 , _:c14n650 , _:c14n703 , _:c14n764 , _:c14n842 , _:c14n886 ;
 	skos:closeMatch iso27001:IsmsCommunication ;
 	skos:definition "One communication the plan provides for: what about, to whom, when, how, and who communicates." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "7.4" .
 iso42001:AimsCommunicationPlan a owl:Class ;
 	rdfs:label "AimsCommunicationPlan" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1657 , _:c14n881 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1657 , _:c14n882 ;
 	skos:closeMatch iso27001:IsmsCommunicationPlan ;
 	skos:definition "The plan for communication about the system, inside the organization and outside it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "7.4" .
 iso42001:AimsCompetenceRecord a owl:Class ;
 	rdfs:label "AimsCompetenceRecord" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1390 , _:c14n1435 , _:c14n1527 , _:c14n1625 , _:c14n1660 , _:c14n1741 , _:c14n182 , _:c14n224 , _:c14n355 , _:c14n374 , _:c14n385 , _:c14n447 , _:c14n479 , _:c14n486 , _:c14n500 , _:c14n533 , _:c14n588 , _:c14n608 , _:c14n716 , _:c14n787 , _:c14n831 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1390 , _:c14n1435 , _:c14n1527 , _:c14n1625 , _:c14n1660 , _:c14n1741 , _:c14n182 , _:c14n224 , _:c14n355 , _:c14n374 , _:c14n385 , _:c14n447 , _:c14n480 , _:c14n487 , _:c14n501 , _:c14n534 , _:c14n589 , _:c14n609 , _:c14n717 , _:c14n788 , _:c14n832 ;
 	skos:closeMatch iso27001:IsmsCompetenceRecord ;
 	skos:definition "The evidence of one person's competence for work that affects AI performance, and what is done to close any gap." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "7.2" .
 iso42001:AimsComponentResource a owl:Class ;
 	rdfs:label "AimsComponentResource" ;
-	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1107 , _:c14n136 , _:c14n158 , _:c14n267 , _:c14n508 , _:c14n891 ;
+	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1107 , _:c14n136 , _:c14n158 , _:c14n267 , _:c14n509 , _:c14n892 ;
 	skos:definition "A part of a system, and how it is joined to the rest." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_b_item "B.4.2" .
 iso42001:AimsComputingResource a owl:Class ;
 	rdfs:label "AimsComputingResource" ;
-	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1608 , _:c14n2 , _:c14n266 , _:c14n30 , _:c14n453 , _:c14n529 , _:c14n55 , _:c14n73 , _:c14n833 , _:c14n838 , _:c14n866 , _:c14n977 ;
+	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1608 , _:c14n2 , _:c14n266 , _:c14n30 , _:c14n454 , _:c14n530 , _:c14n55 , _:c14n73 , _:c14n834 , _:c14n839 , _:c14n867 , _:c14n978 ;
 	skos:definition "Hardware or computing an AI system draws on: what it needs, where it runs and what the hardware costs." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.4.5" .
 iso42001:AimsConcernReport a owl:Class ;
 	rdfs:label "AimsConcernReport" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1004 , _:c14n1021 , _:c14n1050 , _:c14n1070 , _:c14n1074 , _:c14n1152 , _:c14n1190 , _:c14n12 , _:c14n1362 , _:c14n1398 , _:c14n1416 , _:c14n1461 , _:c14n1473 , _:c14n1550 , _:c14n1556 , _:c14n1623 , _:c14n1635 , _:c14n1640 , _:c14n1733 , _:c14n1744 , _:c14n1761 , _:c14n1772 , _:c14n223 , _:c14n226 , _:c14n228 , _:c14n239 , _:c14n303 , _:c14n319 , _:c14n342 , _:c14n376 , _:c14n411 , _:c14n419 , _:c14n464 , _:c14n470 , _:c14n507 , _:c14n606 , _:c14n610 , _:c14n627 , _:c14n648 , _:c14n667 , _:c14n723 , _:c14n747 , _:c14n758 , _:c14n79 , _:c14n915 , _:c14n954 , _:c14n969 , _:c14n973 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1005 , _:c14n1021 , _:c14n1050 , _:c14n1070 , _:c14n1074 , _:c14n1152 , _:c14n1190 , _:c14n12 , _:c14n1362 , _:c14n1398 , _:c14n1416 , _:c14n1461 , _:c14n1473 , _:c14n1550 , _:c14n1556 , _:c14n1623 , _:c14n1635 , _:c14n1640 , _:c14n1733 , _:c14n1744 , _:c14n1761 , _:c14n1772 , _:c14n223 , _:c14n226 , _:c14n228 , _:c14n239 , _:c14n303 , _:c14n319 , _:c14n342 , _:c14n376 , _:c14n411 , _:c14n419 , _:c14n465 , _:c14n471 , _:c14n508 , _:c14n607 , _:c14n611 , _:c14n628 , _:c14n649 , _:c14n668 , _:c14n724 , _:c14n748 , _:c14n759 , _:c14n79 , _:c14n916 , _:c14n955 , _:c14n970 , _:c14n974 ;
 	skos:definition "One worry someone raised about the organization's part in a system, and how it was looked into and settled." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.3.3" .
 iso42001:AimsConcernReportingProcess a owl:Class ;
 	rdfs:label "AimsConcernReportingProcess" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1003 , _:c14n1019 , _:c14n1083 , _:c14n1103 , _:c14n1382 , _:c14n1486 , _:c14n1508 , _:c14n1509 , _:c14n1534 , _:c14n165 , _:c14n334 , _:c14n448 , _:c14n46 , _:c14n688 , _:c14n843 , _:c14n850 , _:c14n892 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1004 , _:c14n1019 , _:c14n1083 , _:c14n1103 , _:c14n1382 , _:c14n1486 , _:c14n1508 , _:c14n1509 , _:c14n1534 , _:c14n165 , _:c14n334 , _:c14n448 , _:c14n46 , _:c14n689 , _:c14n844 , _:c14n851 , _:c14n893 ;
 	skos:definition "The way people raise worries about the organization's part in a system: how it keeps them safe, who looks into a worry, and how fast it answers." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.3.3" .
@@ -808,7 +808,7 @@ iso42001:AimsConsequence a owl:Class ;
 	linkml:permissible_values iso42001:AimsConsequence\#major , iso42001:AimsConsequence\#minor , iso42001:AimsConsequence\#moderate , iso42001:AimsConsequence\#negligible , iso42001:AimsConsequence\#severe .
 iso42001:AimsControl a owl:Class ;
 	rdfs:label "AimsControl" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1053 , _:c14n1131 , _:c14n1215 , _:c14n1244 , _:c14n1255 , _:c14n130 , _:c14n1306 , _:c14n1314 , _:c14n1370 , _:c14n1381 , _:c14n1418 , _:c14n143 , _:c14n1445 , _:c14n1464 , _:c14n1485 , _:c14n1497 , _:c14n1516 , _:c14n1593 , _:c14n161 , _:c14n1634 , _:c14n167 , _:c14n1691 , _:c14n1731 , _:c14n1740 , _:c14n189 , _:c14n252 , _:c14n40 , _:c14n677 , _:c14n703 , _:c14n785 , _:c14n798 , _:c14n810 , _:c14n813 , _:c14n926 , _:c14n957 , _:c14n993 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1053 , _:c14n1131 , _:c14n1215 , _:c14n1244 , _:c14n1255 , _:c14n130 , _:c14n1306 , _:c14n1314 , _:c14n1370 , _:c14n1381 , _:c14n1418 , _:c14n143 , _:c14n1445 , _:c14n1464 , _:c14n1485 , _:c14n1497 , _:c14n1516 , _:c14n1593 , _:c14n161 , _:c14n1634 , _:c14n167 , _:c14n1691 , _:c14n1731 , _:c14n1740 , _:c14n189 , _:c14n252 , _:c14n40 , _:c14n678 , _:c14n704 , _:c14n786 , _:c14n799 , _:c14n811 , _:c14n814 , _:c14n927 , _:c14n958 , _:c14n994 ;
 	skos:closeMatch iso27001:IsmsControl ;
 	skos:definition "A control the organization has found it needs to treat its risks: what it does in the organization's words, which Annex A controls it answers to, who owns it, how far it is in place and how well it works." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -886,14 +886,14 @@ iso42001:AimsControlArea a owl:Class ;
 	linkml:permissible_values iso42001:AimsControlArea\#accountability , iso42001:AimsControlArea\#data_management , iso42001:AimsControlArea\#external_relationships , iso42001:AimsControlArea\#impact_assessment , iso42001:AimsControlArea\#policy_direction , iso42001:AimsControlArea\#responsible_use , iso42001:AimsControlArea\#stakeholder_information , iso42001:AimsControlArea\#system_life_cycle , iso42001:AimsControlArea\#system_resources .
 iso42001:AimsCorrectiveAction a owl:Class ;
 	rdfs:label "AimsCorrectiveAction" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1091 , _:c14n1207 , _:c14n1258 , _:c14n126 , _:c14n1345 , _:c14n1487 , _:c14n1518 , _:c14n1595 , _:c14n163 , _:c14n1653 , _:c14n169 , _:c14n1715 , _:c14n27 , _:c14n321 , _:c14n336 , _:c14n347 , _:c14n438 , _:c14n466 , _:c14n503 , _:c14n524 , _:c14n542 , _:c14n551 , _:c14n657 , _:c14n66 , _:c14n680 , _:c14n729 , _:c14n772 , _:c14n797 , _:c14n855 , _:c14n909 , _:c14n983 , _:c14n99 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1091 , _:c14n1207 , _:c14n1258 , _:c14n126 , _:c14n1345 , _:c14n1487 , _:c14n1518 , _:c14n1595 , _:c14n163 , _:c14n1653 , _:c14n169 , _:c14n1715 , _:c14n27 , _:c14n321 , _:c14n336 , _:c14n347 , _:c14n438 , _:c14n467 , _:c14n504 , _:c14n525 , _:c14n543 , _:c14n552 , _:c14n658 , _:c14n66 , _:c14n681 , _:c14n730 , _:c14n773 , _:c14n798 , _:c14n856 , _:c14n910 , _:c14n984 , _:c14n99 ;
 	skos:closeMatch iso27001:IsmsCorrectiveAction ;
 	skos:definition "An action that removes the cause of one or more nonconformities so that they do not recur, and the check that it worked." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "10.2" .
 iso42001:AimsCustomerRelationship a owl:Class ;
 	rdfs:label "AimsCustomerRelationship" ;
-	rdfs:subClassOf iso42001:AimsThirdPartyRelationship , _:c14n1013 , _:c14n1023 , _:c14n1189 , _:c14n1380 , _:c14n1604 , _:c14n1718 , _:c14n387 , _:c14n531 , _:c14n580 , _:c14n791 ;
+	rdfs:subClassOf iso42001:AimsThirdPartyRelationship , _:c14n1013 , _:c14n1023 , _:c14n1189 , _:c14n1380 , _:c14n1604 , _:c14n1718 , _:c14n387 , _:c14n532 , _:c14n581 , _:c14n792 ;
 	skos:definition "A relationship with a customer of the organization's AI work: what it expects, who answers for what, and which limits it was told of." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.10.4" .
@@ -961,19 +961,19 @@ iso42001:AimsDataPreparationMethod a owl:Class ;
 	iso42001:annex_b_item "B.7.6" .
 iso42001:AimsDataResource a owl:Class ;
 	rdfs:label "AimsDataResource" ;
-	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1022 , _:c14n1057 , _:c14n1060 , _:c14n1076 , _:c14n1095 , _:c14n1126 , _:c14n115 , _:c14n1180 , _:c14n1221 , _:c14n1236 , _:c14n1240 , _:c14n1284 , _:c14n1305 , _:c14n1336 , _:c14n1339 , _:c14n1344 , _:c14n1352 , _:c14n1371 , _:c14n148 , _:c14n1542 , _:c14n1601 , _:c14n1616 , _:c14n1663 , _:c14n1675 , _:c14n17 , _:c14n1732 , _:c14n1742 , _:c14n179 , _:c14n185 , _:c14n203 , _:c14n232 , _:c14n238 , _:c14n313 , _:c14n317 , _:c14n367 , _:c14n377 , _:c14n416 , _:c14n421 , _:c14n432 , _:c14n435 , _:c14n445 , _:c14n474 , _:c14n581 , _:c14n612 , _:c14n640 , _:c14n663 , _:c14n696 , _:c14n728 , _:c14n76 , _:c14n802 , _:c14n803 , _:c14n832 , _:c14n872 , _:c14n927 , _:c14n970 ;
+	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1022 , _:c14n1057 , _:c14n1060 , _:c14n1076 , _:c14n1095 , _:c14n1126 , _:c14n115 , _:c14n1180 , _:c14n1221 , _:c14n1236 , _:c14n1240 , _:c14n1284 , _:c14n1305 , _:c14n1336 , _:c14n1339 , _:c14n1344 , _:c14n1352 , _:c14n1371 , _:c14n148 , _:c14n1542 , _:c14n1601 , _:c14n1616 , _:c14n1663 , _:c14n1675 , _:c14n17 , _:c14n1732 , _:c14n1742 , _:c14n179 , _:c14n185 , _:c14n203 , _:c14n232 , _:c14n238 , _:c14n313 , _:c14n317 , _:c14n367 , _:c14n377 , _:c14n416 , _:c14n421 , _:c14n432 , _:c14n435 , _:c14n445 , _:c14n475 , _:c14n582 , _:c14n613 , _:c14n641 , _:c14n664 , _:c14n697 , _:c14n729 , _:c14n76 , _:c14n803 , _:c14n804 , _:c14n833 , _:c14n873 , _:c14n928 , _:c14n971 ;
 	skos:definition "Data an AI system draws on: where it came from, what part it plays, how it was obtained, made ready and judged fit, and how long it is kept." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.4.3, A.7.3" .
 iso42001:AimsDevelopmentProcess a owl:Class ;
 	rdfs:label "AimsDevelopmentProcess" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n106 , _:c14n1071 , _:c14n1089 , _:c14n1098 , _:c14n1108 , _:c14n114 , _:c14n1175 , _:c14n1194 , _:c14n1197 , _:c14n131 , _:c14n1338 , _:c14n1388 , _:c14n1410 , _:c14n1424 , _:c14n145 , _:c14n1606 , _:c14n1649 , _:c14n172 , _:c14n1739 , _:c14n1770 , _:c14n237 , _:c14n277 , _:c14n315 , _:c14n365 , _:c14n392 , _:c14n417 , _:c14n597 , _:c14n641 , _:c14n644 , _:c14n647 , _:c14n794 , _:c14n848 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n106 , _:c14n1071 , _:c14n1089 , _:c14n1098 , _:c14n1108 , _:c14n114 , _:c14n1175 , _:c14n1194 , _:c14n1197 , _:c14n131 , _:c14n1338 , _:c14n1388 , _:c14n1410 , _:c14n1424 , _:c14n145 , _:c14n1606 , _:c14n1649 , _:c14n172 , _:c14n1739 , _:c14n1770 , _:c14n237 , _:c14n277 , _:c14n315 , _:c14n365 , _:c14n392 , _:c14n417 , _:c14n598 , _:c14n642 , _:c14n645 , _:c14n648 , _:c14n795 , _:c14n849 ;
 	skos:definition "A process for designing and building an AI system responsibly: the life cycle it follows, and what it asks of testing, oversight, data and approvals." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.6.1.3" .
 iso42001:AimsDocumentControlMixin a owl:Class ;
 	rdfs:label "AimsDocumentControlMixin" ;
-	rdfs:subClassOf _:c14n100 , _:c14n1042 , _:c14n1066 , _:c14n1075 , _:c14n1109 , _:c14n1120 , _:c14n1140 , _:c14n1153 , _:c14n1177 , _:c14n1269 , _:c14n1278 , _:c14n1327 , _:c14n1328 , _:c14n133 , _:c14n1334 , _:c14n1386 , _:c14n1450 , _:c14n1459 , _:c14n1477 , _:c14n1478 , _:c14n1490 , _:c14n1492 , _:c14n1493 , _:c14n1495 , _:c14n1513 , _:c14n1525 , _:c14n1546 , _:c14n159 , _:c14n1617 , _:c14n1656 , _:c14n1678 , _:c14n1736 , _:c14n1753 , _:c14n245 , _:c14n255 , _:c14n363 , _:c14n443 , _:c14n462 , _:c14n496 , _:c14n505 , _:c14n544 , _:c14n560 , _:c14n568 , _:c14n74 , _:c14n746 , _:c14n811 , _:c14n842 , _:c14n864 , _:c14n867 , _:c14n871 , _:c14n873 , _:c14n875 , _:c14n905 , _:c14n919 , _:c14n922 , _:c14n929 , _:c14n942 , _:c14n966 , _:c14n974 ;
+	rdfs:subClassOf _:c14n100 , _:c14n1042 , _:c14n1066 , _:c14n1075 , _:c14n1109 , _:c14n1120 , _:c14n1140 , _:c14n1153 , _:c14n1177 , _:c14n1269 , _:c14n1278 , _:c14n1327 , _:c14n1328 , _:c14n133 , _:c14n1334 , _:c14n1386 , _:c14n1450 , _:c14n1459 , _:c14n1477 , _:c14n1478 , _:c14n1490 , _:c14n1492 , _:c14n1493 , _:c14n1495 , _:c14n1513 , _:c14n1525 , _:c14n1546 , _:c14n159 , _:c14n1617 , _:c14n1656 , _:c14n1678 , _:c14n1736 , _:c14n1753 , _:c14n245 , _:c14n255 , _:c14n363 , _:c14n443 , _:c14n463 , _:c14n497 , _:c14n506 , _:c14n545 , _:c14n561 , _:c14n569 , _:c14n74 , _:c14n747 , _:c14n812 , _:c14n843 , _:c14n865 , _:c14n868 , _:c14n872 , _:c14n874 , _:c14n876 , _:c14n906 , _:c14n920 , _:c14n923 , _:c14n930 , _:c14n943 , _:c14n967 , _:c14n975 ;
 	skos:definition "The control that documented information is kept under: who wrote, owns and approved it, when it takes effect and is reviewed, how it is classified, kept and changed, and whether it came from outside." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "7.5" .
@@ -1003,32 +1003,32 @@ iso42001:AimsDocumentKind\#standard a owl:Class ;
 	skos:definition "Mandatory requirements for a technology or a process." .
 iso42001:AimsDocumentKind a owl:Class ;
 	rdfs:label "AimsDocumentKind" ;
-	owl:unionOf _:c14n751 ;
+	owl:unionOf _:c14n752 ;
 	skos:definition "The kinds of documented information an AimsDocumentedInformation record holds. Policies have records of their own." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsDocumentKind\#guideline , iso42001:AimsDocumentKind\#plan , iso42001:AimsDocumentKind\#procedure , iso42001:AimsDocumentKind\#record , iso42001:AimsDocumentKind\#report , iso42001:AimsDocumentKind\#standard .
 iso42001:AimsDocumentedInformation a owl:Class ;
 	rdfs:label "AimsDocumentedInformation" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1597 , _:c14n1708 , _:c14n225 , _:c14n274 , _:c14n304 , _:c14n829 , _:c14n91 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1597 , _:c14n1708 , _:c14n225 , _:c14n274 , _:c14n304 , _:c14n830 , _:c14n91 ;
 	skos:closeMatch iso27001:IsmsDocumentedInformation ;
 	skos:definition "A document or record the system keeps under control that no more specific record describes, such as a procedure, a plan or a report." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "7.5" .
 iso42001:AimsExcludedControl a owl:Class ;
 	rdfs:label "AimsExcludedControl" ;
-	rdfs:subClassOf iso42001:AimsApplicabilityEntry , _:c14n1028 , _:c14n1347 , _:c14n645 ;
+	rdfs:subClassOf iso42001:AimsApplicabilityEntry , _:c14n1028 , _:c14n1347 , _:c14n646 ;
 	skos:closeMatch iso27001:IsmsExcludedControl ;
 	skos:definition "An entry that leaves out an Annex A control the organization does not need, and says why." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> .
 iso42001:AimsHumanResource a owl:Class ;
 	rdfs:label "AimsHumanResource" ;
-	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1234 , _:c14n1330 , _:c14n1337 , _:c14n1545 , _:c14n1603 , _:c14n1763 , _:c14n425 , _:c14n632 , _:c14n84 , _:c14n856 ;
+	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1234 , _:c14n1330 , _:c14n1337 , _:c14n1545 , _:c14n1603 , _:c14n1763 , _:c14n425 , _:c14n633 , _:c14n84 , _:c14n857 ;
 	skos:definition "People an AI system draws on: their skills and the work they do on it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.4.6" .
 iso42001:AimsIdentifiedImpact a owl:Class ;
 	rdfs:label "AimsIdentifiedImpact" ;
-	rdfs:subClassOf _:c14n0 , _:c14n1009 , _:c14n1016 , _:c14n122 , _:c14n1235 , _:c14n1452 , _:c14n1672 , _:c14n1682 , _:c14n345 , _:c14n356 , _:c14n402 , _:c14n672 , _:c14n781 , _:c14n87 ;
+	rdfs:subClassOf _:c14n0 , _:c14n1009 , _:c14n1016 , _:c14n122 , _:c14n1235 , _:c14n1452 , _:c14n1672 , _:c14n1682 , _:c14n345 , _:c14n356 , _:c14n402 , _:c14n673 , _:c14n782 , _:c14n87 ;
 	skos:definition "One impact an assessment found: on whom it falls, in what area, whether it helps or harms, and what limits the harm." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.5.4, A.5.5" .
@@ -1098,20 +1098,20 @@ iso42001:AimsImpactArea\#transparency_and_explainability a owl:Class ;
 	iso42001:annex_b_item "B.5.4" .
 iso42001:AimsImpactArea a owl:Class ;
 	rdfs:label "AimsImpactArea" ;
-	owl:unionOf _:c14n607 ;
+	owl:unionOf _:c14n608 ;
 	skos:definition "Areas where AI systems can touch people or society: those the guidance on impact assessment names as examples, and other." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsImpactArea\#accessibility , iso42001:AimsImpactArea\#accountability , iso42001:AimsImpactArea\#culture_and_values , iso42001:AimsImpactArea\#economic , iso42001:AimsImpactArea\#environmental_sustainability , iso42001:AimsImpactArea\#fairness , iso42001:AimsImpactArea\#financial , iso42001:AimsImpactArea\#government , iso42001:AimsImpactArea\#human_rights , iso42001:AimsImpactArea\#other , iso42001:AimsImpactArea\#safety_and_health , iso42001:AimsImpactArea\#security_and_privacy , iso42001:AimsImpactArea\#transparency_and_explainability .
 iso42001:AimsImpactAssessment a owl:Class ;
 	rdfs:label "AimsImpactAssessment" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1122 , _:c14n1179 , _:c14n1191 , _:c14n1223 , _:c14n123 , _:c14n1277 , _:c14n1309 , _:c14n1366 , _:c14n1367 , _:c14n1387 , _:c14n1423 , _:c14n1517 , _:c14n1532 , _:c14n1552 , _:c14n1565 , _:c14n1567 , _:c14n16 , _:c14n1776 , _:c14n180 , _:c14n204 , _:c14n219 , _:c14n29 , _:c14n324 , _:c14n359 , _:c14n364 , _:c14n401 , _:c14n414 , _:c14n415 , _:c14n460 , _:c14n484 , _:c14n49 , _:c14n509 , _:c14n512 , _:c14n58 , _:c14n583 , _:c14n61 , _:c14n642 , _:c14n683 , _:c14n707 , _:c14n812 , _:c14n825 , _:c14n852 , _:c14n901 , _:c14n930 , _:c14n943 , _:c14n984 , _:c14n986 , _:c14n999 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1000 , _:c14n1122 , _:c14n1179 , _:c14n1191 , _:c14n1223 , _:c14n123 , _:c14n1277 , _:c14n1309 , _:c14n1366 , _:c14n1367 , _:c14n1387 , _:c14n1423 , _:c14n1517 , _:c14n1532 , _:c14n1552 , _:c14n1565 , _:c14n1567 , _:c14n16 , _:c14n1776 , _:c14n180 , _:c14n204 , _:c14n219 , _:c14n29 , _:c14n324 , _:c14n359 , _:c14n364 , _:c14n401 , _:c14n414 , _:c14n415 , _:c14n461 , _:c14n485 , _:c14n49 , _:c14n510 , _:c14n513 , _:c14n58 , _:c14n584 , _:c14n61 , _:c14n643 , _:c14n684 , _:c14n708 , _:c14n813 , _:c14n826 , _:c14n853 , _:c14n902 , _:c14n931 , _:c14n944 , _:c14n985 , _:c14n987 ;
 	skos:definition "One impact assessment carried out under the process: the systems and the setting it looked at, and each impact it found." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.5.3" ;
 	iso42001:iso42001_clause "6.1.4, 8.4" .
 iso42001:AimsImpactAssessmentProcess a owl:Class ;
 	rdfs:label "AimsImpactAssessmentProcess" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1100 , _:c14n1142 , _:c14n1155 , _:c14n1254 , _:c14n1289 , _:c14n1293 , _:c14n1298 , _:c14n1331 , _:c14n1354 , _:c14n1560 , _:c14n1714 , _:c14n280 , _:c14n420 , _:c14n422 , _:c14n452 , _:c14n471 , _:c14n564 , _:c14n752 , _:c14n767 , _:c14n819 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1100 , _:c14n1142 , _:c14n1155 , _:c14n1254 , _:c14n1289 , _:c14n1293 , _:c14n1298 , _:c14n1331 , _:c14n1354 , _:c14n1560 , _:c14n1714 , _:c14n280 , _:c14n420 , _:c14n422 , _:c14n452 , _:c14n472 , _:c14n565 , _:c14n753 , _:c14n768 , _:c14n820 ;
 	skos:definition "The process for working out what AI systems may do to people and society: when it applies, what it takes in, who runs it and how the results are used." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.5.2" ;
@@ -1145,7 +1145,7 @@ iso42001:AimsImpactSubject\#societies a owl:Class ;
 	skos:definition "Society at large." .
 iso42001:AimsImpactSubject a owl:Class ;
 	rdfs:label "AimsImpactSubject" ;
-	owl:unionOf _:c14n935 ;
+	owl:unionOf _:c14n936 ;
 	skos:definition "Who an AI system's impact falls on." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsImpactSubject\#groups_of_individuals , iso42001:AimsImpactSubject\#individuals , iso42001:AimsImpactSubject\#societies ;
@@ -1168,21 +1168,21 @@ iso42001:AimsImplementationStatus\#planned a owl:Class ;
 	skos:definition "The work is planned, with a timeline." .
 iso42001:AimsImplementationStatus a owl:Class ;
 	rdfs:label "AimsImplementationStatus" ;
-	owl:unionOf _:c14n660 ;
+	owl:unionOf _:c14n661 ;
 	skos:definition "How far a control or a plan has been put into effect." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	skos:note "An Annex A control the organization leaves out has no implementation status; the Statement of Applicability records it as an AimsExcludedControl." ;
 	linkml:permissible_values iso42001:AimsImplementationStatus\#implemented , iso42001:AimsImplementationStatus\#in_progress , iso42001:AimsImplementationStatus\#not_started , iso42001:AimsImplementationStatus\#planned .
 iso42001:AimsImprovementOpportunity a owl:Class ;
 	rdfs:label "AimsImprovementOpportunity" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n108 , _:c14n1268 , _:c14n1323 , _:c14n1325 , _:c14n1333 , _:c14n1348 , _:c14n1364 , _:c14n1463 , _:c14n1498 , _:c14n1540 , _:c14n1579 , _:c14n1620 , _:c14n1626 , _:c14n1687 , _:c14n1711 , _:c14n192 , _:c14n21 , _:c14n346 , _:c14n389 , _:c14n45 , _:c14n515 , _:c14n535 , _:c14n577 , _:c14n592 , _:c14n605 , _:c14n616 , _:c14n622 , _:c14n726 , _:c14n732 , _:c14n745 , _:c14n874 , _:c14n90 , _:c14n964 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n108 , _:c14n1268 , _:c14n1323 , _:c14n1325 , _:c14n1333 , _:c14n1348 , _:c14n1364 , _:c14n1463 , _:c14n1498 , _:c14n1540 , _:c14n1579 , _:c14n1620 , _:c14n1626 , _:c14n1687 , _:c14n1711 , _:c14n192 , _:c14n21 , _:c14n346 , _:c14n389 , _:c14n45 , _:c14n516 , _:c14n536 , _:c14n578 , _:c14n593 , _:c14n606 , _:c14n617 , _:c14n623 , _:c14n727 , _:c14n733 , _:c14n746 , _:c14n875 , _:c14n90 , _:c14n965 ;
 	skos:closeMatch iso27001:IsmsImprovementOpportunity ;
 	skos:definition "An opportunity to make the system more suitable, adequate or effective, and what came of it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "10.1" .
 iso42001:AimsIncident a owl:Class ;
 	rdfs:label "AimsIncident" ;
-	rdfs:subClassOf iso42001:AimsSystemEvent , _:c14n1030 , _:c14n1064 , _:c14n1090 , _:c14n1104 , _:c14n1151 , _:c14n118 , _:c14n1242 , _:c14n1246 , _:c14n1248 , _:c14n1249 , _:c14n1282 , _:c14n1448 , _:c14n1531 , _:c14n1537 , _:c14n1551 , _:c14n1613 , _:c14n1641 , _:c14n177 , _:c14n1778 , _:c14n235 , _:c14n260 , _:c14n381 , _:c14n427 , _:c14n436 , _:c14n523 , _:c14n601 , _:c14n720 , _:c14n8 , _:c14n902 , _:c14n907 , _:c14n920 , _:c14n997 ;
+	rdfs:subClassOf iso42001:AimsSystemEvent , _:c14n1030 , _:c14n1064 , _:c14n1090 , _:c14n1104 , _:c14n1151 , _:c14n118 , _:c14n1242 , _:c14n1246 , _:c14n1248 , _:c14n1249 , _:c14n1282 , _:c14n1448 , _:c14n1531 , _:c14n1537 , _:c14n1551 , _:c14n1613 , _:c14n1641 , _:c14n177 , _:c14n1778 , _:c14n235 , _:c14n260 , _:c14n381 , _:c14n427 , _:c14n436 , _:c14n524 , _:c14n602 , _:c14n721 , _:c14n8 , _:c14n903 , _:c14n908 , _:c14n921 , _:c14n998 ;
 	skos:definition "An event assessed as an incident: what it concerns, how severe it is, what was done, who was told, and what was learned." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.8.4" .
@@ -1215,20 +1215,20 @@ iso42001:AimsIncidentCategory a owl:Class ;
 	iso42001:annex_b_item "B.8.4" .
 iso42001:AimsIncidentCommunicationPlan a owl:Class ;
 	rdfs:label "AimsIncidentCommunicationPlan" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1046 , _:c14n1206 , _:c14n1232 , _:c14n1566 , _:c14n1588 , _:c14n1771 , _:c14n31 , _:c14n330 , _:c14n497 , _:c14n534 , _:c14n670 , _:c14n821 , _:c14n923 , _:c14n994 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1046 , _:c14n1206 , _:c14n1232 , _:c14n1566 , _:c14n1588 , _:c14n1771 , _:c14n31 , _:c14n330 , _:c14n498 , _:c14n535 , _:c14n671 , _:c14n822 , _:c14n924 , _:c14n995 ;
 	skos:definition "The plan for telling users when a system goes wrong: which incidents, how soon, to which authorities, and with what details." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.8.4" .
 iso42001:AimsIncludedControl a owl:Class ;
 	rdfs:label "AimsIncludedControl" ;
-	rdfs:subClassOf iso42001:AimsApplicabilityEntry , _:c14n1025 , _:c14n1137 , _:c14n1165 , _:c14n1225 , _:c14n1260 , _:c14n1446 , _:c14n1557 , _:c14n26 , _:c14n378 , _:c14n407 , _:c14n454 , _:c14n480 , _:c14n499 , _:c14n562 , _:c14n691 , _:c14n714 , _:c14n897 , _:c14n988 ;
+	rdfs:subClassOf iso42001:AimsApplicabilityEntry , _:c14n1025 , _:c14n1137 , _:c14n1165 , _:c14n1225 , _:c14n1260 , _:c14n1446 , _:c14n1557 , _:c14n26 , _:c14n378 , _:c14n407 , _:c14n455 , _:c14n481 , _:c14n500 , _:c14n563 , _:c14n692 , _:c14n715 , _:c14n898 , _:c14n989 ;
 	skos:closeMatch iso27001:IsmsIncludedControl ;
 	skos:definition "An entry that includes a control the organization needs, from Annex A or from elsewhere, says which risks call for it and whether it is in place." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	skos:note "An included control names an Annex A control, one of the organization's controls, or both." .
 iso42001:AimsInterestedParty a owl:Class ;
 	rdfs:label "AimsInterestedParty" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1115 , _:c14n1124 , _:c14n1138 , _:c14n1730 , _:c14n178 , _:c14n202 , _:c14n246 , _:c14n265 , _:c14n269 , _:c14n426 , _:c14n558 , _:c14n579 , _:c14n60 , _:c14n619 , _:c14n727 , _:c14n755 , _:c14n775 , _:c14n840 , _:c14n86 , _:c14n958 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1115 , _:c14n1124 , _:c14n1138 , _:c14n1730 , _:c14n178 , _:c14n202 , _:c14n246 , _:c14n265 , _:c14n269 , _:c14n426 , _:c14n559 , _:c14n580 , _:c14n60 , _:c14n620 , _:c14n728 , _:c14n756 , _:c14n776 , _:c14n841 , _:c14n86 , _:c14n959 ;
 	skos:closeMatch iso27001:IsmsInterestedParty ;
 	skos:definition "A person or organization whose needs and expectations bear on the system, or who may feel its decisions, inside the organization or outside it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1267,7 +1267,7 @@ iso42001:AimsLifecycleStage\#verification_and_validation a owl:Class ;
 	skos:definition "The system is checked against what was asked of it." .
 iso42001:AimsLifecycleStage a owl:Class ;
 	rdfs:label "AimsLifecycleStage" ;
-	owl:unionOf _:c14n465 ;
+	owl:unionOf _:c14n466 ;
 	skos:definition "The eight stages of the generic life cycle model that ISO/IEC 22989:2022 gives, which ISO/IEC 42001 points to." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	skos:note "The standard lets an organization set its own stages, so a process can name its own model in aims_development_life_cycle_model." ;
@@ -1306,14 +1306,14 @@ iso42001:AimsLikelihood a owl:Class ;
 	linkml:permissible_values iso42001:AimsLikelihood\#almost_certain , iso42001:AimsLikelihood\#likely , iso42001:AimsLikelihood\#possible , iso42001:AimsLikelihood\#rare , iso42001:AimsLikelihood\#unlikely .
 iso42001:AimsManagementReview a owl:Class ;
 	rdfs:label "AimsManagementReview" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1047 , _:c14n105 , _:c14n1141 , _:c14n1212 , _:c14n1259 , _:c14n127 , _:c14n1315 , _:c14n1346 , _:c14n1415 , _:c14n1417 , _:c14n1421 , _:c14n1465 , _:c14n147 , _:c14n1474 , _:c14n1494 , _:c14n1507 , _:c14n1515 , _:c14n153 , _:c14n1645 , _:c14n1674 , _:c14n1689 , _:c14n1699 , _:c14n1754 , _:c14n183 , _:c14n263 , _:c14n299 , _:c14n382 , _:c14n547 , _:c14n62 , _:c14n730 , _:c14n776 , _:c14n778 , _:c14n78 , _:c14n788 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1047 , _:c14n105 , _:c14n1141 , _:c14n1212 , _:c14n1259 , _:c14n127 , _:c14n1315 , _:c14n1346 , _:c14n1415 , _:c14n1417 , _:c14n1421 , _:c14n1465 , _:c14n147 , _:c14n1474 , _:c14n1494 , _:c14n1507 , _:c14n1515 , _:c14n153 , _:c14n1645 , _:c14n1674 , _:c14n1689 , _:c14n1699 , _:c14n1754 , _:c14n183 , _:c14n263 , _:c14n299 , _:c14n382 , _:c14n548 , _:c14n62 , _:c14n731 , _:c14n777 , _:c14n779 , _:c14n78 , _:c14n789 ;
 	skos:closeMatch iso27001:IsmsManagementReview ;
 	skos:definition "A review of the system by top management: what it took in, what it decided and what it asked to be done." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "9.3" .
 iso42001:AimsManagementSystem a owl:Class ;
 	rdfs:label "AimsManagementSystem" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1001 , _:c14n102 , _:c14n1029 , _:c14n1032 , _:c14n1034 , _:c14n1040 , _:c14n1129 , _:c14n1136 , _:c14n1157 , _:c14n116 , _:c14n1170 , _:c14n1171 , _:c14n1198 , _:c14n1211 , _:c14n1216 , _:c14n1217 , _:c14n1224 , _:c14n1227 , _:c14n1243 , _:c14n125 , _:c14n1250 , _:c14n1253 , _:c14n1263 , _:c14n1270 , _:c14n1273 , _:c14n1287 , _:c14n1297 , _:c14n1335 , _:c14n134 , _:c14n135 , _:c14n1353 , _:c14n1365 , _:c14n1372 , _:c14n1373 , _:c14n1384 , _:c14n1396 , _:c14n141 , _:c14n1453 , _:c14n1454 , _:c14n1455 , _:c14n1469 , _:c14n149 , _:c14n1504 , _:c14n151 , _:c14n152 , _:c14n1522 , _:c14n1524 , _:c14n1536 , _:c14n1538 , _:c14n154 , _:c14n1570 , _:c14n1583 , _:c14n1585 , _:c14n1599 , _:c14n1627 , _:c14n1632 , _:c14n164 , _:c14n1671 , _:c14n171 , _:c14n173 , _:c14n1734 , _:c14n1762 , _:c14n1767 , _:c14n1773 , _:c14n1774 , _:c14n18 , _:c14n195 , _:c14n209 , _:c14n211 , _:c14n236 , _:c14n288 , _:c14n307 , _:c14n331 , _:c14n368 , _:c14n371 , _:c14n384 , _:c14n395 , _:c14n431 , _:c14n444 , _:c14n446 , _:c14n450 , _:c14n459 , _:c14n475 , _:c14n481 , _:c14n492 , _:c14n502 , _:c14n518 , _:c14n525 , _:c14n527 , _:c14n538 , _:c14n54 , _:c14n541 , _:c14n556 , _:c14n569 , _:c14n593 , _:c14n595 , _:c14n596 , _:c14n626 , _:c14n635 , _:c14n654 , _:c14n656 , _:c14n658 , _:c14n665 , _:c14n694 , _:c14n698 , _:c14n704 , _:c14n705 , _:c14n722 , _:c14n725 , _:c14n742 , _:c14n743 , _:c14n749 , _:c14n753 , _:c14n769 , _:c14n783 , _:c14n804 , _:c14n808 , _:c14n828 , _:c14n836 , _:c14n854 , _:c14n860 , _:c14n876 , _:c14n882 , _:c14n884 , _:c14n893 , _:c14n899 , _:c14n904 , _:c14n914 , _:c14n936 , _:c14n971 , _:c14n979 , _:c14n982 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1002 , _:c14n102 , _:c14n1029 , _:c14n1032 , _:c14n1034 , _:c14n1040 , _:c14n1129 , _:c14n1136 , _:c14n1157 , _:c14n116 , _:c14n1170 , _:c14n1171 , _:c14n1198 , _:c14n1211 , _:c14n1216 , _:c14n1217 , _:c14n1224 , _:c14n1227 , _:c14n1243 , _:c14n125 , _:c14n1250 , _:c14n1253 , _:c14n1263 , _:c14n1270 , _:c14n1273 , _:c14n1287 , _:c14n1297 , _:c14n1335 , _:c14n134 , _:c14n135 , _:c14n1353 , _:c14n1365 , _:c14n1372 , _:c14n1373 , _:c14n1384 , _:c14n1396 , _:c14n141 , _:c14n1453 , _:c14n1454 , _:c14n1455 , _:c14n1469 , _:c14n149 , _:c14n1504 , _:c14n151 , _:c14n152 , _:c14n1522 , _:c14n1524 , _:c14n1536 , _:c14n1538 , _:c14n154 , _:c14n1570 , _:c14n1583 , _:c14n1585 , _:c14n1599 , _:c14n1627 , _:c14n1632 , _:c14n164 , _:c14n1671 , _:c14n171 , _:c14n173 , _:c14n1734 , _:c14n1762 , _:c14n1767 , _:c14n1773 , _:c14n1774 , _:c14n18 , _:c14n195 , _:c14n209 , _:c14n211 , _:c14n236 , _:c14n288 , _:c14n307 , _:c14n331 , _:c14n368 , _:c14n371 , _:c14n384 , _:c14n395 , _:c14n431 , _:c14n444 , _:c14n446 , _:c14n450 , _:c14n460 , _:c14n476 , _:c14n482 , _:c14n493 , _:c14n503 , _:c14n519 , _:c14n526 , _:c14n528 , _:c14n539 , _:c14n54 , _:c14n542 , _:c14n557 , _:c14n570 , _:c14n594 , _:c14n596 , _:c14n597 , _:c14n627 , _:c14n636 , _:c14n655 , _:c14n657 , _:c14n659 , _:c14n666 , _:c14n695 , _:c14n699 , _:c14n705 , _:c14n706 , _:c14n723 , _:c14n726 , _:c14n743 , _:c14n744 , _:c14n750 , _:c14n754 , _:c14n770 , _:c14n784 , _:c14n805 , _:c14n809 , _:c14n829 , _:c14n837 , _:c14n855 , _:c14n861 , _:c14n877 , _:c14n883 , _:c14n885 , _:c14n894 , _:c14n900 , _:c14n905 , _:c14n915 , _:c14n937 , _:c14n972 , _:c14n980 , _:c14n983 ;
 	skos:closeMatch iso27001:IsmsManagementSystem ;
 	skos:definition "One organization's management system for AI: its scope and context, and every record it keeps, each kind in a list of its own." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1344,35 +1344,35 @@ iso42001:AimsManagementSystemStandard\#other a owl:Class ;
 	skos:definition "Another management system standard, generic or for one sector." .
 iso42001:AimsManagementSystemStandard a owl:Class ;
 	rdfs:label "AimsManagementSystemStandard" ;
-	owl:unionOf _:c14n839 ;
+	owl:unionOf _:c14n840 ;
 	skos:definition "Management system standards Annex D names as ones to run this system beside, and other." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsManagementSystemStandard\#iso_13485 , iso42001:AimsManagementSystemStandard\#iso_22000 , iso42001:AimsManagementSystemStandard\#iso_9001 , iso42001:AimsManagementSystemStandard\#iso_iec_27001 , iso42001:AimsManagementSystemStandard\#iso_iec_27701 , iso42001:AimsManagementSystemStandard\#other ;
 	iso42001:annex_d_item "D.2" .
 iso42001:AimsMonitoringItem a owl:Class ;
 	rdfs:label "AimsMonitoringItem" ;
-	rdfs:subClassOf _:c14n1005 , _:c14n104 , _:c14n1065 , _:c14n1087 , _:c14n1274 , _:c14n1283 , _:c14n1311 , _:c14n1451 , _:c14n1488 , _:c14n1491 , _:c14n1589 , _:c14n1615 , _:c14n1704 , _:c14n1746 , _:c14n184 , _:c14n240 , _:c14n268 , _:c14n282 , _:c14n328 , _:c14n37 , _:c14n383 , _:c14n413 , _:c14n429 , _:c14n43 , _:c14n573 , _:c14n633 , _:c14n639 , _:c14n717 , _:c14n830 , _:c14n944 , _:c14n950 , _:c14n989 , _:c14n998 ;
+	rdfs:subClassOf _:c14n1006 , _:c14n104 , _:c14n1065 , _:c14n1087 , _:c14n1274 , _:c14n1283 , _:c14n1311 , _:c14n1451 , _:c14n1488 , _:c14n1491 , _:c14n1589 , _:c14n1615 , _:c14n1704 , _:c14n1746 , _:c14n184 , _:c14n240 , _:c14n268 , _:c14n282 , _:c14n328 , _:c14n37 , _:c14n383 , _:c14n413 , _:c14n429 , _:c14n43 , _:c14n574 , _:c14n634 , _:c14n640 , _:c14n718 , _:c14n831 , _:c14n945 , _:c14n951 , _:c14n990 , _:c14n999 ;
 	skos:closeMatch iso27001:IsmsMonitoringItem ;
 	skos:definition "One thing the monitoring programme measures: what, how, how often and by whom it is measured and analysed, and against what thresholds." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "9.1" .
 iso42001:AimsMonitoringProgramme a owl:Class ;
 	rdfs:label "AimsMonitoringProgramme" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1181 , _:c14n910 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1181 , _:c14n911 ;
 	skos:closeMatch iso27001:IsmsMonitoringProgramme ;
 	skos:definition "The programme that watches, measures, analyses and judges how well the system does and how well it works." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "9.1" .
 iso42001:AimsNonconformity a owl:Class ;
 	rdfs:label "AimsNonconformity" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1055 , _:c14n1059 , _:c14n1128 , _:c14n1222 , _:c14n1239 , _:c14n1300 , _:c14n1358 , _:c14n1408 , _:c14n1413 , _:c14n1422 , _:c14n1438 , _:c14n1505 , _:c14n1600 , _:c14n1636 , _:c14n1644 , _:c14n1652 , _:c14n1666 , _:c14n1745 , _:c14n1749 , _:c14n1752 , _:c14n278 , _:c14n284 , _:c14n309 , _:c14n320 , _:c14n326 , _:c14n361 , _:c14n373 , _:c14n41 , _:c14n498 , _:c14n521 , _:c14n557 , _:c14n636 , _:c14n721 , _:c14n750 , _:c14n757 , _:c14n870 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1055 , _:c14n1059 , _:c14n1128 , _:c14n1222 , _:c14n1239 , _:c14n1300 , _:c14n1358 , _:c14n1408 , _:c14n1413 , _:c14n1422 , _:c14n1438 , _:c14n1505 , _:c14n1600 , _:c14n1636 , _:c14n1644 , _:c14n1652 , _:c14n1666 , _:c14n1745 , _:c14n1749 , _:c14n1752 , _:c14n278 , _:c14n284 , _:c14n309 , _:c14n320 , _:c14n326 , _:c14n361 , _:c14n373 , _:c14n41 , _:c14n499 , _:c14n522 , _:c14n558 , _:c14n637 , _:c14n722 , _:c14n751 , _:c14n758 , _:c14n871 ;
 	skos:closeMatch iso27001:IsmsNonconformity ;
 	skos:definition "A nonconformity: a requirement not met, how it was found and contained, its consequences and cause, and how it was closed." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "10.2" .
 iso42001:AimsObjective a owl:Class ;
 	rdfs:label "AimsObjective" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n103 , _:c14n1148 , _:c14n1160 , _:c14n1195 , _:c14n1202 , _:c14n1219 , _:c14n1230 , _:c14n1276 , _:c14n132 , _:c14n1561 , _:c14n1571 , _:c14n1581 , _:c14n1629 , _:c14n1654 , _:c14n1659 , _:c14n1677 , _:c14n1737 , _:c14n176 , _:c14n201 , _:c14n22 , _:c14n258 , _:c14n264 , _:c14n292 , _:c14n293 , _:c14n33 , _:c14n394 , _:c14n430 , _:c14n47 , _:c14n602 , _:c14n625 , _:c14n653 , _:c14n674 , _:c14n676 , _:c14n678 , _:c14n7 , _:c14n719 , _:c14n741 , _:c14n805 , _:c14n817 , _:c14n844 , _:c14n849 , _:c14n9 , _:c14n924 , _:c14n937 , _:c14n949 , _:c14n963 , _:c14n97 , _:c14n992 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n103 , _:c14n1148 , _:c14n1160 , _:c14n1195 , _:c14n1202 , _:c14n1219 , _:c14n1230 , _:c14n1276 , _:c14n132 , _:c14n1561 , _:c14n1571 , _:c14n1581 , _:c14n1629 , _:c14n1654 , _:c14n1659 , _:c14n1677 , _:c14n1737 , _:c14n176 , _:c14n201 , _:c14n22 , _:c14n258 , _:c14n264 , _:c14n292 , _:c14n293 , _:c14n33 , _:c14n394 , _:c14n430 , _:c14n47 , _:c14n603 , _:c14n626 , _:c14n654 , _:c14n675 , _:c14n677 , _:c14n679 , _:c14n7 , _:c14n720 , _:c14n742 , _:c14n806 , _:c14n818 , _:c14n845 , _:c14n850 , _:c14n9 , _:c14n925 , _:c14n938 , _:c14n950 , _:c14n964 , _:c14n97 , _:c14n993 ;
 	skos:closeMatch iso27001:IsmsObjective ;
 	skos:definition "An AI objective: a result the organization aims for, with how it plans to reach it and how it judges progress." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1470,21 +1470,21 @@ iso42001:AimsObjectivePurpose\#responsible_use a owl:Class ;
 	iso42001:annex_a_control "A.9.3" .
 iso42001:AimsObjectivePurpose a owl:Class ;
 	rdfs:label "AimsObjectivePurpose" ;
-	owl:unionOf _:c14n820 ;
+	owl:unionOf _:c14n821 ;
 	skos:definition "What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex A controls ask for objectives of a narrower kind." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsObjectivePurpose\#organizational , iso42001:AimsObjectivePurpose\#responsible_development , iso42001:AimsObjectivePurpose\#responsible_use ;
 	iso42001:iso42001_clause "6.2" .
 iso42001:AimsOperationalProcedure a owl:Class ;
 	rdfs:label "AimsOperationalProcedure" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1106 , _:c14n1241 , _:c14n1279 , _:c14n1332 , _:c14n1403 , _:c14n1549 , _:c14n217 , _:c14n270 , _:c14n325 , _:c14n390 , _:c14n494 , _:c14n609 , _:c14n620 , _:c14n63 , _:c14n659 , _:c14n671 , _:c14n947 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1106 , _:c14n1241 , _:c14n1279 , _:c14n1332 , _:c14n1403 , _:c14n1549 , _:c14n217 , _:c14n270 , _:c14n325 , _:c14n390 , _:c14n495 , _:c14n610 , _:c14n621 , _:c14n63 , _:c14n660 , _:c14n672 , _:c14n948 ;
 	skos:closeMatch iso27001:IsmsOperationalProcedure ;
 	skos:definition "A procedure by which the organization plans and controls the processes that meet its requirements, such as managing data for building or vetting suppliers." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "8.1" .
 iso42001:AimsOrganization a owl:Class ;
 	rdfs:label "AimsOrganization" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1049 , _:c14n1061 , _:c14n1081 , _:c14n1156 , _:c14n117 , _:c14n1199 , _:c14n1203 , _:c14n1368 , _:c14n1389 , _:c14n1407 , _:c14n1440 , _:c14n1501 , _:c14n1503 , _:c14n1646 , _:c14n1757 , _:c14n190 , _:c14n214 , _:c14n23 , _:c14n271 , _:c14n35 , _:c14n412 , _:c14n456 , _:c14n584 , _:c14n614 , _:c14n68 , _:c14n695 , _:c14n701 , _:c14n724 , _:c14n735 , _:c14n744 , _:c14n761 , _:c14n799 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1049 , _:c14n1061 , _:c14n1081 , _:c14n1156 , _:c14n117 , _:c14n1199 , _:c14n1203 , _:c14n1368 , _:c14n1389 , _:c14n1407 , _:c14n1440 , _:c14n1501 , _:c14n1503 , _:c14n1646 , _:c14n1757 , _:c14n190 , _:c14n214 , _:c14n23 , _:c14n271 , _:c14n35 , _:c14n412 , _:c14n457 , _:c14n585 , _:c14n615 , _:c14n68 , _:c14n696 , _:c14n702 , _:c14n725 , _:c14n736 , _:c14n745 , _:c14n762 , _:c14n800 ;
 	skos:closeMatch spdx_core:Organization , iso27001:IsmsOrganization ;
 	skos:definition "The organization that runs the system, with what it needs to know about itself to understand its context and the parts it plays with AI." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1510,13 +1510,13 @@ iso42001:AimsPiiRole a owl:Class ;
 	iso42001:annex_b_item "B.10.2" .
 iso42001:AimsPlannedAction a owl:Class ;
 	rdfs:label "AimsPlannedAction" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1164 , _:c14n1308 , _:c14n1356 , _:c14n1482 , _:c14n1575 , _:c14n247 , _:c14n262 , _:c14n442 , _:c14n491 , _:c14n540 , _:c14n650 , _:c14n740 , _:c14n786 , _:c14n857 , _:c14n859 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1164 , _:c14n1308 , _:c14n1356 , _:c14n1482 , _:c14n1575 , _:c14n247 , _:c14n262 , _:c14n442 , _:c14n492 , _:c14n541 , _:c14n651 , _:c14n741 , _:c14n787 , _:c14n858 , _:c14n860 ;
 	skos:definition "An action planned on a risk or an opportunity the system faces, with how it fits the system's processes and how its effect will be judged." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "6.1.1" .
 iso42001:AimsPolicy a owl:Class ;
 	rdfs:label "AimsPolicy" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1010 , _:c14n1014 , _:c14n1026 , _:c14n1111 , _:c14n1133 , _:c14n1220 , _:c14n1251 , _:c14n1296 , _:c14n13 , _:c14n1443 , _:c14n1483 , _:c14n15 , _:c14n155 , _:c14n1683 , _:c14n1747 , _:c14n1751 , _:c14n199 , _:c14n221 , _:c14n272 , _:c14n289 , _:c14n316 , _:c14n375 , _:c14n379 , _:c14n519 , _:c14n617 , _:c14n634 , _:c14n651 , _:c14n692 , _:c14n764 , _:c14n845 , _:c14n846 , _:c14n863 , _:c14n941 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1010 , _:c14n1014 , _:c14n1026 , _:c14n1111 , _:c14n1133 , _:c14n1220 , _:c14n1251 , _:c14n1296 , _:c14n13 , _:c14n1443 , _:c14n1483 , _:c14n15 , _:c14n155 , _:c14n1683 , _:c14n1747 , _:c14n1751 , _:c14n199 , _:c14n221 , _:c14n272 , _:c14n289 , _:c14n316 , _:c14n375 , _:c14n379 , _:c14n520 , _:c14n618 , _:c14n635 , _:c14n652 , _:c14n693 , _:c14n765 , _:c14n846 , _:c14n847 , _:c14n864 , _:c14n942 ;
 	skos:closeMatch iso27001:IsmsPolicy ;
 	skos:definition "The AI policy that top management sets: the organization's commitments and the frame for its AI objectives." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1524,19 +1524,19 @@ iso42001:AimsPolicy a owl:Class ;
 	iso42001:iso42001_clause "5.2" .
 iso42001:AimsRecordMixin a owl:Class ;
 	rdfs:label "AimsRecordMixin" ;
-	rdfs:subClassOf _:c14n1079 , _:c14n1147 , _:c14n140 , _:c14n1401 , _:c14n1710 , _:c14n186 , _:c14n312 , _:c14n834 , _:c14n981 ;
+	rdfs:subClassOf _:c14n1079 , _:c14n1147 , _:c14n140 , _:c14n1401 , _:c14n1710 , _:c14n186 , _:c14n312 , _:c14n835 , _:c14n982 ;
 	skos:definition "What every record of the system has, so that other records can refer to it: an identifier, a title and a description." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	skos:note "It is a mixin, not a base class, so that the adapt copy can re-root some record classes on LOKF's Concept and leave the others as they are. lokf adapt replaces aims_id with LOKF's id, and a class that declares id itself must descend from Concept." .
 iso42001:AimsReportingObligation a owl:Class ;
 	rdfs:label "AimsReportingObligation" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1037 , _:c14n1173 , _:c14n1320 , _:c14n1411 , _:c14n1429 , _:c14n1619 , _:c14n1650 , _:c14n1693 , _:c14n198 , _:c14n393 , _:c14n403 , _:c14n615 , _:c14n685 , _:c14n81 , _:c14n887 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1037 , _:c14n1173 , _:c14n1320 , _:c14n1411 , _:c14n1429 , _:c14n1619 , _:c14n1650 , _:c14n1693 , _:c14n198 , _:c14n393 , _:c14n403 , _:c14n616 , _:c14n686 , _:c14n81 , _:c14n888 ;
 	skos:definition "Something the organization must report about a system to an interested party: to whom, under what rule, what and how soon." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.8.5" .
 iso42001:AimsResource a owl:Class ;
 	rdfs:label "AimsResource" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1139 , _:c14n1324 , _:c14n1341 , _:c14n1539 , _:c14n1562 , _:c14n1605 , _:c14n1685 , _:c14n329 , _:c14n472 , _:c14n511 , _:c14n628 , _:c14n69 , _:c14n754 , _:c14n762 , _:c14n773 , _:c14n800 , _:c14n916 , _:c14n940 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1139 , _:c14n1324 , _:c14n1341 , _:c14n1539 , _:c14n1562 , _:c14n1605 , _:c14n1685 , _:c14n329 , _:c14n473 , _:c14n512 , _:c14n629 , _:c14n69 , _:c14n755 , _:c14n763 , _:c14n774 , _:c14n801 , _:c14n917 , _:c14n941 ;
 	skos:closeMatch iso27001:IsmsResource ;
 	skos:definition "A resource provided for the management system itself, such as people, time, tools or budget. What an AI system draws on is an AimsSystemResource." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1562,27 +1562,27 @@ iso42001:AimsResourceProvider a owl:Class ;
 	iso42001:annex_b_item "B.4.2" .
 iso42001:AimsResponsibleUseProcess a owl:Class ;
 	rdfs:label "AimsResponsibleUseProcess" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1044 , _:c14n128 , _:c14n1511 , _:c14n1568 , _:c14n1582 , _:c14n1662 , _:c14n310 , _:c14n311 , _:c14n64 , _:c14n807 , _:c14n939 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1044 , _:c14n128 , _:c14n1511 , _:c14n1568 , _:c14n1582 , _:c14n1662 , _:c14n310 , _:c14n311 , _:c14n64 , _:c14n808 , _:c14n940 ;
 	skos:definition "A process for using AI systems responsibly: what decides if a system may be used, built in-house or brought in." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.9.2" .
 iso42001:AimsRisk a owl:Class ;
 	rdfs:label "AimsRisk" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1000 , _:c14n1102 , _:c14n1119 , _:c14n1163 , _:c14n1183 , _:c14n1231 , _:c14n1310 , _:c14n1318 , _:c14n1377 , _:c14n138 , _:c14n14 , _:c14n1430 , _:c14n1467 , _:c14n1489 , _:c14n1602 , _:c14n1633 , _:c14n1643 , _:c14n1648 , _:c14n1669 , _:c14n1696 , _:c14n1712 , _:c14n1713 , _:c14n1719 , _:c14n1724 , _:c14n1756 , _:c14n1766 , _:c14n197 , _:c14n222 , _:c14n261 , _:c14n297 , _:c14n308 , _:c14n340 , _:c14n354 , _:c14n424 , _:c14n428 , _:c14n455 , _:c14n489 , _:c14n490 , _:c14n67 , _:c14n690 , _:c14n734 , _:c14n768 , _:c14n793 , _:c14n952 , _:c14n955 , _:c14n967 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1001 , _:c14n1102 , _:c14n1119 , _:c14n1163 , _:c14n1183 , _:c14n1231 , _:c14n1310 , _:c14n1318 , _:c14n1377 , _:c14n138 , _:c14n14 , _:c14n1430 , _:c14n1467 , _:c14n1489 , _:c14n1602 , _:c14n1633 , _:c14n1643 , _:c14n1648 , _:c14n1669 , _:c14n1696 , _:c14n1712 , _:c14n1713 , _:c14n1719 , _:c14n1724 , _:c14n1756 , _:c14n1766 , _:c14n197 , _:c14n222 , _:c14n261 , _:c14n297 , _:c14n308 , _:c14n340 , _:c14n354 , _:c14n424 , _:c14n428 , _:c14n456 , _:c14n490 , _:c14n491 , _:c14n67 , _:c14n691 , _:c14n735 , _:c14n769 , _:c14n794 , _:c14n953 , _:c14n956 , _:c14n968 ;
 	skos:closeMatch iso27001:IsmsRisk ;
 	skos:definition "An AI risk in the risk register: where it comes from, which objectives it helps or hinders, who could feel its consequences, how it is rated and how it is treated." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "6.1.2" .
 iso42001:AimsRiskAssessment a owl:Class ;
 	rdfs:label "AimsRiskAssessment" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n101 , _:c14n1077 , _:c14n1092 , _:c14n1174 , _:c14n1186 , _:c14n1218 , _:c14n1267 , _:c14n1342 , _:c14n1360 , _:c14n1409 , _:c14n1637 , _:c14n166 , _:c14n1769 , _:c14n208 , _:c14n234 , _:c14n251 , _:c14n286 , _:c14n38 , _:c14n399 , _:c14n549 , _:c14n598 , _:c14n613 , _:c14n687 , _:c14n789 , _:c14n886 , _:c14n996 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n101 , _:c14n1077 , _:c14n1092 , _:c14n1174 , _:c14n1186 , _:c14n1218 , _:c14n1267 , _:c14n1342 , _:c14n1360 , _:c14n1409 , _:c14n1637 , _:c14n166 , _:c14n1769 , _:c14n208 , _:c14n234 , _:c14n251 , _:c14n286 , _:c14n38 , _:c14n399 , _:c14n550 , _:c14n599 , _:c14n614 , _:c14n688 , _:c14n790 , _:c14n887 , _:c14n997 ;
 	skos:closeMatch iso27001:IsmsRiskAssessment ;
 	skos:definition "One risk assessment carried out under the process, and what it found." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "8.2" .
 iso42001:AimsRiskAssessmentProcess a owl:Class ;
 	rdfs:label "AimsRiskAssessmentProcess" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1017 , _:c14n1097 , _:c14n1134 , _:c14n1154 , _:c14n1167 , _:c14n1214 , _:c14n1256 , _:c14n1257 , _:c14n1292 , _:c14n1319 , _:c14n1349 , _:c14n1425 , _:c14n1577 , _:c14n1665 , _:c14n230 , _:c14n241 , _:c14n257 , _:c14n437 , _:c14n48 , _:c14n537 , _:c14n594 , _:c14n652 , _:c14n718 , _:c14n731 , _:c14n835 , _:c14n900 , _:c14n912 , _:c14n933 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1017 , _:c14n1097 , _:c14n1134 , _:c14n1154 , _:c14n1167 , _:c14n1214 , _:c14n1256 , _:c14n1257 , _:c14n1292 , _:c14n1319 , _:c14n1349 , _:c14n1425 , _:c14n1577 , _:c14n1665 , _:c14n230 , _:c14n241 , _:c14n257 , _:c14n437 , _:c14n48 , _:c14n538 , _:c14n595 , _:c14n653 , _:c14n719 , _:c14n732 , _:c14n836 , _:c14n901 , _:c14n913 , _:c14n934 ;
 	skos:closeMatch iso27001:IsmsRiskAssessmentProcess ;
 	skos:definition "The organization's process for assessing AI risks: its criteria, scales and method, and when it runs." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1609,7 +1609,7 @@ iso42001:AimsRiskLevel\#very_low a owl:Class ;
 	skos:definition "Small enough to need no action." .
 iso42001:AimsRiskLevel a owl:Class ;
 	rdfs:label "AimsRiskLevel" ;
-	owl:unionOf _:c14n468 ;
+	owl:unionOf _:c14n469 ;
 	skos:definition "A five-point scale of risk level, for an organization that adopts it. ISO/IEC 42001 leaves the scale to the organization." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	linkml:permissible_values iso42001:AimsRiskLevel\#critical , iso42001:AimsRiskLevel\#high , iso42001:AimsRiskLevel\#low , iso42001:AimsRiskLevel\#medium , iso42001:AimsRiskLevel\#very_low .
@@ -1681,28 +1681,28 @@ iso42001:AimsRiskTreatmentOption\#share a owl:Class ;
 	skos:definition "Share the risk with another party, such as an insurer or a supplier." .
 iso42001:AimsRiskTreatmentOption a owl:Class ;
 	rdfs:label "AimsRiskTreatmentOption" ;
-	owl:unionOf _:c14n995 ;
+	owl:unionOf _:c14n996 ;
 	skos:definition "The ways of treating a risk, by the names ISO 31000 gives them." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	skos:note "ISO/IEC 42001 asks an organization to choose options and names none, so these come from ISO 31000, as they do in lmodel/iso27001." ;
 	linkml:permissible_values iso42001:AimsRiskTreatmentOption\#avoid , iso42001:AimsRiskTreatmentOption\#modify , iso42001:AimsRiskTreatmentOption\#retain , iso42001:AimsRiskTreatmentOption\#share .
 iso42001:AimsRiskTreatmentPlan a owl:Class ;
 	rdfs:label "AimsRiskTreatmentPlan" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1011 , _:c14n1018 , _:c14n1020 , _:c14n1043 , _:c14n1063 , _:c14n1078 , _:c14n1088 , _:c14n111 , _:c14n1228 , _:c14n1233 , _:c14n1262 , _:c14n1264 , _:c14n1266 , _:c14n1304 , _:c14n1363 , _:c14n1406 , _:c14n1471 , _:c14n1594 , _:c14n1725 , _:c14n1755 , _:c14n215 , _:c14n254 , _:c14n34 , _:c14n434 , _:c14n469 , _:c14n485 , _:c14n528 , _:c14n572 , _:c14n576 , _:c14n587 , _:c14n669 , _:c14n682 , _:c14n946 , _:c14n960 , _:c14n975 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1011 , _:c14n1018 , _:c14n1020 , _:c14n1043 , _:c14n1063 , _:c14n1078 , _:c14n1088 , _:c14n111 , _:c14n1228 , _:c14n1233 , _:c14n1262 , _:c14n1264 , _:c14n1266 , _:c14n1304 , _:c14n1363 , _:c14n1406 , _:c14n1471 , _:c14n1594 , _:c14n1725 , _:c14n1755 , _:c14n215 , _:c14n254 , _:c14n34 , _:c14n434 , _:c14n470 , _:c14n486 , _:c14n529 , _:c14n573 , _:c14n577 , _:c14n588 , _:c14n670 , _:c14n683 , _:c14n947 , _:c14n961 , _:c14n976 ;
 	skos:closeMatch iso27001:IsmsRiskTreatmentPlan ;
 	skos:definition "A plan to treat one or more risks: the actions and controls, who carries them out and when, and designated management's approval of the plan and of the risk left over." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "6.1.3, 8.3" .
 iso42001:AimsRiskTreatmentProcess a owl:Class ;
 	rdfs:label "AimsRiskTreatmentProcess" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1085 , _:c14n1101 , _:c14n1322 , _:c14n1460 , _:c14n1559 , _:c14n1667 , _:c14n196 , _:c14n200 , _:c14n339 , _:c14n536 , _:c14n566 , _:c14n570 , _:c14n611 , _:c14n662 , _:c14n681 , _:c14n779 , _:c14n888 , _:c14n92 , _:c14n951 , _:c14n961 , _:c14n976 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1085 , _:c14n1101 , _:c14n1322 , _:c14n1460 , _:c14n1559 , _:c14n1667 , _:c14n196 , _:c14n200 , _:c14n339 , _:c14n537 , _:c14n567 , _:c14n571 , _:c14n612 , _:c14n663 , _:c14n682 , _:c14n780 , _:c14n889 , _:c14n92 , _:c14n952 , _:c14n962 , _:c14n977 ;
 	skos:closeMatch iso27001:IsmsRiskTreatmentProcess ;
 	skos:definition "The organization's process for treating AI risks: how it chooses options and controls, checks them against Annex A and produces the Statement of Applicability and the plan." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "6.1.3" .
 iso42001:AimsRole a owl:Class ;
 	rdfs:label "AimsRole" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1036 , _:c14n1080 , _:c14n1161 , _:c14n1185 , _:c14n1280 , _:c14n1303 , _:c14n1374 , _:c14n1414 , _:c14n144 , _:c14n1444 , _:c14n1607 , _:c14n1673 , _:c14n1694 , _:c14n1705 , _:c14n1706 , _:c14n285 , _:c14n314 , _:c14n467 , _:c14n618 , _:c14n631 , _:c14n661 , _:c14n771 , _:c14n796 , _:c14n879 , _:c14n93 , _:c14n934 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1036 , _:c14n1080 , _:c14n1161 , _:c14n1185 , _:c14n1280 , _:c14n1303 , _:c14n1374 , _:c14n1414 , _:c14n144 , _:c14n1444 , _:c14n1607 , _:c14n1673 , _:c14n1694 , _:c14n1705 , _:c14n1706 , _:c14n285 , _:c14n314 , _:c14n468 , _:c14n619 , _:c14n632 , _:c14n662 , _:c14n772 , _:c14n797 , _:c14n880 , _:c14n93 , _:c14n935 ;
 	skos:closeMatch iso27001:IsmsRole , oscal:Role ;
 	skos:definition "A role in the system, with the duties and powers it carries and who holds it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
@@ -1710,56 +1710,56 @@ iso42001:AimsRole a owl:Class ;
 	iso42001:iso42001_clause "5.3" .
 iso42001:AimsStatementOfApplicability a owl:Class ;
 	rdfs:label "AimsStatementOfApplicability" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n333 , _:c14n911 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n333 , _:c14n912 ;
 	skos:closeMatch iso27001:IsmsStatementOfApplicability ;
 	skos:definition "The Statement of Applicability: each control the organization needs, with why it is included and whether it is in place, and each control it leaves out, with why." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:iso42001_clause "6.1.3" .
 iso42001:AimsSupplierRelationship a owl:Class ;
 	rdfs:label "AimsSupplierRelationship" ;
-	rdfs:subClassOf iso42001:AimsThirdPartyRelationship , _:c14n129 , _:c14n1291 , _:c14n1466 , _:c14n1624 , _:c14n175 , _:c14n216 , _:c14n256 , _:c14n275 , _:c14n386 , _:c14n405 , _:c14n546 , _:c14n585 , _:c14n604 , _:c14n679 , _:c14n917 ;
+	rdfs:subClassOf iso42001:AimsThirdPartyRelationship , _:c14n129 , _:c14n1291 , _:c14n1466 , _:c14n1624 , _:c14n175 , _:c14n216 , _:c14n256 , _:c14n275 , _:c14n386 , _:c14n405 , _:c14n547 , _:c14n586 , _:c14n605 , _:c14n680 , _:c14n918 ;
 	skos:definition "A relationship with a supplier to the organization's AI work: what it provides, the risk that brings, and how it is held to the organization's approach." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.10.3" .
 iso42001:AimsSystemEvent a owl:Class ;
 	rdfs:label "AimsSystemEvent" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1439 , _:c14n1458 , _:c14n1479 , _:c14n1563 , _:c14n1586 , _:c14n1590 , _:c14n160 , _:c14n1639 , _:c14n19 , _:c14n249 , _:c14n25 , _:c14n290 , _:c14n44 , _:c14n582 , _:c14n70 , _:c14n737 , _:c14n774 , _:c14n815 , _:c14n83 , _:c14n94 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1439 , _:c14n1458 , _:c14n1479 , _:c14n1563 , _:c14n1586 , _:c14n1590 , _:c14n160 , _:c14n1639 , _:c14n19 , _:c14n249 , _:c14n25 , _:c14n290 , _:c14n44 , _:c14n583 , _:c14n70 , _:c14n738 , _:c14n775 , _:c14n816 , _:c14n83 , _:c14n94 ;
 	skos:definition "Something that happened with a system and was reported, by monitoring, by a user or by someone outside, and the assessment of whether it is an incident. An event assessed as an incident is recorded as an AimsIncident." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.8.3" .
 iso42001:AimsSystemResource a owl:Class ;
 	rdfs:label "AimsSystemResource" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1038 , _:c14n1093 , _:c14n1099 , _:c14n1184 , _:c14n124 , _:c14n1312 , _:c14n1394 , _:c14n643 , _:c14n853 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1038 , _:c14n1093 , _:c14n1099 , _:c14n1184 , _:c14n124 , _:c14n1312 , _:c14n1394 , _:c14n644 , _:c14n854 ;
 	skos:definition "Something an AI system draws on, told apart by its type, with the stages of the system's life that need it and who provides it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.4.2" .
 iso42001:AimsTechnicalDocumentation a owl:Class ;
 	rdfs:label "AimsTechnicalDocumentation" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1123 , _:c14n1158 , _:c14n1229 , _:c14n1544 , _:c14n1723 , _:c14n3 , _:c14n322 , _:c14n397 , _:c14n418 , _:c14n646 , _:c14n792 , _:c14n953 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1123 , _:c14n1158 , _:c14n1229 , _:c14n1544 , _:c14n1723 , _:c14n3 , _:c14n322 , _:c14n397 , _:c14n418 , _:c14n647 , _:c14n793 , _:c14n954 ;
 	skos:definition "Technical documents about an AI system for one kind of reader: what they hold, and the form they take." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.6.2.7" .
 iso42001:AimsThirdPartyRelationship a owl:Class ;
 	rdfs:label "AimsThirdPartyRelationship" ;
-	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1024 , _:c14n1067 , _:c14n1105 , _:c14n1168 , _:c14n1213 , _:c14n1275 , _:c14n1299 , _:c14n1316 , _:c14n1433 , _:c14n1548 , _:c14n1680 , _:c14n1695 , _:c14n1760 , _:c14n194 , _:c14n212 , _:c14n296 , _:c14n341 , _:c14n388 , _:c14n482 , _:c14n668 , _:c14n708 , _:c14n770 , _:c14n822 , _:c14n878 , _:c14n931 , _:c14n972 , _:c14n991 ;
+	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1024 , _:c14n1067 , _:c14n1105 , _:c14n1168 , _:c14n1213 , _:c14n1275 , _:c14n1299 , _:c14n1316 , _:c14n1433 , _:c14n1548 , _:c14n1680 , _:c14n1695 , _:c14n1760 , _:c14n194 , _:c14n212 , _:c14n296 , _:c14n341 , _:c14n388 , _:c14n483 , _:c14n669 , _:c14n709 , _:c14n771 , _:c14n823 , _:c14n879 , _:c14n932 , _:c14n973 , _:c14n992 ;
 	skos:definition "A relationship with another party in an AI system's life, such as a partner: who carries which duty, and what assures the organization of that." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.10.2" .
 iso42001:AimsToolingResource a owl:Class ;
 	rdfs:label "AimsToolingResource" ;
-	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1051 , _:c14n112 , _:c14n1130 , _:c14n1143 , _:c14n120 , _:c14n1361 , _:c14n1383 , _:c14n1385 , _:c14n1399 , _:c14n1481 , _:c14n1735 , _:c14n188 , _:c14n553 , _:c14n574 , _:c14n806 ;
+	rdfs:subClassOf iso42001:AimsSystemResource , _:c14n1051 , _:c14n112 , _:c14n1130 , _:c14n1143 , _:c14n120 , _:c14n1361 , _:c14n1383 , _:c14n1385 , _:c14n1399 , _:c14n1481 , _:c14n1735 , _:c14n188 , _:c14n554 , _:c14n575 , _:c14n807 ;
 	skos:definition "A tool an AI system draws on, such as an algorithm, a model or a development tool." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.4.4" .
 iso42001:AimsTopicSpecificPolicy a owl:Class ;
 	rdfs:label "AimsTopicSpecificPolicy" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1 , _:c14n113 , _:c14n1193 , _:c14n1499 , _:c14n1584 , _:c14n1727 , _:c14n1738 , _:c14n287 , _:c14n323 , _:c14n439 , _:c14n59 , _:c14n697 , _:c14n748 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1 , _:c14n113 , _:c14n1193 , _:c14n1499 , _:c14n1584 , _:c14n1727 , _:c14n1738 , _:c14n287 , _:c14n323 , _:c14n439 , _:c14n59 , _:c14n698 , _:c14n749 ;
 	skos:definition "A policy on one topic that gives more guidance under the AI policy, such as assessing impacts or building systems." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_b_item "B.2.2" .
 iso42001:AimsUserInformation a owl:Class ;
 	rdfs:label "AimsUserInformation" ;
-	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1159 , _:c14n1187 , _:c14n1317 , _:c14n1343 , _:c14n1436 , _:c14n1541 , _:c14n162 , _:c14n318 , _:c14n360 , _:c14n736 , _:c14n938 ;
+	rdfs:subClassOf iso42001:AimsDocumentControlMixin , iso42001:AimsRecordMixin , _:c14n1159 , _:c14n1187 , _:c14n1317 , _:c14n1343 , _:c14n1436 , _:c14n1541 , _:c14n162 , _:c14n318 , _:c14n360 , _:c14n737 , _:c14n939 ;
 	skos:definition "What those who use a system are told: the contents, how it reaches them, what decided it, and the check that they got it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.8.2" .
@@ -4143,23 +4143,25 @@ _:c14n100 a owl:Restriction ;
 	owl:onProperty iso42001:aims_document_author .
 _:c14n1000 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_risk_consequences_for_individuals .
+	owl:onProperty iso42001:aims_impact_intended_use .
 _:c14n1001 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_risk_consequences_for_individuals .
+_:c14n1002 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsTopicSpecificPolicy ;
 	owl:onProperty iso42001:aims_topic_specific_policies .
-_:c14n1002 a owl:Restriction ;
+_:c14n1003 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_finding_risk .
-_:c14n1003 a owl:Restriction ;
+_:c14n1004 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_process_reprisal_protection .
-_:c14n1004 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_ai_systems .
 _:c14n1005 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_ai_systems .
+_:c14n1006 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_monitoring_analyst .
-_:c14n1006 xsd:pattern "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$" .
 _:c14n1007 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_finding_auditee_response .
@@ -4245,7 +4247,7 @@ _:c14n1032 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_policy .
 _:c14n1033 rdf:first iso42001:AimsImpactArea\#accountability ;
-	rdf:rest _:c14n818 .
+	rdf:rest _:c14n819 .
 _:c14n1034 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_use_processes .
@@ -4317,12 +4319,12 @@ _:c14n1055 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAnnexAControl ;
 	owl:onProperty iso42001:aims_cited_annex_a_controls .
 _:c14n1056 rdf:first iso42001:AimsObjectiveCategory\#accountability ;
-	rdf:rest _:c14n869 .
+	rdf:rest _:c14n870 .
 _:c14n1057 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_data_kinds .
 _:c14n1058 rdf:first iso42001:AimsAnnexAControl\#a_4_2 ;
-	rdf:rest _:c14n624 .
+	rdf:rest _:c14n625 .
 _:c14n1059 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_nonconformity_status .
@@ -4412,7 +4414,7 @@ _:c14n1085 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_treatment_additional_controls .
 _:c14n1086 rdf:first iso42001:AimsClause\#clause_8_1 ;
-	rdf:rest _:c14n487 .
+	rdf:rest _:c14n488 .
 _:c14n1087 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_monitoring_current_value .
@@ -4510,9 +4512,9 @@ _:c14n1116 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_system_automation_level .
 _:c14n1117 rdf:first iso42001:AimsAiRole\#ai_partner ;
-	rdf:rest _:c14n948 .
+	rdf:rest _:c14n949 .
 _:c14n1118 rdf:first iso42001:AimsDataCategory\#test ;
-	rdf:rest _:c14n862 .
+	rdf:rest _:c14n863 .
 _:c14n1119 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_risk_existing_controls .
@@ -4809,7 +4811,7 @@ _:c14n121 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_programme_methods .
 _:c14n1210 rdf:first iso42001:AimsObjectiveCategory\#privacy ;
-	rdf:rest _:c14n686 .
+	rdf:rest _:c14n687 .
 _:c14n1211 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_scope_boundaries .
@@ -4921,7 +4923,7 @@ _:c14n1244 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_control_effectiveness .
 _:c14n1245 rdf:first iso42001:AimsClause\#clause_9_3 ;
-	rdf:rest _:c14n814 .
+	rdf:rest _:c14n815 .
 _:c14n1246 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_incident_closed_at .
@@ -5010,7 +5012,7 @@ _:c14n1271 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_entry_justification .
 _:c14n1272 rdf:first iso42001:AimsAnnexAControl\#a_6_1_2 ;
-	rdf:rest _:c14n877 .
+	rdf:rest _:c14n878 .
 _:c14n1273 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_risk_assessments .
@@ -5084,7 +5086,7 @@ _:c14n1294 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_programme_resources .
 _:c14n1295 rdf:first iso42001:AimsRiskLevel\#high ;
-	rdf:rest _:c14n561 .
+	rdf:rest _:c14n562 .
 _:c14n1296 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_policy_statement .
@@ -5142,7 +5144,7 @@ _:c14n1310 a owl:Restriction ;
 _:c14n1311 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_monitoring_analysis_frequency .
-_:c14n1312 owl:unionOf _:c14n599 .
+_:c14n1312 owl:unionOf _:c14n600 .
 _:c14n1313 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_awareness_completion_tracking .
@@ -5171,7 +5173,7 @@ _:c14n1320 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_obligation_parties .
 _:c14n1321 rdf:first iso42001:AimsManagementSystemStandard\#iso_13485 ;
-	rdf:rest _:c14n733 .
+	rdf:rest _:c14n734 .
 _:c14n1322 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_treatment_options_guidance .
@@ -5185,7 +5187,7 @@ _:c14n1325 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_improvement_priority .
 _:c14n1326 rdf:first iso42001:AimsImpactSubject\#groups_of_individuals ;
-	rdf:rest _:c14n586 .
+	rdf:rest _:c14n587 .
 _:c14n1327 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_document_medium .
@@ -5481,7 +5483,7 @@ _:c14n1418 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_control_text .
 _:c14n1419 rdf:first iso42001:AimsRiskSourceCategory\#opaque_system ;
-	rdf:rest _:c14n868 .
+	rdf:rest _:c14n869 .
 _:c14n142 rdf:first iso42001:AimsImpactArea\#accessibility ;
 	rdf:rest _:c14n362 .
 _:c14n1420 a owl:Restriction ;
@@ -5564,7 +5566,7 @@ _:c14n1444 a owl:Restriction ;
 _:c14n1445 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_control_guidance .
-_:c14n1446 owl:unionOf _:c14n738 .
+_:c14n1446 owl:unionOf _:c14n739 .
 _:c14n1447 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsControl ;
 	owl:onProperty iso42001:aims_finding_control .
@@ -5599,7 +5601,7 @@ _:c14n1456 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_communication_subject .
 _:c14n1457 rdf:first iso42001:AimsObjectiveCategory\#reliability ;
-	rdf:rest _:c14n477 .
+	rdf:rest _:c14n478 .
 _:c14n1458 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_event_assessment .
@@ -5736,7 +5738,7 @@ _:c14n15 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_policy_commitments .
 _:c14n150 rdf:first iso42001:AimsClause\#clause_5_2 ;
-	rdf:rest _:c14n889 .
+	rdf:rest _:c14n890 .
 _:c14n1500 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_finding_closure_status .
@@ -5756,7 +5758,7 @@ _:c14n1505 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_nonconformity_consequences .
 _:c14n1506 rdf:first iso42001:AimsClause\#clause_9_2_1 ;
-	rdf:rest _:c14n858 .
+	rdf:rest _:c14n859 .
 _:c14n1507 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_review_system_changes .
@@ -5841,7 +5843,7 @@ _:c14n1532 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_impact_scope .
 _:c14n1533 rdf:first iso42001:AimsDocumentKind\#guideline ;
-	rdf:rest _:c14n827 .
+	rdf:rest _:c14n828 .
 _:c14n1534 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_process_audience .
@@ -6039,7 +6041,7 @@ _:c14n1595 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_action_resources .
 _:c14n1596 rdf:first iso42001:AimsAiRole\#relevant_authority ;
-	rdf:rest _:c14n851 .
+	rdf:rest _:c14n852 .
 _:c14n1597 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_cited_annex_a_controls .
@@ -6089,17 +6091,17 @@ _:c14n161 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_control_guidance .
 _:c14n1610 rdf:first iso42001:AimsObjectiveCategory\#training_and_test_data ;
-	rdf:rest _:c14n458 .
+	rdf:rest _:c14n459 .
 _:c14n1611 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_audit_lead .
 _:c14n1612 rdf:first iso42001:AimsAnnexAControl\#a_7_6 ;
-	rdf:rest _:c14n823 .
+	rdf:rest _:c14n824 .
 _:c14n1613 a owl:Restriction ;
 	owl:allValuesFrom xsd:boolean ;
 	owl:onProperty iso42001:aims_incident_notification_required .
 _:c14n1614 rdf:first iso42001:AimsAiRole\#ai_human_factor_professional ;
-	rdf:rest _:c14n461 .
+	rdf:rest _:c14n462 .
 _:c14n1615 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_monitoring_description .
@@ -6260,7 +6262,7 @@ _:c14n1663 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_data_prior_handling .
 _:c14n1664 rdf:first iso42001:AimsClause\#clause_7_5_1 ;
-	rdf:rest _:c14n463 .
+	rdf:rest _:c14n464 .
 _:c14n1665 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_risk_prioritization .
@@ -6311,12 +6313,12 @@ _:c14n1679 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_audit_period_end .
 _:c14n168 rdf:first iso42001:AimsDataPreparationMethod\#scaling ;
-	rdf:rest _:c14n985 .
+	rdf:rest _:c14n986 .
 _:c14n1680 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_relationship_party .
 _:c14n1681 rdf:first iso42001:AimsClause\#clause_9_3_2 ;
-	rdf:rest _:c14n782 .
+	rdf:rest _:c14n783 .
 _:c14n1682 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_identified_impact_area .
@@ -6387,7 +6389,7 @@ _:c14n1701 a owl:Restriction ;
 _:c14n1702 rdf:first iso42001:AimsImplementationStatus\#planned ;
 	rdf:rest _:c14n1355 .
 _:c14n1703 rdf:first iso42001:AimsClause\#clause_4_3 ;
-	rdf:rest _:c14n903 .
+	rdf:rest _:c14n904 .
 _:c14n1704 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_monitoring_method .
@@ -6404,7 +6406,7 @@ _:c14n1708 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_cited_clauses .
 _:c14n1709 rdf:first iso42001:AimsControlArea\#impact_assessment ;
-	rdf:rest _:c14n932 .
+	rdf:rest _:c14n933 .
 _:c14n171 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_internal_issues .
@@ -6440,7 +6442,7 @@ _:c14n172 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_development_testing .
 _:c14n1720 rdf:first iso42001:AimsObjectiveCategory\#fairness ;
-	rdf:rest _:c14n476 .
+	rdf:rest _:c14n477 .
 _:c14n1721 rdf:first iso42001:AimsIncidentCategory\#information_security ;
 	rdf:rest _:c14n229 .
 _:c14n1722 rdf:first iso42001:AimsAnnexAControl\#a_3_3 ;
@@ -6526,7 +6528,7 @@ _:c14n1747 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRole ;
 	owl:onProperty iso42001:aims_policy_review_role .
 _:c14n1748 rdf:first iso42001:AimsAiRole\#ai_designer ;
-	rdf:rest _:c14n739 .
+	rdf:rest _:c14n740 .
 _:c14n1749 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_nonconformity_source .
@@ -6557,7 +6559,7 @@ _:c14n1757 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_organization_subsidiaries .
 _:c14n1758 rdf:first iso42001:AimsImpactDirection\#positive ;
-	rdf:rest _:c14n710 .
+	rdf:rest _:c14n711 .
 _:c14n1759 rdf:first iso42001:AimsClause\#clause_4 ;
 	rdf:rest _:c14n1121 .
 _:c14n176 a owl:Restriction ;
@@ -6618,7 +6620,7 @@ _:c14n1776 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_impact_next_date .
 _:c14n1777 rdf:first iso42001:AimsClause\#clause_6_2 ;
-	rdf:rest _:c14n637 .
+	rdf:rest _:c14n638 .
 _:c14n1778 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_incident_notifications .
@@ -6643,18 +6645,18 @@ _:c14n1785 a rdfs:Datatype ;
 _:c14n1786 rdf:first _:c14n1787 ;
 	rdf:rest rdf:nil .
 _:c14n1787 xsd:pattern "^\\s*\\S" .
-_:c14n1788 rdf:first _:c14n883 ;
+_:c14n1788 rdf:first _:c14n213 ;
 	rdf:rest rdf:nil .
 _:c14n1789 rdf:first _:c14n433 ;
 	rdf:rest rdf:nil .
 _:c14n179 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_data_quantity .
-_:c14n1790 rdf:first _:c14n213 ;
+_:c14n1790 rdf:first _:c14n884 ;
 	rdf:rest rdf:nil .
-_:c14n1791 rdf:first _:c14n1006 ;
+_:c14n1791 rdf:first _:c14n453 ;
 	rdf:rest rdf:nil .
-_:c14n1792 rdf:first _:c14n504 ;
+_:c14n1792 rdf:first _:c14n505 ;
 	rdf:rest rdf:nil .
 _:c14n18 a owl:Restriction ;
 	owl:minCardinality 0 ;
@@ -6784,7 +6786,7 @@ _:c14n217 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_procedure_change_control .
 _:c14n218 rdf:first iso42001:AimsObjectiveCategory\#security ;
-	rdf:rest _:c14n655 .
+	rdf:rest _:c14n656 .
 _:c14n219 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_impact_jurisdictions .
@@ -6818,7 +6820,7 @@ _:c14n228 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_concern_investigation_status .
 _:c14n229 rdf:first iso42001:AimsIncidentCategory\#privacy ;
-	rdf:rest _:c14n780 .
+	rdf:rest _:c14n781 .
 _:c14n23 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_organization_legal_name .
@@ -6851,7 +6853,7 @@ _:c14n239 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_reprisal_protection .
 _:c14n24 rdf:first iso42001:AimsImpactArea\#government ;
-	rdf:rest _:c14n539 .
+	rdf:rest _:c14n540 .
 _:c14n240 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_monitoring_metric .
@@ -6876,7 +6878,7 @@ _:c14n247 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRisk ;
 	owl:onProperty iso42001:aims_planned_action_risks .
 _:c14n248 rdf:first iso42001:AimsAuditFindingType\#minor_nonconformity ;
-	rdf:rest _:c14n567 .
+	rdf:rest _:c14n568 .
 _:c14n249 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_event_occurred_at .
@@ -6910,7 +6912,7 @@ _:c14n258 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_objective_resources .
 _:c14n259 a rdfs:Datatype ;
-	owl:intersectionOf _:c14n552 .
+	owl:intersectionOf _:c14n553 .
 _:c14n26 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_included_target_date .
@@ -7185,7 +7187,7 @@ _:c14n343 rdf:first iso42001:AimsAuditFindingType\#major_nonconformity ;
 _:c14n344 rdf:first iso42001:AimsAiRole\#other_subject ;
 	rdf:rest _:c14n1596 .
 _:c14n345 a owl:Restriction ;
-	owl:allValuesFrom _:c14n1782 ;
+	owl:allValuesFrom _:c14n1779 ;
 	owl:onProperty iso42001:aims_identified_impact_text .
 _:c14n346 a owl:Restriction ;
 	owl:minCardinality 0 ;
@@ -7197,7 +7199,7 @@ _:c14n348 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_human_oversight_required .
 _:c14n349 rdf:first iso42001:AimsControlArea\#accountability ;
-	rdf:rest _:c14n543 .
+	rdf:rest _:c14n544 .
 _:c14n35 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_organization_legal_name .
@@ -7257,7 +7259,7 @@ _:c14n368 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_certification_date .
 _:c14n369 rdf:first iso42001:AimsAiRole\#ai_tester_or_evaluator ;
-	rdf:rest _:c14n510 .
+	rdf:rest _:c14n511 .
 _:c14n37 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty iso42001:aims_monitoring_metric .
@@ -7397,7 +7399,7 @@ _:c14n411 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_concern_findings .
 _:c14n412 a owl:Restriction ;
-	owl:allValuesFrom _:c14n847 ;
+	owl:allValuesFrom _:c14n848 ;
 	owl:onProperty iso42001:aims_organization_employee_count .
 _:c14n413 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
@@ -7490,7 +7492,7 @@ _:c14n44 a owl:Restriction ;
 _:c14n440 rdf:first iso42001:AimsRiskSourceCategory\#complex_environment ;
 	rdf:rest _:c14n1419 .
 _:c14n441 rdf:first iso42001:AimsAnnexAControl\#a_4_4 ;
-	rdf:rest _:c14n896 .
+	rdf:rest _:c14n897 .
 _:c14n442 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRole ;
 	owl:onProperty iso42001:aims_responsible_role .
@@ -7527,780 +7529,778 @@ _:c14n451 a owl:Restriction ;
 _:c14n452 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_impact_process_retention .
-_:c14n453 a owl:Restriction ;
+_:c14n453 xsd:pattern "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$" .
+_:c14n454 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_computing_processing .
-_:c14n454 a owl:Restriction ;
+_:c14n455 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_implementation_state .
-_:c14n455 a owl:Restriction ;
+_:c14n456 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskLevel ;
 	owl:onProperty iso42001:aims_risk_inherent_level .
-_:c14n456 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_organization_legal_name .
 _:c14n457 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_organization_legal_name .
+_:c14n458 a owl:Restriction ;
+	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_communication_timing .
-_:c14n458 rdf:first iso42001:AimsObjectiveCategory\#environmental_impact ;
+_:c14n459 rdf:first iso42001:AimsObjectiveCategory\#environmental_impact ;
 	rdf:rest _:c14n1720 .
-_:c14n459 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_audits .
 _:c14n46 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_concern_process_escalation .
 _:c14n460 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_audits .
+_:c14n461 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_next_date .
-_:c14n461 rdf:first iso42001:AimsAiRole\#domain_expert ;
-	rdf:rest _:c14n890 .
-_:c14n462 a owl:Restriction ;
+_:c14n462 rdf:first iso42001:AimsAiRole\#domain_expert ;
+	rdf:rest _:c14n891 .
+_:c14n463 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_document_storage .
-_:c14n463 rdf:first iso42001:AimsClause\#clause_7_5_2 ;
-	rdf:rest _:c14n801 .
-_:c14n464 a owl:Restriction ;
+_:c14n464 rdf:first iso42001:AimsClause\#clause_7_5_2 ;
+	rdf:rest _:c14n802 .
+_:c14n465 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_investigation_status .
-_:c14n465 rdf:first iso42001:AimsLifecycleStage\#inception ;
+_:c14n466 rdf:first iso42001:AimsLifecycleStage\#inception ;
 	rdf:rest _:c14n1535 .
-_:c14n466 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_action_root_cause .
 _:c14n467 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_action_root_cause .
+_:c14n468 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_role_category .
-_:c14n468 rdf:first iso42001:AimsRiskLevel\#very_low ;
-	rdf:rest _:c14n898 .
-_:c14n469 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_plan_timeline .
+_:c14n469 rdf:first iso42001:AimsRiskLevel\#very_low ;
+	rdf:rest _:c14n899 .
 _:c14n47 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_objective_evaluation .
 _:c14n470 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_plan_timeline .
+_:c14n471 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_concern_responded_on .
-_:c14n471 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_impact_process_assessors .
 _:c14n472 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_support_category .
+	owl:onProperty iso42001:aims_impact_process_assessors .
 _:c14n473 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_system_operation_elements .
+	owl:onProperty iso42001:aims_support_category .
 _:c14n474 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_system_operation_elements .
+_:c14n475 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_data_intended_use .
-_:c14n475 a owl:Restriction ;
+_:c14n476 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsInterestedParty ;
 	owl:onProperty iso42001:aims_interested_parties .
-_:c14n476 rdf:first iso42001:AimsObjectiveCategory\#maintainability ;
+_:c14n477 rdf:first iso42001:AimsObjectiveCategory\#maintainability ;
 	rdf:rest _:c14n1210 .
-_:c14n477 rdf:first iso42001:AimsObjectiveCategory\#accessibility ;
+_:c14n478 rdf:first iso42001:AimsObjectiveCategory\#accessibility ;
 	rdf:rest _:c14n1462 .
-_:c14n478 rdf:first iso42001:AimsClause\#clause_6_1 ;
-	rdf:rest _:c14n555 .
-_:c14n479 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_competence_actions .
+_:c14n479 rdf:first iso42001:AimsClause\#clause_6_1 ;
+	rdf:rest _:c14n556 .
 _:c14n48 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_risk_comparability .
 _:c14n480 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_responsible_role .
+	owl:onProperty iso42001:aims_competence_actions .
 _:c14n481 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_leadership_evidence .
+	owl:onProperty iso42001:aims_responsible_role .
 _:c14n482 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_relationship_party .
+	owl:onProperty iso42001:aims_leadership_evidence .
 _:c14n483 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_relationship_party .
+_:c14n484 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_system_model_types .
-_:c14n484 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_impact_system_complexity .
 _:c14n485 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_plan_resources .
+	owl:onProperty iso42001:aims_impact_system_complexity .
 _:c14n486 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_plan_resources .
+_:c14n487 a owl:Restriction ;
+	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_competence_role .
-_:c14n487 rdf:first iso42001:AimsClause\#clause_8_2 ;
-	rdf:rest _:c14n865 .
-_:c14n488 a owl:Restriction ;
+_:c14n488 rdf:first iso42001:AimsClause\#clause_8_2 ;
+	rdf:rest _:c14n866 .
+_:c14n489 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsImpactAssessment ;
 	owl:onProperty iso42001:aims_system_impact_assessments .
-_:c14n489 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_risk_source .
 _:c14n49 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsIdentifiedImpact ;
 	owl:onProperty iso42001:aims_impact_findings .
 _:c14n490 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_impact_assessments .
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_risk_source .
 _:c14n491 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_planned_action_opportunities .
+	owl:onProperty iso42001:aims_risk_impact_assessments .
 _:c14n492 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_planned_action_opportunities .
+_:c14n493 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskAssessment ;
 	owl:onProperty iso42001:aims_risk_assessments .
-_:c14n493 a owl:Restriction ;
+_:c14n494 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_awareness_completion_tracking .
-_:c14n494 a owl:Restriction ;
+_:c14n495 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_procedure_scope .
-_:c14n495 a owl:Restriction ;
+_:c14n496 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_finding_control .
-_:c14n496 a owl:Restriction ;
+_:c14n497 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_document_version .
-_:c14n497 a owl:Restriction ;
+_:c14n498 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_incident_plan_details .
-_:c14n498 a owl:Restriction ;
+_:c14n499 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_nonconformity_detected_on .
-_:c14n499 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty iso42001:aims_implementation_state .
 _:c14n5 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_audit_conclusion .
 _:c14n50 rdf:first iso42001:AimsClause\#clause_7_5 ;
 	rdf:rest _:c14n1664 .
 _:c14n500 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty iso42001:aims_implementation_state .
+_:c14n501 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_competence_experience .
-_:c14n501 rdf:first iso42001:AimsRiskLevel\#medium ;
+_:c14n502 rdf:first iso42001:AimsRiskLevel\#medium ;
 	rdf:rest _:c14n1295 .
-_:c14n502 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_user_information .
 _:c14n503 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_user_information .
+_:c14n504 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_action_effectiveness_criteria .
-_:c14n504 xsd:minInclusive 1 .
-_:c14n505 a owl:Restriction ;
+_:c14n505 xsd:minInclusive 1 .
+_:c14n506 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_document_effective_date .
-_:c14n506 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_system_model_types .
 _:c14n507 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_concern_investigator .
+	owl:onProperty iso42001:aims_system_model_types .
 _:c14n508 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_concern_investigator .
+_:c14n509 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_component_integration .
-_:c14n509 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_impact_societal_context .
 _:c14n51 rdf:first iso42001:AimsRiskSourceCategory\#technology_readiness ;
 	rdf:rest _:c14n1717 .
-_:c14n510 rdf:first iso42001:AimsAiRole\#ai_deployer ;
-	rdf:rest _:c14n1614 .
-_:c14n511 a owl:Restriction ;
+_:c14n510 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_support_allocation_date .
+	owl:onProperty iso42001:aims_impact_societal_context .
+_:c14n511 rdf:first iso42001:AimsAiRole\#ai_deployer ;
+	rdf:rest _:c14n1614 .
 _:c14n512 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_support_allocation_date .
+_:c14n513 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_human_role .
-_:c14n513 rdf:first iso42001:AimsAnnexAControl\#a_2_2 ;
-	rdf:rest _:c14n630 .
-_:c14n514 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_audit_scope .
+_:c14n514 rdf:first iso42001:AimsAnnexAControl\#a_2_2 ;
+	rdf:rest _:c14n631 .
 _:c14n515 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_audit_scope .
+_:c14n516 a owl:Restriction ;
+	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_improvement_identified_by .
-_:c14n516 rdf:first iso42001:AimsAnnexAControl\#a_4_6 ;
+_:c14n517 rdf:first iso42001:AimsAnnexAControl\#a_4_6 ;
 	rdf:rest _:c14n406 .
-_:c14n517 a owl:Restriction ;
+_:c14n518 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_deployment_context .
-_:c14n518 a owl:Restriction ;
+_:c14n519 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_statement_of_applicability .
-_:c14n519 a owl:Restriction ;
+_:c14n52 rdf:first iso42001:AimsRiskTreatmentOption\#avoid ;
+	rdf:rest _:c14n979 .
+_:c14n520 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAnnexAControl ;
 	owl:onProperty iso42001:aims_cited_annex_a_controls .
-_:c14n52 rdf:first iso42001:AimsRiskTreatmentOption\#avoid ;
-	rdf:rest _:c14n978 .
-_:c14n520 a owl:Restriction ;
+_:c14n521 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_programme_period .
-_:c14n521 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_nonconformity_similar_check .
 _:c14n522 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_system_continuous_learning .
+	owl:onProperty iso42001:aims_nonconformity_similar_check .
 _:c14n523 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_incident_notification_required .
+	owl:onProperty iso42001:aims_system_continuous_learning .
 _:c14n524 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_action_effectiveness_criteria .
+	owl:onProperty iso42001:aims_incident_notification_required .
 _:c14n525 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_action_effectiveness_criteria .
+_:c14n526 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_scope .
-_:c14n526 a owl:Restriction ;
+_:c14n527 a owl:Restriction ;
 	owl:allValuesFrom xsd:boolean ;
 	owl:onProperty iso42001:aims_system_human_oversight_required .
-_:c14n527 a owl:Restriction ;
+_:c14n528 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsCompetenceRecord ;
 	owl:onProperty iso42001:aims_competence_records .
-_:c14n528 a owl:Restriction ;
+_:c14n529 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_plan_timeline .
-_:c14n529 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_computing_location .
 _:c14n53 rdf:first iso42001:AimsAnnexAControl\#a_5_5 ;
 	rdf:rest _:c14n1272 .
 _:c14n530 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_computing_location .
+_:c14n531 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty iso42001:aims_finding_type .
-_:c14n531 a owl:Restriction ;
+_:c14n532 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_customer_agreement .
-_:c14n532 a owl:Restriction ;
+_:c14n533 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_programme_auditor_selection .
-_:c14n533 a owl:Restriction ;
+_:c14n534 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_competence_actions .
-_:c14n534 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_incident_plan_integration .
 _:c14n535 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_improvement_plan .
+	owl:onProperty iso42001:aims_incident_plan_integration .
 _:c14n536 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_improvement_plan .
+_:c14n537 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_treatment_annex_a_comparison .
-_:c14n537 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_criteria .
 _:c14n538 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_risk_criteria .
+_:c14n539 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_integrated_standards .
-_:c14n539 rdf:first iso42001:AimsImpactArea\#culture_and_values ;
-	rdf:rest _:c14n400 .
 _:c14n54 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_external_services .
-_:c14n540 a owl:Restriction ;
+_:c14n540 rdf:first iso42001:AimsImpactArea\#culture_and_values ;
+	rdf:rest _:c14n400 .
+_:c14n541 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_ai_systems .
-_:c14n541 a owl:Restriction ;
+_:c14n542 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsCommunicationPlan ;
 	owl:onProperty iso42001:aims_communication_plan .
-_:c14n542 a owl:Restriction ;
+_:c14n543 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRole ;
 	owl:onProperty iso42001:aims_responsible_role .
-_:c14n543 rdf:first iso42001:AimsControlArea\#system_resources ;
+_:c14n544 rdf:first iso42001:AimsControlArea\#system_resources ;
 	rdf:rest _:c14n1709 .
-_:c14n544 a owl:Restriction ;
+_:c14n545 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_document_effective_date .
-_:c14n545 a owl:Restriction ;
+_:c14n546 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_audit_standards .
-_:c14n546 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_supplier_requirements .
 _:c14n547 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_review_monitoring_trends .
-_:c14n548 rdf:first iso42001:AimsConsequence\#major ;
-	rdf:rest _:c14n1700 .
-_:c14n549 a owl:Restriction ;
+	owl:onProperty iso42001:aims_supplier_requirements .
+_:c14n548 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_assessment_summary .
+	owl:onProperty iso42001:aims_review_monitoring_trends .
+_:c14n549 rdf:first iso42001:AimsConsequence\#major ;
+	rdf:rest _:c14n1700 .
 _:c14n55 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_computing_requirements .
-_:c14n550 rdf:first iso42001:AimsImpactArea\#security_and_privacy ;
+_:c14n550 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_assessment_summary .
+_:c14n551 rdf:first iso42001:AimsImpactArea\#security_and_privacy ;
 	rdf:rest _:c14n1426 .
-_:c14n551 a owl:Restriction ;
+_:c14n552 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_action_effectiveness_review_date .
-_:c14n552 rdf:first xsd:string ;
-	rdf:rest _:c14n1790 .
-_:c14n553 a owl:Restriction ;
+_:c14n553 rdf:first xsd:string ;
+	rdf:rest _:c14n1788 .
+_:c14n554 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_tool_vendor .
-_:c14n554 rdf:first iso42001:AimsRiskSourceCategory\#hardware ;
+_:c14n555 rdf:first iso42001:AimsRiskSourceCategory\#hardware ;
 	rdf:rest _:c14n95 .
-_:c14n555 rdf:first iso42001:AimsClause\#clause_6_1_1 ;
+_:c14n556 rdf:first iso42001:AimsClause\#clause_6_1_1 ;
 	rdf:rest _:c14n1192 .
-_:c14n556 a owl:Restriction ;
+_:c14n557 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_processes .
-_:c14n557 a owl:Restriction ;
+_:c14n558 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_nonconformity_similar_check .
-_:c14n558 a owl:Restriction ;
+_:c14n559 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_party_ai_roles .
-_:c14n559 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_programme_status .
 _:c14n56 rdf:first iso42001:AimsConsequence\#moderate ;
-	rdf:rest _:c14n548 .
+	rdf:rest _:c14n549 .
 _:c14n560 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_programme_status .
+_:c14n561 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_document_disposition .
-_:c14n561 rdf:first iso42001:AimsRiskLevel\#critical ;
+_:c14n562 rdf:first iso42001:AimsRiskLevel\#critical ;
 	rdf:rest rdf:nil .
-_:c14n562 a owl:Restriction ;
+_:c14n563 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_included_control .
-_:c14n563 a owl:Restriction ;
+_:c14n564 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAuditFindingType ;
 	owl:onProperty iso42001:aims_finding_type .
-_:c14n564 a owl:Restriction ;
+_:c14n565 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsImpactArea ;
 	owl:onProperty iso42001:aims_impact_process_areas .
-_:c14n565 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_awareness_frequency .
 _:c14n566 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_awareness_frequency .
+_:c14n567 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_treatment_additional_controls .
-_:c14n567 rdf:first iso42001:AimsAuditFindingType\#observation ;
+_:c14n568 rdf:first iso42001:AimsAuditFindingType\#observation ;
 	rdf:rest _:c14n295 .
-_:c14n568 a owl:Restriction ;
+_:c14n569 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_document_disposition .
-_:c14n569 a owl:Restriction ;
+_:c14n57 rdf:first iso42001:AimsAiRole\#ai_platform_provider ;
+	rdf:rest _:c14n862 .
+_:c14n570 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_top_management .
-_:c14n57 rdf:first iso42001:AimsAiRole\#ai_platform_provider ;
-	rdf:rest _:c14n861 .
-_:c14n570 a owl:Restriction ;
+_:c14n571 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_treatment_options_guidance .
-_:c14n571 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_programme_methods .
 _:c14n572 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_implementation_state .
+	owl:onProperty iso42001:aims_programme_methods .
 _:c14n573 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_implementation_state .
+_:c14n574 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_monitoring_method .
-_:c14n574 a owl:Restriction ;
+_:c14n575 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_tool_category .
-_:c14n575 a owl:Restriction ;
+_:c14n576 a owl:Restriction ;
 	rdfs:subClassOf iso42001:AimsThirdPartyRelationship ;
 	owl:onProperty iso42001:aims_relationship_type ;
 	owl:someValuesFrom iso42001:AimsThirdPartyRelationship .
-_:c14n576 a owl:Restriction ;
+_:c14n577 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_plan_controls .
-_:c14n577 a owl:Restriction ;
+_:c14n578 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_improvement_identified_on .
-_:c14n578 rdf:first iso42001:AimsExcludedControl ;
+_:c14n579 rdf:first iso42001:AimsExcludedControl ;
 	rdf:rest _:c14n1094 .
-_:c14n579 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_party_communication_needs .
 _:c14n58 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_workforce .
 _:c14n580 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_customer_responsibility_split .
+	owl:onProperty iso42001:aims_party_communication_needs .
 _:c14n581 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_customer_responsibility_split .
+_:c14n582 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_data_metadata .
-_:c14n582 a owl:Restriction ;
+_:c14n583 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_event_assessment .
-_:c14n583 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_impact_demographic_groups .
 _:c14n584 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_organization_parent .
+	owl:onProperty iso42001:aims_impact_demographic_groups .
 _:c14n585 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_organization_parent .
+_:c14n586 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_supplier_corrective_actions .
-_:c14n586 rdf:first iso42001:AimsImpactSubject\#societies ;
+_:c14n587 rdf:first iso42001:AimsImpactSubject\#societies ;
 	rdf:rest rdf:nil .
-_:c14n587 a owl:Restriction ;
+_:c14n588 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsControl ;
 	owl:onProperty iso42001:aims_plan_controls .
-_:c14n588 a owl:Restriction ;
+_:c14n589 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_competence_person .
-_:c14n589 rdf:first iso42001:AimsIncidentCategory\#other ;
-	rdf:rest rdf:nil .
 _:c14n59 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_topic_policy_topic .
-_:c14n590 a owl:Restriction ;
+_:c14n590 rdf:first iso42001:AimsIncidentCategory\#other ;
+	rdf:rest rdf:nil .
+_:c14n591 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_communication_purpose .
-_:c14n591 a owl:Restriction ;
-	owl:allValuesFrom _:c14n1779 ;
-	owl:onProperty iso42001:aims_entry_justification .
 _:c14n592 a owl:Restriction ;
+	owl:allValuesFrom _:c14n1782 ;
+	owl:onProperty iso42001:aims_entry_justification .
+_:c14n593 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_improvement_identified_on .
-_:c14n593 a owl:Restriction ;
+_:c14n594 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskTreatmentProcess ;
 	owl:onProperty iso42001:aims_risk_treatment_process .
-_:c14n594 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_matrix .
 _:c14n595 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_certification_body .
+	owl:onProperty iso42001:aims_risk_matrix .
 _:c14n596 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_certification_body .
+_:c14n597 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_risk_assessment_process .
-_:c14n597 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_development_impact_assessment_stages .
 _:c14n598 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_development_impact_assessment_stages .
+_:c14n599 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_assessment_impact_assessments .
-_:c14n599 rdf:first iso42001:AimsComponentResource ;
-	rdf:rest _:c14n372 .
 _:c14n6 rdf:first iso42001:AimsClause\#clause_7 ;
-	rdf:rest _:c14n603 .
+	rdf:rest _:c14n604 .
 _:c14n60 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_party_communication_needs .
-_:c14n600 a owl:Restriction ;
+_:c14n600 rdf:first iso42001:AimsComponentResource ;
+	rdf:rest _:c14n372 .
+_:c14n601 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_finding_evidence .
-_:c14n601 a owl:Restriction ;
+_:c14n602 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_incident_recovery_actions .
-_:c14n602 a owl:Restriction ;
+_:c14n603 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_objective_current_value .
-_:c14n603 rdf:first iso42001:AimsClause\#clause_7_1 ;
+_:c14n604 rdf:first iso42001:AimsClause\#clause_7_1 ;
 	rdf:rest _:c14n396 .
-_:c14n604 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_supplier_integration .
 _:c14n605 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_improvement_priority .
+	owl:onProperty iso42001:aims_supplier_integration .
 _:c14n606 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_improvement_priority .
+_:c14n607 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_concern_escalation .
-_:c14n607 rdf:first iso42001:AimsImpactArea\#fairness ;
+_:c14n608 rdf:first iso42001:AimsImpactArea\#fairness ;
 	rdf:rest _:c14n1033 .
-_:c14n608 a owl:Restriction ;
+_:c14n609 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_competence_experience .
-_:c14n609 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_cited_annex_a_controls .
 _:c14n61 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_impact_intended_use .
 _:c14n610 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_cited_annex_a_controls .
+_:c14n611 a owl:Restriction ;
 	owl:allValuesFrom xsd:boolean ;
 	owl:onProperty iso42001:aims_concern_anonymous .
-_:c14n611 a owl:Restriction ;
+_:c14n612 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_treatment_approval_workflow .
-_:c14n612 a owl:Restriction ;
+_:c14n613 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_data_intended_use .
-_:c14n613 a owl:Restriction ;
+_:c14n614 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_assessment_date .
-_:c14n614 a owl:Restriction ;
+_:c14n615 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_organization_subsidiaries .
-_:c14n615 a owl:Restriction ;
+_:c14n616 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_obligation_jurisdiction .
-_:c14n616 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_improvement_priority .
 _:c14n617 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_policy_communication_date .
+	owl:onProperty iso42001:aims_improvement_priority .
 _:c14n618 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_policy_communication_date .
+_:c14n619 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_role_reports_performance .
-_:c14n619 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_party_climate_change_requirements .
 _:c14n62 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_review_audit_trends .
 _:c14n620 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_party_climate_change_requirements .
+_:c14n621 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_procedure_scope .
-_:c14n621 rdf:first iso42001:AimsClause\#clause_5 ;
+_:c14n622 rdf:first iso42001:AimsClause\#clause_5 ;
 	rdf:rest _:c14n1576 .
-_:c14n622 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_improvement_benefit .
 _:c14n623 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_improvement_benefit .
+_:c14n624 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_intended_purpose .
-_:c14n624 rdf:first iso42001:AimsAnnexAControl\#a_4_3 ;
+_:c14n625 rdf:first iso42001:AimsAnnexAControl\#a_4_3 ;
 	rdf:rest _:c14n441 .
-_:c14n625 a owl:Restriction ;
+_:c14n626 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_objective_metric .
-_:c14n626 a owl:Restriction ;
+_:c14n627 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsPlannedAction ;
 	owl:onProperty iso42001:aims_planned_actions .
-_:c14n627 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_concern_resolution .
 _:c14n628 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_concern_resolution .
+_:c14n629 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_support_allocated_to .
-_:c14n629 rdf:first iso42001:AimsObjectiveCategory\#safety ;
-	rdf:rest _:c14n218 .
 _:c14n63 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_procedure_control_measures .
-_:c14n630 rdf:first iso42001:AimsAnnexAControl\#a_2_3 ;
+_:c14n630 rdf:first iso42001:AimsObjectiveCategory\#safety ;
+	rdf:rest _:c14n218 .
+_:c14n631 rdf:first iso42001:AimsAnnexAControl\#a_2_3 ;
 	rdf:rest _:c14n1200 .
-_:c14n631 a owl:Restriction ;
+_:c14n632 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_role_responsibilities .
-_:c14n632 a owl:Restriction ;
+_:c14n633 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_human_activities .
-_:c14n633 a owl:Restriction ;
+_:c14n634 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_responsible_role .
-_:c14n634 a owl:Restriction ;
+_:c14n635 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_policy_principles .
-_:c14n635 a owl:Restriction ;
+_:c14n636 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskAssessmentProcess ;
 	owl:onProperty iso42001:aims_risk_assessment_process .
-_:c14n636 a owl:Restriction ;
+_:c14n637 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_nonconformity_immediate_actions .
-_:c14n637 rdf:first iso42001:AimsClause\#clause_6_3 ;
+_:c14n638 rdf:first iso42001:AimsClause\#clause_6_3 ;
 	rdf:rest _:c14n6 .
-_:c14n638 a owl:Restriction ;
+_:c14n639 a owl:Restriction ;
 	rdfs:subClassOf iso42001:AimsApplicabilityEntry ;
 	owl:onProperty iso42001:aims_entry_type ;
 	owl:someValuesFrom iso42001:AimsApplicabilityEntry .
-_:c14n639 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_monitoring_method .
 _:c14n64 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_use_costs .
 _:c14n640 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_data_subject_demographics .
+	owl:onProperty iso42001:aims_monitoring_method .
 _:c14n641 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_development_human_oversight .
+	owl:onProperty iso42001:aims_data_subject_demographics .
 _:c14n642 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_development_human_oversight .
+_:c14n643 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_impact_discipline .
-_:c14n643 a owl:Restriction ;
+_:c14n644 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsLifecycleStage ;
 	owl:onProperty iso42001:aims_life_cycle_stages .
-_:c14n644 a owl:Restriction ;
+_:c14n645 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_development_human_oversight .
-_:c14n645 a owl:Restriction ;
+_:c14n646 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_entry_annex_a_control .
-_:c14n646 a owl:Restriction ;
+_:c14n647 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_technical_doc_contents .
-_:c14n647 a owl:Restriction ;
+_:c14n648 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_development_release_criteria .
-_:c14n648 a owl:Restriction ;
+_:c14n649 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_concern_escalation .
-_:c14n649 a owl:Restriction ;
-	owl:allValuesFrom xsd:boolean ;
-	owl:onProperty iso42001:aims_communication_records_required .
 _:c14n65 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_foreseeable_misuse .
 _:c14n650 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_planned_action_integration .
+	owl:allValuesFrom xsd:boolean ;
+	owl:onProperty iso42001:aims_communication_records_required .
 _:c14n651 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_policy_related_policies .
+	owl:onProperty iso42001:aims_planned_action_integration .
 _:c14n652 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_risk_policy_alignment .
+	owl:onProperty iso42001:aims_policy_related_policies .
 _:c14n653 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_risk_policy_alignment .
+_:c14n654 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_objective_target_date .
-_:c14n654 a owl:Restriction ;
+_:c14n655 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsImpactAssessmentProcess ;
 	owl:onProperty iso42001:aims_impact_assessment_process .
-_:c14n655 rdf:first iso42001:AimsObjectiveCategory\#transparency_and_explainability ;
+_:c14n656 rdf:first iso42001:AimsObjectiveCategory\#transparency_and_explainability ;
 	rdf:rest _:c14n1457 .
-_:c14n656 a owl:Restriction ;
+_:c14n657 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAudit ;
 	owl:onProperty iso42001:aims_audits .
-_:c14n657 a owl:Restriction ;
+_:c14n658 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_action_target_date .
-_:c14n658 a owl:Restriction ;
+_:c14n659 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRisk ;
 	owl:onProperty iso42001:aims_risks .
-_:c14n659 a owl:Restriction ;
-	owl:allValuesFrom iso42001:AimsAnnexAControl ;
-	owl:onProperty iso42001:aims_cited_annex_a_controls .
 _:c14n66 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_action_target_date .
-_:c14n660 rdf:first iso42001:AimsImplementationStatus\#not_started ;
+_:c14n660 a owl:Restriction ;
+	owl:allValuesFrom iso42001:AimsAnnexAControl ;
+	owl:onProperty iso42001:aims_cited_annex_a_controls .
+_:c14n661 rdf:first iso42001:AimsImplementationStatus\#not_started ;
 	rdf:rest _:c14n1702 .
-_:c14n661 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_role_delegation .
 _:c14n662 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_treatment_additional_controls .
+	owl:onProperty iso42001:aims_role_delegation .
 _:c14n663 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_treatment_additional_controls .
+_:c14n664 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_data_provenance_verification .
-_:c14n664 a owl:Restriction ;
+_:c14n665 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsLifecycleStage ;
 	owl:onProperty iso42001:aims_system_life_cycle_stage .
-_:c14n665 a owl:Restriction ;
+_:c14n666 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsConcernReportingProcess ;
 	owl:onProperty iso42001:aims_concern_reporting_process .
-_:c14n666 a owl:Restriction ;
+_:c14n667 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_awareness_completion_tracking .
-_:c14n667 a owl:Restriction ;
+_:c14n668 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsIncident ;
 	owl:onProperty iso42001:aims_concern_incidents .
-_:c14n668 a owl:Restriction ;
+_:c14n669 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_relationship_type .
-_:c14n669 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_plan_scope .
 _:c14n67 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_risk_source_categories .
 _:c14n670 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_plan_scope .
+_:c14n671 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAiSystem ;
 	owl:onProperty iso42001:aims_ai_systems .
-_:c14n671 a owl:Restriction ;
+_:c14n672 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_procedure_change_control .
-_:c14n672 a owl:Restriction ;
+_:c14n673 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsImpactArea ;
 	owl:onProperty iso42001:aims_identified_impact_area .
-_:c14n673 rdf:first iso42001:AimsClause\#clause_6 ;
-	rdf:rest _:c14n478 .
-_:c14n674 a owl:Restriction ;
+_:c14n674 rdf:first iso42001:AimsClause\#clause_6 ;
+	rdf:rest _:c14n479 .
+_:c14n675 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_objective_achievement .
-_:c14n675 a owl:Restriction ;
+_:c14n676 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAudit ;
 	owl:onProperty iso42001:aims_programme_audits .
-_:c14n676 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_objective_statement .
 _:c14n677 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_control_text .
+	owl:onProperty iso42001:aims_objective_statement .
 _:c14n678 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_objective_action_plan .
+	owl:onProperty iso42001:aims_control_text .
 _:c14n679 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_supplier_integration .
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_objective_action_plan .
 _:c14n68 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_organization_climate_change_relevant .
 _:c14n680 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_supplier_integration .
+_:c14n681 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_action_completion_date .
-_:c14n681 a owl:Restriction ;
+_:c14n682 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_treatment_control_selection .
-_:c14n682 a owl:Restriction ;
+_:c14n683 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_plan_residual_risk_acceptance .
-_:c14n683 a owl:Restriction ;
+_:c14n684 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_impact_discipline .
-_:c14n684 a owl:Restriction ;
+_:c14n685 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsLifecycleStage ;
 	owl:onProperty iso42001:aims_system_human_oversight_stages .
-_:c14n685 a owl:Restriction ;
+_:c14n686 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_obligation_contents .
-_:c14n686 rdf:first iso42001:AimsObjectiveCategory\#robustness ;
-	rdf:rest _:c14n629 .
-_:c14n687 a owl:Restriction ;
+_:c14n687 rdf:first iso42001:AimsObjectiveCategory\#robustness ;
+	rdf:rest _:c14n630 .
+_:c14n688 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_assessment_next_date .
-_:c14n688 a owl:Restriction ;
+_:c14n689 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_process_response_time .
-_:c14n689 rdf:first iso42001:AimsClause\#clause_8 ;
-	rdf:rest _:c14n1086 .
 _:c14n69 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_support_quantity .
-_:c14n690 a owl:Restriction ;
+_:c14n690 rdf:first iso42001:AimsClause\#clause_8 ;
+	rdf:rest _:c14n1086 .
+_:c14n691 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsConsequence ;
 	owl:onProperty iso42001:aims_risk_consequence .
-_:c14n691 a owl:Restriction ;
+_:c14n692 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_included_evidence .
-_:c14n692 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_policy_objectives_framework .
 _:c14n693 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_programme_frequency_rationale .
+	owl:onProperty iso42001:aims_policy_objectives_framework .
 _:c14n694 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_programme_frequency_rationale .
+_:c14n695 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_certification_date .
-_:c14n695 a owl:Restriction ;
+_:c14n696 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAiRole ;
 	owl:onProperty iso42001:aims_organization_ai_roles .
-_:c14n696 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_data_bias_issues .
 _:c14n697 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_cited_annex_a_controls .
+	owl:onProperty iso42001:aims_data_bias_issues .
 _:c14n698 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_improvements .
+	owl:onProperty iso42001:aims_cited_annex_a_controls .
 _:c14n699 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_awareness_frequency .
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_improvements .
 _:c14n7 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_objective_statement .
@@ -8308,317 +8308,317 @@ _:c14n70 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_event_type .
 _:c14n700 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_awareness_frequency .
+_:c14n701 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_finding_closure_date .
-_:c14n701 a owl:Restriction ;
+_:c14n702 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_organization_employee_count .
-_:c14n702 a owl:Restriction ;
+_:c14n703 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRole ;
 	owl:onProperty iso42001:aims_responsible_role .
-_:c14n703 a owl:Restriction ;
+_:c14n704 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskSourceCategory ;
 	owl:onProperty iso42001:aims_risk_source_categories .
-_:c14n704 a owl:Restriction ;
+_:c14n705 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsManagementReview ;
 	owl:onProperty iso42001:aims_management_reviews .
-_:c14n705 a owl:Restriction ;
+_:c14n706 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsThirdPartyRelationship ;
 	owl:onProperty iso42001:aims_third_party_relationships .
-_:c14n706 rdf:first iso42001:AimsRiskSourceCategory\#machine_learning ;
-	rdf:rest _:c14n554 .
-_:c14n707 a owl:Restriction ;
+_:c14n707 rdf:first iso42001:AimsRiskSourceCategory\#machine_learning ;
+	rdf:rest _:c14n555 .
+_:c14n708 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_discipline .
-_:c14n708 a owl:Restriction ;
+_:c14n709 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_relationship_responsibilities .
-_:c14n709 owl:unionOf _:c14n578 .
 _:c14n71 rdf:first iso42001:AimsClause\#clause_9 ;
-	rdf:rest _:c14n766 .
-_:c14n710 rdf:first iso42001:AimsImpactDirection\#negative ;
+	rdf:rest _:c14n767 .
+_:c14n710 owl:unionOf _:c14n579 .
+_:c14n711 rdf:first iso42001:AimsImpactDirection\#negative ;
 	rdf:rest rdf:nil .
-_:c14n711 a owl:Restriction ;
+_:c14n712 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_system_life_cycle_stage .
-_:c14n712 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_programme_audits .
 _:c14n713 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_finding_recommendation .
+	owl:onProperty iso42001:aims_programme_audits .
 _:c14n714 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_finding_recommendation .
+_:c14n715 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRisk ;
 	owl:onProperty iso42001:aims_included_risks .
-_:c14n715 a owl:Restriction ;
+_:c14n716 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_programme_auditor_selection .
-_:c14n716 a owl:Restriction ;
+_:c14n717 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_competence_assessment_date .
-_:c14n717 a owl:Restriction ;
+_:c14n718 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_responsible_role .
-_:c14n718 a owl:Restriction ;
+_:c14n719 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_risk_policy_alignment .
-_:c14n719 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_objective_communication .
 _:c14n72 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_entry_type .
 _:c14n720 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_incident_response_actions .
+	owl:onProperty iso42001:aims_objective_communication .
 _:c14n721 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_nonconformity_closure_evidence .
+	owl:onProperty iso42001:aims_incident_response_actions .
 _:c14n722 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_competence_records .
+	owl:onProperty iso42001:aims_nonconformity_closure_evidence .
 _:c14n723 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_competence_records .
+_:c14n724 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_concern_reported_on .
-_:c14n724 a owl:Restriction ;
+_:c14n725 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_organization_kind .
-_:c14n725 a owl:Restriction ;
+_:c14n726 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_scope_applicability .
-_:c14n726 a owl:Restriction ;
+_:c14n727 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_improvement_source .
-_:c14n727 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_party_requirements .
 _:c14n728 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_data_sources .
+	owl:onProperty iso42001:aims_party_requirements .
 _:c14n729 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_action_nonconformities .
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_data_sources .
 _:c14n73 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_computing_location .
 _:c14n730 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_action_nonconformities .
+_:c14n731 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_review_previous_actions .
-_:c14n731 a owl:Restriction ;
+_:c14n732 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_risk_assessment_interval .
-_:c14n732 a owl:Restriction ;
+_:c14n733 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_improvement_benefit .
-_:c14n733 rdf:first iso42001:AimsManagementSystemStandard\#other ;
+_:c14n734 rdf:first iso42001:AimsManagementSystemStandard\#other ;
 	rdf:rest rdf:nil .
-_:c14n734 a owl:Restriction ;
+_:c14n735 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_risk_consequences_for_societies .
-_:c14n735 a owl:Restriction ;
+_:c14n736 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_organization_employee_count .
-_:c14n736 a owl:Restriction ;
+_:c14n737 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_user_information_channels .
-_:c14n737 a owl:Restriction ;
+_:c14n738 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_event_source .
-_:c14n738 rdf:first _:c14n918 ;
-	rdf:rest _:c14n1788 .
-_:c14n739 rdf:first iso42001:AimsAiRole\#ai_operator ;
-	rdf:rest _:c14n369 .
+_:c14n739 rdf:first _:c14n919 ;
+	rdf:rest _:c14n1790 .
 _:c14n74 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_document_last_review_date .
-_:c14n740 a owl:Restriction ;
+_:c14n740 rdf:first iso42001:AimsAiRole\#ai_operator ;
+	rdf:rest _:c14n369 .
+_:c14n741 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_planned_action_risks .
-_:c14n741 a owl:Restriction ;
+_:c14n742 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsObjectivePurpose ;
 	owl:onProperty iso42001:aims_objective_purpose .
-_:c14n742 a owl:Restriction ;
+_:c14n743 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_certification_body .
-_:c14n743 a owl:Restriction ;
+_:c14n744 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsReportingObligation ;
 	owl:onProperty iso42001:aims_reporting_obligations .
-_:c14n744 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_organization_locations .
 _:c14n745 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_improvement_target_date .
+	owl:onProperty iso42001:aims_organization_locations .
 _:c14n746 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_document_reference .
+	owl:onProperty iso42001:aims_improvement_target_date .
 _:c14n747 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_document_reference .
+_:c14n748 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_investigator .
-_:c14n748 a owl:Restriction ;
+_:c14n749 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_topic_policy_audience .
-_:c14n749 a owl:Restriction ;
-	owl:allValuesFrom iso42001:AimsAuditProgramme ;
-	owl:onProperty iso42001:aims_audit_programmes .
 _:c14n75 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_system_deployment_context .
 _:c14n750 a owl:Restriction ;
+	owl:allValuesFrom iso42001:AimsAuditProgramme ;
+	owl:onProperty iso42001:aims_audit_programmes .
+_:c14n751 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_nonconformity_requirement .
-_:c14n751 rdf:first iso42001:AimsDocumentKind\#procedure ;
+_:c14n752 rdf:first iso42001:AimsDocumentKind\#procedure ;
 	rdf:rest _:c14n1068 .
-_:c14n752 a owl:Restriction ;
+_:c14n753 a owl:Restriction ;
 	owl:allValuesFrom xsd:duration ;
 	owl:onProperty iso42001:aims_impact_process_interval .
-_:c14n753 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_scope_applicability .
 _:c14n754 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_support_cost .
+	owl:onProperty iso42001:aims_scope_applicability .
 _:c14n755 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_support_cost .
+_:c14n756 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_party_relationship .
-_:c14n756 a owl:Restriction ;
+_:c14n757 a owl:Restriction ;
 	rdfs:subClassOf iso42001:AimsExcludedControl ;
 	owl:onProperty iso42001:aims_entry_type ;
 	owl:someValuesFrom iso42001:AimsExcludedControl .
-_:c14n757 a owl:Restriction ;
+_:c14n758 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_nonconformity_similar_check .
-_:c14n758 a owl:Restriction ;
+_:c14n759 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_concern_severity .
-_:c14n759 rdf:first iso42001:AimsDataPreparationMethod\#normalization ;
-	rdf:rest _:c14n168 .
 _:c14n76 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_data_preparation_criteria .
-_:c14n760 a owl:Restriction ;
+_:c14n760 rdf:first iso42001:AimsDataPreparationMethod\#normalization ;
+	rdf:rest _:c14n168 .
+_:c14n761 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_awareness_methods .
-_:c14n761 a owl:Restriction ;
+_:c14n762 a owl:Restriction ;
 	owl:allValuesFrom xsd:boolean ;
 	owl:onProperty iso42001:aims_organization_climate_change_relevant .
-_:c14n762 a owl:Restriction ;
+_:c14n763 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_support_availability .
-_:c14n763 a owl:Restriction ;
+_:c14n764 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_responsible_role .
-_:c14n764 a owl:Restriction ;
+_:c14n765 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_policy_exceptions_process .
-_:c14n765 rdf:first iso42001:AimsAiThreat\#data_poisoning ;
+_:c14n766 rdf:first iso42001:AimsAiThreat\#data_poisoning ;
 	rdf:rest _:c14n298 .
-_:c14n766 rdf:first iso42001:AimsClause\#clause_9_1 ;
+_:c14n767 rdf:first iso42001:AimsClause\#clause_9_1 ;
 	rdf:rest _:c14n1340 .
-_:c14n767 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_impact_process_triggers .
 _:c14n768 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_consequences_for_individuals .
+	owl:onProperty iso42001:aims_impact_process_triggers .
 _:c14n769 a owl:Restriction ;
-	owl:allValuesFrom iso42001:AimsIncidentCommunicationPlan ;
-	owl:onProperty iso42001:aims_incident_communication_plans .
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_risk_consequences_for_individuals .
 _:c14n77 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_impact_assessments .
 _:c14n770 a owl:Restriction ;
+	owl:allValuesFrom iso42001:AimsIncidentCommunicationPlan ;
+	owl:onProperty iso42001:aims_incident_communication_plans .
+_:c14n771 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_relationship_type .
-_:c14n771 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_role_reports_to .
 _:c14n772 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_action_target_date .
+	owl:onProperty iso42001:aims_role_reports_to .
 _:c14n773 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_support_quantity .
+	owl:onProperty iso42001:aims_action_target_date .
 _:c14n774 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_event_source .
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_support_quantity .
 _:c14n775 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_party_contact .
+	owl:onProperty iso42001:aims_event_source .
 _:c14n776 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_party_contact .
+_:c14n777 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty iso42001:aims_review_held_on .
-_:c14n777 a owl:Restriction ;
+_:c14n778 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_log_contents .
-_:c14n778 a owl:Restriction ;
+_:c14n779 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_review_previous_actions .
-_:c14n779 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_treatment_annex_b_use .
 _:c14n78 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_review_improvement_opportunities .
-_:c14n780 rdf:first iso42001:AimsIncidentCategory\#safety ;
-	rdf:rest _:c14n589 .
-_:c14n781 a owl:Restriction ;
+_:c14n780 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_treatment_annex_b_use .
+_:c14n781 rdf:first iso42001:AimsIncidentCategory\#safety ;
+	rdf:rest _:c14n590 .
+_:c14n782 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_identified_impact_text .
-_:c14n782 rdf:first iso42001:AimsClause\#clause_9_3_3 ;
+_:c14n783 rdf:first iso42001:AimsClause\#clause_9_3_3 ;
 	rdf:rest _:c14n1555 .
-_:c14n783 a owl:Restriction ;
+_:c14n784 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_corrective_actions .
-_:c14n784 rdf:first iso42001:AimsDataPreparationMethod\#imputation ;
-	rdf:rest _:c14n759 .
-_:c14n785 a owl:Restriction ;
+_:c14n785 rdf:first iso42001:AimsDataPreparationMethod\#imputation ;
+	rdf:rest _:c14n760 .
+_:c14n786 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_control_last_tested .
-_:c14n786 a owl:Restriction ;
+_:c14n787 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_planned_action_effectiveness .
-_:c14n787 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_competence_training .
 _:c14n788 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_review_next_date .
+	owl:onProperty iso42001:aims_competence_training .
 _:c14n789 a owl:Restriction ;
-	owl:allValuesFrom xsd:date ;
-	owl:onProperty iso42001:aims_assessment_next_date .
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_review_next_date .
 _:c14n79 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_concern_response_due .
-_:c14n790 rdf:first iso42001:AimsManagementSystemStandard\#iso_iec_27701 ;
+_:c14n790 a owl:Restriction ;
+	owl:allValuesFrom xsd:date ;
+	owl:onProperty iso42001:aims_assessment_next_date .
+_:c14n791 rdf:first iso42001:AimsManagementSystemStandard\#iso_iec_27701 ;
 	rdf:rest _:c14n1048 .
-_:c14n791 a owl:Restriction ;
+_:c14n792 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_customer_agreement .
-_:c14n792 a owl:Restriction ;
+_:c14n793 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_ai_systems .
-_:c14n793 a owl:Restriction ;
+_:c14n794 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskTreatmentOption ;
 	owl:onProperty iso42001:aims_risk_treatment_option .
-_:c14n794 a owl:Restriction ;
+_:c14n795 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_development_training_data_rules .
-_:c14n795 a owl:Restriction ;
+_:c14n796 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_system_intended_uses .
-_:c14n796 a owl:Restriction ;
+_:c14n797 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_role_holders .
-_:c14n797 a owl:Restriction ;
+_:c14n798 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_action_system_changes .
-_:c14n798 a owl:Restriction ;
+_:c14n799 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_control_text .
-_:c14n799 a owl:Restriction ;
-	owl:allValuesFrom iso42001:AimsPiiRole ;
-	owl:onProperty iso42001:aims_organization_pii_roles .
 _:c14n8 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_incident_notifications .
@@ -8627,309 +8627,309 @@ _:c14n80 a owl:Restriction ;
 	owl:onProperty iso42001:aims_resource_type ;
 	owl:someValuesFrom iso42001:AimsToolingResource .
 _:c14n800 a owl:Restriction ;
+	owl:allValuesFrom iso42001:AimsPiiRole ;
+	owl:onProperty iso42001:aims_organization_pii_roles .
+_:c14n801 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_support_allocation_date .
-_:c14n801 rdf:first iso42001:AimsClause\#clause_7_5_3 ;
-	rdf:rest _:c14n689 .
-_:c14n802 a owl:Restriction ;
+_:c14n802 rdf:first iso42001:AimsClause\#clause_7_5_3 ;
+	rdf:rest _:c14n690 .
+_:c14n803 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_data_quality_requirements .
-_:c14n803 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_data_provenance .
 _:c14n804 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_assessment_process .
+	owl:onProperty iso42001:aims_data_provenance .
 _:c14n805 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_objective_target .
+	owl:onProperty iso42001:aims_risk_assessment_process .
 _:c14n806 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_tool_purpose .
+	owl:onProperty iso42001:aims_objective_target .
 _:c14n807 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_tool_purpose .
+_:c14n808 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_use_legal_requirements .
-_:c14n808 a owl:Restriction ;
+_:c14n809 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsOperationalProcedure ;
 	owl:onProperty iso42001:aims_operational_procedures .
-_:c14n809 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_system_log_retention .
 _:c14n81 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_obligation_timeframe .
 _:c14n810 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_system_log_retention .
+_:c14n811 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_control_evidence .
-_:c14n811 a owl:Restriction ;
+_:c14n812 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_document_external_source .
-_:c14n812 a owl:Restriction ;
+_:c14n813 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_assessor .
-_:c14n813 a owl:Restriction ;
+_:c14n814 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_control_owner .
-_:c14n814 rdf:first iso42001:AimsClause\#clause_9_3_1 ;
+_:c14n815 rdf:first iso42001:AimsClause\#clause_9_3_1 ;
 	rdf:rest _:c14n1681 .
-_:c14n815 a owl:Restriction ;
+_:c14n816 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_event_occurred_at .
-_:c14n816 rdf:first iso42001:AimsAnnexAControl\#a_6_2_3 ;
+_:c14n817 rdf:first iso42001:AimsAnnexAControl\#a_6_2_3 ;
 	rdf:rest _:c14n279 .
-_:c14n817 a owl:Restriction ;
+_:c14n818 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_objective_achievement .
-_:c14n818 rdf:first iso42001:AimsImpactArea\#transparency_and_explainability ;
-	rdf:rest _:c14n550 .
-_:c14n819 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_impact_process_subjects .
+_:c14n819 rdf:first iso42001:AimsImpactArea\#transparency_and_explainability ;
+	rdf:rest _:c14n551 .
 _:c14n82 rdf:first iso42001:AimsClause\#clause_10_2 ;
 	rdf:rest rdf:nil .
-_:c14n820 rdf:first iso42001:AimsObjectivePurpose\#organizational ;
+_:c14n820 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_impact_process_subjects .
+_:c14n821 rdf:first iso42001:AimsObjectivePurpose\#organizational ;
 	rdf:rest _:c14n1393 .
-_:c14n821 a owl:Restriction ;
+_:c14n822 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsIncidentCategory ;
 	owl:onProperty iso42001:aims_incident_plan_categories .
-_:c14n822 a owl:Restriction ;
+_:c14n823 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsPiiRole ;
 	owl:onProperty iso42001:aims_relationship_pii_role .
-_:c14n823 rdf:first iso42001:AimsAnnexAControl\#a_8_2 ;
+_:c14n824 rdf:first iso42001:AimsAnnexAControl\#a_8_2 ;
 	rdf:rest _:c14n1402 .
-_:c14n824 a owl:Restriction ;
+_:c14n825 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_audit_conclusion .
-_:c14n825 a owl:Restriction ;
+_:c14n826 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_technical_context .
-_:c14n826 a owl:Restriction ;
+_:c14n827 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_system_operation_elements .
-_:c14n827 rdf:first iso42001:AimsDocumentKind\#record ;
-	rdf:rest _:c14n895 .
-_:c14n828 a owl:Restriction ;
+_:c14n828 rdf:first iso42001:AimsDocumentKind\#record ;
+	rdf:rest _:c14n896 .
+_:c14n829 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_awareness_programme .
-_:c14n829 a owl:Restriction ;
-	owl:minCardinality 1 ;
-	owl:onProperty iso42001:aims_document_kind .
 _:c14n83 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty iso42001:aims_event_type .
 _:c14n830 a owl:Restriction ;
+	owl:minCardinality 1 ;
+	owl:onProperty iso42001:aims_document_kind .
+_:c14n831 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_monitoring_target .
-_:c14n831 a owl:Restriction ;
+_:c14n832 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_competence_gaps .
-_:c14n832 a owl:Restriction ;
+_:c14n833 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_data_classification .
-_:c14n833 a owl:Restriction ;
+_:c14n834 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_computing_requirements .
-_:c14n834 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:description .
 _:c14n835 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_policy_alignment .
+	owl:onProperty iso42001:description .
 _:c14n836 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_risk_policy_alignment .
+_:c14n837 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_risk_treatment_process .
-_:c14n837 a owl:Restriction ;
+_:c14n838 a owl:Restriction ;
 	owl:allValuesFrom xsd:duration ;
 	owl:onProperty iso42001:aims_system_log_retention .
-_:c14n838 a owl:Restriction ;
+_:c14n839 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_computing_hardware_impact .
-_:c14n839 rdf:first iso42001:AimsManagementSystemStandard\#iso_iec_27001 ;
-	rdf:rest _:c14n790 .
 _:c14n84 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRole ;
 	owl:onProperty iso42001:aims_human_role .
-_:c14n840 a owl:Restriction ;
+_:c14n840 rdf:first iso42001:AimsManagementSystemStandard\#iso_iec_27001 ;
+	rdf:rest _:c14n791 .
+_:c14n841 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_party_climate_change_requirements .
-_:c14n841 a owl:Restriction ;
+_:c14n842 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_communication_audience .
-_:c14n842 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_document_approver .
 _:c14n843 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_concern_process_investigators .
+	owl:onProperty iso42001:aims_document_approver .
 _:c14n844 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_concern_process_investigators .
+_:c14n845 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_objective_current_value .
-_:c14n845 a owl:Restriction ;
+_:c14n846 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_cited_annex_a_controls .
-_:c14n846 a owl:Restriction ;
+_:c14n847 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_policy_review_role .
-_:c14n847 a rdfs:Datatype ;
+_:c14n848 a rdfs:Datatype ;
 	owl:intersectionOf _:c14n1405 .
-_:c14n848 a owl:Restriction ;
+_:c14n849 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_ai_systems .
-_:c14n849 a owl:Restriction ;
-	owl:allValuesFrom iso42001:AimsRisk ;
-	owl:onProperty iso42001:aims_objective_risks .
 _:c14n85 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_programme_status .
 _:c14n850 a owl:Restriction ;
+	owl:allValuesFrom iso42001:AimsRisk ;
+	owl:onProperty iso42001:aims_objective_risks .
+_:c14n851 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_concern_process_investigators .
-_:c14n851 rdf:first iso42001:AimsAiRole\#policy_maker ;
-	rdf:rest _:c14n928 .
-_:c14n852 a owl:Restriction ;
+_:c14n852 rdf:first iso42001:AimsAiRole\#policy_maker ;
+	rdf:rest _:c14n929 .
+_:c14n853 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_impact_foreseeable_misuse .
-_:c14n853 a owl:Restriction ;
+_:c14n854 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_resource_provider .
-_:c14n854 a owl:Restriction ;
+_:c14n855 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_roles .
-_:c14n855 a owl:Restriction ;
+_:c14n856 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_action_status .
-_:c14n856 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_human_competences .
 _:c14n857 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_planned_action_effectiveness .
-_:c14n858 rdf:first iso42001:AimsClause\#clause_9_2_2 ;
-	rdf:rest _:c14n1245 .
-_:c14n859 a owl:Restriction ;
+	owl:onProperty iso42001:aims_human_competences .
+_:c14n858 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_planned_action_integration .
+	owl:onProperty iso42001:aims_planned_action_effectiveness .
+_:c14n859 rdf:first iso42001:AimsClause\#clause_9_2_2 ;
+	rdf:rest _:c14n1245 .
 _:c14n86 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_party_category .
 _:c14n860 a owl:Restriction ;
 	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_planned_action_integration .
+_:c14n861 a owl:Restriction ;
+	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_communication_plan .
-_:c14n861 rdf:first iso42001:AimsAiRole\#ai_product_or_service_provider ;
+_:c14n862 rdf:first iso42001:AimsAiRole\#ai_product_or_service_provider ;
 	rdf:rest _:c14n1176 .
-_:c14n862 rdf:first iso42001:AimsDataCategory\#production ;
+_:c14n863 rdf:first iso42001:AimsDataCategory\#production ;
 	rdf:rest rdf:nil .
-_:c14n863 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_policy_influences .
 _:c14n864 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_policy_influences .
+_:c14n865 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_document_format .
-_:c14n865 rdf:first iso42001:AimsClause\#clause_8_3 ;
+_:c14n866 rdf:first iso42001:AimsClause\#clause_8_3 ;
 	rdf:rest _:c14n1442 .
-_:c14n866 a owl:Restriction ;
+_:c14n867 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_computing_hardware_impact .
-_:c14n867 a owl:Restriction ;
+_:c14n868 a owl:Restriction ;
 	owl:allValuesFrom xsd:duration ;
 	owl:onProperty iso42001:aims_document_retention .
-_:c14n868 rdf:first iso42001:AimsRiskSourceCategory\#level_of_automation ;
-	rdf:rest _:c14n706 .
-_:c14n869 rdf:first iso42001:AimsObjectiveCategory\#ai_expertise ;
-	rdf:rest _:c14n1610 .
+_:c14n869 rdf:first iso42001:AimsRiskSourceCategory\#level_of_automation ;
+	rdf:rest _:c14n707 .
 _:c14n87 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty iso42001:aims_identified_impact_text .
-_:c14n870 a owl:Restriction ;
+_:c14n870 rdf:first iso42001:AimsObjectiveCategory\#ai_expertise ;
+	rdf:rest _:c14n1610 .
+_:c14n871 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_cited_clauses .
-_:c14n871 a owl:Restriction ;
+_:c14n872 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_document_last_review_date .
-_:c14n872 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_data_rights .
 _:c14n873 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_document_change_control .
+	owl:onProperty iso42001:aims_data_rights .
 _:c14n874 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_document_change_control .
+_:c14n875 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_improvement_target_date .
-_:c14n875 a owl:Restriction ;
+_:c14n876 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_document_status .
-_:c14n876 a owl:Restriction ;
+_:c14n877 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_audit_programmes .
-_:c14n877 rdf:first iso42001:AimsAnnexAControl\#a_6_1_3 ;
-	rdf:rest _:c14n968 .
-_:c14n878 a owl:Restriction ;
+_:c14n878 rdf:first iso42001:AimsAnnexAControl\#a_6_1_3 ;
+	rdf:rest _:c14n969 .
+_:c14n879 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_relationship_assurance_evidence .
-_:c14n879 a owl:Restriction ;
-	owl:allValuesFrom xsd:boolean ;
-	owl:onProperty iso42001:aims_role_reports_performance .
 _:c14n88 a owl:Restriction ;
 	owl:minCardinality 1 ;
 	owl:onProperty iso42001:aims_audit_type .
 _:c14n880 a owl:Restriction ;
+	owl:allValuesFrom xsd:boolean ;
+	owl:onProperty iso42001:aims_role_reports_performance .
+_:c14n881 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_programme_frequency_rationale .
-_:c14n881 a owl:Restriction ;
+_:c14n882 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsCommunication ;
 	owl:onProperty iso42001:aims_communication_items .
-_:c14n882 a owl:Restriction ;
+_:c14n883 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_top_management .
-_:c14n883 a owl:Restriction ;
+_:c14n884 a owl:Restriction ;
 	owl:allValuesFrom owl:Thing ;
 	owl:onProperty iso42001:aims_included_control .
-_:c14n884 a owl:Restriction ;
+_:c14n885 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsOrganization ;
 	owl:onProperty iso42001:aims_organization .
-_:c14n885 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_communication_audience .
 _:c14n886 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_assessment_scope .
+	owl:onProperty iso42001:aims_communication_audience .
 _:c14n887 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_assessment_scope .
+_:c14n888 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_obligation_basis .
-_:c14n888 a owl:Restriction ;
+_:c14n889 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_treatment_annex_b_use .
-_:c14n889 rdf:first iso42001:AimsClause\#clause_5_3 ;
-	rdf:rest _:c14n673 .
 _:c14n89 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_system_log_stages .
-_:c14n890 rdf:first iso42001:AimsAiRole\#ai_impact_assessor ;
+_:c14n890 rdf:first iso42001:AimsClause\#clause_5_3 ;
+	rdf:rest _:c14n674 .
+_:c14n891 rdf:first iso42001:AimsAiRole\#ai_impact_assessor ;
 	rdf:rest _:c14n1359 .
-_:c14n891 a owl:Restriction ;
+_:c14n892 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_component_integration .
-_:c14n892 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_concern_process_audience .
 _:c14n893 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_third_party_relationships .
+	owl:onProperty iso42001:aims_concern_process_audience .
 _:c14n894 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_third_party_relationships .
+_:c14n895 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_system_log_contents .
-_:c14n895 rdf:first iso42001:AimsDocumentKind\#plan ;
+_:c14n896 rdf:first iso42001:AimsDocumentKind\#plan ;
 	rdf:rest _:c14n1008 .
-_:c14n896 rdf:first iso42001:AimsAnnexAControl\#a_4_5 ;
-	rdf:rest _:c14n516 .
-_:c14n897 a owl:Restriction ;
+_:c14n897 rdf:first iso42001:AimsAnnexAControl\#a_4_5 ;
+	rdf:rest _:c14n517 .
+_:c14n898 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_included_evidence .
-_:c14n898 rdf:first iso42001:AimsRiskLevel\#low ;
-	rdf:rest _:c14n501 .
-_:c14n899 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_internal_issues .
+_:c14n899 rdf:first iso42001:AimsRiskLevel\#low ;
+	rdf:rest _:c14n502 .
 _:c14n9 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_objective_categories .
@@ -8937,319 +8937,319 @@ _:c14n90 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_improvement_outcome .
 _:c14n900 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_internal_issues .
+_:c14n901 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_risk_consequence_scale .
-_:c14n901 a owl:Restriction ;
+_:c14n902 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_impact_workforce .
-_:c14n902 a owl:Restriction ;
+_:c14n903 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_incident_root_cause .
-_:c14n903 rdf:first iso42001:AimsClause\#clause_4_4 ;
-	rdf:rest _:c14n621 .
-_:c14n904 a owl:Restriction ;
+_:c14n904 rdf:first iso42001:AimsClause\#clause_4_4 ;
+	rdf:rest _:c14n622 .
+_:c14n905 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_processes .
-_:c14n905 a owl:Restriction ;
+_:c14n906 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_document_change_control .
-_:c14n906 a owl:Restriction ;
+_:c14n907 a owl:Restriction ;
 	rdfs:subClassOf iso42001:AimsIncident ;
 	owl:onProperty iso42001:aims_event_type ;
 	owl:someValuesFrom iso42001:AimsIncident .
-_:c14n907 a owl:Restriction ;
+_:c14n908 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsCorrectiveAction ;
 	owl:onProperty iso42001:aims_incident_corrective_actions .
-_:c14n908 a owl:Restriction ;
+_:c14n909 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_audit_criteria .
-_:c14n909 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_action_system_changes .
 _:c14n91 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsClause ;
 	owl:onProperty iso42001:aims_cited_clauses .
 _:c14n910 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_action_system_changes .
+_:c14n911 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsMonitoringItem ;
 	owl:onProperty iso42001:aims_monitoring_items .
-_:c14n911 a owl:Restriction ;
+_:c14n912 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsApplicabilityEntry ;
 	owl:onProperty iso42001:aims_soa_entries .
-_:c14n912 a owl:Restriction ;
+_:c14n913 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_risk_matrix .
-_:c14n913 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_system_ml_approach .
 _:c14n914 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_impact_assessments .
+	owl:onProperty iso42001:aims_system_ml_approach .
 _:c14n915 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_concern_channel .
+	owl:onProperty iso42001:aims_impact_assessments .
 _:c14n916 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_concern_channel .
+_:c14n917 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_support_quantity .
-_:c14n917 a owl:Restriction ;
+_:c14n918 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_supplier_risk .
-_:c14n918 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_entry_annex_a_control .
 _:c14n919 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_document_approver .
+	owl:onProperty iso42001:aims_entry_annex_a_control .
 _:c14n92 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_treatment_approval_workflow .
 _:c14n920 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_document_approver .
+_:c14n921 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsIncidentCategory ;
 	owl:onProperty iso42001:aims_incident_category .
-_:c14n921 a owl:Restriction ;
+_:c14n922 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_audit_report_date .
-_:c14n922 a owl:Restriction ;
+_:c14n923 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_document_classification .
-_:c14n923 a owl:Restriction ;
+_:c14n924 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_incident_plan_authorities .
-_:c14n924 a owl:Restriction ;
+_:c14n925 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_objective_purpose .
-_:c14n925 a owl:Restriction ;
+_:c14n926 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_audit_type .
-_:c14n926 a owl:Restriction ;
+_:c14n927 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_risk_source_categories .
-_:c14n927 a owl:Restriction ;
+_:c14n928 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_data_retention .
-_:c14n928 rdf:first iso42001:AimsAiRole\#regulator ;
+_:c14n929 rdf:first iso42001:AimsAiRole\#regulator ;
 	rdf:rest rdf:nil .
-_:c14n929 a owl:Restriction ;
-	owl:allValuesFrom xsd:boolean ;
-	owl:onProperty iso42001:aims_document_external_origin .
 _:c14n93 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_role_areas .
 _:c14n930 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_impact_next_date .
+	owl:allValuesFrom xsd:boolean ;
+	owl:onProperty iso42001:aims_document_external_origin .
 _:c14n931 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_relationship_pii_role .
-_:c14n932 rdf:first iso42001:AimsControlArea\#system_life_cycle ;
-	rdf:rest _:c14n1580 .
-_:c14n933 a owl:Restriction ;
+	owl:onProperty iso42001:aims_impact_next_date .
+_:c14n932 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_risk_matrix .
+	owl:onProperty iso42001:aims_relationship_pii_role .
+_:c14n933 rdf:first iso42001:AimsControlArea\#system_life_cycle ;
+	rdf:rest _:c14n1580 .
 _:c14n934 a owl:Restriction ;
 	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_risk_matrix .
+_:c14n935 a owl:Restriction ;
+	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_role_category .
-_:c14n935 rdf:first iso42001:AimsImpactSubject\#individuals ;
+_:c14n936 rdf:first iso42001:AimsImpactSubject\#individuals ;
 	rdf:rest _:c14n1326 .
-_:c14n936 a owl:Restriction ;
+_:c14n937 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_recertification_date .
-_:c14n937 a owl:Restriction ;
+_:c14n938 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_objective_metric .
-_:c14n938 a owl:Restriction ;
+_:c14n939 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_user_information_validated .
-_:c14n939 a owl:Restriction ;
-	owl:allValuesFrom iso42001:AimsAiSystem ;
-	owl:onProperty iso42001:aims_ai_systems .
 _:c14n94 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_event_adverse_impact .
 _:c14n940 a owl:Restriction ;
+	owl:allValuesFrom iso42001:AimsAiSystem ;
+	owl:onProperty iso42001:aims_ai_systems .
+_:c14n941 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_support_allocated_to .
-_:c14n941 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_policy_statement .
 _:c14n942 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_document_approval_date .
+	owl:onProperty iso42001:aims_policy_statement .
 _:c14n943 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_document_approval_date .
+_:c14n944 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_impact_date .
-_:c14n944 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_monitoring_metric .
 _:c14n945 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_awareness_topics .
+	owl:onProperty iso42001:aims_monitoring_metric .
 _:c14n946 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_plan_effectiveness .
+	owl:onProperty iso42001:aims_awareness_topics .
 _:c14n947 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_plan_effectiveness .
+_:c14n948 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_procedure_criteria .
-_:c14n948 rdf:first iso42001:AimsAiRole\#ai_system_integrator ;
+_:c14n949 rdf:first iso42001:AimsAiRole\#ai_system_integrator ;
 	rdf:rest _:c14n1470 .
-_:c14n949 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_responsible_role .
 _:c14n95 rdf:first iso42001:AimsRiskSourceCategory\#life_cycle ;
 	rdf:rest _:c14n51 .
 _:c14n950 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_monitoring_analysis_frequency .
+	owl:onProperty iso42001:aims_responsible_role .
 _:c14n951 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_monitoring_analysis_frequency .
+_:c14n952 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_treatment_approval_workflow .
-_:c14n952 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_risk_objectives .
 _:c14n953 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_technical_doc_form .
+	owl:onProperty iso42001:aims_risk_objectives .
 _:c14n954 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_technical_doc_form .
+_:c14n955 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_concern_responded_on .
-_:c14n955 a owl:Restriction ;
+_:c14n956 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsObjective ;
 	owl:onProperty iso42001:aims_risk_objectives .
-_:c14n956 a owl:Restriction ;
+_:c14n957 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_audit_period_end .
-_:c14n957 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_relevant_controls .
 _:c14n958 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_party_category .
+	owl:onProperty iso42001:aims_relevant_controls .
 _:c14n959 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_system_performance_metrics .
+	owl:onProperty iso42001:aims_party_category .
 _:c14n96 rdf:first iso42001:AimsLikelihood\#almost_certain ;
 	rdf:rest rdf:nil .
 _:c14n960 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_system_performance_metrics .
+_:c14n961 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_plan_residual_risk_acceptance .
-_:c14n961 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_treatment_options_guidance .
 _:c14n962 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_system_intended_purpose .
+	owl:onProperty iso42001:aims_treatment_options_guidance .
 _:c14n963 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_system_intended_purpose .
+_:c14n964 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRole ;
 	owl:onProperty iso42001:aims_responsible_role .
-_:c14n964 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_improvement_plan .
 _:c14n965 a owl:Restriction ;
 	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_audit_lead .
+	owl:onProperty iso42001:aims_improvement_plan .
 _:c14n966 a owl:Restriction ;
+	owl:maxCardinality 1 ;
+	owl:onProperty iso42001:aims_audit_lead .
+_:c14n967 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_document_distribution .
-_:c14n967 a owl:Restriction ;
+_:c14n968 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskLevel ;
 	owl:onProperty iso42001:aims_risk_residual_level .
-_:c14n968 rdf:first iso42001:AimsAnnexAControl\#a_6_2_2 ;
-	rdf:rest _:c14n816 .
-_:c14n969 a owl:Restriction ;
-	owl:allValuesFrom xsd:string ;
-	owl:onProperty iso42001:aims_concern_escalation .
+_:c14n969 rdf:first iso42001:AimsAnnexAControl\#a_6_2_2 ;
+	rdf:rest _:c14n817 .
 _:c14n97 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsControl ;
 	owl:onProperty iso42001:aims_relevant_controls .
 _:c14n970 a owl:Restriction ;
+	owl:allValuesFrom xsd:string ;
+	owl:onProperty iso42001:aims_concern_escalation .
+_:c14n971 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_data_provenance_verification .
-_:c14n971 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_concern_reports .
 _:c14n972 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_relationship_responsibilities .
+	owl:onProperty iso42001:aims_concern_reports .
 _:c14n973 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_relationship_responsibilities .
+_:c14n974 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsRiskLevel ;
 	owl:onProperty iso42001:aims_concern_severity .
-_:c14n974 a owl:Restriction ;
+_:c14n975 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_document_classification .
-_:c14n975 a owl:Restriction ;
+_:c14n976 a owl:Restriction ;
 	owl:allValuesFrom xsd:date ;
 	owl:onProperty iso42001:aims_plan_completion_date .
-_:c14n976 a owl:Restriction ;
+_:c14n977 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_treatment_annex_a_comparison .
-_:c14n977 a owl:Restriction ;
+_:c14n978 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_computing_processing .
-_:c14n978 rdf:first iso42001:AimsRiskTreatmentOption\#share ;
+_:c14n979 rdf:first iso42001:AimsRiskTreatmentOption\#share ;
 	rdf:rest rdf:nil .
-_:c14n979 a owl:Restriction ;
+_:c14n98 rdf:first iso42001:AimsDataPreparationMethod\#cleaning ;
+	rdf:rest _:c14n785 .
+_:c14n980 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_certification_status .
-_:c14n98 rdf:first iso42001:AimsDataPreparationMethod\#cleaning ;
-	rdf:rest _:c14n784 .
-_:c14n980 a owl:Restriction ;
+_:c14n981 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAnnexAControl ;
 	owl:onProperty iso42001:aims_entry_annex_a_control .
-_:c14n981 a owl:Restriction ;
+_:c14n982 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:description .
-_:c14n982 a owl:Restriction ;
+_:c14n983 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_external_issues .
-_:c14n983 a owl:Restriction ;
+_:c14n984 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_action_resources .
-_:c14n984 a owl:Restriction ;
+_:c14n985 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_impact_system_complexity .
-_:c14n985 rdf:first iso42001:AimsDataPreparationMethod\#labelling ;
+_:c14n986 rdf:first iso42001:AimsDataPreparationMethod\#labelling ;
 	rdf:rest _:c14n391 .
-_:c14n986 a owl:Restriction ;
+_:c14n987 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_impact_shared_with .
-_:c14n987 a owl:Restriction ;
+_:c14n988 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_system_evaluation_criteria .
-_:c14n988 a owl:Restriction ;
+_:c14n989 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsImplementationStatus ;
 	owl:onProperty iso42001:aims_implementation_state .
-_:c14n989 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_monitoring_alert_threshold .
 _:c14n99 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_action_status .
 _:c14n990 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_monitoring_alert_threshold .
+_:c14n991 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsClause ;
 	owl:onProperty iso42001:aims_cited_clauses .
-_:c14n991 a owl:Restriction ;
-	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_ai_systems .
 _:c14n992 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_objective_measurement_method .
+	owl:onProperty iso42001:aims_ai_systems .
 _:c14n993 a owl:Restriction ;
 	owl:minCardinality 0 ;
-	owl:onProperty iso42001:aims_control_implementation_date .
+	owl:onProperty iso42001:aims_objective_measurement_method .
 _:c14n994 a owl:Restriction ;
+	owl:minCardinality 0 ;
+	owl:onProperty iso42001:aims_control_implementation_date .
+_:c14n995 a owl:Restriction ;
 	owl:allValuesFrom xsd:string ;
 	owl:onProperty iso42001:aims_incident_plan_integration .
-_:c14n995 rdf:first iso42001:AimsRiskTreatmentOption\#modify ;
+_:c14n996 rdf:first iso42001:AimsRiskTreatmentOption\#modify ;
 	rdf:rest _:c14n350 .
-_:c14n996 a owl:Restriction ;
+_:c14n997 a owl:Restriction ;
 	owl:maxCardinality 1 ;
 	owl:onProperty iso42001:aims_assessment_next_date .
-_:c14n997 a owl:Restriction ;
+_:c14n998 a owl:Restriction ;
 	owl:allValuesFrom iso42001:AimsAiThreat ;
 	owl:onProperty iso42001:aims_incident_threats .
-_:c14n998 a owl:Restriction ;
+_:c14n999 a owl:Restriction ;
 	owl:minCardinality 0 ;
 	owl:onProperty iso42001:aims_monitoring_target .
-_:c14n999 a owl:Restriction ;
-	owl:maxCardinality 1 ;
-	owl:onProperty iso42001:aims_impact_intended_use .
 

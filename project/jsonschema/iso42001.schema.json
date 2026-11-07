@@ -179,7 +179,7 @@
                 },
                 "aims_system_log_retention": {
                     "description": "How long the logs are kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -701,7 +701,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -1006,7 +1006,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -1302,7 +1302,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -1602,7 +1602,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -1860,7 +1860,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -2404,7 +2404,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -3402,7 +3402,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -3578,7 +3578,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -3771,7 +3771,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -4161,7 +4161,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -4473,7 +4473,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -4523,7 +4523,7 @@
                 },
                 "aims_impact_process_interval": {
                     "description": "How often assessments run, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -4531,7 +4531,7 @@
                 },
                 "aims_impact_process_retention": {
                     "description": "How long results are kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -5082,7 +5082,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -5532,7 +5532,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -6531,7 +6531,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -7049,7 +7049,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -7526,7 +7526,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -7628,7 +7628,7 @@
                 },
                 "aims_policy_review_interval": {
                     "description": "How often the policy is reviewed, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -7991,7 +7991,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -8470,7 +8470,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -8646,7 +8646,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -8679,7 +8679,7 @@
                 },
                 "aims_risk_assessment_interval": {
                     "description": "How often risks are assessed, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -8937,7 +8937,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -9221,7 +9221,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -9556,7 +9556,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -10081,7 +10081,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -10521,7 +10521,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"
@@ -10738,7 +10738,7 @@
                 },
                 "aims_document_retention": {
                     "description": "How long the document is kept, as an ISO 8601 duration.",
-                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+                    "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
                     "type": [
                         "string",
                         "null"

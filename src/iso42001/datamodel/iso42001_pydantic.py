@@ -193,12 +193,15 @@ linkml_meta = LinkMLMeta({'annotations': {'edition': {'tag': 'edition', 'value':
                                           'name': 'aims_risk_management'}},
      'title': 'ISO/IEC 42001:2023 AI management system records',
      'types': {'aims_duration': {'base': 'str',
+                                 'comments': ['The pattern is that of '
+                                              'xsd:duration, which has no weeks, '
+                                              'so two weeks is P14D.'],
                                  'description': 'A length of time as ISO 8601 '
                                                 'writes it, such as P7Y for seven '
                                                 'years or P30D for thirty days.',
                                  'from_schema': 'https://w3id.org/lmodel/iso42001',
                                  'name': 'aims_duration',
-                                 'pattern': '^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$',
+                                 'pattern': '^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$',
                                  'typeof': 'string',
                                  'uri': 'xsd:duration'}}} )
 

@@ -138,11 +138,14 @@
       "name": "aims_duration",
       "definition_uri": "https://w3id.org/lmodel/iso42001/AimsDuration",
       "description": "A length of time as ISO 8601 writes it, such as P7Y for seven years or P30D for thirty days.",
+      "comments": [
+        "The pattern is that of xsd:duration, which has no weeks, so two weeks is P14D."
+      ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
       "typeof": "string",
       "base": "str",
       "uri": "http://www.w3.org/2001/XMLSchema#duration",
-      "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
+      "pattern": "^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$",
       "@type": "TypeDefinition"
     },
     {
@@ -18914,8 +18917,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "iso42001.yaml",
-  "source_file_date": "2026-11-07T00:56:52",
-  "source_file_size": 149988,
+  "source_file_date": "2026-11-07T00:57:39",
+  "source_file_size": 150090,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/iso42001.context.jsonld",

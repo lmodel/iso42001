@@ -82,7 +82,9 @@ types:
     uri: xsd:duration
     description: A length of time as ISO 8601 writes it, such as P7Y for seven years or P30D for thirty
       days.
-    pattern: ^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+W)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$
+    comments:
+    - The pattern is that of xsd:duration, which has no weeks, so two weeks is P14D.
+    pattern: ^P(?=[0-9T])([0-9]+Y)?([0-9]+M)?([0-9]+D)?(T(?=[0-9])([0-9]+H)?([0-9]+M)?([0-9]+S)?)?$
 slots:
   aims_resource_type:
     description: 'The kind of resource: AimsComponentResource, AimsDataResource, AimsToolingResource,
