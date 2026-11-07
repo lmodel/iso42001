@@ -41,12 +41,18 @@ comments:
   are the same kind of thing as SPDX''s Organization and OSCAL''s Role. AimsControl is related to OSCAL''s
   Control: both name a safeguard, but OSCAL''s is a catalogue entry and this one is the organization''s
   own.'
+- An AI system and an impact it has are the same kind of thing as the AI system and the impact of lmodel/nist-ai-100-1,
+  and a risk is related to its risk, as that schema relates its risk to lmodel/iso27001's. The parts a
+  party plays with personal data map to the controller and the processor of lmodel/iso29100, which models
+  the standard AimsPiiRole names.
 default_prefix: iso42001
 default_range: string
 prefixes:
   linkml: https://w3id.org/linkml/
   iso42001: https://w3id.org/lmodel/iso42001/
   iso27001: https://w3id.org/lmodel/iso27001/
+  iso29100: https://w3id.org/lmodel/iso29100/
+  nist_ai_100_1: https://w3id.org/lmodel/nist-ai-100-1/
   oscal: https://w3id.org/lmodel/oscal/
   schema: http://schema.org/
   spdx_core: https://spdx.org/rdf/3.0.1/terms/Core/
@@ -693,10 +699,16 @@ enums:
     permissible_values:
       pii_controller:
         description: Decides why and how personal data is processed.
+        close_mappings:
+        - iso29100:PfPiiController
       joint_pii_controller:
         description: Makes those decisions together with another party.
+        broad_mappings:
+        - iso29100:PfPiiController
       pii_processor:
         description: Processes personal data on a controller's behalf.
+        close_mappings:
+        - iso29100:PfPiiProcessor
   AimsObjectivePurpose:
     description: What an AI objective is for. Clause 6.2 asks for objectives in general, and two Annex
       A controls ask for objectives of a narrower kind.
@@ -1971,6 +1983,8 @@ classes:
       iso42001_clause: 6.1.2
     close_mappings:
     - iso27001:IsmsRisk
+    related_mappings:
+    - nist_ai_100_1:Risk
     slots:
     - aims_ai_systems
     - aims_risk_source_categories
@@ -2252,6 +2266,8 @@ classes:
     - aims_risk_management
     annotations:
       annex_a_control: A.5.4, A.5.5
+    close_mappings:
+    - nist_ai_100_1:Impact
     attributes:
       aims_identified_impact_subject:
         description: Who the impact falls on.
@@ -2419,6 +2435,8 @@ classes:
     annotations:
       iso42001_clause: '4.1'
       annex_a_control: A.6.2.2
+    close_mappings:
+    - nist_ai_100_1:AiSystem
     slots:
     - aims_relevant_controls
     attributes:

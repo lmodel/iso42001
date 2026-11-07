@@ -102,7 +102,13 @@ linkml_meta = LinkMLMeta({'annotations': {'edition': {'tag': 'edition', 'value':
                   'AimsOrganization and AimsRole are the same kind of thing as '
                   "SPDX's Organization and OSCAL's Role. AimsControl is related to "
                   "OSCAL's Control: both name a safeguard, but OSCAL's is a "
-                  "catalogue entry and this one is the organization's own."],
+                  "catalogue entry and this one is the organization's own.",
+                  'An AI system and an impact it has are the same kind of thing as '
+                  'the AI system and the impact of lmodel/nist-ai-100-1, and a '
+                  'risk is related to its risk, as that schema relates its risk to '
+                  "lmodel/iso27001's. The parts a party plays with personal data "
+                  'map to the controller and the processor of lmodel/iso29100, '
+                  'which models the standard AimsPiiRole names.'],
      'default_prefix': 'iso42001',
      'default_range': 'string',
      'description': 'A LinkML model of the records an organization keeps to run an '
@@ -120,10 +126,14 @@ linkml_meta = LinkMLMeta({'annotations': {'edition': {'tag': 'edition', 'value':
      'name': 'iso42001',
      'prefixes': {'iso27001': {'prefix_prefix': 'iso27001',
                                'prefix_reference': 'https://w3id.org/lmodel/iso27001/'},
+                  'iso29100': {'prefix_prefix': 'iso29100',
+                               'prefix_reference': 'https://w3id.org/lmodel/iso29100/'},
                   'iso42001': {'prefix_prefix': 'iso42001',
                                'prefix_reference': 'https://w3id.org/lmodel/iso42001/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
+                  'nist_ai_100_1': {'prefix_prefix': 'nist_ai_100_1',
+                                    'prefix_reference': 'https://w3id.org/lmodel/nist-ai-100-1/'},
                   'oscal': {'prefix_prefix': 'oscal',
                             'prefix_reference': 'https://w3id.org/lmodel/oscal/'},
                   'schema': {'prefix_prefix': 'schema',
@@ -2237,7 +2247,8 @@ class AimsRisk(AimsRecordMixin):
          'close_mappings': ['iso27001:IsmsRisk'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_risk_management'],
-         'mixins': ['AimsRecordMixin']})
+         'mixins': ['AimsRecordMixin'],
+         'related_mappings': ['nist_ai_100_1:Risk']})
 
     aims_ai_systems: Optional[list[str]] = Field(default=None, description="""The AI systems the record concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPlannedAction',
                        'AimsRiskAssessment',
@@ -2763,6 +2774,7 @@ class AimsIdentifiedImpact(ConfiguredBaseModel):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.5.4, A.5.5'}},
+         'close_mappings': ['nist_ai_100_1:Impact'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_risk_management']})
 
@@ -3115,6 +3127,7 @@ class AimsAiSystem(AimsRecordMixin):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'annex_a_control': {'tag': 'annex_a_control',
                                              'value': 'A.6.2.2'},
                          'iso42001_clause': {'tag': 'iso42001_clause', 'value': '4.1'}},
+         'close_mappings': ['nist_ai_100_1:AiSystem'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_ai_system_records'],
          'mixins': ['AimsRecordMixin']})

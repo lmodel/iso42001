@@ -27,6 +27,8 @@ The record classes follow the harmonized structure as [lmodel/iso27001](https://
 * **[lmodel/iso27001](https://github.com/lmodel/iso27001)**: `close_mappings` from each class to the class that cites the same clause number. `tests/test_schema_rules.py` checks both the class and the number against the released copy.
 * **[lmodel/oscal](https://github.com/lmodel/oscal)**: `close_mappings` from a role and `related_mappings` from a control. `tests/test_schema_rules.py` checks them.
 * **[lmodel/spdx](https://github.com/lmodel/spdx)**: `close_mappings` from the organization. `tests/test_schema_rules.py` checks it.
+* **[lmodel/nist-ai-100-1](https://github.com/lmodel/nist-ai-100-1)**: `close_mappings` from an AI system and an identified impact, and `related_mappings` from a risk. `tests/test_schema_rules.py` checks them.
+* **[lmodel/iso29100](https://github.com/lmodel/iso29100)**: `close_mappings` and `broad_mappings` from the parts a party plays with personal data. `tests/test_schema_rules.py` checks them.
 
 The schema is the one home for mappings. The seven SSSOM sets are gone: a matching tool wrote their rows, and many named terms or repositories that do not exist.
 

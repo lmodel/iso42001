@@ -1,8 +1,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix nist_ai_100_1: <https://w3id.org/lmodel/nist-ai-100-1/> .
 @prefix spdx_core: <https://spdx.org/rdf/3.0.1/terms/Core/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix iso27001: <https://w3id.org/lmodel/iso27001/> .
+@prefix iso29100: <https://w3id.org/lmodel/iso29100/> .
 @prefix iso42001: <https://w3id.org/lmodel/iso42001/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix oscal: <https://w3id.org/lmodel/oscal/> .
@@ -20,7 +22,7 @@ xsd:duration a rdfs:Datatype ;
 	rdfs:label "iso42001" ;
 	rdfs:seeAlso <https://lmodel.github.io/iso42001> , <https://www.iso.org/standard/74296.html> , <https://www.iso.org/standard/81230.html> ;
 	skos:definition "A LinkML model of the records an organization keeps to run an artificial intelligence (AI) management system under ISO/IEC 42001:2023. The records cover its context, leadership, planning and support, how it weighs and treats AI risks, and what its AI systems may do to people and society. They also cover those systems with their resources, data and documents, its audits and reviews, and what it corrects and improves. The reference controls of Annex A appear by number, with titles of this project's own." ;
-	skos:note "A close mapping to lmodel/iso27001 names the class that answers to the same clause number, since both standards follow the harmonized structure of management system standards. AimsOrganization and AimsRole are the same kind of thing as SPDX's Organization and OSCAL's Role. AimsControl is related to OSCAL's Control: both name a safeguard, but OSCAL's is a catalogue entry and this one is the organization's own." , "Every record that other records refer to has an aims_id, and a reference holds that identifier. AimsManagementSystem holds each kind of record in a list of its own." , "ISO/IEC 42001 is copyright ISO and IEC, and none of its text is reproduced here. An element cites what it models by number, in the iso42001_clause, annex_a_control, annex_b_item, annex_c_item or annex_d_item annotation, and its title and description are this project's own words. A reader with a licensed copy looks the text up by that number, and a record's title and description hold the organization's own words." , "The terms follow ISO/IEC 22989:2022, the one normative reference, and so do the stages of a system's life and the kinds of AI role. Annexes C and D are informative and give examples, so an enum built from one of them has the value other." , "The version is the edition the schema models, and source is ISO's page for it. ISO Open Data's records of the edition and of its normative reference are copied to src/iso42001/schema/iso-open-data/ on the date the annotations give, and scripts/check_upstream_release.py reports when ISO changes them. The release tags are the schema's own versions." ;
+	skos:note "A close mapping to lmodel/iso27001 names the class that answers to the same clause number, since both standards follow the harmonized structure of management system standards. AimsOrganization and AimsRole are the same kind of thing as SPDX's Organization and OSCAL's Role. AimsControl is related to OSCAL's Control: both name a safeguard, but OSCAL's is a catalogue entry and this one is the organization's own." , "An AI system and an impact it has are the same kind of thing as the AI system and the impact of lmodel/nist-ai-100-1, and a risk is related to its risk, as that schema relates its risk to lmodel/iso27001's. The parts a party plays with personal data map to the controller and the processor of lmodel/iso29100, which models the standard AimsPiiRole names." , "Every record that other records refer to has an aims_id, and a reference holds that identifier. AimsManagementSystem holds each kind of record in a list of its own." , "ISO/IEC 42001 is copyright ISO and IEC, and none of its text is reproduced here. An element cites what it models by number, in the iso42001_clause, annex_a_control, annex_b_item, annex_c_item or annex_d_item annotation, and its title and description are this project's own words. A reader with a licensed copy looks the text up by that number, and a record's title and description hold the organization's own words." , "The terms follow ISO/IEC 22989:2022, the one normative reference, and so do the stages of a system's life and the kinds of AI role. Annexes C and D are informative and give examples, so an enum built from one of them has the value other." , "The version is the edition the schema models, and source is ISO's page for it. ISO Open Data's records of the edition and of its normative reference are copied to src/iso42001/schema/iso-open-data/ on the date the annotations give, and scripts/check_upstream_release.py reports when ISO changes them. The release tags are the schema's own versions." ;
 	iso42001:edition "1" ;
 	iso42001:iso_open_data_date "2026-11-05" ;
 	iso42001:normative_reference "ISO/IEC 22989:2022" ;
@@ -156,6 +158,7 @@ iso42001:AimsAiRole a owl:Class ;
 iso42001:AimsAiSystem a owl:Class ;
 	rdfs:label "AimsAiSystem" ;
 	rdfs:subClassOf iso42001:AimsRecordMixin , _:c14n1036 , _:c14n1074 , _:c14n1115 , _:c14n1121 , _:c14n1140 , _:c14n1207 , _:c14n1232 , _:c14n1244 , _:c14n1272 , _:c14n1308 , _:c14n1314 , _:c14n1360 , _:c14n1385 , _:c14n1414 , _:c14n1422 , _:c14n1438 , _:c14n1482 , _:c14n1522 , _:c14n1536 , _:c14n1564 , _:c14n1574 , _:c14n1579 , _:c14n1588 , _:c14n1608 , _:c14n1640 , _:c14n1648 , _:c14n1652 , _:c14n1665 , _:c14n1680 , _:c14n1694 , _:c14n1696 , _:c14n170 , _:c14n1708 , _:c14n1711 , _:c14n1739 , _:c14n1775 , _:c14n1776 , _:c14n1779 , _:c14n187 , _:c14n191 , _:c14n205 , _:c14n243 , _:c14n250 , _:c14n276 , _:c14n291 , _:c14n336 , _:c14n349 , _:c14n359 , _:c14n39 , _:c14n4 , _:c14n411 , _:c14n475 , _:c14n485 , _:c14n490 , _:c14n508 , _:c14n519 , _:c14n524 , _:c14n528 , _:c14n626 , _:c14n65 , _:c14n667 , _:c14n687 , _:c14n715 , _:c14n75 , _:c14n77 , _:c14n782 , _:c14n800 , _:c14n814 , _:c14n831 , _:c14n842 , _:c14n89 , _:c14n899 , _:c14n918 , _:c14n964 , _:c14n967 , _:c14n993 ;
+	skos:closeMatch nist_ai_100_1:AiSystem ;
 	skos:definition "One AI system under the management system: what it is for, how it is built, run and overseen, what it draws on, and what is kept about it." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.6.2.2" ;
@@ -1029,6 +1032,7 @@ iso42001:AimsHumanResource a owl:Class ;
 iso42001:AimsIdentifiedImpact a owl:Class ;
 	rdfs:label "AimsIdentifiedImpact" ;
 	rdfs:subClassOf _:c14n0 , _:c14n1014 , _:c14n1021 , _:c14n122 , _:c14n1241 , _:c14n1462 , _:c14n1682 , _:c14n1692 , _:c14n346 , _:c14n357 , _:c14n403 , _:c14n675 , _:c14n786 , _:c14n87 ;
+	skos:closeMatch nist_ai_100_1:Impact ;
 	skos:definition "One impact an assessment found: on whom it falls, in what area, whether it helps or harms, and what limits the harm." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
 	iso42001:annex_a_control "A.5.4, A.5.5" .
@@ -1492,14 +1496,17 @@ iso42001:AimsOrganization a owl:Class ;
 iso42001:AimsPiiRole\#joint_pii_controller a owl:Class ;
 	rdfs:label "joint_pii_controller" ;
 	rdfs:subClassOf iso42001:AimsPiiRole ;
+	skos:broadMatch iso29100:PfPiiController ;
 	skos:definition "Makes those decisions together with another party." .
 iso42001:AimsPiiRole\#pii_controller a owl:Class ;
 	rdfs:label "pii_controller" ;
 	rdfs:subClassOf iso42001:AimsPiiRole ;
+	skos:closeMatch iso29100:PfPiiController ;
 	skos:definition "Decides why and how personal data is processed." .
 iso42001:AimsPiiRole\#pii_processor a owl:Class ;
 	rdfs:label "pii_processor" ;
 	rdfs:subClassOf iso42001:AimsPiiRole ;
+	skos:closeMatch iso29100:PfPiiProcessor ;
 	skos:definition "Processes personal data on a controller's behalf." .
 iso42001:AimsPiiRole a owl:Class ;
 	rdfs:label "AimsPiiRole" ;
@@ -1572,6 +1579,7 @@ iso42001:AimsRisk a owl:Class ;
 	skos:closeMatch iso27001:IsmsRisk ;
 	skos:definition "An AI risk in the risk register: where it comes from, which objectives it helps or hinders, who could feel its consequences, how it is rated and how it is treated." ;
 	skos:inScheme <https://w3id.org/lmodel/iso42001> ;
+	skos:relatedMatch nist_ai_100_1:Risk ;
 	iso42001:iso42001_clause "6.1.2" .
 iso42001:AimsRiskAssessment a owl:Class ;
 	rdfs:label "AimsRiskAssessment" ;

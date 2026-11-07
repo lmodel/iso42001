@@ -215,7 +215,13 @@ def test_mappings_use_a_bound_prefix():
 
 @pytest.mark.parametrize(
     "prefix, file",
-    [("oscal", "oscal"), ("iso27001", "iso27001"), ("spdx_core", "spdx")],
+    [
+        ("oscal", "oscal"),
+        ("iso27001", "iso27001"),
+        ("spdx_core", "spdx"),
+        ("nist_ai_100_1", "nist-ai-100-1"),
+        ("iso29100", "iso29100"),
+    ],
 )
 def test_mappings_name_a_class_of_the_neighbour(prefix, file):
     """Every mapping to a released neighbour names a class of its copy: its
@@ -236,7 +242,7 @@ def test_every_mapping_prefix_is_checked():
     """A mapping names a neighbour the test above reads."""
     doc = yaml.safe_load(COPY.read_text())
     prefixes = {m.partition(":")[0] for m in _mappings(doc)}
-    assert prefixes <= {"oscal", "iso27001", "spdx_core"}
+    assert prefixes <= {"oscal", "iso27001", "spdx_core", "nist_ai_100_1", "iso29100"}
 
 
 def test_a_close_mapping_to_iso27001_answers_to_the_same_clause():

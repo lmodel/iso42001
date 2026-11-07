@@ -29,7 +29,8 @@
     "ISO/IEC 42001 is copyright ISO and IEC, and none of its text is reproduced here. An element cites what it models by number, in the iso42001_clause, annex_a_control, annex_b_item, annex_c_item or annex_d_item annotation, and its title and description are this project's own words. A reader with a licensed copy looks the text up by that number, and a record's title and description hold the organization's own words.",
     "The terms follow ISO/IEC 22989:2022, the one normative reference, and so do the stages of a system's life and the kinds of AI role. Annexes C and D are informative and give examples, so an enum built from one of them has the value other.",
     "Every record that other records refer to has an aims_id, and a reference holds that identifier. AimsManagementSystem holds each kind of record in a list of its own.",
-    "A close mapping to lmodel/iso27001 names the class that answers to the same clause number, since both standards follow the harmonized structure of management system standards. AimsOrganization and AimsRole are the same kind of thing as SPDX's Organization and OSCAL's Role. AimsControl is related to OSCAL's Control: both name a safeguard, but OSCAL's is a catalogue entry and this one is the organization's own."
+    "A close mapping to lmodel/iso27001 names the class that answers to the same clause number, since both standards follow the harmonized structure of management system standards. AimsOrganization and AimsRole are the same kind of thing as SPDX's Organization and OSCAL's Role. AimsControl is related to OSCAL's Control: both name a safeguard, but OSCAL's is a catalogue entry and this one is the organization's own.",
+    "An AI system and an impact it has are the same kind of thing as the AI system and the impact of lmodel/nist-ai-100-1, and a risk is related to its risk, as that schema relates its risk to lmodel/iso27001's. The parts a party plays with personal data map to the controller and the processor of lmodel/iso29100, which models the standard AimsPiiRole names."
   ],
   "source": "https://www.iso.org/standard/81230.html",
   "see_also": [
@@ -55,6 +56,14 @@
     {
       "prefix_prefix": "iso27001",
       "prefix_reference": "https://w3id.org/lmodel/iso27001/"
+    },
+    {
+      "prefix_prefix": "iso29100",
+      "prefix_reference": "https://w3id.org/lmodel/iso29100/"
+    },
+    {
+      "prefix_prefix": "nist_ai_100_1",
+      "prefix_reference": "https://w3id.org/lmodel/nist-ai-100-1/"
     },
     {
       "prefix_prefix": "oscal",
@@ -1611,15 +1620,24 @@
       "permissible_values": [
         {
           "text": "pii_controller",
-          "description": "Decides why and how personal data is processed."
+          "description": "Decides why and how personal data is processed.",
+          "close_mappings": [
+            "iso29100:PfPiiController"
+          ]
         },
         {
           "text": "joint_pii_controller",
-          "description": "Makes those decisions together with another party."
+          "description": "Makes those decisions together with another party.",
+          "broad_mappings": [
+            "iso29100:PfPiiController"
+          ]
         },
         {
           "text": "pii_processor",
-          "description": "Processes personal data on a controller's behalf."
+          "description": "Processes personal data on a controller's behalf.",
+          "close_mappings": [
+            "iso29100:PfPiiProcessor"
+          ]
         }
       ]
     },
@@ -13533,6 +13551,9 @@
       "close_mappings": [
         "iso27001:IsmsRisk"
       ],
+      "related_mappings": [
+        "nist_ai_100_1:Risk"
+      ],
       "mixins": [
         "AimsRecordMixin"
       ],
@@ -14375,6 +14396,9 @@
         "aims_risk_management"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
+      "close_mappings": [
+        "nist_ai_100_1:Impact"
+      ],
       "slots": [
         "aimsIdentifiedImpact__aims_identified_impact_subject",
         "aimsIdentifiedImpact__aims_identified_impact_area",
@@ -14749,6 +14773,9 @@
         "aims_ai_system_records"
       ],
       "from_schema": "https://w3id.org/lmodel/iso42001",
+      "close_mappings": [
+        "nist_ai_100_1:AiSystem"
+      ],
       "mixins": [
         "AimsRecordMixin"
       ],
@@ -18980,8 +19007,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "iso42001.yaml",
-  "source_file_date": "2026-11-07T00:58:29",
-  "source_file_size": 150735,
+  "source_file_date": "2026-11-07T00:59:42",
+  "source_file_size": 151550,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/iso42001.context.jsonld",

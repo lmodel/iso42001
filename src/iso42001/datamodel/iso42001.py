@@ -63,8 +63,10 @@ version = "2023"
 
 # Namespaces
 ISO27001 = CurieNamespace('iso27001', 'https://w3id.org/lmodel/iso27001/')
+ISO29100 = CurieNamespace('iso29100', 'https://w3id.org/lmodel/iso29100/')
 ISO42001 = CurieNamespace('iso42001', 'https://w3id.org/lmodel/iso42001/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
+NIST_AI_100_1 = CurieNamespace('nist_ai_100_1', 'https://w3id.org/lmodel/nist-ai-100-1/')
 OSCAL = CurieNamespace('oscal', 'https://w3id.org/lmodel/oscal/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SPDX_CORE = CurieNamespace('spdx_core', 'https://spdx.org/rdf/3.0.1/terms/Core/')

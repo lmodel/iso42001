@@ -3082,8 +3082,8 @@ CREATE TABLE "AimsManagementSystem_aims_leadership_evidence" (
 	PRIMARY KEY ("AimsManagementSystem_aims_id", aims_leadership_evidence),
 	FOREIGN KEY("AimsManagementSystem_aims_id") REFERENCES "AimsManagementSystem" (aims_id)
 );
-CREATE INDEX "ix_AimsManagementSystem_aims_leadership_evidence_aims_leadership_evidence" ON "AimsManagementSystem_aims_leadership_evidence" (aims_leadership_evidence);
 CREATE INDEX "ix_AimsManagementSystem_aims_leadership_evidence_AimsManagementSystem_aims_id" ON "AimsManagementSystem_aims_leadership_evidence" ("AimsManagementSystem_aims_id");
+CREATE INDEX "ix_AimsManagementSystem_aims_leadership_evidence_aims_leadership_evidence" ON "AimsManagementSystem_aims_leadership_evidence" (aims_leadership_evidence);
 
 CREATE TABLE "AimsManagementSystem_aims_scope_boundaries" (
 	"AimsManagementSystem_aims_id" TEXT,
@@ -3100,8 +3100,8 @@ CREATE TABLE "AimsManagementSystem_aims_scope_applicability" (
 	PRIMARY KEY ("AimsManagementSystem_aims_id", aims_scope_applicability),
 	FOREIGN KEY("AimsManagementSystem_aims_id") REFERENCES "AimsManagementSystem" (aims_id)
 );
-CREATE INDEX "ix_AimsManagementSystem_aims_scope_applicability_AimsManagementSystem_aims_id" ON "AimsManagementSystem_aims_scope_applicability" ("AimsManagementSystem_aims_id");
 CREATE INDEX "ix_AimsManagementSystem_aims_scope_applicability_aims_scope_applicability" ON "AimsManagementSystem_aims_scope_applicability" (aims_scope_applicability);
+CREATE INDEX "ix_AimsManagementSystem_aims_scope_applicability_AimsManagementSystem_aims_id" ON "AimsManagementSystem_aims_scope_applicability" ("AimsManagementSystem_aims_id");
 
 CREATE TABLE "AimsManagementSystem_aims_internal_issues" (
 	"AimsManagementSystem_aims_id" TEXT,
@@ -3136,8 +3136,8 @@ CREATE TABLE "AimsManagementSystem_aims_external_services" (
 	PRIMARY KEY ("AimsManagementSystem_aims_id", aims_external_services),
 	FOREIGN KEY("AimsManagementSystem_aims_id") REFERENCES "AimsManagementSystem" (aims_id)
 );
-CREATE INDEX "ix_AimsManagementSystem_aims_external_services_AimsManagementSystem_aims_id" ON "AimsManagementSystem_aims_external_services" ("AimsManagementSystem_aims_id");
 CREATE INDEX "ix_AimsManagementSystem_aims_external_services_aims_external_services" ON "AimsManagementSystem_aims_external_services" (aims_external_services);
+CREATE INDEX "ix_AimsManagementSystem_aims_external_services_AimsManagementSystem_aims_id" ON "AimsManagementSystem_aims_external_services" ("AimsManagementSystem_aims_id");
 
 CREATE TABLE "AimsManagementSystem_aims_integrated_standards" (
 	"AimsManagementSystem_aims_id" TEXT,
@@ -3172,8 +3172,8 @@ CREATE TABLE "AimsOrganization_aims_organization_locations" (
 	PRIMARY KEY ("AimsOrganization_aims_id", aims_organization_locations),
 	FOREIGN KEY("AimsOrganization_aims_id") REFERENCES "AimsOrganization" (aims_id)
 );
-CREATE INDEX "ix_AimsOrganization_aims_organization_locations_aims_organization_locations" ON "AimsOrganization_aims_organization_locations" (aims_organization_locations);
 CREATE INDEX "ix_AimsOrganization_aims_organization_locations_AimsOrganization_aims_id" ON "AimsOrganization_aims_organization_locations" ("AimsOrganization_aims_id");
+CREATE INDEX "ix_AimsOrganization_aims_organization_locations_aims_organization_locations" ON "AimsOrganization_aims_organization_locations" (aims_organization_locations);
 
 CREATE TABLE "AimsOrganization_aims_organization_jurisdictions" (
 	"AimsOrganization_aims_id" TEXT,
@@ -3181,8 +3181,8 @@ CREATE TABLE "AimsOrganization_aims_organization_jurisdictions" (
 	PRIMARY KEY ("AimsOrganization_aims_id", aims_organization_jurisdictions),
 	FOREIGN KEY("AimsOrganization_aims_id") REFERENCES "AimsOrganization" (aims_id)
 );
-CREATE INDEX "ix_AimsOrganization_aims_organization_jurisdictions_AimsOrganization_aims_id" ON "AimsOrganization_aims_organization_jurisdictions" ("AimsOrganization_aims_id");
 CREATE INDEX "ix_AimsOrganization_aims_organization_jurisdictions_aims_organization_jurisdictions" ON "AimsOrganization_aims_organization_jurisdictions" (aims_organization_jurisdictions);
+CREATE INDEX "ix_AimsOrganization_aims_organization_jurisdictions_AimsOrganization_aims_id" ON "AimsOrganization_aims_organization_jurisdictions" ("AimsOrganization_aims_id");
 
 CREATE TABLE "AimsOrganization_aims_organization_subsidiaries" (
 	"AimsOrganization_aims_id" TEXT,
@@ -3190,8 +3190,8 @@ CREATE TABLE "AimsOrganization_aims_organization_subsidiaries" (
 	PRIMARY KEY ("AimsOrganization_aims_id", aims_organization_subsidiaries),
 	FOREIGN KEY("AimsOrganization_aims_id") REFERENCES "AimsOrganization" (aims_id)
 );
-CREATE INDEX "ix_AimsOrganization_aims_organization_subsidiaries_aims_organization_subsidiaries" ON "AimsOrganization_aims_organization_subsidiaries" (aims_organization_subsidiaries);
 CREATE INDEX "ix_AimsOrganization_aims_organization_subsidiaries_AimsOrganization_aims_id" ON "AimsOrganization_aims_organization_subsidiaries" ("AimsOrganization_aims_id");
+CREATE INDEX "ix_AimsOrganization_aims_organization_subsidiaries_aims_organization_subsidiaries" ON "AimsOrganization_aims_organization_subsidiaries" (aims_organization_subsidiaries);
 
 CREATE TABLE "AimsOrganization_aims_organization_ai_roles" (
 	"AimsOrganization_aims_id" TEXT,
@@ -3415,8 +3415,8 @@ CREATE TABLE "AimsDataResource_aims_data_categories" (
 	PRIMARY KEY ("AimsDataResource_aims_id", aims_data_categories),
 	FOREIGN KEY("AimsDataResource_aims_id") REFERENCES "AimsDataResource" (aims_id)
 );
-CREATE INDEX "ix_AimsDataResource_aims_data_categories_aims_data_categories" ON "AimsDataResource_aims_data_categories" (aims_data_categories);
 CREATE INDEX "ix_AimsDataResource_aims_data_categories_AimsDataResource_aims_id" ON "AimsDataResource_aims_data_categories" ("AimsDataResource_aims_id");
+CREATE INDEX "ix_AimsDataResource_aims_data_categories_aims_data_categories" ON "AimsDataResource_aims_data_categories" (aims_data_categories);
 
 CREATE TABLE "AimsDataResource_aims_data_kinds" (
 	"AimsDataResource_aims_id" TEXT,
@@ -4042,8 +4042,8 @@ CREATE TABLE "AimsRisk_aims_risk_objectives" (
 	FOREIGN KEY("AimsRisk_aims_id") REFERENCES "AimsRisk" (aims_id),
 	FOREIGN KEY(aims_risk_objectives_aims_id) REFERENCES "AimsObjective" (aims_id)
 );
-CREATE INDEX "ix_AimsRisk_aims_risk_objectives_aims_risk_objectives_aims_id" ON "AimsRisk_aims_risk_objectives" (aims_risk_objectives_aims_id);
 CREATE INDEX "ix_AimsRisk_aims_risk_objectives_AimsRisk_aims_id" ON "AimsRisk_aims_risk_objectives" ("AimsRisk_aims_id");
+CREATE INDEX "ix_AimsRisk_aims_risk_objectives_aims_risk_objectives_aims_id" ON "AimsRisk_aims_risk_objectives" (aims_risk_objectives_aims_id);
 
 CREATE TABLE "AimsRisk_aims_risk_existing_controls" (
 	"AimsRisk_aims_id" TEXT,
@@ -4490,8 +4490,8 @@ CREATE TABLE "AimsCompetenceRecord_aims_document_distribution" (
 	PRIMARY KEY ("AimsCompetenceRecord_aims_id", aims_document_distribution),
 	FOREIGN KEY("AimsCompetenceRecord_aims_id") REFERENCES "AimsCompetenceRecord" (aims_id)
 );
-CREATE INDEX "ix_AimsCompetenceRecord_aims_document_distribution_aims_document_distribution" ON "AimsCompetenceRecord_aims_document_distribution" (aims_document_distribution);
 CREATE INDEX "ix_AimsCompetenceRecord_aims_document_distribution_AimsCompetenceRecord_aims_id" ON "AimsCompetenceRecord_aims_document_distribution" ("AimsCompetenceRecord_aims_id");
+CREATE INDEX "ix_AimsCompetenceRecord_aims_document_distribution_aims_document_distribution" ON "AimsCompetenceRecord_aims_document_distribution" (aims_document_distribution);
 
 CREATE TABLE "AimsDocumentedInformation_aims_cited_clauses" (
 	"AimsDocumentedInformation_aims_id" TEXT,
@@ -4718,8 +4718,8 @@ CREATE TABLE "AimsThirdPartyRelationship_aims_relationship_assurance_evidence" (
 	PRIMARY KEY ("AimsThirdPartyRelationship_aims_id", aims_relationship_assurance_evidence),
 	FOREIGN KEY("AimsThirdPartyRelationship_aims_id") REFERENCES "AimsThirdPartyRelationship" (aims_id)
 );
-CREATE INDEX "ix_AimsThirdPartyRelationship_aims_relationship_assurance_evidence_aims_relationship_assurance_evidence" ON "AimsThirdPartyRelationship_aims_relationship_assurance_evidence" (aims_relationship_assurance_evidence);
 CREATE INDEX "ix_AimsThirdPartyRelationship_aims_relationship_assurance_evidence_AimsThirdPartyRelationship_aims_id" ON "AimsThirdPartyRelationship_aims_relationship_assurance_evidence" ("AimsThirdPartyRelationship_aims_id");
+CREATE INDEX "ix_AimsThirdPartyRelationship_aims_relationship_assurance_evidence_aims_relationship_assurance_evidence" ON "AimsThirdPartyRelationship_aims_relationship_assurance_evidence" (aims_relationship_assurance_evidence);
 
 CREATE TABLE "AimsIncident_aims_incident_corrective_actions" (
 	"AimsIncident_aims_id" TEXT,
