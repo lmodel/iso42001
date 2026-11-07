@@ -21,7 +21,7 @@ sources:
   - resource: .linkml
   - resource: .lokf/justfile
   - resource: .lokf/pyproject.toml
-  - resource: .lokf/iso42001.yaml
+  - resource: .lokf/schema/iso42001.yaml
   - resource: project
   - resource: project.justfile
   - resource: justfile
@@ -89,7 +89,7 @@ exclusions:
     reason: Sample queries from the KTL template.
   - resource: .lokf/uv.lock
     reason: The sidecar's lock file.
-  - resource: .lokf/lokf.yaml
+  - resource: .lokf/schema/lokf.yaml
     reason: LOKF's schema, pinned by the sidecar.
   - resource: .lokf/scripts
     reason: Copies of the KTL templates, which the sync keeps current.
@@ -97,7 +97,7 @@ exclusions:
     reason: Copies of the KTL templates, which the sync keeps current.
 generated:
   by: process:ktl-librarian
-  at: "2026-11-05T11:06:55Z"
+  at: "2026-11-06T21:27:09Z"
 status: draft
 ---
 

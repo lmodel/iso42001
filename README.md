@@ -48,7 +48,7 @@ Run `just` to list the project's [just](https://github.com/casey/just/) recipes.
 
 ## Knowledge Trust Ladder (KTL)
 
-`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) sidecar. Its domain schema, `.lokf/iso42001.yaml`, is the copy `just lokf-adapt` writes from `src/iso42001/schema/iso42001.yaml`, and `just lokf-adapt-check` says when it is stale. Edit the source, never the copy. A release carries the copy as `schema-<tag>-iso42001.yaml`, with its checksum and attestation.
+`.lokf/` holds this project's [KTL](https://w3id.org/ktl/) sidecar. Its domain schema, `.lokf/schema/iso42001.yaml`, is the copy `just lokf-adapt` writes from `src/iso42001/schema/iso42001.yaml`, and `just lokf-adapt-check` says when it is stale. Edit the source, never the copy. A release carries the copy as `schema-<tag>-iso42001.yaml`, with its checksum and attestation.
 
 In Obsidian, add these to the *Known LOKF types* setting of the KTL Registrar and KTL Curator plugins:
 
