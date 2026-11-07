@@ -418,10 +418,12 @@ def main(argv: list[str] | None = None) -> int:
     for label, check in CHECKS:
         try:
             found, needs = check()
-        # OSError covers a refused or failed fetch and a timeout,
-        # HTTPException a connection cut off mid-dataset, EOFError a gzipped
-        # page cut short, zlib.error a gzipped page that is corrupt, and
-        # ValueError an answer over a cap or a line that is not JSON or UTF-8.
+        # Each of these is a check that could not finish:
+        # - OSError, a refused or failed fetch, or a timeout;
+        # - HTTPException, a connection cut off mid-dataset;
+        # - EOFError, a gzipped page cut short;
+        # - zlib.error, a gzipped page that is corrupt;
+        # - ValueError, an answer over a cap, or a line that is not JSON or UTF-8.
         except (
             OSError,
             http.client.HTTPException,
