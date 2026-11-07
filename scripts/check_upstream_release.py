@@ -24,7 +24,8 @@ of its line.
 
 The script reports:
 
-- a change to a pinned record, such as a stage or a publication date;
+- a change to a pinned record, such as a stage or a publication date, and
+  a pinned amendment that ISO publishes;
 - a supplement of either standard that is not pinned;
 - a record that replaces a pinned one, such as a new edition;
 - a pinned record leaving the dataset, or ISO changing the dataset's licence;
@@ -85,6 +86,9 @@ PINNED_EDITION = "ISO/IEC 42001:2023"
 PINNED_VERSION = "2023"
 PINNED_SOURCE = "https://www.iso.org/standard/81230.html"
 EDITION_ID = 81230
+# The editions the schema rests on: ISO/IEC 42001:2023 and its normative
+# reference, ISO/IEC 22989:2022. The other pinned records are supplements.
+EDITION_IDS = (EDITION_ID, 74296)
 
 # Each extract line, by ISO's record id, and the SHA-256 hash of the line.
 PINNED_RECORDS = {
@@ -105,7 +109,8 @@ LEFT_OUT = ("scope",)
 PINNED_LICENCE = "ODC Attribution License (ODC-By) v1.0"
 PINNED_LICENCE_URL = "https://opendatacommons.org/licenses/by/1-0/"
 
-# The stage code of a published standard. Any other is reported.
+# The stage code of a published standard. An edition at any other stage, and
+# a supplement at this one, are reported.
 PUBLISHED = 6060
 
 
@@ -165,9 +170,35 @@ def _lines(url: str):
 
 
 def _code(text: object) -> str:
-    """Text a site chose, such as an address it redirected to, as a code
-    span, so it cannot mention a person or add a link in the issue."""
-    return "`" + str(text).replace("`", "'") + "`"
+    """Text a site chose, such as an address it redirected to or a record's
+    field, as a code span on one line, so it cannot mention a person, add a
+    link or start a new line in the issue the watch opens."""
+    return "`" + " ".join(str(text).replace("`", "'").split()) + "`"
+
+
+def _record(line: str) -> dict | None:
+    """A dataset line as a record, or None when it is not one: a JSON object
+    whose id is a whole number. The record is kept as served, so its hash
+    still matches the pinned line."""
+    record = json.loads(line)
+    if not isinstance(record, dict) or type(record.get("id")) is not int:
+        return None
+    return record
+
+
+def _reference(record: dict) -> str:
+    """A record's reference, or an empty string when it is not a string."""
+    reference = record.get("reference")
+    return reference if isinstance(reference, str) else ""
+
+
+def _replaces(record: dict) -> set[int]:
+    """The pinned ids a record replaces. A field that is not a list of whole
+    numbers names none."""
+    replaces = record.get("replaces")
+    if not isinstance(replaces, list):
+        return set()
+    return {i for i in replaces if type(i) is int} & PINNED_RECORDS.keys()
 
 
 def line_of(record: dict) -> str:
@@ -241,13 +272,15 @@ def check_records() -> tuple[list[str], bool]:
     for line in _lines(DATASET):
         if not _relevant(line):
             continue
-        record = json.loads(line)
+        record = _record(line)
+        if record is None:
+            continue
         rid = record["id"]
         if rid in PINNED_RECORDS:
             live[rid] = record
-        if record.get("reference", "").startswith(SUPPLEMENT_PREFIXES):
+        if _reference(record).startswith(SUPPLEMENT_PREFIXES):
             supplements[rid] = record
-        if set(record.get("replaces") or []) & set(PINNED_RECORDS):
+        if rid not in PINNED_RECORDS and _replaces(record):
             replacements[rid] = record
 
     report, attention = [], False
@@ -273,20 +306,26 @@ def check_records() -> tuple[list[str], bool]:
             if new.get(k) != old.get(k)
         )
         details = "; ".join(
-            f"`{k}` from {json.dumps(old.get(k), ensure_ascii=False)} to "
-            f"{json.dumps(new.get(k), ensure_ascii=False)}"
+            f"{_code(k)} from {_code(json.dumps(old.get(k), ensure_ascii=False))} "
+            f"to {_code(json.dumps(new.get(k), ensure_ascii=False))}"
             for k in changed
         )
         report.append(f"- **{name} (record {rid}) changed:** {details}.")
-        if new.get("currentStage") != PUBLISHED:
+        stage = new.get("currentStage")
+        if rid in EDITION_IDS and stage != PUBLISHED:
             report.append(
-                f"  - Its stage is now {new.get('currentStage')}, not {PUBLISHED} "
+                f"  - Its stage is now {_code(stage)}, not {PUBLISHED} "
                 "(published); read ISO's stage codes to see what that means."
+            )
+        if rid not in EDITION_IDS and stage == PUBLISHED:
+            report.append(
+                "  - ISO has published this supplement. Read it, decide what the "
+                "schema changes, and name it in the schema header."
             )
         if new.get("replacedBy"):
             report.append(
-                f"  - ISO now lists it as replaced by {new['replacedBy']}. Decide "
-                "whether the schema moves to the successor."
+                f"  - ISO now lists it as replaced by {_code(new['replacedBy'])}. "
+                "Decide whether the schema moves to the successor."
             )
     report.append(
         f"- {unchanged} of {len(PINNED_RECORDS)} pinned records are unchanged."
@@ -296,16 +335,16 @@ def check_records() -> tuple[list[str], bool]:
             attention = True
             report.append(
                 f"- **ISO lists a supplement that is not pinned: "
-                f"{record.get('reference')} (record {rid}, stage "
-                f"{record.get('currentStage')}).** Read it, decide what the schema "
-                "changes, and add it to the extract and the watch's pins."
+                f"{_code(_reference(record))} (record {rid}, stage "
+                f"{_code(record.get('currentStage'))}).** Read it, decide what the "
+                "schema changes, and add it to the extract and the watch's pins."
             )
     for rid, record in sorted(replacements.items()):
         attention = True
-        replaced = sorted(set(record.get("replaces") or []) & set(PINNED_RECORDS))
+        replaced = sorted(_replaces(record))
         report.append(
-            f"- **{record.get('reference')} (record {rid}, stage "
-            f"{record.get('currentStage')}) replaces record "
+            f"- **{_code(_reference(record))} (record {rid}, stage "
+            f"{_code(record.get('currentStage'))}) replaces record "
             f"{', '.join(map(str, replaced))}.** Decide whether the schema follows it."
         )
     return report, attention
@@ -335,8 +374,9 @@ def check_licence() -> tuple[list[str], bool]:
     if name != PINNED_LICENCE or url.rstrip("/") != PINNED_LICENCE_URL.rstrip("/"):
         return [
             f"- **ISO's open data page ({_code(where)}) names the dataset's licence as "
-            f"{name} ({url or 'no link'}), not {PINNED_LICENCE}.** Check that the "
-            "extract and NOTICE still meet its terms."
+            f"{_code(name)} ({_code(url) if url else 'no link'}), not "
+            f"{PINNED_LICENCE}.** Check that the extract and NOTICE still meet its "
+            "terms."
         ], True
     return [f"- Licence: {PINNED_LICENCE}, as read at {_code(where)}."], False
 

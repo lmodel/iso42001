@@ -144,21 +144,49 @@ def test_a_new_supplement(watch, tmp_path, reference):
     code, text = _run(watch, tmp_path)
     assert code == 1
     assert (
-        f"**ISO lists a supplement that is not pinned: {reference} (record 99999, "
-        "stage 6060).**" in text
+        f"**ISO lists a supplement that is not pinned: `{reference}` (record 99999, "
+        "stage `6060`).**" in text
     )
 
 
 def test_a_supplement_moving_on_is_reported(watch, tmp_path):
     """The final draft of the normative reference's amendment moves on, as a change
-    to its pinned record."""
+    to its pinned record. A supplement short of publication is not an edition
+    that left the published stage."""
     records = _records()
     _by_id(records, 88145)["currentStage"] = 6000
     _stub(watch, records)
     code, text = _run(watch, tmp_path)
     assert code == 1
     assert "**ISO/IEC 22989:2022/FDAmd 1 (record 88145) changed:**" in text
-    assert "`currentStage` from 5000 to 6000" in text
+    assert "`currentStage` from `5000` to `6000`" in text
+    assert "Its stage is now" not in text
+    assert "ISO has published this supplement" not in text
+
+
+def test_a_published_supplement_asks_for_a_decision(watch, tmp_path):
+    """A pinned supplement that reaches the published stage asks what the schema
+    changes."""
+    records = _records()
+    amendment = _by_id(records, 88145)
+    amendment["currentStage"] = 6060
+    amendment["reference"] = "ISO/IEC 22989:2022/Amd 1:2027"
+    _stub(watch, records)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert '`reference` from `"ISO/IEC 22989:2022/FDAmd 1"`' in text
+    assert "ISO has published this supplement." in text
+
+
+def test_the_normative_reference_is_an_edition(watch, tmp_path):
+    """ISO/IEC 22989:2022 leaving the published stage is reported as the
+    edition 42001 rests on."""
+    records = _records()
+    _by_id(records, 74296)["currentStage"] = 9093
+    _stub(watch, records)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert "Its stage is now `9093`, not 6060 (published)" in text
 
 
 def test_a_stage_change_and_a_replacement(watch, tmp_path):
@@ -172,10 +200,10 @@ def test_a_stage_change_and_a_replacement(watch, tmp_path):
     code, text = _run(watch, tmp_path)
     assert code == 1
     assert "**ISO/IEC 42001:2023 (record 81230) changed:**" in text
-    assert "`currentStage` from 6060 to 9599" in text
-    assert "`replacedBy` from null to [99998]" in text
-    assert "Its stage is now 9599, not 6060 (published)" in text
-    assert "ISO now lists it as replaced by [99998]" in text
+    assert "`currentStage` from `6060` to `9599`" in text
+    assert "`replacedBy` from `null` to `[99998]`" in text
+    assert "Its stage is now `9599`, not 6060 (published)" in text
+    assert "ISO now lists it as replaced by `[99998]`" in text
     assert "3 of 4 pinned records are unchanged." in text
 
 
@@ -195,7 +223,7 @@ def test_a_new_edition(watch, tmp_path):
     code, text = _run(watch, tmp_path)
     assert code == 1
     assert (
-        "**ISO/IEC DIS 42001 (record 99997, stage 4020) replaces record 81230.**"
+        "**`ISO/IEC DIS 42001` (record 99997, stage `4020`) replaces record 81230.**"
         in text
     )
 
@@ -218,7 +246,52 @@ def test_a_changed_licence(watch, tmp_path):
     _stub(watch, _records(), page=page)
     code, text = _run(watch, tmp_path)
     assert code == 1
-    assert "names the dataset's licence as CC BY-NC 4.0" in text
+    assert (
+        "names the dataset's licence as `CC BY-NC 4.0` "
+        "(`https://creativecommons.org/licenses/by-nc/4.0/`)" in text
+    )
+
+
+def test_server_text_stays_one_code_span(watch, tmp_path):
+    """A reference the dataset serves with a backtick, a mention, a link and a
+    line break reaches the report as one code span on one line."""
+    records = _records()
+    reference = "ISO/IEC 42001:2023/Amd 9 `@someone`\n- [x](https://example.org)"
+    records.append({**_by_id(records, 88145), "id": 99996, "reference": reference})
+    _stub(watch, records)
+    code, text = _run(watch, tmp_path)
+    assert code == 1
+    assert (
+        "not pinned: `ISO/IEC 42001:2023/Amd 9 '@someone' - [x](https://example.org)` "
+        "(record 99996" in text
+    )
+    assert "\n- [x]" not in text
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        '["ISO/IEC 42001:2023/Amd 1"]',
+        '{"id": "81230", "reference": "ISO/IEC 42001:2023/Amd 1"}',
+        '{"id": 99995, "reference": ["ISO/IEC 42001:2023/Amd 1"], "replaces": 81230}',
+        '{"id": 99994, "reference": "ISO/IEC DIS 42001", "replaces": [[81230]]}',
+    ],
+)
+def test_a_line_that_is_not_a_record_is_passed_over(watch, tmp_path, line):
+    """A matching line that is not a record with a whole-number id, or whose
+    fields have the wrong shape, neither stops the check nor counts as a
+    finding."""
+    _stub(watch, _records())
+    lines = watch._lines
+
+    def with_odd_line(url):
+        yield line + "\n"
+        yield from lines(url)
+
+    watch._lines = with_odd_line
+    code, text = _run(watch, tmp_path)
+    assert code == 0, text
+    assert "4 of 4 pinned records are unchanged." in text
 
 
 def test_a_page_without_the_licence_row(watch, tmp_path):
