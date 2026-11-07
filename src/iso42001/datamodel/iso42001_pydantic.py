@@ -5045,7 +5045,14 @@ class AimsAuditFinding(AimsRecordMixin):
          'close_mappings': ['iso27001:IsmsAuditFinding'],
          'from_schema': 'https://w3id.org/lmodel/iso42001',
          'in_subset': ['aims_performance_evaluation'],
-         'mixins': ['AimsRecordMixin']})
+         'mixins': ['AimsRecordMixin'],
+         'rules': [{'description': 'A finding that names a nonconformity record is a '
+                                   'finding of a nonconformity.',
+                    'postconditions': {'slot_conditions': {'aims_finding_type': {'equals_string_in': ['major_nonconformity',
+                                                                                                      'minor_nonconformity'],
+                                                                                 'name': 'aims_finding_type'}}},
+                    'preconditions': {'slot_conditions': {'aims_finding_nonconformity': {'name': 'aims_finding_nonconformity',
+                                                                                         'value_presence': 'PRESENT'}}}}]})
 
     aims_cited_clauses: Optional[list[AimsClause]] = Field(default=None, description="""The clauses of the standard the record answers to or concerns.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsPolicy',
                        'AimsDocumentedInformation',
@@ -5066,6 +5073,9 @@ class AimsAuditFinding(AimsRecordMixin):
     aims_finding_recommendation: Optional[str] = Field(default=None, description="""What the auditor recommends.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
     aims_finding_auditee_response: Optional[str] = Field(default=None, description="""How the auditee responded.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
     aims_finding_corrective_action: Optional[str] = Field(default=None, description="""The corrective action the finding led to.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
+    aims_finding_nonconformity: Optional[str] = Field(default=None, description="""The nonconformity the finding recorded, for a finding of one.""", json_schema_extra = { "linkml_meta": {'annotations': {'iso42001_clause': {'tag': 'iso42001_clause',
+                                             'value': '10.2'}},
+         'domain_of': ['AimsAuditFinding']} })
     aims_finding_closure_status: Optional[str] = Field(default=None, description="""Whether the finding is closed, in the organization's own terms.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
     aims_finding_closure_date: Optional[date] = Field(default=None, description="""When the finding was closed.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsAuditFinding']} })
     aims_id: str = Field(default=..., description="""The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.""", json_schema_extra = { "linkml_meta": {'domain_of': ['AimsRecordMixin']} })

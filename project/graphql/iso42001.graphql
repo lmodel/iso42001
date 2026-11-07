@@ -440,6 +440,7 @@ type AimsAuditFinding implements AimsRecordMixin
     aimsFindingRecommendation: String
     aimsFindingAuditeeResponse: String
     aimsFindingCorrectiveAction: AimsCorrectiveAction
+    aimsFindingNonconformity: AimsNonconformity
     aimsFindingClosureStatus: String
     aimsFindingClosureDate: String
     aimsId: String!

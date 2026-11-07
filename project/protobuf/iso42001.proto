@@ -187,16 +187,18 @@ message AimsAuditFinding {
   string aims_finding_auditee_response = 9;
   // The corrective action the finding led to.
   AimsCorrectiveAction aims_finding_corrective_action = 10;
+  // The nonconformity the finding recorded, for a finding of one.
+  AimsNonconformity aims_finding_nonconformity = 11;
   // Whether the finding is closed, in the organization's own terms.
-  string aims_finding_closure_status = 11;
+  string aims_finding_closure_status = 12;
   // When the finding was closed.
-  string aims_finding_closure_date = 12;
+  string aims_finding_closure_date = 13;
   // The record's identifier, unique among the records of the system, such as a URI or a CURIE. Other records refer to the record by it.
-  string aims_id = 13;
+  string aims_id = 14;
   // The name the organization gives the record.
-  string title = 14;
+  string title = 15;
   // What the record says or describes, in the organization's own words.
-  string description = 15;
+  string description = 16;
 }
 // A programme of internal audits: the audits planned over a period, how often and why, and the resources and auditors they need.
 message AimsAuditProgramme {

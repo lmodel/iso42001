@@ -1933,6 +1933,8 @@ export interface AimsAuditFinding extends AimsRecordMixin {
     aims_finding_auditee_response?: string,
     /** The corrective action the finding led to. */
     aims_finding_corrective_action?: AimsCorrectiveActionAimsId,
+    /** The nonconformity the finding recorded, for a finding of one. */
+    aims_finding_nonconformity?: AimsNonconformityAimsId,
     /** Whether the finding is closed, in the organization's own terms. */
     aims_finding_closure_status?: string,
     /** When the finding was closed. */

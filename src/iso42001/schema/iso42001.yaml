@@ -3777,6 +3777,19 @@ classes:
     slots:
       - aims_cited_clauses
       - aims_cited_annex_a_controls
+    rules:
+      - description: >-
+          A finding that names a nonconformity record is a finding of a nonconformity.
+        preconditions:
+          slot_conditions:
+            aims_finding_nonconformity:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            aims_finding_type:
+              equals_string_in:
+                - major_nonconformity
+                - minor_nonconformity
     attributes:
       aims_finding_type:
         description: What kind of finding it is.
@@ -3798,6 +3811,11 @@ classes:
       aims_finding_corrective_action:
         description: The corrective action the finding led to.
         range: AimsCorrectiveAction
+      aims_finding_nonconformity:
+        description: The nonconformity the finding recorded, for a finding of one.
+        range: AimsNonconformity
+        annotations:
+          iso42001_clause: "10.2"
       aims_finding_closure_status:
         description: Whether the finding is closed, in the organization's own terms.
       aims_finding_closure_date:

@@ -305,6 +305,10 @@
       "aims_finding_evidence": {
          "@id": "aims_finding_evidence"
       },
+      "aims_finding_nonconformity": {
+         "@type": "@id",
+         "@id": "aims_finding_nonconformity"
+      },
       "aims_finding_recommendation": {
          "@id": "aims_finding_recommendation"
       },

@@ -12,5 +12,6 @@ aims_finding_risk: A flawed release could reach hospitals.
 aims_finding_recommendation: Make the gate automatic.
 aims_finding_auditee_response: Agreed
 aims_finding_corrective_action: acme:corrective-gate
+aims_finding_nonconformity: acme:nonconformity-1
 aims_finding_closure_status: closed
 aims_finding_closure_date: '2026-07-01'

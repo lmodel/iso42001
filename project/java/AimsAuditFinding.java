@@ -26,6 +26,7 @@ public class AimsAuditFinding  {
   private String aimsFindingRecommendation;
   private String aimsFindingAuditeeResponse;
   private AimsCorrectiveAction aimsFindingCorrectiveAction;
+  private AimsNonconformity aimsFindingNonconformity;
   private String aimsFindingClosureStatus;
   private LocalDate aimsFindingClosureDate;
   private URI aimsId;

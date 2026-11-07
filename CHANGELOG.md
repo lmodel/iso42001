@@ -11,6 +11,7 @@ The `v0.0.0` tag is a baseline, not a release: it marks where versioning starts 
 - **ISO Open Data's records** of the edition and its normative reference, with a weekly watch. It reads only https addresses on a list of hosts and caps what it reads.
 - **Enums for citing the standard by number**, `AimsClause` and `AimsAnnexAControl`, and slots that use them.
 - **Classes for processes and information the old schema lacked**, such as planned actions, identified impacts, development and use processes, and what users and others are told.
+- **A link from an audit finding to the nonconformity it records**, `aims_finding_nonconformity`, which only a finding of a nonconformity may carry.
 - **`.lokf/iso42001.yaml`, the schema's `lokf adapt` copy.** The knowledge release attaches it as `schema-<tag>-iso42001.yaml`.
 - **The Knowledge Trust Ladder (KTL) sidecar**, from the KTL v0.61.0 templates with the lokf floor at 0.9.0, and a knowledge website that replaces the mkdocs site.
 - **The governance files**: SECURITY.md, AI_COVENANT.md and the CONTRIBUTING checklist.

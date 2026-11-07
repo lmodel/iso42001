@@ -5519,6 +5519,7 @@ class AimsAuditFinding(YAMLRoot):
     aims_finding_recommendation: Optional[str] = None
     aims_finding_auditee_response: Optional[str] = None
     aims_finding_corrective_action: Optional[Union[str, AimsCorrectiveActionAimsId]] = None
+    aims_finding_nonconformity: Optional[Union[str, AimsNonconformityAimsId]] = None
     aims_finding_closure_status: Optional[str] = None
     aims_finding_closure_date: Optional[Union[str, XSDDate]] = None
     description: Optional[str] = None
@@ -5567,6 +5568,9 @@ class AimsAuditFinding(YAMLRoot):
 
         if self.aims_finding_corrective_action is not None and not isinstance(self.aims_finding_corrective_action, AimsCorrectiveActionAimsId):
             self.aims_finding_corrective_action = AimsCorrectiveActionAimsId(self.aims_finding_corrective_action)
+
+        if self.aims_finding_nonconformity is not None and not isinstance(self.aims_finding_nonconformity, AimsNonconformityAimsId):
+            self.aims_finding_nonconformity = AimsNonconformityAimsId(self.aims_finding_nonconformity)
 
         if self.aims_finding_closure_status is not None and not isinstance(self.aims_finding_closure_status, str):
             self.aims_finding_closure_status = str(self.aims_finding_closure_status)
@@ -8993,6 +8997,9 @@ slots.aimsAuditFinding__aims_finding_auditee_response = Slot(uri=ISO42001.aims_f
 
 slots.aimsAuditFinding__aims_finding_corrective_action = Slot(uri=ISO42001.aims_finding_corrective_action, name="aimsAuditFinding__aims_finding_corrective_action", curie=ISO42001.curie('aims_finding_corrective_action'),
                    model_uri=ISO42001.aimsAuditFinding__aims_finding_corrective_action, domain=None, range=Optional[Union[str, AimsCorrectiveActionAimsId]])
+
+slots.aimsAuditFinding__aims_finding_nonconformity = Slot(uri=ISO42001.aims_finding_nonconformity, name="aimsAuditFinding__aims_finding_nonconformity", curie=ISO42001.curie('aims_finding_nonconformity'),
+                   model_uri=ISO42001.aimsAuditFinding__aims_finding_nonconformity, domain=None, range=Optional[Union[str, AimsNonconformityAimsId]])
 
 slots.aimsAuditFinding__aims_finding_closure_status = Slot(uri=ISO42001.aims_finding_closure_status, name="aimsAuditFinding__aims_finding_closure_status", curie=ISO42001.curie('aims_finding_closure_status'),
                    model_uri=ISO42001.aimsAuditFinding__aims_finding_closure_status, domain=None, range=Optional[str])

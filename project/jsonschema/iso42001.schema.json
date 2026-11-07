@@ -756,6 +756,14 @@
         "AimsAuditFinding": {
             "additionalProperties": false,
             "description": "One finding of an audit: a nonconformity, an observation or a strength, with the requirement or control it concerns, its evidence and how it is closed.",
+            "if": {
+                "properties": {
+                    "aims_finding_nonconformity": {}
+                },
+                "required": [
+                    "aims_finding_nonconformity"
+                ]
+            },
             "properties": {
                 "aims_cited_annex_a_controls": {
                     "description": "The controls of Annex A the record answers to or concerns.",
@@ -820,6 +828,13 @@
                         "null"
                     ]
                 },
+                "aims_finding_nonconformity": {
+                    "description": "The nonconformity the finding recorded, for a finding of one.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "aims_finding_recommendation": {
                     "description": "What the auditor recommends.",
                     "type": [
@@ -867,6 +882,19 @@
                 "aims_id",
                 "title"
             ],
+            "then": {
+                "properties": {
+                    "aims_finding_type": {
+                        "enum": [
+                            "major_nonconformity",
+                            "minor_nonconformity"
+                        ]
+                    }
+                },
+                "required": [
+                    "aims_finding_type"
+                ]
+            },
             "title": "AimsAuditFinding",
             "type": "object"
         },

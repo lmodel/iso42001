@@ -290,6 +290,7 @@ linkml:Sparqlpath xsd:string
           <aims_finding_recommendation> @linkml:String ? ;
           <aims_finding_auditee_response> @linkml:String ? ;
           <aims_finding_corrective_action> @<AimsCorrectiveAction> ? ;
+          <aims_finding_nonconformity> @<AimsNonconformity> ? ;
           <aims_finding_closure_status> @linkml:String ? ;
           <aims_finding_closure_date> @linkml:Date ? ;
           schema1:name @linkml:String ;

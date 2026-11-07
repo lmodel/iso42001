@@ -9770,6 +9770,26 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "aimsAuditFinding__aims_finding_nonconformity",
+      "annotations": [
+        {
+          "tag": "iso42001_clause",
+          "value": "10.2",
+          "@type": "Annotation"
+        }
+      ],
+      "description": "The nonconformity the finding recorded, for a finding of one.",
+      "from_schema": "https://w3id.org/lmodel/iso42001",
+      "slot_uri": "https://w3id.org/lmodel/iso42001/aims_finding_nonconformity",
+      "alias": "aims_finding_nonconformity",
+      "owner": "AimsAuditFinding",
+      "domain_of": [
+        "AimsAuditFinding"
+      ],
+      "range": "AimsNonconformity",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "aimsAuditFinding__aims_finding_closure_status",
       "description": "Whether the finding is closed, in the organization's own terms.",
       "from_schema": "https://w3id.org/lmodel/iso42001",
@@ -17545,6 +17565,7 @@
         "aimsAuditFinding__aims_finding_recommendation",
         "aimsAuditFinding__aims_finding_auditee_response",
         "aimsAuditFinding__aims_finding_corrective_action",
+        "aimsAuditFinding__aims_finding_nonconformity",
         "aimsAuditFinding__aims_finding_closure_status",
         "aimsAuditFinding__aims_finding_closure_date",
         "aims_id",
@@ -17598,6 +17619,19 @@
           "@type": "SlotDefinition"
         },
         {
+          "name": "aims_finding_nonconformity",
+          "annotations": [
+            {
+              "tag": "iso42001_clause",
+              "value": "10.2",
+              "@type": "Annotation"
+            }
+          ],
+          "description": "The nonconformity the finding recorded, for a finding of one.",
+          "range": "AimsNonconformity",
+          "@type": "SlotDefinition"
+        },
+        {
           "name": "aims_finding_closure_status",
           "description": "Whether the finding is closed, in the organization's own terms.",
           "@type": "SlotDefinition"
@@ -17610,6 +17644,35 @@
         }
       ],
       "class_uri": "https://w3id.org/lmodel/iso42001/AimsAuditFinding",
+      "rules": [
+        {
+          "preconditions": {
+            "slot_conditions": [
+              {
+                "name": "aims_finding_nonconformity",
+                "value_presence": "PRESENT",
+                "@type": "SlotDefinition"
+              }
+            ],
+            "@type": "AnonymousClassExpression"
+          },
+          "postconditions": {
+            "slot_conditions": [
+              {
+                "name": "aims_finding_type",
+                "equals_string_in": [
+                  "major_nonconformity",
+                  "minor_nonconformity"
+                ],
+                "@type": "SlotDefinition"
+              }
+            ],
+            "@type": "AnonymousClassExpression"
+          },
+          "description": "A finding that names a nonconformity record is a finding of a nonconformity.",
+          "@type": "ClassRule"
+        }
+      ],
       "@type": "ClassDefinition"
     },
     {
@@ -18917,8 +18980,8 @@
   ],
   "metamodel_version": "1.12.0",
   "source_file": "iso42001.yaml",
-  "source_file_date": "2026-11-07T00:57:39",
-  "source_file_size": 150090,
+  "source_file_date": "2026-11-07T00:58:29",
+  "source_file_size": 150735,
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/iso42001.context.jsonld",
