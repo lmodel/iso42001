@@ -3,7 +3,7 @@ type: Explanation
 id: https://w3id.org/lmodel/iso42001/knowledge/explanations/mappings
 genre: explanation
 title: Mappings and the SSSOM sets
-description: "Where the schema crosses to other vocabularies: close mappings to lmodel/iso27001's class of the same clause number, to OSCAL's role and SPDX's organization, and a related mapping to OSCAL's control, each tested. The seven SSSOM sets are gone."
+description: "Where the schema crosses to other vocabularies: close mappings to lmodel/iso27001's class of the same clause number, to OSCAL's role, SPDX's organization, the AI system and impact of lmodel/nist-ai-100-1 and the controller and processor of lmodel/iso29100, and related mappings to OSCAL's control and the AI RMF's risk, each tested. The seven SSSOM sets are gone."
 references:
   - https://w3id.org/lmodel/iso42001/knowledge/datasets/neighbour-copies
 sources:
@@ -14,7 +14,7 @@ sources:
     resource: tests/test_schema_rules.py
 generated:
   by: process:ktl-librarian
-  at: "2026-11-05T11:06:55Z"
+  at: "2026-11-07T01:01:53Z"
 status: draft
 ---
 

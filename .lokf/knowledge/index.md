@@ -32,7 +32,7 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for iso42001. Every Mark
 * [The generated artefacts](datasets/generated-artefacts.md) - What `just gen-project` and `just gen-doc` generate from the schema: the projections in `project/`, the Python models in `src/iso42001/datamodel/`, and the merged schema in `docs/schema/`. None is edited by hand.
 * [The example data](datasets/example-data.md) - `tests/data/`: a valid example per class and a counter-example per constraint, each counter-example naming on its first line where it must fail. `AimsManagementSystem-acme` is one whole management system.
 * [An AI policy as a concept](datasets/example-policy.md) - An example written as a concept of type `AimsPolicy` in the adapt copy's keys. It shows that the domain schema admits a policy as a concept, citing the clause and the Annex A control it answers to by number.
-* [The neighbours' adapt copies](datasets/neighbour-copies.md) - The adapt copies of 22 released lmodel repositories in `tests/neighbours/`, each pinned by its SHA-256, which tests hold this schema's names and mappings to.
+* [The neighbours' adapt copies](datasets/neighbour-copies.md) - The adapt copies of 35 released lmodel repositories in `tests/neighbours/`, each pinned by its SHA-256, which tests hold this schema's names and mappings to.
 
 # Glossary
 
@@ -67,5 +67,5 @@ A [LOKF](https://lokf.nolan-nichols.com) knowledge base for iso42001. Every Mark
 # Explanations
 
 * [Modelling choices](explanations/modelling-choices.md) - Why the schema has these shapes: records that refer by identifier, documented information under one document-control mixin, variants told apart by a designator, numbers for citing the standard, and scales offered for an organization that adopts them.
-* [Mappings and the SSSOM sets](explanations/mappings.md) - Where the schema crosses to other vocabularies: close mappings to lmodel/iso27001's class of the same clause number, to OSCAL's role and SPDX's organization, and a related mapping to OSCAL's control, each tested. The seven SSSOM sets are gone.
+* [Mappings and the SSSOM sets](explanations/mappings.md) - Where the schema crosses to other vocabularies: close mappings to lmodel/iso27001's class of the same clause number, to OSCAL's role, SPDX's organization, the AI system and impact of lmodel/nist-ai-100-1 and the controller and processor of lmodel/iso29100, and related mappings to OSCAL's control and the AI RMF's risk, each tested. The seven SSSOM sets are gone.
 * [Scope](explanations/scope.md) - What the model leaves out: the text of the standard, certification beyond the system's own record of an audit and its status, a fixed method of risk assessment, and the rules no validator checks.

@@ -1,5 +1,11 @@
 # Change Log
 
+## 2026-11-07
+
+* **Changed**: The neighbours' adapt copies number 35, since 13 lmodel releases joined `tests/test_schema_rules.py`.
+* **Changed**: Mappings and the SSSOM sets names the mappings to lmodel/nist-ai-100-1 and lmodel/iso29100, from README.md.
+* **Changed**: Upstream watch reports a pinned amendment that ISO publishes, as the script's docstring now says.
+
 ## 2026-11-05
 
 * **Added**: ISO/IEC 42001:2023, from ISO Open Data's records and NOTICE.

@@ -20,7 +20,7 @@ sources:
     title: how the issue is opened
 generated:
   by: process:ktl-librarian
-  at: "2026-11-05T11:06:55Z"
+  at: "2026-11-07T01:01:53Z"
 status: draft
 ---
 
@@ -28,7 +28,7 @@ status: draft
 
 The workflow runs every Monday, and a failing check opens an issue or comments on the one already open.[^upstream-watch.yaml]
 
-The script streams ISO Open Data's dataset with no token and compares each pinned record's line by its SHA-256. It reports a changed record, a supplement that is not pinned, a record that replaces a pinned one, and a change to the dataset's licence, which it reads from ISO's open data page through the Internet Archive when iso.org refuses a script.[^watch]
+The script streams ISO Open Data's dataset with no token and compares each pinned record's line by its SHA-256. It reports a changed record, a pinned amendment that ISO publishes, a supplement that is not pinned, a record that replaces a pinned one, and a change to the dataset's licence, which it reads from ISO's open data page through the Internet Archive when iso.org refuses a script.[^watch]
 
 `tests/test_watch.py` runs it against stubbed answers.[^test_watch.py]
 
