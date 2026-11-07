@@ -27,7 +27,7 @@ status: draft
 
 Each line is ISO's record as published, without its scope, which summarizes the standard in ISO's words. The records were taken on 2026-11-05 and are used under the ODC Attribution License v1.0.[^notice]
 
-The watch pins each line by its SHA-256.[^watch] `tests/test_upstream.py` holds the schema header to the extract and the pins.[^test_upstream.py]
+The watch pins each line by its SHA-256.[^watch] `tests/test_upstream.py` checks the schema header against the extract and the pins.[^test_upstream.py]
 
 [^notice]: NOTICE, ISO Open Data
 [^watch]: scripts/check_upstream_release.py, the pins

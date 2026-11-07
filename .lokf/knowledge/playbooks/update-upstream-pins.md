@@ -29,8 +29,8 @@ status: draft
 
 1. Read the watch's report, which names the record and the fields that changed.[^watch]
 2. Replace the extract whole from one day's dataset, never by editing it.[^contributing.md]
-3. Move the pins in the watch, and the header's `version` and annotations if the edition moved. `tests/test_upstream.py` holds them equal.[^test_upstream.py]
-4. A person who holds the new text reads it and decides what the schema changes. ISO's agreement restricts use of the text with AI tools, so none of it goes to one.[^notice]
+3. Move the pins in the watch, and the header's `version` and annotations if the edition moved. `tests/test_upstream.py` checks that they agree.[^test_upstream.py]
+4. A person who holds the new text reads it and decides what the schema changes. ISO's agreement restricts use of the text with AI tools, so no AI tool is given any of it.[^notice]
 
 [^watch]: scripts/check_upstream_release.py, the report it writes
 [^contributing.md]: CONTRIBUTING.md, Before opening a pull request

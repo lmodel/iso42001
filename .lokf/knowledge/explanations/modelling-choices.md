@@ -22,7 +22,7 @@ status: draft
 
 The schema was rewritten with the `Aims` prefix on classes and enums and the `aims_` prefix on slots. Every record has an `aims_id`, a reference holds one, and a record of a class that comes in kinds states its kind.[^changelog.md]
 
-`AimsClause` and `AimsAnnexAControl` let a record cite the standard by number, with titles and descriptions of this project's own. The risk, likelihood and consequence scales are offered for an organization that adopts them, since the standard leaves them to the organization, and an enum built from an annex that gives examples has the value `other`.[^about.md]
+`AimsClause` and `AimsAnnexAControl` let a record cite the standard by number, with titles and descriptions of this project's own. The risk, likelihood and consequence scales are offered for an organization that adopts them, since the standard leaves them to the organization. An enum built from an annex that gives examples has the value `other`.[^about.md]
 
 [^about.md]: docs/about.md
 [^changelog.md]: CHANGELOG.md, Unreleased

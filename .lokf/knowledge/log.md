@@ -2,6 +2,7 @@
 
 ## 2026-11-07
 
+* **Prose**: reworded 9 concept bodies in plain English. No fact, link, number or frontmatter changed.
 * **Corrected**: The example data says the test checks that no Statement of Applicability lists a control twice, as `tests/test_data.py` does, not that it lists each control.
 * **Changed**: The neighbours' adapt copies number 35, since 13 lmodel releases joined `tests/test_schema_rules.py`.
 * **Changed**: Mappings and the SSSOM sets names the mappings to lmodel/nist-ai-100-1 and lmodel/iso29100, from README.md.
