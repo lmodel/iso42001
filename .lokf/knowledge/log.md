@@ -1,5 +1,11 @@
 # Change Log
 
+## 2026-11-15
+
+* **Changed**: The concepts that state the project's Python floor or its test matrix say 3.11, since the project no longer supports Python 3.10.
+* **Changed**: The documentation site names the redirects in `website/site.toml`, which replaced the Astro site's `REDIRECTS`.
+* **Changed**: The concepts that cite the knowledge website describe the Hugo site that replaced the Astro one, set by `website/site.toml`.
+
 ## 2026-11-07
 
 * **Prose**: reworded 9 concept bodies in plain English. No fact, link, number or frontmatter changed.
