@@ -2,6 +2,7 @@
 
 ## 2026-11-15
 
+* **Changed**: The documentation site names the redirects in `website/site.toml`, which replaced the Astro site's `REDIRECTS`.
 * **Changed**: The concepts that cite the knowledge website describe the Hugo site that replaced the Astro one, set by `website/site.toml`.
 
 ## 2026-11-07
